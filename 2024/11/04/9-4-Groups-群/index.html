@@ -1,37 +1,462 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>9.4 Group 群 | Yokumi的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Inverse  Defination: 令\((S, *)\)是一个幺半群，\(x \in S\)。当\(\exists y \in S, x * y &#x3D; y * x &#x3D; e\)，则称\(y\)为\(x\)的逆元，记为\(x^{-1}\)。 单位元一定是可逆的。 逆元是唯一的。 Prove: 设\((S, *)\)是一个幺半群，\(x \in S\)可逆，若\(\exists y_1,y_2\)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="9.4 Group 群">
+<meta property="og:url" content="https://yokimii.github.io/blog/2024/11/04/9-4-Groups-%E7%BE%A4/index.html">
+<meta property="og:site_name" content="Yokumi的个人博客">
+<meta property="og:description" content="Inverse  Defination: 令\((S, *)\)是一个幺半群，\(x \in S\)。当\(\exists y \in S, x * y &#x3D; y * x &#x3D; e\)，则称\(y\)为\(x\)的逆元，记为\(x^{-1}\)。 单位元一定是可逆的。 逆元是唯一的。 Prove: 设\((S, *)\)是一个幺半群，\(x \in S\)可逆，若\(\exists y_1,y_2\)">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-11-04T10:05:00.000Z">
+<meta property="article:modified_time" content="2024-11-06T11:15:58.557Z">
+<meta property="article:author" content="Yokumi">
+<meta property="article:tag" content="群论">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="Yokumi的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/blog/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/blog/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.min.css">
+
+  
+  
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">Yokumi的个人博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/blog/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://yokimii.github.io/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-9-4-Groups-群" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/11/04/9-4-Groups-%E7%BE%A4/" class="article-date">
+  <time class="dt-published" datetime="2024-11-04T10:05:00.000Z" itemprop="datePublished">2024-11-04</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/blog/categories/%E7%BE%A4%E8%AE%BA/">群论</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      9.4 Group 群
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="inverse"><em>Inverse</em></h1>
+<blockquote>
+<p><strong><em>Defination:</em></strong> 令<span
+class="math inline">\((S, *)\)</span>是一个幺半群，<span
+class="math inline">\(x \in S\)</span>。当<span
+class="math inline">\(\exists y \in S, x * y = y * x =
+e\)</span>，则称<span class="math inline">\(y\)</span>为<span
+class="math inline">\(x\)</span>的逆元，记为<span
+class="math inline">\(x^{-1}\)</span>。 单位元一定是可逆的。
+逆元是唯一的。 <strong><em>Prove:</em></strong> 设<span
+class="math inline">\((S, *)\)</span>是一个幺半群，<span
+class="math inline">\(x \in S\)</span>可逆，若<span
+class="math inline">\(\exists y_1,y_2\)</span>为<span
+class="math inline">\(x\)</span>的逆元， 有<span
+class="math inline">\(y_1 = y_1 * e = y_1 * (x * y_2) = (y_1 * x) *
+(y_2) = e * y_2 = y_2\)</span></p>
+</blockquote>
+<h1 id="group-群"><em>Group 群</em></h1>
+<blockquote>
+<p><strong><em>Defination1:</em></strong> 由上面引出，若<span
+class="math inline">\((S,
+*)\)</span>是一个幺半群，如果每一个元素均可逆，则<span
+class="math inline">\((S, *)\)</span>构成一个群。
+<strong><em>Defination2:</em></strong> 拓展半群的定义： &gt;1.
+<strong><em>Closure</em></strong> 运算封闭性； &gt;2.
+<strong><em>Associativity</em></strong> 结合律 &gt;3.
+<strong><em>Identity</em></strong> 存在单位元 &gt;4.
+<strong><em>Inverse</em></strong> 每个元素都有逆元
+<strong><em>引理:</em></strong> <span class="math inline">\((S,
+*)\)</span>是幺半群，令<span
+class="math inline">\(G\)</span>是其所有可逆元素构成的子集，则<span
+class="math inline">\((G, *)\)</span>是群。
+<strong><em>Properties:</em></strong> &gt; 1. <span
+class="math inline">\((a^{-1})^{-1} = a\)</span> &gt; 2. <span
+class="math inline">\((ab)^{-1} = b^{-1}a^{-1}\)</span> &gt; 3. <span
+class="math inline">\(ab = ac \rightarrow b = c\)</span>（左消去律）
+&gt; 4. <span class="math inline">\(ba = ca \rightarrow b =
+c\)</span>（右消去律） 事实上，群的定义可以减弱为<span
+class="math inline">\(\textbf{ea = a}\)</span>
+<strong><em>Prove:</em></strong> <span class="math inline">\(ae =
+aa^{-1}(a^{-1})^{-1} = e(a^{-1})^{-1} = ea\)</span></p>
+</blockquote>
+<h1 id="几类特殊的群"><em>几类特殊的群</em></h1>
+<h2 id="abelian-group-阿贝尔群交换群"><em>Abelian Group
+阿贝尔群/交换群</em></h2>
+<blockquote>
+<p><strong><em>Defination:</em></strong> <span class="math inline">\((G,
+*),\forall x,y \in G, x * y = y * x\)</span>。</p>
+</blockquote>
+<h2 id="平凡群"><em>平凡群</em></h2>
+<blockquote>
+<p><strong><em>Defination:</em></strong> <span
+class="math inline">\((\{e\}, *)\)</span></p>
+</blockquote>
+<h2 id="general-linear-group-n阶一般线性群"><em>General Linear Group
+n阶一般线性群</em></h2>
+<blockquote>
+<p><strong><em>Defination:</em></strong> <span class="math inline">\(n *
+n\)</span>阶可逆实矩阵构成的乘法群，<span class="math inline">\(GL_n(R)
+= \{A \in M_n(R):det(A)\neq0\}\)</span></p>
+</blockquote>
+<h1 id="subgroup-子群"><em>Subgroup 子群</em></h1>
+<blockquote>
+<p><strong><em>Defination:</em></strong> <span
+class="math inline">\(H\)</span>是<span
+class="math inline">\(G\)</span>的子群，记作$H &lt; G，满足： &gt;1.
+<span class="math inline">\(e \in H\)</span> &gt;2. 封闭性 &gt;3.
+都有逆元 &gt;还可以压缩为： &gt;1. 非空<span class="math inline">\(H
+\subset G\)</span> &gt;2. <span class="math inline">\(\forall x,y \in
+H,ab^{-1} \in H\)</span>
+上述也可以作为<strong><em>判定方法</em></strong>。</p>
+</blockquote>
+<h1 id="homomorphism-群同态"><em>Homomorphism 群同态</em></h1>
+<blockquote>
+<p><strong><em>Defination:</em></strong> <span class="math inline">\((G,
+*),(G&#39;,*&#39;)\)</span> 是两个群，<span class="math inline">\(f:G
+\rightarrow G&#39;\)</span>是一个群同态，那么有 &gt; 1. <span
+class="math inline">\(f(e) = e&#39;\)</span>； &gt; 2. <span
+class="math inline">\(f(a^{-1})=(f(a))^{-1}\)</span>； &gt; 3. <span
+class="math inline">\(H\)</span>是<span
+class="math inline">\(G\)</span>的一个子群，那么<span
+class="math inline">\(f(H) = \{f(h)|h \in H\}\)</span>也是<span
+class="math inline">\(G&#39;\)</span>的一个子群；
+<strong><em>命题:</em></strong> <span
+class="math inline">\(det:GL_n(R)\rightarrow (R,
+*)\)</span>是一个乘法群同态，即行列式是一般线性群到实数乘群的一个群同态。
+对<span class="math inline">\(SL_n(R)=\{A \in GL_n(R):det(A) =
+1\}\)</span>，显然1是<span class="math inline">\((R,
+*)\)</span>的单位元，那么， <span class="math inline">\(SL_n(R) =
+det^{-1}(1)=det^{-1}(\{1\})\)</span>，翻译成人话，特殊线性群是那些映射到单位元元素的矩阵的集合，即它是实数乘群中单位元的一个原象，也是下面提到的<strong><em>正规子群</em></strong>。
+<strong><em>满同态，单同态</em></strong> <strong><em>Note!</em></strong>
+单同态当且仅当<span class="math inline">\(Ker(f) =
+\{e\}\)</span>，要证明群同态是单射，只需证<span
+class="math inline">\(Ker(f) = \{e\}\)</span>。</p>
+</blockquote>
+<h2 id="kernal-image-核像">Kernal, Image 核/像</h2>
+<blockquote>
+<p><strong><em>Defination:</em></strong> <span class="math inline">\(f:G
+\rightarrow G&#39;\)</span>是一个群同态，<span
+class="math inline">\(Ker(f) = \{a\in G|f(a)=e&#39;\},Im(f)=f(G)=\{y\in
+G:\exists x\in G,y = f(x)\}\)</span></p>
+</blockquote>
+<h2 id="同态基本定理">同态基本定理</h2>
+<p><strong><em>Defination:</em></strong> 设<span
+class="math inline">\(f:G \rightarrow G&#39;\)</span>是同态，<span
+class="math inline">\(R\)</span>是<span
+class="math inline">\(G\)</span>上的关系且被定义为<span
+class="math inline">\(aRb \iff f(a) = f(b)\)</span>，那么有： &gt;
+1）<span class="math inline">\(R\)</span>是同余关系； &gt; 2）<span
+class="math inline">\(G&#39;\)</span>和<span
+class="math inline">\(G/R\)</span>同构；<img
+src="../img/Wondershare%20PDFelement%202024-11-05%2012.08.43.png" /></p>
+<h1 id="isomorphism-同构"><em>Isomorphism 同构</em></h1>
+<blockquote>
+<p><strong><em>Defination:</em></strong> 双射的同态。</p>
+</blockquote>
+<h1 id="direct-product-群的直积"><em>Direct Product 群的直积</em></h1>
+<blockquote>
+<p><strong><em>Defination:</em></strong> <span class="math inline">\((x,
+y)*(x&#39;,y&#39;)=(x \circ_1 x&#39;, y \circ_2 y&#39;)\)</span></p>
+</blockquote>
+<h1 id="finate-group-有限群"><em>Finate Group 有限群</em></h1>
+<blockquote>
+<p><strong><em>Defination:</em></strong> <span
+class="math inline">\(G\space is\space Finate\space Group \iff
+G\)</span>是一个有限集合 <strong><em>The Order of Group
+群的阶</em></strong> &gt; <strong><em>Defination:</em></strong> 若<span
+class="math inline">\(x \in G\)</span>，如果<span
+class="math inline">\(\exists 最小正整数n \in
+N,s.t.x^n=e\)</span>，则<span
+class="math inline">\(|G|=n\)</span>，若不存在，则<span
+class="math inline">\(|G|=\infty\)</span>
+<strong><em>命题1:</em></strong>
+有限群的每一个元素经过有限次自乘都可以得到单位元。</p>
+</blockquote>
+<h1 id="cyclic-group-循环群"><em>Cyclic Group 循环群</em></h1>
+<blockquote>
+<p><strong><em>命题1:</em></strong> 令<span
+class="math inline">\(G=&lt;x&gt;\)</span>是有限循环群，假设<span
+class="math inline">\(|x| = n\)</span>，则<span class="math inline">\(G
+= \{e,x^2,……,x^n\}\)</span>，其中元素是两两不同的，则称有限群<span
+class="math inline">\(G\)</span>的阶为<span
+class="math inline">\(n\)</span>。
+可以用<strong><em>Cayley图</em></strong>进行可视化表示：<img
+src="../img/Google%20Chrome%202024-11-05%2008.56.29.png" /><strong><em>命题2:</em></strong>
+任意n阶循环群互相同构，无限循环群也是互相同构的。
+<strong><em>命题3:</em></strong> 任意循环群都是交换群。
+<strong><em>命题4:</em></strong> 令<span class="math inline">\(G =
+&lt;x&gt;\)</span>为无限循环群，G只有两个生成元分别为<span
+class="math inline">\(x,x^{-1}\)</span>。
+<strong><em>几类特殊的循环群:</em></strong> &gt; <span
+class="math inline">\((Z, +) = &lt;1&gt;,1\)</span>或<span
+class="math inline">\(-1\)</span>是它的生成元，无限循环群；
+<strong><em>Lagrange定理:</em></strong> 若<span
+class="math inline">\(H\)</span>是<span
+class="math inline">\(G\)</span>的子群，则<span
+class="math inline">\(|H|\space |\space |G|\)</span>。</p>
+</blockquote>
+<h1 id="coset-陪集">Coset 陪集</h1>
+<blockquote>
+<p><strong><em>左陪集</em></strong> &gt;
+<strong><em>Defination:</em></strong> <span
+class="math inline">\(H\)</span>是<span
+class="math inline">\(G\)</span>的一个子群，<span
+class="math inline">\(aH = \{ah|h \in H\},a \in
+G\)</span>，陪集一般不是子群。 &gt; 定义<span class="math inline">\(f:H
+\rightarrow aH,f(x)=ax\)</span>，显然是双射，则<span
+class="math inline">\(|H|=|aH|\)</span>。 &gt;
+<strong><em>命题1:</em></strong>
+两个左陪集要么相等要么无交，所有陪集构成群的一个分拆。 &gt;
+可以定义为商集<span class="math inline">\(G/H\)</span>
+<strong><em>右陪集</em></strong> 如何赋予商集一个群的结构？</p>
+</blockquote>
+<h1 id="normal-group-正规子群"><em>Normal Group 正规子群</em></h1>
+<blockquote>
+<p><strong><em>Defination:</em></strong> <span
+class="math inline">\(N&lt;G,\forall a \in G,aN = Na\)</span>，记作<span
+class="math inline">\(H \lhd G\)</span>，此时<span
+class="math inline">\((G/N,\circ)\)</span>称为商群。其单位元为<span
+class="math inline">\(eN = N\)</span>，逆元为<span
+class="math inline">\(a^{-1}N\)</span> <strong><em>商群:</em></strong>
+可以通过正规子群来生成商集，并定义二元运算为<span
+class="math inline">\((aN) \times (bN)=[a]\circ [b] = [a * b] =
+abN\)</span> 同时有函数定义为<span class="math inline">\(f_R:G
+\rightarrow G/R, f_R(a) = aN\)</span>,则<span
+class="math inline">\(f_R\)</span>是由<span class="math inline">\(G
+\rightarrow G/R\)</span>的同态，一般记为<span
+class="math inline">\(G/N\)</span>。 <strong><em>定理:</em></strong>
+设<span class="math inline">\(G\)</span>的正规子群<span
+class="math inline">\(N\)</span>，设定义在<span
+class="math inline">\(G\)</span>上的关系<span class="math inline">\(R:
+aRb \iff ab^{-1} \in N\)</span>，那么有： &gt; 1. <span
+class="math inline">\(R\)</span>是<span
+class="math inline">\(G\)</span>上的同余关系； &gt; 2. <span
+class="math inline">\(N = [e]\)</span>；
+<strong><em>Prove:</em></strong> <span class="math inline">\(证明自反性:
+aa^{-1}=e \in N \Rightarrow aRa\)</span> <span
+class="math inline">\(证明对称性, if\space aRb, then\space ab^{-1}\in
+N,由于其存在逆元，则(ab^{-1})^{-1}=ba^{-1}\Rightarrow bRa\)</span> <span
+class="math inline">\(证明传递性,if\space aRb,bRc,then\space
+ab^{-1},bc^{-1}\in N,由封闭性,ab^{-1}bc^{-1} = ac^{-1}\in N\Rightarrow
+aRc\)</span> <span class="math inline">\(证明同余关系,\)</span></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yokimii.github.io/blog/2024/11/04/9-4-Groups-%E7%BE%A4/" data-id="cm40xnftg000f8nwi3lsph8du" data-title="9.4 Group 群" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/%E7%BE%A4%E8%AE%BA/" rel="tag">群论</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2024/11/04/9-3-Products-and-Quotients-of-Semigroups-%E4%B9%98%E7%A7%AF%E5%8D%8A%E7%BE%A4%E3%80%81%E5%95%86%E5%8D%8A%E7%BE%A4/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">9.3 Products and Quotients of Semigroups 乘积半群、商半群</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
-
-{% block page_class %}page-post-detail{% endblock %}
-
-
-{% block content %}
-
-  <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
-
-    <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/blog/categories/%E7%BE%A4%E8%AE%BA/">群论</a></li></ul>
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/%E7%BE%A4%E8%AE%BA/" rel="tag">群论</a></li></ul>
+    </div>
+  </div>
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/%E7%BE%A4%E8%AE%BA/" style="font-size: 10px;">群论</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2024/11/">十一月 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2024/11/04/9-4-Groups-%E7%BE%A4/">9.4 Group 群</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/11/04/9-3-Products-and-Quotients-of-Semigroups-%E4%B9%98%E7%A7%AF%E5%8D%8A%E7%BE%A4%E3%80%81%E5%95%86%E5%8D%8A%E7%BE%A4/">9.3 Products and Quotients of Semigroups 乘积半群、商半群</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/11/03/9-2-Semigroups-%E5%8D%8A%E7%BE%A4%E3%80%81%E5%90%8C%E6%80%81%E3%80%81%E5%90%8C%E6%9E%84/">9.2 Semigroups 半群、同态、同构</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2024/11/03/9-1-%E7%BE%A4%E8%AE%BAIntro/">9.1 群论Intro</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 Yokumi<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/blog/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/blog/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/blog/js/script.js"></script>
+
+
+
+
+
+  </div>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2487.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"&gt;&lt;/script&gt;</p>
+</body>
+</html>
+
+</body>
+</html>
