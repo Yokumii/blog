@@ -35,10 +35,17 @@
 <script src="/blog/js/lib/highlight.js"></script>
 
 
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/blog/js/lib/math.js"></script>
+
 
 <script src="/blog/js/lib/preview.js"></script>
 
 
+
+<script src="/blog/js/lib/search.js"></script>
 
 
 
@@ -153,6 +160,8 @@
             
 <div id="archives">
     
+    <input id="search-bar" class="input" placeholder="搜索" v-model="rawSearch" />
+    
     <div id="timeline-wrap" ref="timeline">
         
         <div class="timeline" data-title="9.1群论intro">
@@ -182,7 +191,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/blog/tags/%E7%BE%A4%E8%AE%BA/" style="color: #00bcd4">
+                            <a href="/blog/tags/%E7%BE%A4%E8%AE%BA/" style="color: #03a9f4">
                                 群论
                             </a>
                         </span>
@@ -220,7 +229,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/blog/tags/%E7%BE%A4%E8%AE%BA/" style="color: #00bcd4">
+                            <a href="/blog/tags/%E7%BE%A4%E8%AE%BA/" style="color: #03a9f4">
                                 群论
                             </a>
                         </span>
@@ -258,7 +267,7 @@
                         
                         <span class="tag">
                             
-                            <a href="/blog/tags/%E7%BE%A4%E8%AE%BA/" style="color: #ffa2c4">
+                            <a href="/blog/tags/%E7%BE%A4%E8%AE%BA/" style="color: #00a596">
                                 群论
                             </a>
                         </span>
@@ -314,7 +323,7 @@
     <div id="footer-wrap">
         <div>
             &copy;
-            2022 - 2024 Yokumi的个人博客
+            2023 - 2024 Yokumi的个人博客
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
