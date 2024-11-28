@@ -38,7 +38,7 @@ mixins.home = {
         async fetchImages() {
             try {
                 // 替换为真实接口地址
-                const response = await fetch("https://uploadbeta.com/api/pictures/random/?key=二次元");
+                const response = await fetch("https://www.loliapi.com/acg/pc/");
                 if (!response.ok) {
                     throw new Error(`HTTP错误: ${response.status}`);
                 }
