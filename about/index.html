@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title>9.1 群论Intro | Yokumi的个人博客</title>
+    <title>About | Yokumi的个人博客</title>
     <meta name="author" content="Yokumi" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -161,90 +161,44 @@
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
             <div class="article">
     <div>
-        <h1>9.1 群论Intro</h1>
+        <h1>About</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2024/11/3
+            2024/8/11
         </span>
         
-        <span class="category">
-            <a href="/blog/categories/%E7%BE%A4%E8%AE%BA/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                群论
-            </a>
-        </span>
-        
-        
-        <span class="tags">
-            <span class="icon">
-                <i class="fa-solid fa-tags fa-fw"></i>
-            </span>
-            
-            
-            <span class="tag">
-                
-                <a href="/blog/tags/%E7%BE%A4%E8%AE%BA/" style="color: #ffa2c4">
-                    群论
-                </a>
-            </span>
-            
-        </span>
         
     </div>
     
     <div class="content" v-pre>
-        <h1 id="Binary-operation"><a href="#Binary-operation" class="headerlink" title="Binary operation"></a><em>Binary operation</em></h1><blockquote>
-<p><strong>Defination:</strong> 对两个对象进行操作的运算称为二元运算。一般在《离散数学》这门课中只研究离散结构，e.g. 集合。</p>
+        <h1 id="Hi-there-wave"><a href="#Hi-there-wave" class="headerlink" title="Hi there :wave:"></a>Hi there :wave:</h1><hr>
+<blockquote>
+<p>这里是Yokumi！</p>
 </blockquote>
-<h1 id="Some-Properties-of-Binary-Operations"><a href="#Some-Properties-of-Binary-Operations" class="headerlink" title="Some Properties of Binary Operations"></a><em>Some Properties of Binary Operations</em></h1><h2 id="Closure"><a href="#Closure" class="headerlink" title="Closure"></a><em>Closure</em></h2><blockquote>
-<p><strong>Defination:</strong> 设集合 S 有二元运算∗, 若对 S 中的任意两个元素 $a_1$、$a_2$, 都有: $a_1∗a_2∈S$, 则称运算∗对集合 S 封闭。</p>
-</blockquote>
-<h2 id="Commutative"><a href="#Commutative" class="headerlink" title="Commutative"></a><em>Commutative</em></h2><blockquote>
-<p><strong>Defination:</strong>   交换律也称为Abel 律，设有代数 $(S,∗)$，若对任意 $a_1,a_2∈S$,都符合等式: $a_1∗a_2=a_2∗a_1$,那么称代数 $(S,∗)$ 运算符合交换律。<br><strong>推广:</strong> 如果 $(S,∗)$ 运算符合交换律，那么对于运算序列 $a_1∗a_2∗…∗a_n$，设 $θ(12…n)$ 为任意重排列，那么有:  $a_θ(1)∗a_θ(2)∗…∗a_θ(n)=a_1∗a_2∗…∗a_n$。</p>
-</blockquote>
-<h2 id="Associative"><a href="#Associative" class="headerlink" title="Associative"></a><em>Associative</em></h2><blockquote>
-<p><strong>Defination:</strong> if <em> is a binary operation, then </em> is associative or has the associative property:$(x <em> y) </em> z = x <em> (y </em> z)$，在运算过程中不需要再考虑括号了！</p>
-</blockquote>
-<h2 id="Distributive"><a href="#Distributive" class="headerlink" title="Distributive"></a><em>Distributive</em></h2><blockquote>
-<p>略。</p>
-</blockquote>
-<h2 id="De-Morgan‘s-laws"><a href="#De-Morgan‘s-laws" class="headerlink" title="De Morgan‘s laws"></a><em>De Morgan‘s laws</em></h2><blockquote>
-<p>扔个PPT在这。<img src="../img/Wondershare%20PDFelement%202024-11-03%2017.07.25.png" alt=""></p>
-</blockquote>
-<h2 id="Idempotent"><a href="#Idempotent" class="headerlink" title="Idempotent"></a><em>Idempotent</em></h2><blockquote>
-<p><strong>Defination:</strong> $a * a = a$</p>
-</blockquote>
-<h2 id="Note！"><a href="#Note！" class="headerlink" title="Note！"></a><em>Note！</em></h2><blockquote>
-<p>An operation has a property means the statement of the property is true when the operation is used with any objects in the structure.</p>
-</blockquote>
-<h1 id="A-binary-operation-on-a-set"><a href="#A-binary-operation-on-a-set" class="headerlink" title="A binary operation on a set"></a><em>A binary operation on a set</em></h1><blockquote>
-<p><strong>Defination:</strong> Everywhere defined $f:A×A\rightarrow A$，同时需要满足封闭性和运算结果唯一，即双射性质。</p>
-</blockquote>
-<h1 id="Tables-运算表"><a href="#Tables-运算表" class="headerlink" title="Tables(运算表)"></a><em>Tables(运算表)</em></h1><blockquote>
-<p><strong>Defination:</strong> If A is a finite set, we can define a binary operation on A by means of a table.<img src="../img/Wondershare%20PDFelement%202024-11-03%2017.15.57.png" alt=""></p>
-</blockquote>
-<h1 id="Some-Special-Elements"><a href="#Some-Special-Elements" class="headerlink" title="Some Special Elements"></a><em>Some Special Elements</em></h1><h2 id="Identity-中性元"><a href="#Identity-中性元" class="headerlink" title="Identity(中性元)"></a><em>Identity(中性元)</em></h2><blockquote>
-<p><strong>Defination:</strong> $e∗x=x∗e=x$</p>
-</blockquote>
-<h2 id="Zero-零元"><a href="#Zero-零元" class="headerlink" title="Zero(零元)"></a><em>Zero(零元)</em></h2><blockquote>
-<p><strong>Defination:</strong> $\theta ∗ x=x ∗ \theta= \theta$</p>
-</blockquote>
-<h2 id="Inverse-逆元"><a href="#Inverse-逆元" class="headerlink" title="Inverse(逆元)"></a><em>Inverse(逆元)</em></h2><blockquote>
-<p><strong>Defination:</strong> $x <em> y = y </em> x = e$，两者互为逆元</p>
-</blockquote>
-<h2 id="Note"><a href="#Note" class="headerlink" title="Note!"></a><em>Note!</em></h2><blockquote>
-<ol>
-<li>单位元以及零元的唯一性</li>
-<li>如果$\left| A \right| &gt; 1, \theta \neq e$</li>
-<li>可结合的运算逆元唯一性</li>
-</ol>
-</blockquote>
+<h2 id="sparkles-帐号"><a href="#sparkles-帐号" class="headerlink" title=":sparkles: 帐号"></a>:sparkles: 帐号</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">网站</th>
+<th style="text-align:left">帐号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">QQ</td>
+<td style="text-align:left">2845687016</td>
+</tr>
+<tr>
+<td style="text-align:center">GitHub</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://github.com/Yokumii">Yokumii</a></td>
+</tr>
+</tbody>
+</table>
+</div>
 
     </div>
     
