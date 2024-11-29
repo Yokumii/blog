@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title>9.1 群论Intro | Yokumi的个人博客</title>
+    <title>Tags: CSAPP | Yokumi的个人博客</title>
     <meta name="author" content="Yokumi" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -42,10 +42,6 @@
 
 
 <script src="/blog/js/lib/preview.js"></script>
-
-
-
-
 
 
 
@@ -159,132 +155,92 @@
 </transition>
 
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div class="article">
-    <div>
-        <h1>9.1 群论Intro</h1>
-    </div>
-    <div class="info">
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/11/3
-        </span>
+            <div id="archives">
+    
+    <div class="categories-tags">
         
-        <span class="category">
-            <a href="/blog/categories/%E7%BE%A4%E8%AE%BA/">
+        
+        
+        <span>
+            <a href="/blog/tags/%E7%BE%A4%E8%AE%BA/" style="background: #ffa2c4">
                 <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                    <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
                 群论
             </a>
         </span>
         
         
-        <span class="tags">
-            <span class="icon">
-                <i class="fa-solid fa-tags fa-fw"></i>
-            </span>
-            
-            
-            <span class="tag">
-                
-                <a href="/blog/tags/%E7%BE%A4%E8%AE%BA/" style="color: #00a596">
-                    群论
-                </a>
-            </span>
-            
+        
+        <span>
+            <a href="/blog/tags/CSAPP/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                CSAPP
+            </a>
         </span>
+        
+        
+        
+        
+        
+        <span>
+            <a href="/blog/tags/%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81/" style="background: #00bcd4">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                汇编代码
+            </a>
+        </span>
+        
         
     </div>
     
-    <div class="content" v-pre>
-        <h1 id="binary-operation"><em>Binary operation</em></h1>
-<blockquote>
-<p><strong>Defination:</strong>
-对两个对象进行操作的运算称为二元运算。一般在《离散数学》这门课中只研究离散结构，e.g.
-集合。</p>
-</blockquote>
-<h1 id="some-properties-of-binary-operations"><em>Some Properties of
-Binary Operations</em></h1>
-<h2 id="closure"><em>Closure</em></h2>
-<blockquote>
-<p><strong>Defination:</strong> 设集合 S 有二元运算∗, 若对 S
-中的任意两个元素 <span class="math inline">\(a_1\)</span>、<span class="math inline">\(a_2\)</span>, 都有: <span class="math inline">\(a_1∗a_2∈S\)</span>, 则称运算∗对集合 S 封闭。</p>
-</blockquote>
-<h2 id="commutative"><em>Commutative</em></h2>
-<blockquote>
-<p><strong>Defination:</strong> 交换律也称为Abel 律，设有代数 <span class="math inline">\((S,∗)\)</span>，若对任意 <span class="math inline">\(a_1,a_2∈S\)</span>,都符合等式: <span class="math inline">\(a_1∗a_2=a_2∗a_1\)</span>,那么称代数 <span class="math inline">\((S,∗)\)</span> 运算符合交换律。
-<strong>推广:</strong> 如果 <span class="math inline">\((S,∗)\)</span>
-运算符合交换律，那么对于运算序列 <span class="math inline">\(a_1∗a_2∗...∗a_n\)</span>，设 <span class="math inline">\(θ(12...n)\)</span> 为任意重排列，那么有: <span class="math inline">\(a_θ(1)∗a_θ(2)∗...∗a_θ(n)=a_1∗a_2∗...∗a_n\)</span>。</p>
-</blockquote>
-<h2 id="associative"><em>Associative</em></h2>
-<blockquote>
-<p><strong>Defination:</strong> if * is a binary operation, then * is
-associative or has the associative property:<span class="math inline">\((x * y) * z = x * (y *
-z)\)</span>，在运算过程中不需要再考虑括号了！</p>
-</blockquote>
-<h2 id="distributive"><em>Distributive</em></h2>
-<blockquote>
-<p>略。</p>
-</blockquote>
-<h2 id="de-morgans-laws"><em>De Morgan‘s laws</em></h2>
-<blockquote>
-<p>扔个PPT在这。<img src="imgs/Wondershare%20PDFelement%202024-11-03%2017.07.25.png"></p>
-</blockquote>
-<h2 id="idempotent"><em>Idempotent</em></h2>
-<blockquote>
-<p><strong>Defination:</strong> <span class="math inline">\(a * a =
-a\)</span></p>
-</blockquote>
-<h2 id="note"><em>Note！</em></h2>
-<blockquote>
-<p>An operation has a property means the statement of the property is
-true when the operation is used with any objects in the structure.</p>
-</blockquote>
-<h1 id="a-binary-operation-on-a-set"><em>A binary operation on a
-set</em></h1>
-<blockquote>
-<p><strong>Defination:</strong> Everywhere defined <span class="math inline">\(f:A×A\rightarrow
-A\)</span>，同时需要满足封闭性和运算结果唯一，即双射性质。</p>
-</blockquote>
-<h1 id="tables运算表"><em>Tables(运算表)</em></h1>
-<blockquote>
-<p><strong>Defination:</strong> If A is a finite set, we can define a
-binary operation on A by means of a table.<img src="img/Wondershare%20PDFelement%202024-11-03%2017.15.57.png"></p>
-</blockquote>
-<h1 id="some-special-elements"><em>Some Special Elements</em></h1>
-<h2 id="identity中性元"><em>Identity(中性元)</em></h2>
-<blockquote>
-<p><strong>Defination:</strong> <span class="math inline">\(e∗x=x∗e=x\)</span></p>
-</blockquote>
-<h2 id="zero零元"><em>Zero(零元)</em></h2>
-<blockquote>
-<p><strong>Defination:</strong> <span class="math inline">\(\theta ∗ x=x
-∗ \theta= \theta\)</span></p>
-</blockquote>
-<h2 id="inverse逆元"><em>Inverse(逆元)</em></h2>
-<blockquote>
-<p><strong>Defination:</strong> <span class="math inline">\(x * y = y *
-x = e\)</span>，两者互为逆元</p>
-</blockquote>
-<h2 id="note-1"><em>Note!</em></h2>
-<blockquote>
-<ol type="1">
-<li>单位元以及零元的唯一性</li>
-<li>如果<span class="math inline">\(\left| A \right| &gt; 1, \theta \neq
-e\)</span></li>
-<li>可结合的运算逆元唯一性</li>
-</ol>
-</blockquote>
-
+    <div class="timeline">
+        <div class="timeline-tail"></div>
+        <div class="timeline-content">
+            <div class="item-time">2024/11/5</div>
+            <a href="/blog/2024/11/05/BombLab/">
+                <h3>CMU Bomb Lab 个人题解</h3>
+            </a>
+            <div class="info">
+                
+                <span class="category">
+                    <a href="/blog/categories/CSAPP/">
+                        <span class="icon">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </span>
+                        CSAPP
+                    </a>
+                </span>
+                
+                
+                <span class="tags">
+                    <span class="icon">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </span>
+                    
+                    
+                    <span class="tag">
+                        
+                        <a href="/blog/tags/CSAPP/" style="color: #00a596">
+                            CSAPP
+                        </a>
+                    </span>
+                    
+                    <span class="tag">
+                        
+                        <a href="/blog/tags/%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81/" style="color: #ff7d73">
+                            汇编代码
+                        </a>
+                    </span>
+                    
+                </span>
+                
+            </div>
+        </div>
     </div>
-    
-    
-    
-    
-    
-    
     
 </div>
 
@@ -312,12 +268,6 @@ e\)</span></li>
         
     </div>
     <script src="/blog/js/main.js"></script>
-    
-    
-
-
-
-
     
 </body>
 </html>

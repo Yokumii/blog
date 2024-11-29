@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title> | Yokumi的个人博客</title>
+    <title>CMU Bomb Lab 个人题解 | Yokumi的个人博客</title>
     <meta name="author" content="Yokumi" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -161,25 +161,53 @@
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
             <div class="article">
     <div>
-        <h1></h1>
+        <h1>CMU Bomb Lab 个人题解</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2024/11/28
+            2024/11/5
         </span>
         
+        <span class="category">
+            <a href="/blog/categories/CSAPP/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                CSAPP
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/CSAPP/" style="color: #ff7d73">
+                    CSAPP
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81/" style="color: #03a9f4">
+                    汇编代码
+                </a>
+            </span>
+            
+        </span>
         
     </div>
     
     <div class="content" v-pre>
-        <h1 id="cmu-bomb-lab-个人题解">CMU Bomb Lab 个人题解</h1>
-<h2 id="一实验目的">一、实验目的</h2>
-<ol type="1">
-<li>理解C语言程序的机器级表示。</li>
-</ol>
+        <h2 id="一实验目的">一、实验目的</h2>
+<p>1.理解C语言程序的机器级表示。</p>
 <p>2.初步掌握GDB调试器的用法。</p>
 <p>3.阅读C编译器生成的x86-64机器代码，理解不同控制结构生成的基本指令模式，过程的实现。</p>
 <h2 id="二实验环境">二、实验环境</h2>
@@ -215,7 +243,7 @@ bombs”是一个Linux可执行程序，包含了5个阶段（或关卡）。炸
 部分的汇编代码开始分析；</li>
 </ul>
 <figure>
-<img src="Microsoft%20Word%202024-11-29%2012.50.02.png" alt="phase_1汇编代码">
+<img src="1.png" alt="phase_1汇编代码">
 <figcaption aria-hidden="true">phase_1汇编代码</figcaption>
 </figure>
 <ul>
@@ -226,7 +254,7 @@ bombs”是一个Linux可执行程序，包含了5个阶段（或关卡）。炸
 <li>显示<code>strings_not_equal</code> 的汇编代码开始分析；</li>
 </ul>
 <figure>
-<img src="Microsoft%20Word%202024-11-29%2012.53.14.png" alt="strings_not_equal 函数汇编代码">
+<img src="2.png" alt="strings_not_equal 函数汇编代码">
 <figcaption aria-hidden="true">strings_not_equal
 函数汇编代码</figcaption>
 </figure>
@@ -245,7 +273,7 @@ bombs”是一个Linux可执行程序，包含了5个阶段（或关卡）。炸
 <code>%rdi</code> 和 <code>%rsi</code> 中，分别打印寄存器的值如下：</li>
 </ul>
 <figure>
-<img src="Microsoft%20Word%202024-11-29%2012.54.28.png" alt="字符串内容">
+<img src="3.png" alt="字符串内容">
 <figcaption aria-hidden="true">字符串内容</figcaption>
 </figure>
 <ul>
@@ -261,7 +289,7 @@ bombs”是一个Linux可执行程序，包含了5个阶段（或关卡）。炸
 2；同上操作得到汇编代码进行分析；</li>
 </ul>
 <figure>
-<img src="Microsoft%20Word%202024-11-29%2012.54.52.png" alt="第二阶段开始">
+<img src="4.png" alt="第二阶段开始">
 <figcaption aria-hidden="true">第二阶段开始</figcaption>
 </figure>
 <ul>
@@ -272,7 +300,7 @@ bombs”是一个Linux可执行程序，包含了5个阶段（或关卡）。炸
 的返回值小于等于5会触发爆炸。</li>
 </ul>
 <figure>
-<img src="Microsoft%20Word%202024-11-29%2012.55.23.png" alt="第二阶段输入格式确定">
+<img src="5.png" alt="第二阶段输入格式确定">
 <figcaption aria-hidden="true">第二阶段输入格式确定</figcaption>
 </figure>
 <p><strong>Note! <code>%rsp</code>
@@ -291,11 +319,11 @@ bombs”是一个Linux可执行程序，包含了5个阶段（或关卡）。炸
 <li>同上操作，此处不再赘述，进入<code>phase_3</code>并得到汇编代码如下：</li>
 </ul>
 <figure>
-<img src="Microsoft%20Word%202024-11-29%2012.56.46.png" alt="第三阶段汇编代码1">
+<img src="6.png" alt="第三阶段汇编代码1">
 <figcaption aria-hidden="true">第三阶段汇编代码1</figcaption>
 </figure>
 <figure>
-<img src="Microsoft%20Word%202024-11-29%2012.56.51.png" alt="第三阶段汇编代码2">
+<img src="7.png" alt="第三阶段汇编代码2">
 <figcaption aria-hidden="true">第三阶段汇编代码2</figcaption>
 </figure>
 <ul>
@@ -303,7 +331,7 @@ bombs”是一个Linux可执行程序，包含了5个阶段（或关卡）。炸
 函数的调用值得到输入格式为两个整数和一个字符。</li>
 </ul>
 <figure>
-<img src="Microsoft%20Word%202024-11-29%2012.57.50.png" alt="第三阶段输入格式">
+<img src="8.png" alt="第三阶段输入格式">
 <figcaption aria-hidden="true">第三阶段输入格式</figcaption>
 </figure>
 <ul>
@@ -316,7 +344,7 @@ bombs”是一个Linux可执行程序，包含了5个阶段（或关卡）。炸
 所存储的地址处，打印出所有可能的跳转地址如下：</li>
 </ul>
 <figure>
-<img src="Microsoft%20Word%202024-11-29%2012.58.16.png" alt="所有可能地址">
+<img src="9.png" alt="所有可能地址">
 <figcaption aria-hidden="true">所有可能地址</figcaption>
 </figure>
 <p><strong>Note！<code>*</code> 表示间接跳转，<code>0x4027a0</code>
@@ -327,7 +355,7 @@ bombs”是一个Linux可执行程序，包含了5个阶段（或关卡）。炸
 进行分析。（每个case结构都基本相同）：</li>
 </ul>
 <figure>
-<img src="Microsoft%20Word%202024-11-29%2012.58.40.png" alt="case 0结构">
+<img src="10.png" alt="case 0结构">
 <figcaption aria-hidden="true">case 0结构</figcaption>
 </figure>
 <ul>
@@ -398,7 +426,7 @@ bombs”是一个Linux可执行程序，包含了5个阶段（或关卡）。炸
 <li>同上操作，此处不再赘述，进入 phase_4 并得到汇编代码如下。</li>
 </ul>
 <figure>
-<img src="Microsoft%20Word%202024-11-29%2012.59.12.png" alt="第四阶段汇编代码">
+<img src="11.png" alt="第四阶段汇编代码">
 <figcaption aria-hidden="true">第四阶段汇编代码</figcaption>
 </figure>
 <ul>
@@ -406,7 +434,7 @@ bombs”是一个Linux可执行程序，包含了5个阶段（或关卡）。炸
 函数的调用值得到输入格式为两个整数。</li>
 </ul>
 <figure>
-<img src="Microsoft%20Word%202024-11-29%2012.59.30.png" alt="第四阶段输入格式">
+<img src="12.png" alt="第四阶段输入格式">
 <figcaption aria-hidden="true">第四阶段输入格式</figcaption>
 </figure>
 <ul>
@@ -419,14 +447,14 @@ bombs”是一个Linux可执行程序，包含了5个阶段（或关卡）。炸
 <li>进入函数，打印其汇编代码如下：</li>
 </ul>
 <figure>
-<img src="Microsoft%20Word%202024-11-29%2012.59.49.png" alt="func4汇编代码">
+<img src="13.png" alt="func4汇编代码">
 <figcaption aria-hidden="true">func4汇编代码</figcaption>
 </figure>
 <ul>
 <li>大致观察即可发现其为递归函数，分析汇编指令画出大致流程图如下：</li>
 </ul>
 <figure>
-<img src="Microsoft%20Word%202024-11-29%2013.00.09.png" alt="个人绘制的大致流程图">
+<img src="14.png" alt="个人绘制的大致流程图">
 <figcaption aria-hidden="true">个人绘制的大致流程图</figcaption>
 </figure>
 <ul>
@@ -434,7 +462,7 @@ bombs”是一个Linux可执行程序，包含了5个阶段（或关卡）。炸
 <li>如果第二个输入为2，那么可以推出<code>func4(8, 2) = 108</code>，再根据函数结束后中<code>cmp 0x4(%rsp),%eax</code>可以判断返回值需要和第一个输入相等，所以一个答案为<code>108 2</code>。</li>
 </ul>
 <figure>
-<img src="Microsoft%20Word%202024-11-29%2013.00.26.png" alt="递归树状图">
+<img src="15.png" alt="递归树状图">
 <figcaption aria-hidden="true">递归树状图</figcaption>
 </figure>
 <h3 id="第五阶段">第五阶段</h3>
@@ -443,7 +471,7 @@ bombs”是一个Linux可执行程序，包含了5个阶段（或关卡）。炸
 并得到汇编代码如下：</li>
 </ul>
 <figure>
-<img src="Microsoft%20Word%202024-11-29%2013.00.44.png" alt="第五阶段汇编代码">
+<img src="16.png" alt="第五阶段汇编代码">
 <figcaption aria-hidden="true">第五阶段汇编代码</figcaption>
 </figure>
 <ul>
@@ -455,7 +483,7 @@ bombs”是一个Linux可执行程序，包含了5个阶段（或关卡）。炸
 <code>0x401204 &lt;+76&gt;: mov $0x40278f,%esi</code>语句可知目标字符串的地址，打印内容可得：</li>
 </ul>
 <figure>
-<img src="Microsoft%20Word%202024-11-29%2013.01.01.png" alt="目标字符串内容">
+<img src="17.png" alt="目标字符串内容">
 <figcaption aria-hidden="true">目标字符串内容</figcaption>
 </figure>
 <ul>
@@ -483,7 +511,7 @@ bombs”是一个Linux可执行程序，包含了5个阶段（或关卡）。炸
 <li>打印 <code>0x4027e0</code>上的内容：</li>
 </ul>
 <figure>
-<img src="Microsoft%20Word%202024-11-29%2013.01.22.png" alt="密钥内容">
+<img src="18.png" alt="密钥内容">
 <figcaption aria-hidden="true">密钥内容</figcaption>
 </figure>
 <ul>
@@ -498,11 +526,11 @@ bombs”是一个Linux可执行程序，包含了5个阶段（或关卡）。炸
 <li><p>简述一下<code>phase_6</code>和<code>secret_phase</code>，两者都涉及到对自定义结构体的操作，<code>phase_6</code>是对链表按照数据大小进行重排，而<code>secret_phase</code>是一个二叉搜索树。</p></li>
 </ul>
 <figure>
-<img src="Microsoft%20Word%202024-11-29%2013.01.39.png" alt="答案汇总">
+<img src="19.png" alt="答案汇总">
 <figcaption aria-hidden="true">答案汇总</figcaption>
 </figure>
 <figure>
-<img src="Microsoft%20Word%202024-11-29%2013.02.05.png" alt="通过截图">
+<img src="20.png" alt="通过截图">
 <figcaption aria-hidden="true">通过截图</figcaption>
 </figure>
 
