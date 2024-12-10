@@ -189,7 +189,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #00bcd4">
+                <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #ffa2c4">
                     图论
                 </a>
             </span>
@@ -202,14 +202,23 @@
         <h1 id="一定义">一、定义</h1>
 <ul>
 <li>如果一个图能画在平面上使得它的边仅在端点相交，则称这个图为可嵌人平面的，或称为<strong>平面图</strong>。平面图G的这样一种画法称为G的一个<strong>平面嵌人</strong>。
-<img src="平面图定义.png" alt="平面图定义"> # 二、判断方法 ##
-2.1 一些拓展内容 &gt; 一条 Jordan
-曲线是指一条连续的、自身不相交的、起点和终点相重合的曲线，平图的圈中各条边的并集构成一条
-Jordan。 &gt; &gt; 设<span class="math inline">\(J\)</span>是平面上的一条 Jordan
-曲线，平面的剩下部分被分成两个不相交的开集，称为<span class="math inline">\(J\)</span>的内部和外部，分别记为<span class="math inline">\(intJ\)</span>和<span class="math inline">\(extJ\)</span>，并且用 <span class="math inline">\(IntJ\)</span>和<span class="math inline">\(ExtJ\)</span>表示它们的闭包．显然<span class="math inline">\(IntJ \cap ExtJ=J\)</span>。 &gt; &gt;
-<strong>Jordan曲线定理</strong>：连接<span class="math inline">\(intJ\)</span>的点和<span class="math inline">\(extJ\)</span>的点的任何连线必在某点和<span class="math inline">\(J\)</span>相交。</li>
+<img src="平面图定义.png" alt="平面图定义"></li>
+<li>一个平图<span class="math inline">\(G\)</span>把平面划分成若干个连通区域，这些区域的闭包称为<span class="math inline">\(G\)</span>的<strong>面</strong>。面边界回路的长度称为<strong>面的次数</strong>，记为<span class="math inline">\(Deg(f)\)</span>或<span class="math inline">\(d(f)\)</span>。</li>
+<li>每个平图恰有一个无界的面，称为<strong>外部面</strong>。</li>
 </ul>
-<h2 id="section">2.2</h2>
+<h1 id="二相关性质和定理">二、相关性质和定理</h1>
+<h2 id="面的次数之和与边数关系">2.1 面的次数之和与边数关系</h2>
+<blockquote>
+<p><span class="math inline">\(\sum {d(f)} = 2\varepsilon\)</span></p>
+</blockquote>
+<h2 id="euler公式">2.2 Euler公式</h2>
+<blockquote>
+<p>若<span class="math inline">\(G\)</span>是连通平图，则有：<span class="math inline">\(\nu - \varepsilon + \phi = 2\)</span> #
+三、判断方法 # 3.1 必要条件 1. 若<span class="math inline">\(G\)</span>是<span class="math inline">\(v \ge
+3\)</span>的简单平面图，则<span class="math inline">\(\varepsilon \le
+3\nu - 6\)</span>。 2. Euler公式</p>
+</blockquote>
+<h2 id="section">3.2</h2>
 
     </div>
     
