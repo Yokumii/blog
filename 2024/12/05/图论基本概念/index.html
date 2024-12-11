@@ -189,7 +189,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #ff7d73">
+                <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #00a596">
                     图论
                 </a>
             </span>
@@ -199,27 +199,39 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="常见定义及符号"><a href="#常见定义及符号" class="headerlink" title="常见定义及符号"></a>常见定义及符号</h1><ul>
-<li><strong>图</strong>：具有顶点集$V$的图亦称为$V$上的图(a graph on V)，图$G$的顶点集记为$V(G)$, 边集记为$E(G)$；</li>
-<li><strong>相邻</strong>：如果${x,y}$是$G$的一条边，则称两个顶点$x$和$y$是相邻的(adjacent)或邻点 (neighbour)；如果两条边$e \ne f$有一个公共端点，则称$e$和$f$是相邻的；</li>
-<li><strong>阶</strong>：一个图的顶点个数称为它的阶(order),记为$\left | G \right |$，它的边数记为$\Vert G \Vert$；</li>
+        <h1 id="常见定义及符号">常见定义及符号</h1>
+<ul>
+<li><strong>图</strong>：具有顶点集<span class="math inline">\(V\)</span>的图亦称为<span class="math inline">\(V\)</span>上的图(a graph on V)，图<span class="math inline">\(G\)</span>的顶点集记为<span class="math inline">\(V(G)\)</span>, 边集记为<span class="math inline">\(E(G)\)</span>；</li>
+<li><strong>相邻</strong>：如果<span class="math inline">\({x,y}\)</span>是<span class="math inline">\(G\)</span>的一条边，则称两个顶点<span class="math inline">\(x\)</span>和<span class="math inline">\(y\)</span>是相邻的(adjacent)或邻点
+(neighbour)；如果两条边<span class="math inline">\(e \ne
+f\)</span>有一个公共端点，则称<span class="math inline">\(e\)</span>和<span class="math inline">\(f\)</span>是相邻的；</li>
+<li><strong>阶</strong>：一个图的顶点个数称为它的阶(order),记为<span class="math inline">\(\left | G \right |\)</span>，它的边数记为<span class="math inline">\(\Vert G \Vert\)</span>；</li>
 <li><strong>平凡图</strong>：阶为0或1的图称为平凡的 (trivial)；</li>
-<li><strong>完全图</strong>：若$G$的所有顶点都是两两相邻的，则称$G$是完全的(complete)，n个顶点的完全图记为$K^n$；</li>
-<li><strong>独立</strong>：互不相邻的顶点/边称独立顶点/独立边(independent vertex/edge)。若一个顶点集或边集中没有两个元素是相邻的，则该集合称为<strong>独立集</strong>(independent set)；独立的顶点集也称作<strong>稳定集</strong>(stable set)；</li>
-<li><strong>图不变量</strong>：对于图上的一个映射，如果对每个同构图它均取相同的值，则这样的映射称为一个图不变量(graph invariant)。一个图的顶点数和边数就是两个简单的图不变量；图中两两相邻的最大顶点数也是图不变量。</li>
-<li><strong>导出子图</strong>：若$G’ \subset G$且$G’$包含了$E$中所有满足$x,y \in E$的边$xy$,则称$Q$是$G$的导出子图(induced subgraph)；</li>
-<li><strong>邻点集</strong>：$G$中顶点$v$的邻点集记为$N_G(v)$,或简记为$N(G)$；更一般地,对于$U \subset V$，$U$在$V \textbackslash U$中的邻点被称作$U$的邻点(neighbour), 这个顶点集记为$N(U)$；</li>
-<li><strong>顶点度和边数</strong>：$\varepsilon (G) = \frac{1}{2}d(G)$</li>
-<li><strong>路</strong>：这里所有的$x_i$均互不相同，顶点$x_0和$$x_n$由路$P$连接(link)，并称它们为路的端点(endvertex)或顶端(end)；而$x_1,x_2,\dots,x_{n-1}$称为$P$的内部(inner)顶点。一条路上的边数称为路的长度(length)，长度为k的路记为$P^k$；</li>
-<li><strong>独立路</strong>：如果其中任意一条路不包含另一条路的内部顶点, 则称它们是独立路(independent path)；</li>
-<li><strong>圈</strong>：$x_0x_1\dots x_{k-1}x_0$；</li>
-<li><strong>围长和圈长</strong>：图$G$中最短圈的长度叫做围长(girth),记为$g(G)$,而$G$中最长圈的长度称为周长(circumference)；</li>
+<li><strong>完全图</strong>：若<span class="math inline">\(G\)</span>的所有顶点都是两两相邻的，则称<span class="math inline">\(G\)</span>是完全的(complete)，n个顶点的完全图记为<span class="math inline">\(K^n\)</span>；</li>
+<li><strong>独立</strong>：互不相邻的顶点/边称独立顶点/独立边(independent
+vertex/edge)。若一个顶点集或边集中没有两个元素是相邻的，则该集合称为<strong>独立集</strong>(independent
+set)；独立的顶点集也称作<strong>稳定集</strong>(stable set)；</li>
+<li><strong>图不变量</strong>：对于图上的一个映射，如果对每个同构图它均取相同的值，则这样的映射称为一个图不变量(graph
+invariant)。一个图的顶点数和边数就是两个简单的图不变量；图中两两相邻的最大顶点数也是图不变量。</li>
+<li><strong>导出子图</strong>：若<span class="math inline">\(G&#39;
+\subset G\)</span>且<span class="math inline">\(G&#39;\)</span>包含了<span class="math inline">\(E\)</span>中所有满足<span class="math inline">\(x,y \in E\)</span>的边<span class="math inline">\(xy\)</span>,则称<span class="math inline">\(Q\)</span>是<span class="math inline">\(G\)</span>的导出子图(induced subgraph)；</li>
+<li><strong>邻点集</strong>：<span class="math inline">\(G\)</span>中顶点<span class="math inline">\(v\)</span>的邻点集记为<span class="math inline">\(N_G(v)\)</span>,或简记为<span class="math inline">\(N(G)\)</span>；更一般地,对于<span class="math inline">\(U \subset V\)</span>，<span class="math inline">\(U\)</span>在<span class="math inline">\(V
+\textbackslash U\)</span>中的邻点被称作<span class="math inline">\(U\)</span>的邻点(neighbour), 这个顶点集记为<span class="math inline">\(N(U)\)</span>；</li>
+<li><strong>顶点度和边数</strong>：<span class="math inline">\(\varepsilon (G) = \frac{1}{2}d(G)\)</span></li>
+<li><strong>路</strong>：这里所有的<span class="math inline">\(x_i\)</span>均互不相同，顶点<span class="math inline">\(x_0和\)</span><span class="math inline">\(x_n\)</span>由路<span class="math inline">\(P\)</span>连接(link)，并称它们为路的端点(endvertex)或顶端(end)；而<span class="math inline">\(x_1,x_2,\dots,x_{n-1}\)</span>称为<span class="math inline">\(P\)</span>的内部(inner)顶点。一条路上的边数称为路的长度(length)，长度为k的路记为<span class="math inline">\(P^k\)</span>；</li>
+<li><strong>独立路</strong>：如果其中任意一条路不包含另一条路的内部顶点,
+则称它们是独立路(independent path)；</li>
+<li><strong>圈</strong>：<span class="math inline">\(x_0x_1\dots
+x_{k-1}x_0\)</span>；</li>
+<li><strong>围长和圈长</strong>：图<span class="math inline">\(G\)</span>中最短圈的长度叫做围长(girth),记为<span class="math inline">\(g(G)\)</span>,而<span class="math inline">\(G\)</span>中最长圈的长度称为周长(circumference)；</li>
 <li><strong>弦</strong>：图中不在圈上但连接圈中两个顶点的边称为这个圈的弦(chord)；</li>
-<li><strong>导出圈</strong>：$G$的导出圈(induced cycle)是不含弦的圈，即$G$的导出子图是个圈；<br><img src="导出圈.png" alt="导出圈"></li>
+<li><strong>导出圈</strong>：<span class="math inline">\(G\)</span>的导出圈(induced
+cycle)是不含弦的圈，即<span class="math inline">\(G\)</span>的导出子图是个圈； <img src="导出圈.png" alt="导出圈"></li>
 <li><strong>距离、直径、中心点、半径</strong>：暂略；</li>
-<li><strong>连通</strong>：如果非空图$G$中的任意两个顶点之间均有一条路相连，我们称$G$是连通的(connected)；</li>
-<li><strong>分支</strong>：设$G = (V,E)$是一个图，则它的极大连通子图称为分支(component)；</li>
-<li><strong>连通度</strong>：使得G是k-连通的最大整数k称为G的连通度(connectivity)，并记为$\kappa (G)$；</li>
+<li><strong>连通</strong>：如果非空图<span class="math inline">\(G\)</span>中的任意两个顶点之间均有一条路相连，我们称<span class="math inline">\(G\)</span>是连通的(connected)；</li>
+<li><strong>分支</strong>：设<span class="math inline">\(G =
+(V,E)\)</span>是一个图，则它的极大连通子图称为分支(component)；</li>
+<li><strong>连通度</strong>：使得G是k-连通的最大整数k称为G的连通度(connectivity)，并记为<span class="math inline">\(\kappa (G)\)</span>；</li>
 <li><strong>树、森林</strong>：暂略；</li>
 </ul>
 
