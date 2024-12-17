@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title>9.3 Products and Quotients of Semigroups 乘积半群、商半群 | Yokumi的个人博客</title>
+    <title> | Yokumi的个人博客</title>
     <meta name="author" content="Yokumi" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -161,88 +161,43 @@
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
             <div class="article">
     <div>
-        <h1>9.3 Products and Quotients of Semigroups 乘积半群、商半群</h1>
+        <h1></h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2024/11/4
+            2024/12/17
         </span>
         
-        <span class="category">
-            <a href="/blog/categories/%E7%BE%A4%E8%AE%BA/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                群论
-            </a>
-        </span>
-        
-        
-        <span class="tags">
-            <span class="icon">
-                <i class="fa-solid fa-tags fa-fw"></i>
-            </span>
-            
-            
-            <span class="tag">
-                
-                <a href="/blog/tags/%E7%BE%A4%E8%AE%BA/" style="color: #ffa2c4">
-                    群论
-                </a>
-            </span>
-            
-        </span>
         
     </div>
     
     <div class="content" v-pre>
-        <h1 id="products-semigroups-积半群半群的笛卡尔积"><em>Products
-Semigroups 积半群（半群的笛卡尔积）</em></h1>
-<blockquote>
-<p><strong><em>定理1:</em></strong> 两个半群的笛卡尔积也是半群。<img src="img/Wondershare%20PDFelement%202024-11-04%2018.29.31.png">
-<strong><em>定理2:</em></strong>
-类似，两个幺半群的笛卡尔积也是幺半群且其幺元为<span class="math inline">\((e_S,e_T)\)</span>。<img src="img/Wondershare%20PDFelement%202024-11-04%2018.31.58.png"></p>
-</blockquote>
-<h1 id="congruence-relation-同余关系"><em>Congruence relation
-同余关系</em></h1>
-<blockquote>
-<p><strong><em>Defination:</em></strong> 在半群<span class="math inline">\((S,∗)\)</span>上的等价关系R，如果满足：任意<span class="math inline">\(a R a&#39;\)</span>并且<span class="math inline">\(b R b&#39;\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\((a∗b) R (a&#39;∗ b&#39;)\)</span>，则称<span class="math inline">\(R\)</span>为半群上的同余关系。
-<strong><em>回忆:</em></strong> 等价关系满足自反性、对称性、传递性。
-<strong><em>解题法:</em></strong> &gt; <strong><em>Prove
-Step:</em></strong> R是半群上的同余关系？ &gt; 1.
-等价关系显然（已知给出）。 &gt; 2. 根据<span class="math inline">\(a R
-a&#39;\)</span>和<span class="math inline">\(b R
-b&#39;\)</span>可以推出 <span class="math inline">\((a∗b) R (a&#39;∗
-b&#39;)\)</span>。 <strong><em>Note!</em></strong>
-等价关系不一定是同余关系。反例：<img src="img/Wondershare%20PDFelement%202024-11-04%2018.53.08.png"></p>
-</blockquote>
-<h1 id="quotients-semigroups-商半群">Quotients Semigroups 商半群</h1>
-<blockquote>
-<p><strong><em>Defination:</em></strong> <img src="img/Wondershare%20PDFelement%202024-11-04%2019.01.38.png">
-其实就是按照以下步骤定义了一种二元运算： &gt; 1. <span class="math inline">\(S = \{a,b,c,……,a&#39;,b&#39;,c&#39;,……\}\)</span>
-&gt; 2. 设定价类<span class="math inline">\([a] = \{a, a&#39;,……\},[b] =
-\{b, b&#39;,……\},[c] = \{c, c&#39;,……\},……\)</span> &gt; 3. <span class="math inline">\(S/R = \{[a],[b],[c],……\}\)</span> &gt; 4. <span class="math inline">\(S/R \times S/R =
-\{([a],[a]),([a],[b]),([a],[c]),……\}\)</span> &gt; 5. <span class="math inline">\(f:S/R \times S/R \rightarrow S/R\)</span> &gt; 6.
-<span class="math inline">\(f([a],[b]) = [c] \leftrightarrow [a] \otimes
-[b] = [c]\)</span> <strong><em>Note!</em></strong> 注意<span class="math inline">\(\otimes\)</span>是等价类之间的运算，可以用代入等价类中的元素进行计算，即<span class="math inline">\([a] \otimes [b] = [a * b]\)</span>
-<strong><em>幺半群导出的商半群也是幺半群</em></strong> <img src="img/Wondershare%20PDFelement%202024-11-04%2019.43.44.png">
-<strong><em>Prove:</em></strong> <span class="math inline">\([a] \otimes
-[e] = [a * e] = [a]=[e * a] = [e] \otimes [a]\)</span></p>
-</blockquote>
-<h1 id="natural-homomorphism-自然同态"><em>Natural Homomorphism
-自然同态</em></h1>
-<blockquote>
-<p><strong><em>Defination:</em></strong> <span class="math inline">\(f_R:S \rightarrow S/R\space defined\space by\space
-f_R(a) = [a]\)</span>，显然满射(onto)。<img src="img/Wondershare%20PDFelement%202024-11-04%2019.51.57.png"></p>
-</blockquote>
-<h1 id="fundamental-homomorphism-同态基本定理">*Fundamental Homomorphism
-同态基本定理</h1>
-<blockquote>
-<p><strong><em>Defination:</em></strong> 设<span class="math inline">\(f:S \rightarrow T\)</span>是同态，<span class="math inline">\(R\)</span>是<span class="math inline">\(S\)</span>上的关系且被定义为<span class="math inline">\(aRb \iff f(a) = f(b)\)</span>，那么有： 1）<span class="math inline">\(R\)</span>是同余关系； 2）<span class="math inline">\(T\)</span>和<span class="math inline">\(S/R\)</span>同构；<img src="img/Wondershare%20PDFelement%202024-11-04%2020.17.07.png"></p>
-</blockquote>
+        <h1 id="计算机导论与程序设计复习">计算机导论与程序设计复习</h1>
+<h2 id="一程序语言概述">一、程序语言概述</h2>
+<ul>
+<li>可编程<img src="/var/folders/d4/s_49dbq10qs6rlp1jvgzv4hh0000gn/T/images/Wondershare%20PDFelement%202024-12-17%2000.17.33.png" alt="Wondershare PDFelement 2024-12-17 00.17.33"></li>
+<li><strong>计算机信息处理本质</strong>是:
+接收输入的数据、对输入的数据进行加工和处理、产生结果并输出。</li>
+<li>程序可以预先存储在计算机中调度运行。计算机的操作是在程序的控制下进行的。</li>
+<li>可编程结构、图灵机都是计算机模型。</li>
+<li>冯诺依曼机<img src="/var/folders/d4/s_49dbq10qs6rlp1jvgzv4hh0000gn/T/images/Wondershare%20PDFelement%202024-12-17%2000.20.32.png" alt="Wondershare PDFelement 2024-12-17 00.20.32"></li>
+<li>程序的运行就是不断地取指令、分析指令、执行指令的过程，这3个步骤均由控制单元来控制。控制单元取指令、分析指令，产生操作控制信号发给输入输出设备、运算部件或者主存，完成指令的执行。</li>
+<li><strong>指令</strong>由“0”和“1”的二进制码组成
+,是指挥计算机工作的命令，是计算机<strong><em>唯一可以直接识别</em></strong>的语言；</li>
+<li><strong>指令系统</strong>：计算机能直接识别和执行的全部指令的集合，
+称为该种计算机的指令系统。</li>
+<li><strong>程序</strong>是按事先设计的功能和性能要求编制的指令序列。</li>
+<li><strong>算法</strong>：完成一个任务或者解决一个问题的步骤
+序列（操作序列）。</li>
+<li><strong>符号语言</strong>：用符号或助记符来表示不同的机器语言指令(包括操作码和和操作数地址）。符号语言又称汇编语言。</li>
+<li><strong>过程化的程序设计</strong>即是实现某一计算的操作过程和操作步骤，然后用编程语言来描述这些操作过程和步骤。</li>
+<li><strong>程序要素</strong>：数据与运算表达式、输入输出、控制结构、子程序(函数)</li>
+<li><strong>C编程活动</strong>：编辑程序-编译程序-链接程序-运行程序</li>
+<li></li>
+</ul>
 
     </div>
     

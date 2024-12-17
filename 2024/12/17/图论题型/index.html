@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title>9.3 Products and Quotients of Semigroups 乘积半群、商半群 | Yokumi的个人博客</title>
+    <title>图论题型 | Yokumi的个人博客</title>
     <meta name="author" content="Yokumi" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -161,22 +161,22 @@
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
             <div class="article">
     <div>
-        <h1>9.3 Products and Quotients of Semigroups 乘积半群、商半群</h1>
+        <h1>图论题型</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2024/11/4
+            2024/12/17
         </span>
         
         <span class="category">
-            <a href="/blog/categories/%E7%BE%A4%E8%AE%BA/">
+            <a href="/blog/categories/%E5%9B%BE%E8%AE%BA/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                群论
+                图论
             </a>
         </span>
         
@@ -189,8 +189,8 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E7%BE%A4%E8%AE%BA/" style="color: #ffa2c4">
-                    群论
+                <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #00bcd4">
+                    图论
                 </a>
             </span>
             
@@ -199,49 +199,34 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="products-semigroups-积半群半群的笛卡尔积"><em>Products
-Semigroups 积半群（半群的笛卡尔积）</em></h1>
+        <h1 id="度序列可简单图化">10.1.1 度序列可简单图化</h1>
 <blockquote>
-<p><strong><em>定理1:</em></strong> 两个半群的笛卡尔积也是半群。<img src="img/Wondershare%20PDFelement%202024-11-04%2018.29.31.png">
-<strong><em>定理2:</em></strong>
-类似，两个幺半群的笛卡尔积也是幺半群且其幺元为<span class="math inline">\((e_S,e_T)\)</span>。<img src="img/Wondershare%20PDFelement%202024-11-04%2018.31.58.png"></p>
-</blockquote>
-<h1 id="congruence-relation-同余关系"><em>Congruence relation
-同余关系</em></h1>
-<blockquote>
-<p><strong><em>Defination:</em></strong> 在半群<span class="math inline">\((S,∗)\)</span>上的等价关系R，如果满足：任意<span class="math inline">\(a R a&#39;\)</span>并且<span class="math inline">\(b R b&#39;\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\((a∗b) R (a&#39;∗ b&#39;)\)</span>，则称<span class="math inline">\(R\)</span>为半群上的同余关系。
-<strong><em>回忆:</em></strong> 等价关系满足自反性、对称性、传递性。
-<strong><em>解题法:</em></strong> &gt; <strong><em>Prove
-Step:</em></strong> R是半群上的同余关系？ &gt; 1.
-等价关系显然（已知给出）。 &gt; 2. 根据<span class="math inline">\(a R
-a&#39;\)</span>和<span class="math inline">\(b R
-b&#39;\)</span>可以推出 <span class="math inline">\((a∗b) R (a&#39;∗
-b&#39;)\)</span>。 <strong><em>Note!</em></strong>
-等价关系不一定是同余关系。反例：<img src="img/Wondershare%20PDFelement%202024-11-04%2018.53.08.png"></p>
-</blockquote>
-<h1 id="quotients-semigroups-商半群">Quotients Semigroups 商半群</h1>
-<blockquote>
-<p><strong><em>Defination:</em></strong> <img src="img/Wondershare%20PDFelement%202024-11-04%2019.01.38.png">
-其实就是按照以下步骤定义了一种二元运算： &gt; 1. <span class="math inline">\(S = \{a,b,c,……,a&#39;,b&#39;,c&#39;,……\}\)</span>
-&gt; 2. 设定价类<span class="math inline">\([a] = \{a, a&#39;,……\},[b] =
-\{b, b&#39;,……\},[c] = \{c, c&#39;,……\},……\)</span> &gt; 3. <span class="math inline">\(S/R = \{[a],[b],[c],……\}\)</span> &gt; 4. <span class="math inline">\(S/R \times S/R =
-\{([a],[a]),([a],[b]),([a],[c]),……\}\)</span> &gt; 5. <span class="math inline">\(f:S/R \times S/R \rightarrow S/R\)</span> &gt; 6.
-<span class="math inline">\(f([a],[b]) = [c] \leftrightarrow [a] \otimes
-[b] = [c]\)</span> <strong><em>Note!</em></strong> 注意<span class="math inline">\(\otimes\)</span>是等价类之间的运算，可以用代入等价类中的元素进行计算，即<span class="math inline">\([a] \otimes [b] = [a * b]\)</span>
-<strong><em>幺半群导出的商半群也是幺半群</em></strong> <img src="img/Wondershare%20PDFelement%202024-11-04%2019.43.44.png">
-<strong><em>Prove:</em></strong> <span class="math inline">\([a] \otimes
-[e] = [a * e] = [a]=[e * a] = [e] \otimes [a]\)</span></p>
-</blockquote>
-<h1 id="natural-homomorphism-自然同态"><em>Natural Homomorphism
-自然同态</em></h1>
-<blockquote>
-<p><strong><em>Defination:</em></strong> <span class="math inline">\(f_R:S \rightarrow S/R\space defined\space by\space
-f_R(a) = [a]\)</span>，显然满射(onto)。<img src="img/Wondershare%20PDFelement%202024-11-04%2019.51.57.png"></p>
-</blockquote>
-<h1 id="fundamental-homomorphism-同态基本定理">*Fundamental Homomorphism
-同态基本定理</h1>
-<blockquote>
-<p><strong><em>Defination:</em></strong> 设<span class="math inline">\(f:S \rightarrow T\)</span>是同态，<span class="math inline">\(R\)</span>是<span class="math inline">\(S\)</span>上的关系且被定义为<span class="math inline">\(aRb \iff f(a) = f(b)\)</span>，那么有： 1）<span class="math inline">\(R\)</span>是同余关系； 2）<span class="math inline">\(T\)</span>和<span class="math inline">\(S/R\)</span>同构；<img src="img/Wondershare%20PDFelement%202024-11-04%2020.17.07.png"></p>
+<p><strong>可简单图化的充要条件</strong>：<img src="Havel定理.png"></p>
+<p><strong>例题</strong>：<img src="img/iShot%20Pro%202024-12-17%2021.11.23.png"> &gt;
+<strong>解法</strong>：每次度序列按非递增顺序排列，删除度最大的节点，更新其他节点的度，重新排列，继续重复上述过程。</p>
+<p><strong>应用</strong>：<strong>Frogs' Neighborhood</strong> &gt; |
+---------------------------- | --- | ------------------------ | --- |
+------------- | &gt; | <strong>Time Limit:</strong> 5000MS | |
+<strong>Memory Limit:</strong> 10000K | | | &gt; | <strong>Total
+Submissions:</strong> 15543 | | <strong>Accepted:</strong> 6129 | |
+Special Judge | &gt; <strong>Description</strong> &gt;
+&gt;未名湖附近共<span class="math inline">\(N\)</span>个大小湖泊<span class="math inline">\(L_1, L_2,
+\cdots, L_n\)</span>(其中包括未名湖)，每个湖泊<span class="math inline">\(L_i\)</span>里住着一只青蛙<span class="math inline">\(F_i(1 \le i \le N)\)</span>。如果湖泊<span class="math inline">\(L_i\)</span>和<span class="math inline">\(L_j\)</span>之间有水路相连，则青蛙<span class="math inline">\(F_i\)</span>和<span class="math inline">\(F_j\)</span>互称为邻居。现在已知每只青蛙的邻居数目<span class="math inline">\(x_1, x_2,
+\cdots, x_n\)</span>，请你给出每两个湖泊之间的相连关系。 &gt;
+<strong>Input</strong> &gt; &gt; 第一行是测试数据的组数<span class="math inline">\(T(0 \le T \le
+20)\)</span>。每组数据包括两行，第一行是整数<span class="math inline">\(N(2 &lt; N &lt; 10)\)</span>，第二行是<span class="math inline">\(N\)</span>个整数，<span class="math inline">\(x_1, x_2,\cdots, x_n(0 \le x_i \le N)\)</span>。
+&gt; <strong>Output</strong> &gt; &gt;
+对输入的每组测试数据，如果不存在可能的相连关系，输出"NO"。否则输出"YES"，并用<span class="math inline">\(N\times
+N\)</span>的矩阵表示湖泊间的相邻关系，即如果湖泊<span class="math inline">\(i\)</span>与湖泊<span class="math inline">\(j\)</span>之间有水路相连，则第<span class="math inline">\(i\)</span>行的第<span class="math inline">\(j\)</span>个数字为<span class="math inline">\(1\)</span>，否则为<span class="math inline">\(0\)</span>。每两个数字之间输出一个空格。如果存在多种可能，只需给出一种符合条件的情形。相邻两组测试数据之间输出一个空行。
+&gt; <strong>Sample Input</strong> &gt; &gt; 3 &gt; &gt; 7 &gt; &gt; 4 3
+1 5 4 2 1 &gt; &gt; 6 &gt; &gt; 4 3 1 4 2 0 &gt; &gt; 6 &gt; &gt; 2 3 1
+1 2 1 &gt; <strong>Sample Output</strong> &gt; &gt; YES &gt; &gt; 0 1 0
+1 1 0 1 &gt; &gt; 1 0 0 1 1 0 0 &gt; &gt; 0 0 0 1 0 0 0 &gt; &gt; 1 1 1
+0 1 1 0 &gt; &gt; 1 1 0 1 0 1 0 &gt; &gt; 0 0 0 1 1 0 0 &gt; &gt; 1 0 0
+0 0 0 0 &gt; &gt; NO &gt; &gt; YES &gt; &gt; 0 1 0 0 1 0 &gt; &gt; 1 0 0
+1 1 0 &gt; &gt; 0 0 0 0 0 1 &gt; &gt; 0 1 0 0 0 0 &gt; &gt; 1 1 0 0 0 0
+&gt; &gt; 0 0 1 0 0 0 &gt; <strong>Source</strong> &gt; &gt; <a target="_blank" rel="noopener" href="http://poj.org/searchproblem?field=source&amp;key=POJ+Monthly--2004.05.15+Alcyone%40pku">POJ
+Monthly--2004.05.15 Alcyone@pku</a></p>
 </blockquote>
 
     </div>

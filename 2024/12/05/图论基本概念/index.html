@@ -189,7 +189,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #00a596">
+                <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #00bcd4">
                     图论
                 </a>
             </span>
@@ -202,9 +202,23 @@
         <h1 id="常见定义及符号">常见定义及符号</h1>
 <ul>
 <li><strong>图</strong>：具有顶点集<span class="math inline">\(V\)</span>的图亦称为<span class="math inline">\(V\)</span>上的图(a graph on V)，图<span class="math inline">\(G\)</span>的顶点集记为<span class="math inline">\(V(G)\)</span>, 边集记为<span class="math inline">\(E(G)\)</span>；</li>
-<li><strong>相邻</strong>：如果<span class="math inline">\({x,y}\)</span>是<span class="math inline">\(G\)</span>的一条边，则称两个顶点<span class="math inline">\(x\)</span>和<span class="math inline">\(y\)</span>是相邻的(adjacent)或邻点
-(neighbour)；如果两条边<span class="math inline">\(e \ne
-f\)</span>有一个公共端点，则称<span class="math inline">\(e\)</span>和<span class="math inline">\(f\)</span>是相邻的；</li>
+<li><strong>邻接Adjacency</strong>：如果<span class="math inline">\({x,y}\)</span>是<span class="math inline">\(G\)</span>的一条边，则称两个顶点<span class="math inline">\(x\)</span>和<span class="math inline">\(y\)</span>是相邻的(adjacent)或邻点
+(neighbour)，<span class="math inline">\(x,y\)</span>称为边的endpoint；如果两条边<span class="math inline">\(e \ne f\)</span>有一个公共端点，则称<span class="math inline">\(e\)</span>和<span class="math inline">\(f\)</span>是相邻的；</li>
+<li><strong>领域、邻点集Neiborhood</strong>：The set of all neighbors of
+a vertex <span class="math inline">\(v\)</span> of <span class="math inline">\(G = (V,E)\)</span>, denoted by <span class="math inline">\(N(v)\)</span>, is called the neighborhood of <span class="math inline">\(v\)</span>. 即顶点<span class="math inline">\(v\)</span>的所有邻点构成的集合。If <span class="math inline">\(A\)</span> is a subset of <span class="math inline">\(V\)</span> , we denote by <span class="math inline">\(N(A)\)</span> the set of all vertices in G that
+are adjacent to at least one vertex in <span class="math inline">\(A\)</span>. So,<span class="math inline">\(N(A)=\bigcup_{\nu\in A}N(\nu)\)</span>.</li>
+<li><strong>度</strong>：A vertex with degree <span class="math inline">\(0\)</span> is called isolated.(孤立点);
+A vertex of degree <span class="math inline">\(1\)</span> is called pendant.(悬挂点);</li>
+</ul>
+<blockquote>
+<p><strong>握手定理Handshaking Theorem</strong>：<img src="握手定理.png">
+无向图中，如果有度为奇数的点，那么这些点的个数必为偶数个。</p>
+</blockquote>
+<blockquote>
+<p><strong>有向图握手定理</strong>：</p>
+</blockquote>
+<ul>
+<li><strong>顶点度和边数</strong>：<span class="math inline">\(\varepsilon (G) = \frac{1}{2}d(G)\)</span></li>
 <li><strong>阶</strong>：一个图的顶点个数称为它的阶(order),记为<span class="math inline">\(\left | G \right |\)</span>，它的边数记为<span class="math inline">\(\Vert G \Vert\)</span>；</li>
 <li><strong>平凡图</strong>：阶为0或1的图称为平凡的 (trivial)；</li>
 <li><strong>完全图</strong>：若<span class="math inline">\(G\)</span>的所有顶点都是两两相邻的，则称<span class="math inline">\(G\)</span>是完全的(complete)，n个顶点的完全图记为<span class="math inline">\(K^n\)</span>；</li>
@@ -215,9 +229,6 @@ set)；独立的顶点集也称作<strong>稳定集</strong>(stable set)；</li>
 invariant)。一个图的顶点数和边数就是两个简单的图不变量；图中两两相邻的最大顶点数也是图不变量。</li>
 <li><strong>导出子图</strong>：若<span class="math inline">\(G&#39;
 \subset G\)</span>且<span class="math inline">\(G&#39;\)</span>包含了<span class="math inline">\(E\)</span>中所有满足<span class="math inline">\(x,y \in E\)</span>的边<span class="math inline">\(xy\)</span>,则称<span class="math inline">\(Q\)</span>是<span class="math inline">\(G\)</span>的导出子图(induced subgraph)；</li>
-<li><strong>邻点集</strong>：<span class="math inline">\(G\)</span>中顶点<span class="math inline">\(v\)</span>的邻点集记为<span class="math inline">\(N_G(v)\)</span>,或简记为<span class="math inline">\(N(G)\)</span>；更一般地,对于<span class="math inline">\(U \subset V\)</span>，<span class="math inline">\(U\)</span>在<span class="math inline">\(V
-\textbackslash U\)</span>中的邻点被称作<span class="math inline">\(U\)</span>的邻点(neighbour), 这个顶点集记为<span class="math inline">\(N(U)\)</span>；</li>
-<li><strong>顶点度和边数</strong>：<span class="math inline">\(\varepsilon (G) = \frac{1}{2}d(G)\)</span></li>
 <li><strong>路</strong>：这里所有的<span class="math inline">\(x_i\)</span>均互不相同，顶点<span class="math inline">\(x_0和\)</span><span class="math inline">\(x_n\)</span>由路<span class="math inline">\(P\)</span>连接(link)，并称它们为路的端点(endvertex)或顶端(end)；而<span class="math inline">\(x_1,x_2,\dots,x_{n-1}\)</span>称为<span class="math inline">\(P\)</span>的内部(inner)顶点。一条路上的边数称为路的长度(length)，长度为k的路记为<span class="math inline">\(P^k\)</span>；</li>
 <li><strong>独立路</strong>：如果其中任意一条路不包含另一条路的内部顶点,
 则称它们是独立路(independent path)；</li>
