@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title>Tags: CSAPP | Yokumi的个人博客</title>
+    <title>Yokumi的个人博客</title>
     <meta name="author" content="Yokumi" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -46,6 +46,8 @@
 
 
 
+
+<script src="/blog/js/lib/home.js"></script>
 
 <link rel="stylesheet" href="/blog/css/main.css" />
 
@@ -155,106 +157,120 @@
 </transition>
 
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div id="archives">
-    
-    <div class="categories-tags">
+            <div id="home-head">
+    <div
+        id="home-background"
+        ref="homeBackground"
+        data-images="/blog/images/background.png"
+    ></div>
+    <div id="home-info" @click="homeClick">
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="info">
+            <div class="wrap">
+                <h1>Yokumi的个人博客</h1>
+                <h3></h3>
+                <h5></h5>
+            </div>
+        </span>
+    </div>
+</div>
+<div
+    id="home-posts-wrap"
+    ref="homePostsWrap"
+    true
+>
+    <div id="home-posts">
         
+
+<div class="post">
+    <a href="/blog/2024/11/03/9-1-%E7%BE%A4%E8%AE%BAIntro/">
+        <h2 class="post-title">9.1 群论Intro</h2>
+    </a>
+    <div class="category-and-date">
         
-        
-        <span>
-            <a href="/blog/tags/%E7%BE%A4%E8%AE%BA/" style="background: #03a9f4">
+        <span class="category">
+            <a href="/blog/categories/%E7%BE%A4%E8%AE%BA/">
                 <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
                 群论
             </a>
         </span>
         
-        
-        
-        <span>
-            <a href="/blog/tags/CSAPP/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                CSAPP
-            </a>
-        </span>
-        
-        
-        
-        
-        
-        <span>
-            <a href="/blog/tags/%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81/" style="background: #ffa2c4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                汇编代码
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="background: #03a9f4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                图论
-            </a>
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/11/3
         </span>
         
         
     </div>
-    
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2024/11/5</div>
-            <a href="/blog/2024/11/05/BombLab/">
-                <h3>CMU Bomb Lab 个人题解</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/blog/categories/CSAPP/">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </span>
-                        CSAPP
-                    </a>
-                </span>
-                
-                
-                <span class="tags">
-                    <span class="icon">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </span>
-                    
-                    
-                    <span class="tag">
-                        
-                        <a href="/blog/tags/CSAPP/" style="color: #ffa2c4">
-                            CSAPP
-                        </a>
-                    </span>
-                    
-                    <span class="tag">
-                        
-                        <a href="/blog/tags/%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81/" style="color: #03a9f4">
-                            汇编代码
-                        </a>
-                    </span>
-                    
-                </span>
-                
-            </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p>Normal <em>Italic</em> <strong>Strong</strong></p>
+
+            
         </div>
     </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/blog/tags/%E7%BE%A4%E8%AE%BA/" style="color: #ff7d73">群论</a>
+        </span>
+        
+    </div>
+    <a href="/blog/2024/11/03/9-1-%E7%BE%A4%E8%AE%BAIntro/" class="go-post">阅读全文</a>
+</div>
+
+
+        <div class="page-current">
+    
+    <a class="page-num" href="/blog/">
+        <i class="fa-solid fa-caret-left fa-fw"></i>
+    </a>
+    <a class="page-num" href="/blog/">1</a>
+    <span class="page-omit">...</span>
+    
+    <span class="current">2</span>
+    
+    
+    
     
 </div>
 
+    </div>
+    
+    <div id="home-card">
+        <div id="card-style">
+    <div id="card-div">
+        <div class="avatar">
+            <img src="/blog/images/avatar.jpg" alt="avatar" />
+        </div>
+        <div class="name">Yokumi</div>
+        <div class="description">
+            <p>这里是Yokumi！</p>
+
+        </div>
+        
+        
+    </div>
+</div>
+
+    </div>
+    
+</div>
             <footer id="footer">
     <div id="footer-wrap">
         <div>

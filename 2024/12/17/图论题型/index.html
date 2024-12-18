@@ -189,7 +189,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #00a596">
+                <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #ffa2c4">
                     图论
                 </a>
             </span>
@@ -204,7 +204,9 @@
 <p><strong>可简单图化的充要条件</strong>：<img src="Havel定理.png"></p>
 <p><strong>例题</strong>：<img src="可简单图化例题.png"></p>
 <blockquote>
-<p><strong>解法</strong>：每次度序列按非递增顺序排列，删除度最大的节点，更新其他节点的度，重新排列，继续重复上述过程。</p>
+<p><strong>解法</strong>：每次度序列按非递增顺序排列，删除度最大的节点，更新其他节点的度，重新排列，继续重复上述过程。有2种不合理的情况：
+（1）某次对剩下序列排序后，最大的度数（设为d1）超过了剩下的顶点数；
+（2）对最大度数后面的d1个数各减1后，出现了负数。</p>
 </blockquote>
 <p><strong>应用</strong>：<strong>Frogs' Neighborhood</strong></p>
 <blockquote>
