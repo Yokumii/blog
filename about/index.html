@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title>About | Yokumi的个人博客</title>
+    <title>About | YokumiのBlog</title>
     <meta name="author" content="Yokumi" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -68,7 +68,7 @@
         <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
     <nav id="desktop-menu">
         <a class="title" href="/blog/">
-            <span>YOKUMI的个人博客</span>
+            <span>YOKUMIのBLOG</span>
         </a>
         
         <a href="/blog/">
@@ -100,7 +100,7 @@
     <nav id="mobile-menu">
         <div class="title" @click="showMenuItems = !showMenuItems">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;YOKUMI的个人博客</span>
+            <span>&emsp;YOKUMIのBLOG</span>
         </div>
         <transition name="slide">
             <div class="items" v-show="showMenuItems">
@@ -175,12 +175,13 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="hi-there-wave">Hi there :wave:</h1>
+        <h1 id="hi-there">Hi there <span class="emoji" data-emoji="wave">👋</span></h1>
 <hr>
 <blockquote>
 <p>这里是Yokumi！</p>
 </blockquote>
-<h2 id="sparkles-帐号">:sparkles: 帐号</h2>
+<h2 id="帐号"><span class="emoji" data-emoji="sparkles">✨</span>
+帐号</h2>
 <table>
 <colgroup>
 <col style="width: 9%">
@@ -218,7 +219,7 @@
     <div id="footer-wrap">
         <div>
             &copy;
-            2023 - 2024 Yokumi的个人博客
+            2023 - 2024 YokumiのBlog
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>

@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title>平面图 | Yokumi的个人博客</title>
+    <title>平面图 | YokumiのBlog</title>
     <meta name="author" content="Yokumi" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -68,7 +68,7 @@
         <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
     <nav id="desktop-menu">
         <a class="title" href="/blog/">
-            <span>YOKUMI的个人博客</span>
+            <span>YOKUMIのBLOG</span>
         </a>
         
         <a href="/blog/">
@@ -100,7 +100,7 @@
     <nav id="mobile-menu">
         <div class="title" @click="showMenuItems = !showMenuItems">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;YOKUMI的个人博客</span>
+            <span>&emsp;YOKUMIのBLOG</span>
         </div>
         <transition name="slide">
             <div class="items" v-show="showMenuItems">
@@ -201,7 +201,7 @@
     <div class="content" v-pre>
         <h1 id="一定义">一、定义</h1>
 <ul>
-<li>如果一个图能画在平面上使得它的边仅在端点相交，则称这个图为可嵌人平面的，或称为<strong>平面图</strong>。平面图G的这样一种画法称为G的一个<strong>平面嵌人</strong>。
+<li>如果一个图能画在平面上使得它的边仅在端点相交，则称这个图为可嵌人平面的，或称为<strong>平面图</strong>。平面图G的这样一种画法称为G的一个<strong>平面嵌人</strong>。<br>
 <img src="平面图定义.png" alt="平面图定义"></li>
 <li>一个平图<span class="math inline">\(G\)</span>把平面划分成若干个连通区域，这些区域的闭包称为<span class="math inline">\(G\)</span>的<strong>面</strong>。面边界回路的长度称为<strong>面的次数</strong>，记为<span class="math inline">\(Deg(f)\)</span>或<span class="math inline">\(d(f)\)</span>。</li>
 <li>每个平图恰有一个无界的面，称为<strong>外部面</strong>。</li>
@@ -228,12 +228,16 @@ Theorem(库拉托夫斯基定理)</h2>
 <blockquote>
 <p>一个图是平面图当且仅当它不包含<span class="math inline">\(K_{3,3}\)</span>或<span class="math inline">\(K_5\)</span>的剖分图.</p>
 <blockquote>
-<p><strong>剖分图</strong>：把<span class="math inline">\(G\)</span>的边进行一系列剖分得到的图 <img src="K4剖分图.png" alt="K4剖分图">
+<p><strong>剖分图</strong>：把<span class="math inline">\(G\)</span>的边进行一系列剖分得到的图<br>
+<img src="K4剖分图.png" alt="K4剖分图"><br>
 剖分图也可以这么理解：即用Path代替Edge。</p>
 </blockquote>
 <blockquote>
-<p><strong>Platonic Solids(柏拉图体)</strong>: <img src="柏拉图体1.png" alt="柏拉图体1">
-<strong>顶点数、边数(棱数)、面数的关系</strong>： 其中，<span class="math inline">\(v\)</span>表示顶点数，<span class="math inline">\(e\)</span>表示棱数，<span class="math inline">\(f\)</span>表示面数，<span class="math inline">\(k\)</span>为每个顶点的出发边的数目，<span class="math inline">\(l\)</span>为每个面上边的数目，<span class="math inline">\(\sum deg(v) = 2e = fl = kv\)</span>. <img src="柏拉图体2.png" alt="柏拉图体2"></p>
+<p><strong>Platonic Solids(柏拉图体)</strong>:<br>
+<img src="柏拉图体1.png" alt="柏拉图体1"><br>
+<strong>顶点数、边数(棱数)、面数的关系</strong>：<br>
+其中，<span class="math inline">\(v\)</span>表示顶点数，<span class="math inline">\(e\)</span>表示棱数，<span class="math inline">\(f\)</span>表示面数，<span class="math inline">\(k\)</span>为每个顶点的出发边的数目，<span class="math inline">\(l\)</span>为每个面上边的数目，<span class="math inline">\(\sum deg(v) = 2e = fl = kv\)</span>.<br>
+<img src="柏拉图体2.png" alt="柏拉图体2"></p>
 </blockquote>
 </blockquote>
 
@@ -251,7 +255,7 @@ Theorem(库拉托夫斯基定理)</h2>
     <div id="footer-wrap">
         <div>
             &copy;
-            2023 - 2024 Yokumi的个人博客
+            2023 - 2024 YokumiのBlog
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>

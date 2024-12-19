@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title>9.3 Products and Quotients of Semigroups 乘积半群、商半群 | Yokumi的个人博客</title>
+    <title>9.1 群论Intro | YokumiのBlog</title>
     <meta name="author" content="Yokumi" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -68,7 +68,7 @@
         <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
     <nav id="desktop-menu">
         <a class="title" href="/blog/">
-            <span>YOKUMI的个人博客</span>
+            <span>YOKUMIのBLOG</span>
         </a>
         
         <a href="/blog/">
@@ -100,7 +100,7 @@
     <nav id="mobile-menu">
         <div class="title" @click="showMenuItems = !showMenuItems">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;YOKUMI的个人博客</span>
+            <span>&emsp;YOKUMIのBLOG</span>
         </div>
         <transition name="slide">
             <div class="items" v-show="showMenuItems">
@@ -161,14 +161,14 @@
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
             <div class="article">
     <div>
-        <h1>9.3 Products and Quotients of Semigroups 乘积半群、商半群</h1>
+        <h1>9.1 群论Intro</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2024/11/4
+            2024/11/3
         </span>
         
         <span class="category">
@@ -189,7 +189,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E7%BE%A4%E8%AE%BA/" style="color: #ff7d73">
+                <a href="/blog/tags/%E7%BE%A4%E8%AE%BA/" style="color: #00a596">
                     群论
                 </a>
             </span>
@@ -199,49 +199,83 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="products-semigroups-积半群半群的笛卡尔积"><em>Products
-Semigroups 积半群（半群的笛卡尔积）</em></h1>
+        <h1 id="binary-operation"><em>Binary operation</em></h1>
 <blockquote>
-<p><strong><em>定理1:</em></strong> 两个半群的笛卡尔积也是半群。<img src="img/Wondershare%20PDFelement%202024-11-04%2018.29.31.png">
-<strong><em>定理2:</em></strong>
-类似，两个幺半群的笛卡尔积也是幺半群且其幺元为<span class="math inline">\((e_S,e_T)\)</span>。<img src="img/Wondershare%20PDFelement%202024-11-04%2018.31.58.png"></p>
+<p><strong>Defination:</strong>
+对两个对象进行操作的运算称为二元运算。一般在《离散数学》这门课中只研究离散结构，e.g.
+集合。</p>
 </blockquote>
-<h1 id="congruence-relation-同余关系"><em>Congruence relation
-同余关系</em></h1>
+<h1 id="some-properties-of-binary-operations"><em>Some Properties of
+Binary Operations</em></h1>
+<h2 id="closure"><em>Closure</em></h2>
 <blockquote>
-<p><strong><em>Defination:</em></strong> 在半群<span class="math inline">\((S,∗)\)</span>上的等价关系R，如果满足：任意<span class="math inline">\(a R a&#39;\)</span>并且<span class="math inline">\(b R b&#39;\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\((a∗b) R (a&#39;∗ b&#39;)\)</span>，则称<span class="math inline">\(R\)</span>为半群上的同余关系。
-<strong><em>回忆:</em></strong> 等价关系满足自反性、对称性、传递性。
-<strong><em>解题法:</em></strong> &gt; <strong><em>Prove
-Step:</em></strong> R是半群上的同余关系？ &gt; 1.
-等价关系显然（已知给出）。 &gt; 2. 根据<span class="math inline">\(a R
-a&#39;\)</span>和<span class="math inline">\(b R
-b&#39;\)</span>可以推出 <span class="math inline">\((a∗b) R (a&#39;∗
-b&#39;)\)</span>。 <strong><em>Note!</em></strong>
-等价关系不一定是同余关系。反例：<img src="img/Wondershare%20PDFelement%202024-11-04%2018.53.08.png"></p>
+<p><strong>Defination:</strong> 设集合 S 有二元运算∗, 若对 S
+中的任意两个元素 <span class="math inline">\(a_1\)</span>、<span class="math inline">\(a_2\)</span>, 都有: <span class="math inline">\(a_1∗a_2∈S\)</span>, 则称运算∗对集合 S 封闭。</p>
 </blockquote>
-<h1 id="quotients-semigroups-商半群">Quotients Semigroups 商半群</h1>
+<h2 id="commutative"><em>Commutative</em></h2>
 <blockquote>
-<p><strong><em>Defination:</em></strong> <img src="img/Wondershare%20PDFelement%202024-11-04%2019.01.38.png">
-其实就是按照以下步骤定义了一种二元运算： &gt; 1. <span class="math inline">\(S = \{a,b,c,……,a&#39;,b&#39;,c&#39;,……\}\)</span>
-&gt; 2. 设定价类<span class="math inline">\([a] = \{a, a&#39;,……\},[b] =
-\{b, b&#39;,……\},[c] = \{c, c&#39;,……\},……\)</span> &gt; 3. <span class="math inline">\(S/R = \{[a],[b],[c],……\}\)</span> &gt; 4. <span class="math inline">\(S/R \times S/R =
-\{([a],[a]),([a],[b]),([a],[c]),……\}\)</span> &gt; 5. <span class="math inline">\(f:S/R \times S/R \rightarrow S/R\)</span> &gt; 6.
-<span class="math inline">\(f([a],[b]) = [c] \leftrightarrow [a] \otimes
-[b] = [c]\)</span> <strong><em>Note!</em></strong> 注意<span class="math inline">\(\otimes\)</span>是等价类之间的运算，可以用代入等价类中的元素进行计算，即<span class="math inline">\([a] \otimes [b] = [a * b]\)</span>
-<strong><em>幺半群导出的商半群也是幺半群</em></strong> <img src="img/Wondershare%20PDFelement%202024-11-04%2019.43.44.png">
-<strong><em>Prove:</em></strong> <span class="math inline">\([a] \otimes
-[e] = [a * e] = [a]=[e * a] = [e] \otimes [a]\)</span></p>
+<p><strong>Defination:</strong> 交换律也称为Abel 律，设有代数 <span class="math inline">\((S,∗)\)</span>，若对任意 <span class="math inline">\(a_1,a_2∈S\)</span>,都符合等式: <span class="math inline">\(a_1∗a_2=a_2∗a_1\)</span>,那么称代数 <span class="math inline">\((S,∗)\)</span> 运算符合交换律。<br>
+<strong>推广:</strong> 如果 <span class="math inline">\((S,∗)\)</span>
+运算符合交换律，那么对于运算序列 <span class="math inline">\(a_1∗a_2∗...∗a_n\)</span>，设 <span class="math inline">\(θ(12...n)\)</span> 为任意重排列，那么有: <span class="math inline">\(a_θ(1)∗a_θ(2)∗...∗a_θ(n)=a_1∗a_2∗...∗a_n\)</span>。</p>
 </blockquote>
-<h1 id="natural-homomorphism-自然同态"><em>Natural Homomorphism
-自然同态</em></h1>
+<h2 id="associative"><em>Associative</em></h2>
 <blockquote>
-<p><strong><em>Defination:</em></strong> <span class="math inline">\(f_R:S \rightarrow S/R\space defined\space by\space
-f_R(a) = [a]\)</span>，显然满射(onto)。<img src="img/Wondershare%20PDFelement%202024-11-04%2019.51.57.png"></p>
+<p><strong>Defination:</strong> if * is a binary operation, then * is
+associative or has the associative property:<span class="math inline">\((x * y) * z = x * (y *
+z)\)</span>，在运算过程中不需要再考虑括号了！</p>
 </blockquote>
-<h1 id="fundamental-homomorphism-同态基本定理">*Fundamental Homomorphism
-同态基本定理</h1>
+<h2 id="distributive"><em>Distributive</em></h2>
 <blockquote>
-<p><strong><em>Defination:</em></strong> 设<span class="math inline">\(f:S \rightarrow T\)</span>是同态，<span class="math inline">\(R\)</span>是<span class="math inline">\(S\)</span>上的关系且被定义为<span class="math inline">\(aRb \iff f(a) = f(b)\)</span>，那么有： 1）<span class="math inline">\(R\)</span>是同余关系； 2）<span class="math inline">\(T\)</span>和<span class="math inline">\(S/R\)</span>同构；<img src="img/Wondershare%20PDFelement%202024-11-04%2020.17.07.png"></p>
+<p>略。</p>
+</blockquote>
+<h2 id="de-morgans-laws"><em>De Morgan‘s laws</em></h2>
+<blockquote>
+<p>扔个PPT在这。<img src="imgs/Wondershare%20PDFelement%202024-11-03%2017.07.25.png"></p>
+</blockquote>
+<h2 id="idempotent"><em>Idempotent</em></h2>
+<blockquote>
+<p><strong>Defination:</strong> <span class="math inline">\(a * a =
+a\)</span></p>
+</blockquote>
+<h2 id="note"><em>Note！</em></h2>
+<blockquote>
+<p>An operation has a property means the statement of the property is
+true when the operation is used with any objects in the structure.</p>
+</blockquote>
+<h1 id="a-binary-operation-on-a-set"><em>A binary operation on a
+set</em></h1>
+<blockquote>
+<p><strong>Defination:</strong> Everywhere defined <span class="math inline">\(f:A×A\rightarrow
+A\)</span>，同时需要满足封闭性和运算结果唯一，即双射性质。</p>
+</blockquote>
+<h1 id="tables运算表"><em>Tables(运算表)</em></h1>
+<blockquote>
+<p><strong>Defination:</strong> If A is a finite set, we can define a
+binary operation on A by means of a table.<img src="img/Wondershare%20PDFelement%202024-11-03%2017.15.57.png"></p>
+</blockquote>
+<h1 id="some-special-elements"><em>Some Special Elements</em></h1>
+<h2 id="identity中性元"><em>Identity(中性元)</em></h2>
+<blockquote>
+<p><strong>Defination:</strong> <span class="math inline">\(e∗x=x∗e=x\)</span></p>
+</blockquote>
+<h2 id="zero零元"><em>Zero(零元)</em></h2>
+<blockquote>
+<p><strong>Defination:</strong> <span class="math inline">\(\theta ∗ x=x
+∗ \theta= \theta\)</span></p>
+</blockquote>
+<h2 id="inverse逆元"><em>Inverse(逆元)</em></h2>
+<blockquote>
+<p><strong>Defination:</strong> <span class="math inline">\(x * y = y *
+x = e\)</span>，两者互为逆元</p>
+</blockquote>
+<h2 id="note-1"><em>Note!</em></h2>
+<blockquote>
+<ol type="1">
+<li>单位元以及零元的唯一性</li>
+<li>如果<span class="math inline">\(\left| A \right| &gt; 1, \theta \neq
+e\)</span></li>
+<li>可结合的运算逆元唯一性</li>
+</ol>
 </blockquote>
 
     </div>
@@ -258,7 +292,7 @@ f_R(a) = [a]\)</span>，显然满射(onto)。<img src="img/Wondershare%20PDFelem
     <div id="footer-wrap">
         <div>
             &copy;
-            2023 - 2024 Yokumi的个人博客
+            2023 - 2024 YokumiのBlog
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>

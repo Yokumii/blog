@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title>匹配问题 | Yokumi的个人博客</title>
+    <title>匹配问题 | YokumiのBlog</title>
     <meta name="author" content="Yokumi" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -68,7 +68,7 @@
         <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
     <nav id="desktop-menu">
         <a class="title" href="/blog/">
-            <span>YOKUMI的个人博客</span>
+            <span>YOKUMIのBLOG</span>
         </a>
         
         <a href="/blog/">
@@ -100,7 +100,7 @@
     <nav id="mobile-menu">
         <div class="title" @click="showMenuItems = !showMenuItems">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;YOKUMI的个人博客</span>
+            <span>&emsp;YOKUMIのBLOG</span>
         </div>
         <transition name="slide">
             <div class="items" v-show="showMenuItems">
@@ -189,7 +189,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #00a596">
+                <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #03a9f4">
                     图论
                 </a>
             </span>
@@ -202,7 +202,7 @@
         <h1 id="匹配对集问题">匹配/对集问题</h1>
 <h2 id="定义">定义</h2>
 <blockquote>
-<p><img src="匹配定义.png">
+<p><img src="匹配定义.png"><br>
 翻译成人话就是，匹配要求边集中任何两条边不相邻，最大匹配要求边数最多，完全匹配要求所有顶点都包含。</p>
 </blockquote>
 <h2 id="霍尔婚姻定理-halls-marriage-theorem">霍尔婚姻定理 HALL’S
@@ -214,102 +214,103 @@ MARRIAGE THEOREM</h2>
 <blockquote>
 <p><strong>问题描述</strong>：给出一个<span class="math inline">\(n\)</span>个男性的集合<span class="math inline">\(M\)</span>和<span class="math inline">\(n\)</span>个女性的集合<span class="math inline">\(W\)</span>，找到一个“稳定”匹配。</p>
 <blockquote>
-<p>每位男性根据对女性的心仪程度从高至低进行排名；
+<p>每位男性根据对女性的心仪程度从高至低进行排名；<br>
 每位女性根据对男性的心仪程度从高至低进行排名；</p>
 </blockquote>
 <p><strong>不稳定对</strong>：给出一个完美匹配<span class="math inline">\(S\)</span>，男性<span class="math inline">\(m\)</span>和女性<span class="math inline">\(w\)</span>是不稳定的，如果同时满足下列条件：</p>
 <blockquote>
-<p><span class="math inline">\(m\)</span>相比起当前配偶，更喜欢<span class="math inline">\(w\)</span>； <span class="math inline">\(w\)</span>相比起当前配偶，更喜欢<span class="math inline">\(m\)</span>；</p>
+<p><span class="math inline">\(m\)</span>相比起当前配偶，更喜欢<span class="math inline">\(w\)</span>；<br>
+<span class="math inline">\(w\)</span>相比起当前配偶，更喜欢<span class="math inline">\(m\)</span>；</p>
 </blockquote>
 <p><strong>稳定匹配</strong>：一个不包含不稳定对的完美匹配。</p>
 </blockquote>
 <h3 id="gale-shapley-算法延迟决定法">Gale-Shapley
 算法（延迟决定法）</h3>
 <p><img src="Gale-Shapley算法%20.png"></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include</span><span class="im">&lt;iostream&gt;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> <span class="kw">namespace</span> std<span class="op">;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">const</span> <span class="dt">int</span> N <span class="op">=</span> <span class="dv">10005</span><span class="op">;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> M<span class="op">[</span>N<span class="op">]</span> <span class="op">=</span> <span class="op">&#123;</span><span class="dv">0</span><span class="op">&#125;,</span> W<span class="op">[</span>N<span class="op">]</span> <span class="op">=</span> <span class="op">&#123;</span><span class="dv">0</span><span class="op">&#125;;</span> <span class="co">// 第0个元素表示已经配对的男性/女性个数；男性和女性集合，0表示目前还单身，&gt;0表示已经和该数字对应的异性配对</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> M_pri<span class="op">[</span>N<span class="op">][</span>N<span class="op">]</span> <span class="op">=</span> <span class="op">&#123;</span><span class="dv">0</span><span class="op">&#125;,</span> W_pri<span class="op">[</span>N<span class="op">][</span>N<span class="op">]</span> <span class="op">=</span> <span class="op">&#123;</span><span class="dv">0</span><span class="op">&#125;;</span> <span class="co">// 第0个元素记录的是男生 m 在寻找心仪女生时的进度；男性和女性对异性的心仪程度排名</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> getPri<span class="op">(</span><span class="dt">int</span> n<span class="op">);</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> G_S<span class="op">(</span><span class="dt">int</span> num<span class="op">);</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> output<span class="op">(</span><span class="dt">int</span> num<span class="op">);</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="dt">bool</span> lovemore<span class="op">(</span><span class="dt">int</span> m<span class="op">,</span><span class="dt">int</span> w<span class="op">,</span><span class="dt">int</span> num<span class="op">);</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">// 获取心仪程度输入</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> getPri<span class="op">(</span><span class="dt">int</span> n<span class="op">)</span> <span class="op">&#123;</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;=</span> n<span class="op">;</span> i<span class="op">++)</span> <span class="op">&#123;</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> j <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> j <span class="op">&lt;=</span> n<span class="op">;</span> j<span class="op">++)</span> <span class="op">&#123;</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            cin <span class="op">&gt;&gt;</span> M_pri<span class="op">[</span>i<span class="op">][</span>j<span class="op">];</span> <span class="co">// 表示第i位男性对女性心仪程度排名，M_pri[i][j]位女生排名第j名；</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> i <span class="op">&lt;=</span> n<span class="op">;</span> i<span class="op">++)</span> <span class="op">&#123;</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> j <span class="op">=</span> <span class="dv">1</span><span class="op">;</span> j <span class="op">&lt;=</span> n<span class="op">;</span> j<span class="op">++)</span> <span class="op">&#123;</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>            cin <span class="op">&gt;&gt;</span> W_pri<span class="op">[</span>i<span class="op">][</span>j<span class="op">];</span> <span class="co">// 表示第i位女性对男性心仪程度排名，W_pri[i][j]位男生排名第j名；</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co">// Gale-Shapley 算法</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> G_S<span class="op">(</span><span class="dt">int</span> num<span class="op">)</span> <span class="op">&#123;</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> m<span class="op">,</span> w<span class="op">;</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="op">(</span>M<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">!=</span> num<span class="op">)</span> <span class="co">// 男生们还未完成配对</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#123;</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        w <span class="op">=</span> m <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">while</span> <span class="op">(</span>M<span class="op">[++</span>m<span class="op">]</span> <span class="op">!=</span> <span class="dv">0</span><span class="op">)</span> <span class="op">;</span> <span class="co">// 找到第一个出现的还没有配对的男生m</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>        w <span class="op">=</span> M_pri<span class="op">[</span>m<span class="op">][++</span>M_pri<span class="op">[</span>m<span class="op">][</span><span class="dv">0</span><span class="op">]];</span> <span class="co">// 找到第m位男生心中剩下排名第一的女生w</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>W<span class="op">[</span>w<span class="op">])</span>   <span class="co">//如果女生已经在约会了</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#123;</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>lovemore<span class="op">(</span>m<span class="op">,</span>w<span class="op">,</span>num<span class="op">))</span> <span class="co">// 如果w更爱m</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>            <span class="op">&#123;</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>                M<span class="op">[</span>W<span class="op">[</span>w<span class="op">]]</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> <span class="co">// w 甩了当前和她配对的</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>                M<span class="op">[</span>m<span class="op">]</span> <span class="op">=</span> w<span class="op">;</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>                W<span class="op">[</span>w<span class="op">]</span> <span class="op">=</span> m<span class="op">;</span>   </span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>            <span class="op">&#125;</span></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span> </span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>                <span class="cf">continue</span><span class="op">;</span></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span> <span class="co">// 如果女生没有约会还是自由状态，成功配对</span></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#123;</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>            M<span class="op">[</span>m<span class="op">]=</span>w<span class="op">;</span></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>            M<span class="op">[</span><span class="dv">0</span><span class="op">]++;</span></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>            W<span class="op">[</span>w<span class="op">]=</span>m<span class="op">;</span></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>            W<span class="op">[</span><span class="dv">0</span><span class="op">]++;</span></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="co">// 判断w是不是更爱m</span></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="dt">bool</span> lovemore<span class="op">(</span><span class="dt">int</span> m<span class="op">,</span><span class="dt">int</span> w<span class="op">,</span><span class="dt">int</span> num<span class="op">)</span> <span class="op">&#123;</span></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> num<span class="op">;</span> i<span class="op">++)</span> <span class="op">&#123;</span> <span class="co">// 按排名从高到低往下找</span></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>W_pri<span class="op">[</span>w<span class="op">][</span>i<span class="op">]</span> <span class="op">==</span> W<span class="op">[</span>w<span class="op">])</span> <span class="op">&#123;</span> <span class="co">// 先找到和w配对的那个</span></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>W_pri<span class="op">[</span>w<span class="op">][</span>i<span class="op">]</span> <span class="op">==</span> m<span class="op">)</span> <span class="op">&#123;</span> <span class="co">// 先找到m，说明更爱m</span></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> output<span class="op">(</span><span class="dt">int</span> num<span class="op">)</span> <span class="op">&#123;</span></span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span>i <span class="op">&lt;=</span> num<span class="op">;</span> i<span class="op">++)</span></span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>        cout<span class="op">&lt;&lt;</span><span class="st">&quot;(&quot;</span><span class="op">&lt;&lt;</span>i<span class="op">&lt;&lt;</span><span class="st">&quot;, &quot;</span><span class="op">&lt;&lt;</span>M<span class="op">[</span>i<span class="op">]&lt;&lt;</span><span class="st">&quot;)&quot;</span><span class="op">&lt;&lt;</span>endl<span class="op">;</span></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> solve<span class="op">()</span> <span class="op">&#123;</span></span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> n<span class="op">;</span></span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>    cin<span class="op">&gt;&gt;</span>n<span class="op">;</span></span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>    getPri<span class="op">(</span>n<span class="op">);</span></span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>    G_S<span class="op">(</span>n<span class="op">);</span></span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>    output<span class="op">(</span>n<span class="op">);</span></span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span> <span class="op">&#123;</span></span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>    solve<span class="op">();</span></span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span></code></pre></div>
+<pre class="cpp"><code>#include&lt;iostream&gt;
+using namespace std;
+const int N = 10005;
+int M[N] = &#123;0&#125;, W[N] = &#123;0&#125;; // 第0个元素表示已经配对的男性/女性个数；男性和女性集合，0表示目前还单身，&gt;0表示已经和该数字对应的异性配对
+int M_pri[N][N] = &#123;0&#125;, W_pri[N][N] = &#123;0&#125;; // 第0个元素记录的是男生 m 在寻找心仪女生时的进度；男性和女性对异性的心仪程度排名
+
+void getPri(int n);
+void G_S(int num);
+void output(int num);
+bool lovemore(int m,int w,int num);
+
+// 获取心仪程度输入
+void getPri(int n) &#123;
+    for (int i = 1; i &lt;= n; i++) &#123;
+        for (int j = 1; j &lt;= n; j++) &#123;
+            cin &gt;&gt; M_pri[i][j]; // 表示第i位男性对女性心仪程度排名，M_pri[i][j]位女生排名第j名；
+        &#125;
+    &#125;
+
+    for (int i = 1; i &lt;= n; i++) &#123;
+        for (int j = 1; j &lt;= n; j++) &#123;
+            cin &gt;&gt; W_pri[i][j]; // 表示第i位女性对男性心仪程度排名，W_pri[i][j]位男生排名第j名；
+        &#125;
+    &#125;
+&#125;
+
+// Gale-Shapley 算法
+void G_S(int num) &#123;
+    int m, w;
+    while (M[0] != num) // 男生们还未完成配对
+    &#123;
+        w = m = 0;
+        while (M[++m] != 0) ; // 找到第一个出现的还没有配对的男生m
+        w = M_pri[m][++M_pri[m][0]]; // 找到第m位男生心中剩下排名第一的女生w
+        if (W[w])   //如果女生已经在约会了
+        &#123;
+            if (lovemore(m,w,num)) // 如果w更爱m
+            &#123;
+                M[W[w]] = 0; // w 甩了当前和她配对的
+                M[m] = w;
+                W[w] = m;   
+            &#125;
+            else 
+                continue;
+        &#125;
+        else // 如果女生没有约会还是自由状态，成功配对
+        &#123;
+            M[m]=w;
+            M[0]++;
+            W[w]=m;
+            W[0]++;
+        &#125;
+    &#125;
+&#125;
+
+// 判断w是不是更爱m
+bool lovemore(int m,int w,int num) &#123;
+    for (int i = 0; i &lt; num; i++) &#123; // 按排名从高到低往下找
+        if (W_pri[w][i] == W[w]) &#123; // 先找到和w配对的那个
+            return false;
+        &#125;
+        if (W_pri[w][i] == m) &#123; // 先找到m，说明更爱m
+            return true;
+        &#125;
+    &#125;
+&#125;
+
+void output(int num) &#123;
+    for (int i = 1;i &lt;= num; i++)
+        cout&lt;&lt;&quot;(&quot;&lt;&lt;i&lt;&lt;&quot;, &quot;&lt;&lt;M[i]&lt;&lt;&quot;)&quot;&lt;&lt;endl;
+&#125;
+
+void solve() &#123;
+    int n;
+    cin&gt;&gt;n;
+    getPri(n);
+    G_S(n);
+    output(n);
+&#125;
+
+int main() &#123;
+    solve();
+    return 0;
+&#125;</code></pre>
 
     </div>
     
@@ -325,7 +326,7 @@ MARRIAGE THEOREM</h2>
     <div id="footer-wrap">
         <div>
             &copy;
-            2023 - 2024 Yokumi的个人博客
+            2023 - 2024 YokumiのBlog
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>

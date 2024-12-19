@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title>CMU Bomb Lab 个人题解 | Yokumi的个人博客</title>
+    <title>CMU Bomb Lab 个人题解 | YokumiのBlog</title>
     <meta name="author" content="Yokumi" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -68,7 +68,7 @@
         <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
     <nav id="desktop-menu">
         <a class="title" href="/blog/">
-            <span>YOKUMI的个人博客</span>
+            <span>YOKUMIのBLOG</span>
         </a>
         
         <a href="/blog/">
@@ -100,7 +100,7 @@
     <nav id="mobile-menu">
         <div class="title" @click="showMenuItems = !showMenuItems">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;YOKUMI的个人博客</span>
+            <span>&emsp;YOKUMIのBLOG</span>
         </div>
         <transition name="slide">
             <div class="items" v-show="showMenuItems">
@@ -189,14 +189,14 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CSAPP/" style="color: #ffa2c4">
+                <a href="/blog/tags/CSAPP/" style="color: #03a9f4">
                     CSAPP
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81/" style="color: #00a596">
+                <a href="/blog/tags/%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81/" style="color: #00bcd4">
                     汇编代码
                 </a>
             </span>
@@ -242,10 +242,7 @@ bombs”是一个Linux可执行程序，包含了5个阶段（或关卡）。炸
 <li>用<code>\disas</code> 显示<code>phase_1</code>
 部分的汇编代码开始分析；</li>
 </ul>
-<figure>
-<img src="1.png" alt="phase_1汇编代码">
-<figcaption aria-hidden="true">phase_1汇编代码</figcaption>
-</figure>
+<p><img src="1.png" alt="phase_1汇编代码"></p>
 <ul>
 <li>观察到调用了一个 <code>strings_not_equal</code>
 函数，根据函数名，其功能很可能是比较输入字符和正确字符是否匹配的函数；</li>
@@ -253,11 +250,7 @@ bombs”是一个Linux可执行程序，包含了5个阶段（或关卡）。炸
 函数处设置断点，直接<code>continue</code>运行进入该函数；</li>
 <li>显示<code>strings_not_equal</code> 的汇编代码开始分析；</li>
 </ul>
-<figure>
-<img src="2.png" alt="strings_not_equal 函数汇编代码">
-<figcaption aria-hidden="true">strings_not_equal
-函数汇编代码</figcaption>
-</figure>
+<p><img src="2.png" alt="strings_not_equal 函数汇编代码"></p>
 <p><strong>Note! <code>%rdi</code>
 存放函数的第一个输入，<code>%rsi</code>
 存放函数的第二个输入，<code>%eax</code> 存放函数的返回值。</strong></p>
@@ -272,10 +265,7 @@ bombs”是一个Linux可执行程序，包含了5个阶段（或关卡）。炸
 <li>结合寄存器功能和汇编代码可以得到函数比较的字符串内容分别存放在
 <code>%rdi</code> 和 <code>%rsi</code> 中，分别打印寄存器的值如下：</li>
 </ul>
-<figure>
-<img src="3.png" alt="字符串内容">
-<figcaption aria-hidden="true">字符串内容</figcaption>
-</figure>
+<p><img src="3.png" alt="字符串内容"></p>
 <ul>
 <li>得到 <code>%rdi</code> 存放的是我们输入的字符串， <code>%rsi</code>
 是目标字符串。函数中，<code>%rsi</code> 的值被赋给 <code>%rbp</code>，
@@ -288,10 +278,7 @@ bombs”是一个Linux可执行程序，包含了5个阶段（或关卡）。炸
 <code>phase_1</code> 答案，进入阶段
 2；同上操作得到汇编代码进行分析；</li>
 </ul>
-<figure>
-<img src="4.png" alt="第二阶段开始">
-<figcaption aria-hidden="true">第二阶段开始</figcaption>
-</figure>
+<p><img src="4.png" alt="第二阶段开始"></p>
 <ul>
 <li>观察发现其调用<code>read_six_numbers</code>函数，设置断点进入，显示该函数的汇编代码，观察到将地址<code>$0x402a31</code>存入
 <code>%esi</code> 后调用 <code>scanf</code>
@@ -299,10 +286,7 @@ bombs”是一个Linux可执行程序，包含了5个阶段（或关卡）。炸
 <code>cmp</code> 语句得到，如果<code>scanf</code>
 的返回值小于等于5会触发爆炸。</li>
 </ul>
-<figure>
-<img src="5.png" alt="第二阶段输入格式确定">
-<figcaption aria-hidden="true">第二阶段输入格式确定</figcaption>
-</figure>
+<p><img src="5.png" alt="第二阶段输入格式确定"></p>
 <p><strong>Note! <code>%rsp</code>
 存放堆栈指针，括号表示获取地址上的值。<code>%rbp</code>
 存放的是栈的基址。</strong></p>
@@ -318,22 +302,13 @@ bombs”是一个Linux可执行程序，包含了5个阶段（或关卡）。炸
 <ul>
 <li>同上操作，此处不再赘述，进入<code>phase_3</code>并得到汇编代码如下：</li>
 </ul>
-<figure>
-<img src="6.png" alt="第三阶段汇编代码1">
-<figcaption aria-hidden="true">第三阶段汇编代码1</figcaption>
-</figure>
-<figure>
-<img src="7.png" alt="第三阶段汇编代码2">
-<figcaption aria-hidden="true">第三阶段汇编代码2</figcaption>
-</figure>
+<p><img src="6.png" alt="第三阶段汇编代码1"></p>
+<p><img src="7.png" alt="第三阶段汇编代码2"></p>
 <ul>
 <li>第三阶段代码较为冗长，先通过打印 <code>scanf</code>
 函数的调用值得到输入格式为两个整数和一个字符。</li>
 </ul>
-<figure>
-<img src="8.png" alt="第三阶段输入格式">
-<figcaption aria-hidden="true">第三阶段输入格式</figcaption>
-</figure>
+<p><img src="8.png" alt="第三阶段输入格式"></p>
 <ul>
 <li>分析在 <code>0x400fe4</code> 处的 <code>cmpl $0x7, 0x10(%rsp)</code>
 指令以及下一条指令 <code>ja 0x4010ef</code>
@@ -343,10 +318,7 @@ bombs”是一个Linux可执行程序，包含了5个阶段（或关卡）。炸
 表示跳转到 <code>0x4027a0+输入的第一个整数 *8</code>
 所存储的地址处，打印出所有可能的跳转地址如下：</li>
 </ul>
-<figure>
-<img src="9.png" alt="所有可能地址">
-<figcaption aria-hidden="true">所有可能地址</figcaption>
-</figure>
+<p><img src="9.png" alt="所有可能地址"></p>
 <p><strong>Note！<code>*</code> 表示间接跳转，<code>0x4027a0</code>
 是一个基地址（立即数），语句应跳转到计算得到的地址上存的地址值。</strong></p>
 <ul>
@@ -354,10 +326,7 @@ bombs”是一个Linux可执行程序，包含了5个阶段（或关卡）。炸
 <code>switch</code> 分支结构，选择 <code>case 0</code>
 进行分析。（每个case结构都基本相同）：</li>
 </ul>
-<figure>
-<img src="10.png" alt="case 0结构">
-<figcaption aria-hidden="true">case 0结构</figcaption>
-</figure>
+<p><img src="10.png" alt="case 0结构"></p>
 <ul>
 <li>分析可得，首先比较输入的第二个整数与<code>0x2d7（727）</code>，相等则跳至
 <code>4010eb &lt;+318&gt;:  cmp 0xf(%rsp),%al</code>，将输入的字符与
@@ -425,18 +394,12 @@ bombs”是一个Linux可执行程序，包含了5个阶段（或关卡）。炸
 <ul>
 <li>同上操作，此处不再赘述，进入 phase_4 并得到汇编代码如下。</li>
 </ul>
-<figure>
-<img src="11.png" alt="第四阶段汇编代码">
-<figcaption aria-hidden="true">第四阶段汇编代码</figcaption>
-</figure>
+<p><img src="11.png" alt="第四阶段汇编代码"></p>
 <ul>
 <li>先通过打印 <code>scanf</code>
 函数的调用值得到输入格式为两个整数。</li>
 </ul>
-<figure>
-<img src="12.png" alt="第四阶段输入格式">
-<figcaption aria-hidden="true">第四阶段输入格式</figcaption>
-</figure>
+<p><img src="12.png" alt="第四阶段输入格式"></p>
 <ul>
 <li>发现 <code>phase_4</code> 调用了
 <code>func4</code>函数，在这之前，先检查了输入是否为2个整数，再将第二个输入的整数赋给
@@ -446,34 +409,22 @@ bombs”是一个Linux可执行程序，包含了5个阶段（或关卡）。炸
 <code>%rdi (8)</code>作为参数被传入 <code>func4</code>。</li>
 <li>进入函数，打印其汇编代码如下：</li>
 </ul>
-<figure>
-<img src="13.png" alt="func4汇编代码">
-<figcaption aria-hidden="true">func4汇编代码</figcaption>
-</figure>
+<p><img src="13.png" alt="func4汇编代码"></p>
 <ul>
 <li>大致观察即可发现其为递归函数，分析汇编指令画出大致流程图如下：</li>
 </ul>
-<figure>
-<img src="14.png" alt="个人绘制的大致流程图">
-<figcaption aria-hidden="true">个人绘制的大致流程图</figcaption>
-</figure>
+<p><img src="14.png" alt="个人绘制的大致流程图"></p>
 <ul>
 <li>分析得到递归函数如下：<code>func4(n, x) = x + func4(n – 1, x) + func4(n – 2, x), n &gt; 1；func4(1, x) = x, func4(0, x) = 0</code>。</li>
 <li>如果第二个输入为2，那么可以推出<code>func4(8, 2) = 108</code>，再根据函数结束后中<code>cmp 0x4(%rsp),%eax</code>可以判断返回值需要和第一个输入相等，所以一个答案为<code>108 2</code>。</li>
 </ul>
-<figure>
-<img src="15.png" alt="递归树状图">
-<figcaption aria-hidden="true">递归树状图</figcaption>
-</figure>
+<p><img src="15.png" alt="递归树状图"></p>
 <h3 id="第五阶段">第五阶段</h3>
 <ul>
 <li>同上操作，此处不再赘述，进入 <code>phase_5</code>
 并得到汇编代码如下：</li>
 </ul>
-<figure>
-<img src="16.png" alt="第五阶段汇编代码">
-<figcaption aria-hidden="true">第五阶段汇编代码</figcaption>
-</figure>
+<p><img src="16.png" alt="第五阶段汇编代码"></p>
 <ul>
 <li>同样发现其调用 <code>strings_length</code>
 函数，由第一阶段分析可知，输入的字符串长度应为6。并且函数尾部调用
@@ -482,10 +433,7 @@ bombs”是一个Linux可执行程序，包含了5个阶段（或关卡）。炸
 <li>由
 <code>0x401204 &lt;+76&gt;: mov $0x40278f,%esi</code>语句可知目标字符串的地址，打印内容可得：</li>
 </ul>
-<figure>
-<img src="17.png" alt="目标字符串内容">
-<figcaption aria-hidden="true">目标字符串内容</figcaption>
-</figure>
+<p><img src="17.png" alt="目标字符串内容"></p>
 <ul>
 <li>再分析中间对字符串的操作部分。先将输入字符串存入 <code>%rbx</code>
 中，然后通过指令 <code>movzbl (%rbx,%rax,1),%edx</code>
@@ -510,10 +458,7 @@ bombs”是一个Linux可执行程序，包含了5个阶段（或关卡）。炸
 6，即字符串操作完毕。</li>
 <li>打印 <code>0x4027e0</code>上的内容：</li>
 </ul>
-<figure>
-<img src="18.png" alt="密钥内容">
-<figcaption aria-hidden="true">密钥内容</figcaption>
-</figure>
+<p><img src="18.png" alt="密钥内容"></p>
 <ul>
 <li><p>分析可得，该阶段是在 <code>0x4027e0</code> 处挑选第
 <code>%rdx</code>
@@ -525,14 +470,8 @@ bombs”是一个Linux可执行程序，包含了5个阶段（或关卡）。炸
 <code>MFCDHG</code> 。</p></li>
 <li><p>简述一下<code>phase_6</code>和<code>secret_phase</code>，两者都涉及到对自定义结构体的操作，<code>phase_6</code>是对链表按照数据大小进行重排，而<code>secret_phase</code>是一个二叉搜索树。</p></li>
 </ul>
-<figure>
-<img src="19.png" alt="答案汇总">
-<figcaption aria-hidden="true">答案汇总</figcaption>
-</figure>
-<figure>
-<img src="20.png" alt="通过截图">
-<figcaption aria-hidden="true">通过截图</figcaption>
-</figure>
+<p><img src="19.png" alt="答案汇总"></p>
+<p><img src="20.png" alt="通过截图"></p>
 
     </div>
     
@@ -548,7 +487,7 @@ bombs”是一个Linux可执行程序，包含了5个阶段（或关卡）。炸
     <div id="footer-wrap">
         <div>
             &copy;
-            2023 - 2024 Yokumi的个人博客
+            2023 - 2024 YokumiのBlog
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>

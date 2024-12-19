@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title> | Yokumi的个人博客</title>
+    <title>计算机导论与程序设计复习 | YokumiのBlog</title>
     <meta name="author" content="Yokumi" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -68,7 +68,7 @@
         <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
     <nav id="desktop-menu">
         <a class="title" href="/blog/">
-            <span>YOKUMI的个人博客</span>
+            <span>YOKUMIのBLOG</span>
         </a>
         
         <a href="/blog/">
@@ -100,7 +100,7 @@
     <nav id="mobile-menu">
         <div class="title" @click="showMenuItems = !showMenuItems">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;YOKUMI的个人博客</span>
+            <span>&emsp;YOKUMIのBLOG</span>
         </div>
         <transition name="slide">
             <div class="items" v-show="showMenuItems">
@@ -161,29 +161,52 @@
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
             <div class="article">
     <div>
-        <h1></h1>
+        <h1>计算机导论与程序设计复习</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2024/12/17
+            2024/12/10
         </span>
         
+        <span class="category">
+            <a href="/blog/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                计算机基础
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" style="color: #00a596">
+                    计算机基础
+                </a>
+            </span>
+            
+        </span>
         
     </div>
     
     <div class="content" v-pre>
-        <h1 id="计算机导论与程序设计复习">计算机导论与程序设计复习</h1>
-<h2 id="一程序语言概述">一、程序语言概述</h2>
+        <h2 id="一程序语言概述">一、程序语言概述</h2>
 <ul>
-<li>可编程<img src="/var/folders/d4/s_49dbq10qs6rlp1jvgzv4hh0000gn/T/images/Wondershare%20PDFelement%202024-12-17%2000.17.33.png" alt="Wondershare PDFelement 2024-12-17 00.17.33"></li>
+<li>可编程<img src="可编程.png"></li>
 <li><strong>计算机信息处理本质</strong>是:
 接收输入的数据、对输入的数据进行加工和处理、产生结果并输出。</li>
 <li>程序可以预先存储在计算机中调度运行。计算机的操作是在程序的控制下进行的。</li>
 <li>可编程结构、图灵机都是计算机模型。</li>
-<li>冯诺依曼机<img src="/var/folders/d4/s_49dbq10qs6rlp1jvgzv4hh0000gn/T/images/Wondershare%20PDFelement%202024-12-17%2000.20.32.png" alt="Wondershare PDFelement 2024-12-17 00.20.32"></li>
+<li>冯诺依曼机</li>
 <li>程序的运行就是不断地取指令、分析指令、执行指令的过程，这3个步骤均由控制单元来控制。控制单元取指令、分析指令，产生操作控制信号发给输入输出设备、运算部件或者主存，完成指令的执行。</li>
 <li><strong>指令</strong>由“0”和“1”的二进制码组成
 ,是指挥计算机工作的命令，是计算机<strong><em>唯一可以直接识别</em></strong>的语言；</li>
@@ -196,7 +219,14 @@
 <li><strong>过程化的程序设计</strong>即是实现某一计算的操作过程和操作步骤，然后用编程语言来描述这些操作过程和步骤。</li>
 <li><strong>程序要素</strong>：数据与运算表达式、输入输出、控制结构、子程序(函数)</li>
 <li><strong>C编程活动</strong>：编辑程序-编译程序-链接程序-运行程序</li>
-<li></li>
+</ul>
+<h2 id="二程序设计初步数据类型常量变量">二、程序设计初步：数据类型、常量、变量</h2>
+<ul>
+<li>最小的存储单元是<strong>位</strong>（bit）</li>
+<li><strong>字</strong>
+（word）是设计计算机时运算单元给定的整数运算的数据通路的宽度。因此，计算机中每个数据的二进制位数都是固定长度的。</li>
+<li>汉字数字化<img src="汉字数字化.png"></li>
+<li>数据类型包括两层含义：定义了值的集合(属于该类型的数据能够<strong>取值的范围</strong>）以及能应用于这些数值上的操作集合（<strong>数据操作</strong>）。</li>
 </ul>
 
     </div>
@@ -213,7 +243,7 @@
     <div id="footer-wrap">
         <div>
             &copy;
-            2023 - 2024 Yokumi的个人博客
+            2023 - 2024 YokumiのBlog
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
