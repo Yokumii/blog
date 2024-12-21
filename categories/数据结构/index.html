@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title>图论题型 | YokumiのBlog</title>
+    <title>Categories: 数据结构 | YokumiのBlog</title>
     <meta name="author" content="Yokumi" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -42,10 +42,6 @@
 
 
 <script src="/blog/js/lib/preview.js"></script>
-
-
-
-
 
 
 
@@ -159,20 +155,25 @@
 </transition>
 
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div class="article">
-    <div>
-        <h1>图论题型</h1>
-    </div>
-    <div class="info">
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/12/17
+            <div id="archives">
+    
+    <div class="categories-tags">
+        
+        
+        
+        <span>
+            <a href="/blog/categories/%E7%BE%A4%E8%AE%BA/" style="background: #00a596">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                群论
+            </a>
         </span>
         
-        <span class="category">
-            <a href="/blog/categories/%E5%9B%BE%E8%AE%BA/">
+        
+        
+        <span>
+            <a href="/blog/categories/%E5%9B%BE%E8%AE%BA/" style="background: #ffa2c4">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -181,130 +182,80 @@
         </span>
         
         
-        <span class="tags">
-            <span class="icon">
-                <i class="fa-solid fa-tags fa-fw"></i>
-            </span>
-            
-            
-            <span class="tag">
-                
-                <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #ffa2c4">
-                    图论
-                </a>
-            </span>
-            
+        
+        <span>
+            <a href="/blog/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                数据结构
+            </a>
         </span>
+        
+        
+        
+        
+        
+        <span>
+            <a href="/blog/categories/CSAPP/" style="background: #00a596">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                CSAPP
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/blog/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" style="background: #ffa2c4">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                计算机基础
+            </a>
+        </span>
+        
         
     </div>
     
-    <div class="content" v-pre>
-        <h1 id="10-1-1-度序列可简单图化"><a href="#10-1-1-度序列可简单图化" class="headerlink" title="10.1.1 度序列可简单图化"></a>10.1.1 度序列可简单图化</h1><blockquote>
-<p><strong>可简单图化的充要条件</strong>：<img src="Havel定理.png" alt></p>
-<p><strong>例题</strong>：<img src="可简单图化例题.png" alt></p>
-<blockquote>
-<p><strong>解法</strong>：每次度序列按非递增顺序排列，删除度最大的节点，更新其他节点的度，重新排列，继续重复上述过程。有2种不合理的情况：<br>（1）某次对剩下序列排序后，最大的度数（设为d1）超过了剩下的顶点数；<br>（2）对最大度数后面的d1个数各减1后，出现了负数。</p>
-</blockquote>
-<p><strong>应用</strong>：<strong>Frogs’ Neighborhood</strong></p>
-<blockquote>
-<p><strong>Description</strong></p>
-<blockquote>
-<p>未名湖附近共$N$个大小湖泊$L_1, L_2, \cdots, L_n$(其中包括未名湖)，每个湖泊$L_i$里住着一只青蛙$F_i(1 \le i \le N)$。如果湖泊$L_i$和$L_j$之间有水路相连，则青蛙$F_i$和$F_j$互称为邻居。现在已知每只青蛙的邻居数目$x_1, x_2, \cdots, x_n$，请你给出每两个湖泊之间的相连关系。</p>
-</blockquote>
-<p><strong>Input</strong></p>
-<blockquote>
-<p>第一行是测试数据的组数$T(0 \le T \le 20)$。每组数据包括两行，第一行是整数$N(2 &lt; N &lt; 10)$，第二行是$N$个整数，$x_1, x_2,\cdots, x_n(0 \le x_i \le N)$。</p>
-</blockquote>
-<p><strong>Output</strong></p>
-<blockquote>
-<p>对输入的每组测试数据，如果不存在可能的相连关系，输出”NO”。否则输出”YES”，并用$N\times N$的矩阵表示湖泊间的相邻关系，即如果湖泊$i$与湖泊$j$之间有水路相连，则第$i$行的第$j$个数字为$1$，否则为$0$。每两个数字之间输出一个空格。如果存在多种可能，只需给出一种符合条件的情形。相邻两组测试数据之间输出一个空行。</p>
-</blockquote>
-<p><strong>Source</strong></p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="http://poj.org/searchproblem?field=source&amp;key=POJ+Monthly--2004.05.15+Alcyone%40pku">POJ Monthly—2004.05.15 Alcyone@pku</a></p>
-</blockquote>
-<p><strong>参考代码</strong></p>
-</blockquote>
-</blockquote>
-<pre><code class="lang-c++">#include &lt;cstdio&gt;
-#include &lt;cstring&gt;
-#include &lt;iostream&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-
-struct node &#123;
-    int degree, id; // 顶点的度数和标号
-&#125; v[20];
-
-int map[20][20];
-
-bool cmp(node a, node b) &#123;
-    return a.degree &gt; b.degree; // 按度数降序排序
-&#125;
-
-int main() &#123;
-    int t, n, flag;
-    scanf(&quot;%d&quot;, &amp;t);  // 输入测试数据组数
-    while (t--) &#123;
-        scanf(&quot;%d&quot;, &amp;n);  // 输入当前测试的顶点数量
-        for (int i = 0; i &lt; n; i++) &#123;
-            scanf(&quot;%d&quot;, &amp;v[i].degree);  // 输入每个顶点的度数
-            v[i].id = i;  // 记录顶点编号
-        &#125;
-
-        memset(map, 0, sizeof(map));  // 初始化邻接矩阵
-        flag = 1;
-
-        // 贪心算法：依次处理每个顶点，尝试连接符合要求的邻接顶点
-        for (int k = 0; k &lt; n; k++) &#123;
-            sort(v + k, v + n, cmp);  // 对剩余的顶点按度数排序
-            int i = v[k].id;  // 当前要连的顶点编号
-            int d1 = v[k].degree;  // 当前节点的度数
-
-            if (d1 &gt; n - k - 1) &#123;  // 如果当前节点的度数大于剩余顶点数，无法构图
-                flag = 0;
-                break;
-            &#125;
-
-            // 从当前顶点开始，逐步连接其邻居，并减少相应邻居的度数
-            for (int r = 1; r &lt;= d1 &amp;&amp; flag; r++) &#123;
-                int j = v[k + r].id;  // 当前要连接的顶点编号
-                if (v[k + r].degree &lt;= 0) &#123;  // 如果有度数为负的节点，说明构图失败
-                    flag = 0;
-                    break;
-                &#125;
-                v[k + r].degree--;  // 减少邻居的度数
-                map[i][j] = map[j][i] = 1;  // 在邻接矩阵中标记连接
-            &#125;
-        &#125;
-
-        if (flag) &#123;
-            printf(&quot;YES\n&quot;);
-            // 输出邻接矩阵
-            for (int i = 0; i &lt; n; i++) &#123;
-                for (int j = 0; j &lt; n; j++) &#123;
-                    if (j) printf(&quot; &quot;);
-                    printf(&quot;%d&quot;, map[i][j]);
-                &#125;
-                printf(&quot;\n&quot;);
-            &#125;
-        &#125; else &#123;
-            printf(&quot;NO\n&quot;);
-        &#125;
-
-        if (t) printf(&quot;\n&quot;);  // 如果不是最后一组数据，输出空行
-    &#125;
-    return 0;
-&#125;
-</code></pre>
-<h1 id="10-1-2"><a href="#10-1-2" class="headerlink" title="10.1.2"></a>10.1.2</h1>
+    <div class="timeline">
+        <div class="timeline-tail"></div>
+        <div class="timeline-content">
+            <div class="item-time">2024/12/20</div>
+            <a href="/blog/2024/12/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84Review/">
+                <h3>数据结构Review</h3>
+            </a>
+            <div class="info">
+                
+                <span class="category">
+                    <a href="/blog/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="icon">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </span>
+                        数据结构
+                    </a>
+                </span>
+                
+                
+                <span class="tags">
+                    <span class="icon">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </span>
+                    
+                    
+                    <span class="tag">
+                        
+                        <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="color: #00a596">
+                            数据结构
+                        </a>
+                    </span>
+                    
+                </span>
+                
+            </div>
+        </div>
     </div>
-    
-    
-    
-    
-    
-    
     
 </div>
 
@@ -332,12 +283,6 @@ int main() &#123;
         
     </div>
     <script src="/blog/js/main.js"></script>
-    
-    
-
-
-
-
     
 </body>
 </html>
