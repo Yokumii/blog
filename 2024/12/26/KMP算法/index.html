@@ -213,7 +213,7 @@
 </blockquote>
 <p><span class="math display">\[
 \left.{next[j]=}\left\{\begin{array}{ll}
-\mathbf{0} &amp; \text{当 j=1 时(代表下一趟比较}\mathrm{i=i+1,j=1}\}\\\\
+\mathbf{0} &amp; \text{当 j=1 时(代表下一趟比较}\mathrm{i=i+1,j=1})\\\\
 \mathbf{max\{k\mid1&lt;k&lt;j}\text{且前k -
 1个元素和后k-1个元素一致}\}&amp;\text{此集合不为空时,下一趟比较i = i ,j
 = k}\\\\
@@ -229,6 +229,34 @@
 <p>前缀：除最后一个字符外，一个字符串的全部头部组合；</p>
 <p>后缀：除第一个字符外，一个字符串全部的尾部组合；所以，<code>"aaa"</code>的公共前缀和长度为2。</p>
 </blockquote>
+<pre class="c"><code>void GetNext(const char *T, int *next) &#123;
+    int j = 1, k = 0; // j 表示模式串位置, k 是前缀长度
+    next[1] = 0;      // 初始化 next 数组
+    while (j &lt; strlen(T)) &#123;
+        if (k == 0 || T[j] == T[k]) &#123;
+            j++;
+            k++;
+            next[j] = k; // 更新 next[j]
+        &#125; else &#123;
+            k = next[k]; // 回退
+        &#125;
+    &#125;
+&#125;</code></pre>
+<h2 id="nextval数组">nextval数组</h2>
+<blockquote>
+<p><strong>引入原因</strong>：next数组中，前后两个相邻的字母如果相同，在匹配过程中遇到需要回退的情况，可以跳过回退到该字母。</p>
+</blockquote>
+<p><span class="math display">\[
+\begin{array}
+nextval[1] &amp; = 0\\
+nextval[i] &amp; = \left\{\begin{array}{ll}
+nextval[i] = nextval[next[i]] &amp; \text{当$Pattern_i =
+Pattern_{next[i]}$时}\\\\
+nextval[i] = next[i] &amp; \text{当$Pattern_i \ne
+Pattern_{next[i]}$时}\end{array}\right.
+\end{array}
+\]</span></p>
+<pre class="c"><code></code></pre>
 
     </div>
     
