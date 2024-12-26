@@ -189,7 +189,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="color: #03a9f4">
+                <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="color: #ffa2c4">
                     数据结构
                 </a>
             </span>
@@ -199,16 +199,20 @@
     </div>
     
     <div class="content" v-pre>
-        <h2 id="Chapter4-串"><a href="#Chapter4-串" class="headerlink" title="Chapter4 串"></a>Chapter4 串</h2><h3 id="4-1-串的基本操作"><a href="#4-1-串的基本操作" class="headerlink" title="4.1 串的基本操作"></a>4.1 串的基本操作</h3><pre><code class="lang-c">Concat(&amp;T, S1, S2); // 用T返回由S1和S2连接而成的新串两串
+        <h2 id="chapter4-串">Chapter4 串</h2>
+<h3 id="串的基本操作">4.1 串的基本操作</h3>
+<pre class="c"><code>Concat(&amp;T, S1, S2); // 用T返回由S1和S2连接而成的新串两串
 SubString(&amp;Sub, S, pos, len); // 用Sub返回S字符串第pos个位置开始的长度为len的子串
 StrCompare(S, T); // 两串比较S &gt; T，返回值 &gt; 0；S = T，返回值 = 0；S &lt; T，返回值 &lt; 0；
 Index(S, T, pos); // 在S中第pos个位置开始后的部分找到与T相同的子串，返回第一次出现的位置，未找到则返回 0
 Replace(&amp;S, T, V); // 用V替换S中与T相等的不重叠子串
 StrInsert(&amp;S, pos, T); // 在S的第pos个位置前插入T
-StrDelete(&amp;S, pos, len); // 在S中的第pos个位置开始删除长度为len的子串
-</code></pre>
-<h3 id="4-2-串的模式匹配算法"><a href="#4-2-串的模式匹配算法" class="headerlink" title="4.2 串的模式匹配算法"></a>4.2 串的模式匹配算法</h3><h4 id="4-2-1-简单模式匹配算法Brute-Force"><a href="#4-2-1-简单模式匹配算法Brute-Force" class="headerlink" title="4.2.1 简单模式匹配算法Brute Force"></a>4.2.1 简单模式匹配算法Brute Force</h4><p>逐个遍历字符串的每个字母，并逐个检查从它开始的长为len个的字符是否匹配；</p>
-<pre><code class="lang-c">int Index(SString S, SString T, int pos) &#123;
+StrDelete(&amp;S, pos, len); // 在S中的第pos个位置开始删除长度为len的子串</code></pre>
+<h3 id="串的模式匹配算法">4.2 串的模式匹配算法</h3>
+<h4 id="简单模式匹配算法brute-force">4.2.1 简单模式匹配算法Brute
+Force</h4>
+<p>逐个遍历字符串的每个字母，并逐个检查从它开始的长为len个的字符是否匹配；</p>
+<pre class="c"><code>int Index(SString S, SString T, int pos) &#123;
     i = pos;  j = 1;
     while (i &lt;= S[0] &amp;&amp; j &lt;= T[0]) &#123;
         if (S[i] == T[j]) &#123; 
@@ -225,20 +229,37 @@ StrDelete(&amp;S, pos, len); // 在S中的第pos个位置开始删除长度为le
     if (j &gt; T[0]) 
         return i-T[0];
     else return 0;
-&#125; // Index
-</code></pre>
-<p>最好情况下平均时间复杂度为$O(m + n)$，最坏情况下为$O(m * n)$。</p>
-<h4 id="4-2-2-KMP算法"><a href="#4-2-2-KMP算法" class="headerlink" title="4.2.2 KMP算法"></a>4.2.2 KMP算法</h4><p>见<a target="_blank" rel="noopener" href="https://yokumii.github.io/blog/2024/12/26/KMP%E7%AE%97%E6%B3%95/">KMP算法</a>。</p>
-<h2 id="Chapter7-图"><a href="#Chapter7-图" class="headerlink" title="Chapter7 图"></a>Chapter7 图</h2><h3 id="7-1-一些基本概念："><a href="#7-1-一些基本概念：" class="headerlink" title="7.1 一些基本概念："></a>7.1 一些基本概念：</h3><p><img src="路.png" alt><br><img src="连通.png" alt><br><img src="强连通.png" alt><br><img src="连通分量.png" alt><br><img src="子图.png" alt></p>
-<h3 id="7-2-图的基本存储结构"><a href="#7-2-图的基本存储结构" class="headerlink" title="7.2 图的基本存储结构"></a>7.2 图的基本存储结构</h3><p><img src="图的存储结构比较.png" alt><br><img src="十字表法.png" alt></p>
-<h3 id="7-3-最小生成树"><a href="#7-3-最小生成树" class="headerlink" title="7.3 最小生成树"></a>7.3 最小生成树</h3><p><img src="最小生成树.png" alt></p>
-<h3 id="7-4-拓扑排序"><a href="#7-4-拓扑排序" class="headerlink" title="7.4 拓扑排序"></a>7.4 拓扑排序</h3><h4 id="7-4-1-无前驱的顶点优先算法"><a href="#7-4-1-无前驱的顶点优先算法" class="headerlink" title="7.4.1 无前驱的顶点优先算法"></a>7.4.1 无前驱的顶点优先算法</h4><p><img src="无前驱的顶点优先算法.png" alt></p>
-<h4 id="7-4-2-无后继的顶点优先"><a href="#7-4-2-无后继的顶点优先" class="headerlink" title="7.4.2 无后继的顶点优先"></a>7.4.2 无后继的顶点优先</h4><p><img src="无后继的顶点优先.png" alt></p>
-<h3 id="7-5-关键路径"><a href="#7-5-关键路径" class="headerlink" title="7.5 关键路径"></a>7.5 关键路径</h3><h4 id="7-5-1-AOE网"><a href="#7-5-1-AOE网" class="headerlink" title="7.5.1 AOE网"></a>7.5.1 AOE网</h4><p><img src="AOE网.png" alt><br><img src="AOE网2.png" alt></p>
-<h4 id="7-5-2-关键术语"><a href="#7-5-2-关键术语" class="headerlink" title="7.5.2 关键术语"></a>7.5.2 关键术语</h4><p><img src="AOE网关键概念.png" alt></p>
-<h4 id="7-5-3-求解方法"><a href="#7-5-3-求解方法" class="headerlink" title="7.5.3 求解方法"></a>7.5.3 求解方法</h4><ol>
-<li>求解时间</li>
-</ol>
+&#125; // Index</code></pre>
+<p>最好情况下平均时间复杂度为<span class="math inline">\(O(m +
+n)\)</span>，最坏情况下为<span class="math inline">\(O(m *
+n)\)</span>。<br>
+#### 4.2.2 KMP算法<br>
+见<a target="_blank" rel="noopener" href="https://yokumii.github.io/blog/2024/12/26/KMP%E7%AE%97%E6%B3%95/">KMP算法</a>。</p>
+<h2 id="chapter7-图">Chapter7 图</h2>
+<h3 id="一些基本概念">7.1 一些基本概念：</h3>
+<p><img src="路.png"><br>
+<img src="连通.png"><br>
+<img src="强连通.png"><br>
+<img src="连通分量.png"><br>
+<img src="子图.png"><br>
+### 7.2 图的基本存储结构<br>
+<img src="图的存储结构比较.png"><br>
+<img src="十字表法.png"></p>
+<h3 id="最小生成树">7.3 最小生成树</h3>
+<p><img src="最小生成树.png"><br>
+### 7.4 拓扑排序<br>
+#### 7.4.1 无前驱的顶点优先算法<br>
+<img src="无前驱的顶点优先算法.png"><br>
+#### 7.4.2 无后继的顶点优先<br>
+<img src="无后继的顶点优先.png"><br>
+### 7.5 关键路径<br>
+#### 7.5.1 AOE网<br>
+<img src="AOE网.png"><br>
+<img src="AOE网2.png"><br>
+#### 7.5.2 关键术语<br>
+<img src="AOE网关键概念.png"><br>
+#### 7.5.3 求解方法<br>
+1. 求解时间</p>
 
     </div>
     
