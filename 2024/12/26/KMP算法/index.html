@@ -189,14 +189,14 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="color: #ff7d73">
+                <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="color: #ffa2c4">
                     数据结构
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E7%AE%97%E6%B3%95/" style="color: #ffa2c4">
+                <a href="/blog/tags/%E7%AE%97%E6%B3%95/" style="color: #03a9f4">
                     算法
                 </a>
             </span>
@@ -256,62 +256,11 @@ nextval[i] = next[i] &amp; \text{当$Pattern_i \ne
 Pattern_{next[i]}$时}\end{array}\right.
 \end{array}
 \]</span></p>
-<p>```c<br>
-void GetNextVal(const char <em>T, int </em>nextval) {<br>
-int j = 1, k = 0; // j 表示模式串位置, k 是前缀长度<br>
-nextval[1] = 0; // 初始化 nextval 数组</p>
-<pre><code>while (j &lt; strlen(T)) &#123;
-    if (k == 0 || T[j] == T[k]) &#123;
-        j++;
-        k++;
-        if (T[j] != T[k]) &#123;
-            nextval[j] = k; // 当 T[j] ≠ T[next[j]] 时，直接赋值
-        &#125; else &#123;
-            nextval[j] = nextval[k]; // 当 T[j] == T[next[j]] 时，优化跳跃
-        &#125;
-    &#125; else &#123;
-        k = nextval[k]; // 回退
-    &#125;
-&#125;</code></pre>
-<p>}```</p>
-<h1 id="示例">示例</h1>
-<p><img src="KMP.png"></p>
+<p><code>c void GetNextVal(const char *T, int *nextval) &#123;     int j = 1, k = 0; // j 表示模式串位置, k 是前缀长度     nextval[1] = 0;   // 初始化 nextval 数组     while (j &lt; strlen(T)) &#123;         if (k == 0 || T[j] == T[k]) &#123;             j++;             k++;             if (T[j] != T[k]) &#123;                 nextval[j] = k; // 当 T[j] ≠ T[next[j]] 时，直接赋值             &#125; else &#123;                 nextval[j] = nextval[k]; // 当 T[j] == T[next[j]] 时，优化跳跃             &#125;         &#125; else &#123;             k = nextval[k]; // 回退         &#125;     &#125; &#125;</code><br>
+# 示例<br>
+<img src="KMP.png"></p>
 <h1 id="完整代码">完整代码</h1>
-<p>```c<br>
-int Index_KMP(const char <em>S, const char </em>T, int pos) {<br>
-int nextval[100]; // 假设模式串长度不超过 100<br>
-GetNextVal(T, nextval); // 生成 nextval 数组<br>
-int i = pos; // 主串的当前指针<br>
-int j = 1; // 模式串的当前指针<br>
-printf("i");<br>
-while (i &lt;= strlen(S) &amp;&amp; j &lt;= strlen(T)) {<br>
-printf("%df (j == 0 || S[i - 1] == T[j - 1]) {<br>
-i++;<br>
-j++;<br>
-} else {<br>
-j = nextval[j]; // 模式串向右移动<br>
-}<br>
-}<br>
-if (j &gt; strlen(T)) {<br>
-return i - strlen(T); // 匹配成功，返回匹配位置<br>
-} else {<br>
-return 0; // 匹配失败<br>
-}<br>
-}<br>
-int main() {<br>
-const char S[] = "abcaacabcab"; // 主串<br>
-const char T[] = "abcab"; // 模式串<br>
-printf("主串: %s", S);<br>
-printf("模式串: %s", T);<br>
-printf("匹配过程:");<br>
-int pos = Index_KMP(S, T, 1); // 从第一个字符开始匹配<br>
-if (pos &gt; 0) {<br>
-printf("匹配成功，位置: %d", pos);<br>
-} else {<br>
-printf("匹配失败");<br>
-}<br>
-return 0;<br>
-}```</p>
+<p><code>c int Index_KMP(const char *S, const char *T, int pos) &#123;     int nextval[100]; // 假设模式串长度不超过 100     GetNextVal(T, nextval); // 生成 nextval 数组     int i = pos; // 主串的当前指针     int j = 1;   // 模式串的当前指针     printf("i\tj\n");     while (i &lt;= strlen(S) &amp;&amp; j &lt;= strlen(T)) &#123;         printf("%d\t%d\n", i, j); // 输出当前的 i 和 j 值          if (j == 0 || S[i - 1] == T[j - 1]) &#123;             i++;             j++;         &#125; else &#123;             j = nextval[j]; // 模式串向右移动         &#125;     &#125;     if (j &gt; strlen(T)) &#123;         return i - strlen(T); // 匹配成功，返回匹配位置     &#125; else &#123;         return 0; // 匹配失败     &#125; &#125; int main() &#123;     const char S[] = "abcaacabcab"; // 主串     const char T[] = "abcab";       // 模式串     printf("主串: %s\n", S);     printf("模式串: %s\n", T);     printf("匹配过程:\n");     int pos = Index_KMP(S, T, 1); // 从第一个字符开始匹配     if (pos &gt; 0) &#123;         printf("匹配成功，位置: %d\n", pos);     &#125; else &#123;         printf("匹配失败\n");     &#125;     return 0; &#125;</code></p>
 
     </div>
     
