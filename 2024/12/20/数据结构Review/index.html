@@ -189,7 +189,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="color: #ffa2c4">
+                <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="color: #00bcd4">
                     数据结构
                 </a>
             </span>
@@ -232,34 +232,34 @@ Force</h4>
 &#125; // Index</code></pre>
 <p>最好情况下平均时间复杂度为<span class="math inline">\(O(m +
 n)\)</span>，最坏情况下为<span class="math inline">\(O(m *
-n)\)</span>。<br>
-#### 4.2.2 KMP算法<br>
-见<a target="_blank" rel="noopener" href="https://yokumii.github.io/blog/2024/12/26/KMP%E7%AE%97%E6%B3%95/">KMP算法</a>。</p>
+n)\)</span>。</p>
+<h4 id="kmp算法">4.2.2 KMP算法</h4>
+<p>见<a target="_blank" rel="noopener" href="https://yokumii.github.io/blog/2024/12/26/KMP%E7%AE%97%E6%B3%95/">KMP算法</a>。</p>
 <h2 id="chapter7-图">Chapter7 图</h2>
 <h3 id="一些基本概念">7.1 一些基本概念：</h3>
 <p><img src="路.png"><br>
 <img src="连通.png"><br>
 <img src="强连通.png"><br>
 <img src="连通分量.png"><br>
-<img src="子图.png"><br>
-### 7.2 图的基本存储结构<br>
-<img src="图的存储结构比较.png"><br>
+<img src="子图.png"></p>
+<h3 id="图的基本存储结构">7.2 图的基本存储结构</h3>
+<p><img src="图的存储结构比较.png"><br>
 <img src="十字表法.png"></p>
 <h3 id="最小生成树">7.3 最小生成树</h3>
-<p><img src="最小生成树.png"><br>
-### 7.4 拓扑排序<br>
-#### 7.4.1 无前驱的顶点优先算法<br>
-<img src="无前驱的顶点优先算法.png"><br>
-#### 7.4.2 无后继的顶点优先<br>
-<img src="无后继的顶点优先.png"><br>
-### 7.5 关键路径<br>
-#### 7.5.1 AOE网<br>
-<img src="AOE网.png"><br>
-<img src="AOE网2.png"><br>
-#### 7.5.2 关键术语<br>
-<img src="AOE网关键概念.png"><br>
-#### 7.5.3 求解方法<br>
-希望求解关键路径，即源点到汇点最长的路径；</p>
+<p><img src="最小生成树.png"></p>
+<h3 id="拓扑排序">7.4 拓扑排序</h3>
+<h4 id="无前驱的顶点优先算法">7.4.1 无前驱的顶点优先算法</h4>
+<p><img src="无前驱的顶点优先算法.png"></p>
+<h4 id="无后继的顶点优先">7.4.2 无后继的顶点优先</h4>
+<p><img src="无后继的顶点优先.png"></p>
+<h3 id="关键路径">7.5 关键路径</h3>
+<h4 id="aoe网">7.5.1 AOE网</h4>
+<p><img src="AOE网.png"><br>
+<img src="AOE网2.png"></p>
+<h4 id="关键术语">7.5.2 关键术语</h4>
+<p><img src="AOE网关键概念.png"></p>
+<h4 id="求解方法">7.5.3 求解方法</h4>
+<p>希望求解关键路径，即源点到汇点最长的路径；</p>
 <ol type="1">
 <li>对于事件
 <ol type="1">
@@ -292,15 +292,17 @@ Min(下一个点最早发生时间 -
 <h4 id="构建步骤">9.2.1 构建步骤</h4>
 <p>（1）mid = (1 + n)/2 作为根节点，(1 + mid - 1)/2 作为它的左孩子，(mid
 + 1 + n)/2 作为右孩子；<br>
-（2）如此构建折半查找树；<br>
-#### 9.2.2 平均查找长度ASL<br>
-1. 成功ASL：待查找的节点在第<span class="math inline">\(x\)</span>层，需要比较的次数就是<span class="math inline">\(x\)</span>，加权求和即可；</p>
+（2）如此构建折半查找树；</p>
+<h4 id="平均查找长度asl">9.2.2 平均查找长度ASL</h4>
+<ol type="1">
+<li>成功ASL：待查找的节点在第<span class="math inline">\(x\)</span>层，需要比较的次数就是<span class="math inline">\(x\)</span>，加权求和即可；</li>
+</ol>
 <h3 id="二叉排序树">9.3 二叉排序树</h3>
 <h4 id="构建步骤-1">9.3.1 构建步骤</h4>
 <p>（1）给定序列，第一个节点作为根节点；<br>
-（2）如果比上一个节点小，则放在它的左子树；比上一个节点大，则放在它的右子树；<br>
-#### 9.3.2 调整（删除节点*p）<br>
-（1）p是叶子结点：修改双亲指针即可；<br>
+（2）如果比上一个节点小，则放在它的左子树；比上一个节点大，则放在它的右子树；</p>
+<h4 id="调整删除节点p">9.3.2 调整（删除节点*p）</h4>
+<p>（1）p是叶子结点：修改双亲指针即可；<br>
 （2）p只有左（右）孩子：用它左（右）孩子的指针代替它即可；<br>
 （3）p有两个孩子：用它的中序后继（或前驱）代替它；其实就是<strong>左子树中最右或者右子树中最左</strong>的节点代替它。</p>
 <h3 id="平衡二叉树">9.4 平衡二叉树</h3>
