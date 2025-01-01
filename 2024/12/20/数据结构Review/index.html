@@ -189,7 +189,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="color: #00bcd4">
+                <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="color: #00a596">
                     数据结构
                 </a>
             </span>
@@ -199,7 +199,45 @@
     </div>
     
     <div class="content" v-pre>
-        <h2 id="chapter4-串">Chapter4 串</h2>
+        <h2 id="chapter1-概论">Chapter1 概论</h2>
+<ul>
+<li>数据、数据元素、数据项、数据对象、数据结构等基本概念<img src="概论概念.png"><img src="概论概念2.png"><img src="概论概念3.png"></li>
+<li>逻辑结构，存储结构及数据运算的含义及其相互关系<img src="存储结构.png"><img src="相互关系.png"></li>
+<li>算法评价标准：正确性、可读性、健壮性、效率与存储量需求、支持分布式和并行处理的算法在大数据场景下更有优势。</li>
+</ul>
+<h2 id="chapter2-线性表">Chapter2 线性表</h2>
+<h3 id="链表">2.2链表</h3>
+<ul>
+<li>头节点的使用：头节点的指针域指向第一个数据节点的地址<img src="头节点.png"></li>
+</ul>
+<h2 id="chapter3-栈队列">Chapter3 栈、队列</h2>
+<h3 id="栈">3.1 栈</h3>
+<h4 id="顺序栈">3.1.1 顺序栈</h4>
+<ul>
+<li>非空栈中的栈顶指针<strong>top来指向栈顶元素的下一个位置</strong>；</li>
+<li>空栈时top = base，栈中元素的数量 = top - base；<br>
+#### 3.1.2 链栈</li>
+<li>链表指针方向是从栈顶指向栈底；</li>
+</ul>
+<h4 id="应用">3.1.3 应用</h4>
+<ul>
+<li>括弧匹配检验</li>
+<li>中缀表达式：左括号在栈外时优先级最高，在栈内时优先级很
+低，仅高于栈外的右括号；</li>
+<li>后缀表达式；<img src="中缀后缀转换.png"></li>
+<li>尾递归：递归调用出现在函数中的最后一行，并且没有任何局部变量参与最后一行代码的计算。此时支持“尾递归优化”的编程语言就可以在执行尾递归代码时不进行入栈操作；</li>
+</ul>
+<h3 id="队列">3.2 队列</h3>
+<h4 id="顺序队列">3.2.1 顺序队列</h4>
+<ul>
+<li>队空是front = rear =
+0；非空队列头指针始终指向队列头元素，而尾指针始终指向<strong>队列尾元素的下一个位置</strong>。</li>
+<li>循环队列：解决“假溢出”；判空采用：front ==
+rear；判满采用：少用一个元素空间，当队尾指针加1就会从后面赶上队头指针，这种情况下队满的条件是：(rear+1)
+% MAXSIZE == front；<br>
+#### 3.2.2 链队</li>
+</ul>
+<h2 id="chapter4-串">Chapter4 串</h2>
 <h3 id="串的基本操作">4.1 串的基本操作</h3>
 <pre class="c"><code>Concat(&amp;T, S1, S2); // 用T返回由S1和S2连接而成的新串两串
 SubString(&amp;Sub, S, pos, len); // 用Sub返回S字符串第pos个位置开始的长度为len的子串
@@ -232,9 +270,39 @@ Force</h4>
 &#125; // Index</code></pre>
 <p>最好情况下平均时间复杂度为<span class="math inline">\(O(m +
 n)\)</span>，最坏情况下为<span class="math inline">\(O(m *
-n)\)</span>。</p>
-<h4 id="kmp算法">4.2.2 KMP算法</h4>
-<p>见<a target="_blank" rel="noopener" href="https://yokumii.github.io/blog/2024/12/26/KMP%E7%AE%97%E6%B3%95/">KMP算法</a>。</p>
+n)\)</span>。<br>
+#### 4.2.2 KMP算法<br>
+见<a target="_blank" rel="noopener" href="https://yokumii.github.io/blog/2024/12/26/KMP%E7%AE%97%E6%B3%95/">KMP算法</a>。</p>
+<h2 id="chapter5-数组与广义表">Chapter5 数组与广义表</h2>
+<h3 id="数组">5.1 数组</h3>
+<ul>
+<li>数组是线性表的扩展，其数据元素本身也是线性表；</li>
+<li>数组中各元素都具有统一的类型；<br>
+####<br>
+### 5. 2 矩阵的压缩存储</li>
+<li>目的是为了节省空间；<br>
+#### 5.2.1 对称矩阵<br>
+#### 5.2.2 带状矩阵<br>
+#### 5.2.3 随机稀疏矩阵<br>
+（1）顺序存储方法：三元表法<br>
+（2）链式存储方法：十字链表法<br>
+在行、列两个方向上，将非零元素链接在一起。克服三元组表在矩阵的非零元素位置或个数经常变动时的使用不便。<img src="十字链表法.png"><br>
+### 5.3 广义表</li>
+<li>广义表是由零个或多个原子或者子表组成的有限序列；
+<ul>
+<li>原子：逻辑上不能再分解的元素；</li>
+<li>子表：作为广义表中元素的广义表；</li>
+</ul></li>
+<li>广义表中的元素全部为原子时即为线性表，线性表是广义表的特例，广义表是线性表的推广；</li>
+<li>一般用大写字母表示广义表的名称，用小写字母表示原子；</li>
+<li>表的长度：表中的（第一层）元素个数；</li>
+<li>表的深度：表中元素的最深嵌套层数；</li>
+<li>表头：表中的第一个元素；</li>
+<li>表尾：除第一个元素外，剩余元素<strong>构成的广义表</strong>。
+任何一个非空广义表的表尾必定仍为广义表；</li>
+</ul>
+<h2 id="chapter-6-树和二叉树">Chapter 6 树和二叉树</h2>
+<h3 id="树">6.1 树</h3>
 <h2 id="chapter7-图">Chapter7 图</h2>
 <h3 id="一些基本概念">7.1 一些基本概念：</h3>
 <p><img src="路.png"><br>
@@ -333,6 +401,29 @@ Min(下一个点最早发生时间 -
 </blockquote>
 <h3 id="b-树">9.5 B-树</h3>
 <p><img src="B-树.png"></p>
+<h2 id="chapter-10-内部排序">Chapter 10 内部排序</h2>
+<h2 id="chapter-11-外部排序">Chapter 11 外部排序</h2>
+<h3 id="置换选择法">11.1 置换选择法</h3>
+<p>假设内存中用到的优先队列WA规模为<span class="math inline">\(5\)</span>，初始待排序文件FI：</p>
+<p><code>5, 20, 26, 46, 31, 25, 16, 51, 17, 28, 1</code></p>
+<p>文件放入内存工作区：<br>
+WA：<code>5,20,26,46,31</code>，第一个归并段：``；</p>
+<p>第一趟：<br>
+WA：<code>25,20,26,46,31</code>，第一个归并段：<code>5</code>；</p>
+<p>第二趟：<br>
+WA：<code>25,16,26,46,31</code>，第一个归并段：<code>5,20</code>；</p>
+<p>第三趟：（不能出最小的16，要出一个比20大的）<br>
+WA：<code>51,16,26,46,31</code>，第一个归并段：<code>5,20,25</code>；</p>
+<p>第四趟：<br>
+WA：<code>51,16,17,46,31</code>，第一个归并段：<code>5,20,25,26</code>；</p>
+<p>第五趟：<br>
+WA：<code>51,16,17,46,28</code>，第一个归并段：<code>5,20,25,26,31</code>；</p>
+<p>第六趟：<br>
+WA：<code>51,16,17,1,28</code>，第一个归并段：<code>5,20,25,26,31,46</code>；</p>
+<p>第七趟：<br>
+WA：<code>16,17,1,28</code>，第一个归并段：<code>5,20,25,26,31,46,51</code>；</p>
+<p>第八趟～第十一趟：（此时剩余待排序文件无法放入第一个归并段，生成第二个归并段）<br>
+第二个归并段：<code>1,16,17,28</code>；</p>
 
     </div>
     
@@ -348,7 +439,7 @@ Min(下一个点最早发生时间 -
     <div id="footer-wrap">
         <div>
             &copy;
-            2023 - 2024 YokumiのBlog
+            2023 - 2025 YokumiのBlog
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
