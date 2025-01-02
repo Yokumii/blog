@@ -189,7 +189,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="color: #00a596">
+                <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="color: #00bcd4">
                     数据结构
                 </a>
             </span>
@@ -278,7 +278,6 @@ n)\)</span>。<br>
 <ul>
 <li>数组是线性表的扩展，其数据元素本身也是线性表；</li>
 <li>数组中各元素都具有统一的类型；<br>
-####<br>
 ### 5. 2 矩阵的压缩存储</li>
 <li>目的是为了节省空间；<br>
 #### 5.2.1 对称矩阵<br>
@@ -303,13 +302,42 @@ n)\)</span>。<br>
 </ul>
 <h2 id="chapter-6-树和二叉树">Chapter 6 树和二叉树</h2>
 <h3 id="树">6.1 树</h3>
-<h2 id="chapter7-图">Chapter7 图</h2>
+<h3 id="二叉树">6.2 二叉树</h3>
+<h3 id="线索二叉树">6.3 线索二叉树</h3>
+<ul>
+<li>如果无左孩子，那利用左孩子指针指向直接前驱节点；如果无右孩子，那利用右孩子指针指向直接后继节点；</li>
+</ul>
+<h3 id="树和森林">6.4 树和森林</h3>
+<ul>
+<li>孩子兄弟链表表示法：左孩子，右兄弟；<br>
+#### 6.4.1 树转化为二叉树</li>
+</ul>
+<ol type="1">
+<li>在所有兄弟结点之间加一条连线；</li>
+<li>对每个结点，除了保留与其长子的连线外，去掉该结点与其他孩子的连线；</li>
+<li>以根为轴心将整棵树顺时针转45度；<br>
+特点：无右子树、左支是孩子、右支是兄弟；<br>
+#### 6.4.2 森林转化为二叉树</li>
+<li>先将森林的每一个树转化为二叉树；</li>
+<li>从后一棵树开始，将后一棵树作为前一棵树的右子；<br>
+#### 6.4.3 二叉树转化为树/森林</li>
+<li>把双亲节点的左孩子的右孩子、右孩子的右孩子、……和双亲节点连接起来；</li>
+<li>删除所有双亲节点与右孩子的连线；</li>
+</ol>
+<h4 id="树的遍历">6.4.4 树的遍历</h4>
+<p><img src="树的遍历.png"></p>
+<h4 id="森林的遍历">6.4.5 森林的遍历</h4>
+<ul>
+<li>先序遍历：逐棵先序遍历每棵子树/对应二叉树的先序遍历；</li>
+<li>中序遍历：逐棵中序遍历每棵子树/对应二叉树的中序遍历；</li>
+<li><h2 id="chapter7-图">Chapter7 图</h2>
 <h3 id="一些基本概念">7.1 一些基本概念：</h3>
-<p><img src="路.png"><br>
+<img src="路.png"><br>
 <img src="连通.png"><br>
 <img src="强连通.png"><br>
 <img src="连通分量.png"><br>
-<img src="子图.png"></p>
+<img src="子图.png"></li>
+</ul>
 <h3 id="图的基本存储结构">7.2 图的基本存储结构</h3>
 <p><img src="图的存储结构比较.png"><br>
 <img src="十字表法.png"></p>
@@ -400,14 +428,33 @@ Min(下一个点最早发生时间 -
 <p>调整方法：右孩子的左子树先右上旋，再左上旋；（和LR型刚好相反）<img src="RL.png"></p>
 </blockquote>
 <h3 id="b-树">9.5 B-树</h3>
-<p><img src="B-树.png"></p>
+<p>B-树是一种多叉平衡搜索树。</p>
+<p>对于<span class="math inline">\(m\)</span>叉树，要求：<br>
+* 每个节点最多有<span class="math inline">\(m\)</span>个分支，<span class="math inline">\(m-1\)</span>个元素；<br>
+* 根节点最少有<span class="math inline">\(2\)</span>个分支，<span class="math inline">\(1\)</span>个元素；<br>
+* 其他节点最少有<span class="math inline">\(\left \lceil \frac{m}{2}
+\right \rceil\)</span>个分支，<span class="math inline">\(\left \lceil
+\frac{m}{2} \right \rceil - 1\)</span>个节点；</p>
+<h4 id="b-树的构建和插入">9.5.1 B-树的构建和插入</h4>
+<ol type="1">
+<li>先查找到插入到位置进行插入；</li>
+<li>如果没有上溢出，无需调整；</li>
+<li>如果发生上溢出，将第<span class="math inline">\(\left \lceil
+\frac{m}{2} \right
+\rceil\)</span>个元素（中间元素）向上移动，两边分裂（直至不发生上溢出）；</li>
+</ol>
+<h4 id="b-树的删除">9.5.2 B-树的删除</h4>
+<p>B-树的根结点可以始终置于内存中；其余非叶结点放置在外存上，每一结点可作为一个读取单位（页/块）；<br>
+选取较大的阶次m，降低树的高度，减少外存访问次数；</p>
+<h3 id="b树">9.6 B+树</h3>
 <h2 id="chapter-10-内部排序">Chapter 10 内部排序</h2>
 <h2 id="chapter-11-外部排序">Chapter 11 外部排序</h2>
 <h3 id="置换选择法">11.1 置换选择法</h3>
-<p>假设内存中用到的优先队列WA规模为<span class="math inline">\(5\)</span>，初始待排序文件FI：</p>
+<p>意义是<strong>在内存工作区容量的限制下，获得尽可能长的初始归并段</strong>。<br>
+假设内存中用到的优先队列WA规模为<span class="math inline">\(5\)</span>，初始待排序文件FI：</p>
 <p><code>5, 20, 26, 46, 31, 25, 16, 51, 17, 28, 1</code></p>
 <p>文件放入内存工作区：<br>
-WA：<code>5,20,26,46,31</code>，第一个归并段：``；</p>
+WA：<code>5,20,26,46,31</code>；</p>
 <p>第一趟：<br>
 WA：<code>25,20,26,46,31</code>，第一个归并段：<code>5</code>；</p>
 <p>第二趟：<br>
@@ -424,6 +471,13 @@ WA：<code>51,16,17,1,28</code>，第一个归并段：<code>5,20,25,26,31,46</c
 WA：<code>16,17,1,28</code>，第一个归并段：<code>5,20,25,26,31,46,51</code>；</p>
 <p>第八趟～第十一趟：（此时剩余待排序文件无法放入第一个归并段，生成第二个归并段）<br>
 第二个归并段：<code>1,16,17,28</code>；</p>
+<h3 id="最佳归并树">11.2 最佳归并树</h3>
+<p>最佳归并树即<span class="math inline">\(k\)</span>叉(阶)哈夫曼树。设初始归并段为<span class="math inline">\(m\)</span>个，进行<span class="math inline">\(k-\)</span>路归并。<br>
+需要补充<span class="math inline">\(y\)</span>个虚段（用元素<span class="math inline">\(0\)</span>表示）：<span class="math inline">\((k -
+1) * x + k = m + y\)</span>。<br>
+注意虚段在画哈夫曼树之前先添加。</p>
+<h3 id="败者树">11.3 败者树</h3>
+<p>对于初始为升序的归并段进行多路归并，败者树中记录的冠军节点保存的是<strong>最小关键字所在的归并段号</strong>，分支节点保存的是失败者所在的归并段号。</p>
 
     </div>
     
