@@ -189,7 +189,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CSAPP/" style="color: #ff7d73">
+                <a href="/blog/tags/CSAPP/" style="color: #00a596">
                     CSAPP
                 </a>
             </span>
@@ -255,19 +255,20 @@
 </ul></li>
 <li><span class="math inline">\(double \rightarrow float\)</span>
 <ul>
-<li>能表达的范围变小，可能溢出为<span class="math inline">\(\infty\)</span>，并且精度降低，可能发生舍入；<br>
-<img src="4.png"><br>
-解答：</li>
+<li>能表达的范围变小，可能溢出为<span class="math inline">\(\infty\)</span>，并且精度降低，可能发生舍入；</li>
 </ul></li>
 </ul></li>
 </ul>
-<ol type="1">
-<li>x如果很大，(float)x会发生舍入；</li>
-<li>double表示范围大于int，所以能精确表示；</li>
-<li>同理2；</li>
-<li>(float)d会发生溢出或舍入；</li>
-<li>没问题，-f或者-d就是符号位取反即可；</li>
-</ol>
+<p><img src="4.png"><br>
+解答：<br>
+1. x如果很大，(float)x会发生舍入；<br>
+2. double表示范围大于int，所以能精确表示；<br>
+3. 同理2；<br>
+4. (float)d会发生溢出或舍入；<br>
+5. 没问题，-f或者-d就是符号位取反即可；</p>
+<ul>
+<li>同时，注意浮点数加法运算不满足结合律；</li>
+</ul>
 
     </div>
     
