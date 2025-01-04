@@ -199,8 +199,138 @@
     </div>
     
     <div class="content" v-pre>
-        
-
+        <h1 id="Word-Size-字长"><a href="#Word-Size-字长" class="headerlink" title="Word Size 字长"></a>Word Size 字长</h1><ul>
+<li>32位(bits)机器，字长为4Bytes(32/8)，寻址空间为$2^{32} = 4 * 2^{30} = 4GB$；</li>
+<li>内存中的管理方式如下，32位的机器最小连续字间隔4Byte，64位的机器最小连续字间隔8Byte，字节Byte是最基本存储单元；<img src="1.png" alt></li>
+</ul>
+<h1 id="数据表示"><a href="#数据表示" class="headerlink" title="数据表示"></a>数据表示</h1><ul>
+<li>int可以跨平台兼容，long和pointer一样：<br><img src="2.png" alt></li>
+</ul>
+<h1 id="字的存放问题"><a href="#字的存放问题" class="headerlink" title="字的存放问题"></a>字的存放问题</h1><ul>
+<li>大端法（高对低，最低有效字节在高低址）；</li>
+<li>小端法（低对低，最低有效字节在最前（低地址））</li>
+<li>以<code>int x = 0x01234567, &amp;x = 0x100</code>为例：</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Address</th>
+<th>0x100</th>
+<th>0x101</th>
+<th>0x102</th>
+<th>0x103</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Big Endian</td>
+<td>01</td>
+<td>23</td>
+<td>45</td>
+<td>67</td>
+</tr>
+<tr>
+<td>Little Endian</td>
+<td>67</td>
+<td>45</td>
+<td>23</td>
+<td>01</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="字的边界对齐问题"><a href="#字的边界对齐问题" class="headerlink" title="字的边界对齐问题"></a>字的边界对齐问题</h1><ul>
+<li>按边界对齐：（以32位机器为例，按字节编址，4个字节同时读写）<ul>
+<li>字地址：4的倍数；</li>
+<li>半字地址：2的倍数；</li>
+<li>字节地址：任意；</li>
+</ul>
+</li>
+<li>浪费了一些空间，但减少了访存次数；<br><img src="3.png" alt></li>
+</ul>
+<h1 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h1><h2 id="布尔运算"><a href="#布尔运算" class="headerlink" title="布尔运算"></a>布尔运算</h2><ul>
+<li>按位与，按位取反； </li>
+<li>$\sim 0x41(01000001) \rightarrow 10111110 = 0xBE$；</li>
+<li>$\sim 0x00\rightarrow 0xFF$；</li>
+<li>$0x69 \&amp; 0x55 \rightarrow 01101001 \&amp; 01010101 = 01000001$</li>
+</ul>
+<h2 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h2><ul>
+<li><code>||, &amp;&amp;, !</code>，注意与布尔运算区别，运算的结果只有0或1（运算结果只要不为0false，就是1true）；</li>
+</ul>
+<h2 id="移位运算"><a href="#移位运算" class="headerlink" title="移位运算"></a>移位运算</h2><ul>
+<li>只需注意算术右移左边填充符号位即可；</li>
+</ul>
+<h1 id="无符号数和有符号数的位级表示"><a href="#无符号数和有符号数的位级表示" class="headerlink" title="无符号数和有符号数的位级表示"></a>无符号数和有符号数的位级表示</h1><ul>
+<li>运算时，有符号数优先转化为无符号数；</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>关系表达式</th>
+<th>运算类型</th>
+<th>结果</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$0 == 0U$</td>
+<td>unsigned</td>
+<td>True</td>
+<td></td>
+</tr>
+<tr>
+<td>$-1 &lt; 0$</td>
+<td>signed</td>
+<td>True</td>
+<td></td>
+</tr>
+<tr>
+<td>$-1 &lt; 0U$</td>
+<td>unsigned</td>
+<td>False</td>
+<td>$-1 = 1\cdots 1_2 = U_{max} &gt; 0$</td>
+</tr>
+<tr>
+<td>$2147483647(2^{31} - 1) &gt; -2147483637 - 1$</td>
+<td>signed</td>
+<td>True</td>
+<td></td>
+</tr>
+<tr>
+<td>$2147483647U &gt; -2147483637 - 1$</td>
+<td>unsigned</td>
+<td>False</td>
+<td>$-2147483637 - 1 = T_{min} \rightarrow 1\cdots 0U = 2^{31} &gt; 2^{31} - 1$</td>
+</tr>
+<tr>
+<td>$2147483647 &gt; (int)2147483648U$</td>
+<td>signed</td>
+<td>True</td>
+<td>$(int)2147483648U = 1\cdots 0 = -2^{31}$</td>
+</tr>
+<tr>
+<td>$-1 &gt; -2$</td>
+<td>signed</td>
+<td>True</td>
+<td></td>
+</tr>
+<tr>
+<td>$(unsigned)-1 &gt; -2$</td>
+<td>unsigned</td>
+<td>True</td>
+<td>$(unsigned)-1 = U_{max}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>数据类型只决定读取方式，不改变存储方式(01串)；</li>
+<li>一些另外的注意点：<img src="4.png" alt><code>sizeof()</code>返回的类型为unsigned int，所以以下代码会导致死循环：<img src="5.png" alt></li>
+</ul>
+<h1 id="位扩展和位截断"><a href="#位扩展和位截断" class="headerlink" title="位扩展和位截断"></a>位扩展和位截断</h1><h2 id="Sign-Extension"><a href="#Sign-Extension" class="headerlink" title="Sign Extension"></a>Sign Extension</h2>
     </div>
     
     
