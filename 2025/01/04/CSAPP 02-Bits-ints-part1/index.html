@@ -189,7 +189,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CSAPP/" style="color: #ff7d73">
+                <a href="/blog/tags/CSAPP/" style="color: #ffa2c4">
                     CSAPP
                 </a>
             </span>
@@ -245,6 +245,34 @@
 </tr>
 </tbody>
 </table>
+<pre class="c"><code>#include &lt;stdio.h&gt;
+
+typedef unsigned char *pointer;
+
+void show_bytes(pointer start, size_t len)&#123; // 从数据的指针开始打印数据，即从低地址开始打印
+    size_t i;
+    for (i = 0; i &lt; len; i++)
+        printf(&quot;%p\t0x%.2x\n&quot;,start+i, start[i]);
+    printf(&quot;\n&quot;);
+&#125;
+
+int main(void) &#123;
+    int a = 15213; // 15213 = 00 00 3b 6d;
+    printf(&quot;int a = 15213;\n&quot;);
+    show_bytes((pointer) &amp;a, sizeof(int));
+    
+    int b = -15213;
+    printf(&quot;int b = -15213;\n&quot;);
+    show_bytes((pointer) &amp;b, sizeof(int));
+    
+    char s[6] = &quot;18213&quot;;
+    printf(&quot;string s = \&quot;18213\&quot;\n&quot;);
+    show_bytes((pointer) &amp;s, sizeof(s));
+    return 0;
+&#125;</code></pre>
+<ul>
+<li>注意对于字符数组，存储时每个字符按照小端法存储，所以表现出来的结果是整个字符串小端法和大端法没有区别；</li>
+</ul>
 <h1 id="字的边界对齐问题">字的边界对齐问题</h1>
 <ul>
 <li>按边界对齐：（以32位机器为例，按字节编址，4个字节同时读写）
