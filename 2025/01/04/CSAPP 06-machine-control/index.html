@@ -189,14 +189,14 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CSAPP/" style="color: #ff7d73">
+                <a href="/blog/tags/CSAPP/" style="color: #03a9f4">
                     CSAPP
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81/" style="color: #ffa2c4">
+                <a href="/blog/tags/%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81/" style="color: #ff7d73">
                     汇编代码
                 </a>
             </span>
@@ -270,7 +270,7 @@ END;</code></pre>
 <ul>
 <li>并非if，通过跳转表来实现，每一个分支被视为一个代码块，代码块的开头的地址被存放在跳转表中；<img src="5.png"></li>
 </ul>
-<pre class="c"><code>my_switch:
+<pre class="x86asm"><code>my_switch:
     movq %rax, %rcx
     cmpq $6, %rdi // x : 6
     ja .L8 // if x &gt; 6, goto default;
