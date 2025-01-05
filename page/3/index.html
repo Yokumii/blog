@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title>CSAPP 02-Bits-ints-part2 | YokumiのBlog</title>
+    <title>YokumiのBlog</title>
     <meta name="author" content="Yokumi" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -47,9 +47,7 @@
 
 
 
-
-
-
+<script src="/blog/js/lib/home.js"></script>
 
 <link rel="stylesheet" href="/blog/css/main.css" />
 
@@ -159,127 +157,120 @@
 </transition>
 
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div class="article">
-    <div>
-        <h1>CSAPP 02-Bits-ints-part2</h1>
+            <div id="home-head">
+    <div
+        id="home-background"
+        ref="homeBackground"
+        data-images="/blog/images/background.png"
+    ></div>
+    <div id="home-info" @click="homeClick">
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="info">
+            <div class="wrap">
+                <h1>YokumiのBlog</h1>
+                <h3>Here&#39;s an Yokumi...</h3>
+                <h5></h5>
+            </div>
+        </span>
     </div>
-    <div class="info">
+</div>
+<div
+    id="home-posts-wrap"
+    ref="homePostsWrap"
+    true
+>
+    <div id="home-posts">
+        
+
+<div class="post">
+    <a href="/blog/2024/11/03/9.1%20%E7%BE%A4%E8%AE%BAIntro/">
+        <h2 class="post-title">9.1 群论Intro</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/blog/categories/%E7%BE%A4%E8%AE%BA/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                群论
+            </a>
+        </span>
+        
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2025/1/4
-        </span>
-        
-        <span class="category">
-            <a href="/blog/categories/CSAPP/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                CSAPP
-            </a>
+            2024/11/3
         </span>
         
         
-        <span class="tags">
-            <span class="icon">
-                <i class="fa-solid fa-tags fa-fw"></i>
-            </span>
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
             
+            <p>群论的引入知识：二元运算等</p>
+
             
-            <span class="tag">
-                
-                <a href="/blog/tags/CSAPP/" style="color: #ffa2c4">
-                    CSAPP
-                </a>
-            </span>
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
             
+            <a href="/blog/tags/%E7%BE%A4%E8%AE%BA/" style="color: #03a9f4">群论</a>
         </span>
         
     </div>
-    
-    <div class="content" v-pre>
-        <h1 id="addition加法">Addition加法</h1>
-<ol type="1">
-<li>无符号数加法：<span class="math inline">\(s = UAdd_w(u,v) = (u +v)\%
-2^w\)</span>；结果寄存器会截断溢出的1位；
-<ol type="1">
-<li>溢出时，结果一定小于任何一个加数；</li>
-</ol></li>
-<li>有符号数加法：<span class="math inline">\(s = (int)((unsigned)u +
-(unsigned)v)\)</span>；
-<ol type="1">
-<li>正溢出：<span class="math inline">\(x + y \ge
-2^{w-1}\)</span>，截断后结果为<span class="math inline">\(x + y -
-2^w\)</span>；</li>
-<li>负溢出：<span class="math inline">\(x + y &lt;
-2^{w-1}\)</span>，截断后结果为<span class="math inline">\(x + y +
-2^w\)</span>；</li>
-<li>正 + 负：不可能溢出；</li>
-</ol></li>
-<li>用加法实现减法：<span class="math inline">\((A - B)_{\text{补}} =
-(A)_\text{补} + (-B)_\text{补}\)</span>
-<ol type="1">
-<li>如何求<span class="math inline">\((-B)_\text{补}\)</span><br>
-<span class="math inline">\((B)_\text{补} + (-B)_\text{补} = 11\cdots
-1\)</span><br>
-<span class="math inline">\(\sim(B)_\text{补} + (B)_\text{补} + 1 =
-11\cdots 1 + 1 = 0\)</span><br>
-<span class="math inline">\((-B)_\text{补} = \sim (B)_\text{补} +
-1\)</span></li>
-</ol></li>
-<li>加法逆元：
-<ol type="1">
-<li>无符号数：<span class="math inline">\(-x = 2^w - x(x \ne
-0)\)</span>，0的逆元是0；</li>
-<li>有符号数：<span class="math inline">\(x + (-x) =
-0\)</span>，注意特例<span class="math inline">\(T_{min},10\cdots 0 +
-10\cdots 0 = 0\)</span>，即<span class="math inline">\(-T_{min} =
-T_{min}\)</span>；</li>
-</ol></li>
-</ol>
-<h1 id="adder加法器">Adder加法器</h1>
-<p><img src="1.png"><br>
-* 当做减法(Sub = 1)或产生进位(Co = 1)时，CF =
-1，表示发生借位或进位；<br>
-* SF = 运算结果的符号位；<br>
-* ZF = 1 if Sum = 0；<br>
-* OF = 1 if 两个加数同号但与Sum异号(即上述发生溢出的情形)；<br>
-<img src="2.png"><br>
-以上题为例：</p>
-<pre class="c"><code>unsigned int x = 1000 0110;
-unsigned int y = 1111 0110; // -y_补 = 00001010
+    <a href="/blog/2024/11/03/9.1%20%E7%BE%A4%E8%AE%BAIntro/" class="go-post">阅读全文</a>
+</div>
 
-int m = x = 1000 0110 = -122;
-int n = y = 1111 0110 = -10;
 
-# CF = 1(减法有借位)，OF = 0(并没有溢出），SF = 1；
-unsigned int z1 = x - y = 1000 0110 + 00001010 = 10010000 = 144;
-int k1 = m - n = 10010000 = -112 = -112 - (-10);
-
-# CF = 1(有进位)，OF = 1(发生溢出)，SF = 0；
-unsigned int z2 = x + y = 1000 0110 + 11110110 = 01111100 = 124 = (134 + 246) % 256;
-int k2 = m + n = 01111100 = 124 = -122 - 10 + 256;</code></pre>
-<h1 id="multiplication">Multiplication</h1>
-<ol type="1">
-<li>无符号数乘法：和加法类似进行截断；</li>
-<li>补码乘法：先按无符号数进行乘法运算截断，然后将结果转化为有符号数；</li>
-<li>变量与常数之间的乘运算（左移）：<img src="3.png"></li>
-<li>变量与常数之间的除运算（算术右移）：<img src="4.png"></li>
-<li>如果负数要向0取整，记得加偏移量；即：<span class="math inline">\(x =
-(x + 1&lt;&lt;k-1)&gt;&gt;k\)</span>；</li>
-</ol>
-
-    </div>
+        <div class="page-current">
     
+    <a class="page-num" href="/blog/page/2/">
+        <i class="fa-solid fa-caret-left fa-fw"></i>
+    </a>
+    <a class="page-num" href="/blog/">1</a>
+    <span class="page-omit">...</span>
     
-    
+    <span class="current">3</span>
     
     
     
     
 </div>
 
+    </div>
+    
+    <div id="home-card">
+        <div id="card-style">
+    <div id="card-div">
+        <div class="avatar">
+            <img src="/blog/images/avatar.jpg" alt="avatar" />
+        </div>
+        <div class="name">Yokumi</div>
+        <div class="description">
+            <p>这里是Yokumi！</p>
+
+        </div>
+        
+        
+    </div>
+</div>
+
+    </div>
+    
+</div>
             <footer id="footer">
     <div id="footer-wrap">
         <div>
@@ -304,12 +295,6 @@ int k2 = m + n = 01111100 = 124 = -122 - 10 + 256;</code></pre>
         
     </div>
     <script src="/blog/js/main.js"></script>
-    
-    
-
-
-
-
     
 </body>
 </html>
