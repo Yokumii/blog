@@ -302,6 +302,9 @@ section：只读数据，比如switch的跳转表、printf的格式字符串；<
 * 实际上不占用任何存储空间，仅是一个占位符；<br>
 * Better Save Space；<br>
 * 运行时自动分配这些变量的初始值为0；<br>
+* 有些题目比较恶心，会区分.bss和COMMOM：<br>
+* .bss存放未被初始化的静态变量以及初始化为0的全局或静态变量；<br>
+* COMMOM存放未被初始化的全局变量；<br>
 * .symtab：符号表；<br>
 *
 .rel.txt，.rel.data，占位符，即引用别的模块中定义的全局变量和函数的指令的占位符，就是下图箭头所指的；<img src="6.png"><br>
