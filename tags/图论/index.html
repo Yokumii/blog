@@ -32,22 +32,22 @@
     rel="stylesheet"
     href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
 />
-<script src="/blog/js/lib/highlight.js"></script>
+<script src="/js/lib/highlight.js"></script>
 
 
 <script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
 <script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
 <link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
-<script src="/blog/js/lib/math.js"></script>
+<script src="/js/lib/math.js"></script>
 
 
-<script src="/blog/js/lib/preview.js"></script>
+<script src="/js/lib/preview.js"></script>
 
 
 
 
 
-<link rel="stylesheet" href="/blog/css/main.css" />
+<link rel="stylesheet" href="/css/main.css" />
 
 <meta name="generator" content="Hexo 7.3.0"></head>
 <body>
@@ -57,37 +57,37 @@
                 <div id="loading-circle">
                     <h2>LOADING</h2>
                     <p>加载过慢请开启缓存 浏览器默认开启</p>
-                    <img src="/blog/images/loading.gif" />
+                    <img src="/images/loading.gif" />
                 </div>
             </div>
         </transition>
         <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
     <nav id="desktop-menu">
-        <a class="title" href="/blog/">
+        <a class="title" href="/">
             <span>YOKUMIのBLOG</span>
         </a>
         
-        <a href="/blog/">
+        <a href="/">
             <i class="fa-solid fa-house fa-fw"></i>
             <span>&ensp;Home</span>
         </a>
         
-        <a href="/blog/about">
+        <a href="/about">
             <i class="fa-solid fa-id-card fa-fw"></i>
             <span>&ensp;About</span>
         </a>
         
-        <a href="/blog/archives">
+        <a href="/archives">
             <i class="fa-solid fa-box-archive fa-fw"></i>
             <span>&ensp;Archives</span>
         </a>
         
-        <a href="/blog/categories">
+        <a href="/categories">
             <i class="fa-solid fa-bookmark fa-fw"></i>
             <span>&ensp;Categories</span>
         </a>
         
-        <a href="/blog/tags">
+        <a href="/tags">
             <i class="fa-solid fa-tags fa-fw"></i>
             <span>&ensp;Tags</span>
         </a>
@@ -101,7 +101,7 @@
         <transition name="slide">
             <div class="items" v-show="showMenuItems">
                 
-                <a href="/blog/">
+                <a href="/">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-house fa-fw"></i>
@@ -110,7 +110,7 @@
                     </div>
                 </a>
                 
-                <a href="/blog/about">
+                <a href="/about">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-id-card fa-fw"></i>
@@ -119,7 +119,7 @@
                     </div>
                 </a>
                 
-                <a href="/blog/archives">
+                <a href="/archives">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-box-archive fa-fw"></i>
@@ -128,7 +128,7 @@
                     </div>
                 </a>
                 
-                <a href="/blog/categories">
+                <a href="/categories">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-bookmark fa-fw"></i>
@@ -137,7 +137,7 @@
                     </div>
                 </a>
                 
-                <a href="/blog/tags">
+                <a href="/tags">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-tags fa-fw"></i>
@@ -162,7 +162,7 @@
         
         
         <span>
-            <a href="/blog/tags/%E7%BE%A4%E8%AE%BA/" style="background: #00bcd4">
+            <a href="/tags/%E7%BE%A4%E8%AE%BA/" style="background: #00bcd4">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -173,7 +173,7 @@
         
         
         <span>
-            <a href="/blog/tags/CSAPP/" style="background: #03a9f4">
+            <a href="/tags/CSAPP/" style="background: #00a596">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -184,7 +184,7 @@
         
         
         <span>
-            <a href="/blog/tags/%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81/" style="background: #00a596">
+            <a href="/tags/%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81/" style="background: #ffa2c4">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -195,7 +195,29 @@
         
         
         <span>
-            <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="background: #03a9f4">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                数据结构
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/%E7%AE%97%E6%B3%95/" style="background: #00bcd4">
+                <span class="icon">
+                    <i class="fa-solid fa-tags fa-fw"></i>
+                </span>
+                算法
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -208,7 +230,7 @@
         
         
         <span>
-            <a href="/blog/tags/%E7%A1%AC%E4%BB%B6/" style="background: #ff7d73">
+            <a href="/tags/%E7%A1%AC%E4%BB%B6/" style="background: #ff7d73">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -219,33 +241,11 @@
         
         
         <span>
-            <a href="/blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" style="background: #00a596">
+            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" style="background: #03a9f4">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
                 计算机基础
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="background: #ff7d73">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                数据结构
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="/blog/tags/%E7%AE%97%E6%B3%95/" style="background: #00a596">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                算法
             </a>
         </span>
         
@@ -256,13 +256,13 @@
         <div class="timeline-tail"></div>
         <div class="timeline-content">
             <div class="item-time">2025/1/7</div>
-            <a href="/blog/2025/01/07/%E5%9B%BE%E7%9A%84%E6%9F%93%E8%89%B2%E9%97%AE%E9%A2%98/">
+            <a href="/2025/01/07/%E5%9B%BE%E7%9A%84%E6%9F%93%E8%89%B2%E9%97%AE%E9%A2%98/">
                 <h3>图的染色问题</h3>
             </a>
             <div class="info">
                 
                 <span class="category">
-                    <a href="/blog/categories/%E5%9B%BE%E8%AE%BA/">
+                    <a href="/categories/%E5%9B%BE%E8%AE%BA/">
                         <span class="icon">
                             <i class="fa-solid fa-bookmark fa-fw"></i>
                         </span>
@@ -279,7 +279,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #03a9f4">
+                        <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="color: #ff7d73">
                             图论
                         </a>
                     </span>
@@ -294,13 +294,13 @@
         <div class="timeline-tail"></div>
         <div class="timeline-content">
             <div class="item-time">2024/12/17</div>
-            <a href="/blog/2024/12/17/%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98/">
+            <a href="/2024/12/17/%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98/">
                 <h3>匹配问题</h3>
             </a>
             <div class="info">
                 
                 <span class="category">
-                    <a href="/blog/categories/%E5%9B%BE%E8%AE%BA/">
+                    <a href="/categories/%E5%9B%BE%E8%AE%BA/">
                         <span class="icon">
                             <i class="fa-solid fa-bookmark fa-fw"></i>
                         </span>
@@ -317,7 +317,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #ff7d73">
+                        <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="color: #00bcd4">
                             图论
                         </a>
                     </span>
@@ -332,13 +332,13 @@
         <div class="timeline-tail"></div>
         <div class="timeline-content">
             <div class="item-time">2024/12/17</div>
-            <a href="/blog/2024/12/17/%E5%9B%BE%E8%AE%BA%E9%A2%98%E5%9E%8B/">
+            <a href="/2024/12/17/%E5%9B%BE%E8%AE%BA%E9%A2%98%E5%9E%8B/">
                 <h3>图论题型</h3>
             </a>
             <div class="info">
                 
                 <span class="category">
-                    <a href="/blog/categories/%E5%9B%BE%E8%AE%BA/">
+                    <a href="/categories/%E5%9B%BE%E8%AE%BA/">
                         <span class="icon">
                             <i class="fa-solid fa-bookmark fa-fw"></i>
                         </span>
@@ -355,7 +355,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #00a596">
+                        <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="color: #00a596">
                             图论
                         </a>
                     </span>
@@ -370,13 +370,13 @@
         <div class="timeline-tail"></div>
         <div class="timeline-content">
             <div class="item-time">2024/12/10</div>
-            <a href="/blog/2024/12/10/%E5%B9%B3%E9%9D%A2%E5%9B%BE/">
+            <a href="/2024/12/10/%E5%B9%B3%E9%9D%A2%E5%9B%BE/">
                 <h3>平面图</h3>
             </a>
             <div class="info">
                 
                 <span class="category">
-                    <a href="/blog/categories/%E5%9B%BE%E8%AE%BA/">
+                    <a href="/categories/%E5%9B%BE%E8%AE%BA/">
                         <span class="icon">
                             <i class="fa-solid fa-bookmark fa-fw"></i>
                         </span>
@@ -393,7 +393,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #ff7d73">
+                        <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="color: #ffa2c4">
                             图论
                         </a>
                     </span>
@@ -408,13 +408,13 @@
         <div class="timeline-tail"></div>
         <div class="timeline-content">
             <div class="item-time">2024/12/6</div>
-            <a href="/blog/2024/12/06/%E6%AC%A7%E6%8B%89%E7%8E%AF%E6%B8%B8%E5%92%8C%E5%93%88%E5%AF%86%E5%B0%94%E9%A1%BF%E7%8E%AF%E6%B8%B8/">
+            <a href="/2024/12/06/%E6%AC%A7%E6%8B%89%E7%8E%AF%E6%B8%B8%E5%92%8C%E5%93%88%E5%AF%86%E5%B0%94%E9%A1%BF%E7%8E%AF%E6%B8%B8/">
                 <h3>欧拉环游和哈密尔顿环游</h3>
             </a>
             <div class="info">
                 
                 <span class="category">
-                    <a href="/blog/categories/%E5%9B%BE%E8%AE%BA/">
+                    <a href="/categories/%E5%9B%BE%E8%AE%BA/">
                         <span class="icon">
                             <i class="fa-solid fa-bookmark fa-fw"></i>
                         </span>
@@ -431,7 +431,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #00bcd4">
+                        <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="color: #00bcd4">
                             图论
                         </a>
                     </span>
@@ -446,13 +446,13 @@
         <div class="timeline-tail"></div>
         <div class="timeline-content">
             <div class="item-time">2024/12/5</div>
-            <a href="/blog/2024/12/05/%E5%9B%BE%E8%AE%BA%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">
+            <a href="/2024/12/05/%E5%9B%BE%E8%AE%BA%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">
                 <h3>图论基本概念</h3>
             </a>
             <div class="info">
                 
                 <span class="category">
-                    <a href="/blog/categories/%E5%9B%BE%E8%AE%BA/">
+                    <a href="/categories/%E5%9B%BE%E8%AE%BA/">
                         <span class="icon">
                             <i class="fa-solid fa-bookmark fa-fw"></i>
                         </span>
@@ -469,7 +469,7 @@
                     
                     <span class="tag">
                         
-                        <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #ffa2c4">
+                        <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="color: #ffa2c4">
                             图论
                         </a>
                     </span>
@@ -505,7 +505,7 @@
         </transition>
         
     </div>
-    <script src="/blog/js/main.js"></script>
+    <script src="/js/main.js"></script>
     
 </body>
 </html>
