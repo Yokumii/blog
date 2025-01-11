@@ -32,24 +32,25 @@
     rel="stylesheet"
     href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
 />
-<script src="/js/lib/highlight.js"></script>
+<script src="/blog/js/lib/highlight.js"></script>
 
 
 <script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
 <script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
 <link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
-<script src="/js/lib/math.js"></script>
+<script src="/blog/js/lib/math.js"></script>
 
 
-<script src="/js/lib/preview.js"></script>
+<script src="/blog/js/lib/preview.js"></script>
 
 
 
 
 
-<link rel="stylesheet" href="/css/main.css" />
+<link rel="stylesheet" href="/blog/css/main.css" />
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/blog/atom.xml" title="YokumiのBlog" type="application/atom+xml">
+</head>
 <body>
     <div id="layout">
         <transition name="fade">
@@ -57,37 +58,37 @@
                 <div id="loading-circle">
                     <h2>LOADING</h2>
                     <p>加载过慢请开启缓存 浏览器默认开启</p>
-                    <img src="/images/loading.gif" />
+                    <img src="/blog/images/loading.gif" />
                 </div>
             </div>
         </transition>
         <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
     <nav id="desktop-menu">
-        <a class="title" href="/">
+        <a class="title" href="/blog/">
             <span>YOKUMIのBLOG</span>
         </a>
         
-        <a href="/">
+        <a href="/blog/">
             <i class="fa-solid fa-house fa-fw"></i>
             <span>&ensp;Home</span>
         </a>
         
-        <a href="/about">
+        <a href="/blog/about">
             <i class="fa-solid fa-id-card fa-fw"></i>
             <span>&ensp;About</span>
         </a>
         
-        <a href="/archives">
+        <a href="/blog/archives">
             <i class="fa-solid fa-box-archive fa-fw"></i>
             <span>&ensp;Archives</span>
         </a>
         
-        <a href="/categories">
+        <a href="/blog/categories">
             <i class="fa-solid fa-bookmark fa-fw"></i>
             <span>&ensp;Categories</span>
         </a>
         
-        <a href="/tags">
+        <a href="/blog/tags">
             <i class="fa-solid fa-tags fa-fw"></i>
             <span>&ensp;Tags</span>
         </a>
@@ -101,7 +102,7 @@
         <transition name="slide">
             <div class="items" v-show="showMenuItems">
                 
-                <a href="/">
+                <a href="/blog/">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-house fa-fw"></i>
@@ -110,7 +111,7 @@
                     </div>
                 </a>
                 
-                <a href="/about">
+                <a href="/blog/about">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-id-card fa-fw"></i>
@@ -119,7 +120,7 @@
                     </div>
                 </a>
                 
-                <a href="/archives">
+                <a href="/blog/archives">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-box-archive fa-fw"></i>
@@ -128,7 +129,7 @@
                     </div>
                 </a>
                 
-                <a href="/categories">
+                <a href="/blog/categories">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-bookmark fa-fw"></i>
@@ -137,7 +138,7 @@
                     </div>
                 </a>
                 
-                <a href="/tags">
+                <a href="/blog/tags">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-tags fa-fw"></i>
@@ -162,7 +163,7 @@
         
         
         <span>
-            <a href="/categories/%E7%BE%A4%E8%AE%BA/" style="background: #ff7d73">
+            <a href="/blog/categories/%E7%BE%A4%E8%AE%BA/" style="background: #00a596">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -173,7 +174,7 @@
         
         
         <span>
-            <a href="/categories/CSAPP/" style="background: #00a596">
+            <a href="/blog/categories/CSAPP/" style="background: #ffa2c4">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -184,7 +185,7 @@
         
         
         <span>
-            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="background: #00bcd4">
+            <a href="/blog/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="background: #00a596">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -195,7 +196,7 @@
         
         
         <span>
-            <a href="/categories/%E5%9B%BE%E8%AE%BA/" style="background: #00a596">
+            <a href="/blog/categories/%E5%9B%BE%E8%AE%BA/" style="background: #00bcd4">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -206,7 +207,7 @@
         
         
         <span>
-            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" style="background: #03a9f4">
+            <a href="/blog/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" style="background: #ff7d73">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -242,7 +243,7 @@
         </transition>
         
     </div>
-    <script src="/js/main.js"></script>
+    <script src="/blog/js/main.js"></script>
     
 </body>
 </html>
