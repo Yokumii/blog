@@ -1,206 +1,166 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>图论基本概念 | YokumiのBlog</title><meta name="author" content="Yokumi"><meta name="copyright" content="Yokumi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="图论中的基本概念梳理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图论基本概念">
+<meta property="og:url" content="https://yokumii.github.io/blog/2024/12/05/%E5%9B%BE%E8%AE%BA%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">
+<meta property="og:site_name" content="YokumiのBlog">
+<meta property="og:description" content="图论中的基本概念梳理">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yokumii.github.io/blog/img/avatar.jpg">
+<meta property="article:published_time" content="2024-12-05T14:55:43.000Z">
+<meta property="article:modified_time" content="2024-12-22T08:12:11.209Z">
+<meta property="article:author" content="Yokumi">
+<meta property="article:tag" content="图论">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yokumii.github.io/blog/img/avatar.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "图论基本概念",
+  "url": "https://yokumii.github.io/blog/2024/12/05/%E5%9B%BE%E8%AE%BA%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/",
+  "image": "https://yokumii.github.io/blog/img/avatar.jpg",
+  "datePublished": "2024-12-05T14:55:43.000Z",
+  "dateModified": "2024-12-22T08:12:11.209Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Yokumi",
+      "url": "https://yokumii.github.io/blog/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/blog/img/favicon.ico"><link rel="canonical" href="https://yokumii.github.io/blog/2024/12/05/%E5%9B%BE%E8%AE%BA%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/blog/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
 
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="utf-8" />
-    <title>图论基本概念 | YokumiのBlog</title>
-    <meta name="author" content="Yokumi" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    />
-    <link rel="icon" href=" /images/avatar.ico" />
-    <link rel="preconnect" href="https://s4.zstatic.net" />
-<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
-<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-<link rel="preconnect" href="https://fonts.googleapis.cn" />
-<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
-<link
-    rel="stylesheet"
-    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
-/>
-<script> const mixins = {}; </script>
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
 
-<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
 
-
-<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
-/>
-<script src="/blog/js/lib/highlight.js"></script>
-
-
-<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
-<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
-<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
-<script src="/blog/js/lib/math.js"></script>
-
-
-<script src="/blog/js/lib/preview.js"></script>
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/blog/css/main.css" />
-
-<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/blog/atom.xml" title="YokumiのBlog" type="application/atom+xml">
-</head>
-<body>
-    <div id="layout">
-        <transition name="fade">
-            <div id="loading" v-show="loading">
-                <div id="loading-circle">
-                    <h2>LOADING</h2>
-                    <p>加载过慢请开启缓存 浏览器默认开启</p>
-                    <img src="/blog/images/loading.gif" />
-                </div>
-            </div>
-        </transition>
-        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
-    <nav id="desktop-menu">
-        <a class="title" href="/blog/">
-            <span>YOKUMIのBLOG</span>
-        </a>
-        
-        <a href="/blog/">
-            <i class="fa-solid fa-house fa-fw"></i>
-            <span>&ensp;Home</span>
-        </a>
-        
-        <a href="/blog/about">
-            <i class="fa-solid fa-id-card fa-fw"></i>
-            <span>&ensp;About</span>
-        </a>
-        
-        <a href="/blog/archives">
-            <i class="fa-solid fa-box-archive fa-fw"></i>
-            <span>&ensp;Archives</span>
-        </a>
-        
-        <a href="/blog/categories">
-            <i class="fa-solid fa-bookmark fa-fw"></i>
-            <span>&ensp;Categories</span>
-        </a>
-        
-        <a href="/blog/tags">
-            <i class="fa-solid fa-tags fa-fw"></i>
-            <span>&ensp;Tags</span>
-        </a>
-        
-    </nav>
-    <nav id="mobile-menu">
-        <div class="title" @click="showMenuItems = !showMenuItems">
-            <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;YOKUMIのBLOG</span>
-        </div>
-        <transition name="slide">
-            <div class="items" v-show="showMenuItems">
-                
-                <a href="/blog/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-house fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
-                    </div>
-                </a>
-                
-                <a href="/blog/about">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-id-card fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
-                    </div>
-                </a>
-                
-                <a href="/blog/archives">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-box-archive fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
-                    </div>
-                </a>
-                
-                <a href="/blog/categories">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
-                    </div>
-                </a>
-                
-                <a href="/blog/tags">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-tags fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
-                    </div>
-                </a>
-                
-            </div>
-        </transition>
-    </nav>
-</div>
-<transition name="fade">
-    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
-</transition>
-
-        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div class="article">
-    <div>
-        <h1>图论基本概念</h1>
-    </div>
-    <div class="info">
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/12/5
-        </span>
-        
-        <span class="category">
-            <a href="/blog/categories/%E5%9B%BE%E8%AE%BA/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                图论
-            </a>
-        </span>
-        
-        
-        <span class="tags">
-            <span class="icon">
-                <i class="fa-solid fa-tags fa-fw"></i>
-            </span>
-            
-            
-            <span class="tag">
-                
-                <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #00bcd4">
-                    图论
-                </a>
-            </span>
-            
-        </span>
-        
-    </div>
+      const theme = saveToLocal.get('theme')
     
-    <div class="content" v-pre>
-        <h1 id="图论中的基本概念">图论中的基本概念</h1>
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/blog/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Yokumi","link":"链接: ","source":"来源: YokumiのBlog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '图论基本概念',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/blog/atom.xml" title="YokumiのBlog" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/blog/img/avatar.jpg" onerror="this.onerror=null;this.src='/blog/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/blog/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/blog/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/blog/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/blog/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/blog/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/blog/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/blog/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/blog/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/blog/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/background.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/blog/"><span class="site-name">YokumiのBlog</span></a><a class="nav-page-title" href="/blog/"><span class="site-name">图论基本概念</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/blog/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/blog/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/blog/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/blog/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/blog/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/blog/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">图论基本概念</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-12-05T14:55:43.000Z" title="发表于 2024-12-05 22:55:43">2024-12-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-12-22T08:12:11.209Z" title="更新于 2024-12-22 16:12:11">2024-12-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/blog/categories/%E5%9B%BE%E8%AE%BA/">图论</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="图论中的基本概念">图论中的基本概念</h1>
 <h2 id="图的基本概念">图的基本概念</h2>
 <ul>
 <li><strong>图</strong>：具有顶点集<span class="math inline">\(V\)</span>的图亦称为<span class="math inline">\(V\)</span>上的图(a graph on V)，图<span class="math inline">\(G\)</span>的顶点集记为<span class="math inline">\(V(G)\)</span>, 边集记为<span class="math inline">\(E(G)\)</span>；</li>
@@ -290,47 +250,4 @@ cycle)是不含弦的圈，即<span class="math inline">\(G\)</span>的导出子
 <li><strong>距离、直径、中心点、半径</strong>：暂略；</li>
 <li><strong>树、森林</strong>：暂略；</li>
 </ul>
-
-    </div>
-    
-    
-    
-    
-    
-    
-    
-</div>
-
-            <footer id="footer">
-    <div id="footer-wrap">
-        <div>
-            &copy;
-            2023 - 2025 YokumiのBlog
-            <span id="footer-icon">
-                <i class="fa-solid fa-font-awesome fa-fw"></i>
-            </span>
-            &commat;Yokumi
-        </div>
-        
-    </div>
-</footer>
-
-        </div>
-        
-        <transition name="fade">
-            <div id="preview" ref="preview" v-show="previewShow">
-                <img id="preview-content" ref="previewContent" />
-            </div>
-        </transition>
-        
-    </div>
-    <script src="/blog/js/main.js"></script>
-    
-    
-
-
-
-
-    
-</body>
-</html>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://yokumii.github.io/blog">Yokumi</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://yokumii.github.io/blog/2024/12/05/%E5%9B%BE%E8%AE%BA%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">https://yokumii.github.io/blog/2024/12/05/图论基本概念/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://yokumii.github.io/blog" target="_blank">YokumiのBlog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/blog/tags/%E5%9B%BE%E8%AE%BA/">图论</a></div><div class="post-share"><div class="social-share" data-image="/blog/img/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/blog/2024/12/17/%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98/" title="匹配问题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-17</div><div class="info-item-2">匹配问题</div></div><div class="info-2"><div class="info-item-1">匹配/对集问题 定义   翻译成人话就是，匹配要求边集中任何两条边不相邻，最大匹配要求边数最多，完全匹配要求所有顶点都包含。  霍尔婚姻定理 HALL’S MARRIAGE THEOREM    稳定匹配问题  问题描述：给出一个\(n\)个男性的集合\(M\)和\(n\)个女性的集合\(W\)，找到一个“稳定”匹配。  每位男性根据对女性的心仪程度从高至低进行排名； 每位女性根据对男性的心仪程度从高至低进行排名；  不稳定对：给出一个完美匹配\(S\)，男性\(m\)和女性\(w\)是不稳定的，如果同时满足下列条件：  \(m\)相比起当前配偶，更喜欢\(w\)； \(w\)相比起当前配偶，更喜欢\(m\)；  稳定匹配：一个不包含不稳定对的完美匹配。  Gale-Shapley 算法（延迟决定法）  #include&lt;iostream&gt; using namespace std; const int N = 10005; int M[N] = &#123;0&#125;, W[N] = &#123;0&#125;; //...</div></div></div></a><a class="pagination-related" href="/blog/2025/01/07/%E5%9B%BE%E7%9A%84%E6%9F%93%E8%89%B2%E9%97%AE%E9%A2%98/" title="图的染色问题"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-07</div><div class="info-item-2">图的染色问题</div></div><div class="info-2"><div class="info-item-1">相关定义概述  \(\chi (G)\)：图的着色数，the chromatic number of G； 有点着色，边着色，面着色几种类型； \(P_G(k)\)：色多项式，表示图\(G\)用\(k\)种颜色染色的方法数；  常见图的点着色数  零图（无边只有顶点）：1； 完全图\(K_n\)：n； 非零二部图：2；   定理：简单图的点着色数小于等于最大度数 + 1；  非连通图的着色  如果\(G\)为非连通图，那么它的色多项式等于它的所有连通分量的乘积；  商图 把图的顶点按照某种等价类规则划分，直观上就是把两个点捏在一起； 构建色多项式 法一、尝试通过删边得到好求的色多项式  法二、韦尔奇鲍威尔法  将顶点按照度数递减排序； 用第一种颜色对度数最大的顶点以及和该点不相邻的所有顶点进行染色； 对剩余顶点重复上述步骤；  法三、递推构建色多项式  色多项式性质  </div></div></div></a><a class="pagination-related" href="/blog/2024/12/17/%E5%9B%BE%E8%AE%BA%E9%A2%98%E5%9E%8B/" title="图论题型"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-17</div><div class="info-item-2">图论题型</div></div><div class="info-2"><div class="info-item-1">10.1.1 度序列可简单图化  可简单图化的充要条件： 例题：  解法：每次度序列按非递增顺序排列，删除度最大的节点，更新其他节点的度，重新排列，继续重复上述过程。有2种不合理的情况： （1）某次对剩下序列排序后，最大的度数（设为d1）超过了剩下的顶点数； （2）对最大度数后面的d1个数各减1后，出现了负数。  应用：Frogs' Neighborhood  Description  未名湖附近共\(N\)个大小湖泊\(L_1, L_2, \cdots, L_n\)(其中包括未名湖)，每个湖泊\(L_i\)里住着一只青蛙\(F_i(1 \le i \le N)\)。如果湖泊\(L_i\)和\(L_j\)之间有水路相连，则青蛙\(F_i\)和\(F_j\)互称为邻居。现在已知每只青蛙的邻居数目\(x_1, x_2, \cdots, x_n\)，请你给出每两个湖泊之间的相连关系。  Input  第一行是测试数据的组数\(T(0 \le T \le 20)\)。每组数据包括两行，第一行是整数\(N(2 &lt; N &lt;...</div></div></div></a><a class="pagination-related" href="/blog/2024/12/10/%E5%B9%B3%E9%9D%A2%E5%9B%BE/" title="平面图"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-10</div><div class="info-item-2">平面图</div></div><div class="info-2"><div class="info-item-1">一、定义  如果一个图能画在平面上使得它的边仅在端点相交，则称这个图为可嵌人平面的，或称为平面图。平面图G的这样一种画法称为G的一个平面嵌人。  一个平图\(G\)把平面划分成若干个连通区域，这些区域的闭包称为\(G\)的面。面边界回路的长度称为面的次数，记为\(Deg(f)\)或\(d(f)\)。 每个平图恰有一个无界的面，称为外部面。  二、相关性质和定理 2.1 面的次数之和与边数关系  \(\sum {d(f)} = 2\varepsilon\)  2.2 Euler公式  若\(G\)是连通平图，则有：\(\nu - \varepsilon + \phi = 2\)   简单平面图存在一个度数小于5的顶点； # 三、判断方法 # 3.1 必要条件 1. 若\(G\)是\(v \ge 3\)的简单平面图，则\(\varepsilon \le 3\nu - 6\)。  Euler公式   3.2...</div></div></div></a><a class="pagination-related" href="/blog/2024/12/06/%E6%AC%A7%E6%8B%89%E7%8E%AF%E6%B8%B8%E5%92%8C%E5%93%88%E5%AF%86%E5%B0%94%E9%A1%BF%E7%8E%AF%E6%B8%B8/" title="欧拉环游和哈密尔顿环游"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-06</div><div class="info-item-2">欧拉环游和哈密尔顿环游</div></div><div class="info-2"><div class="info-item-1">欧拉环游 定义  欧拉回路：我们称一个通过图的每条边恰好一次的闭途径为欧拉环游 (Eulertour)； 欧拉通路：我们称一个通过图的每条边恰好一次的路为欧拉通路； 欧拉图：如果一个图包含一个欧拉环游，就称它是欧拉的(Eulerian)；  判断的充要条件  对于无向连通图，一个连通图是欧拉的当且仅当它的每个顶点度是偶数。 连通图\(G\)是存在从\(a\)到\(b\)的欧拉路径，当且仅当\(G\)是连通的，并且除\(a\)和\(b\)(\(a \ne b\))的度为奇数(odd)之外，没有度为奇数(odd)的顶点；   对于有向连通图，一个连通图是欧拉的当且仅当\(G\)是连通的，且每个顶点的出度 = 入度； 有向连通图\(G\)含有欧拉通路，当且仅当\(G\)是连通的，并且\(G\)中除两个顶点(节点不相等)外，其余每个顶点的入度=出度，且此两点满足\(\left |deg^+{(u)} - deg^-{(v)}\right |...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/blog/img/avatar.jpg" onerror="this.onerror=null;this.src='/blog/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Yokumi</div><div class="author-info-description"></div><div class="site-data"><a href="/blog/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/blog/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/blog/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Yokumii"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Yokumii" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:m2845687016@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE%E8%AE%BA%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">图论中的基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">图的基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E7%89%B9%E6%AE%8A%E7%9A%84%E5%9B%BE%E7%BB%93%E6%9E%84special-graph-structures"><span class="toc-text">一些特殊的图结构Special Graph Structures</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E7%9A%84%E5%90%8C%E6%9E%84graph-isomorphism"><span class="toc-text">图的同构Graph Isomorphism</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E7%9A%84%E8%BF%9E%E9%80%9A%E6%80%A7connectivity"><span class="toc-text">图的连通性Connectivity</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/2025/01/08/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E4%B8%8E%E6%95%B0%E5%AD%97%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3%E8%AE%B0%E8%83%8C%E7%9F%A5%E8%AF%86%E7%82%B9/" title="数字逻辑与数字系统相关记背知识点">数字逻辑与数字系统相关记背知识点</a><time datetime="2025-01-08T14:10:00.000Z" title="发表于 2025-01-08 22:10:00">2025-01-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/2025/01/07/%E5%9B%BE%E7%9A%84%E6%9F%93%E8%89%B2%E9%97%AE%E9%A2%98/" title="图的染色问题">图的染色问题</a><time datetime="2025-01-07T07:04:00.000Z" title="发表于 2025-01-07 15:04:00">2025-01-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/2025/01/06/CSAPP%20Exercises/" title="CSAPP Exercises">CSAPP Exercises</a><time datetime="2025-01-06T08:46:00.000Z" title="发表于 2025-01-06 16:46:00">2025-01-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/2025/01/05/CSAPP%2016-io4/" title="CSAPP 16-io4">CSAPP 16-io4</a><time datetime="2025-01-05T12:49:00.000Z" title="发表于 2025-01-05 20:49:00">2025-01-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/2025/01/05/CSAPP%2014-ecf-procs/" title="CSAPP 14-ecf-procs">CSAPP 14-ecf-procs</a><time datetime="2025-01-05T09:26:00.000Z" title="发表于 2025-01-05 17:26:00">2025-01-05</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By Yokumi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/blog/js/utils.js"></script><script src="/blog/js/main.js"></script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

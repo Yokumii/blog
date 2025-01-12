@@ -1,760 +1,217 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>YokumiのBlog - Here's an Yokumi...</title><meta name="author" content="Yokumi"><meta name="copyright" content="Yokumi"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="YokumiのBlog">
+<meta property="og:url" content="https://yokumii.github.io/blog/page/2/">
+<meta property="og:site_name" content="YokumiのBlog">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yokumii.github.io/blog/img/avatar.jpg">
+<meta property="article:author" content="Yokumi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yokumii.github.io/blog/img/avatar.jpg"><link rel="shortcut icon" href="/blog/img/favicon.ico"><link rel="canonical" href="https://yokumii.github.io/blog/page/2/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/blog/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
 
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="utf-8" />
-    <title>YokumiのBlog</title>
-    <meta name="author" content="Yokumi" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-    />
-    <link rel="icon" href=" /images/avatar.ico" />
-    <link rel="preconnect" href="https://s4.zstatic.net" />
-<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
-<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-<link rel="preconnect" href="https://fonts.googleapis.cn" />
-<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
-<link
-    rel="stylesheet"
-    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
-/>
-<script> const mixins = {}; </script>
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
 
-<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
 
-
-<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
-/>
-<script src="/blog/js/lib/highlight.js"></script>
-
-
-<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
-<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
-<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
-<script src="/blog/js/lib/math.js"></script>
-
-
-<script src="/blog/js/lib/preview.js"></script>
-
-
-
-
-
-<script src="/blog/js/lib/home.js"></script>
-
-<link rel="stylesheet" href="/blog/css/main.css" />
-
-<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/blog/atom.xml" title="YokumiのBlog" type="application/atom+xml">
-</head>
-<body>
-    <div id="layout">
-        <transition name="fade">
-            <div id="loading" v-show="loading">
-                <div id="loading-circle">
-                    <h2>LOADING</h2>
-                    <p>加载过慢请开启缓存 浏览器默认开启</p>
-                    <img src="/blog/images/loading.gif" />
-                </div>
-            </div>
-        </transition>
-        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
-    <nav id="desktop-menu">
-        <a class="title" href="/blog/">
-            <span>YOKUMIのBLOG</span>
-        </a>
-        
-        <a href="/blog/">
-            <i class="fa-solid fa-house fa-fw"></i>
-            <span>&ensp;Home</span>
-        </a>
-        
-        <a href="/blog/about">
-            <i class="fa-solid fa-id-card fa-fw"></i>
-            <span>&ensp;About</span>
-        </a>
-        
-        <a href="/blog/archives">
-            <i class="fa-solid fa-box-archive fa-fw"></i>
-            <span>&ensp;Archives</span>
-        </a>
-        
-        <a href="/blog/categories">
-            <i class="fa-solid fa-bookmark fa-fw"></i>
-            <span>&ensp;Categories</span>
-        </a>
-        
-        <a href="/blog/tags">
-            <i class="fa-solid fa-tags fa-fw"></i>
-            <span>&ensp;Tags</span>
-        </a>
-        
-    </nav>
-    <nav id="mobile-menu">
-        <div class="title" @click="showMenuItems = !showMenuItems">
-            <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;YOKUMIのBLOG</span>
-        </div>
-        <transition name="slide">
-            <div class="items" v-show="showMenuItems">
-                
-                <a href="/blog/">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-house fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
-                    </div>
-                </a>
-                
-                <a href="/blog/about">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-id-card fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
-                    </div>
-                </a>
-                
-                <a href="/blog/archives">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-box-archive fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
-                    </div>
-                </a>
-                
-                <a href="/blog/categories">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
-                    </div>
-                </a>
-                
-                <a href="/blog/tags">
-                    <div class="item">
-                        <div style="min-width: 20px; max-width: 50px; width: 10%">
-                            <i class="fa-solid fa-tags fa-fw"></i>
-                        </div>
-                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
-                    </div>
-                </a>
-                
-            </div>
-        </transition>
-    </nav>
-</div>
-<transition name="fade">
-    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
-</transition>
-
-        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div id="home-head">
-    <div
-        id="home-background"
-        ref="homeBackground"
-        data-images="/blog/images/background.png"
-    ></div>
-    <div id="home-info" @click="homeClick">
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="info">
-            <div class="wrap">
-                <h1>YokumiのBlog</h1>
-                <h3>Here&#39;s an Yokumi...</h3>
-                <h5></h5>
-            </div>
-        </span>
-    </div>
-</div>
-<div
-    id="home-posts-wrap"
-    ref="homePostsWrap"
-    true
->
-    <div id="home-posts">
-        
-
-<div class="post">
-    <a href="/blog/2025/01/04/CSAPP%2005-machine-basics/">
-        <h2 class="post-title">CSAPP 05-machine-basics</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/blog/categories/CSAPP/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                CSAPP
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/1/4
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <p>机器指令</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/blog/tags/CSAPP/" style="color: #ffa2c4">CSAPP</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/blog/tags/%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81/" style="color: #ff7d73">汇编代码</a>
-        </span>
-        
-    </div>
-    <a href="/blog/2025/01/04/CSAPP%2005-machine-basics/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/blog/2025/01/04/CSAPP%2004-float/">
-        <h2 class="post-title">CSAPP 04-float</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/blog/categories/CSAPP/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                CSAPP
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/1/4
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <p>浮点数的机器表示</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/blog/tags/CSAPP/" style="color: #00bcd4">CSAPP</a>
-        </span>
-        
-    </div>
-    <a href="/blog/2025/01/04/CSAPP%2004-float/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/blog/2025/01/04/CSAPP%2002-Bits-ints-part2/">
-        <h2 class="post-title">CSAPP 02-Bits-ints-part2</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/blog/categories/CSAPP/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                CSAPP
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/1/4
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <p>数据运算</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/blog/tags/CSAPP/" style="color: #ff7d73">CSAPP</a>
-        </span>
-        
-    </div>
-    <a href="/blog/2025/01/04/CSAPP%2002-Bits-ints-part2/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/blog/2025/01/04/CSAPP%2002-Bits-ints-part1/">
-        <h2 class="post-title">CSAPP 02-Bits-ints-part1</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/blog/categories/CSAPP/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                CSAPP
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/1/4
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <p>无符号编码，补码</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/blog/tags/CSAPP/" style="color: #00bcd4">CSAPP</a>
-        </span>
-        
-    </div>
-    <a href="/blog/2025/01/04/CSAPP%2002-Bits-ints-part1/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/blog/2025/01/03/CSAPP%2001-Overview/">
-        <h2 class="post-title">CSAPP 01-Overview</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/blog/categories/CSAPP/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                CSAPP
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2025/1/3
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <p>计算机系统漫游</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/blog/tags/CSAPP/" style="color: #00a596">CSAPP</a>
-        </span>
-        
-    </div>
-    <a href="/blog/2025/01/03/CSAPP%2001-Overview/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/blog/2024/12/26/KMP%E7%AE%97%E6%B3%95/">
-        <h2 class="post-title">KMP算法</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/blog/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                数据结构
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/12/26
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <p>KMP算法自用</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="color: #00a596">数据结构</a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/blog/tags/%E7%AE%97%E6%B3%95/" style="color: #00bcd4">算法</a>
-        </span>
-        
-    </div>
-    <a href="/blog/2024/12/26/KMP%E7%AE%97%E6%B3%95/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/blog/2024/12/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84Review/">
-        <h2 class="post-title">数据结构Review</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/blog/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                数据结构
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/12/20
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <p>数据结构Review</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="color: #00a596">数据结构</a>
-        </span>
-        
-    </div>
-    <a href="/blog/2024/12/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84Review/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/blog/2024/12/17/%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98/">
-        <h2 class="post-title">匹配问题</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/blog/categories/%E5%9B%BE%E8%AE%BA/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                图论
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/12/17
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <p>匹配问题</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #03a9f4">图论</a>
-        </span>
-        
-    </div>
-    <a href="/blog/2024/12/17/%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/blog/2024/12/17/%E5%9B%BE%E8%AE%BA%E9%A2%98%E5%9E%8B/">
-        <h2 class="post-title">图论题型</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/blog/categories/%E5%9B%BE%E8%AE%BA/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                图论
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/12/17
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <p>应试题型总结</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #03a9f4">图论</a>
-        </span>
-        
-    </div>
-    <a href="/blog/2024/12/17/%E5%9B%BE%E8%AE%BA%E9%A2%98%E5%9E%8B/" class="go-post">阅读全文</a>
-</div>
-
-<div class="post">
-    <a href="/blog/2024/12/10/%E5%B9%B3%E9%9D%A2%E5%9B%BE/">
-        <h2 class="post-title">平面图</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="category">
-            <a href="/blog/categories/%E5%9B%BE%E8%AE%BA/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                图论
-            </a>
-        </span>
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2024/12/10
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <p>平面图</p>
-
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        
-        <span class="tag">
-            
-            <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #ff7d73">图论</a>
-        </span>
-        
-    </div>
-    <a href="/blog/2024/12/10/%E5%B9%B3%E9%9D%A2%E5%9B%BE/" class="go-post">阅读全文</a>
-</div>
-
-
-        <div class="page-current">
+      const theme = saveToLocal.get('theme')
     
-    <a class="page-num" href="/blog/">
-        <i class="fa-solid fa-caret-left fa-fw"></i>
-    </a>
-    <a class="page-num" href="/blog/">1</a>
-    <span class="page-omit">...</span>
-    
-    <span class="current">2</span>
-    
-    <a class="page-num" href="/blog/page/3">
-        3
-    </a>
-    
-    
-    
-    
-    <a class="page-num" href="/blog/page/3/">
-        <i class="fa-solid fa-caret-right fa-fw"></i>
-    </a>
-    
-</div>
-
-    </div>
-    
-    <div id="home-card">
-        <div id="card-style">
-    <div id="card-div">
-        <div class="avatar">
-            <img src="/blog/images/avatar.jpg" alt="avatar" />
-        </div>
-        <div class="name">Yokumi</div>
-        <div class="description">
-            <p>这里是Yokumi！</p>
-
-        </div>
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
         
-        
-    </div>
-</div>
-
-    </div>
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
     
-</div>
-            <footer id="footer">
-    <div id="footer-wrap">
-        <div>
-            &copy;
-            2023 - 2025 YokumiのBlog
-            <span id="footer-icon">
-                <i class="fa-solid fa-font-awesome fa-fw"></i>
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/blog/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: undefined,
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Yokumi","link":"链接: ","source":"来源: YokumiのBlog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'YokumiのBlog',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/blog/atom.xml" title="YokumiのBlog" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/blog/img/avatar.jpg" onerror="this.onerror=null;this.src='/blog/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/blog/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/blog/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/blog/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/blog/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/blog/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/blog/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/blog/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/blog/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/blog/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(/img/background.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/blog/"><span class="site-name">YokumiのBlog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/blog/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/blog/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/blog/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/blog/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/blog/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/blog/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">YokumiのBlog</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/Yokumii" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:m2845687016@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/2025/01/04/CSAPP%2005-machine-basics/" title="CSAPP 05-machine-basics">CSAPP 05-machine-basics</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-01-04T07:52:00.000Z" title="发表于 2025-01-04 15:52:00">2025-01-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/CSAPP/">CSAPP</a></span></div><div class="content">指令的概念  微指令是微程序级命令，属于硬件范畴 伪指令是由若干机器指令组成的指令序列，属于软件范畴 机器指令介于二者之间，处于硬件和软件的交界面，本章中提及的指令都指机器指令；  汇编指令是机器指令的汇编表示形式，即符号表示 机器指令（二进制串）和汇编指令一一对应，它们都与具体机器结构有关，都属于机器级指令； 编译Compiling：gcc -Og -S test.c，-Og为优化选项，得到汇编代码test.s；   机器代码的组成  操作性质（操作码）、源操作数、目的操作数地址（立即数，寄存器编号，存储地址）；  通常由以下三部分组成：  程序计数器PC(Program Counter)：即%rip(x86-64)，指向当前正在执行指令的下一条指令的地址； 整数寄存器Register file：分别存储了64位的值（地址，整数数据）； 状态寄存器Condition...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/2025/01/04/CSAPP%2004-float/" title="CSAPP 04-float">CSAPP 04-float</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-01-04T06:27:00.000Z" title="发表于 2025-01-04 14:27:00">2025-01-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/CSAPP/">CSAPP</a></span></div><div class="content">二进制表示方法  引入负指数即可； 缺陷是无法平衡整数部分的范围和小数范围的精度；  IEEE标准   * exp：阶码； * frac：尾数；  规格化Normalized：exp不全为0且不全为1；  \(E = exp - Bias = exp - (2^{k-1} - 1),Bias  = 2^{k - 1} - 1\) ；  32bits：\(Bias = 2^7 -1 = 127,exp\in [1,254]\rightarrow E\in [-126,127]\)； 64bits：\(Bias = 2^{10} - 1 = 1023,exp \in [1, 2023]\rightarrow E\in [-1022,1023]\)；  \(M = 1.frac_{(2)}\)；  非规格化Denormalized：exp全为0；  \(E = 1 - Bias\)； \(M = frac\)；  特殊值Special Values：exp全为1；  exp全为1，frac全为0，s = 0表示正无穷\(+\infty\)，s =...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/2025/01/04/CSAPP%2002-Bits-ints-part2/" title="CSAPP 02-Bits-ints-part2">CSAPP 02-Bits-ints-part2</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-01-04T04:44:00.000Z" title="发表于 2025-01-04 12:44:00">2025-01-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/CSAPP/">CSAPP</a></span></div><div class="content">Addition加法  无符号数加法：\(s = UAdd_w(u,v) = (u +v)\% 2^w\)；结果寄存器会截断溢出的1位；  溢出时，结果一定小于任何一个加数；  有符号数加法：\(s = (int)((unsigned)u + (unsigned)v)\)；  正溢出：\(x + y \ge 2^{w-1}\)，截断后结果为\(x + y - 2^w\)； 负溢出：\(x + y &lt; 2^{w-1}\)，截断后结果为\(x + y + 2^w\)； 正 + 负：不可能溢出；  用加法实现减法：\((A - B)_{\text{补}} = (A)_\text{补} + (-B)_\text{补}\)  如何求\((-B)_\text{补}\) \((B)_\text{补} + (-B)_\text{补} = 11\cdots 1\) \(\sim(B)_\text{补} + (B)_\text{补} + 1 = 11\cdots 1 + 1 = 0\) \((-B)_\text{补} = \sim (B)_\text{补}...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/2025/01/04/CSAPP%2002-Bits-ints-part1/" title="CSAPP 02-Bits-ints-part1">CSAPP 02-Bits-ints-part1</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-01-04T01:24:00.000Z" title="发表于 2025-01-04 09:24:00">2025-01-04</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/CSAPP/">CSAPP</a></span></div><div class="content">Word Size 字长  32位(bits)机器，字长为4Bytes(32/8)，寻址空间为\(2^{32} = 4 * 2^{30} = 4GB\)； 内存中的管理方式如下，32位的机器最小连续字间隔4Byte，64位的机器最小连续字间隔8Byte，字节Byte是最基本存储单元；  数据表示  int可以跨平台兼容，long和pointer一样：   数据的存储排列  解答：0x08000100； 字的存放问题  大端法（高对低，最低有效字节在高低址）； 小端法（低对低，最低有效字节在最前（低地址）） 以int x = 0x01234567, &amp;x = 0x100为例：     Address 0x100 0x101 0x102 0x103     Big Endian 01 23 45 67   Little Endian 67 45 23 01    #include &lt;stdio.h&gt;  typedef unsigned char *pointer;  void show_bytes(pointer start, size_t len)&#123;...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/2025/01/03/CSAPP%2001-Overview/" title="CSAPP 01-Overview">CSAPP 01-Overview</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-01-03T13:27:00.000Z" title="发表于 2025-01-03 21:27:00">2025-01-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/CSAPP/">CSAPP</a></span></div><div class="content">程序的执行过程   编辑代码：高级程序语言阶段 Compiler编译器：汇编代码（指令操作用助记符表示） Assembler汇编器：将汇编代码转为机器指令（01字符串） 执行机器代码，调度硬件，运行程序；  8086CPU   通用寄存器组GPRS &gt;数据寄存器： &gt;&gt;AX：累加器； &gt;&gt;BX：基地址(Base)； &gt;&gt; CX：计数寄存器(Counter)； &gt;&gt; DX：数据寄存器； &gt;地址寄存器： &gt;&gt;SP：堆栈指针Stack Pointer； &gt;&gt;BP：基址指针Base...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/2024/12/26/KMP%E7%AE%97%E6%B3%95/" title="KMP算法">KMP算法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-26T08:49:00.000Z" title="发表于 2024-12-26 16:49:00">2024-12-26</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></span></div><div class="content">next数组  next[j]=k：k是当模式串中第j个字符与主串中相应字符 “失配”时，在模式串中需重新和主串中该字符进行比较的字符的位置。  \[ \left.{next[j]=}\left\{\begin{array}{ll} \mathbf{0} &amp; \text{当 j=1 时(代表下一趟比较}\mathrm{i=i+1,j=1})\\\\ \mathbf{max\{k\mid1&lt;k&lt;j}\text{且前k - 1个元素和后k-1个元素一致}\}&amp;\text{此集合不为空时,下一趟比较i = i ,j = k}\\\\ \mathbf{1}&amp;\text{其它情況(即$j \ne 1且上述集合为空$)}\end{array}\right.\right. \]  快速填写记法： （1）字符串从1开始标号； （2）next[1]默认为0； （3）next[i] = 前 i -1 位字符串公共前后缀的长度 +...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/2024/12/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84Review/" title="数据结构Review">数据结构Review</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-20T14:36:00.000Z" title="发表于 2024-12-20 22:36:00">2024-12-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></span></div><div class="content">Chapter1 概论  数据、数据元素、数据项、数据对象、数据结构等基本概念 逻辑结构，存储结构及数据运算的含义及其相互关系 算法评价标准：正确性、可读性、健壮性、效率与存储量需求、支持分布式和并行处理的算法在大数据场景下更有优势。  Chapter2 线性表 2.2链表  头节点的使用：头节点的指针域指向第一个数据节点的地址  Chapter3 栈、队列 3.1 栈 3.1.1 顺序栈  非空栈中的栈顶指针top来指向栈顶元素的下一个位置； 空栈时top = base，栈中元素的数量 = top - base； #### 3.1.2 链栈 链表指针方向是从栈顶指向栈底；  3.1.3 应用  括弧匹配检验 中缀表达式：左括号在栈外时优先级最高，在栈内时优先级很 低，仅高于栈外的右括号； 后缀表达式； 尾递归：递归调用出现在函数中的最后一行，并且没有任何局部变量参与最后一行代码的计算。此时支持“尾递归优化”的编程语言就可以在执行尾递归代码时不进行入栈操作；  3.2 队列 3.2.1 顺序队列  队空是front = rear...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/2024/12/17/%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98/" title="匹配问题">匹配问题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-17T14:45:00.000Z" title="发表于 2024-12-17 22:45:00">2024-12-17</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/%E5%9B%BE%E8%AE%BA/">图论</a></span></div><div class="content">匹配/对集问题 定义   翻译成人话就是，匹配要求边集中任何两条边不相邻，最大匹配要求边数最多，完全匹配要求所有顶点都包含。  霍尔婚姻定理 HALL’S MARRIAGE THEOREM    稳定匹配问题  问题描述：给出一个\(n\)个男性的集合\(M\)和\(n\)个女性的集合\(W\)，找到一个“稳定”匹配。  每位男性根据对女性的心仪程度从高至低进行排名； 每位女性根据对男性的心仪程度从高至低进行排名；  不稳定对：给出一个完美匹配\(S\)，男性\(m\)和女性\(w\)是不稳定的，如果同时满足下列条件：  \(m\)相比起当前配偶，更喜欢\(w\)； \(w\)相比起当前配偶，更喜欢\(m\)；  稳定匹配：一个不包含不稳定对的完美匹配。  Gale-Shapley 算法（延迟决定法）  #include&lt;iostream&gt; using namespace std; const int N = 10005; int M[N] = &#123;0&#125;, W[N] = &#123;0&#125;; //...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/2024/12/17/%E5%9B%BE%E8%AE%BA%E9%A2%98%E5%9E%8B/" title="图论题型">图论题型</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-17T13:02:00.000Z" title="发表于 2024-12-17 21:02:00">2024-12-17</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/%E5%9B%BE%E8%AE%BA/">图论</a></span></div><div class="content">10.1.1 度序列可简单图化  可简单图化的充要条件： 例题：  解法：每次度序列按非递增顺序排列，删除度最大的节点，更新其他节点的度，重新排列，继续重复上述过程。有2种不合理的情况： （1）某次对剩下序列排序后，最大的度数（设为d1）超过了剩下的顶点数； （2）对最大度数后面的d1个数各减1后，出现了负数。  应用：Frogs' Neighborhood  Description  未名湖附近共\(N\)个大小湖泊\(L_1, L_2, \cdots, L_n\)(其中包括未名湖)，每个湖泊\(L_i\)里住着一只青蛙\(F_i(1 \le i \le N)\)。如果湖泊\(L_i\)和\(L_j\)之间有水路相连，则青蛙\(F_i\)和\(F_j\)互称为邻居。现在已知每只青蛙的邻居数目\(x_1, x_2, \cdots, x_n\)，请你给出每两个湖泊之间的相连关系。  Input  第一行是测试数据的组数\(T(0 \le T \le 20)\)。每组数据包括两行，第一行是整数\(N(2 &lt; N &lt;...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/blog/2024/12/10/%E5%B9%B3%E9%9D%A2%E5%9B%BE/" title="平面图">平面图</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-12-10T06:53:00.000Z" title="发表于 2024-12-10 14:53:00">2024-12-10</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/blog/categories/%E5%9B%BE%E8%AE%BA/">图论</a></span></div><div class="content">一、定义  如果一个图能画在平面上使得它的边仅在端点相交，则称这个图为可嵌人平面的，或称为平面图。平面图G的这样一种画法称为G的一个平面嵌人。  一个平图\(G\)把平面划分成若干个连通区域，这些区域的闭包称为\(G\)的面。面边界回路的长度称为面的次数，记为\(Deg(f)\)或\(d(f)\)。 每个平图恰有一个无界的面，称为外部面。  二、相关性质和定理 2.1 面的次数之和与边数关系  \(\sum {d(f)} = 2\varepsilon\)  2.2 Euler公式  若\(G\)是连通平图，则有：\(\nu - \varepsilon + \phi = 2\)   简单平面图存在一个度数小于5的顶点； # 三、判断方法 # 3.1 必要条件 1. 若\(G\)是\(v \ge 3\)的简单平面图，则\(\varepsilon \le 3\nu - 6\)。  Euler公式   3.2...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/blog/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span><a class="page-number" href="/blog/page/3/#content-inner">3</a><a class="extend next" rel="next" href="/blog/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/blog/img/avatar.jpg" onerror="this.onerror=null;this.src='/blog/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Yokumi</div><div class="author-info-description"></div><div class="site-data"><a href="/blog/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/blog/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/blog/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Yokumii"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Yokumii" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:m2845687016@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/2025/01/08/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E4%B8%8E%E6%95%B0%E5%AD%97%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3%E8%AE%B0%E8%83%8C%E7%9F%A5%E8%AF%86%E7%82%B9/" title="数字逻辑与数字系统相关记背知识点">数字逻辑与数字系统相关记背知识点</a><time datetime="2025-01-08T14:10:00.000Z" title="发表于 2025-01-08 22:10:00">2025-01-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/2025/01/07/%E5%9B%BE%E7%9A%84%E6%9F%93%E8%89%B2%E9%97%AE%E9%A2%98/" title="图的染色问题">图的染色问题</a><time datetime="2025-01-07T07:04:00.000Z" title="发表于 2025-01-07 15:04:00">2025-01-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/2025/01/06/CSAPP%20Exercises/" title="CSAPP Exercises">CSAPP Exercises</a><time datetime="2025-01-06T08:46:00.000Z" title="发表于 2025-01-06 16:46:00">2025-01-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/2025/01/05/CSAPP%2016-io4/" title="CSAPP 16-io4">CSAPP 16-io4</a><time datetime="2025-01-05T12:49:00.000Z" title="发表于 2025-01-05 20:49:00">2025-01-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blog/2025/01/05/CSAPP%2014-ecf-procs/" title="CSAPP 14-ecf-procs">CSAPP 14-ecf-procs</a><time datetime="2025-01-05T09:26:00.000Z" title="发表于 2025-01-05 17:26:00">2025-01-05</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/blog/categories/CSAPP/"><span class="card-category-list-name">CSAPP</span><span class="card-category-list-count">14</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/blog/categories/%E5%9B%BE%E8%AE%BA/"><span class="card-category-list-name">图论</span><span class="card-category-list-count">6</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/blog/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"><span class="card-category-list-name">数据结构</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/blog/categories/%E7%BE%A4%E8%AE%BA/"><span class="card-category-list-name">群论</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/blog/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"><span class="card-category-list-name">计算机基础</span><span class="card-category-list-count">2</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.18em; color: #999ca1">数据结构</a> <a href="/blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" style="font-size: 1.18em; color: #999ca1">计算机基础</a> <a href="/blog/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.1em; color: #999">算法</a> <a href="/blog/tags/%E7%BE%A4%E8%AE%BA/" style="font-size: 1.26em; color: #999fa8">群论</a> <a href="/blog/tags/CSAPP/" style="font-size: 1.5em; color: #99a9bf">CSAPP</a> <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="font-size: 1.42em; color: #99a6b7">图论</a> <a href="/blog/tags/%E7%A1%AC%E4%BB%B6/" style="font-size: 1.1em; color: #999">硬件</a> <a href="/blog/tags/%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81/" style="font-size: 1.34em; color: #99a3b0">汇编代码</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/blog/archives/2025/01/">
+            <span class="card-archive-list-date">
+              一月 2025
             </span>
-            &commat;Yokumi
-        </div>
-        
-    </div>
-</footer>
-
-        </div>
-        
-        <transition name="fade">
-            <div id="preview" ref="preview" v-show="previewShow">
-                <img id="preview-content" ref="previewContent" />
-            </div>
-        </transition>
-        
-    </div>
-    <script src="/blog/js/main.js"></script>
-    
-</body>
-</html>
+            <span class="card-archive-list-count">15</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/blog/archives/2024/12/">
+            <span class="card-archive-list-date">
+              十二月 2024
+            </span>
+            <span class="card-archive-list-count">8</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/blog/archives/2024/11/">
+            <span class="card-archive-list-date">
+              十一月 2024
+            </span>
+            <span class="card-archive-list-count">5</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">28</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">36.8k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-01-12T08:53:47.618Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By Yokumi</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/blog/js/utils.js"></script><script src="/blog/js/main.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: str => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: subtitleType => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  }
+}
+btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
+</script><script>function subtitleType () {
+  if (true) {
+    typedJSFn.init(["这里是Yokumi!","等 阳光诞生于这里 重启","水善利万物而不争，处众人之所恶"])
+  } else {
+    document.getElementById("subtitle").textContent = "这里是Yokumi!"
+  }
+}
+typedJSFn.run(subtitleType)</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
