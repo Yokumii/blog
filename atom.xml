@@ -6,7 +6,7 @@
   <link href="https://yokumii.github.io/blog/atom.xml" rel="self"/>
   
   <link href="https://yokumii.github.io/blog/"/>
-  <updated>2025-01-09T02:15:21.668Z</updated>
+  <updated>2025-01-23T04:03:41.838Z</updated>
   <id>https://yokumii.github.io/blog/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NSFC爬虫练习</title>
+    <link href="https://yokumii.github.io/blog/2025/01/22/NSFC%E7%88%AC%E8%99%AB%E7%BB%83%E4%B9%A0/"/>
+    <id>https://yokumii.github.io/blog/2025/01/22/NSFC%E7%88%AC%E8%99%AB%E7%BB%83%E4%B9%A0/</id>
+    <published>2025-01-22T12:47:00.000Z</published>
+    <updated>2025-01-23T04:03:41.838Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="需求">需求</h1><p>从国家自然科学基金大数据知识管理服务门户爬取论文数据。</p><h1 id="搜索api">搜索API</h1><ol type="1"><li>打开浏览器的<strong>开发者工具</strong>（如 Chrome 的 F12）；</li><li>在网络（Network）选项卡中，监控搜索的请求；</li><li>找到接口()[<a href="https://kd.nsfc.cn/api/baseQuery/completionQueryResultsData" class="uri">https://kd.nsfc.cn/api/baseQuery/completionQueryResultsData</a>]；</li><li>其请求体如下：</li></ol><pre class="json"><code>&#123;&quot;code&quot;:&quot;A01&quot;,&quot;fuzzyKeyword&quot;:&quot;&quot;,&quot;complete&quot;:true,&quot;isFuzzySearch&quot;:false,&quot;conclusionYear&quot;:&quot;2020&quot;,&quot;dependUnit&quot;:&quot;&quot;,&quot;keywords&quot;:&quot;&quot;,&quot;pageNum&quot;:0,&quot;pageSize&quot;:10,&quot;personInCharge&quot;:&quot;&quot;,&quot;projectName&quot;:&quot;&quot;,&quot;projectType&quot;:&quot;218&quot;,&quot;subPType&quot;:&quot;&quot;,&quot;psPType&quot;:&quot;&quot;,&quot;ratifyNo&quot;:&quot;&quot;,&quot;ratifyYear&quot;:&quot;&quot;,&quot;order&quot;:&quot;enddate&quot;,&quot;ordering&quot;:&quot;desc&quot;,&quot;codeScreening&quot;:&quot;&quot;,&quot;dependUnitScreening&quot;:&quot;&quot;,&quot;keywordsScreening&quot;:&quot;&quot;,&quot;projectTypeNameScreening&quot;:&quot;&quot;&#125;</code></pre><p>需要用到的字段只有：</p><pre class="json"><code>code // 申请代码conclusionYear // 结题年度projectType // 资助类别</code></pre><ol start="5" type="1"><li>观察其返回内容：<img src="1.png">为一串无规律的长字符串，初步判断是经过了某种加密；</li></ol><h1 id="解密">解密</h1><p>页面的HTML文件：</p><pre class="html"><code>&lt;body&gt;        &lt;noscript&gt;            &lt;strong&gt;We&#39;re sorry but 国家自然科学基金大数据知识管理服务门户 doesn&#39;t work properly without JavaScript enabled. Please enable it to continue.&lt;/strong&gt;        &lt;/noscript&gt;        &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;        &lt;script src=&quot;/js/chunk-vendors.559d99e0.js&quot;&gt;&lt;/script&gt;        &lt;script src=&quot;/js/app.17b88e26.js&quot;&gt;&lt;/script&gt;    &lt;/body&gt;</code></pre><p>在网页的 JavaScript文件中，尝试寻找相关的解密代码，最终在app.17b88e26.js中找到以下内容（注释为后期补充）：</p><pre class="javascript"><code>function g(e) &#123;    // 定义密钥    var t = p.a.enc.Utf8.parse(&quot;IFROMC86&quot;);        // 使用 DES 解密方法    var n = p.a.DES.decrypt(        &#123;            ciphertext: p.a.enc.Base64.parse(e) // 解析 Base64 编码的密文        &#125;,        t, // 解密密钥        &#123;            mode: p.a.mode.ECB, // 使用 ECB 模式            padding: p.a.pad.Pkcs7 // 使用 PKCS7 填充方式        &#125;    );    // 将解密后的内容解析为 UTF-8 字符串并转为 JSON    return JSON.parse(n.toString(p.a.enc.Utf8));&#125;</code></pre><p>使用 Python 的 pycryptodome 库来实现解密：</p><pre class="bash"><code>pip install pycryptodome</code></pre><pre class="python"><code>from Crypto.Cipher import DESfrom Crypto.Util.Padding import unpadimport base64import jsondef decrypt_des_ecb(ciphertext):    # 密钥    key = b&quot;IFROMC86&quot;    # Base64 解码    encrypted_data = base64.b64decode(ciphertext)        # 初始化 DES 解密器    cipher = DES.new(key, DES.MODE_ECB)        # 解密数据并移除填充    decrypted_data = unpad(cipher.decrypt(encrypted_data), DES.block_size)        # 解密后的字符串转为 JSON 格式    return json.loads(decrypted_data.decode(&#39;utf-8&#39;))</code></pre><p>对网页发送请求，成功得到解密后的JSON文件：<br><img src="2.png"></p>]]></content>
+    
+    
+    <summary type="html">一个项目需要的爬虫记录</summary>
+    
+    
+    
+    <category term="Python" scheme="https://yokumii.github.io/blog/categories/Python/"/>
+    
+    
+    <category term="Python" scheme="https://yokumii.github.io/blog/tags/Python/"/>
+    
+    <category term="爬虫" scheme="https://yokumii.github.io/blog/tags/%E7%88%AC%E8%99%AB/"/>
+    
+  </entry>
   
   <entry>
     <title>数字逻辑与数字系统相关记背知识点</title>
