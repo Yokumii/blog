@@ -60,10 +60,10 @@
   
   <entry>
     <title>RAG（Retrieval-augmented generation）个人学习笔记</title>
-    <link href="https://yokumii.github.io/blog/2025/02/26/RAG%EF%BC%88Retrieval-augmented%20generation%EF%BC%89%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>https://yokumii.github.io/blog/2025/02/26/RAG%EF%BC%88Retrieval-augmented%20generation%EF%BC%89%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
-    <published>2025-02-26T08:54:00.000Z</published>
-    <updated>2025-02-27T11:58:11.467Z</updated>
+    <link href="https://yokumii.github.io/blog/2025/02/22/RAG%EF%BC%88Retrieval-augmented%20generation%EF%BC%89%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>https://yokumii.github.io/blog/2025/02/22/RAG%EF%BC%88Retrieval-augmented%20generation%EF%BC%89%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
+    <published>2025-02-22T08:54:00.000Z</published>
+    <updated>2025-02-27T12:40:42.030Z</updated>
     
     <content type="html"><![CDATA[<h1 id="为什么需要rag">为什么需要RAG？</h1><p>传统的LLM模型主要存在以下2个问题：幻觉以及外部知识/最新知识的缺失，RAG可以通过结合基于检索和生成模型的优势来提供更准确和上下文相关的响应，可以添加自己的预料构建知识库。</p><h1 id="rag-vs.-fine-tuning-a-llm-model">RAG vs. fine-tuning a LLMmodel</h1><p>下图源自<a href="https://github.com/Tongji-KGLLM/RAG-Survey/">RAG-Survey</a><br><img src="RAG_FT_Table.jpg"><br>结合个人理解：<br>1.RAG更适合知识库需要动态更新的情景，这部分数据不作为用于LLM的训练数据，而是通过LLM的能力进行检索。<br>2. RAG由于采用检索的形式，数据来源是可知的，而LLM是黑箱。<br>3. RAG 可以对生成过程提供更多控制。</p><h1 id="query-classification-查询分类">Query Classification查询分类</h1><p>并非所有查询都需要用到检索增强，需要将查询分类为需要使用RAG和直接用LLM生成两类。</p><blockquote><p>持续更新中...</p></blockquote>]]></content>
     
