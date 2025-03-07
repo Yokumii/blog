@@ -3,7 +3,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8" />
-    <title>CSAPP 06-machine-control | YokumiのBlog</title>
+    <title>形式语言与自动机学习笔记(1) | YokumiのBlog</title>
     <meta name="author" content="Yokumi" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -162,22 +162,22 @@
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
             <div class="article">
     <div>
-        <h1>CSAPP 06-machine-control</h1>
+        <h1>形式语言与自动机学习笔记(1)</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2025/1/4
+            2025/3/5
         </span>
         
         <span class="category">
-            <a href="/blog/categories/CSAPP/">
+            <a href="/blog/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                CSAPP
+                计算机基础
             </a>
         </span>
         
@@ -190,15 +190,15 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CSAPP/" style="color: #00bcd4">
-                    CSAPP
+                <a href="/blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" style="color: #00bcd4">
+                    计算机基础
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81/" style="color: #00a596">
-                    汇编代码
+                <a href="/blog/tags/private/" style="color: #00a596">
+                    private
                 </a>
             </span>
             
@@ -207,76 +207,18 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="条件码">条件码</h1>
-<p><img src="1.png"><br>
-<img src="2.png"><br>
-<img src="3.png"><br>
-<img src="4.png"><br>
-* <strong>注意<code>cmp</code>实际上做减运算，后减前</strong>；</p>
-<h1 id="loop循环结构">Loop循环结构</h1>
-<ol type="1">
-<li>do-while：</li>
-</ol>
-<pre class="c"><code>do &#123;
-    body;
-&#125; while(test);</code></pre>
-<p>等价于</p>
-<pre class="c"><code>Loop:
-    body;
-    t = test;
-    if (t) goto Loop;</code></pre>
-<ol start="2" type="1">
-<li>while：</li>
-</ol>
-<pre class="c"><code>while (test) &#123;
-    body;
-&#125;</code></pre>
-<p>如果开启-O2优化，采用Jump-to-middle翻译方法，即判断在后面，先跳到末尾进行判断，再返回中间执行整体；</p>
-<pre class="c"><code>    goto test;
-Loop:
-    body;
-
-test:
-    t = test;
-    if (t) goto Loop;</code></pre>
-<p>如果开启-O1优化，采用Guarded-do翻译方法，先进行判断，然后转换为do-while循环；</p>
-<pre class="c"><code>t = test;
-if (!t) goto END;
-Loop:
-    body;
-    t = test;
-    if (t) goto Loop:
-END;</code></pre>
-<ol start="3" type="1">
-<li>for：</li>
-</ol>
-<pre class="c"><code>for (init; test; update) &#123;
-    body;
-&#125;</code></pre>
-<p>转化为while循环：</p>
-<pre class="c"><code>init;
-while (test) &#123;
-    body;
-    update;
-&#125;</code></pre>
-<p>写成goto形式：</p>
-<pre class="c"><code>init;
-t = test;
-Loop:
-    body;
-    update;
-    if (t) goto Loop;
-END;</code></pre>
-<h1 id="switch分支结构">Switch分支结构</h1>
-<ul>
-<li>并非if，通过跳转表来实现，每一个分支被视为一个代码块，代码块的开头的地址被存放在跳转表中；<img src="5.png"></li>
-</ul>
-<pre class="x86asm"><code>my_switch:
-    movq %rax, %rcx
-    cmpq $6, %rdi // x : 6
-    ja .L8 // if x &gt; 6, goto default;
-    jmp *.L4(,%rdi, 8) // *(.L4 + x * 8)的地址上的值，即间接跳转，先计算出跳转表上的索引位置，跳转到该索引上的值处；</code></pre>
-
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉，您输入的密码错误，请检查后重新输入。" data-whm="抱歉, 当前文章不能被校验, 不过您还是可以看看解密后的内容。">
+  <script id="hbeData" type="hbeData" data-hmacdigest="7b601336e85483f85dd7a868f4e60240d7479aabd279842b0cfb9ff1e9eaaaf4">6df07e4654b2f23296fe416e73f530c96bf04cf67b3d4ddcef59c681cd714fa3f2c6baf4988eb7beafb34d41450f840117a1384450a9a3a5a8a75599d62c1e91b13e58e6a9fd8a10b8d38d9eea7414795626a16243394e80dfbd64329f024aba967a3bbd3c7f12e0b6c5180258cdc11e3495882c3663834552e4b3ee3f92584d8141aec1e05058cd04f63e30aab2a8c01b880bf458ee0803b182be7e8df7ee4cc0403964f6e1486021e3abe5e7459efc097c13af8b32914619736d68ac991de72d046fa900651597051dca21aefc883e947289b3f01c3de2bb88092f02fde9ab5b708640369747f7043846936b0c56a2131a2e6d844eb6f388214731bc893196e9ad069a46e43f6204315ab63302cfcf23747794008f8ac0f966eb913e998e8e843ca7ffd5de1905e5411c56df429963c19214fe4877bb5b9527b30ddb68ea70d1ec701832ea231370e8d3e45f3d65eb359c6c91b85d4d7d5687f44852ca45e174ef0bfee09fe58bad408001e1ac1ed4904f38c217f5320ac0a4aee36370ac3480a800c596dc82799b3fc933bffcaeb8804a9f67081c90f86109312084cb253a0a5b7d0df8d03b32784951a3d9a36062d32d8251f3ed21744d99f8832b535ede57e981b7c739ac85f1ed2b49e4a3facded7c32fe5609c2651a52407c577d38b9deddce2684b9bf7313ca36160d7c639500d257709d1674c19c77714e57584eb737a8eeb956cdec47c2c3b90257c99de8b95edeb2ad63d7278da3c3487ed09f101914da34ece7e7e8610639ba85e50528c44d2b240b96e2fb1ccc4fb0caebf30bc57a7cb92807a2a4428a7fe5ba2d962df99731d9b9914a83c8b779c58c2d32d44e3fb01b30e791a3a2dd8215ec2ea97eb4bd51d8c093e71baff9ff9b0038fa6277a633100a69fae34c4463e78f9a5e152c18c7669e055b09aafad7d2e4fc56fda742eac1870c376277c20261750de331a744d14108c7af6e24ae150012d7ba1d4e3a2201703dc9c2f2754da570283ad5b1c96e0b5c5c59721691ba02e0b7328aea94c62bb8f260bc8dd9e89f197495679bfee64d9049873a57c3c57cb8e4f8e40dad18bd950f6eaeb43f6099c888ef46b738524abb2ca893050171936b2be5b4f0b2c61be3b65762057b911f08b7d607cc5c2a4db60ad1ccc3d20bf858b9c5b94e9713d3ae603c2ea7093c0e3d7bfba7fa004b7a91a692350ac33573c46032354322add7f5335ee5f3d3c4b1174d291259eb6c6129aadd853a867d145b25f751e32bddae8142648237ecb64c98a9272a218d2074a81987b35fa55e68f2ee49412435b8aaf26b62d8a3c465fc2cfe9cdf7591fde61b7d23575d71fa3b168b9b7959b31e5d06b69c232735db4fb188dd0db62559ae1f7420d9ebdb018d6662975b89b030d3727bbb694f34726881ed4d28a1463596bddf3193db447c3bc11ee612c8ba5db1e9313f29cff3ababe1eecdf7b48a0fb58ae94c777ae271223008b326824af4019d1cdc4a0fe7a78515022251e6daebf6ff10e1e9dd2b672bb3490b5881ea1fc059dfad65dd0bb725e03dc789c575b3c1d543be591c0d888cdc66eae1ef3eda1427592324fab0307b8c7efd199deb0231c331827bd340f8a8fd90c2ba2224be74ea258b879db5b8dcf47019baaec2d846e5b290c6c95ebcb4314be165137f1fe266781e2174fb918e825dfef5d00c6981bc91157a0629a75d4d5a5e8063751286fade15c96917931ac6a1c65eb313e053c84ea2c19459796021cb20620c58387b935d93c95e0c5c77c8ea7abcfd739a7a0934471e547b6ceda35fa780b20ce48ae2be3cfc84521404f05c229161a5add2913a4a729e0eaf782ac49f8fb24b6be9d843aff2bfc84ef4e6ca315b940d59967da64277efe74e2af3d5ab34e4c55724ae317f396fc630145497045dc2bbee88e5a51c37f47dbfbcd4a967071dad1dd69d1940ba1e04e391c35e4de64ae5e66bd601b5b1b160da11cdfb4db3</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">当前文章暂不对外可见，请输入密码后查看！</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/blog/lib/hbe.js"></script><link href="/blog/css/hbe.style.css" rel="stylesheet" type="text/css">
     </div>
     
     
