@@ -185,7 +185,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #00a596">
+                <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #03a9f4">
                     图论
                 </a>
             </span>
@@ -195,35 +195,25 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="匹配对集问题">匹配/对集问题</h1>
-<h2 id="定义">定义</h2>
-<blockquote>
-<p><img src="匹配定义.png"><br>
-翻译成人话就是，匹配要求边集中任何两条边不相邻，最大匹配要求边数最多，完全匹配要求所有顶点都包含。</p>
+        <h1 id="匹配-对集问题"><a href="#匹配-对集问题" class="headerlink" title="匹配/对集问题"></a>匹配/对集问题</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><blockquote>
+<p><img src="匹配定义.png" alt><br>翻译成人话就是，匹配要求边集中任何两条边不相邻，最大匹配要求边数最多，完全匹配要求所有顶点都包含。</p>
 </blockquote>
-<h2 id="霍尔婚姻定理-halls-marriage-theorem">霍尔婚姻定理 HALL’S
-MARRIAGE THEOREM</h2>
-<blockquote>
-<p><img src="霍尔婚姻定理.png"></p>
+<h2 id="霍尔婚姻定理-HALL’S-MARRIAGE-THEOREM"><a href="#霍尔婚姻定理-HALL’S-MARRIAGE-THEOREM" class="headerlink" title="霍尔婚姻定理 HALL’S  MARRIAGE  THEOREM"></a>霍尔婚姻定理 HALL’S  MARRIAGE  THEOREM</h2><blockquote>
+<p><img src="霍尔婚姻定理.png" alt></p>
 </blockquote>
-<h1 id="稳定匹配问题">稳定匹配问题</h1>
+<h1 id="稳定匹配问题"><a href="#稳定匹配问题" class="headerlink" title="稳定匹配问题"></a>稳定匹配问题</h1><blockquote>
+<p><strong>问题描述</strong>：给出一个$n$个男性的集合$M$和$n$个女性的集合$W$，找到一个“稳定”匹配。</p>
 <blockquote>
-<p><strong>问题描述</strong>：给出一个<span class="math inline">\(n\)</span>个男性的集合<span class="math inline">\(M\)</span>和<span class="math inline">\(n\)</span>个女性的集合<span class="math inline">\(W\)</span>，找到一个“稳定”匹配。</p>
-<blockquote>
-<p>每位男性根据对女性的心仪程度从高至低进行排名；<br>
-每位女性根据对男性的心仪程度从高至低进行排名；</p>
+<p>每位男性根据对女性的心仪程度从高至低进行排名；<br>每位女性根据对男性的心仪程度从高至低进行排名；</p>
 </blockquote>
-<p><strong>不稳定对</strong>：给出一个完美匹配<span class="math inline">\(S\)</span>，男性<span class="math inline">\(m\)</span>和女性<span class="math inline">\(w\)</span>是不稳定的，如果同时满足下列条件：</p>
+<p><strong>不稳定对</strong>：给出一个完美匹配$S$，男性$m$和女性$w$是不稳定的，如果同时满足下列条件：</p>
 <blockquote>
-<p><span class="math inline">\(m\)</span>相比起当前配偶，更喜欢<span class="math inline">\(w\)</span>；<br>
-<span class="math inline">\(w\)</span>相比起当前配偶，更喜欢<span class="math inline">\(m\)</span>；</p>
+<p>$m$相比起当前配偶，更喜欢$w$；<br>$w$相比起当前配偶，更喜欢$m$；</p>
 </blockquote>
 <p><strong>稳定匹配</strong>：一个不包含不稳定对的完美匹配。</p>
 </blockquote>
-<h3 id="gale-shapley-算法延迟决定法">Gale-Shapley
-算法（延迟决定法）</h3>
-<p><img src="Gale-Shapley算法%20.png"></p>
-<pre class="cpp"><code>#include&lt;iostream&gt;
+<h3 id="Gale-Shapley-算法（延迟决定法）"><a href="#Gale-Shapley-算法（延迟决定法）" class="headerlink" title="Gale-Shapley 算法（延迟决定法）"></a>Gale-Shapley 算法（延迟决定法）</h3><p><img src="Gale-Shapley算法%20.png" alt></p>
+<pre><code class="lang-cpp">#include&lt;iostream&gt;
 using namespace std;
 const int N = 10005;
 int M[N] = &#123;0&#125;, W[N] = &#123;0&#125;; // 第0个元素表示已经配对的男性/女性个数；男性和女性集合，0表示目前还单身，&gt;0表示已经和该数字对应的异性配对
@@ -257,13 +247,13 @@ void G_S(int num) &#123;
         w = m = 0;
         while (M[++m] != 0) ; // 找到第一个出现的还没有配对的男生m
         w = M_pri[m][++M_pri[m][0]]; // 找到第m位男生心中剩下排名第一的女生w
-        if (W[w])   //如果女生已经在约会了
+        if (W[w])    //如果女生已经在约会了
         &#123;
             if (lovemore(m,w,num)) // 如果w更爱m
             &#123;
                 M[W[w]] = 0; // w 甩了当前和她配对的
                 M[m] = w;
-                W[w] = m;   
+                W[w] = m;    
             &#125;
             else 
                 continue;
@@ -306,7 +296,8 @@ void solve() &#123;
 int main() &#123;
     solve();
     return 0;
-&#125;</code></pre>
+&#125;
+</code></pre>
 
     </div>
     

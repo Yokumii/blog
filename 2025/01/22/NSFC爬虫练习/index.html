@@ -185,14 +185,14 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Python/" style="color: #03a9f4">
+                <a href="/blog/tags/Python/" style="color: #00a596">
                     Python
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E7%88%AC%E8%99%AB/" style="color: #00a596">
+                <a href="/blog/tags/%E7%88%AC%E8%99%AB/" style="color: #ff7d73">
                     爬虫
                 </a>
             </span>
@@ -202,39 +202,35 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="需求">需求</h1>
-<p>从国家自然科学基金大数据知识管理服务门户爬取论文数据。</p>
-<h1 id="搜索api">搜索API</h1>
-<ol type="1">
+        <h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><p>从国家自然科学基金大数据知识管理服务门户爬取论文数据。</p>
+<h1 id="搜索API"><a href="#搜索API" class="headerlink" title="搜索API"></a>搜索API</h1><ol>
 <li>打开浏览器的<strong>开发者工具</strong>（如 Chrome 的 F12）；</li>
 <li>在网络（Network）选项卡中，监控搜索的请求；</li>
-<li>找到接口()[<a target="_blank" rel="noopener" href="https://kd.nsfc.cn/api/baseQuery/completionQueryResultsData" class="uri">https://kd.nsfc.cn/api/baseQuery/completionQueryResultsData</a>]；</li>
-<li>其请求体如下：</li>
-</ol>
-<pre class="json"><code>&#123;&quot;code&quot;:&quot;A01&quot;,&quot;fuzzyKeyword&quot;:&quot;&quot;,&quot;complete&quot;:true,&quot;isFuzzySearch&quot;:false,&quot;conclusionYear&quot;:&quot;2020&quot;,&quot;dependUnit&quot;:&quot;&quot;,&quot;keywords&quot;:&quot;&quot;,&quot;pageNum&quot;:0,&quot;pageSize&quot;:10,&quot;personInCharge&quot;:&quot;&quot;,&quot;projectName&quot;:&quot;&quot;,&quot;projectType&quot;:&quot;218&quot;,&quot;subPType&quot;:&quot;&quot;,&quot;psPType&quot;:&quot;&quot;,&quot;ratifyNo&quot;:&quot;&quot;,&quot;ratifyYear&quot;:&quot;&quot;,&quot;order&quot;:&quot;enddate&quot;,&quot;ordering&quot;:&quot;desc&quot;,&quot;codeScreening&quot;:&quot;&quot;,&quot;dependUnitScreening&quot;:&quot;&quot;,&quot;keywordsScreening&quot;:&quot;&quot;,&quot;projectTypeNameScreening&quot;:&quot;&quot;&#125;</code></pre>
-<p>需要用到的字段只有：</p>
-<pre class="json"><code>code // 申请代码
+<li>找到接口()[<a target="_blank" rel="noopener" href="https://kd.nsfc.cn/api/baseQuery/completionQueryResultsData]；">https://kd.nsfc.cn/api/baseQuery/completionQueryResultsData]；</a></li>
+<li>其请求体如下：<pre><code class="lang-json">&#123;&quot;code&quot;:&quot;A01&quot;,&quot;fuzzyKeyword&quot;:&quot;&quot;,&quot;complete&quot;:true,&quot;isFuzzySearch&quot;:false,&quot;conclusionYear&quot;:&quot;2020&quot;,&quot;dependUnit&quot;:&quot;&quot;,&quot;keywords&quot;:&quot;&quot;,&quot;pageNum&quot;:0,&quot;pageSize&quot;:10,&quot;personInCharge&quot;:&quot;&quot;,&quot;projectName&quot;:&quot;&quot;,&quot;projectType&quot;:&quot;218&quot;,&quot;subPType&quot;:&quot;&quot;,&quot;psPType&quot;:&quot;&quot;,&quot;ratifyNo&quot;:&quot;&quot;,&quot;ratifyYear&quot;:&quot;&quot;,&quot;order&quot;:&quot;enddate&quot;,&quot;ordering&quot;:&quot;desc&quot;,&quot;codeScreening&quot;:&quot;&quot;,&quot;dependUnitScreening&quot;:&quot;&quot;,&quot;keywordsScreening&quot;:&quot;&quot;,&quot;projectTypeNameScreening&quot;:&quot;&quot;&#125;
+</code></pre>
+需要用到的字段只有：<pre><code class="lang-json">code // 申请代码
 conclusionYear // 结题年度
-projectType // 资助类别</code></pre>
-<ol start="5" type="1">
-<li>观察其返回内容：<img src="1.png">为一串无规律的长字符串，初步判断是经过了某种加密；</li>
+projectType // 资助类别
+</code></pre>
+</li>
+<li>观察其返回内容：<img src="1.png" alt>为一串无规律的长字符串，初步判断是经过了某种加密；</li>
 </ol>
-<h1 id="解密">解密</h1>
-<p>页面的HTML文件：</p>
-<pre class="html"><code>&lt;body&gt;
+<h1 id="解密"><a href="#解密" class="headerlink" title="解密"></a>解密</h1><p>页面的HTML文件：</p>
+<pre><code class="lang-html">&lt;body&gt;
         &lt;noscript&gt;
             &lt;strong&gt;We&#39;re sorry but 国家自然科学基金大数据知识管理服务门户 doesn&#39;t work properly without JavaScript enabled. Please enable it to continue.&lt;/strong&gt;
         &lt;/noscript&gt;
         &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;
         &lt;script src=&quot;/js/chunk-vendors.559d99e0.js&quot;&gt;&lt;/script&gt;
         &lt;script src=&quot;/js/app.17b88e26.js&quot;&gt;&lt;/script&gt;
-    &lt;/body&gt;</code></pre>
-<p>在网页的 JavaScript
-文件中，尝试寻找相关的解密代码，最终在app.17b88e26.js中找到以下内容（注释为后期补充）：</p>
-<pre class="javascript"><code>function g(e) &#123;
+    &lt;/body&gt;
+</code></pre>
+<p>在网页的 JavaScript 文件中，尝试寻找相关的解密代码，最终在app.17b88e26.js中找到以下内容（注释为后期补充）：</p>
+<pre><code class="lang-javascript">function g(e) &#123;
     // 定义密钥
     var t = p.a.enc.Utf8.parse(&quot;IFROMC86&quot;);
-    
+
     // 使用 DES 解密方法
     var n = p.a.DES.decrypt(
         &#123;
@@ -249,10 +245,12 @@ projectType // 资助类别</code></pre>
 
     // 将解密后的内容解析为 UTF-8 字符串并转为 JSON
     return JSON.parse(n.toString(p.a.enc.Utf8));
-&#125;</code></pre>
+&#125;
+</code></pre>
 <p>使用 Python 的 pycryptodome 库来实现解密：</p>
-<pre class="bash"><code>pip install pycryptodome</code></pre>
-<pre class="python"><code>from Crypto.Cipher import DES
+<pre><code class="lang-bash">pip install pycryptodome
+</code></pre>
+<pre><code class="lang-python">from Crypto.Cipher import DES
 from Crypto.Util.Padding import unpad
 import base64
 import json
@@ -262,17 +260,17 @@ def decrypt_des_ecb(ciphertext):
     key = b&quot;IFROMC86&quot;
     # Base64 解码
     encrypted_data = base64.b64decode(ciphertext)
-    
+
     # 初始化 DES 解密器
     cipher = DES.new(key, DES.MODE_ECB)
-    
+
     # 解密数据并移除填充
     decrypted_data = unpad(cipher.decrypt(encrypted_data), DES.block_size)
-    
+
     # 解密后的字符串转为 JSON 格式
-    return json.loads(decrypted_data.decode(&#39;utf-8&#39;))</code></pre>
-<p>对网页发送请求，成功得到解密后的JSON文件：<br>
-<img src="2.png"></p>
+    return json.loads(decrypted_data.decode(&#39;utf-8&#39;))
+</code></pre>
+<p>对网页发送请求，成功得到解密后的JSON文件：<br><img src="2.png" alt></p>
 
     </div>
     

@@ -185,7 +185,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E7%9F%A9%E9%98%B5%E8%AE%BA/" style="color: #00bcd4">
+                <a href="/blog/tags/%E7%9F%A9%E9%98%B5%E8%AE%BA/" style="color: #00a596">
                     矩阵论
                 </a>
             </span>
@@ -195,104 +195,45 @@
     </div>
     
     <div class="content" v-pre>
-        <h2 id="矩阵可逆性条件条件数和谱半径介绍">矩阵可逆性条件、条件数和谱半径介绍</h2>
-<p>在明确了范数的定义后，我们对它的几点应用进行列举。</p>
-<h3 id="定理-2.6">定理 2.6</h3>
-<p>设 <span class="math inline">\(A\in \mathbb{C}^{n \times
-n}\)</span>，且对 <span class="math inline">\(\mathbb{C}^{n\times
-n}\)</span> 上的某种矩阵范数 $$，若 <span class="math inline">\(\Vert  A
-\Vert  &lt; 1\)</span>，则矩阵 <span class="math inline">\(I-A\)</span>
-可逆（非奇异），且有：</p>
-<p><span class="math display">\[
-\Vert (I - A)^{-1} \Vert  \leq \frac{\Vert  I \Vert }{1 - \Vert  A \Vert
-}
-\]</span></p>
-<h3 id="定理-2.7">定理 2.7</h3>
-<p>设 <span class="math inline">\(A\in \mathbb{C}^{n \times
-n}\)</span>，且对 <span class="math inline">\(\mathbb{C}^{n\times
-n}\)</span> 上的某种矩阵范数 $$，若 <span class="math inline">\(\Vert  A
-\Vert  &lt; 1\)</span>，则有：</p>
-<p><span class="math display">\[
-\Vert I - (I - A)^{-1} \Vert  \leq \frac{\Vert  A \Vert }{1 - \Vert  A
-\Vert }
-\]</span></p>
-<h3 id="逆矩阵的摄动">逆矩阵的摄动</h3>
-<p>在实际应用问题中，矩阵参数往往为非准确值，即带有误差 <span class="math inline">\(\delta\)</span>，我们希望其构成的近似矩阵 <span class="math inline">\(A\)</span> 的逆矩阵 <span class="math inline">\(A^{-1}\)</span> 与准确矩阵 <span class="math inline">\(A + \delta a_{ij}(i,j = 1,2,\dots,n)\)</span>
-的逆矩阵 <span class="math inline">\((A + \delta a_{ij})^{-1}\)</span>
-尽量接近。</p>
-<p>一般称 <span class="math inline">\(\delta a_{ij}\)</span> 为
-<strong>扰动</strong>，<span class="math inline">\(\delta A\)</span> 为
-<span class="math inline">\(A\)</span> 的
-<strong>摄动矩阵</strong>。</p>
-<h3 id="摄动定理">摄动定理</h3>
-<p><strong>定理 2.8</strong></p>
-<p>设 <span class="math inline">\(A\in \mathbb{C}^{n \times n}\)</span>
-且 <span class="math inline">\(A\)</span> 可逆，<span class="math inline">\(B\in \mathbb{C}^{n\times n}\)</span>，且对 <span class="math inline">\(\mathbb{C}^{n\times n}\)</span> 上的某种矩阵范数
-$$，若 <span class="math inline">\(\Vert  A^{-1}B \Vert  &lt;
-1\)</span>，则有：</p>
+        <h2 id="矩阵可逆性条件、条件数和谱半径介绍"><a href="#矩阵可逆性条件、条件数和谱半径介绍" class="headerlink" title="矩阵可逆性条件、条件数和谱半径介绍"></a>矩阵可逆性条件、条件数和谱半径介绍</h2><p>在明确了范数的定义后，我们对它的几点应用进行列举。</p>
+<h3 id="定理-2-6"><a href="#定理-2-6" class="headerlink" title="定理 2.6"></a>定理 2.6</h3><p>设 $A\in \mathbb{C}^{n \times n}$，且对 $\mathbb{C}^{n\times n}$ 上的某种矩阵范数 $\Vert  \cdot  \Vert $，若 $\Vert  A \Vert  &lt; 1$，则矩阵 $I-A$ 可逆（非奇异），且有：</p>
+<script type="math/tex; mode=display">
+\Vert (I - A)^{-1} \Vert  \leq \frac{\Vert  I \Vert }{1 - \Vert  A \Vert }</script><h3 id="定理-2-7"><a href="#定理-2-7" class="headerlink" title="定理 2.7"></a>定理 2.7</h3><p>设 $A\in \mathbb{C}^{n \times n}$，且对 $\mathbb{C}^{n\times n}$ 上的某种矩阵范数 $\Vert  \cdot  \Vert $，若 $\Vert  A \Vert  &lt; 1$，则有：</p>
+<script type="math/tex; mode=display">
+\Vert I - (I - A)^{-1} \Vert  \leq \frac{\Vert  A \Vert }{1 - \Vert  A \Vert }</script><h3 id="逆矩阵的摄动"><a href="#逆矩阵的摄动" class="headerlink" title="逆矩阵的摄动"></a>逆矩阵的摄动</h3><p>在实际应用问题中，矩阵参数往往为非准确值，即带有误差 $\delta$，我们希望其构成的近似矩阵 $A$ 的逆矩阵 $A^{-1}$ 与准确矩阵 $A + \delta a_{ij}(i,j = 1,2,\dots,n)$ 的逆矩阵 $(A + \delta a_{ij})^{-1}$ 尽量接近。</p>
+<p>一般称 $\delta a_{ij}$ 为 <strong>扰动</strong>，$\delta A$ 为 $A$ 的 <strong>摄动矩阵</strong>。</p>
+<h3 id="摄动定理"><a href="#摄动定理" class="headerlink" title="摄动定理"></a>摄动定理</h3><p><strong>定理 2.8</strong></p>
+<p>设 $A\in \mathbb{C}^{n \times n}$ 且 $A$ 可逆，$B\in \mathbb{C}^{n\times n}$，且对 $\mathbb{C}^{n\times n}$ 上的某种矩阵范数 $\Vert  \cdot  \Vert $，若 $\Vert  A^{-1}B \Vert  &lt; 1$，则有：</p>
 <ul>
-<li><span class="math inline">\(A + B\)</span> 可逆；</li>
-<li>记 <span class="math inline">\(F = I - (I +
-A^{-1}B)^{-1}\)</span>，则 <span class="math inline">\(\Vert F \Vert
-\leq \frac{\Vert A^{-1}B \Vert }{1 - \Vert A^{-1}B \Vert
-}\)</span>；</li>
-<li><span class="math inline">\(\frac{\Vert A^{-1} - (A + B)^{-1} \Vert
-}{A^{-1}} \leq \frac{\Vert  A^{-1}B \Vert }{1 - \Vert  A^{-1}B \Vert
-}\)</span>。</li>
+<li>$A + B$ 可逆；</li>
+<li>记 $F = I - (I + A^{-1}B)^{-1}$，则 $\Vert F \Vert \leq \frac{\Vert A^{-1}B \Vert }{1 - \Vert A^{-1}B \Vert }$；</li>
+<li>$\frac{\Vert A^{-1} - (A + B)^{-1} \Vert }{A^{-1}} \leq \frac{\Vert  A^{-1}B \Vert }{1 - \Vert  A^{-1}B \Vert }$。</li>
 </ul>
-<p>若令 <span class="math inline">\(\delta\)</span> 是个小量，并且令</p>
-<p><span class="math display">\[
-cond(A) = \Vert A \Vert \Vert A^{-1}\Vert
-\]</span></p>
-<p>则当 <span class="math inline">\(\Vert A^{-1}\Vert \Vert \delta A
-\Vert &lt; 1\)</span> 时，</p>
-<p><span class="math display">\[
-\frac{\Vert A^{-1} - (A + \delta A)^{-1}\Vert}{\Vert A^{-1}\Vert}\leq
-\frac{cond(A)\frac{\Vert \delta A\Vert}{\Vert A\Vert}}{1 -
-cond(A)\frac{\Vert\delta A\Vert}{\Vert A\Vert}}
-\]</span></p>
-<p>称 <span class="math inline">\(cond(A)\)</span> 为矩阵 <span class="math inline">\(A\)</span> 的
-<strong>条件数</strong>，一般情况下，条件数越大，<span class="math inline">\((A + \delta A)^{-1}\)</span> 和 <span class="math inline">\(A^{-1}\)</span>
-的相对误差就越大。往往在用算法进行矩阵求逆时，先计算条件数，判断矩阵的逆是否“好求”。</p>
-<h3 id="矩阵谱半径">矩阵谱半径</h3>
-<p><strong>定义</strong></p>
-<p>设 <span class="math inline">\(A\in \mathbb{C}^{n \times n}\)</span>
-的 <span class="math inline">\(n\)</span> 个特征值为 <span class="math inline">\(\lambda_1,\lambda_2,\dots,\lambda_n\)</span>，称</p>
-<p><span class="math display">\[
-\rho (A) = \max\limits_{i}\left|\lambda_i\right|
-\]</span></p>
-<p>为 <span class="math inline">\(A\)</span> 的
-<strong>谱半径</strong>。</p>
+<p>若令 $\delta$ 是个小量，并且令</p>
+<script type="math/tex; mode=display">
+cond(A) = \Vert A \Vert \Vert A^{-1}\Vert</script><p>则当 $\Vert A^{-1}\Vert \Vert \delta A \Vert &lt; 1$ 时，</p>
+<script type="math/tex; mode=display">
+\frac{\Vert A^{-1} - (A + \delta A)^{-1}\Vert}{\Vert A^{-1}\Vert}\leq \frac{cond(A)\frac{\Vert \delta A\Vert}{\Vert A\Vert}}{1 - cond(A)\frac{\Vert\delta A\Vert}{\Vert A\Vert}}</script><p>称 $cond(A)$ 为矩阵 $A$ 的 <strong>条件数</strong>，一般情况下，条件数越大，$(A + \delta A)^{-1}$ 和 $A^{-1}$ 的相对误差就越大。往往在用算法进行矩阵求逆时，先计算条件数，判断矩阵的逆是否“好求”。</p>
+<h3 id="矩阵谱半径"><a href="#矩阵谱半径" class="headerlink" title="矩阵谱半径"></a>矩阵谱半径</h3><p><strong>定义</strong></p>
+<p>设 $A\in \mathbb{C}^{n \times n}$ 的 $n$ 个特征值为 $\lambda_1,\lambda_2,\dots,\lambda_n$，称</p>
+<script type="math/tex; mode=display">
+\rho (A) = \max\limits_{i}\left|\lambda_i\right|</script><p>为 $A$ 的 <strong>谱半径</strong>。</p>
 <p><strong>定理 2.9</strong></p>
-<p>设 <span class="math inline">\(A\in \mathbb{C}^{n \times
-n}\)</span>，则对 <span class="math inline">\(\mathbb{C}^{n\times
-n}\)</span> 上任何一种矩阵范数 $$，都有</p>
-<p><span class="math display">\[
-\rho (A) \leq \Vert  A \Vert
-\]</span></p>
-<p><strong>定理 2.10</strong></p>
-<p>设 <span class="math inline">\(A\in \mathbb{C}^{n \times
-n}\)</span>，对 <span class="math inline">\(\forall \epsilon &gt;
-0,\exists \Vert  \cdot  \Vert ,s.t.\)</span></p>
-<p><span class="math display">\[
-\Vert  A  \Vert _M \leq \rho (A) + \epsilon
-\]</span></p>
-<p>由上述定理可见，谱半径小于等于任意矩阵范数，同时也必存在一个算子范数，小于等于谱半径加上一个很小的正数。</p>
-<h3 id="谱半径在迭代法中的应用">谱半径在迭代法中的应用</h3>
-<p>谱半径在数值分析和迭代法中起到了关键作用，尤其是在矩阵幂法、迭代求解线性方程组的收敛性分析等领域。例如，当利用迭代法解线性方程组时，谱半径决定了迭代矩阵是否收敛。</p>
+<p>设 $A\in \mathbb{C}^{n \times n}$，则对 $\mathbb{C}^{n\times n}$ 上任何一种矩阵范数 $\Vert  \cdot  \Vert $，都有</p>
+<script type="math/tex; mode=display">
+\rho (A) \leq \Vert  A \Vert</script><p><strong>定理 2.10</strong></p>
+<p>设 $A\in \mathbb{C}^{n \times n}$，对 $\forall \epsilon &gt; 0,\exists \Vert  \cdot  \Vert ,s.t.$</p>
+<script type="math/tex; mode=display">
+\Vert  A  \Vert _M \leq \rho (A) + \epsilon</script><p>由上述定理可见，谱半径小于等于任意矩阵范数，同时也必存在一个算子范数，小于等于谱半径加上一个很小的正数。</p>
+<h3 id="谱半径在迭代法中的应用"><a href="#谱半径在迭代法中的应用" class="headerlink" title="谱半径在迭代法中的应用"></a>谱半径在迭代法中的应用</h3><p>谱半径在数值分析和迭代法中起到了关键作用，尤其是在矩阵幂法、迭代求解线性方程组的收敛性分析等领域。例如，当利用迭代法解线性方程组时，谱半径决定了迭代矩阵是否收敛。</p>
 <p><strong>定理 2.11</strong></p>
-<p>在数值线性代数中，迭代法通常用于求解线性方程组 <span class="math inline">\(Ax = b\)</span>。设迭代法的一般形式为：</p>
-<p><span class="math display">\[
-x^{(k+1)} = B x^{(k)} + c,
-\]</span></p>
-<p>其中，<span class="math inline">\(B\)</span> 为迭代矩阵，<span class="math inline">\(c\)</span> 为常向量，<span class="math inline">\(k\)</span> 为迭代次数。</p>
-<p>迭代法的收敛性由迭代矩阵 <span class="math inline">\(B\)</span>
-的谱半径决定：</p>
-<ol type="1">
-<li><strong>必要条件</strong>：如果迭代法收敛，即 <span class="math inline">\(x^{(k)} \to x^*\)</span> (<span class="math inline">\(x^*\)</span> 为精确解)，则迭代矩阵 <span class="math inline">\(B\)</span> 的谱半径必须满足：<span class="math inline">\(\rho(B) &lt; 1\)</span>；</li>
-<li><strong>充分条件</strong>：如果 <span class="math inline">\(\rho(B)
-&lt; 1\)</span>，则对于任意初始值 <span class="math inline">\(x^{(0)}\)</span>，迭代法都会收敛到线性方程组的唯一解
-<span class="math inline">\(x^*\)</span>。</li>
+<p>在数值线性代数中，迭代法通常用于求解线性方程组 $Ax = b$。设迭代法的一般形式为：</p>
+<script type="math/tex; mode=display">
+ x^{(k+1)} = B x^{(k)} + c,</script><p>其中，$B$ 为迭代矩阵，$c$ 为常向量，$k$ 为迭代次数。</p>
+<p>迭代法的收敛性由迭代矩阵 $B$ 的谱半径决定：</p>
+<ol>
+<li><strong>必要条件</strong>：如果迭代法收敛，即 $x^{(k)} \to x^<em>$ ($x^</em>$ 为精确解)，则迭代矩阵 $B$ 的谱半径必须满足：$\rho(B) &lt; 1$；</li>
+<li><strong>充分条件</strong>：如果 $\rho(B) &lt; 1$，则对于任意初始值 $x^{(0)}$，迭代法都会收敛到线性方程组的唯一解 $x^*$。</li>
 </ol>
 
     </div>
