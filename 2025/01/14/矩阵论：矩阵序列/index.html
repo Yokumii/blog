@@ -185,7 +185,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E7%9F%A9%E9%98%B5%E8%AE%BA/" style="color: #ff7d73">
+                <a href="/blog/tags/%E7%9F%A9%E9%98%B5%E8%AE%BA/" style="color: #ffa2c4">
                     矩阵论
                 </a>
             </span>
@@ -195,50 +195,23 @@
     </div>
     
     <div class="content" v-pre>
-        <h2 id="矩阵序列介绍">矩阵序列介绍</h2>
-<p>在《线性代数》课程中主要学习了矩阵的代数运算，我们继续将《数学分析》中的理论推广至矩阵空间，对于矩阵的分析，类似数列，我们同样从极限理论开始，介绍矩阵序列的极限运算。</p>
-<h3 id="定义">定义</h3>
-<p>设 <span class="math inline">\(\{A^{(k)}\}_{k=1}^\infty\)</span>
-是一个矩阵序列，其中 <span class="math inline">\(A^{(k)} \in
-\mathbb{C}^{m \times n}\)</span>。当 <span class="math inline">\(a_{ij}^{(k)} \to a_{ij}(k \to \infty)\)</span>
-时，称 <span class="math inline">\(\{A^{(k)}\}\)</span> 收敛，或成矩阵
-<span class="math inline">\(A = (a_{ij})_{m \times n}\)</span> 为 <span class="math inline">\(\{A^{(k)}\}\)</span> 的极限，或称 <span class="math inline">\(\{A^{(k)}\}\)</span> 收敛于 <span class="math inline">\(A\)</span>，记为<br>
-<span class="math display">\[
-\lim_{k \to \infty} A^{(k)} = A, A^{(k)} \to A
-\]</span><br>
-不收敛的矩阵序列称为 <strong>发散</strong>。</p>
+        <h2 id="矩阵序列介绍"><a href="#矩阵序列介绍" class="headerlink" title="矩阵序列介绍"></a>矩阵序列介绍</h2><p>在《线性代数》课程中主要学习了矩阵的代数运算，我们继续将《数学分析》中的理论推广至矩阵空间，对于矩阵的分析，类似数列，我们同样从极限理论开始，介绍矩阵序列的极限运算。</p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>设 $\{A^{(k)}\}_{k=1}^\infty$ 是一个矩阵序列，其中 $A^{(k)} \in \mathbb{C}^{m \times n}$。当 $a_{ij}^{(k)} \to a_{ij}(k \to \infty)$ 时，称 $\{A^{(k)}\}$ 收敛，或成矩阵 $A = (a_{ij})_{m \times n}$ 为 $\{A^{(k)}\}$ 的极限，或称 $\{A^{(k)}\}$ 收敛于 $A$，记为</p>
+<script type="math/tex; mode=display">
+\lim_{k \to \infty} A^{(k)} = A, A^{(k)} \to A</script><p>不收敛的矩阵序列称为 <strong>发散</strong>。</p>
 <p>同样，矩阵序列收敛有很多与数列收敛类似的性质，此处不再赘述，继续往下研究其收敛的等价条件。</p>
-<h3 id="定理">定理</h3>
-<p><strong>定理 1</strong> 设 <span class="math inline">\(A^{(k)} \in
-\mathbb{C}^{m \times n}\)</span>，则</p>
-<ol type="1">
-<li><span class="math inline">\(A^{(k)} \to O\)</span> 的充要条件是
-<span class="math inline">\(\Vert A^{(k)}\Vert \to 0\)</span>；</li>
-<li><span class="math inline">\(A^{(k)} \to A\)</span> 的充要条件是
-<span class="math inline">\(\Vert A^{(k)} - A \Vert \to
-0\)</span>；</li>
+<h3 id="定理"><a href="#定理" class="headerlink" title="定理"></a>定理</h3><p><strong>定理 1</strong> 设 $A^{(k)} \in \mathbb{C}^{m \times n}$，则</p>
+<ol>
+<li>$A^{(k)} \to O$ 的充要条件是 $\Vert A^{(k)}\Vert \to 0$；</li>
+<li>$A^{(k)} \to A$ 的充要条件是 $\Vert A^{(k)} - A \Vert \to 0$；</li>
 </ol>
-<p>这里，<span class="math inline">\(\Vert \cdot \Vert\)</span> 是 <span class="math inline">\(\mathbb{C}^{m \times n}\)</span>
-上任何一种矩阵范数。</p>
+<p>这里，$\Vert \cdot \Vert$ 是 $\mathbb{C}^{m \times n}$ 上任何一种矩阵范数。</p>
 <p>至此，我们将矩阵收敛的判断与范数建立了联系。</p>
-<h3 id="定义-1">定义</h3>
-<p><strong>定义 1</strong> 矩阵序列 <span class="math inline">\(\{A^{(k)}\}\)</span> 称为 <strong>有界</strong>
-的，如果存在常数 <span class="math inline">\(M &gt;
-0\)</span>，使得对于一切 <span class="math inline">\(k\)</span>
-都有<br>
-<span class="math display">\[
-\left | a_{ij}^{(k)}\right | &lt; M(i = 1,2,\dots,m;j = 1,2,\dots,n)
-\]</span></p>
-<p><strong>定义 2</strong> 设 <span class="math inline">\(A\)</span>
-为方阵，且 <span class="math inline">\(A^k \to O(k \to
-\infty)\)</span>，则称 <span class="math inline">\(A\)</span> 为
-<strong>收敛矩阵</strong>。</p>
-<h3 id="定理-1">定理</h3>
-<p><strong>定理 2</strong> <span class="math inline">\(A\)</span>
-为收敛矩阵的充要条件是 <span class="math inline">\(\rho(A) &lt;
-1\)</span>。</p>
-<p><strong>定理 3</strong> <span class="math inline">\(A\)</span>
-为收敛矩阵的充分条件是只要有一种矩阵范数 <span class="math inline">\(\left|\cdot\right|\)</span>，使得 <span class="math inline">\(\Vert A \Vert &lt; 1\)</span>。</p>
+<h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p><strong>定义 1</strong> 矩阵序列 $\{A^{(k)}\}$ 称为 <strong>有界</strong> 的，如果存在常数 $M &gt; 0$，使得对于一切 $k$ 都有</p>
+<script type="math/tex; mode=display">
+\left | a_{ij}^{(k)}\right | < M(i = 1,2,\dots,m;j = 1,2,\dots,n)</script><p><strong>定义 2</strong> 设 $A$ 为方阵，且 $A^k \to O(k \to \infty)$，则称 $A$ 为 <strong>收敛矩阵</strong>。</p>
+<h3 id="定理-1"><a href="#定理-1" class="headerlink" title="定理"></a>定理</h3><p><strong>定理 2</strong> $A$ 为收敛矩阵的充要条件是 $\rho(A) &lt; 1$。</p>
+<p><strong>定理 3</strong> $A$ 为收敛矩阵的充分条件是只要有一种矩阵范数 $\left|\cdot\right|$，使得 $\Vert A \Vert &lt; 1$。</p>
 
     </div>
     
@@ -286,6 +259,5 @@
 
 
     
-    <script src="/blog/js/fix-encrypt.js"></script>
 </body>
 </html>

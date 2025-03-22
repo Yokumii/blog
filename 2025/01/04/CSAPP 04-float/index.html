@@ -185,7 +185,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CSAPP/" style="color: #03a9f4">
+                <a href="/blog/tags/CSAPP/" style="color: #ff7d73">
                     CSAPP
                 </a>
             </span>
@@ -195,73 +195,69 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="二进制表示方法">二进制表示方法</h1>
-<ul>
+        <h1 id="二进制表示方法"><a href="#二进制表示方法" class="headerlink" title="二进制表示方法"></a>二进制表示方法</h1><ul>
 <li>引入负指数即可；</li>
 <li>缺陷是无法平衡整数部分的范围和小数范围的精度；</li>
 </ul>
-<h1 id="ieee标准">IEEE标准</h1>
-<p><img src="2.png"><br>
-<img src="1.png"><br>
-* exp：阶码；<br>
-* frac：尾数；</p>
-<ol type="1">
-<li>规格化Normalized：exp不全为0且不全为1；
-<ol type="1">
-<li><span class="math inline">\(E = exp - Bias = exp - (2^{k-1} -
-1),Bias  = 2^{k - 1} - 1\)</span> ；
-<ol type="1">
-<li>32bits：<span class="math inline">\(Bias = 2^7 -1 = 127,exp\in
-[1,254]\rightarrow E\in [-126,127]\)</span>；</li>
-<li>64bits：<span class="math inline">\(Bias = 2^{10} - 1 = 1023,exp \in
-[1, 2023]\rightarrow E\in [-1022,1023]\)</span>；</li>
-</ol></li>
-<li><span class="math inline">\(M = 1.frac_{(2)}\)</span>；</li>
-</ol></li>
-<li>非规格化Denormalized：exp全为0；
-<ol type="1">
-<li><span class="math inline">\(E = 1 - Bias\)</span>；</li>
-<li><span class="math inline">\(M = frac\)</span>；</li>
-</ol></li>
-<li>特殊值Special Values：exp全为1；
-<ol type="1">
-<li>exp全为1，frac全为0，s = 0表示正无穷<span class="math inline">\(+\infty\)</span>，s = 1表示负无穷<span class="math inline">\(-\infty\)</span>；</li>
-<li>exp全为1，frac不为0，表示NaN，不是一个数；<br>
-<img src="3.png"></li>
-</ol></li>
+<h1 id="IEEE标准"><a href="#IEEE标准" class="headerlink" title="IEEE标准"></a>IEEE标准</h1><p><img src="2.png" alt><br><img src="1.png" alt></p>
+<ul>
+<li>exp：阶码；</li>
+<li>frac：尾数；</li>
+</ul>
+<ol>
+<li>规格化Normalized：exp不全为0且不全为1；<ol>
+<li>$E = exp - Bias = exp - (2^{k-1} - 1),Bias  = 2^{k - 1} - 1$ ；<ol>
+<li>32bits：$Bias = 2^7 -1 = 127,exp\in [1,254]\rightarrow E\in [-126,127]$；</li>
+<li>64bits：$Bias = 2^{10} - 1 = 1023,exp \in [1, 2023]\rightarrow E\in [-1022,1023]$；</li>
+</ol>
+</li>
+<li>$M = 1.frac_{(2)}$；</li>
+</ol>
+</li>
+<li>非规格化Denormalized：exp全为0；<ol>
+<li>$E = 1 - Bias$；</li>
+<li>$M = frac$；</li>
+</ol>
+</li>
+<li>特殊值Special Values：exp全为1；<ol>
+<li>exp全为1，frac全为0，s = 0表示正无穷$+\infty$，s = 1表示负无穷$-\infty$；</li>
+<li>exp全为1，frac不为0，表示NaN，不是一个数；<br><img src="3.png" alt></li>
+</ol>
+</li>
 </ol>
 <ul>
 <li>分布特点：在0附近均匀分布，到外面扩大（指数分布）；</li>
 <li>舍入规则：4舍6入5向偶；（不在考试范围内）；</li>
-<li>类型转换：
-<ul>
-<li><span class="math inline">\(double/float\rightarrow int\)</span>
-<ul>
+<li>类型转换：<ul>
+<li>$double/float\rightarrow int$<ul>
 <li>直接对实际存储的二进制串进行位截断；</li>
 <li>体现为向0舍入；</li>
-<li>超界的情况转化为<span class="math inline">\(T_{min}\)</span>；</li>
-</ul></li>
-<li><span class="math inline">\(int \rightarrow float\)</span>
-<ul>
-<li>位数相同，不会截断，但可能会发生舍入；</li>
-</ul></li>
-<li><span class="math inline">\(int/float \rightarrow double\)</span>
-<ul>
-<li>double的有效位数更多，所以能保留精确度；</li>
-</ul></li>
-<li><span class="math inline">\(double \rightarrow float\)</span>
-<ul>
-<li>能表达的范围变小，可能溢出为<span class="math inline">\(\infty\)</span>，并且精度降低，可能发生舍入；</li>
-</ul></li>
-</ul></li>
+<li>超界的情况转化为$T_{min}$；</li>
 </ul>
-<p><img src="4.png"><br>
-解答：<br>
-1. x如果很大，(float)x会发生舍入；<br>
-2. double表示范围大于int，所以能精确表示；<br>
-3. 同理2；<br>
-4. (float)d会发生溢出或舍入；<br>
-5. 没问题，-f或者-d就是符号位取反即可；</p>
+</li>
+<li>$int \rightarrow float$<ul>
+<li>位数相同，不会截断，但可能会发生舍入；</li>
+</ul>
+</li>
+<li>$int/float \rightarrow double$<ul>
+<li>double的有效位数更多，所以能保留精确度；</li>
+</ul>
+</li>
+<li>$double \rightarrow float$<ul>
+<li>能表达的范围变小，可能溢出为$\infty$，并且精度降低，可能发生舍入；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="4.png" alt><br>解答：</p>
+<ol>
+<li>x如果很大，(float)x会发生舍入；</li>
+<li>double表示范围大于int，所以能精确表示；</li>
+<li>同理2；</li>
+<li>(float)d会发生溢出或舍入；</li>
+<li>没问题，-f或者-d就是符号位取反即可；</li>
+</ol>
 <ul>
 <li>同时，注意浮点数加法运算不满足结合律；</li>
 </ul>
@@ -312,6 +308,5 @@
 
 
     
-    <script src="/blog/js/fix-encrypt.js"></script>
 </body>
 </html>

@@ -195,139 +195,97 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="unixlinux-io">UNIX/Linux I/O</h1>
-<ul>
+        <h1 id="UNIX-Linux-I-O"><a href="#UNIX-Linux-I-O" class="headerlink" title="UNIX/Linux I/O"></a>UNIX/Linux I/O</h1><ul>
 <li>用户程序可通过调用特定的I/O函数的方式提出I/O请求。</li>
 <li>在UNIX/Linux系统中，可以是<strong>C标准I/O库函数</strong>或<strong>系统调用的封装函数</strong>，前者如文件I/O函数<code>fopen()、fread()、fwrite()、fclose()</code>或控制台I/O函数<code>printf()、putc()、scanf()、getc()</code>等；后者如<code>open()、read()、write()、close()</code>等。</li>
-<li>标准I/O库函数比系统调用封装函数抽象层次高，后者属于系统级I/O函数。与系统提供的API函数一样，前者是基于后者实现的。<br>
-## 概述<br>
-“一切皆文件”；</li>
+<li>标准I/O库函数比系统调用封装函数抽象层次高，后者属于系统级I/O函数。与系统提供的API函数一样，前者是基于后者实现的。<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2>“一切皆文件”；</li>
 <li>Linux中的文件都是二进制比特串；</li>
-<li>所有的I/O设备在系统中都以文件形式呈现：
-<ul>
+<li>所有的I/O设备在系统中都以文件形式呈现：<ul>
 <li>/dev/sda2</li>
 <li>/dev/tty2</li>
-</ul></li>
-<li>内核也以文件形式呈现：
-<ul>
+</ul>
+</li>
+<li>内核也以文件形式呈现：<ul>
 <li>/boot/vmlinuz-3.13.0-55-generic (kernel image)</li>
-<li>/proc (kernel data structures)<br>
-## 文件分类<br>
-### Regular Files</li>
-</ul></li>
+<li>/proc (kernel data structures)<h2 id="文件分类"><a href="#文件分类" class="headerlink" title="文件分类"></a>文件分类</h2><h3 id="Regular-Files"><a href="#Regular-Files" class="headerlink" title="Regular Files"></a>Regular Files</h3></li>
+</ul>
+</li>
 <li>Text files：用ASCII或Unicode字符编码的文件；</li>
 <li>Binary files：可执行目标文件，图片；</li>
 <li><strong>Kernal内核不能区分这两者</strong>；</li>
 </ul>
-<h3 id="directories">Directories</h3>
-<p>一些常用命令：<br>
-* <code>mrdir</code>创建文件夹；<br>
-* <code>ls</code>查看文件夹内容；<br>
-* <code>rmdir</code>删除文件夹（文件夹必须是空的）；<br>
-*
-<code>.</code>链接自己，<code>..</code>链接它的父文件夹，<code>cd ..</code>即可返回上一级目录；<br>
-Linux 文件系统<strong>以
-/（根目录）为起点</strong>，所有文件和目录都组织在这个树状层次结构下。</p>
-<h2 id="文件操作">文件操作</h2>
-<h3 id="打开文件">打开文件</h3>
-<p>打开文件时，内核会返回一个小的非负整数，称为<strong>描述符</strong>；</p>
-<pre class="c"><code>// 成功则返回新文件描述符，失败返回-1
-int open(char *filename, int flags, mode_t mode);</code></pre>
-<p>返回的是在进程中当前没有被打开的最小描述符，由于进程开始时都会创建三个文件：<br>
-* 0：stdin；<br>
-* 1：stdout；<br>
-* 2：stderr；<br>
-所以文件描述符一般从3开始；</p>
-<h4 id="文件共享">文件共享</h4>
-<p><img src="2.png"><img src="3.png"></p>
-<h3 id="读写文件">读写文件</h3>
-<pre class="c"><code>ssize_t read(int fd, void* buf, size_t n); // 返回成功读取的字节数，失败为-1
-ssize_t write(int fd, const void* buf, size_t n); // 同上</code></pre>
-<p>注意ssize_t被定义为signed
-long类型，因为它需要返回-1，而size_t是unsigned long类型；<br>
-<strong>Short count</strong>指的是当执行 I/O 操作（如 read 或
-write）时，实际读取或写入的字节数小于请求的字节数，如遇到以下情况：<br>
-*  <strong>遇到文件末尾 (EOF)</strong><br>
-*  <strong>从终端读取文本行</strong><br>
-* <strong>从网络套接字读取或写入</strong><br>
-当向磁盘读取或写入时一般不会发生；</p>
-<h1 id="创建进程">创建进程</h1>
-<h3 id="fork语句">Fork语句</h3>
-<pre class="c"><code>Pid_t Fork();</code></pre>
-<p>返回值为进程编号：<br>
-* 0为子进程；<br>
-* &gt; 0为父进程；<br>
-* -1为Fork失败；<br>
-<img src="1.png"><br>
-fork会复制fork之后的所有代码创建子进程；其执行过程如下：<img src="4.png"><br>
-注意进程的调度规则不定，哪个先执行完都有可能；</p>
-<h1 id="io重定向">I/O重定向</h1>
-<p>比如，我们希望将当前进程的stdout改为另一个文件，即更改描述符表；通过dup2来实现：</p>
-<pre class="c"><code>int dup2(int oldfd, int newfd);</code></pre>
-<p>如果原来fd1指向文件A，调用dup2(4,1)后：<img src="5.png"><br>
-## 一个读的例子<br>
-<img src="6.png"><br>
-需要明确子进程和父进程共享同一打开文件表；<br>
-* <code>s = getpid() &amp; 0x1</code>决定了进程的执行顺序，如果s =
-0，则父进程先执行，如果s = 1，则子进程先执行；<br>
-*
-fork前的<code>Read(fd1, &amp;c1, 1)</code>，已经从打开文件中读取一个字符a到c1，打开文件表中的文件位置++；<br>
-*
-执行fork后，父子中先执行的进程执行<code>Read(fd2, &amp;c2, 1)</code>，即c2
-= b，同时文件位置++，并输出结果；<br>
-* 后执行的进程执行<code>Read(fd2, &amp;c2, 1)</code>，即c2 =
-c，同时文件位置++，并输出结果；<br>
-结果有2种可能：</p>
-<pre><code>Parent: c1 = a, c2 = b
-Child: c1 = a, c2 = c
-
-Child: c1 = a, c2 = b
-Parent: c1 = a, c2 = c</code></pre>
-<h2 id="一个写的例子">一个写的例子</h2>
-<p><img src="11.png"><br>
-首先需要明确一些标志的含义：<br>
-* O_CREAT：如果文件不存在，创建文件；<br>
-* O_TRUNC：如果文件存在，则清空文件内容；<br>
-* O_RDWR：文件以读写方式打开；<br>
-* O_APPEND：每次写操作都会将数据追加到文件末尾；<br>
-* O_WRONLY：仅允许写操作；<br>
-<code>dup(fd1)</code>复制文件描述符 fd1 到 fd2 ，新描述符 fd2 与 fd1
-共享相同的文件表项；<br>
-<code>Write(fd1, "pqrs", 4)</code>将"pqrs"写入文件；<br>
-<code>Write(fd3, "jklmn", 5)</code>将"jklmn"写入文件末尾；<br>
-<code>Write(fd2, "wxyz", 4)</code>将"wxyz"写入文件，注意fd1的文件位置为4(写入pqrs后)，所以此时文件的内容为"pqrswxyz"；<br>
-<code>Write(fd3, "ef", 2)</code>将“ef”仍写入文件末尾；<br>
-所以最终答案为："pqrswxyzef"；</p>
-<h1 id="standard-io">Standard I/O</h1>
-<p>标准I/O库将一个打开的文件模型化为一个<strong>流</strong>。对于程序员而言，一个流就是一个指<br>
-向FILE
-类型的结构的指针。每个ANSIC程序开始时都有三个打开的流stdin、stdout<br>
-和stderr，分别对应于标准输人、标准输出和标准错误；<br>
-<img src="7.png"></p>
-<h1 id="unix-io-vs.-standard-io">Unix I/O vs. Standard I/O</h1>
-<p><img src="8.png"></p>
-<h1 id="系统调用和api">系统调用和API</h1>
+<h3 id="Directories"><a href="#Directories" class="headerlink" title="Directories"></a>Directories</h3><p>一些常用命令：</p>
 <ul>
-<li>应用编程接口（API）与系统调用两者在概念上不完全相同，它们都是系统提供给用户程序使用的编程接口，但前者指的是功能更广泛、抽象程度更高的函数，后者仅指通过软中断（自陷）指令向内核态发出特定服务请求的函数。</li>
+<li><code>mrdir</code>创建文件夹；</li>
+<li><code>ls</code>查看文件夹内容；</li>
+<li><code>rmdir</code>删除文件夹（文件夹必须是空的）；</li>
+<li><code>.</code>链接自己，<code>..</code>链接它的父文件夹，<code>cd ..</code>即可返回上一级目录；<br>Linux 文件系统<strong>以 /（根目录）为起点</strong>，所有文件和目录都组织在这个树状层次结构下。</li>
+</ul>
+<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><h3 id="打开文件"><a href="#打开文件" class="headerlink" title="打开文件"></a>打开文件</h3><p>打开文件时，内核会返回一个小的非负整数，称为<strong>描述符</strong>；</p>
+<pre><code class="lang-c">// 成功则返回新文件描述符，失败返回-1
+int open(char *filename, int flags, mode_t mode);
+</code></pre>
+<p>返回的是在进程中当前没有被打开的最小描述符，由于进程开始时都会创建三个文件：</p>
+<ul>
+<li>0：stdin；</li>
+<li>1：stdout；</li>
+<li>2：stderr；<br>所以文件描述符一般从3开始；</li>
+</ul>
+<h4 id="文件共享"><a href="#文件共享" class="headerlink" title="文件共享"></a>文件共享</h4><p><img src="2.png" alt><img src="3.png" alt></p>
+<h3 id="读写文件"><a href="#读写文件" class="headerlink" title="读写文件"></a>读写文件</h3><pre><code class="lang-c">ssize_t read(int fd, void* buf, size_t n); // 返回成功读取的字节数，失败为-1
+ssize_t write(int fd, const void* buf, size_t n); // 同上
+</code></pre>
+<p>注意ssize_t被定义为signed long类型，因为它需要返回-1，而size_t是unsigned long类型；<br><strong>Short count</strong>指的是当执行 I/O 操作（如 read 或 write）时，实际读取或写入的字节数小于请求的字节数，如遇到以下情况：</p>
+<ul>
+<li><strong>遇到文件末尾 (EOF)</strong></li>
+<li><strong>从终端读取文本行</strong></li>
+<li><strong>从网络套接字读取或写入</strong><br>当向磁盘读取或写入时一般不会发生；</li>
+</ul>
+<h1 id="创建进程"><a href="#创建进程" class="headerlink" title="创建进程"></a>创建进程</h1><h3 id="Fork语句"><a href="#Fork语句" class="headerlink" title="Fork语句"></a>Fork语句</h3><pre><code class="lang-c">Pid_t Fork();
+</code></pre>
+<p>返回值为进程编号：</p>
+<ul>
+<li>0为子进程；</li>
+<li><blockquote>
+<p>0为父进程；</p>
+</blockquote>
+</li>
+<li>-1为Fork失败；<br><img src="1.png" alt><br>fork会复制fork之后的所有代码创建子进程；其执行过程如下：<img src="4.png" alt><br>注意进程的调度规则不定，哪个先执行完都有可能；</li>
+</ul>
+<h1 id="I-O重定向"><a href="#I-O重定向" class="headerlink" title="I/O重定向"></a>I/O重定向</h1><p>比如，我们希望将当前进程的stdout改为另一个文件，即更改描述符表；通过dup2来实现：</p>
+<pre><code class="lang-c">int dup2(int oldfd, int newfd);
+</code></pre>
+<p>如果原来fd1指向文件A，调用dup2(4,1)后：<img src="5.png" alt></p>
+<h2 id="一个读的例子"><a href="#一个读的例子" class="headerlink" title="一个读的例子"></a>一个读的例子</h2><p><img src="6.png" alt><br>需要明确子进程和父进程共享同一打开文件表；</p>
+<ul>
+<li><code>s = getpid() &amp; 0x1</code>决定了进程的执行顺序，如果s = 0，则父进程先执行，如果s = 1，则子进程先执行；</li>
+<li>fork前的<code>Read(fd1, &amp;c1, 1)</code>，已经从打开文件中读取一个字符a到c1，打开文件表中的文件位置++；</li>
+<li>执行fork后，父子中先执行的进程执行<code>Read(fd2, &amp;c2, 1)</code>，即c2 = b，同时文件位置++，并输出结果；</li>
+<li>后执行的进程执行<code>Read(fd2, &amp;c2, 1)</code>，即c2 = c，同时文件位置++，并输出结果；<br>结果有2种可能：<br>```<br>Parent: c1 = a, c2 = b<br>Child: c1 = a, c2 = c</li>
+</ul>
+<p>Child: c1 = a, c2 = b<br>Parent: c1 = a, c2 = c<br>```</p>
+<h2 id="一个写的例子"><a href="#一个写的例子" class="headerlink" title="一个写的例子"></a>一个写的例子</h2><p><img src="11.png" alt><br>首先需要明确一些标志的含义：</p>
+<ul>
+<li>O_CREAT：如果文件不存在，创建文件；</li>
+<li>O_TRUNC：如果文件存在，则清空文件内容；</li>
+<li>O_RDWR：文件以读写方式打开；</li>
+<li>O_APPEND：每次写操作都会将数据追加到文件末尾；</li>
+<li>O_WRONLY：仅允许写操作；<br><code>dup(fd1)</code>复制文件描述符 fd1 到 fd2 ，新描述符 fd2 与 fd1 共享相同的文件表项；<br><code>Write(fd1, &quot;pqrs&quot;, 4)</code>将”pqrs”写入文件；<br><code>Write(fd3, &quot;jklmn&quot;, 5)</code>将”jklmn”写入文件末尾；<br><code>Write(fd2, &quot;wxyz&quot;, 4)</code>将”wxyz”写入文件，注意fd1的文件位置为4(写入pqrs后)，所以此时文件的内容为”pqrswxyz”；<br><code>Write(fd3, &quot;ef&quot;, 2)</code>将“ef”仍写入文件末尾；<br>所以最终答案为：”pqrswxyzef”；</li>
+</ul>
+<h1 id="Standard-I-O"><a href="#Standard-I-O" class="headerlink" title="Standard I/O"></a>Standard I/O</h1><p>标准I/O库将一个打开的文件模型化为一个<strong>流</strong>。对于程序员而言，一个流就是一个指<br>向FILE 类型的结构的指针。每个ANSIC程序开始时都有三个打开的流stdin、stdout<br>和stderr，分别对应于标准输人、标准输出和标准错误；<br><img src="7.png" alt></p>
+<h1 id="Unix-I-O-vs-Standard-I-O"><a href="#Unix-I-O-vs-Standard-I-O" class="headerlink" title="Unix I/O vs. Standard I/O"></a>Unix I/O vs. Standard I/O</h1><p><img src="8.png" alt></p>
+<h1 id="系统调用和API"><a href="#系统调用和API" class="headerlink" title="系统调用和API"></a>系统调用和API</h1><ul>
+<li>应用编程接口（API）与系统调用两者在概念上不完全相同，它们都是系统提供给用户程序使用的编程接口，但前者指的是功能更广泛、抽象程度更高的函数，后者仅指通过软中断（自陷）指令向内核态发出特定服务请求的函数。 </li>
 <li>系统调用封装函数是 API 函数中的一种。</li>
-<li>API 函数最终通过调用系统调用实现 I/O。一个API
-可能调用多个系统调用，不同 API
-可能会调用同一个系统调用。但是，并不是所有 API 都需要调用系统调用。</li>
-<li>API
-在用户态执行，系统调用封装函数也在用户态执行，但具体服务例程在内核态执行。</li>
+<li>API 函数最终通过调用系统调用实现 I/O。一个API 可能调用多个系统调用，不同 API 可能会调用同一个系统调用。但是，并不是所有 API 都需要调用系统调用。</li>
+<li>API 在用户态执行，系统调用封装函数也在用户态执行，但具体服务例程在内核态执行。</li>
 </ul>
-<h1 id="io-类型">I/O 类型</h1>
-<ul>
-<li><strong>Programmed
-I/O</strong>：无条件传统方式，查询方式，效率低；<img src="9.png"></li>
-<li><strong>Interrupt Driven I/O</strong>：中断驱动 I/O
-中，<strong>处理器启动 I/O
-操作后无需等待，可以执行其他任务</strong>，直到设备通过中断信号通知处理器数据传输完成；</li>
-<li><strong>DMA</strong>：<strong>由 DMA 模块负责在 I/O
-单元和主存之间直接传输数据</strong>，无需处理器干预；</li>
+<h1 id="I-O-类型"><a href="#I-O-类型" class="headerlink" title="I/O 类型"></a>I/O 类型</h1><ul>
+<li><strong>Programmed I/O</strong>：无条件传统方式，查询方式，效率低；<img src="9.png" alt></li>
+<li><strong>Interrupt Driven I/O</strong>：中断驱动 I/O 中，<strong>处理器启动 I/O 操作后无需等待，可以执行其他任务</strong>，直到设备通过中断信号通知处理器数据传输完成；</li>
+<li><strong>DMA</strong>：<strong>由 DMA 模块负责在 I/O 单元和主存之间直接传输数据</strong>，无需处理器干预；</li>
 </ul>
-<h1 id="总结">总结</h1>
-<p><img src="10.png"></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><img src="10.png" alt></p>
 
     </div>
     
@@ -375,6 +333,5 @@ I/O</strong>：无条件传统方式，查询方式，效率低；<img src="9.pn
 
 
     
-    <script src="/blog/js/fix-encrypt.js"></script>
 </body>
 </html>

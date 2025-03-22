@@ -185,7 +185,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CSAPP/" style="color: #03a9f4">
+                <a href="/blog/tags/CSAPP/" style="color: #00a596">
                     CSAPP
                 </a>
             </span>
@@ -195,25 +195,20 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="word-size-字长">Word Size 字长</h1>
-<ul>
-<li>32位(bits)机器，字长为4Bytes(32/8)，寻址空间为<span class="math inline">\(2^{32} = 4 * 2^{30} = 4GB\)</span>；</li>
-<li>内存中的管理方式如下，32位的机器最小连续字间隔4Byte，64位的机器最小连续字间隔8Byte，字节Byte是最基本存储单元；<img src="1.png"></li>
+        <h1 id="Word-Size-字长"><a href="#Word-Size-字长" class="headerlink" title="Word Size 字长"></a>Word Size 字长</h1><ul>
+<li>32位(bits)机器，字长为4Bytes(32/8)，寻址空间为$2^{32} = 4 * 2^{30} = 4GB$；</li>
+<li>内存中的管理方式如下，32位的机器最小连续字间隔4Byte，64位的机器最小连续字间隔8Byte，字节Byte是最基本存储单元；<img src="1.png" alt></li>
 </ul>
-<h1 id="数据表示">数据表示</h1>
-<ul>
-<li>int可以跨平台兼容，long和pointer一样：<br>
-<img src="2.png"></li>
+<h1 id="数据表示"><a href="#数据表示" class="headerlink" title="数据表示"></a>数据表示</h1><ul>
+<li>int可以跨平台兼容，long和pointer一样：<br><img src="2.png" alt></li>
 </ul>
-<h1 id="数据的存储排列">数据的存储排列</h1>
-<p><img src="8.png"><br>
-解答：0x08000100；</p>
-<h1 id="字的存放问题">字的存放问题</h1>
-<ul>
+<h1 id="数据的存储排列"><a href="#数据的存储排列" class="headerlink" title="数据的存储排列"></a>数据的存储排列</h1><p><img src="8.png" alt><br>解答：0x08000100；</p>
+<h1 id="字的存放问题"><a href="#字的存放问题" class="headerlink" title="字的存放问题"></a>字的存放问题</h1><ul>
 <li>大端法（高对低，最低有效字节在高低址）；</li>
 <li>小端法（低对低，最低有效字节在最前（低地址））</li>
 <li>以<code>int x = 0x01234567, &amp;x = 0x100</code>为例：</li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -241,7 +236,8 @@
 </tr>
 </tbody>
 </table>
-<pre class="c"><code>#include &lt;stdio.h&gt;
+</div>
+<pre><code class="lang-c">#include &lt;stdio.h&gt;
 
 typedef unsigned char *pointer;
 
@@ -256,60 +252,46 @@ int main(void) &#123;
     int a = 15213; // 15213 = 00 00 3b 6d;
     printf(&quot;int a = 15213;\n&quot;);
     show_bytes((pointer) &amp;a, sizeof(int));
-    
+
     int b = -15213;
     printf(&quot;int b = -15213;\n&quot;);
     show_bytes((pointer) &amp;b, sizeof(int));
-    
+
     char s[6] = &quot;18213&quot;;
     printf(&quot;string s = \&quot;18213\&quot;\n&quot;);
     show_bytes((pointer) &amp;s, sizeof(s));
     return 0;
-&#125;</code></pre>
+&#125;
+</code></pre>
 <ul>
 <li>注意对于字符数组，存储时每个字符按照小端法存储，所以表现出来的结果是整个字符串小端法和大端法没有区别；</li>
 </ul>
-<h1 id="字的边界对齐问题">字的边界对齐问题</h1>
-<ul>
-<li>按边界对齐：（以32位机器为例，按字节编址，4个字节同时读写）
-<ul>
+<h1 id="字的边界对齐问题"><a href="#字的边界对齐问题" class="headerlink" title="字的边界对齐问题"></a>字的边界对齐问题</h1><ul>
+<li>按边界对齐：（以32位机器为例，按字节编址，4个字节同时读写）<ul>
 <li>字地址：4的倍数；</li>
 <li>半字地址：2的倍数；</li>
 <li>字节地址：任意；</li>
-</ul></li>
-<li>浪费了一些空间，但减少了访存次数；<br>
-<img src="3.png"></li>
 </ul>
-<h1 id="运算">运算</h1>
-<h2 id="布尔运算">布尔运算</h2>
-<ul>
-<li>按位与，按位取反；</li>
-<li><span class="math inline">\(\sim 0x41(01000001) \rightarrow 10111110
-= 0xBE\)</span>；</li>
-<li><span class="math inline">\(\sim 0x00\rightarrow
-0xFF\)</span>；</li>
-<li><span class="math inline">\(0x69 \&amp; 0x55 \rightarrow 01101001
-\&amp; 01010101 = 01000001\)</span></li>
+</li>
+<li>浪费了一些空间，但减少了访存次数；<br><img src="3.png" alt></li>
 </ul>
-<h2 id="逻辑运算">逻辑运算</h2>
-<ul>
+<h1 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h1><h2 id="布尔运算"><a href="#布尔运算" class="headerlink" title="布尔运算"></a>布尔运算</h2><ul>
+<li>按位与，按位取反； </li>
+<li>$\sim 0x41(01000001) \rightarrow 10111110 = 0xBE$；</li>
+<li>$\sim 0x00\rightarrow 0xFF$；</li>
+<li>$0x69 \&amp; 0x55 \rightarrow 01101001 \&amp; 01010101 = 01000001$</li>
+</ul>
+<h2 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h2><ul>
 <li><code>||, &amp;&amp;, !</code>，注意与布尔运算区别，运算的结果只有0或1（运算结果只要不为0false，就是1true）；</li>
 </ul>
-<h2 id="移位运算">移位运算</h2>
-<ul>
+<h2 id="移位运算"><a href="#移位运算" class="headerlink" title="移位运算"></a>移位运算</h2><ul>
 <li>只需注意算术右移左边填充符号位即可；</li>
 </ul>
-<h1 id="无符号数和有符号数的位级表示">无符号数和有符号数的位级表示</h1>
-<ul>
+<h1 id="无符号数和有符号数的位级表示"><a href="#无符号数和有符号数的位级表示" class="headerlink" title="无符号数和有符号数的位级表示"></a>无符号数和有符号数的位级表示</h1><ul>
 <li>运算时，有符号数优先转化为无符号数；</li>
 </ul>
+<div class="table-container">
 <table>
-<colgroup>
-<col style="width: 33%">
-<col style="width: 6%">
-<col style="width: 3%">
-<col style="width: 56%">
-</colgroup>
 <thead>
 <tr>
 <th>关系表达式</th>
@@ -320,91 +302,77 @@ int main(void) &#123;
 </thead>
 <tbody>
 <tr>
-<td><span class="math inline">\(0 == 0U\)</span></td>
+<td>$0 == 0U$</td>
 <td>unsigned</td>
 <td>True</td>
 <td></td>
 </tr>
 <tr>
-<td><span class="math inline">\(-1 &lt; 0\)</span></td>
+<td>$-1 &lt; 0$</td>
 <td>signed</td>
 <td>True</td>
 <td></td>
 </tr>
 <tr>
-<td><span class="math inline">\(-1 &lt; 0U\)</span></td>
-<td>unsigned</td>
-<td>False</td>
-<td><span class="math inline">\(-1 = 1\cdots 1_2 = U_{max} &gt;
-0\)</span></td>
-</tr>
-<tr>
-<td><span class="math inline">\(2147483647(2^{31} - 1) &gt; -2147483637
-- 1\)</span></td>
-<td>signed</td>
-<td>True</td>
-<td></td>
-</tr>
-<tr>
-<td><span class="math inline">\(2147483647U &gt; -2147483637 -
-1\)</span></td>
+<td>$-1 &lt; 0U$</td>
 <td>unsigned</td>
 <td>False</td>
-<td><span class="math inline">\(-2147483637 - 1 = T_{min} \rightarrow
-1\cdots 0U = 2^{31} &gt; 2^{31} - 1\)</span></td>
+<td>$-1 = 1\cdots 1_2 = U_{max} &gt; 0$</td>
 </tr>
 <tr>
-<td><span class="math inline">\(2147483647 &gt;
-(int)2147483648U\)</span></td>
-<td>signed</td>
-<td>True</td>
-<td><span class="math inline">\((int)2147483648U = 1\cdots 0 =
--2^{31}\)</span></td>
-</tr>
-<tr>
-<td><span class="math inline">\(-1 &gt; -2\)</span></td>
+<td>$2147483647(2^{31} - 1) &gt; -2147483637 - 1$</td>
 <td>signed</td>
 <td>True</td>
 <td></td>
 </tr>
 <tr>
-<td><span class="math inline">\((unsigned)-1 &gt; -2\)</span></td>
+<td>$2147483647U &gt; -2147483637 - 1$</td>
+<td>unsigned</td>
+<td>False</td>
+<td>$-2147483637 - 1 = T_{min} \rightarrow 1\cdots 0U = 2^{31} &gt; 2^{31} - 1$</td>
+</tr>
+<tr>
+<td>$2147483647 &gt; (int)2147483648U$</td>
+<td>signed</td>
+<td>True</td>
+<td>$(int)2147483648U = 1\cdots 0 = -2^{31}$</td>
+</tr>
+<tr>
+<td>$-1 &gt; -2$</td>
+<td>signed</td>
+<td>True</td>
+<td></td>
+</tr>
+<tr>
+<td>$(unsigned)-1 &gt; -2$</td>
 <td>unsigned</td>
 <td>True</td>
-<td><span class="math inline">\((unsigned)-1 = U_{max}\)</span></td>
+<td>$(unsigned)-1 = U_{max}$</td>
 </tr>
 </tbody>
 </table>
+</div>
 <ul>
 <li>数据类型只决定读取方式，不改变存储方式(01串)；</li>
-<li>一些另外的注意点：<img src="4.png"><code>sizeof()</code>返回的类型为unsigned
-int，所以以下代码会导致死循环：<img src="5.png"></li>
+<li>一些另外的注意点：<img src="4.png" alt><code>sizeof()</code>返回的类型为unsigned int，所以以下代码会导致死循环：<img src="5.png" alt></li>
 </ul>
-<h1 id="位扩展和位截断">位扩展和位截断</h1>
-<h2 id="sign-extension">Sign Extension</h2>
-<ul>
+<h1 id="位扩展和位截断"><a href="#位扩展和位截断" class="headerlink" title="位扩展和位截断"></a>位扩展和位截断</h1><h2 id="Sign-Extension"><a href="#Sign-Extension" class="headerlink" title="Sign Extension"></a>Sign Extension</h2><ul>
 <li>根据最高位决定补0或者补1；</li>
 </ul>
-<h2 id="sign-truncation">Sign Truncation</h2>
-<ul>
-<li>无符号数截断<span class="math inline">\(B2U_k(x_{k-1}\cdots x_0) =
-B2U_w(x_{w-1}\cdots x_k x_{k-1}\cdots x_0) \% 2^k\)</span></li>
-<li>有符号数截断<span class="math inline">\(B2T_k(x_{k-1}\cdots x_0) =
-U2T_w(B2U_w(x_{w-1}\cdots x_k x_{k-1}\cdots
-x_0)\%2^k)\)</span>，即先截断，再重新解释；</li>
-<li>例子：<br>
-<img src="6.png"><br>
-解答：</li>
-</ul>
-<pre class="c"><code>short si = 0x 80 00 = -32768;
+<h2 id="Sign-Truncation"><a href="#Sign-Truncation" class="headerlink" title="Sign Truncation"></a>Sign Truncation</h2><ul>
+<li>无符号数截断$B2U_k(x_{k-1}\cdots x_0) = B2U_w(x_{w-1}\cdots x_k x_{k-1}\cdots x_0) \% 2^k$</li>
+<li>有符号数截断$B2T_k(x_{k-1}\cdots x_0) = U2T_w(B2U_w(x_{w-1}\cdots x_k x_{k-1}\cdots x_0)\%2^k)$，即先截断，再重新解释；</li>
+<li>例子：<br><img src="6.png" alt><br>解答：<pre><code class="lang-c">short si = 0x 80 00 = -32768;
 unsigned short usi = 0x 80 00 = 32768;
 int i = 0x FF FF 80 00 = -32768;
-unsigned ui = 0x 00 00 80 00 = 32768;</code></pre>
-<p><img src="7.png"><br>
-解答：</p>
-<pre class="c"><code>int i = 0x 00 00 80 00 = 32768;
+unsigned ui = 0x 00 00 80 00 = 32768;
+</code></pre>
+<img src="7.png" alt><br>解答：<pre><code class="lang-c">int i = 0x 00 00 80 00 = 32768;
 short si = (short)i = 0x 80 00 = -32768;
-int j = si = 0x FF FF 80 00 = -32768;</code></pre>
+int j = si = 0x FF FF 80 00 = -32768;
+</code></pre>
+</li>
+</ul>
 
     </div>
     
@@ -452,6 +420,5 @@ int j = si = 0x FF FF 80 00 = -32768;</code></pre>
 
 
     
-    <script src="/blog/js/fix-encrypt.js"></script>
 </body>
 </html>
