@@ -1,0 +1,457 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YokumiのBlog</title>
+        <link rel="icon" href="/blog/images/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="/blog/images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/blog/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/blog/js/lib/math.js"></script>
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/blog/atom.xml" title="YokumiのBlog" type="application/atom+xml">
+</head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>YOKUMIのBLOG</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;YOKUMIのBLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/blog/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>CSAPP 02-Bits-ints-part1</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/1/4
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/CSAPP/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                CSAPP
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/CSAPP/" style="color: #00a596">
+                    CSAPP
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="word-size-字长">Word Size 字长</h1>
+<ul>
+<li>32位(bits)机器，字长为4Bytes(32/8)，寻址空间为<span class="math inline">\(2^{32} = 4 * 2^{30} = 4GB\)</span>；</li>
+<li>内存中的管理方式如下，32位的机器最小连续字间隔4Byte，64位的机器最小连续字间隔8Byte，字节Byte是最基本存储单元；<img src="1.png"></li>
+</ul>
+<h1 id="数据表示">数据表示</h1>
+<ul>
+<li>int可以跨平台兼容，long和pointer一样：<br>
+<img src="2.png"></li>
+</ul>
+<h1 id="数据的存储排列">数据的存储排列</h1>
+<p><img src="8.png"><br>
+解答：0x08000100；</p>
+<h1 id="字的存放问题">字的存放问题</h1>
+<ul>
+<li>大端法（高对低，最低有效字节在高低址）；</li>
+<li>小端法（低对低，最低有效字节在最前（低地址））</li>
+<li>以<code>int x = 0x01234567, &amp;x = 0x100</code>为例：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Address</th>
+<th>0x100</th>
+<th>0x101</th>
+<th>0x102</th>
+<th>0x103</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Big Endian</td>
+<td>01</td>
+<td>23</td>
+<td>45</td>
+<td>67</td>
+</tr>
+<tr>
+<td>Little Endian</td>
+<td>67</td>
+<td>45</td>
+<td>23</td>
+<td>01</td>
+</tr>
+</tbody>
+</table>
+<pre class="c"><code>#include &lt;stdio.h&gt;
+
+typedef unsigned char *pointer;
+
+void show_bytes(pointer start, size_t len)&#123; // 从数据的指针开始打印数据，即从低地址开始打印
+    size_t i;
+    for (i = 0; i &lt; len; i++)
+        printf(&quot;%p\t0x%.2x\n&quot;,start+i, start[i]);
+    printf(&quot;\n&quot;);
+&#125;
+
+int main(void) &#123;
+    int a = 15213; // 15213 = 00 00 3b 6d;
+    printf(&quot;int a = 15213;\n&quot;);
+    show_bytes((pointer) &amp;a, sizeof(int));
+    
+    int b = -15213;
+    printf(&quot;int b = -15213;\n&quot;);
+    show_bytes((pointer) &amp;b, sizeof(int));
+    
+    char s[6] = &quot;18213&quot;;
+    printf(&quot;string s = \&quot;18213\&quot;\n&quot;);
+    show_bytes((pointer) &amp;s, sizeof(s));
+    return 0;
+&#125;</code></pre>
+<ul>
+<li>注意对于字符数组，存储时每个字符按照小端法存储，所以表现出来的结果是整个字符串小端法和大端法没有区别；</li>
+</ul>
+<h1 id="字的边界对齐问题">字的边界对齐问题</h1>
+<ul>
+<li>按边界对齐：（以32位机器为例，按字节编址，4个字节同时读写）
+<ul>
+<li>字地址：4的倍数；</li>
+<li>半字地址：2的倍数；</li>
+<li>字节地址：任意；</li>
+</ul></li>
+<li>浪费了一些空间，但减少了访存次数；<br>
+<img src="3.png"></li>
+</ul>
+<h1 id="运算">运算</h1>
+<h2 id="布尔运算">布尔运算</h2>
+<ul>
+<li>按位与，按位取反；</li>
+<li><span class="math inline">\(\sim 0x41(01000001) \rightarrow 10111110
+= 0xBE\)</span>；</li>
+<li><span class="math inline">\(\sim 0x00\rightarrow
+0xFF\)</span>；</li>
+<li><span class="math inline">\(0x69 \&amp; 0x55 \rightarrow 01101001
+\&amp; 01010101 = 01000001\)</span></li>
+</ul>
+<h2 id="逻辑运算">逻辑运算</h2>
+<ul>
+<li><code>||, &amp;&amp;, !</code>，注意与布尔运算区别，运算的结果只有0或1（运算结果只要不为0false，就是1true）；</li>
+</ul>
+<h2 id="移位运算">移位运算</h2>
+<ul>
+<li>只需注意算术右移左边填充符号位即可；</li>
+</ul>
+<h1 id="无符号数和有符号数的位级表示">无符号数和有符号数的位级表示</h1>
+<ul>
+<li>运算时，有符号数优先转化为无符号数；</li>
+</ul>
+<table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 6%">
+<col style="width: 3%">
+<col style="width: 56%">
+</colgroup>
+<thead>
+<tr>
+<th>关系表达式</th>
+<th>运算类型</th>
+<th>结果</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math inline">\(0 == 0U\)</span></td>
+<td>unsigned</td>
+<td>True</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="math inline">\(-1 &lt; 0\)</span></td>
+<td>signed</td>
+<td>True</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="math inline">\(-1 &lt; 0U\)</span></td>
+<td>unsigned</td>
+<td>False</td>
+<td><span class="math inline">\(-1 = 1\cdots 1_2 = U_{max} &gt;
+0\)</span></td>
+</tr>
+<tr>
+<td><span class="math inline">\(2147483647(2^{31} - 1) &gt; -2147483637
+- 1\)</span></td>
+<td>signed</td>
+<td>True</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="math inline">\(2147483647U &gt; -2147483637 -
+1\)</span></td>
+<td>unsigned</td>
+<td>False</td>
+<td><span class="math inline">\(-2147483637 - 1 = T_{min} \rightarrow
+1\cdots 0U = 2^{31} &gt; 2^{31} - 1\)</span></td>
+</tr>
+<tr>
+<td><span class="math inline">\(2147483647 &gt;
+(int)2147483648U\)</span></td>
+<td>signed</td>
+<td>True</td>
+<td><span class="math inline">\((int)2147483648U = 1\cdots 0 =
+-2^{31}\)</span></td>
+</tr>
+<tr>
+<td><span class="math inline">\(-1 &gt; -2\)</span></td>
+<td>signed</td>
+<td>True</td>
+<td></td>
+</tr>
+<tr>
+<td><span class="math inline">\((unsigned)-1 &gt; -2\)</span></td>
+<td>unsigned</td>
+<td>True</td>
+<td><span class="math inline">\((unsigned)-1 = U_{max}\)</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>数据类型只决定读取方式，不改变存储方式(01串)；</li>
+<li>一些另外的注意点：<img src="4.png"><code>sizeof()</code>返回的类型为unsigned
+int，所以以下代码会导致死循环：<img src="5.png"></li>
+</ul>
+<h1 id="位扩展和位截断">位扩展和位截断</h1>
+<h2 id="sign-extension">Sign Extension</h2>
+<ul>
+<li>根据最高位决定补0或者补1；</li>
+</ul>
+<h2 id="sign-truncation">Sign Truncation</h2>
+<ul>
+<li>无符号数截断<span class="math inline">\(B2U_k(x_{k-1}\cdots x_0) =
+B2U_w(x_{w-1}\cdots x_k x_{k-1}\cdots x_0) \% 2^k\)</span></li>
+<li>有符号数截断<span class="math inline">\(B2T_k(x_{k-1}\cdots x_0) =
+U2T_w(B2U_w(x_{w-1}\cdots x_k x_{k-1}\cdots
+x_0)\%2^k)\)</span>，即先截断，再重新解释；</li>
+<li>例子：<br>
+<img src="6.png"><br>
+解答：</li>
+</ul>
+<pre class="c"><code>short si = 0x 80 00 = -32768;
+unsigned short usi = 0x 80 00 = 32768;
+int i = 0x FF FF 80 00 = -32768;
+unsigned ui = 0x 00 00 80 00 = 32768;</code></pre>
+<p><img src="7.png"><br>
+解答：</p>
+<pre class="c"><code>int i = 0x 00 00 80 00 = 32768;
+short si = (short)i = 0x 80 00 = -32768;
+int j = si = 0x FF FF 80 00 = -32768;</code></pre>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2025 YokumiのBlog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Yokumi
+        </div>
+        
+    </div>
+</footer>
+
+<script>
+  var event = new Event('hexo-blog-decrypt');
+  window.dispatchEvent(event);
+</script>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/blog/js/main.js"></script>
+    
+    
+
+
+
+
+    
+    <script src="/blog/js/fix-encrypt.js"></script>
+</body>
+</html>

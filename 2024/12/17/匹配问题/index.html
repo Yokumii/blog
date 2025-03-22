@@ -1,0 +1,359 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YokumiのBlog</title>
+        <link rel="icon" href="/blog/images/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="/blog/images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/blog/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/blog/js/lib/math.js"></script>
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/blog/atom.xml" title="YokumiのBlog" type="application/atom+xml">
+</head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>YOKUMIのBLOG</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;YOKUMIのBLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/blog/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>匹配问题</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/12/17
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/%E5%9B%BE%E8%AE%BA/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                图论
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #00a596">
+                    图论
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="匹配对集问题">匹配/对集问题</h1>
+<h2 id="定义">定义</h2>
+<blockquote>
+<p><img src="匹配定义.png"><br>
+翻译成人话就是，匹配要求边集中任何两条边不相邻，最大匹配要求边数最多，完全匹配要求所有顶点都包含。</p>
+</blockquote>
+<h2 id="霍尔婚姻定理-halls-marriage-theorem">霍尔婚姻定理 HALL’S
+MARRIAGE THEOREM</h2>
+<blockquote>
+<p><img src="霍尔婚姻定理.png"></p>
+</blockquote>
+<h1 id="稳定匹配问题">稳定匹配问题</h1>
+<blockquote>
+<p><strong>问题描述</strong>：给出一个<span class="math inline">\(n\)</span>个男性的集合<span class="math inline">\(M\)</span>和<span class="math inline">\(n\)</span>个女性的集合<span class="math inline">\(W\)</span>，找到一个“稳定”匹配。</p>
+<blockquote>
+<p>每位男性根据对女性的心仪程度从高至低进行排名；<br>
+每位女性根据对男性的心仪程度从高至低进行排名；</p>
+</blockquote>
+<p><strong>不稳定对</strong>：给出一个完美匹配<span class="math inline">\(S\)</span>，男性<span class="math inline">\(m\)</span>和女性<span class="math inline">\(w\)</span>是不稳定的，如果同时满足下列条件：</p>
+<blockquote>
+<p><span class="math inline">\(m\)</span>相比起当前配偶，更喜欢<span class="math inline">\(w\)</span>；<br>
+<span class="math inline">\(w\)</span>相比起当前配偶，更喜欢<span class="math inline">\(m\)</span>；</p>
+</blockquote>
+<p><strong>稳定匹配</strong>：一个不包含不稳定对的完美匹配。</p>
+</blockquote>
+<h3 id="gale-shapley-算法延迟决定法">Gale-Shapley
+算法（延迟决定法）</h3>
+<p><img src="Gale-Shapley算法%20.png"></p>
+<pre class="cpp"><code>#include&lt;iostream&gt;
+using namespace std;
+const int N = 10005;
+int M[N] = &#123;0&#125;, W[N] = &#123;0&#125;; // 第0个元素表示已经配对的男性/女性个数；男性和女性集合，0表示目前还单身，&gt;0表示已经和该数字对应的异性配对
+int M_pri[N][N] = &#123;0&#125;, W_pri[N][N] = &#123;0&#125;; // 第0个元素记录的是男生 m 在寻找心仪女生时的进度；男性和女性对异性的心仪程度排名
+
+void getPri(int n);
+void G_S(int num);
+void output(int num);
+bool lovemore(int m,int w,int num);
+
+// 获取心仪程度输入
+void getPri(int n) &#123;
+    for (int i = 1; i &lt;= n; i++) &#123;
+        for (int j = 1; j &lt;= n; j++) &#123;
+            cin &gt;&gt; M_pri[i][j]; // 表示第i位男性对女性心仪程度排名，M_pri[i][j]位女生排名第j名；
+        &#125;
+    &#125;
+
+    for (int i = 1; i &lt;= n; i++) &#123;
+        for (int j = 1; j &lt;= n; j++) &#123;
+            cin &gt;&gt; W_pri[i][j]; // 表示第i位女性对男性心仪程度排名，W_pri[i][j]位男生排名第j名；
+        &#125;
+    &#125;
+&#125;
+
+// Gale-Shapley 算法
+void G_S(int num) &#123;
+    int m, w;
+    while (M[0] != num) // 男生们还未完成配对
+    &#123;
+        w = m = 0;
+        while (M[++m] != 0) ; // 找到第一个出现的还没有配对的男生m
+        w = M_pri[m][++M_pri[m][0]]; // 找到第m位男生心中剩下排名第一的女生w
+        if (W[w])   //如果女生已经在约会了
+        &#123;
+            if (lovemore(m,w,num)) // 如果w更爱m
+            &#123;
+                M[W[w]] = 0; // w 甩了当前和她配对的
+                M[m] = w;
+                W[w] = m;   
+            &#125;
+            else 
+                continue;
+        &#125;
+        else // 如果女生没有约会还是自由状态，成功配对
+        &#123;
+            M[m]=w;
+            M[0]++;
+            W[w]=m;
+            W[0]++;
+        &#125;
+    &#125;
+&#125;
+
+// 判断w是不是更爱m
+bool lovemore(int m,int w,int num) &#123;
+    for (int i = 0; i &lt; num; i++) &#123; // 按排名从高到低往下找
+        if (W_pri[w][i] == W[w]) &#123; // 先找到和w配对的那个
+            return false;
+        &#125;
+        if (W_pri[w][i] == m) &#123; // 先找到m，说明更爱m
+            return true;
+        &#125;
+    &#125;
+&#125;
+
+void output(int num) &#123;
+    for (int i = 1;i &lt;= num; i++)
+        cout&lt;&lt;&quot;(&quot;&lt;&lt;i&lt;&lt;&quot;, &quot;&lt;&lt;M[i]&lt;&lt;&quot;)&quot;&lt;&lt;endl;
+&#125;
+
+void solve() &#123;
+    int n;
+    cin&gt;&gt;n;
+    getPri(n);
+    G_S(n);
+    output(n);
+&#125;
+
+int main() &#123;
+    solve();
+    return 0;
+&#125;</code></pre>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2025 YokumiのBlog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Yokumi
+        </div>
+        
+    </div>
+</footer>
+
+<script>
+  var event = new Event('hexo-blog-decrypt');
+  window.dispatchEvent(event);
+</script>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/blog/js/main.js"></script>
+    
+    
+
+
+
+
+    
+    <script src="/blog/js/fix-encrypt.js"></script>
+</body>
+</html>

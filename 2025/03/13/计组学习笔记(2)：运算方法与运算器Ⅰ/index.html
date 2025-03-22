@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YokumiのBlog</title>
+        <link rel="icon" href="/blog/images/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="/blog/images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/blog/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/blog/js/lib/math.js"></script>
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/blog/atom.xml" title="YokumiのBlog" type="application/atom+xml">
+</head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>YOKUMIのBLOG</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;YOKUMIのBLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/blog/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>计组学习笔记(2)：运算方法与运算器Ⅰ</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/3/13
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                计算机组成原理
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/private/" style="color: #00bcd4">
+                    private
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="color: #00a596">
+                    计算机组成原理
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉，您输入的密码错误，请检查后重新输入。" data-whm="抱歉, 当前文章不能被校验, 不过您还是可以看看解密后的内容。">
+  <script id="hbeData" type="hbeData" data-hmacdigest="3854ae9f7f5b70a4c272f47d57efc89f4468e0b1dbc7431a86cae18c62ad8a07">6df07e4654b2f23296fe416e73f530c96bf04cf67b3d4ddcef59c681cd714fa3226f7618aacf669b22c1353d988b457ae7d628177f0ee7127a24eab038548e20640d8cb7e674756b9c4819dc06e707bd16e58fc921c71395716ded75ea0fa0582aac742a369280e2b6bc974b5ebac5605b3db085bc3626722682ef6e17883552b6da67380e1a79407e316995f1013ce0a42f5e6ab84f80e8f50402c320ce9c536dc754e22401e25798189334c396e7ccc29f575802559c7fe68da11d510a250682544c7fbb927e1d33e6827d4bcf4acbfb3c9de2a59ac847dc66fdc7bd3f4d4fbca9ded6edf4f99f0363b9a2062152d37e56722acfd23090642901f860e8bb2840b5c2ad26710d13362f696cf09956e1acbd679514cfefe518ff35c1ce14bbdd9c90ca98a63fea1ba2c103f729432ae57ffe39978773507d8ec2b1f6720dbc00b9b94b8ddfb733a9518cda30f458305b4d3240f273741da0d6b18e87ed773b73c6206f65ac7cca7fd958d5a0f3eea1e52b9d4205066ef999d933939bdeac80a3acd8c18a92edabf7032325e91f18c0142aab4d05218e1e2293aaa0fb34b04e4e17eae22999c1096d5b320d184bfbe1f582e2053613d38803d95926062364dfc3a330f1b165fa142cfc6c16beac03ba9aedf9bc432caa8a44a5e5daa1c3552467d95bd340a572417ddbee4503191b96019fd11f6b7d499800098f97cb72a9f771cde8a729529f4153d862564fb7eceded542ea576cd3aaa67e1e1b477c3cca8c2ba3c857c31325f62d5776e4d98d34dc071921f941cd28ae06ab56626885f2e4ab7b9a24aae0d4efa2a2ca0ce04b0beb9ac04f761e551ad70f6896feb060a76af98509898c3314a4586b9358ca9a449d3aa0906b42c48eff950ed78c3116ab8e35a9533a4fcbd1b0758b3b45db21e236e76ead6d051f96ef71af9a5067400c6e93bab6a5c31bcd93414696f3d078a8acfbb00c74bea0f31b87ac04e7c87fe3d1fd6014968de59e225b595f1d07f944def7f929530bd9efa8d5b52669eb29232763da32eb78ce24e0fb808a3fb43510dd43f0b208cae0315e55e1bad42e42695db5fb55fb293ddc6e48392fcc05da30929a414227857cfc731a8fc43f0e3d8a48d22b4adcd3423836ca735a115e6709fdae2b25183c94d1ac6ca523a28cfaae74e2bdcf4909a98a28dd685e963588b9acee0e1ff675f00898dcee558c803d8c9e2df657a9d3c64cf8ad0bcb12692f8a3e5e2c72c4d6a59c25409758ac0334cdf4b101df6d285a1458f25438c1e13b2849ed1ff9c3887a539a41b33e31bd30ca6df9b47ae3c8b0d8870bcd7d31a696060bc387fd7b687c3dd5c000f45f7f375cd3f5ca91ee431a86bef755509304205b91fbeb62ae276b2441422ba0c7de53cbee35f3fd7cc09af13e2dc51aa28f4bdbc6dfd0a76c1ba8bd94fb71edc58c8d8d266c2aee18881f3a46dea0caf57a4b13638a5db2fc1760e0cfcda221256e5406e49e6c152512e65a314438fd63cf009405691496e19f343ac4a6a0ba7d3cd3644f13037fc81513446df9fd4c4e148493927</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">当前文章暂不对外可见，请输入密码后查看！</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/blog/lib/hbe.js"></script><link href="/blog/css/hbe.style.css" rel="stylesheet" type="text/css">
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2025 YokumiのBlog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Yokumi
+        </div>
+        
+    </div>
+</footer>
+
+<script>
+  var event = new Event('hexo-blog-decrypt');
+  window.dispatchEvent(event);
+</script>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/blog/js/main.js"></script>
+    
+    
+
+
+
+
+    
+    <script src="/blog/js/fix-encrypt.js"></script>
+</body>
+</html>

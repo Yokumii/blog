@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YokumiのBlog</title>
+        <link rel="icon" href="/blog/images/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="/blog/images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/blog/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/blog/js/lib/math.js"></script>
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/blog/atom.xml" title="YokumiのBlog" type="application/atom+xml">
+</head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>YOKUMIのBLOG</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;YOKUMIのBLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/blog/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>欧拉环游和哈密尔顿环游</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/12/6
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/%E5%9B%BE%E8%AE%BA/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                图论
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #ff7d73">
+                    图论
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="欧拉环游">欧拉环游</h1>
+<h2 id="定义">定义</h2>
+<blockquote>
+<p><strong>欧拉回路</strong>：我们称一个通过图的每条边恰好一次的闭途径为欧拉环游
+(Eulertour)；<br>
+<strong>欧拉通路</strong>：我们称一个通过图的每条边恰好一次的路为欧拉通路；<br>
+<strong>欧拉图</strong>：如果一个图包含一个欧拉环游，就称它是欧拉的(Eulerian)；</p>
+</blockquote>
+<h2 id="判断的充要条件">判断的充要条件</h2>
+<blockquote>
+<p>对于无向连通图，一个连通图是欧拉的<strong>当且仅当它的每个顶点度是偶数</strong>。<br>
+连通图<span class="math inline">\(G\)</span>是存在从<span class="math inline">\(a\)</span>到<span class="math inline">\(b\)</span>的欧拉路径，当且仅当<span class="math inline">\(G\)</span>是连通的，并且除<span class="math inline">\(a\)</span>和<span class="math inline">\(b\)</span>(<span class="math inline">\(a \ne
+b\)</span>)的度为奇数(odd)之外，没有度为奇数(odd)的顶点；</p>
+</blockquote>
+<blockquote>
+<p>对于有向连通图，一个连通图是欧拉的当且仅当<span class="math inline">\(G\)</span>是连通的，且每个顶点的出度 =
+入度；<br>
+有向连通图<span class="math inline">\(G\)</span>含有欧拉通路，当且仅当<span class="math inline">\(G\)</span>是连通的，并且<span class="math inline">\(G\)</span>中除两个顶点(节点不相等)外，其余每个顶点的入度=出度，且此两点满足<span class="math inline">\(\left |deg^+{(u)} - deg^-{(v)}\right | =
+1\)</span></p>
+</blockquote>
+<h1 id="哈密尔顿通路">哈密尔顿通路</h1>
+<h2 id="定义-1">定义</h2>
+<blockquote>
+<p><strong>哈密尔顿回路</strong>：图<span class="math inline">\(G\)</span>的哈密顿回路(Hamiltonian
+circuit)指的是遍历<span class="math inline">\(G\)</span>中每一个点且只遍历一次的回路,
+这样的轨迹称为哈密顿环游(Hamiltonian tour)；<br>
+<strong>哈密尔顿通路</strong>：1. 图G的哈密顿路径(Hamiltonian
+path)指的是遍历G中每一个点且只遍历一次的路径,
+这样的轨迹称为哈密顿轨迹(Hamiltonian trail)；</p>
+</blockquote>
+<h2 id="一些充分条件">一些充分条件</h2>
+<h3 id="diracs-theorem狄拉克定理">Dirac's theorem狄拉克定理</h3>
+<blockquote>
+<p>对于简单连通图<span class="math inline">\(G\)</span>，如果<span class="math inline">\(G\)</span>的顶点数<span class="math inline">\(n
+\ge 3\)</span>，且所有顶点的度都<span class="math inline">\(\ge
+\frac{n}{2}\)</span>，那么<span class="math inline">\(G\)</span>存在哈密尔顿回路；</p>
+</blockquote>
+<h3 id="ores-theorem欧尔定理">Ore's theorem欧尔定理</h3>
+<blockquote>
+<p>对于简单连通图<span class="math inline">\(G\)</span>，如果<span class="math inline">\(G\)</span>的顶点数<span class="math inline">\(n
+\ge 3\)</span>，且对于每一对不相邻的顶点<span class="math inline">\(u,
+v\)</span>，都有<span class="math inline">\(deg(u) + deg(v) \ge
+n\)</span>，那么<span class="math inline">\(G\)</span>存在哈密尔顿回路；</p>
+</blockquote>
+<h2 id="必要条件可以用来判断不是哈密尔顿通路">必要条件(可以用来判断不是哈密尔顿通路)</h2>
+<blockquote>
+<p>设无向图<span class="math inline">\(G = (V,E)\)</span>，非空子集<span class="math inline">\(V_1 \subset V\)</span>，则<span class="math inline">\(P(G - V_1)\le \left | V_1 \right
+|\)</span>，其中<span class="math inline">\(p(G - V_1)\)</span>为图<span class="math inline">\(G\)</span>删除<span class="math inline">\(V_1\)</span>中的节点后的连通分支数；</p>
+</blockquote>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2025 YokumiのBlog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Yokumi
+        </div>
+        
+    </div>
+</footer>
+
+<script>
+  var event = new Event('hexo-blog-decrypt');
+  window.dispatchEvent(event);
+</script>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/blog/js/main.js"></script>
+    
+    
+
+
+
+
+    
+    <script src="/blog/js/fix-encrypt.js"></script>
+</body>
+</html>

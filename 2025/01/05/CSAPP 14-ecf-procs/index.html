@@ -1,0 +1,283 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YokumiのBlog</title>
+        <link rel="icon" href="/blog/images/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="/blog/images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/blog/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/blog/js/lib/math.js"></script>
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/blog/atom.xml" title="YokumiのBlog" type="application/atom+xml">
+</head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>YOKUMIのBLOG</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;YOKUMIのBLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/blog/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>CSAPP 14-ecf-procs</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/1/5
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/CSAPP/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                CSAPP
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/CSAPP/" style="color: #ffa2c4">
+                    CSAPP
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p>正常来讲，程序计数器PC会在处理器运行时不断地读取指令序列的地址，两个指令间的过渡被称为<strong>控制转移</strong>，该指令序列被称为<strong>控制流</strong>，其中包含一些平滑的突变（即两条指令之间不相邻，如函数调用）；</p>
+<p>异常是指指令地址在控制流中发生突变所做出的反应；系统通过对突变做出反应，将这种突变称为<strong>异常控制流ECF</strong>；</p>
+<h1 id="异常处理">异常处理</h1>
+<h2 id="概述">1. 概述</h2>
+<p>当有事件发生时，会通过一个跳转表（被称为异常表，每个异常编号对应一个索引存储的条目的地址），进行一个间接过程的调用（异常），转移控制给异常处理程序，当异常处理程序处理完成后，根据异常的类型，有以下三种结果：<br>
+* 返回控制给<span class="math inline">\(I_{cur}\)</span>；<br>
+* 返回控制给<span class="math inline">\(I_{next}\)</span>；<br>
+* 终止被中断的程序；<br>
+<img src="1.png"><br>
+异常控制使得控制从用户态转移到内核态，被压入内核栈中；</p>
+<h2 id="异常类型">2. 异常类型</h2>
+<p>异常包含以下几种类型：<br>
+*
+Interrupts中断（Asynchronous异步的，其余都是Synchronous同步的）；<br>
+* Traps陷阱；<br>
+* Faults故障；<br>
+* Aborts终止；</p>
+<h3 id="中断">中断</h3>
+<p>由外部事件引起，并非专门的指令造成的，比如Timer
+interrupt（看门狗中断）、I/O interrupt；</p>
+<h3 id="陷阱">陷阱</h3>
+<p>故意执行的异常，<strong>在用户程序和内核之间提供一个接口，称为系统调用System
+Calls</strong>；执行完后返回<span class="math inline">\(I_{next}\)</span>继续执行；</p>
+<h3 id="故障">故障</h3>
+<p>由错误情况引起，将控制转移给故障处理程序，比如<strong>缺页异常（可修复的）</strong>；执行完后返回<span class="math inline">\(I_{cur}\)</span>继续执行或者终止；<br>
+<img src="2.png"><br>
+以上例子中，当执行到该指令时，a[500]存放在磁盘中，需要从磁盘加载到内存中，此时触发故障，故障处理程序缺失的地址送到内存后，返回<span class="math inline">\(I_{cur}\)</span>重新执行，此时能正确加载数据；<br>
+<img src="3.png"><br>
+以上例子中，故障处理程序发现该地址是虚拟空间的无效地址，因此报段错误；</p>
+<h3 id="终止">终止</h3>
+<h3 id="linux提供的系统调用">Linux提供的系统调用</h3>
+<p>和异常表不是一个东西！！！<img src="4.png"><br>
+一个打开文件的例子，注意 <strong><code>%rax</code>存放syscall
+number</strong>，同时存放返回值，如果返回值小于0说明发生错误；<img src="5.png"><br>
+注意系统调用和函数调用的区别：<br>
+* 系统调用是在内核态中执行的；</p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2025 YokumiのBlog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Yokumi
+        </div>
+        
+    </div>
+</footer>
+
+<script>
+  var event = new Event('hexo-blog-decrypt');
+  window.dispatchEvent(event);
+</script>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/blog/js/main.js"></script>
+    
+    
+
+
+
+
+    
+    <script src="/blog/js/fix-encrypt.js"></script>
+</body>
+</html>

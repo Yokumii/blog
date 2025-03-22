@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YokumiのBlog</title>
+        <link rel="icon" href="/blog/images/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="/blog/images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/blog/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/blog/js/lib/math.js"></script>
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/blog/atom.xml" title="YokumiのBlog" type="application/atom+xml">
+</head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>YOKUMIのBLOG</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;YOKUMIのBLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/blog/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>CSAPP 05-machine-basics</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/1/4
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/CSAPP/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                CSAPP
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/CSAPP/" style="color: #03a9f4">
+                    CSAPP
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81/" style="color: #00bcd4">
+                    汇编代码
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="指令的概念">指令的概念</h1>
+<ul>
+<li>微指令是微程序级命令，属于硬件范畴</li>
+<li>伪指令是由若干机器指令组成的指令序列，属于软件范畴</li>
+<li>机器指令介于二者之间，处于硬件和软件的交界面，本章中提及的指令都指机器指令；
+<ul>
+<li>汇编指令是机器指令的汇编表示形式，即符号表示</li>
+<li>机器指令（二进制串）和汇编指令一一对应，它们都与具体机器结构有关，都属于机器级指令；</li>
+<li>编译Compiling：<code>gcc -Og -S test.c</code>，<code>-Og</code>为优化选项，得到汇编代码<code>test.s</code>；</li>
+</ul></li>
+</ul>
+<h1 id="机器代码的组成">机器代码的组成</h1>
+<ul>
+<li>操作性质（操作码）、源操作数、目的操作数地址（立即数，寄存器编号，存储地址）；<br>
+<img src="1.png"></li>
+<li>通常由以下三部分组成：
+<ul>
+<li>程序计数器PC(Program
+Counter)：即<code>%rip</code>(x86-64)，指向当前正在执行指令的下一条指令的地址；</li>
+<li>整数寄存器Register file：分别存储了64位的值（地址，整数数据）；</li>
+<li>状态寄存器Condition codes：最近执行的算术或逻辑指令的状态信息；</li>
+</ul></li>
+<li>注意机器代码不区分无符号整数和有符号整数，不区分函数和指针；</li>
+</ul>
+<h1 id="isa指令集体系结构">ISA指令集体系结构</h1>
+<p><img src="2.png"></p>
+<h1 id="信息访问保护模式下">信息访问（保护模式下）</h1>
+<ol type="1">
+<li>整数寄存器：<img src="3.png">
+<ol type="1">
+<li><code>%rax</code>，函数返回值；</li>
+<li><code>%rdi</code>，函数调用的第一个参数；</li>
+<li><code>%rsi</code>，函数调用的第二个参数；</li>
+<li><code>%rdx</code>，函数调用的第三个参数；</li>
+<li><code>%rcx</code>，函数调用的第四个参数；</li>
+<li><code>%r8</code>，函数调用的第五个参数；</li>
+<li><code>%r9</code>，函数调用的第六个参数（超过6个参数放在栈空间中）；</li>
+<li><code>%rsp</code>，栈顶指针；</li>
+</ol></li>
+<li>操作数指示符号
+<ol type="1">
+<li>寄存器：直接调用即可；</li>
+<li>立即数：<code>$ + 整数</code>表示；</li>
+<li>内存引用：<code>(%rax)</code></li>
+<li>基址、比例变址、位移操作：<code>D(Rb, Ri, S)</code>，表示获取Rb + S
+* Ri +
+D地址上的数，Rb为段基址，Ri为有效地址(不能是%rsp)，S为比例因子(1、2、4、8)，D为偏移量；<img src="4.png">即算的时候是直接拿寄存器做运算得到地址，但最终的结果应该是该地址上的数；</li>
+</ol></li>
+<li>传送指令：
+<ol type="1">
+<li>mov：<code>movq src, dest</code>；
+<ol type="1">
+<li>立即数可以移动到寄存器或内存地址(寄存器的内容，即此时立即数存在内存中，寄存器存的是指向该内存的地址)；
+<ol type="1">
+<li><code>movq $0x4, %rax</code> <span class="math inline">\(\Leftrightarrow\)</span>
+<code>temp = 0x4</code>；</li>
+<li><code>movq $-147, (%rax)</code><span class="math inline">\(\Leftrightarrow\)</span>
+<code>*p = -147</code>；</li>
+</ol></li>
+<li>寄存器可以移动到寄存器或内存地址；</li>
+<li>内存只能移动到寄存器，内存之间不能移动；</li>
+<li><code>movl</code>指令以寄存器为目的是，不但会更新低32位的值，还会将高位4字节都设置为0；</li>
+<li><code>movs</code>符号扩展；<code>movz</code>零扩展；</li>
+</ol></li>
+<li>lea：加载有效地址，<code>leaq (%rdi, %rdi, 2), %rax</code>；
+<ol type="1">
+<li><strong>注意与<code>mov</code>区别，<code>lea</code>虽然加了括号，但实际上取的是内存的地址，且结果也是内存的地址，而非地址的指向</strong>，所以上面那句指令等价于<code>t = x + x * 2</code>；</li>
+</ol></li>
+</ol></li>
+<li>二元运算指令：<img src="5.png">
+<ul>
+<li>注意<code>sarq</code>为算术右移，<code>shrq</code>为逻辑右移；</li>
+<li><strong>除了乘除，都不区分有符号和无符号</strong>；</li>
+<li><strong>加减影响所有标志</strong>；</li>
+<li><strong>递增递减影响除进位借位CF以外的标志</strong>；</li>
+<li><strong>取负NEG影响标志：对0取负得到0，CF = 0；其余情况CF =
+1</strong>；</li>
+<li><strong>比较运算：做减法得到标志，不会改变寄存器的值</strong>；</li>
+</ul></li>
+<li>一元运算指令：<img src="6.png">
+<ul>
+<li>逻辑运算中，<code>not</code>不会影响标志，其余OF = CF =
+0，ZF和SF根据结果设置；</li>
+<li><strong><code>test</code>做“与”操作，但不会改变寄存器的值，仅影响标志位</strong>；</li>
+</ul></li>
+</ol>
+<h1 id="gcc的使用举例">GCC的使用举例</h1>
+<ol type="1">
+<li><code>gcc -Og -S test.c</code>得到汇编代码<code>test.s</code>；</li>
+<li><code>gcc -O1 test.c -o test</code>得到可执行文件<code>test</code>；</li>
+<li><code>objdump -d test.o &gt; test.txt</code>得到反汇编代码；</li>
+<li>注意可重定位目标文件和可执行目标文件的差异，可重定位目标文件还没有经过链接器链接：<img src="7.png"></li>
+</ol>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2025 YokumiのBlog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Yokumi
+        </div>
+        
+    </div>
+</footer>
+
+<script>
+  var event = new Event('hexo-blog-decrypt');
+  window.dispatchEvent(event);
+</script>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/blog/js/main.js"></script>
+    
+    
+
+
+
+
+    
+    <script src="/blog/js/fix-encrypt.js"></script>
+</body>
+</html>

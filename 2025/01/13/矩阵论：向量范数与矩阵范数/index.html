@@ -1,0 +1,385 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YokumiのBlog</title>
+        <link rel="icon" href="/blog/images/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="/blog/images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/blog/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/blog/js/lib/math.js"></script>
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/blog/atom.xml" title="YokumiのBlog" type="application/atom+xml">
+</head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>YOKUMIのBLOG</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;YOKUMIのBLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/blog/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>矩阵论：向量范数与矩阵范数</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/1/13
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/%E7%9F%A9%E9%98%B5%E8%AE%BA/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                矩阵论
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/%E7%9F%A9%E9%98%B5%E8%AE%BA/" style="color: #ffa2c4">
+                    矩阵论
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h2 id="向量范数与矩阵范数">向量范数与矩阵范数</h2>
+<h3 id="向量范数介绍">向量范数介绍</h3>
+<p>我们知道，对于数列极限，我们有</p>
+<p><span class="math display">\[
+\lim_{n \to \infty} a_n = M \iff \forall \epsilon &gt; 0,\exists N &gt;
+0,s.t. \forall n&gt;N,\left |  {a_n - M}  \right | &lt; \epsilon.
+\]</span></p>
+<p>在 <span class="math inline">\(n\)</span> 维向量空间 <span class="math inline">\(R^n\)</span> 内，我们希望对于一个向量序列 <span class="math inline">\(\{x^{(k)}\}\)</span>，其中 <span class="math inline">\(x^{(k)}= (\xi_1^{(k)},\xi_2^{(k)},\dots,
+\xi_n^{(k)})(k = 1,2,3,\dots)\)</span>。如果对于每一个分量 <span class="math inline">\(\xi_i^{(k)}\)</span>，都有 <span class="math inline">\(\lim_{k \to \infty} \xi_i^{(k)} =
+\xi_i\)</span>，即</p>
+<p><span class="math display">\[
+\lim_{k \to \infty} x^{(k)} = (\xi_1, \xi_2, \dots, \xi_n) = x
+\]</span></p>
+<p>则称向量序列 <span class="math inline">\(\{x^{(k)}\}\)</span> 收敛于
+<span class="math inline">\(x\)</span>。</p>
+<p>但是，我们还是无法解决 <span class="math inline">\(\left| x^{(k)} -
+x\right|\)</span> 该如何定义和计算，显然它不能用向量 <span class="math inline">\(x^{(k)} - x\)</span>
+的长度来刻画。为此，我们定义向量范数如下。</p>
+<h4 id="定义-2.1">定义 2.1</h4>
+<p>如果 <span class="math inline">\(V\)</span> 是数域 <span class="math inline">\(K\)</span> 上的线性空间，且对于 <span class="math inline">\(\forall x \in V\)</span>，定义一个实值函数 $x
+$，它满足以下三个条件:</p>
+<ol type="1">
+<li><strong>非负性</strong>: 当 <span class="math inline">\(x \ne
+0\)</span> 时，<span class="math inline">\(\Vert  x \Vert  &gt;
+0\)</span>，当且仅当 <span class="math inline">\(x = 0\)</span> 时为
+<span class="math inline">\(0\)</span>;</li>
+<li><strong>齐次性</strong>: <span class="math inline">\(\forall a \in
+K, \forall x \in V, \Vert  ax \Vert  = \left| a \right| \Vert  x
+\Vert\)</span>;</li>
+<li><strong>三角不等式</strong>: <span class="math inline">\(\forall x,
+y \in V, \Vert  x + y \Vert  \leq \Vert  x \Vert  + \Vert  y
+\Vert\)</span>;</li>
+</ol>
+<p>则称 <span class="math inline">\(\Vert  x \Vert\)</span> 为向量 <span class="math inline">\(x\)</span> 的范数。</p>
+<p>我们要判断某个实值函数 <span class="math inline">\(\Vert  x
+\Vert\)</span>
+是否是范数，即验证其是否满足上述三条性质即可。以下列举几种常见的范数(在线性空间
+<span class="math inline">\(\mathbb{C}^n\)</span>，即酉空间中)：</p>
+<ul>
+<li><strong>1-范数</strong>: <span class="math inline">\(\Vert  x
+\Vert  = \sum \left| \xi_i \right|\)</span></li>
+<li><strong>2-范数</strong>: <span class="math inline">\(\Vert  x
+\Vert  = \sqrt{(x,x)}\)</span></li>
+<li><strong><span class="math inline">\(\infty\)</span>-范数</strong>:
+<span class="math inline">\(\Vert  x \Vert  = \max \left|
+x_i\right|\)</span></li>
+<li><strong>p-范数</strong>: <span class="math inline">\(\Vert  x \Vert
+_p = (\sum_{i = 1}^{n} {\left|x_i\right|}^p)^{\frac{1}{p}}, (1 \leq p
+&lt; \infty)\)</span></li>
+</ul>
+<h4 id="定理-2.1">定理 2.1</h4>
+<p>设有限维线性空间 <span class="math inline">\(V^n\)</span>
+中任意两个向量范数 <span class="math inline">\(\Vert  x_\alpha \Vert
+,\Vert  x_\beta \Vert\)</span>，如果 <span class="math inline">\(\exists
+c_1, c_2,s.t.\)</span></p>
+<p><span class="math display">\[
+{c_1\Vert  x_\beta \Vert  \leq \Vert  x_\alpha \Vert  &lt;
+c_2\Vert  x_\beta \Vert }
+\]</span></p>
+<p>则称向量范数 <span class="math inline">\(\Vert  x_\alpha \Vert
+,\Vert  x_\beta \Vert\)</span> 等价。</p>
+<h3 id="矩阵范数介绍">矩阵范数介绍</h3>
+<p>对于矩阵空间 <span class="math inline">\(\mathbb{C}^{m\times
+n}\)</span>，如果类似地将矩阵 <span class="math inline">\(A_{m\times
+n}\)</span>
+看作“向量”，可以类似向量范数定义矩阵范数。但矩阵之间还有乘法运算，需要补充定义如下：</p>
+<h4 id="定义-2.3">定义 2.3</h4>
+<p>设 <span class="math inline">\(A \in \mathbb{C}^{m\times
+n}\)</span>，定义一个实值函数 <span class="math inline">\(\Vert  A
+\Vert\)</span>，它满足以下四个条件:</p>
+<ol type="1">
+<li><strong>非负性</strong>: 当 <span class="math inline">\(A \ne
+0\)</span> 时，<span class="math inline">\(\Vert  A \Vert  &gt;
+0\)</span>，当且仅当 <span class="math inline">\(A = 0\)</span> 时为
+<span class="math inline">\(0\)</span>;</li>
+<li><strong>齐次性</strong>: <span class="math inline">\(\forall \alpha
+\in C, \Vert  {\alpha A} \Vert  = \left| {\alpha} \right| \Vert  A
+\Vert\)</span>;</li>
+<li><strong>三角不等式</strong>: <span class="math inline">\(\Vert  A +
+B \Vert  \leq \Vert  A \Vert  + \Vert  B \Vert\)</span>;</li>
+<li><strong>相容性</strong>: <span class="math inline">\(\Vert  AB
+\Vert  \leq \Vert  A \Vert  \Vert  B \Vert\)</span> (对于 <span class="math inline">\(B \in \mathbb{C}^{n\times l}\)</span>)。</li>
+</ol>
+<p>则称 <span class="math inline">\(\Vert  A \Vert\)</span> 为矩阵 <span class="math inline">\(A\)</span> 的范数。</p>
+<p>在数值方法中进行某种估计时，多数情况下，矩阵范数与向量范数常混合使用，而矩阵经常是作为两个线性空间上的线性变换出现的，为此引入矩阵范数和向量范数相容的概念如下：</p>
+<h4 id="定理2.2">定理2.2</h4>
+<p>对于<span class="math inline">\(\mathbb{C}^{m \times
+n}\)</span>的矩阵范数<span class="math inline">\(\Vert {\cdot} \Vert
+_M\)</span>和<span class="math inline">\(\mathbb{C}^m,\mathbb{C}^n\)</span>上的同类向量范数<span class="math inline">\(\Vert {\cdot} \Vert _V\)</span>，如果有</p>
+<p>$$</p>
+<p>Ax _V A _M x _V(A ^{m n}, x <sup>n</sup>)</p>
+<p>$$</p>
+<p>则称矩阵范数<span class="math inline">\(\Vert {\cdot} \Vert
+_M\)</span>与向量范数<span class="math inline">\(\Vert {\cdot} \Vert
+_V\)</span>是相容的。</p>
+<p>以下列举几种常用的矩阵范数：</p>
+<ul>
+<li><strong>F-范数</strong>: <span class="math inline">\(\Vert  A \Vert
+_F = (\sum_{i = 1}^{m}\sum_{j =
+1}^{n}\left|a_{ij}\right|^2)^{\frac{1}{2}} = (tr(A^H
+A))^{\frac{1}{2}}\)</span></li>
+</ul>
+<p>其中，F-范数有一定理如下：</p>
+<h4 id="定理-2.3">定理 2.3</h4>
+<p>设 <span class="math inline">\(A \in \mathbb{C}^{m \times
+n}\)</span>，且 <span class="math inline">\(P \in \mathbb{C}^{m\times
+m}, Q\in \mathbb{C}^{n \times n}\)</span> 都是酉矩阵，则有</p>
+<p><span class="math display">\[
+\Vert PA \Vert _F = \Vert A \Vert _F = \Vert AQ \Vert _F
+\]</span></p>
+<p>即 <span class="math inline">\(A\)</span> 左乘或右乘酉矩阵后，其
+<span class="math inline">\(\Vert {\cdot} \Vert\)</span> 不变。</p>
+<p>矩阵函数可以通过如下方法进行定义，并且定义的矩阵函数与已知的向量范数相容。</p>
+<h4 id="定理2.4">定理2.4</h4>
+<p>已知<span class="math inline">\(\mathbb{C}^{m},\mathbb{C}^{n}\)</span>上的同类向量范数<span class="math inline">\(\Vert {\cdot} \Vert\)</span>。设<span class="math inline">\(A\in \mathbb{C}^{m\times n}\)</span>，则函数<br>
+<span class="math display">\[
+\Vert {A} \Vert = \max\limits_{\Vert x \Vert = 1}{\Vert {Ax} \Vert }
+\]</span></p>
+<p>是<span class="math inline">\(\mathbb{C}^{m\times
+n}\)</span>上的矩阵范数，且与已知的向量范数相容。</p>
+<p>分别取向量<span class="math inline">\(x\)</span>的范数为<span class="math inline">\(\Vert x \Vert _1,\Vert x \Vert _2,\Vert x \Vert
+_{\infty}\)</span>时，就可以得到以下三种矩阵范数：</p>
+<h4 id="定理-2.5">定理 2.5</h4>
+<p>设 <span class="math inline">\(A = (a_{ij})_{m\times n} \in
+\mathbb{C}^{m\times
+n}\)</span>，可以得到以下三种矩阵范数的计算公式分别为:</p>
+<ol type="1">
+<li><strong>列和范数</strong>: <span class="math inline">\(\Vert A \Vert
+_1 = \max\limits_{j} \sum_{i = 1}^{m}\left|a_{ij}\right|\)</span>;</li>
+<li><strong>谱范数</strong>: <span class="math inline">\(\Vert A \Vert
+_2 = \sqrt{\max{\lambda(A^HA)}}\)</span>;</li>
+<li><strong>行和范数</strong>: <span class="math inline">\(\Vert A \Vert
+_{\infty} = \max\limits_{i}
+\sum_{j=1}^{n}\left|a_{ij}\right|\)</span>;</li>
+</ol>
+<p>在机器学习中，范数作为数学优化的重要工具，广泛应用于高维优化问题中，其具体表现和影响在模型的性能、计算复杂度、正则化等方面有重要体现。</p>
+<p>在高维优化中，目标函数往往包含范数，用于度量模型参数或残差的大小；在机器学习模型训练中，损失函数通常衡量预测值与真实值之间的差距，而范数决定了误差的度量方式，例如L-1损失、L-2损失；正则化通过添加范数约束减少模型复杂度，缓解高维数据中的过拟合问题，例如L-1正则化，L-2正则化。</p>
+<p>以上应用场景中，范数的引入通过度量大小、限制复杂性和提升泛化能力，影响了模型的性能和稳定性。选择合适的范数类型能有效在稀疏性、平滑性和数值稳定性之间实现权衡。</p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2025 YokumiのBlog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Yokumi
+        </div>
+        
+    </div>
+</footer>
+
+<script>
+  var event = new Event('hexo-blog-decrypt');
+  window.dispatchEvent(event);
+</script>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/blog/js/main.js"></script>
+    
+    
+
+
+
+
+    
+    <script src="/blog/js/fix-encrypt.js"></script>
+</body>
+</html>

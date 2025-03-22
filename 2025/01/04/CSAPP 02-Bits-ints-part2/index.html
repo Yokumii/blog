@@ -1,0 +1,317 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YokumiのBlog</title>
+        <link rel="icon" href="/blog/images/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="/blog/images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/blog/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/blog/js/lib/math.js"></script>
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/blog/atom.xml" title="YokumiのBlog" type="application/atom+xml">
+</head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>YOKUMIのBLOG</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;YOKUMIのBLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/blog/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>CSAPP 02-Bits-ints-part2</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/1/4
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/CSAPP/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                CSAPP
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/CSAPP/" style="color: #03a9f4">
+                    CSAPP
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="addition加法">Addition加法</h1>
+<ol type="1">
+<li>无符号数加法：<span class="math inline">\(s = UAdd_w(u,v) = (u +v)\%
+2^w\)</span>；结果寄存器会截断溢出的1位；
+<ol type="1">
+<li>溢出时，结果一定小于任何一个加数；</li>
+</ol></li>
+<li>有符号数加法：<span class="math inline">\(s = (int)((unsigned)u +
+(unsigned)v)\)</span>；
+<ol type="1">
+<li>正溢出：<span class="math inline">\(x + y \ge
+2^{w-1}\)</span>，截断后结果为<span class="math inline">\(x + y -
+2^w\)</span>；</li>
+<li>负溢出：<span class="math inline">\(x + y &lt;
+2^{w-1}\)</span>，截断后结果为<span class="math inline">\(x + y +
+2^w\)</span>；</li>
+<li>正 + 负：不可能溢出；</li>
+</ol></li>
+<li>用加法实现减法：<span class="math inline">\((A - B)_{\text{补}} =
+(A)_\text{补} + (-B)_\text{补}\)</span>
+<ol type="1">
+<li>如何求<span class="math inline">\((-B)_\text{补}\)</span><br>
+<span class="math inline">\((B)_\text{补} + (-B)_\text{补} = 11\cdots
+1\)</span><br>
+<span class="math inline">\(\sim(B)_\text{补} + (B)_\text{补} + 1 =
+11\cdots 1 + 1 = 0\)</span><br>
+<span class="math inline">\((-B)_\text{补} = \sim (B)_\text{补} +
+1\)</span></li>
+</ol></li>
+<li>加法逆元：
+<ol type="1">
+<li>无符号数：<span class="math inline">\(-x = 2^w - x(x \ne
+0)\)</span>，0的逆元是0；</li>
+<li>有符号数：<span class="math inline">\(x + (-x) =
+0\)</span>，注意特例<span class="math inline">\(T_{min},10\cdots 0 +
+10\cdots 0 = 0\)</span>，即<span class="math inline">\(-T_{min} =
+T_{min}\)</span>；</li>
+</ol></li>
+</ol>
+<h1 id="adder加法器">Adder加法器</h1>
+<p><img src="1.png"><br>
+* 当做减法(Sub = 1)或产生进位(Co = 1)时，CF =
+1，表示发生借位或进位；<br>
+* SF = 运算结果的符号位；<br>
+* ZF = 1 if Sum = 0；<br>
+* OF = 1 if 两个加数同号但与Sum异号(即上述发生溢出的情形)；<br>
+<img src="2.png"><br>
+以上题为例：</p>
+<pre class="c"><code>unsigned int x = 1000 0110;
+unsigned int y = 1111 0110; // -y_补 = 00001010
+
+int m = x = 1000 0110 = -122;
+int n = y = 1111 0110 = -10;
+
+# CF = 1(减法有借位)，OF = 0(并没有溢出），SF = 1；
+unsigned int z1 = x - y = 1000 0110 + 00001010 = 10010000 = 144;
+int k1 = m - n = 10010000 = -112 = -112 - (-10);
+
+# CF = 1(有进位)，OF = 1(发生溢出)，SF = 0；
+unsigned int z2 = x + y = 1000 0110 + 11110110 = 01111100 = 124 = (134 + 246) % 256;
+int k2 = m + n = 01111100 = 124 = -122 - 10 + 256;</code></pre>
+<h1 id="multiplication">Multiplication</h1>
+<ol type="1">
+<li>无符号数乘法：和加法类似进行截断；</li>
+<li>补码乘法：先按无符号数进行乘法运算截断，然后将结果转化为有符号数；</li>
+<li>变量与常数之间的乘运算（左移）：<img src="3.png"></li>
+<li>变量与常数之间的除运算（算术右移）：<img src="4.png"></li>
+<li>如果负数要向0取整，记得加偏移量；即：<span class="math inline">\(x =
+(x + 1&lt;&lt;k-1)&gt;&gt;k\)</span>；</li>
+</ol>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2025 YokumiのBlog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Yokumi
+        </div>
+        
+    </div>
+</footer>
+
+<script>
+  var event = new Event('hexo-blog-decrypt');
+  window.dispatchEvent(event);
+</script>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/blog/js/main.js"></script>
+    
+    
+
+
+
+
+    
+    <script src="/blog/js/fix-encrypt.js"></script>
+</body>
+</html>

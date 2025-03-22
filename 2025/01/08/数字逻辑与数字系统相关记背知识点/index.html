@@ -1,0 +1,398 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YokumiのBlog</title>
+        <link rel="icon" href="/blog/images/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="/blog/images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/blog/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/blog/js/lib/math.js"></script>
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/blog/atom.xml" title="YokumiのBlog" type="application/atom+xml">
+</head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>YOKUMIのBLOG</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;YOKUMIのBLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/blog/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>数字逻辑与数字系统相关记背知识点</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/1/8
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                计算机基础
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" style="color: #ffa2c4">
+                    计算机基础
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/%E7%A1%AC%E4%BB%B6/" style="color: #03a9f4">
+                    硬件
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="verilog">Verilog</h1>
+<h2 id="标识符">标识符</h2>
+<ul>
+<li>命名规则与C语言相同；</li>
+<li>关键字必须小写；</li>
+<li><strong>存盘文件名应与设计的模块名相同</strong>；</li>
+</ul>
+<h2 id="概述">概述</h2>
+<ul>
+<li><strong>四值逻辑</strong>：0、1、X(不定)、Z(高阻)；</li>
+<li>模块由两部分构成：<strong>描述接口、描述功能</strong>；<img src="1.png"></li>
+</ul>
+<h2 id="数据类型">数据类型</h2>
+<ul>
+<li>数据I/O类型；<img src="2.png"></li>
+<li><strong>always中被赋值的信号必须用reg类型的变量</strong>；</li>
+<li>输入和双向端口不能声明为reg型；</li>
+<li>parameter：符号常量，其定义只在本模块内有效；</li>
+</ul>
+<h2 id="运算符">运算符</h2>
+<ul>
+<li>位连接运算符{ }
+，将两个或多个信号的某些位拼接起来。<strong>不允许连接非定长常数</strong>；</li>
+<li>自动调整位宽。运算表达式结果的长度由最长的操作数决定；</li>
+<li>操作结果的长度: 由赋值左端目标长度决定；</li>
+</ul>
+<h2 id="功能描述语句">功能描述语句</h2>
+<ul>
+<li><strong>assign , always , 元件例化，是并发语句</strong>；</li>
+</ul>
+<h3 id="assign">assign</h3>
+<p><img src="3.png"></p>
+<h3 id="always">always</h3>
+<p><img src="4.png"></p>
+<h3 id="敏感信号表">敏感信号表</h3>
+<ul>
+<li>敏感信号的变化才能启动进程；</li>
+<li>组合逻辑中，所有输入都作为敏感信号,否则仿真结果和综合结果会不一致；</li>
+</ul>
+<h3 id="注意点">注意点</h3>
+<ul>
+<li><strong>不要在一个aways 中同时使用= ，&lt;=赋值</strong>；</li>
+<li>if、case、for 语句必需在 always 块中；</li>
+</ul>
+<h2 id="设计组合电路">设计组合电路</h2>
+<h3 id="要求">要求</h3>
+<p><img src="5.png"></p>
+<h2 id="设计时序电路">设计时序电路</h2>
+<h4 id="要求-1">要求</h4>
+<p><img src="6.png"></p>
+<h4 id="注意点-1">注意点</h4>
+<ul>
+<li><strong>异步信号必须放在敏感信号表中；必须都是边沿</strong>；</li>
+<li>锁存器的所有输入都放在敏感信号表中；锁存器敏感信号都是电平。</li>
+</ul>
+<h2 id="元件例化">元件例化</h2>
+<ul>
+<li>一个元件是一段结构完整的 module 模块；</li>
+<li><strong>不能在always语句内部引用子模块</strong>；</li>
+</ul>
+<h1 id="存储系统">存储系统</h1>
+<h2 id="寄存器堆">寄存器堆</h2>
+<ul>
+<li>由多个寄存器构成的集合。常用于数据寄存。
+有三组外部信号：地址（短地址）、数据、读/写控制；</li>
+<li>多端口寄存器；</li>
+<li>可同时读、写， 可同时输出两个数；</li>
+</ul>
+<h2 id="寄存器队列">寄存器队列</h2>
+<ul>
+<li>FIFO（First In First Out，先进先出），用若干个移位寄存器构建的
+小型存储部件。用于指令队列；</li>
+<li>无地址线，双端口存储器，可同时读写；</li>
+<li>FIFO用于两个不同系统通信、数据采集传送、串并转换；</li>
+</ul>
+<h2 id="寄存器栈">寄存器栈</h2>
+<ul>
+<li>LIFO（ Last In First Out，后进先出）方式，用若干个双向移位
+寄存器构建的小型存储部件；</li>
+<li>用于减少函数调用时对内存的访问；</li>
+</ul>
+<h2 id="ram">RAM</h2>
+<ul>
+<li>特性：能读能写、易失；</li>
+<li>作用：存放编写的程序和数据</li>
+<li>逻辑结构：<img src="7.png"></li>
+<li><strong>逻辑结构包括：地址译码器、存储矩阵和读写控制电路</strong>；</li>
+<li>分为SRAM(Static RAM)和DRAM(Dynamic RAM)；<img src="8.png"><img src="9.png"><img src="10.png"></li>
+</ul>
+<h2 id="rom">ROM</h2>
+<ul>
+<li>ROM的逻辑构成＝
+<strong>与门阵列（地址译码器）＋或门阵列（存储矩阵）</strong>；</li>
+<li>分为PROM、EPROM等；</li>
+</ul>
+<h2 id="存储器容量计算">存储器容量计算</h2>
+<ul>
+<li>单元数<span class="math inline">\(\times\)</span>每单元的位数；即字数<span class="math inline">\(\times\)</span>字长；</li>
+</ul>
+<h1 id="可编程逻辑器件pld">可编程逻辑器件PLD</h1>
+<h2 id="概述-1">概述</h2>
+<ul>
+<li>现代数字系统由三种积木块构成：CPU＋PLD＋RAM；</li>
+</ul>
+<h2 id="编程部位">编程部位</h2>
+<p><img src="11.png"></p>
+<h2 id="编程方法">编程方法</h2>
+<p><img src="12.png"></p>
+<h2 id="cpld">CPLD</h2>
+<p><img src="13.png"></p>
+<h2 id="fpga">FPGA</h2>
+<p><img src="14.png"><img src="15.png"></p>
+<h3 id="在系统可编程isp">在系统可编程ISP</h3>
+<ul>
+<li>传统的PLD在用于生产时，是先编程后装配；</li>
+<li><strong>isp则可以在装配之前、装配过程中和装配之后再编程</strong>；</li>
+</ul>
+<h1 id="数字系统">数字系统</h1>
+<h2 id="概述-2">概述</h2>
+<ul>
+<li>具有存储、传输、处理信息能力的逻辑系统集合；</li>
+<li>由“<strong>数据通路+控制逻辑</strong>”构成，其工作具有周期性；</li>
+<li><strong>数字系统与逻辑功能部件的区别：有无控制器</strong>；</li>
+<li>在各部件之间传送信息的公共通路，称为<strong>数据通路</strong>。由总线连接的运算单元（组合电路）和存储单元构成；</li>
+</ul>
+<h2 id="总线">总线</h2>
+<p><img src="16.png"></p>
+<h2 id="设计方法">设计方法</h2>
+<ul>
+<li>自顶向下方法（from top to down
+）：是将规模较大的系统从逻辑上划分为控制电路＋受控电路；</li>
+<li>步骤：
+<ol type="1">
+<li>划分子系统、子模块；</li>
+<li>数据通路；</li>
+<li>用数学语言(工具)，描述控制器的控制过程；</li>
+<li>设计控制器；</li>
+<li>设计数据处理器；</li>
+</ol></li>
+</ul>
+<h1 id="end">END</h1>
+<blockquote>
+<p>希望别出太偏捏</p>
+</blockquote>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2025 YokumiのBlog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Yokumi
+        </div>
+        
+    </div>
+</footer>
+
+<script>
+  var event = new Event('hexo-blog-decrypt');
+  window.dispatchEvent(event);
+</script>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/blog/js/main.js"></script>
+    
+    
+
+
+
+
+    
+    <script src="/blog/js/fix-encrypt.js"></script>
+</body>
+</html>

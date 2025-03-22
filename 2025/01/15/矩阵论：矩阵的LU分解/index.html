@@ -1,0 +1,573 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YokumiのBlog</title>
+        <link rel="icon" href="/blog/images/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="/blog/images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/blog/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/blog/js/lib/math.js"></script>
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/blog/atom.xml" title="YokumiのBlog" type="application/atom+xml">
+</head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>YOKUMIのBLOG</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;YOKUMIのBLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/blog/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>矩阵论：矩阵的LU分解</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/1/15
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/%E7%9F%A9%E9%98%B5%E8%AE%BA/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                矩阵论
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/%E7%9F%A9%E9%98%B5%E8%AE%BA/" style="color: #00a596">
+                    矩阵论
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="矩阵的lu分解">矩阵的LU分解</h1>
+<h2 id="gauss消元法">Gauss消元法</h2>
+<p>在介绍LU分解之前，我们先通过Gauss消元法引入。</p>
+<p>对于求解以下线性方程组的问题：</p>
+<p><span class="math display">\[
+\left\{\begin{matrix}
+    a_{11}x_{11} + a_{12}x_{12} + \cdots + a_{1n}x_{1n} = b_1\\
+    \vdots \\
+    a_{n1}x_{n1} + a_{n2}x_{n2} + \cdots + a_{nn}x_{nn} = b_n \\
+\end{matrix}\right.
+\]</span></p>
+<p>其矩阵形式为：</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+    a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} &amp; b_1\\
+    \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots\\
+    a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn} &amp; b_n
+\end{bmatrix} \triangleq (A \vdots  b)
+\]</span></p>
+<p><strong>Guass消元法</strong>的基本思想是将矩阵$
+$通过初等行变换转化为阶梯型矩阵，我们假定该过程中不涉及“对换变换”，变换过程如下：</p>
+<p>记</p>
+<p><span class="math display">\[
+A^{(1)} = A = \begin{bmatrix}
+    a_{11}^{(1)} &amp; a_{12}^{(1)} &amp; \cdots &amp; a_{1n}^{(1)}\\
+    \vdots &amp; \vdots &amp; \vdots &amp; \vdots\\
+    a_{n1}^{(1)} &amp; a_{n2}^{(1)} &amp; \cdots &amp; a_{nn}^{(1)}
+\end{bmatrix}
+\]</span></p>
+<p>若<span class="math inline">\(a_{11}^{(1)} \ne 0\)</span>，则：</p>
+<p><span class="math display">\[
+A^{(1)} \xrightarrow{r_i - \frac{a_{21}^{(1)}}{a_{11}^{(1)}}r_1,i =
+2,3,\cdots,n}
+\begin{bmatrix}
+    a_{11}^{(1)} &amp; a_{12}^{(1)} &amp; \cdots &amp; a_{1n}^{(1)}\\
+    0 &amp; a_{22}^{(2)} &amp; \cdots &amp; a_{2n}^{(2)}\\
+    \vdots &amp; \vdots &amp; \vdots &amp; \vdots\\
+    0 &amp; a_{n2}^{(2)} &amp; \cdots &amp; a_{nn}^{(2)}
+\end{bmatrix} \triangleq A^{(2)}
+\]</span></p>
+<p>若<span class="math inline">\(a_{22}^{(2)} \ne 0\)</span>，则：</p>
+<p><span class="math display">\[
+A^{(2)} \xrightarrow{r_i - \frac{a_{32}^{(2)}}{a_{22}^{(2)}}r_1,i =
+3,4,\cdots,n}
+\begin{bmatrix}
+    a_{11}^{(1)} &amp; a_{12}^{(1)} &amp; a_{13}^{(1)}&amp; \cdots &amp;
+a_{1n}^{(1)}\\
+    &amp; a_{22}^{(2)} &amp; a_{23}^{(2)}&amp; \cdots &amp;
+a_{2n}^{(2)}\\
+    &amp; &amp; a_{33}^{(3)} &amp; \cdots &amp; a_{3n}^{(3)}\\
+    &amp; &amp; \vdots &amp; &amp; \vdots\\
+    &amp; &amp; a_{n3}^{(3)} &amp; \cdots &amp; a_{nn}^{(3)}
+\end{bmatrix} \triangleq A^{(3)}
+\]</span></p>
+<p>如此继续，如果能进行<span class="math inline">\(n-1\)</span>步，那么可以将矩阵$
+$化为上三角矩阵：</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+    a_{11}^{(1)} &amp; a_{12}^{(1)} &amp; \cdots &amp; a_{1n}^{(1)}\\
+    &amp; a_{22}^{(2)} &amp; \cdots &amp; a_{2n}^{(2)}\\
+    &amp; &amp;  \ddots &amp; \vdots\\
+    &amp; &amp; &amp; a_{nn}^{(n)}
+\end{bmatrix} \triangleq A^{(n)}
+\]</span></p>
+<p>上述过程就是Guass消元法的矩阵描述。</p>
+<p>在上述过程进行的过程中，易得，如果Guass消元法能进行到底：</p>
+<p><span class="math display">\[
+    \Leftrightarrow a_{11}^{(1)}a_{22}^{(2)}\cdots a_{n-1n-1}^{(n-1)}
+\ne 0
+\]</span></p>
+<p>那么问题是，如何判断$ <span class="math inline">\(的前\)</span>n-1<span class="math inline">\(个主元\)</span>$？</p>
+<p>回溯上述过程可知：</p>
+<p><span class="math display">\[
+\begin{aligned}
+&amp; a_{11}^{(1)} = a_{11}\\
+&amp; a_{11}^{(1)}a_{22}^{(2)} =
+\begin{bmatrix}
+    a_{11}^{(1)} &amp; a_{12}^{(1)}\\
+    0 &amp; a_{22}^{(22)}
+\end{bmatrix} =
+\begin{bmatrix}
+    a_{11} &amp; a_{12}\\
+    a_{21} &amp; a_{22}
+\end{bmatrix}\\
+&amp; \cdots \\
+&amp; a_{11}^{(1)}a_{22}^{(2)}\cdots a_{kk}^{(k)} =
+\begin{bmatrix}
+    a_{11}^{(1)} &amp; a_{12}^{(1)} &amp; \cdots &amp; a_{1k}^{(1)}\\
+    &amp; a_{22}^{(2)} &amp; \cdots &amp; a_{2k}^{(2)}\\
+    &amp; &amp;  \ddots &amp; \vdots\\
+    &amp; &amp; &amp; a_{kk}^{(k)}
+\end{bmatrix} =
+\begin{bmatrix}
+    a_{11} &amp; \cdots &amp; a_{1k}\\
+    \vdots &amp; &amp; \vdots\\
+    a_{k1} &amp; \cdots &amp; a_{kk}
+\end{bmatrix}
+\end{aligned}
+\]</span></p>
+<p>记：</p>
+<p><span class="math display">\[
+\begin{aligned}
+    &amp; \Delta_1 = a_{11} \\
+    &amp; \Delta_2 = \begin{bmatrix}
+        a_{11} &amp; a_{12}\\
+        a_{21} &amp; a_{22}
+    \end{bmatrix} \\
+    &amp; \cdots \\
+    &amp; \Delta_{n-1} = \begin{bmatrix}
+        a_{11} &amp; \cdots &amp; a_{1n-1}\\
+        \vdots &amp; &amp; \vdots\\
+        a_{n-11} &amp; \cdots &amp; a_{n-1n-1}
+    \end{bmatrix}
+\end{aligned}
+\]</span></p>
+<p>可以发现，<span class="math inline">\(\Delta_k\)</span>即为$ <span class="math inline">\(的\)</span>k$阶<strong>顺序主子式</strong>。</p>
+<p>所以，得到如下命题：</p>
+<p><strong>命题 1</strong><br>
+当<span class="math inline">\(\Delta_k \ne 0,k =
+1,2,\cdots,n-1\Leftrightarrow a_{kk}^{(k)} \ne 0\)</span></p>
+<p>于是，自然得到：</p>
+<p><strong>定理 1</strong><br>
+Guass消元法能进行到底 <span class="math inline">\(\Leftrightarrow\)</span> <span class="math inline">\(\boldsymbol{A}\)</span>的前<span class="math inline">\(n-1\)</span>个顺序主子式<span class="math inline">\(\ne 0\)</span>；</p>
+<h2 id="矩阵lu分解的步骤推导">矩阵LU分解的步骤推导</h2>
+<p>从高斯消元法的过程，每一步初等行变换的过程相当于一个<strong>高斯变换</strong>，即左乘一个矩阵：</p>
+<p><span class="math display">\[
+L_1 = \begin{bmatrix}
+    1 &amp; &amp; &amp; \\
+    l_1 &amp; 1 &amp; &amp;\\
+    l_2 &amp;  &amp; 1 &amp; &amp; \\
+    \vdots &amp;  &amp;  &amp; \ddots &amp; \\
+    l_n &amp; &amp; &amp; &amp; 1
+\end{bmatrix}
+\]</span></p>
+<p>其中，<span class="math inline">\(l_i =
+-\frac{a_{i1}^{(1)}}{a_{11}^{(1)}},i = 2,3,\cdots,n\)</span>。</p>
+<p>易得，高斯消元法的过程可以表示为：</p>
+<p><span class="math display">\[
+L_{n-1}L_{n-2}\cdots L_{1}A = U
+\]</span></p>
+<p>其中，<span class="math inline">\(\boldsymbol{L}_i\)</span>为下三角矩阵，<span class="math inline">\(\boldsymbol{U}\)</span>为上三角矩阵。</p>
+<p>令 <span class="math inline">\(\boldsymbol{L} = L_1^{-1}\cdots
+L_{n-2}^{-1}L_{n-1}^{-1}\)</span>，则有：</p>
+<p><span class="math display">\[
+\boldsymbol{A} =  \boldsymbol{L} \boldsymbol{U}
+\]</span></p>
+<p>这就是矩阵的<strong>LU分解</strong>。</p>
+<p>求得 <span class="math inline">\(\boldsymbol{L}\)</span> 和 <span class="math inline">\(\boldsymbol{U}\)</span> 后，如何计算 <span class="math inline">\(x\)</span>？</p>
+<p><span class="math display">\[
+Ax = LUx = b
+\]</span></p>
+<p>取中间变量 <span class="math inline">\(y = Ux\)</span>，则 <span class="math inline">\(Ly = b\)</span>。</p>
+<p>那么，为什么LU分解能加速线性方程组的求解呢？</p>
+<p>实际上，虽然从矩阵形式上看，<span class="math inline">\(\boldsymbol{L}\)</span> 需要计算 <span class="math inline">\(n-1\)</span> 个 <span class="math inline">\(L_i\)</span>
+的逆，但是实际算法求解过程中，三角型的矩阵的乘法和逆是容易计算的，并且甚至不需要额外的空间存储开销
+：算法会将 <span class="math inline">\(\boldsymbol{L}\)</span> 和 <span class="math inline">\(\boldsymbol{U}\)</span> 的元素直接存储到原矩阵
+<span class="math inline">\(\boldsymbol{A}\)</span> 的相应位置上：</p>
+<ul>
+<li><span class="math inline">\(\boldsymbol{L}\)</span>
+的下三角部分（不包括对角线）会存储在 <span class="math inline">\(\boldsymbol{A}\)</span> 的下三角部分。</li>
+<li><span class="math inline">\(\boldsymbol{U}\)</span>
+的上三角部分和对角线会存储在 <span class="math inline">\(\boldsymbol{A}\)</span>
+的上三角部分和对角线上。</li>
+</ul>
+<p>例如，对于矩阵</p>
+<p><span class="math display">\[
+\boldsymbol{A} =\begin{bmatrix}
+    a_{11} &amp; a_{12} &amp; a_{13} \\
+    a_{21} &amp; a_{22} &amp; a_{23} \\
+    a_{31} &amp; a_{32} &amp; a_{33}
+\end{bmatrix}
+\]</span></p>
+<p>经过 LU 分解后，它的存储会变为：</p>
+<p><span class="math display">\[
+\boldsymbol{A} =\begin{bmatrix}
+    u_{11} &amp; u_{12} &amp; u_{13} \\
+    l_{21} &amp; u_{22} &amp; u_{23} \\
+    l_{31} &amp; l_{32} &amp; u_{33}
+\end{bmatrix}
+\]</span></p>
+<p>其中：</p>
+<ul>
+<li><span class="math inline">\(l_{ij}\)</span> 为第 <span class="math inline">\(i\)</span> 行，第 <span class="math inline">\(j\)</span> 列的乘子；</li>
+<li><span class="math inline">\(u_{ij}\)</span> 为第 <span class="math inline">\(i\)</span> 行，第 <span class="math inline">\(j\)</span> 列的上三角元素；</li>
+</ul>
+<p>通过这种方式，所有分解信息都存储在原矩阵中，无需额外空间。LU分解既降低了时间复杂度又降低了空间复杂度。</p>
+<p>不过，从我们进行高斯消元法的过程就可以发现，要保证高斯消元法能进行到底，需要避免乘子中的除数（<span class="math inline">\(A_{kk}\)</span>）出现
+0（实际应用中，很小的情况也应该避免），所以一般不直接应用LU分解，而是应用<strong>列主元PLU分解</strong>，它通过交换行来避免出现相对很小的主元，实现稳定的LU分解
+，其伪代码如算法 <span class="math inline">\(\ref{列选主元PLU分解法}\)</span> 所示。</p>
+<h3 id="算法列选主元plu分解法">算法：列选主元PLU分解法</h3>
+<p><strong>输入：</strong> 矩阵 <span class="math inline">\(A \in
+\mathbb{R}^{n \times n}\)</span><br>
+<strong>输出：</strong> 矩阵 <span class="math inline">\(P, L,
+U\)</span>，使得 <span class="math inline">\(P A = L U\)</span></p>
+<pre class="algorithm"><code>初始化：
+U = A, L = I, P = I
+
+for k = 1 to n-1 do:
+    1. 寻找主元：
+       pivot = max_&#123;i=k, ..., n&#125; |U[i, k]|
+       记录主元行号 row
+       
+    2. 若 row ≠ k:
+       构造置换矩阵 P_k，交换 U 的第 k 行与第 row 行：
+       P_k = 交换 k 行与 row 行的单位矩阵
+       
+       更新 U: U = P_k U
+       更新 P: P = P_k P
+       
+       若 k &gt; 1，则更新 L: L = P_k L
+    
+    3. 对于 i = k+1 到 n:
+       计算消元因子：
+       L[i, k] = U[i, k] / U[k, k]
+       
+       更新 U：
+       U[i, :] = U[i, :] - L[i, k] * U[k, :]
+       
+返回 P, L, U</code></pre>
+<p><span class="math display">\[
+\boldsymbol{A} = \boldsymbol{L} \boldsymbol{U}
+\]</span></p>
+<p>其中，若矩阵 <span class="math inline">\(\boldsymbol{A}\)</span>
+满秩，即 <span class="math inline">\(\operatorname{rank} A =
+r\)</span>，则可利用 LU 分解或 PLU 分解构造其满秩分解：</p>
+<p>• <strong>LU 分解构造满秩分解</strong></p>
+<p>若 <span class="math inline">\(\boldsymbol{A}\)</span> 可分解为 <span class="math inline">\(\boldsymbol{A} = \boldsymbol{L}
+\boldsymbol{U}\)</span>，则从 <span class="math inline">\(\boldsymbol{L}\)</span> 提取前 <span class="math inline">\(r\)</span> 列，从 <span class="math inline">\(\boldsymbol{U}\)</span> 提取前 <span class="math inline">\(r\)</span> 行：<br>
+<span class="math display">\[
+\boldsymbol{F} = \boldsymbol{L}[:, 0:r],\quad \boldsymbol{G} =
+\boldsymbol{U}[0:r, :]
+\]</span></p>
+<p>其中，<span class="math inline">\(\boldsymbol{F}\)</span>
+为列满秩矩阵（<span class="math inline">\(m \times r\)</span>），<span class="math inline">\(\boldsymbol{G}\)</span> 为行满秩矩阵（<span class="math inline">\(r \times
+n\)</span>），从而得到矩阵的满秩分解。</p>
+<p>• <strong>PLU 分解构造满秩分解</strong></p>
+<p>设 <span class="math inline">\(\boldsymbol{A}\)</span> 通过列主元 LU
+分解得：</p>
+<p><span class="math display">\[
+\boldsymbol{A} = \boldsymbol{P} \boldsymbol{L} \boldsymbol{U}
+\]</span></p>
+<p>同样取：<br>
+<span class="math display">\[
+\boldsymbol{B} = \boldsymbol{L}[:, 0:r],\quad \boldsymbol{C} =
+\boldsymbol{U}[0:r, :]
+\]</span></p>
+<p>代入分解式可得：<br>
+<span class="math display">\[
+\boldsymbol{A} = \boldsymbol{P} \boldsymbol{B} \boldsymbol{C}
+\]</span></p>
+<p>其中，<span class="math inline">\(\boldsymbol{P}\)</span>
+为置换矩阵，显然满秩。</p>
+<p>进一步推广，若方阵 <span class="math inline">\(\boldsymbol{A}\)</span> 可分解为：<br>
+<span class="math display">\[
+\boldsymbol{A} = \boldsymbol{L} \boldsymbol{D} \boldsymbol{U}
+\]</span></p>
+<p>其中，<span class="math inline">\(\boldsymbol{D}\)</span>
+为对角矩阵，则称其为 <strong>LDU 分解</strong>。</p>
+<p>由高斯消元法的推导，可得如下定理及推论：</p>
+<p><strong>定理</strong>：矩阵 <span class="math inline">\(\boldsymbol{A} = (a_{i j})_{n \times n}\)</span>
+存在唯一分解：<br>
+<span class="math display">\[
+\boldsymbol{A} = \boldsymbol{L} \boldsymbol{D} \boldsymbol{U}
+\]</span></p>
+<p>其中：</p>
+<p>• <span class="math inline">\(\boldsymbol{L}\)</span>
+为单位下三角矩阵，</p>
+<p>• <span class="math inline">\(\boldsymbol{U}\)</span>
+为单位上三角矩阵，</p>
+<p>• <span class="math inline">\(\boldsymbol{D}\)</span>
+为对角矩阵，其对角元：<span class="math inline">\(d_{k} =
+\frac{\Delta_{k}}{\Delta_{k-1}}, \quad k=1,2,\dots,n \quad (\Delta_0 =
+1)\)</span></p>
+<p>其中 <span class="math inline">\(\Delta_k\)</span> 为 <span class="math inline">\(\boldsymbol{A}\)</span> 的顺序主子式。</p>
+<p><strong>推论</strong>：若 <span class="math inline">\(\boldsymbol{A}\)</span>
+为非奇异矩阵，则其可进行三角分解：<br>
+<span class="math display">\[
+\boldsymbol{A} = \boldsymbol{L} \boldsymbol{U}
+\]</span></p>
+<p>当且仅当 <span class="math inline">\(\boldsymbol{A}\)</span>
+的顺序主子式：<span class="math inline">\(\Delta_k \neq 0, \quad
+k=1,2,\dots,n\)</span></p>
+<p><strong>进一步推广</strong>：对 <strong>Doolittle、Crout、Cholesky
+分解</strong>，定义如下：</p>
+<p>• <strong>Doolittle 分解</strong>：设 <span class="math inline">\(\boldsymbol{A}\)</span> 具有唯一 LDU
+分解，令：<br>
+<span class="math display">\[
+\hat{\boldsymbol{U}} = \boldsymbol{D} \boldsymbol{U}
+\]</span></p>
+<p>则有：<br>
+<span class="math display">\[
+\boldsymbol{A} = \boldsymbol{L} \hat{\boldsymbol{U}}
+\]</span></p>
+<p>• <strong>Crout 分解</strong>：令：<br>
+<span class="math display">\[
+\hat{\boldsymbol{L}} = \boldsymbol{L} \boldsymbol{D}
+\]</span></p>
+<p>则有：<br>
+<span class="math display">\[
+\boldsymbol{A} = \hat{\boldsymbol{L}} \boldsymbol{U}
+\]</span></p>
+<p>• <strong>Cholesky 分解</strong>（平方根分解）：设 <span class="math inline">\(\boldsymbol{A}\)</span>
+为实对称正定矩阵，则其可分解为：<br>
+<span class="math display">\[
+\boldsymbol{A} = \boldsymbol{L} \widetilde{\boldsymbol{D}}^2
+\boldsymbol{U}
+\]</span></p>
+<p>其中：<br>
+<span class="math display">\[
+\widetilde{\boldsymbol{D}} =
+\operatorname{diag}(\sqrt{d_1},\sqrt{d_2},\dots,\sqrt{d_n})
+\]</span></p>
+<p>进一步，可得：<br>
+<span class="math display">\[
+\boldsymbol{A} = \boldsymbol{L} \widetilde{\boldsymbol{D}}^2
+\boldsymbol{L}^\top
+\]</span></p>
+<p>令：<br>
+<span class="math display">\[
+\boldsymbol{G} = \boldsymbol{L} \widetilde{\boldsymbol{D}}
+\]</span></p>
+<p>则有：<br>
+<span class="math display">\[
+\boldsymbol{A} = \boldsymbol{G} \boldsymbol{G}^\top
+\]</span></p>
+<p>这被称为 <strong>Cholesky 分解</strong>（对称三角分解）。</p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2025 YokumiのBlog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Yokumi
+        </div>
+        
+    </div>
+</footer>
+
+<script>
+  var event = new Event('hexo-blog-decrypt');
+  window.dispatchEvent(event);
+</script>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/blog/js/main.js"></script>
+    
+    
+
+
+
+
+    
+    <script src="/blog/js/fix-encrypt.js"></script>
+</body>
+</html>

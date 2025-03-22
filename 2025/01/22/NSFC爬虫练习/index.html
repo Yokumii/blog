@@ -1,0 +1,325 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YokumiのBlog</title>
+        <link rel="icon" href="/blog/images/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="/blog/images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/blog/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/blog/js/lib/math.js"></script>
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/blog/atom.xml" title="YokumiのBlog" type="application/atom+xml">
+</head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>YOKUMIのBLOG</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;YOKUMIのBLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/blog/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>NSFC爬虫练习</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/1/22
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/Python/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                Python
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/Python/" style="color: #03a9f4">
+                    Python
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/%E7%88%AC%E8%99%AB/" style="color: #00a596">
+                    爬虫
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="需求">需求</h1>
+<p>从国家自然科学基金大数据知识管理服务门户爬取论文数据。</p>
+<h1 id="搜索api">搜索API</h1>
+<ol type="1">
+<li>打开浏览器的<strong>开发者工具</strong>（如 Chrome 的 F12）；</li>
+<li>在网络（Network）选项卡中，监控搜索的请求；</li>
+<li>找到接口()[<a target="_blank" rel="noopener" href="https://kd.nsfc.cn/api/baseQuery/completionQueryResultsData" class="uri">https://kd.nsfc.cn/api/baseQuery/completionQueryResultsData</a>]；</li>
+<li>其请求体如下：</li>
+</ol>
+<pre class="json"><code>&#123;&quot;code&quot;:&quot;A01&quot;,&quot;fuzzyKeyword&quot;:&quot;&quot;,&quot;complete&quot;:true,&quot;isFuzzySearch&quot;:false,&quot;conclusionYear&quot;:&quot;2020&quot;,&quot;dependUnit&quot;:&quot;&quot;,&quot;keywords&quot;:&quot;&quot;,&quot;pageNum&quot;:0,&quot;pageSize&quot;:10,&quot;personInCharge&quot;:&quot;&quot;,&quot;projectName&quot;:&quot;&quot;,&quot;projectType&quot;:&quot;218&quot;,&quot;subPType&quot;:&quot;&quot;,&quot;psPType&quot;:&quot;&quot;,&quot;ratifyNo&quot;:&quot;&quot;,&quot;ratifyYear&quot;:&quot;&quot;,&quot;order&quot;:&quot;enddate&quot;,&quot;ordering&quot;:&quot;desc&quot;,&quot;codeScreening&quot;:&quot;&quot;,&quot;dependUnitScreening&quot;:&quot;&quot;,&quot;keywordsScreening&quot;:&quot;&quot;,&quot;projectTypeNameScreening&quot;:&quot;&quot;&#125;</code></pre>
+<p>需要用到的字段只有：</p>
+<pre class="json"><code>code // 申请代码
+conclusionYear // 结题年度
+projectType // 资助类别</code></pre>
+<ol start="5" type="1">
+<li>观察其返回内容：<img src="1.png">为一串无规律的长字符串，初步判断是经过了某种加密；</li>
+</ol>
+<h1 id="解密">解密</h1>
+<p>页面的HTML文件：</p>
+<pre class="html"><code>&lt;body&gt;
+        &lt;noscript&gt;
+            &lt;strong&gt;We&#39;re sorry but 国家自然科学基金大数据知识管理服务门户 doesn&#39;t work properly without JavaScript enabled. Please enable it to continue.&lt;/strong&gt;
+        &lt;/noscript&gt;
+        &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;
+        &lt;script src=&quot;/js/chunk-vendors.559d99e0.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;/js/app.17b88e26.js&quot;&gt;&lt;/script&gt;
+    &lt;/body&gt;</code></pre>
+<p>在网页的 JavaScript
+文件中，尝试寻找相关的解密代码，最终在app.17b88e26.js中找到以下内容（注释为后期补充）：</p>
+<pre class="javascript"><code>function g(e) &#123;
+    // 定义密钥
+    var t = p.a.enc.Utf8.parse(&quot;IFROMC86&quot;);
+    
+    // 使用 DES 解密方法
+    var n = p.a.DES.decrypt(
+        &#123;
+            ciphertext: p.a.enc.Base64.parse(e) // 解析 Base64 编码的密文
+        &#125;,
+        t, // 解密密钥
+        &#123;
+            mode: p.a.mode.ECB, // 使用 ECB 模式
+            padding: p.a.pad.Pkcs7 // 使用 PKCS7 填充方式
+        &#125;
+    );
+
+    // 将解密后的内容解析为 UTF-8 字符串并转为 JSON
+    return JSON.parse(n.toString(p.a.enc.Utf8));
+&#125;</code></pre>
+<p>使用 Python 的 pycryptodome 库来实现解密：</p>
+<pre class="bash"><code>pip install pycryptodome</code></pre>
+<pre class="python"><code>from Crypto.Cipher import DES
+from Crypto.Util.Padding import unpad
+import base64
+import json
+
+def decrypt_des_ecb(ciphertext):
+    # 密钥
+    key = b&quot;IFROMC86&quot;
+    # Base64 解码
+    encrypted_data = base64.b64decode(ciphertext)
+    
+    # 初始化 DES 解密器
+    cipher = DES.new(key, DES.MODE_ECB)
+    
+    # 解密数据并移除填充
+    decrypted_data = unpad(cipher.decrypt(encrypted_data), DES.block_size)
+    
+    # 解密后的字符串转为 JSON 格式
+    return json.loads(decrypted_data.decode(&#39;utf-8&#39;))</code></pre>
+<p>对网页发送请求，成功得到解密后的JSON文件：<br>
+<img src="2.png"></p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2025 YokumiのBlog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Yokumi
+        </div>
+        
+    </div>
+</footer>
+
+<script>
+  var event = new Event('hexo-blog-decrypt');
+  window.dispatchEvent(event);
+</script>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/blog/js/main.js"></script>
+    
+    
+
+
+
+
+    
+    <script src="/blog/js/fix-encrypt.js"></script>
+</body>
+</html>

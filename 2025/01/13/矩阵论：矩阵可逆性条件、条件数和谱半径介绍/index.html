@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YokumiのBlog</title>
+        <link rel="icon" href="/blog/images/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="/blog/images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/blog/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/blog/js/lib/math.js"></script>
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/blog/atom.xml" title="YokumiのBlog" type="application/atom+xml">
+</head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>YOKUMIのBLOG</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;YOKUMIのBLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/blog/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>矩阵论：矩阵可逆性条件、条件数和谱半径介绍</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/1/13
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/%E7%9F%A9%E9%98%B5%E8%AE%BA/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                矩阵论
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/%E7%9F%A9%E9%98%B5%E8%AE%BA/" style="color: #00bcd4">
+                    矩阵论
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h2 id="矩阵可逆性条件条件数和谱半径介绍">矩阵可逆性条件、条件数和谱半径介绍</h2>
+<p>在明确了范数的定义后，我们对它的几点应用进行列举。</p>
+<h3 id="定理-2.6">定理 2.6</h3>
+<p>设 <span class="math inline">\(A\in \mathbb{C}^{n \times
+n}\)</span>，且对 <span class="math inline">\(\mathbb{C}^{n\times
+n}\)</span> 上的某种矩阵范数 $$，若 <span class="math inline">\(\Vert  A
+\Vert  &lt; 1\)</span>，则矩阵 <span class="math inline">\(I-A\)</span>
+可逆（非奇异），且有：</p>
+<p><span class="math display">\[
+\Vert (I - A)^{-1} \Vert  \leq \frac{\Vert  I \Vert }{1 - \Vert  A \Vert
+}
+\]</span></p>
+<h3 id="定理-2.7">定理 2.7</h3>
+<p>设 <span class="math inline">\(A\in \mathbb{C}^{n \times
+n}\)</span>，且对 <span class="math inline">\(\mathbb{C}^{n\times
+n}\)</span> 上的某种矩阵范数 $$，若 <span class="math inline">\(\Vert  A
+\Vert  &lt; 1\)</span>，则有：</p>
+<p><span class="math display">\[
+\Vert I - (I - A)^{-1} \Vert  \leq \frac{\Vert  A \Vert }{1 - \Vert  A
+\Vert }
+\]</span></p>
+<h3 id="逆矩阵的摄动">逆矩阵的摄动</h3>
+<p>在实际应用问题中，矩阵参数往往为非准确值，即带有误差 <span class="math inline">\(\delta\)</span>，我们希望其构成的近似矩阵 <span class="math inline">\(A\)</span> 的逆矩阵 <span class="math inline">\(A^{-1}\)</span> 与准确矩阵 <span class="math inline">\(A + \delta a_{ij}(i,j = 1,2,\dots,n)\)</span>
+的逆矩阵 <span class="math inline">\((A + \delta a_{ij})^{-1}\)</span>
+尽量接近。</p>
+<p>一般称 <span class="math inline">\(\delta a_{ij}\)</span> 为
+<strong>扰动</strong>，<span class="math inline">\(\delta A\)</span> 为
+<span class="math inline">\(A\)</span> 的
+<strong>摄动矩阵</strong>。</p>
+<h3 id="摄动定理">摄动定理</h3>
+<p><strong>定理 2.8</strong></p>
+<p>设 <span class="math inline">\(A\in \mathbb{C}^{n \times n}\)</span>
+且 <span class="math inline">\(A\)</span> 可逆，<span class="math inline">\(B\in \mathbb{C}^{n\times n}\)</span>，且对 <span class="math inline">\(\mathbb{C}^{n\times n}\)</span> 上的某种矩阵范数
+$$，若 <span class="math inline">\(\Vert  A^{-1}B \Vert  &lt;
+1\)</span>，则有：</p>
+<ul>
+<li><span class="math inline">\(A + B\)</span> 可逆；</li>
+<li>记 <span class="math inline">\(F = I - (I +
+A^{-1}B)^{-1}\)</span>，则 <span class="math inline">\(\Vert F \Vert
+\leq \frac{\Vert A^{-1}B \Vert }{1 - \Vert A^{-1}B \Vert
+}\)</span>；</li>
+<li><span class="math inline">\(\frac{\Vert A^{-1} - (A + B)^{-1} \Vert
+}{A^{-1}} \leq \frac{\Vert  A^{-1}B \Vert }{1 - \Vert  A^{-1}B \Vert
+}\)</span>。</li>
+</ul>
+<p>若令 <span class="math inline">\(\delta\)</span> 是个小量，并且令</p>
+<p><span class="math display">\[
+cond(A) = \Vert A \Vert \Vert A^{-1}\Vert
+\]</span></p>
+<p>则当 <span class="math inline">\(\Vert A^{-1}\Vert \Vert \delta A
+\Vert &lt; 1\)</span> 时，</p>
+<p><span class="math display">\[
+\frac{\Vert A^{-1} - (A + \delta A)^{-1}\Vert}{\Vert A^{-1}\Vert}\leq
+\frac{cond(A)\frac{\Vert \delta A\Vert}{\Vert A\Vert}}{1 -
+cond(A)\frac{\Vert\delta A\Vert}{\Vert A\Vert}}
+\]</span></p>
+<p>称 <span class="math inline">\(cond(A)\)</span> 为矩阵 <span class="math inline">\(A\)</span> 的
+<strong>条件数</strong>，一般情况下，条件数越大，<span class="math inline">\((A + \delta A)^{-1}\)</span> 和 <span class="math inline">\(A^{-1}\)</span>
+的相对误差就越大。往往在用算法进行矩阵求逆时，先计算条件数，判断矩阵的逆是否“好求”。</p>
+<h3 id="矩阵谱半径">矩阵谱半径</h3>
+<p><strong>定义</strong></p>
+<p>设 <span class="math inline">\(A\in \mathbb{C}^{n \times n}\)</span>
+的 <span class="math inline">\(n\)</span> 个特征值为 <span class="math inline">\(\lambda_1,\lambda_2,\dots,\lambda_n\)</span>，称</p>
+<p><span class="math display">\[
+\rho (A) = \max\limits_{i}\left|\lambda_i\right|
+\]</span></p>
+<p>为 <span class="math inline">\(A\)</span> 的
+<strong>谱半径</strong>。</p>
+<p><strong>定理 2.9</strong></p>
+<p>设 <span class="math inline">\(A\in \mathbb{C}^{n \times
+n}\)</span>，则对 <span class="math inline">\(\mathbb{C}^{n\times
+n}\)</span> 上任何一种矩阵范数 $$，都有</p>
+<p><span class="math display">\[
+\rho (A) \leq \Vert  A \Vert
+\]</span></p>
+<p><strong>定理 2.10</strong></p>
+<p>设 <span class="math inline">\(A\in \mathbb{C}^{n \times
+n}\)</span>，对 <span class="math inline">\(\forall \epsilon &gt;
+0,\exists \Vert  \cdot  \Vert ,s.t.\)</span></p>
+<p><span class="math display">\[
+\Vert  A  \Vert _M \leq \rho (A) + \epsilon
+\]</span></p>
+<p>由上述定理可见，谱半径小于等于任意矩阵范数，同时也必存在一个算子范数，小于等于谱半径加上一个很小的正数。</p>
+<h3 id="谱半径在迭代法中的应用">谱半径在迭代法中的应用</h3>
+<p>谱半径在数值分析和迭代法中起到了关键作用，尤其是在矩阵幂法、迭代求解线性方程组的收敛性分析等领域。例如，当利用迭代法解线性方程组时，谱半径决定了迭代矩阵是否收敛。</p>
+<p><strong>定理 2.11</strong></p>
+<p>在数值线性代数中，迭代法通常用于求解线性方程组 <span class="math inline">\(Ax = b\)</span>。设迭代法的一般形式为：</p>
+<p><span class="math display">\[
+x^{(k+1)} = B x^{(k)} + c,
+\]</span></p>
+<p>其中，<span class="math inline">\(B\)</span> 为迭代矩阵，<span class="math inline">\(c\)</span> 为常向量，<span class="math inline">\(k\)</span> 为迭代次数。</p>
+<p>迭代法的收敛性由迭代矩阵 <span class="math inline">\(B\)</span>
+的谱半径决定：</p>
+<ol type="1">
+<li><strong>必要条件</strong>：如果迭代法收敛，即 <span class="math inline">\(x^{(k)} \to x^*\)</span> (<span class="math inline">\(x^*\)</span> 为精确解)，则迭代矩阵 <span class="math inline">\(B\)</span> 的谱半径必须满足：<span class="math inline">\(\rho(B) &lt; 1\)</span>；</li>
+<li><strong>充分条件</strong>：如果 <span class="math inline">\(\rho(B)
+&lt; 1\)</span>，则对于任意初始值 <span class="math inline">\(x^{(0)}\)</span>，迭代法都会收敛到线性方程组的唯一解
+<span class="math inline">\(x^*\)</span>。</li>
+</ol>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2025 YokumiのBlog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Yokumi
+        </div>
+        
+    </div>
+</footer>
+
+<script>
+  var event = new Event('hexo-blog-decrypt');
+  window.dispatchEvent(event);
+</script>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/blog/js/main.js"></script>
+    
+    
+
+
+
+
+    
+    <script src="/blog/js/fix-encrypt.js"></script>
+</body>
+</html>

@@ -1,0 +1,337 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YokumiのBlog</title>
+        <link rel="icon" href="/blog/images/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="/blog/images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/blog/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/blog/js/lib/math.js"></script>
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/blog/atom.xml" title="YokumiのBlog" type="application/atom+xml">
+</head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>YOKUMIのBLOG</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;YOKUMIのBLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/blog/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>图论基本概念</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/12/5
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/%E5%9B%BE%E8%AE%BA/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                图论
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #03a9f4">
+                    图论
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="图论中的基本概念">图论中的基本概念</h1>
+<h2 id="图的基本概念">图的基本概念</h2>
+<ul>
+<li><strong>图</strong>：具有顶点集<span class="math inline">\(V\)</span>的图亦称为<span class="math inline">\(V\)</span>上的图(a graph on V)，图<span class="math inline">\(G\)</span>的顶点集记为<span class="math inline">\(V(G)\)</span>, 边集记为<span class="math inline">\(E(G)\)</span>；</li>
+<li><strong>邻接Adjacency</strong>：如果<span class="math inline">\({x,y}\)</span>是<span class="math inline">\(G\)</span>的一条边，则称两个顶点<span class="math inline">\(x\)</span>和<span class="math inline">\(y\)</span>是相邻的(adjacent)或邻点
+(neighbour)，<span class="math inline">\(x,y\)</span>称为边的endpoint；如果两条边<span class="math inline">\(e \ne f\)</span>有一个公共端点，则称<span class="math inline">\(e\)</span>和<span class="math inline">\(f\)</span>是相邻的；</li>
+<li><strong>领域、邻点集Neiborhood</strong>：The set of all neighbors of
+a vertex <span class="math inline">\(v\)</span> of <span class="math inline">\(G = (V,E)\)</span>, denoted by <span class="math inline">\(N(v)\)</span>, is called the neighborhood of <span class="math inline">\(v\)</span>. 即顶点<span class="math inline">\(v\)</span>的所有邻点构成的集合。If <span class="math inline">\(A\)</span> is a subset of <span class="math inline">\(V\)</span> , we denote by <span class="math inline">\(N(A)\)</span> the set of all vertices in G that
+are adjacent to at least one vertex in <span class="math inline">\(A\)</span>. So,<span class="math inline">\(N(A)=\bigcup_{\nu\in A}N(\nu)\)</span>.</li>
+<li><strong>度</strong>：A vertex with degree <span class="math inline">\(0\)</span> is called isolated.(孤立点);
+A vertex of degree <span class="math inline">\(1\)</span> is called pendant.(悬挂点);</li>
+<li><strong>生成子图Spanning subgraph</strong>：删边不删点；</li>
+<li><strong>导出子图Induced subgraph</strong>：若<span class="math inline">\(G&#39; \subset G\)</span>且<span class="math inline">\(G&#39;\)</span>包含了<span class="math inline">\(E\)</span>中所有满足<span class="math inline">\(x,y \in E\)</span>的边<span class="math inline">\(xy\)</span>,则称<span class="math inline">\(Q\)</span>是<span class="math inline">\(G\)</span>的导出子图(induced
+subgraph)；（人话，删点不删边）；</li>
+<li><strong>图的收缩The contraction of G</strong>：<img src="图的收缩.png"></li>
+<li><strong>补图Graph complement</strong>：相对于完全图的补<img src="补图.png"></li>
+<li><strong>关联矩阵Incidence matrices</strong>：<img src="关联矩阵.png">即第<span class="math inline">\(i\)</span>行表示第<span class="math inline">\(i\)</span>个顶点与哪些边连接，第<span class="math inline">\(j\)</span>列表示第<span class="math inline">\(j\)</span>条边连接哪些顶点。</li>
+</ul>
+<blockquote>
+<p><strong>握手定理Handshaking Theorem</strong>：<img src="握手定理.png"><br>
+无向图中，如果有度为奇数的点，那么这些点的个数必为偶数个。</p>
+</blockquote>
+<ul>
+<li><strong>有向图的度</strong>：The in-degree of <span class="math inline">\(v\)</span>, <span class="math inline">\(deg^-
+(v)\)</span>, is the number of edges going to <span class="math inline">\(v\)</span>(入度); The out-degree of <span class="math inline">\(v\)</span>, <span class="math inline">\(deg^+
+(v)\)</span>, is the number of edges coming from <span class="math inline">\(v\)</span>(出度); The degree of <span class="math inline">\(v\)</span>, <span class="math inline">\(deg(v):deg^-(v)+deg^+ (v)\)</span>, is
+the sum of v’s in-degree and out-degree.</li>
+</ul>
+<blockquote>
+<p><strong>有向图握手定理</strong>：<img src="有向图握手定理.png"></p>
+</blockquote>
+<ul>
+<li><strong>阶</strong>：一个图的顶点个数称为它的阶(order),记为<span class="math inline">\(\left | G \right |\)</span>，它的边数记为<span class="math inline">\(\Vert G \Vert\)</span>；</li>
+<li><strong>平凡图</strong>：阶为0或1的图称为平凡的 (trivial)；</li>
+<li><strong>独立</strong>：互不相邻的顶点/边称独立顶点/独立边(independent
+vertex/edge)。若一个顶点集或边集中没有两个元素是相邻的，则该集合称为<strong>独立集</strong>(independent
+set)；独立的顶点集也称作<strong>稳定集</strong>(stable set)；</li>
+</ul>
+<h2 id="一些特殊的图结构special-graph-structures">一些特殊的图结构Special Graph Structures</h2>
+<ul>
+<li><strong>完全图<span class="math inline">\(K^n\)</span></strong>：若<span class="math inline">\(G\)</span>的所有顶点都是两两相邻的，则称<span class="math inline">\(G\)</span>是完全的(complete)，n个顶点的完全图记为<span class="math inline">\(K^n\)</span>；<img src="完全图.png"></li>
+<li><strong>环图<span class="math inline">\(C^n\)</span></strong>：<img src="环图.png"></li>
+<li><strong>轮图<span class="math inline">\(W^n\)</span></strong>：<img src="轮图.png"><span class="math inline">\(W^n\)</span>有<span class="math inline">\(n+1\)</span>个顶点，中心点度为<span class="math inline">\(n-1\)</span>，边上<span class="math inline">\(n\)</span>个点度为<span class="math inline">\(3\)</span>。</li>
+<li><strong>n维体图 n-Cubes/hypercubes<span class="math inline">\(Q^n\)</span></strong>：<img src="n维体图.png"></li>
+<li><strong>Plato graphs（柏拉图图）</strong>：<img src="柏拉图图.png"></li>
+<li><strong>彼德森图（Petersen）</strong>：<img src="彼得森图.png"></li>
+<li><strong>Bipartite Graphs二分图</strong>：<img src="二分图.png">判断方法：1. 可以用两种颜色染色； 2.
+图中不存在长度为奇数的回路；</li>
+<li><strong>Complete Bipartite Graphs 完全二分图</strong>：<img src="完全二分图.png"></li>
+</ul>
+<h2 id="图的同构graph-isomorphism">图的同构Graph Isomorphism</h2>
+<ul>
+<li><strong>图的同构</strong>：<img src="图的同构.png"></li>
+<li></li>
+<li><strong>图不变量graph invariants</strong>：对于图上的一个映射，如果对每个同构图它均取相同的值，则这样的映射称为一个图不变量(graph
+invariant)。一个图的顶点数和边数就是两个简单的图不变量；图中两两相邻的最大顶点数也是图不变量。</li>
+</ul>
+<h2 id="图的连通性connectivity">图的连通性Connectivity</h2>
+<ul>
+<li><strong>路</strong>：这里所有的<span class="math inline">\(x_i\)</span>均互不相同，顶点<span class="math inline">\(x_0和\)</span><span class="math inline">\(x_n\)</span>由路<span class="math inline">\(P\)</span>连接(link)，并称它们为路的端点(endvertex)或顶端(end)；而<span class="math inline">\(x_1,x_2,\dots,x_{n-1}\)</span>称为<span class="math inline">\(P\)</span>的内部(inner)顶点。一条路上的边数称为路的长度(length)，长度为k的路记为<span class="math inline">\(P^k\)</span>；</li>
+<li><strong>简单路</strong>：A path is simple if it contains no edge more 
+than once.</li>
+<li><strong>独立路</strong>：如果其中任意一条路不包含另一条路的内部顶点,
+则称它们是独立路(independent path)；</li>
+<li><strong>连通图</strong>：如果非空图<span class="math inline">\(G\)</span>中的任意两个顶点之间均有一条路相连，我们称<span class="math inline">\(G\)</span>是连通的(connected)；</li>
+<li><strong>连通分支/独立子图Connected component</strong>：设<span class="math inline">\(G =
+(V,E)\)</span>是一个图，则它的极大连通子图称为分支(component)；</li>
+<li><strong>割点cut
+vertex</strong>：the removal from a graph of a vertex and all incident edges produces a subgraph with 
+more connected components. </li>
+<li><strong>割边cut
+edge</strong>：an edge whose removal produces a graph with more connected components；</li>
+<li><strong>点连通度</strong>：使得G是k-连通的最大整数k称为G的连通度(connectivity)，并记为<span class="math inline">\(\kappa (G)\)</span>；</li>
+<li><strong>边连通度</strong>：记为<span class="math inline">\(\lambda(G)\)</span>；<br>
+<img src="连通度例子.png"><br>
+<img src="连通度定理.png"></li>
+<li><strong>有向图中的强连通、弱连通</strong>：强连通要求A directed graph is strongly
+connected if there is a path from a to b and 
+from b to a whenever a and b are 
+vertices in the graph. 弱连通与无向图类似；</li>
+<li><strong>圈</strong>：<span class="math inline">\(x_0x_1\dots
+x_{k-1}x_0\)</span>；</li>
+<li><strong>围长和圈长</strong>：图<span class="math inline">\(G\)</span>中最短圈的长度叫做围长(girth),记为<span class="math inline">\(g(G)\)</span>,而<span class="math inline">\(G\)</span>中最长圈的长度称为周长(circumference)；</li>
+<li><strong>弦</strong>：图中不在圈上但连接圈中两个顶点的边称为这个圈的弦(chord)；</li>
+<li><strong>导出圈</strong>：<span class="math inline">\(G\)</span>的导出圈(induced
+cycle)是不含弦的圈，即<span class="math inline">\(G\)</span>的导出子图是个圈；<br>
+<img src="导出圈.png" alt="导出圈"></li>
+<li><strong>距离、直径、中心点、半径</strong>：暂略；</li>
+<li><strong>树、森林</strong>：暂略；</li>
+</ul>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2025 YokumiのBlog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Yokumi
+        </div>
+        
+    </div>
+</footer>
+
+<script>
+  var event = new Event('hexo-blog-decrypt');
+  window.dispatchEvent(event);
+</script>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/blog/js/main.js"></script>
+    
+    
+
+
+
+
+    
+    <script src="/blog/js/fix-encrypt.js"></script>
+</body>
+</html>

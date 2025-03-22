@@ -1,0 +1,380 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YokumiのBlog</title>
+        <link rel="icon" href="/blog/images/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="/blog/images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/blog/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/blog/js/lib/math.js"></script>
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/blog/atom.xml" title="YokumiのBlog" type="application/atom+xml">
+</head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>YOKUMIのBLOG</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;YOKUMIのBLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/blog/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>CSAPP 16-io4</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/1/5
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/CSAPP/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                CSAPP
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/CSAPP/" style="color: #ff7d73">
+                    CSAPP
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="unixlinux-io">UNIX/Linux I/O</h1>
+<ul>
+<li>用户程序可通过调用特定的I/O函数的方式提出I/O请求。</li>
+<li>在UNIX/Linux系统中，可以是<strong>C标准I/O库函数</strong>或<strong>系统调用的封装函数</strong>，前者如文件I/O函数<code>fopen()、fread()、fwrite()、fclose()</code>或控制台I/O函数<code>printf()、putc()、scanf()、getc()</code>等；后者如<code>open()、read()、write()、close()</code>等。</li>
+<li>标准I/O库函数比系统调用封装函数抽象层次高，后者属于系统级I/O函数。与系统提供的API函数一样，前者是基于后者实现的。<br>
+## 概述<br>
+“一切皆文件”；</li>
+<li>Linux中的文件都是二进制比特串；</li>
+<li>所有的I/O设备在系统中都以文件形式呈现：
+<ul>
+<li>/dev/sda2</li>
+<li>/dev/tty2</li>
+</ul></li>
+<li>内核也以文件形式呈现：
+<ul>
+<li>/boot/vmlinuz-3.13.0-55-generic (kernel image)</li>
+<li>/proc (kernel data structures)<br>
+## 文件分类<br>
+### Regular Files</li>
+</ul></li>
+<li>Text files：用ASCII或Unicode字符编码的文件；</li>
+<li>Binary files：可执行目标文件，图片；</li>
+<li><strong>Kernal内核不能区分这两者</strong>；</li>
+</ul>
+<h3 id="directories">Directories</h3>
+<p>一些常用命令：<br>
+* <code>mrdir</code>创建文件夹；<br>
+* <code>ls</code>查看文件夹内容；<br>
+* <code>rmdir</code>删除文件夹（文件夹必须是空的）；<br>
+*
+<code>.</code>链接自己，<code>..</code>链接它的父文件夹，<code>cd ..</code>即可返回上一级目录；<br>
+Linux 文件系统<strong>以
+/（根目录）为起点</strong>，所有文件和目录都组织在这个树状层次结构下。</p>
+<h2 id="文件操作">文件操作</h2>
+<h3 id="打开文件">打开文件</h3>
+<p>打开文件时，内核会返回一个小的非负整数，称为<strong>描述符</strong>；</p>
+<pre class="c"><code>// 成功则返回新文件描述符，失败返回-1
+int open(char *filename, int flags, mode_t mode);</code></pre>
+<p>返回的是在进程中当前没有被打开的最小描述符，由于进程开始时都会创建三个文件：<br>
+* 0：stdin；<br>
+* 1：stdout；<br>
+* 2：stderr；<br>
+所以文件描述符一般从3开始；</p>
+<h4 id="文件共享">文件共享</h4>
+<p><img src="2.png"><img src="3.png"></p>
+<h3 id="读写文件">读写文件</h3>
+<pre class="c"><code>ssize_t read(int fd, void* buf, size_t n); // 返回成功读取的字节数，失败为-1
+ssize_t write(int fd, const void* buf, size_t n); // 同上</code></pre>
+<p>注意ssize_t被定义为signed
+long类型，因为它需要返回-1，而size_t是unsigned long类型；<br>
+<strong>Short count</strong>指的是当执行 I/O 操作（如 read 或
+write）时，实际读取或写入的字节数小于请求的字节数，如遇到以下情况：<br>
+*  <strong>遇到文件末尾 (EOF)</strong><br>
+*  <strong>从终端读取文本行</strong><br>
+* <strong>从网络套接字读取或写入</strong><br>
+当向磁盘读取或写入时一般不会发生；</p>
+<h1 id="创建进程">创建进程</h1>
+<h3 id="fork语句">Fork语句</h3>
+<pre class="c"><code>Pid_t Fork();</code></pre>
+<p>返回值为进程编号：<br>
+* 0为子进程；<br>
+* &gt; 0为父进程；<br>
+* -1为Fork失败；<br>
+<img src="1.png"><br>
+fork会复制fork之后的所有代码创建子进程；其执行过程如下：<img src="4.png"><br>
+注意进程的调度规则不定，哪个先执行完都有可能；</p>
+<h1 id="io重定向">I/O重定向</h1>
+<p>比如，我们希望将当前进程的stdout改为另一个文件，即更改描述符表；通过dup2来实现：</p>
+<pre class="c"><code>int dup2(int oldfd, int newfd);</code></pre>
+<p>如果原来fd1指向文件A，调用dup2(4,1)后：<img src="5.png"><br>
+## 一个读的例子<br>
+<img src="6.png"><br>
+需要明确子进程和父进程共享同一打开文件表；<br>
+* <code>s = getpid() &amp; 0x1</code>决定了进程的执行顺序，如果s =
+0，则父进程先执行，如果s = 1，则子进程先执行；<br>
+*
+fork前的<code>Read(fd1, &amp;c1, 1)</code>，已经从打开文件中读取一个字符a到c1，打开文件表中的文件位置++；<br>
+*
+执行fork后，父子中先执行的进程执行<code>Read(fd2, &amp;c2, 1)</code>，即c2
+= b，同时文件位置++，并输出结果；<br>
+* 后执行的进程执行<code>Read(fd2, &amp;c2, 1)</code>，即c2 =
+c，同时文件位置++，并输出结果；<br>
+结果有2种可能：</p>
+<pre><code>Parent: c1 = a, c2 = b
+Child: c1 = a, c2 = c
+
+Child: c1 = a, c2 = b
+Parent: c1 = a, c2 = c</code></pre>
+<h2 id="一个写的例子">一个写的例子</h2>
+<p><img src="11.png"><br>
+首先需要明确一些标志的含义：<br>
+* O_CREAT：如果文件不存在，创建文件；<br>
+* O_TRUNC：如果文件存在，则清空文件内容；<br>
+* O_RDWR：文件以读写方式打开；<br>
+* O_APPEND：每次写操作都会将数据追加到文件末尾；<br>
+* O_WRONLY：仅允许写操作；<br>
+<code>dup(fd1)</code>复制文件描述符 fd1 到 fd2 ，新描述符 fd2 与 fd1
+共享相同的文件表项；<br>
+<code>Write(fd1, "pqrs", 4)</code>将"pqrs"写入文件；<br>
+<code>Write(fd3, "jklmn", 5)</code>将"jklmn"写入文件末尾；<br>
+<code>Write(fd2, "wxyz", 4)</code>将"wxyz"写入文件，注意fd1的文件位置为4(写入pqrs后)，所以此时文件的内容为"pqrswxyz"；<br>
+<code>Write(fd3, "ef", 2)</code>将“ef”仍写入文件末尾；<br>
+所以最终答案为："pqrswxyzef"；</p>
+<h1 id="standard-io">Standard I/O</h1>
+<p>标准I/O库将一个打开的文件模型化为一个<strong>流</strong>。对于程序员而言，一个流就是一个指<br>
+向FILE
+类型的结构的指针。每个ANSIC程序开始时都有三个打开的流stdin、stdout<br>
+和stderr，分别对应于标准输人、标准输出和标准错误；<br>
+<img src="7.png"></p>
+<h1 id="unix-io-vs.-standard-io">Unix I/O vs. Standard I/O</h1>
+<p><img src="8.png"></p>
+<h1 id="系统调用和api">系统调用和API</h1>
+<ul>
+<li>应用编程接口（API）与系统调用两者在概念上不完全相同，它们都是系统提供给用户程序使用的编程接口，但前者指的是功能更广泛、抽象程度更高的函数，后者仅指通过软中断（自陷）指令向内核态发出特定服务请求的函数。</li>
+<li>系统调用封装函数是 API 函数中的一种。</li>
+<li>API 函数最终通过调用系统调用实现 I/O。一个API
+可能调用多个系统调用，不同 API
+可能会调用同一个系统调用。但是，并不是所有 API 都需要调用系统调用。</li>
+<li>API
+在用户态执行，系统调用封装函数也在用户态执行，但具体服务例程在内核态执行。</li>
+</ul>
+<h1 id="io-类型">I/O 类型</h1>
+<ul>
+<li><strong>Programmed
+I/O</strong>：无条件传统方式，查询方式，效率低；<img src="9.png"></li>
+<li><strong>Interrupt Driven I/O</strong>：中断驱动 I/O
+中，<strong>处理器启动 I/O
+操作后无需等待，可以执行其他任务</strong>，直到设备通过中断信号通知处理器数据传输完成；</li>
+<li><strong>DMA</strong>：<strong>由 DMA 模块负责在 I/O
+单元和主存之间直接传输数据</strong>，无需处理器干预；</li>
+</ul>
+<h1 id="总结">总结</h1>
+<p><img src="10.png"></p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2025 YokumiのBlog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Yokumi
+        </div>
+        
+    </div>
+</footer>
+
+<script>
+  var event = new Event('hexo-blog-decrypt');
+  window.dispatchEvent(event);
+</script>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/blog/js/main.js"></script>
+    
+    
+
+
+
+
+    
+    <script src="/blog/js/fix-encrypt.js"></script>
+</body>
+</html>

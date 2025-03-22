@@ -1,0 +1,379 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YokumiのBlog</title>
+        <link rel="icon" href="/blog/images/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="/blog/images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/blog/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/blog/js/lib/math.js"></script>
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/blog/atom.xml" title="YokumiのBlog" type="application/atom+xml">
+</head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>YOKUMIのBLOG</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;YOKUMIのBLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/blog/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>9.2 Semigroups 半群、同态、同构</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/11/3
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/%E7%BE%A4%E8%AE%BA/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                群论
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/%E7%BE%A4%E8%AE%BA/" style="color: #ff7d73">
+                    群论
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="semigroups"><em>Semigroups</em></h1>
+<ul>
+<li><p><strong><em>Defination</em></strong><br>
+&gt; 非空集合<br>
+&gt; 结合性（自然满足封闭性）<br>
+&gt; 如果可交换，则为Abel半群</p></li>
+<li><p><strong><em>自由半群</em></strong><br>
+&gt; 操作符 · 是指连接运算，显然其具有结合律。<br>
+&gt; 称 <span class="math inline">\((A^∗, · )\)</span> 为由 A
+生成的自由半群 (free semigroup generated by A)。<img src="img/Wondershare%20PDFelement%202024-11-03%2019.35.46.png"></p></li>
+<li><p><strong><em>Identity 单位元，幺元</em></strong><br>
+&gt; 单位元若存在必唯一。<br>
+&gt; <strong><em>Prove:</em></strong><br>
+&gt; 假设<span class="math inline">\(e,
+e&#39;\)</span>都是单位元，由单位元性质可得<span class="math inline">\(e
+= e * e&#39; = e&#39;\)</span>。</p></li>
+<li><p><strong><em>Monoid——独异点，幺半群</em></strong><br>
+&gt; 半群 <span class="math inline">\((S, *)\)</span>
+中存在单位元，则称为独异点。</p></li>
+<li><p><strong><em>定理 1
+半群的卡特兰律（广义结合律）</em></strong><br>
+&gt; 如果 <span class="math inline">\(a_1,\ a_2,\ …,\ a_n\)</span>
+是半群的任意元素（其中 <span class="math inline">\(n ≥
+3\)</span>），那么在任意元素的乘积中插入有意义的括号形成的乘积是相等的。<br>
+&gt; <strong><em>翻译成人话就是，任意加括号都成立</em></strong><br>
+&gt; <strong><em>引理1:</em></strong><span class="math inline">\((x_1……x_n) * (y_1……y_n) =
+x_1……x_ny_1……y_n\)</span>成立<br>
+&gt; <strong><em>Prove:</em></strong>（数学归纳法）<br>
+&gt; 取定<span class="math inline">\(n \in N\)</span>,对<span class="math inline">\(n\)</span>做数学归纳：<br>
+&gt; 1）若<span class="math inline">\(m = 1\)</span><br>
+&gt; <span class="math inline">\((x_1……x_n)y_1 =
+x_1……x_ny_1\)</span><br>
+&gt; 2）由<span class="math inline">\(m \rightarrow m + 1\)</span><span class="math display">\[\begin{align}
+(x_1……x_n) * (y_1……y_{m+1})\\
+&amp;= (x_1……x_n) * ((y_1……y_m) * y_{m + 1})\\
+&amp;= ((x_1……x_n) * (y_1……y_{m})) * y_{m + 1}\\
+&amp;= (x_1……x_ny_1……y_{m+1}) * y_{m + 1}\\
+&amp;= x_1……x_ny_1……y_{m+1}
+\end{align}\]</span>至于为什么要说这个，就是这个才保证了下面的定义。</p></li>
+<li><p><strong><em>Powers of A 幂</em></strong><br>
+&gt; <strong><em>Defination:</em></strong> <span class="math inline">\(x^n = x^{n - 1} * x = x * x * ……
+*x\)</span>，规定<span class="math inline">\(x^0 = e\)</span>。<br>
+&gt; 显然，不规定也行，<span class="math inline">\(x^m * x^n = x^{m+n},
+\forall m,n \ge 1\)</span>是显然的，如果我们希望更完备呢？<br>
+&gt; <span class="math inline">\(x^m * x^0 =
+x^m\)</span>如果成立，那么<span class="math inline">\(x^0\)</span>不就等于单位元吗？<br>
+&gt; 有了这个规定自然又得到了以下性质。</p></li>
+<li><p><strong><em>生成半群/生成子幺半群</em></strong><br>
+&gt; <strong><em>Defination:</em></strong> 设<span class="math inline">\((S, *)\)</span>是幺半群，而<span class="math inline">\(A \subset S\)</span>，则<span class="math inline">\(A\)</span>生成的子幺半群记作<span class="math inline">\(&lt; A &gt; = \cap T,T \supset A, T &lt;
+S\)</span><br>
+&gt; 人话，<span class="math inline">\(&lt; A &gt;\)</span>是所有<span class="math inline">\(S\)</span>中包含了<span class="math inline">\(A\)</span>的子幺半群的交集。<br>
+&gt; 子半群和子幺半群可以按照如下方式生成。<img src="img/Wondershare%20PDFelement%202024-11-03%2022.48.18.png"></p></li>
+</ul>
+<h1 id="subsemigroup"><em>Subsemigroup</em></h1>
+<ul>
+<li><p><strong><em>Defination</em></strong><br>
+&gt; 子集<br>
+&gt; 运算封闭（一定满足结合性）</p></li>
+<li><p><strong><em>Submonoid——子独异点</em></strong><br>
+&gt; 子集<br>
+&gt; 运算封闭<br>
+&gt; 幺元属于T<br>
+&gt; <strong><em>Note! T的幺元必须和S的幺元相同</em></strong><img src="img/Wondershare%20PDFelement%202024-11-03%2019.50.28%201.png"><br>
+&gt; T 是 S 的子集，并且 <span class="math inline">\((T, *)\)</span>
+同样满足独异点定义，同时 <span class="math inline">\(e∈T\)</span>；<br>
+&gt; 显然，半群<span class="math inline">\((S, *)\)</span> 本身也是<span class="math inline">\(S\)</span>的子半群；独异点<span class="math inline">\((S, *)\)</span> 本身也是<span class="math inline">\(S\)</span>的子独异点；<br>
+&gt; <span class="math inline">\(T = \{e\}\)</span>一定是群<span class="math inline">\((S, *)\)</span> 的子独异点。</p></li>
+</ul>
+<h1 id="homomorphism-同态"><em>Homomorphism 同态</em></h1>
+<blockquote>
+<p><strong><em>Defination:</em></strong>
+人话，保持运算，保持特殊元素。<br>
+如果<span class="math inline">\(S\)</span>和<span class="math inline">\(T\)</span>的满足<strong><em>幺半群同态</em></strong>关系，<span class="math display">\[
+  f:(S, ·) \rightarrow (T, *)\leftrightarrow \left\{
+\begin{aligned}
+&amp;保持乘法，即\forall x,y \in S, f(x · y) = f(x) * f(y)\\
+&amp;保持单位元，即f(e) = e&#39;
+\end{aligned}
+\right.\]</span>直观理解如下图：<img src="img/Wondershare%20PDFelement%202024-11-04%2012.17.01.png">人话，两个元素作运算能映射到另一个集合，另一个集合中的元素作运算也能映射回原集合</p>
+</blockquote>
+<h1 id="isomorphism-同构"><em>Isomorphism 同构</em></h1>
+<blockquote>
+<p><strong><em>Defination:</em></strong>
+人话，双射，保持运算，保持特殊元素。<br>
+直观理解如下图：<img src="img/Wondershare%20PDFelement%202024-11-04%2012.14.53.png"><br>
+<strong><em>&amp;0</em></strong> 如果<span class="math inline">\(S\)</span>和<span class="math inline">\(T\)</span>的满足<strong><em>幺半群同构</em></strong>关系，<span class="math display">\[
+  f:(S, ·) \rightarrow (T, *)\leftrightarrow \left\{
+\begin{aligned}
+&amp;满足双射，即\forall x,y \in S,x \leftrightarrow f(x),y
+\leftrightarrow f(y), x · y \leftrightarrow f(x) * f(y)\\
+&amp;保持乘法，即\forall x,y \in S, f(x * y) = f(x) · f(y)\\
+&amp;保持单位元，即f(e) = e&#39;
+\end{aligned}
+\right.\]</span><strong><em>&amp;1 恒等映射</em></strong>，即<span class="math inline">\(S\)</span>是自己的同构。<br>
+<strong><em>&amp;2</em></strong> 如果 <span class="math inline">\(f\)</span> 是从 <span class="math inline">\(S\rightarrow T\)</span> 的同构，即 <span class="math inline">\(f\)</span> 是从 <span class="math inline">\(S\rightarrow T\)</span>
+的<strong>一一对应</strong>的函数，那么 <span class="math inline">\(f^{−1}\)</span> 必定存在，并且 <span class="math inline">\(f^{−1}\)</span> 是从 <span class="math inline">\(S\rightarrow T\)</span> 的一一对应的函数,
+且一定是同构。<br>
+<strong><em>&amp;3</em></strong> 显然，如果<span class="math inline">\((S,∗)\)</span>有独异点，但<span class="math inline">\((T,∗)\)</span>没有独异点，那么必定不存在从 <span class="math inline">\(S\rightarrow T\)</span> 的同构
+<strong>(常用于证明不存在同构)</strong><br>
+<strong><em>$4</em></strong>
+显然，同态和同构均满足像点的乘积等于乘积的像点，区别是，同构需要一一对应。</p>
+</blockquote>
+<h1 id="满同态"><em>满同态</em></h1>
+<blockquote>
+<p><strong>定理1</strong> 如果<span class="math inline">\(S\)</span>和<span class="math inline">\(T\)</span>是幺半群，且幺元分别为<span class="math inline">\(e,e&#39;\)</span>，<span class="math inline">\(S\rightarrow T\)</span>为满同态映射，那么有<span class="math inline">\(f(e) = e&#39;\)</span>。<br>
+<strong><em>Prove:</em></strong> 由同态定义，<span class="math inline">\(\forall a \in S,f(e · a) = f(a) * f(e) =
+f(a)\)</span>，但是首先需要保证<span class="math inline">\(f(a) \in
+T\)</span>，即满射，才能成立，此时<span class="math inline">\(f(e) =
+e&#39;\)</span>。<br>
+<strong>定理2</strong> 如果<span class="math inline">\(S\)</span>和<span class="math inline">\(T\)</span>是幺半群，且<span class="math inline">\(S\)</span>为可交换半群，<span class="math inline">\(S\rightarrow T\)</span>为满同态映射，那么<span class="math inline">\(T\)</span>也是可交换半群。</p>
+</blockquote>
+<h1 id="解题法"><em>解题法</em></h1>
+<ul>
+<li><p><strong><em>Example:</em></strong> <span class="math inline">\((S, *)\)</span>是幺半群吗？<br>
+&gt; <strong><em>Prove Step:</em></strong><br>
+&gt; 1. 有没有封闭性？<br>
+&gt; 2. 结合律？<br>
+&gt; 3. 有没有单位元？</p></li>
+<li><p><strong><em>Example:</em></strong>
+构造同构/证明是否为同构？<br>
+&gt; <strong><em>Prove Step:</em></strong><br>
+&gt; 1. (构造或直接给出)构造一个函数 <span class="math inline">\(f:
+S\rightarrow T\)</span> , 使得 <span class="math inline">\(f\)</span>
+的定义域 <span class="math inline">\(Dom (f) = S\)</span>;<br>
+&gt; 2. 证明 <span class="math inline">\(f\)</span> 是单射
+(one-to-one)的，可用反证法<br>
+&gt; 3. 证明 <span class="math inline">\(f\)</span> 是满射 (onto)的
+<span class="math inline">\(\rightarrow\)</span> 故而是双射的<br>
+&gt; 4. 证明 <span class="math inline">\(f(a ·
+b)=f(a)∗f(b)\)</span><br>
+&gt; 同态无需证明<span class="math inline">\(Step2,Step3\)</span></p></li>
+</ul>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2025 YokumiのBlog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Yokumi
+        </div>
+        
+    </div>
+</footer>
+
+<script>
+  var event = new Event('hexo-blog-decrypt');
+  window.dispatchEvent(event);
+</script>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/blog/js/main.js"></script>
+    
+    
+
+
+
+
+    
+    <script src="/blog/js/fix-encrypt.js"></script>
+</body>
+</html>

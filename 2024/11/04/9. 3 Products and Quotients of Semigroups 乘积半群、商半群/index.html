@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YokumiのBlog</title>
+        <link rel="icon" href="/blog/images/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="/blog/images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/blog/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/blog/js/lib/math.js"></script>
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/blog/atom.xml" title="YokumiのBlog" type="application/atom+xml">
+</head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>YOKUMIのBLOG</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;YOKUMIのBLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/blog/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>9.3 Products and Quotients of Semigroups 乘积半群、商半群</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/11/4
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/%E7%BE%A4%E8%AE%BA/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                群论
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/%E7%BE%A4%E8%AE%BA/" style="color: #ffa2c4">
+                    群论
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="products-semigroups-积半群半群的笛卡尔积"><em>Products
+Semigroups 积半群（半群的笛卡尔积）</em></h1>
+<blockquote>
+<p><strong><em>定理1:</em></strong> 两个半群的笛卡尔积也是半群。<img src="img/Wondershare%20PDFelement%202024-11-04%2018.29.31.png"><br>
+<strong><em>定理2:</em></strong>
+类似，两个幺半群的笛卡尔积也是幺半群且其幺元为<span class="math inline">\((e_S,e_T)\)</span>。<img src="img/Wondershare%20PDFelement%202024-11-04%2018.31.58.png"></p>
+</blockquote>
+<h1 id="congruence-relation-同余关系"><em>Congruence relation
+同余关系</em></h1>
+<blockquote>
+<p><strong><em>Defination:</em></strong> 在半群<span class="math inline">\((S,∗)\)</span>上的等价关系R，如果满足：任意<span class="math inline">\(a R a&#39;\)</span>并且<span class="math inline">\(b R b&#39;\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\((a∗b) R (a&#39;∗ b&#39;)\)</span>，则称<span class="math inline">\(R\)</span>为半群上的同余关系。<br>
+<strong><em>回忆:</em></strong>
+等价关系满足自反性、对称性、传递性。<br>
+<strong><em>解题法:</em></strong><br>
+&gt; <strong><em>Prove Step:</em></strong> R是半群上的同余关系？<br>
+&gt; 1. 等价关系显然（已知给出）。<br>
+&gt; 2. 根据<span class="math inline">\(a R a&#39;\)</span>和<span class="math inline">\(b R b&#39;\)</span>可以推出 <span class="math inline">\((a∗b) R (a&#39;∗ b&#39;)\)</span>。<br>
+<strong><em>Note!</em></strong> 等价关系不一定是同余关系。反例：<img src="img/Wondershare%20PDFelement%202024-11-04%2018.53.08.png"></p>
+</blockquote>
+<h1 id="quotients-semigroups-商半群">Quotients Semigroups 商半群</h1>
+<blockquote>
+<p><strong><em>Defination:</em></strong> <img src="img/Wondershare%20PDFelement%202024-11-04%2019.01.38.png"><br>
+其实就是按照以下步骤定义了一种二元运算：<br>
+&gt; 1. <span class="math inline">\(S =
+\{a,b,c,……,a&#39;,b&#39;,c&#39;,……\}\)</span><br>
+&gt; 2. 设定价类<span class="math inline">\([a] = \{a, a&#39;,……\},[b] =
+\{b, b&#39;,……\},[c] = \{c, c&#39;,……\},……\)</span><br>
+&gt; 3. <span class="math inline">\(S/R =
+\{[a],[b],[c],……\}\)</span><br>
+&gt; 4. <span class="math inline">\(S/R \times S/R =
+\{([a],[a]),([a],[b]),([a],[c]),……\}\)</span><br>
+&gt; 5. <span class="math inline">\(f:S/R \times S/R \rightarrow
+S/R\)</span><br>
+&gt; 6. <span class="math inline">\(f([a],[b]) = [c] \leftrightarrow [a]
+\otimes [b] = [c]\)</span><br>
+<strong><em>Note!</em></strong> 注意<span class="math inline">\(\otimes\)</span>是等价类之间的运算，可以用代入等价类中的元素进行计算，即<span class="math inline">\([a] \otimes [b] = [a * b]\)</span><br>
+<strong><em>幺半群导出的商半群也是幺半群</em></strong> <img src="img/Wondershare%20PDFelement%202024-11-04%2019.43.44.png"><br>
+<strong><em>Prove:</em></strong><br>
+<span class="math inline">\([a] \otimes [e] = [a * e] = [a]=[e * a] =
+[e] \otimes [a]\)</span></p>
+</blockquote>
+<h1 id="natural-homomorphism-自然同态"><em>Natural Homomorphism
+自然同态</em></h1>
+<blockquote>
+<p><strong><em>Defination:</em></strong> <span class="math inline">\(f_R:S \rightarrow S/R\space defined\space by\space
+f_R(a) = [a]\)</span>，显然满射(onto)。<img src="img/Wondershare%20PDFelement%202024-11-04%2019.51.57.png"></p>
+</blockquote>
+<h1 id="fundamental-homomorphism-同态基本定理">*Fundamental Homomorphism
+同态基本定理</h1>
+<blockquote>
+<p><strong><em>Defination:</em></strong> 设<span class="math inline">\(f:S \rightarrow T\)</span>是同态，<span class="math inline">\(R\)</span>是<span class="math inline">\(S\)</span>上的关系且被定义为<span class="math inline">\(aRb \iff f(a) = f(b)\)</span>，那么有：<br>
+1）<span class="math inline">\(R\)</span>是同余关系；<br>
+2）<span class="math inline">\(T\)</span>和<span class="math inline">\(S/R\)</span>同构；<img src="img/Wondershare%20PDFelement%202024-11-04%2020.17.07.png"></p>
+</blockquote>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2025 YokumiのBlog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Yokumi
+        </div>
+        
+    </div>
+</footer>
+
+<script>
+  var event = new Event('hexo-blog-decrypt');
+  window.dispatchEvent(event);
+</script>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/blog/js/main.js"></script>
+    
+    
+
+
+
+
+    
+    <script src="/blog/js/fix-encrypt.js"></script>
+</body>
+</html>

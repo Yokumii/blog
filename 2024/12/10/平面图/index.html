@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YokumiのBlog</title>
+        <link rel="icon" href="/blog/images/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="/blog/images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/blog/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/blog/js/lib/math.js"></script>
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/blog/atom.xml" title="YokumiのBlog" type="application/atom+xml">
+</head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>YOKUMIのBLOG</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;YOKUMIのBLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/blog/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>平面图</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/12/10
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/%E5%9B%BE%E8%AE%BA/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                图论
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #ff7d73">
+                    图论
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="一定义">一、定义</h1>
+<ul>
+<li>如果一个图能画在平面上使得它的边仅在端点相交，则称这个图为可嵌人平面的，或称为<strong>平面图</strong>。平面图G的这样一种画法称为G的一个<strong>平面嵌人</strong>。<br>
+<img src="平面图定义.png" alt="平面图定义"></li>
+<li>一个平图<span class="math inline">\(G\)</span>把平面划分成若干个连通区域，这些区域的闭包称为<span class="math inline">\(G\)</span>的<strong>面</strong>。面边界回路的长度称为<strong>面的次数</strong>，记为<span class="math inline">\(Deg(f)\)</span>或<span class="math inline">\(d(f)\)</span>。</li>
+<li>每个平图恰有一个无界的面，称为<strong>外部面</strong>。</li>
+</ul>
+<h1 id="二相关性质和定理">二、相关性质和定理</h1>
+<h2 id="面的次数之和与边数关系">2.1 面的次数之和与边数关系</h2>
+<blockquote>
+<p><span class="math inline">\(\sum {d(f)} = 2\varepsilon\)</span></p>
+</blockquote>
+<h2 id="euler公式">2.2 Euler公式</h2>
+<blockquote>
+<p>若<span class="math inline">\(G\)</span>是连通平图，则有：<span class="math inline">\(\nu - \varepsilon + \phi = 2\)</span></p>
+</blockquote>
+<blockquote>
+<p><strong>简单平面图存在一个度数小于5的顶点</strong>；<br>
+# 三、判断方法<br>
+# 3.1 必要条件<br>
+1. 若<span class="math inline">\(G\)</span>是<span class="math inline">\(v \ge 3\)</span>的简单平面图，则<span class="math inline">\(\varepsilon \le 3\nu - 6\)</span>。</p>
+<ol start="2" type="1">
+<li>Euler公式</li>
+</ol>
+</blockquote>
+<h2 id="kuratowskis-theorem库拉托夫斯基定理">3.2 Kuratowski’s
+Theorem(库拉托夫斯基定理)</h2>
+<blockquote>
+<p>一个图是平面图当且仅当它不包含<span class="math inline">\(K_{3,3}\)</span>或<span class="math inline">\(K_5\)</span>的剖分图.</p>
+<blockquote>
+<p><strong>剖分图</strong>：把<span class="math inline">\(G\)</span>的边进行一系列剖分得到的图<br>
+<img src="K4剖分图.png" alt="K4剖分图"><br>
+剖分图也可以这么理解：即用Path代替Edge。<br>
+把边<span class="math inline">\((u, v)\)</span>删除，添加一个点<span class="math inline">\(w\)</span>，再添加两条边<span class="math inline">\((u,w)\)</span>和<span class="math inline">\((w,
+v)\)</span>，称之为<strong>初等细分</strong>；<br>
+得到的新图和原图称之为是<strong>同胚(Homeomorphic)的</strong>；</p>
+</blockquote>
+<blockquote>
+<p><strong>Platonic Solids(柏拉图体)</strong>:<img src="柏拉图体1.png" alt="柏拉图体1"><br>
+<strong>顶点数、边数(棱数)、面数的关系</strong>：<br>
+其中，<span class="math inline">\(v\)</span>表示顶点数，<span class="math inline">\(e\)</span>表示棱数，<span class="math inline">\(f\)</span>表示面数，<span class="math inline">\(k\)</span>为每个顶点的出发边的数目，<span class="math inline">\(l\)</span>为每个面上边的数目，<span class="math inline">\(\sum deg(v) = 2e = fl = kv\)</span>.<img src="柏拉图体2.png" alt="柏拉图体2"></p>
+</blockquote>
+</blockquote>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2025 YokumiのBlog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Yokumi
+        </div>
+        
+    </div>
+</footer>
+
+<script>
+  var event = new Event('hexo-blog-decrypt');
+  window.dispatchEvent(event);
+</script>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/blog/js/main.js"></script>
+    
+    
+
+
+
+
+    
+    <script src="/blog/js/fix-encrypt.js"></script>
+</body>
+</html>

@@ -1,0 +1,325 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YokumiのBlog</title>
+        <link rel="icon" href="/blog/images/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="/blog/images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/blog/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/blog/js/lib/math.js"></script>
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/blog/atom.xml" title="YokumiのBlog" type="application/atom+xml">
+</head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>YOKUMIのBLOG</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;YOKUMIのBLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/blog/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>9.1 群论Intro</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/11/3
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/%E7%BE%A4%E8%AE%BA/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                群论
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/%E7%BE%A4%E8%AE%BA/" style="color: #00a596">
+                    群论
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="binary-operation"><em>Binary operation</em></h1>
+<blockquote>
+<p><strong>Defination:</strong>
+对两个对象进行操作的运算称为二元运算。一般在《离散数学》这门课中只研究离散结构，e.g.
+集合。</p>
+</blockquote>
+<h1 id="some-properties-of-binary-operations"><em>Some Properties of
+Binary Operations</em></h1>
+<h2 id="closure"><em>Closure</em></h2>
+<blockquote>
+<p><strong>Defination:</strong> 设集合 S 有二元运算∗, 若对 S
+中的任意两个元素 <span class="math inline">\(a_1\)</span>、<span class="math inline">\(a_2\)</span>, 都有: <span class="math inline">\(a_1∗a_2∈S\)</span>, 则称运算∗对集合 S 封闭。</p>
+</blockquote>
+<h2 id="commutative"><em>Commutative</em></h2>
+<blockquote>
+<p><strong>Defination:</strong> 交换律也称为Abel 律，设有代数 <span class="math inline">\((S,∗)\)</span>，若对任意 <span class="math inline">\(a_1,a_2∈S\)</span>,都符合等式: <span class="math inline">\(a_1∗a_2=a_2∗a_1\)</span>,那么称代数 <span class="math inline">\((S,∗)\)</span> 运算符合交换律。<br>
+<strong>推广:</strong> 如果 <span class="math inline">\((S,∗)\)</span>
+运算符合交换律，那么对于运算序列 <span class="math inline">\(a_1∗a_2∗...∗a_n\)</span>，设 <span class="math inline">\(θ(12...n)\)</span> 为任意重排列，那么有: <span class="math inline">\(a_θ(1)∗a_θ(2)∗...∗a_θ(n)=a_1∗a_2∗...∗a_n\)</span>。</p>
+</blockquote>
+<h2 id="associative"><em>Associative</em></h2>
+<blockquote>
+<p><strong>Defination:</strong> if * is a binary operation, then * is
+associative or has the associative property:<span class="math inline">\((x * y) * z = x * (y *
+z)\)</span>，在运算过程中不需要再考虑括号了！</p>
+</blockquote>
+<h2 id="distributive"><em>Distributive</em></h2>
+<blockquote>
+<p>略。</p>
+</blockquote>
+<h2 id="de-morgans-laws"><em>De Morgan‘s laws</em></h2>
+<blockquote>
+<p>扔个PPT在这。<img src="imgs/Wondershare%20PDFelement%202024-11-03%2017.07.25.png"></p>
+</blockquote>
+<h2 id="idempotent"><em>Idempotent</em></h2>
+<blockquote>
+<p><strong>Defination:</strong> <span class="math inline">\(a * a =
+a\)</span></p>
+</blockquote>
+<h2 id="note"><em>Note！</em></h2>
+<blockquote>
+<p>An operation has a property means the statement of the property is
+true when the operation is used with any objects in the structure.</p>
+</blockquote>
+<h1 id="a-binary-operation-on-a-set"><em>A binary operation on a
+set</em></h1>
+<blockquote>
+<p><strong>Defination:</strong> Everywhere defined <span class="math inline">\(f:A×A\rightarrow
+A\)</span>，同时需要满足封闭性和运算结果唯一，即双射性质。</p>
+</blockquote>
+<h1 id="tables运算表"><em>Tables(运算表)</em></h1>
+<blockquote>
+<p><strong>Defination:</strong> If A is a finite set, we can define a
+binary operation on A by means of a table.<img src="img/Wondershare%20PDFelement%202024-11-03%2017.15.57.png"></p>
+</blockquote>
+<h1 id="some-special-elements"><em>Some Special Elements</em></h1>
+<h2 id="identity中性元"><em>Identity(中性元)</em></h2>
+<blockquote>
+<p><strong>Defination:</strong> <span class="math inline">\(e∗x=x∗e=x\)</span></p>
+</blockquote>
+<h2 id="zero零元"><em>Zero(零元)</em></h2>
+<blockquote>
+<p><strong>Defination:</strong> <span class="math inline">\(\theta ∗ x=x
+∗ \theta= \theta\)</span></p>
+</blockquote>
+<h2 id="inverse逆元"><em>Inverse(逆元)</em></h2>
+<blockquote>
+<p><strong>Defination:</strong> <span class="math inline">\(x * y = y *
+x = e\)</span>，两者互为逆元</p>
+</blockquote>
+<h2 id="note-1"><em>Note!</em></h2>
+<blockquote>
+<ol type="1">
+<li>单位元以及零元的唯一性</li>
+<li>如果<span class="math inline">\(\left| A \right| &gt; 1, \theta \neq
+e\)</span></li>
+<li>可结合的运算逆元唯一性</li>
+</ol>
+</blockquote>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2025 YokumiのBlog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Yokumi
+        </div>
+        
+    </div>
+</footer>
+
+<script>
+  var event = new Event('hexo-blog-decrypt');
+  window.dispatchEvent(event);
+</script>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/blog/js/main.js"></script>
+    
+    
+
+
+
+
+    
+    <script src="/blog/js/fix-encrypt.js"></script>
+</body>
+</html>
