@@ -192,7 +192,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81/" style="color: #03a9f4">
+                <a href="/blog/tags/%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81/" style="color: #00a596">
                     汇编代码
                 </a>
             </span>
@@ -202,71 +202,75 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="条件码"><a href="#条件码" class="headerlink" title="条件码"></a>条件码</h1><p><img src="1.png" alt><br><img src="2.png" alt><br><img src="3.png" alt><br><img src="4.png" alt></p>
-<ul>
-<li><strong>注意<code>cmp</code>实际上做减运算，后减前</strong>；</li>
-</ul>
-<h1 id="Loop循环结构"><a href="#Loop循环结构" class="headerlink" title="Loop循环结构"></a>Loop循环结构</h1><ol>
-<li><p>do-while：</p>
-<pre><code class="lang-c">do &#123;
- body;
-&#125; while(test);
-</code></pre>
-<p>等价于</p>
-<pre><code class="lang-c">Loop:
- body;
- t = test;
- if (t) goto Loop;
-</code></pre>
-</li>
-<li><p>while：</p>
-<pre><code class="lang-c">while (test) &#123;
- body;
-&#125;
-</code></pre>
-<p>如果开启-O2优化，采用Jump-to-middle翻译方法，即判断在后面，先跳到末尾进行判断，再返回中间执行整体；<br>```c<br> goto test;<br>Loop:<br> body;</p>
-</li>
+        <h1 id="条件码">条件码</h1>
+<p><img src="1.png"><br>
+<img src="2.png"><br>
+<img src="3.png"><br>
+<img src="4.png"><br>
+* <strong>注意<code>cmp</code>实际上做减运算，后减前</strong>；</p>
+<h1 id="loop循环结构">Loop循环结构</h1>
+<ol type="1">
+<li>do-while：</li>
 </ol>
-<p>test:<br>    t = test;<br>    if (t) goto Loop;</p>
-<pre><code>如果开启-O1优化，采用Guarded-do翻译方法，先进行判断，然后转换为do-while循环；
-```c
-t = test;
+<pre class="c"><code>do &#123;
+    body;
+&#125; while(test);</code></pre>
+<p>等价于</p>
+<pre class="c"><code>Loop:
+    body;
+    t = test;
+    if (t) goto Loop;</code></pre>
+<ol start="2" type="1">
+<li>while：</li>
+</ol>
+<pre class="c"><code>while (test) &#123;
+    body;
+&#125;</code></pre>
+<p>如果开启-O2优化，采用Jump-to-middle翻译方法，即判断在后面，先跳到末尾进行判断，再返回中间执行整体；</p>
+<pre class="c"><code>    goto test;
+Loop:
+    body;
+
+test:
+    t = test;
+    if (t) goto Loop;</code></pre>
+<p>如果开启-O1优化，采用Guarded-do翻译方法，先进行判断，然后转换为do-while循环；</p>
+<pre class="c"><code>t = test;
 if (!t) goto END;
 Loop:
     body;
     t = test;
     if (t) goto Loop:
-END;
-</code></pre><ol>
-<li>for：<pre><code class="lang-c">for (init; test; update) &#123;
- body;
-&#125;
-</code></pre>
-转化为while循环：<pre><code class="lang-c">init;
+END;</code></pre>
+<ol start="3" type="1">
+<li>for：</li>
+</ol>
+<pre class="c"><code>for (init; test; update) &#123;
+    body;
+&#125;</code></pre>
+<p>转化为while循环：</p>
+<pre class="c"><code>init;
 while (test) &#123;
- body;
- update;
-&#125;
-</code></pre>
-写成goto形式：<pre><code class="lang-c">init;
+    body;
+    update;
+&#125;</code></pre>
+<p>写成goto形式：</p>
+<pre class="c"><code>init;
 t = test;
 Loop:
- body;
- update;
- if (t) goto Loop;
-END;
-</code></pre>
-</li>
-</ol>
-<h1 id="Switch分支结构"><a href="#Switch分支结构" class="headerlink" title="Switch分支结构"></a>Switch分支结构</h1><ul>
-<li>并非if，通过跳转表来实现，每一个分支被视为一个代码块，代码块的开头的地址被存放在跳转表中；<img src="5.png" alt><pre><code class="lang-x86asm">my_switch:
-  movq %rax, %rcx
-  cmpq $6, %rdi // x : 6
-  ja .L8 // if x &gt; 6, goto default;
-  jmp *.L4(,%rdi, 8) // *(.L4 + x * 8)的地址上的值，即间接跳转，先计算出跳转表上的索引位置，跳转到该索引上的值处；
-</code></pre>
-</li>
+    body;
+    update;
+    if (t) goto Loop;
+END;</code></pre>
+<h1 id="switch分支结构">Switch分支结构</h1>
+<ul>
+<li>并非if，通过跳转表来实现，每一个分支被视为一个代码块，代码块的开头的地址被存放在跳转表中；<img src="5.png"></li>
 </ul>
+<pre class="x86asm"><code>my_switch:
+    movq %rax, %rcx
+    cmpq $6, %rdi // x : 6
+    ja .L8 // if x &gt; 6, goto default;
+    jmp *.L4(,%rdi, 8) // *(.L4 + x * 8)的地址上的值，即间接跳转，先计算出跳转表上的索引位置，跳转到该索引上的值处；</code></pre>
 
     </div>
     

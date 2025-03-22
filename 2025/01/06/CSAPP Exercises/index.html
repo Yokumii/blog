@@ -185,7 +185,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CSAPP/" style="color: #00a596">
+                <a href="/blog/tags/CSAPP/" style="color: #00bcd4">
                     CSAPP
                 </a>
             </span>
@@ -195,27 +195,60 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h1><h2 id="2-21"><a href="#2-21" class="headerlink" title="2.21"></a>2.21</h2><p><img src="2.21.png" alt></p>
-<h2 id="2-23"><a href="#2-23" class="headerlink" title="2.23"></a>2.23</h2><p><img src="2.23.png" alt></p>
-<h2 id="2-24"><a href="#2-24" class="headerlink" title="2.24"></a>2.24</h2><p><img src="2.24.png" alt><br>两种类型都是先截断（对对应的无符号数取模操作），补码的话再进行一次U2T转化；</p>
-<h2 id="2-33"><a href="#2-33" class="headerlink" title="2.33"></a>2.33</h2><p><img src="2.33.png" alt></p>
-<h2 id="2-40"><a href="#2-40" class="headerlink" title="2.40"></a>2.40</h2><p><img src="2.40.png" alt></p>
-<h2 id="2-44"><a href="#2-44" class="headerlink" title="2.44"></a>2.44</h2><p><img src="2.44.png" alt><br>A. 反例：$x = -1, x - 1= 0$；<br>B. $x \&amp; 0111_2 \ne 0111_2$当$x$的低3位有1位等于0时即可成立，$x &lt;&lt; 29 &lt; 0$将$x$的低3位移到高三位。那么低三位如果全为1，后者为真，有0则前者为真，所以表达式恒为真；<br>C. 反例：$x$为一个比较大的正数，平方后超过$2^{31} - 1$；<br>D. 真：$x = Tmin, -x = Tmin$，其余情况x如果是负数，那么-x一定是非负数；<br>E. 反例：$x = Tmin, -x = Tmin$；<br>F. 真：首先，比较类型为无符号数比较；加法都按补码进行运算，两边二进制结果显然一致；<br>G.真：$-y = \sim y + 1\rightarrow \sim y = -y - 1\rightarrow x <em> \sim y + uy </em> ux = x * (-y + y - 1) = -x$；全部按二进制表示理解即可；</p>
-<h2 id="2-45"><a href="#2-45" class="headerlink" title="2.45"></a>2.45</h2><p><img src="2.45.png" alt></p>
-<h2 id="2-47"><a href="#2-47" class="headerlink" title="2.47"></a>2.47</h2><p><img src="2.47.png" alt></p>
-<h2 id="2-54"><a href="#2-54" class="headerlink" title="2.54"></a>2.54</h2><p><img src="2.54.png" alt><br>A. double范围和精度比int大；<br>B. 假，int转化为float可能会发生舍入；<br>C. 假，double转化为float会截断；<br>D. double范围和精度比float大；<br>E. 没毛病，只需改变符号位；<br>F. 两边都先转化为double类型再运算；<br>G. 没毛病，即使溢出到正无穷也是大于0；<br>H. 假，浮点数运算不满足结合律；</p>
-<h2 id="2-60"><a href="#2-60" class="headerlink" title="2.60"></a>2.60</h2><p><img src="2.60.png" alt></p>
-<pre><code class="lang-c">unsigned replace_byte(unsigned x, int i, unsigned char b) &#123;
+        <h1 id="第二章">第二章</h1>
+<h2 id="section">2.21</h2>
+<p><img src="2.21.png"></p>
+<h2 id="section-1">2.23</h2>
+<p><img src="2.23.png"></p>
+<h2 id="section-2">2.24</h2>
+<p><img src="2.24.png"><br>
+两种类型都是先截断（对对应的无符号数取模操作），补码的话再进行一次U2T转化；</p>
+<h2 id="section-3">2.33</h2>
+<p><img src="2.33.png"></p>
+<h2 id="section-4">2.40</h2>
+<p><img src="2.40.png"></p>
+<h2 id="section-5">2.44</h2>
+<p><img src="2.44.png"><br>
+A. 反例：<span class="math inline">\(x = -1, x - 1= 0\)</span>；<br>
+B. <span class="math inline">\(x \&amp; 0111_2 \ne
+0111_2\)</span>当<span class="math inline">\(x\)</span>的低3位有1位等于0时即可成立，<span class="math inline">\(x &lt;&lt; 29 &lt; 0\)</span>将<span class="math inline">\(x\)</span>的低3位移到高三位。那么低三位如果全为1，后者为真，有0则前者为真，所以表达式恒为真；<br>
+C. 反例：<span class="math inline">\(x\)</span>为一个比较大的正数，平方后超过<span class="math inline">\(2^{31} - 1\)</span>；<br>
+D. 真：<span class="math inline">\(x = Tmin, -x =
+Tmin\)</span>，其余情况x如果是负数，那么-x一定是非负数；<br>
+E. 反例：<span class="math inline">\(x = Tmin, -x =
+Tmin\)</span>；<br>
+F.
+真：首先，比较类型为无符号数比较；加法都按补码进行运算，两边二进制结果显然一致；<br>
+G.真：<span class="math inline">\(-y = \sim y + 1\rightarrow \sim y = -y
+- 1\rightarrow x * \sim y + uy * ux = x * (-y + y - 1) =
+-x\)</span>；全部按二进制表示理解即可；</p>
+<h2 id="section-6">2.45</h2>
+<p><img src="2.45.png"></p>
+<h2 id="section-7">2.47</h2>
+<p><img src="2.47.png"></p>
+<h2 id="section-8">2.54</h2>
+<p><img src="2.54.png"><br>
+A. double范围和精度比int大；<br>
+B. 假，int转化为float可能会发生舍入；<br>
+C. 假，double转化为float会截断；<br>
+D. double范围和精度比float大；<br>
+E. 没毛病，只需改变符号位；<br>
+F. 两边都先转化为double类型再运算；<br>
+G. 没毛病，即使溢出到正无穷也是大于0；<br>
+H. 假，浮点数运算不满足结合律；</p>
+<h2 id="section-9">2.60</h2>
+<p><img src="2.60.png"></p>
+<pre class="c"><code>unsigned replace_byte(unsigned x, int i, unsigned char b) &#123;
     int i_times_8 = i &lt;&lt; 3; // 将字节单位转化为位；
     unsigned mask = 0xFF &lt;&lt; i_times_8; // 将0xFF左移i个字节，得到第i个字节为FF，其余全为0的字符串；
     // x &amp; ~mask 可以将x的第i个字节清0；
     // b &lt;&lt; i_times_8 将b移动到第i个字节上；
     // 两者进行或运算即可实现替换；
     return (x &amp; ~mask) | (b &lt;&lt; i_times_8);
-&#125;
-</code></pre>
-<h2 id="2-65"><a href="#2-65" class="headerlink" title="2.65"></a>2.65</h2><p><img src="2.65.png" alt></p>
-<pre><code class="lang-c">int odd_ones(unsigned x) &#123;
+&#125;</code></pre>
+<h2 id="section-10">2.65</h2>
+<p><img src="2.65.png"></p>
+<pre class="c"><code>int odd_ones(unsigned x) &#123;
     // x的高位和低位进行异或，如果1对0，得到1；如果1对1或0对0，得到0，那么高位有奇数个1还是偶数个1的信息就被转移到低位中；
     x = x ^ (x &gt;&gt; 16); // 将x的高16位与低16位异或
     x = x ^ (x &gt;&gt; 8);
@@ -223,47 +256,51 @@
     x = x ^ (x &gt;&gt; 2);
     x = x &amp; 1;
     return x;
-&#125;
-</code></pre>
-<h2 id="2-67"><a href="#2-67" class="headerlink" title="2.67"></a>2.67</h2><p><img src="2.67.png" alt><br>A. C标准中，在32位机器上，移位32位是一种未定义的行为；<br>B. 很简单，先移31位，再移一位即可；</p>
-<pre><code class="lang-c">int beyond_msb = 1 &lt;&lt; 32;
+&#125;</code></pre>
+<h2 id="section-11">2.67</h2>
+<p><img src="2.67.png"><br>
+A. C标准中，在32位机器上，移位32位是一种未定义的行为；<br>
+B. 很简单，先移31位，再移一位即可；</p>
+<pre class="c"><code>int beyond_msb = 1 &lt;&lt; 32;
 // 改为
-int beyond_msb = set_msb &lt;&lt; 1;
-</code></pre>
+int beyond_msb = set_msb &lt;&lt; 1;</code></pre>
 <p>C. 类似地（16位机器上，移动n + 16位和移动n位效果一样）；</p>
-<pre><code class="lang-c">int set_msb = 1 &lt;&lt; 15;
-int beyond_msb = set_msb &lt;&lt; 1;
-</code></pre>
-<h2 id="2-68"><a href="#2-68" class="headerlink" title="2.68"></a>2.68</h2><p><img src="2.68.png" alt></p>
-<pre><code class="lang-c">int lower_one_mask(int n) &#123;
+<pre class="c"><code>int set_msb = 1 &lt;&lt; 15;
+int beyond_msb = set_msb &lt;&lt; 1;</code></pre>
+<h2 id="section-12">2.68</h2>
+<p><img src="2.68.png"></p>
+<pre class="c"><code>int lower_one_mask(int n) &#123;
     unsigned Part = -1; // 各位全1
     unsigned len = sizeof(int) * 8 - n; // 右移位数
     return (int)(Part &gt;&gt; len);
-&#125;
-</code></pre>
-<h1 id="第三章"><a href="#第三章" class="headerlink" title="第三章"></a>第三章</h1><h2 id="3-1"><a href="#3-1" class="headerlink" title="3.1"></a>3.1</h2><p><img src="3.1.png" alt></p>
-<h2 id="3-2"><a href="#3-2" class="headerlink" title="3.2"></a>3.2</h2><p><img src="3.2.png" alt></p>
-<pre><code class="lang-asmx86">movl %eax, (%rsp)
+&#125;</code></pre>
+<h1 id="第三章">第三章</h1>
+<h2 id="section-13">3.1</h2>
+<p><img src="3.1.png"></p>
+<h2 id="section-14">3.2</h2>
+<p><img src="3.2.png"></p>
+<pre class="asmx86"><code>movl %eax, (%rsp)
 movw (%rax), %dx
 movb $0xFF, %bl
 movb (%rsp, %rdx, 4), %dl
 movq (%rdx), %rax
-movw %dx, (%rax)
-</code></pre>
+movw %dx, (%rax)</code></pre>
 <p>评价是别管Src和Dest，看哪个对涉及对寄存器取值了；</p>
-<h2 id="3-3"><a href="#3-3" class="headerlink" title="3.3"></a>3.3</h2><p><img src="3.3.png" alt></p>
-<ol>
-<li><strong>%ebx不能用来存放内存地址！！！</strong>（此题存了立即数0xF的在内存中的地址）；</li>
-<li>%rax配movq，movl配%eax；</li>
-<li>Src和Dest都在对内存进行引用；</li>
-<li>%sl是什么东西；</li>
-<li>立即数不能作为Dest；</li>
-<li>%rdx和mol不匹配；</li>
-<li>%si配movw；</li>
-</ol>
-<h2 id="3-4"><a href="#3-4" class="headerlink" title="3.4"></a>3.4</h2><p><img src="3.4.png" alt></p>
-<h2 id="3-5"><a href="#3-5" class="headerlink" title="3.5"></a>3.5</h2><p><img src="3.5.png" alt></p>
-<pre><code class="lang-c">void decode1(long *xp, long *yp, long *zp) &#123;
+<h2 id="section-15">3.3</h2>
+<p><img src="3.3.png"><br>
+1.
+<strong>%ebx不能用来存放内存地址！！！</strong>（此题存了立即数0xF的在内存中的地址）；<br>
+2. %rax配movq，movl配%eax；<br>
+3. Src和Dest都在对内存进行引用；<br>
+4. %sl是什么东西；<br>
+5. 立即数不能作为Dest；<br>
+6. %rdx和mol不匹配；<br>
+7. %si配movw；</p>
+<h2 id="section-16">3.4</h2>
+<p><img src="3.4.png"></p>
+<h2 id="section-17">3.5</h2>
+<p><img src="3.5.png"></p>
+<pre class="c"><code>void decode1(long *xp, long *yp, long *zp) &#123;
     long x = *xp;
     long y = *yp;
     long z = *zp;
@@ -271,33 +308,48 @@ movw %dx, (%rax)
     *zp = y;
     *xp = z;
     return;
-&#125;
-</code></pre>
-<h2 id="3-6"><a href="#3-6" class="headerlink" title="3.6"></a>3.6</h2><p><img src="3.6.png" alt><br><strong>lea是直接取寄存器！！！</strong></p>
-<h2 id="3-7"><a href="#3-7" class="headerlink" title="3.7"></a>3.7</h2><p><img src="3.7.png" alt></p>
-<h2 id="3-9"><a href="#3-9" class="headerlink" title="3.9"></a>3.9</h2><p><img src="3.9.png" alt></p>
-<h2 id="3-15"><a href="#3-15" class="headerlink" title="3.15"></a>3.15</h2><p><img src="3.15.png" alt><br>A. <code>4003fc + 0x02 = 4003fe</code>；<br>B. <code>400431 + 0xf4 = 400425</code>；<br>C. ja:<code>400547</code>；pop指定的地址 + 0x02 = ja的跳转地址，所以pop:<code>400545</code>；<br>D. <code>4005ed + 0x ff ff ff 73 = 400560</code>；</p>
-<h2 id="3-18"><a href="#3-18" class="headerlink" title="3.18"></a>3.18</h2><p><img src="3.18.png" alt></p>
-<h2 id="3-20"><a href="#3-20" class="headerlink" title="3.20"></a>3.20</h2><p><img src="3.20.png" alt></p>
-<h2 id="3-26"><a href="#3-26" class="headerlink" title="3.26"></a>3.26</h2><p><img src="3.26.png" alt><br>A. 中间翻译法</p>
-<pre><code class="lang-c">goto Test;
+&#125;</code></pre>
+<h2 id="section-18">3.6</h2>
+<p><img src="3.6.png"><br>
+<strong>lea是直接取寄存器！！！</strong></p>
+<h2 id="section-19">3.7</h2>
+<p><img src="3.7.png"></p>
+<h2 id="section-20">3.9</h2>
+<p><img src="3.9.png"></p>
+<h2 id="section-21">3.15</h2>
+<p><img src="3.15.png"><br>
+A. <code>4003fc + 0x02 = 4003fe</code>；<br>
+B. <code>400431 + 0xf4 = 400425</code>；<br>
+C. ja:<code>400547</code>；pop指定的地址 + 0x02 =
+ja的跳转地址，所以pop:<code>400545</code>；<br>
+D. <code>4005ed + 0x ff ff ff 73 = 400560</code>；</p>
+<h2 id="section-22">3.18</h2>
+<p><img src="3.18.png"></p>
+<h2 id="section-23">3.20</h2>
+<p><img src="3.20.png"></p>
+<h2 id="section-24">3.26</h2>
+<p><img src="3.26.png"><br>
+A. 中间翻译法</p>
+<pre class="c"><code>goto Test;
 Loop:
     body;
 
 Test:
     t = test;
     if (t) goto Loop;
-end;
-</code></pre>
-<p>B.</p>
-<pre><code class="lang-c">while (x != 0) &#123;
+end;</code></pre>
+<ol start="2" type="A">
+<li></li>
+</ol>
+<pre class="c"><code>while (x != 0) &#123;
     val = x ^ val;
     x = x &gt;&gt; 1;
-&#125;
-</code></pre>
-<p>C. 从一个无符号长整数$x$的最高有效位开始，逐位移除最低有效位，直到剩下最后一个有效的非零位。然后检查该值的最低有效位是否为 1，并返回结果。即判断$x$的奇偶性；</p>
-<h2 id="3-27"><a href="#3-27" class="headerlink" title="3.27"></a>3.27</h2><p><img src="3.27.png" alt></p>
-<pre><code class="lang-c">// Jump-to-middle
+&#125;</code></pre>
+<p>C. 从一个无符号长整数<span class="math inline">\(x\)</span>的最高有效位开始，逐位移除最低有效位，直到剩下最后一个有效的非零位。然后检查该值的最低有效位是否为
+1，并返回结果。即判断<span class="math inline">\(x\)</span>的奇偶性；</p>
+<h2 id="section-25">3.27</h2>
+<p><img src="3.27.png"></p>
+<pre class="c"><code>// Jump-to-middle
 init:
     int result = 1;
     int i = 2;
@@ -320,16 +372,21 @@ loop:
     result *= i;
     i++;
     if (t) goto loop;
-end;
-</code></pre>
-<h2 id="3-31"><a href="#3-31" class="headerlink" title="3.31"></a>3.31</h2><p><img src="3.31.png" alt></p>
-<h2 id="3-32"><a href="#3-32" class="headerlink" title="3.32"></a>3.32</h2><p><img src="3.32.png" alt></p>
-<h2 id="3-33"><a href="#3-33" class="headerlink" title="3.33"></a>3.33</h2><p><img src="3.33.png" alt></p>
-<h2 id="3-36"><a href="#3-36" class="headerlink" title="3.36"></a>3.36</h2><p><img src="3.36.png" alt></p>
-<h2 id="3-37"><a href="#3-37" class="headerlink" title="3.37"></a>3.37</h2><p><img src="3.37.png" alt></p>
-<h2 id="3-38"><a href="#3-38" class="headerlink" title="3.38"></a>3.38</h2><p><img src="3.38.png" alt></p>
-<h2 id="3-44"><a href="#3-44" class="headerlink" title="3.44"></a>3.44</h2><p><img src="3.44.png" alt></p>
-<div class="table-container">
+end;</code></pre>
+<h2 id="section-26">3.31</h2>
+<p><img src="3.31.png"></p>
+<h2 id="section-27">3.32</h2>
+<p><img src="3.32.png"></p>
+<h2 id="section-28">3.33</h2>
+<p><img src="3.33.png"></p>
+<h2 id="section-29">3.36</h2>
+<p><img src="3.36.png"></p>
+<h2 id="section-30">3.37</h2>
+<p><img src="3.37.png"></p>
+<h2 id="section-31">3.38</h2>
+<p><img src="3.38.png"></p>
+<h2 id="section-32">3.44</h2>
+<p><img src="3.44.png"></p>
 <table>
 <thead>
 <tr>
@@ -386,9 +443,7 @@ end;
 </tr>
 </tbody>
 </table>
-</div>
 <p>P1共占16个字节；</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -445,9 +500,7 @@ end;
 </tr>
 </tbody>
 </table>
-</div>
 <p>P2共占16个字节；</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -500,12 +553,11 @@ end;
 <td></td>
 <td></td>
 <td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
-</div>
 <p>P3共占10个字节；</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -544,7 +596,7 @@ end;
 <td>8</td>
 <td>9</td>
 <td>10</td>
-<td>…</td>
+<td>...</td>
 <td></td>
 <td></td>
 <td></td>
@@ -622,9 +674,7 @@ end;
 </tr>
 </tbody>
 </table>
-</div>
 <p>P4共占40个字节；</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -741,10 +791,9 @@ end;
 </tr>
 </tbody>
 </table>
-</div>
 <p>P5共占40个字节；</p>
-<h2 id="3-45"><a href="#3-45" class="headerlink" title="3.45"></a>3.45</h2><p><img src="3.45.png" alt></p>
-<div class="table-container">
+<h2 id="section-33">3.45</h2>
+<p><img src="3.45.png"></p>
 <table>
 <thead>
 <tr>
@@ -901,13 +950,11 @@ end;
 </tr>
 </tbody>
 </table>
-</div>
 <p>rec共占56个字节；</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
-<th>rec’</th>
+<th>rec'</th>
 <th></th>
 <th></th>
 <th></th>
@@ -1016,32 +1063,47 @@ end;
 <td></td>
 <td></td>
 <td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
-</div>
 <p>rec‘总共占40个字节；</p>
-<h1 id="第七章"><a href="#第七章" class="headerlink" title="第七章"></a>第七章</h1><h2 id="7-1"><a href="#7-1" class="headerlink" title="7.1"></a>7.1</h2><p><img src="7.1.png" alt></p>
-<h2 id="7-2"><a href="#7-2" class="headerlink" title="7.2"></a>7.2</h2><p><img src="7.2.png" alt></p>
-<h2 id="7-4"><a href="#7-4" class="headerlink" title="7.4"></a>7.4</h2><p><img src="7.4.png" alt><br>A. <code>4004de + 1 = 4004df</code>（callq的机器码e8占一个字节）；<br>B. <code>0x 00 00 00 05</code>，注意小端法！！！</p>
-<h2 id="7-5"><a href="#7-5" class="headerlink" title="7.5"></a>7.5</h2><p><img src="7.5.png" alt><br>重定位条目包含了以下信息：</p>
-<ul>
-<li>R_X86_64_PC32表示采用PC相对寻址法；</li>
-<li>offset表示偏移量为0xa = 10；</li>
-<li>addend可以修正偏移量；<br>$r_{ptr} = 0x4004e8 - (0x4004d0 + 0xa) + (-4) = 10 = 0x0a$；<br>所以引用的值是0x 00 00 00 0a；在汇编代码中被更新为：<code>e8 0a 00 00 00</code>；</li>
-</ul>
-<h1 id="第十章"><a href="#第十章" class="headerlink" title="第十章"></a>第十章</h1><h2 id="10-1"><a href="#10-1" class="headerlink" title="10.1"></a>10.1</h2><p><img src="10.1.png" alt></p>
-<pre><code>fd2 = 3
-</code></pre><p>原因是<code>Close(fd1)</code>后，文件描述符被释放；</p>
-<h2 id="10-2"><a href="#10-2" class="headerlink" title="10.2"></a>10.2</h2><p><img src="10.2.png" alt></p>
-<pre><code>c = f
-</code></pre><p>fd1读取一个字节后，文件位置确实++了，但fd1和fd2分两次打开，对应不同的描述符，从而对应不同的打开文件表，所以互不影响；</p>
-<h2 id="10-3"><a href="#10-3" class="headerlink" title="10.3"></a>10.3</h2><p><img src="10.3.png" alt></p>
-<pre><code>c = o
-</code></pre><p>父子进程共享同一个打开文件表；</p>
-<h2 id="10-5"><a href="#10-5" class="headerlink" title="10.5"></a>10.5</h2><p><img src="10.5.png" alt></p>
-<pre><code>c = o
-</code></pre><p>dup2将fd1重定向到fd2；</p>
+<h1 id="第七章">第七章</h1>
+<h2 id="section-34">7.1</h2>
+<p><img src="7.1.png"></p>
+<h2 id="section-35">7.2</h2>
+<p><img src="7.2.png"></p>
+<h2 id="section-36">7.4</h2>
+<p><img src="7.4.png"><br>
+A. <code>4004de + 1 = 4004df</code>（callq的机器码e8占一个字节）；<br>
+B. <code>0x 00 00 00 05</code>，注意小端法！！！</p>
+<h2 id="section-37">7.5</h2>
+<p><img src="7.5.png"><br>
+重定位条目包含了以下信息：<br>
+* R_X86_64_PC32表示采用PC相对寻址法；<br>
+* offset表示偏移量为0xa = 10；<br>
+* addend可以修正偏移量；<br>
+<span class="math inline">\(r_{ptr} = 0x4004e8 - (0x4004d0 + 0xa) + (-4)
+= 10 = 0x0a\)</span>；<br>
+所以引用的值是0x 00 00 00
+0a；在汇编代码中被更新为：<code>e8 0a 00 00 00</code>；</p>
+<h1 id="第十章">第十章</h1>
+<h2 id="section-38">10.1</h2>
+<p><img src="10.1.png"></p>
+<pre><code>fd2 = 3</code></pre>
+<p>原因是<code>Close(fd1)</code>后，文件描述符被释放；</p>
+<h2 id="section-39">10.2</h2>
+<p><img src="10.2.png"></p>
+<pre><code>c = f</code></pre>
+<p>fd1读取一个字节后，文件位置确实++了，但fd1和fd2分两次打开，对应不同的描述符，从而对应不同的打开文件表，所以互不影响；</p>
+<h2 id="section-40">10.3</h2>
+<p><img src="10.3.png"></p>
+<pre><code>c = o</code></pre>
+<p>父子进程共享同一个打开文件表；</p>
+<h2 id="section-41">10.5</h2>
+<p><img src="10.5.png"></p>
+<pre><code>c = o</code></pre>
+<p>dup2将fd1重定向到fd2；</p>
 <p>最后祝自己明天考试好运吧！</p>
 
     </div>
