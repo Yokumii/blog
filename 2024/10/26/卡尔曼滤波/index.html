@@ -185,7 +185,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90/" style="color: #00a596">
+                <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90/" style="color: #03a9f4">
                     数据挖掘与分析
                 </a>
             </span>
@@ -195,38 +195,57 @@
     </div>
     
     <div class="content" v-pre>
-        <h2 id="1-简述"><a href="#1-简述" class="headerlink" title="1. 简述"></a>1. 简述</h2><p>在目标轨迹追踪领域，传统均值/中值滤波器仅能处理位置信息且存在滞后问题。R.E.Kalman于1960年提出的卡尔曼滤波，通过融合物理动力学模型与传感器观测数据，实现状态向量（位置、速度等）的最优估计。其核心优势在于：</p>
-<ul>
-<li>利用先验知识降低测量噪声影响</li>
-<li>无延迟的实时递推计算</li>
-<li>提供估计结果的置信度评价（协方差矩阵）</li>
-</ul>
+        <h2 id="简述">1. 简述</h2>
+<p>在目标轨迹追踪领域，传统均值/中值滤波器仅能处理位置信息且存在滞后问题。R.E.Kalman于1960年提出的卡尔曼滤波，通过融合物理动力学模型与传感器观测数据，实现状态向量（位置、速度等）的最优估计。其核心优势在于：<br>
+- 利用先验知识降低测量噪声影响<br>
+- 无延迟的实时递推计算<br>
+- 提供估计结果的置信度评价（协方差矩阵）</p>
 <hr>
-<h2 id="2-推导"><a href="#2-推导" class="headerlink" title="2. 推导"></a>2. 推导</h2><h3 id="2-1-系统模型框架"><a href="#2-1-系统模型框架" class="headerlink" title="2.1 系统模型框架"></a>2.1 系统模型框架</h3><p>设系统状态向量为$x_i \in \mathbb{R}^n$，包含位置、速度等多维变量。卡尔曼滤波建立两套数学模型：</p>
-<p><strong>动态模型</strong>（状态转移方程）:</p>
-<script type="math/tex; mode=display">
-x_i = F_ix_{i-1} + w_i,\quad w_i \sim \mathcal{N}(0,Q_i)</script><p>其中$F_i$为状态转移矩阵，$w_i$为过程噪声</p>
-<p><strong>观测模型</strong>（测量方程）:</p>
-<script type="math/tex; mode=display">
-z_i = H_ix_i + v_i,\quad v_i \sim \mathcal{N}(0,R_i)</script><p>$H_i$为观测矩阵，$v_i$为测量噪声</p>
-<h3 id="2-2-递推算法推导"><a href="#2-2-递推算法推导" class="headerlink" title="2.2 递推算法推导"></a>2.2 递推算法推导</h3><p>滤波过程分为预测与更新两阶段：</p>
-<p><strong>(1) 先验估计预测</strong></p>
-<script type="math/tex; mode=display">
-\hat{x}_i^{(-)} = F_i\hat{x}_{i-1}^{(+)}</script><script type="math/tex; mode=display">
-P_i^{(-)} = F_iP_{i-1}^{(+)}F_i^T + Q_i</script><p>其中$P_i$为状态协方差矩阵，表征估计不确定性</p>
-<p><strong>(2) 后验估计更新</strong><br>计算卡尔曼增益：</p>
-<script type="math/tex; mode=display">
-K_i = P_i^{(-)}H_i^T(H_iP_i^{(-)}H_i^T + R_i)^{-1}</script><p>融合观测值：</p>
-<script type="math/tex; mode=display">
-\hat{x}_i^{(+)} = \hat{x}_i^{(-)} + K_i(z_i - H_i\hat{x}_i^{(-)})</script><p>更新协方差：</p>
-<script type="math/tex; mode=display">
-P_i^{(+)} = (I - K_iH_i)P_i^{(-)}</script><hr>
-<h2 id="3-应用与参数调优"><a href="#3-应用与参数调优" class="headerlink" title="3. 应用与参数调优"></a>3. 应用与参数调优</h2><h3 id="3-1-过程噪声影响"><a href="#3-1-过程噪声影响" class="headerlink" title="3.1 过程噪声影响"></a>3.1 过程噪声影响</h3><p>以行人轨迹跟踪为例，过程噪声协方差$Q$中的$\sigma_s$参数调节动力学模型信任度：</p>
-<ul>
-<li>大$\sigma_s$值：优先响应观测数据，轨迹更接近原始测量</li>
-<li>小$\sigma_s$值：强化物理约束，输出更平滑轨迹</li>
-</ul>
-<h3 id="3-2-Python实现示例"><a href="#3-2-Python实现示例" class="headerlink" title="3.2 Python实现示例"></a>3.2 Python实现示例</h3><pre><code class="lang-python">import numpy as np
+<h2 id="推导">2. 推导</h2>
+<h3 id="系统模型框架">2.1 系统模型框架</h3>
+<p>设系统状态向量为<span class="math inline">\(x_i \in
+\mathbb{R}^n\)</span>，包含位置、速度等多维变量。卡尔曼滤波建立两套数学模型：</p>
+<p><strong>动态模型</strong>（状态转移方程）:<br>
+<span class="math display">\[
+x_i = F_ix_{i-1} + w_i,\quad w_i \sim \mathcal{N}(0,Q_i)
+\]</span><br>
+其中<span class="math inline">\(F_i\)</span>为状态转移矩阵，<span class="math inline">\(w_i\)</span>为过程噪声</p>
+<p><strong>观测模型</strong>（测量方程）:<br>
+<span class="math display">\[
+z_i = H_ix_i + v_i,\quad v_i \sim \mathcal{N}(0,R_i)
+\]</span><br>
+<span class="math inline">\(H_i\)</span>为观测矩阵，<span class="math inline">\(v_i\)</span>为测量噪声</p>
+<h3 id="递推算法推导">2.2 递推算法推导</h3>
+<p>滤波过程分为预测与更新两阶段：</p>
+<p><strong>(1) 先验估计预测</strong><br>
+<span class="math display">\[
+\hat{x}_i^{(-)} = F_i\hat{x}_{i-1}^{(+)}
+\]</span><br>
+<span class="math display">\[
+P_i^{(-)} = F_iP_{i-1}^{(+)}F_i^T + Q_i
+\]</span><br>
+其中<span class="math inline">\(P_i\)</span>为状态协方差矩阵，表征估计不确定性</p>
+<p><strong>(2) 后验估计更新</strong><br>
+计算卡尔曼增益：<br>
+<span class="math display">\[
+K_i = P_i^{(-)}H_i^T(H_iP_i^{(-)}H_i^T + R_i)^{-1}
+\]</span><br>
+融合观测值：<br>
+<span class="math display">\[
+\hat{x}_i^{(+)} = \hat{x}_i^{(-)} + K_i(z_i - H_i\hat{x}_i^{(-)})
+\]</span><br>
+更新协方差：</p>
+<p><span class="math display">\[
+P_i^{(+)} = (I - K_iH_i)P_i^{(-)}
+\]</span><br>
+---</p>
+<h2 id="应用与参数调优">3. 应用与参数调优</h2>
+<h3 id="过程噪声影响">3.1 过程噪声影响</h3>
+<p>以行人轨迹跟踪为例，过程噪声协方差<span class="math inline">\(Q\)</span>中的<span class="math inline">\(\sigma_s\)</span>参数调节动力学模型信任度：<br>
+- 大<span class="math inline">\(\sigma_s\)</span>值：优先响应观测数据，轨迹更接近原始测量<br>
+- 小<span class="math inline">\(\sigma_s\)</span>值：强化物理约束，输出更平滑轨迹</p>
+<h3 id="python实现示例">3.2 Python实现示例</h3>
+<pre class="python"><code>import numpy as np
 
 # 状态向量 [位置, 速度]
 x = np.array([[0.0], [0.0]])
@@ -239,14 +258,15 @@ for measurement in measurements:
     # 预测步骤
     x = F @ x
     P = F @ P @ F.T + Q
-
+  
     # 更新步骤
     K = P @ H.T @ np.linalg.inv(H @ P @ H.T + R)
     x += K @ (measurement - H @ x)
-    P = (np.eye(2) - K @ H) @ P
-</code></pre>
+    P = (np.eye(2) - K @ H) @ P</code></pre>
 <hr>
-<h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结"></a>4. 总结</h2><h3 id="4-1-优势"><a href="#4-1-优势" class="headerlink" title="4.1 优势"></a>4.1 优势</h3><ul>
+<h2 id="总结">4. 总结</h2>
+<h3 id="优势">4.1 优势</h3>
+<ul>
 <li>线性高斯系统下的最优估计</li>
 <li>计算复杂度仅与状态维度立方相关</li>
 <li>提供实时置信度评分</li>

@@ -185,7 +185,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #00bcd4">
+                <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #03a9f4">
                     图论
                 </a>
             </span>
@@ -195,24 +195,54 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="欧拉环游"><a href="#欧拉环游" class="headerlink" title="欧拉环游"></a>欧拉环游</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><blockquote>
-<p><strong>欧拉回路</strong>：我们称一个通过图的每条边恰好一次的闭途径为欧拉环游 (Eulertour)；<br><strong>欧拉通路</strong>：我们称一个通过图的每条边恰好一次的路为欧拉通路；<br><strong>欧拉图</strong>：如果一个图包含一个欧拉环游，就称它是欧拉的(Eulerian)；</p>
+        <h1 id="欧拉环游">欧拉环游</h1>
+<h2 id="定义">定义</h2>
+<blockquote>
+<p><strong>欧拉回路</strong>：我们称一个通过图的每条边恰好一次的闭途径为欧拉环游
+(Eulertour)；<br>
+<strong>欧拉通路</strong>：我们称一个通过图的每条边恰好一次的路为欧拉通路；<br>
+<strong>欧拉图</strong>：如果一个图包含一个欧拉环游，就称它是欧拉的(Eulerian)；</p>
 </blockquote>
-<h2 id="判断的充要条件"><a href="#判断的充要条件" class="headerlink" title="判断的充要条件"></a>判断的充要条件</h2><blockquote>
-<p>对于无向连通图，一个连通图是欧拉的<strong>当且仅当它的每个顶点度是偶数</strong>。<br>连通图$G$是存在从$a$到$b$的欧拉路径，当且仅当$G$是连通的，并且除$a$和$b$($a \ne b$)的度为奇数(odd)之外，没有度为奇数(odd)的顶点；</p>
-<p>对于有向连通图，一个连通图是欧拉的当且仅当$G$是连通的，且每个顶点的出度 = 入度；<br>有向连通图$G$含有欧拉通路，当且仅当$G$是连通的，并且$G$中除两个顶点(节点不相等)外，其余每个顶点的入度=出度，且此两点满足$\left |deg^+{(u)} - deg^-{(v)}\right | = 1$</p>
+<h2 id="判断的充要条件">判断的充要条件</h2>
+<blockquote>
+<p>对于无向连通图，一个连通图是欧拉的<strong>当且仅当它的每个顶点度是偶数</strong>。<br>
+连通图<span class="math inline">\(G\)</span>是存在从<span class="math inline">\(a\)</span>到<span class="math inline">\(b\)</span>的欧拉路径，当且仅当<span class="math inline">\(G\)</span>是连通的，并且除<span class="math inline">\(a\)</span>和<span class="math inline">\(b\)</span>(<span class="math inline">\(a \ne
+b\)</span>)的度为奇数(odd)之外，没有度为奇数(odd)的顶点；</p>
 </blockquote>
-<h1 id="哈密尔顿通路"><a href="#哈密尔顿通路" class="headerlink" title="哈密尔顿通路"></a>哈密尔顿通路</h1><h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><blockquote>
-<p><strong>哈密尔顿回路</strong>：图$G$的哈密顿回路(Hamiltonian circuit)指的是遍历$G$中每一个点且只遍历一次的回路, 这样的轨迹称为哈密顿环游(Hamiltonian tour)；<br><strong>哈密尔顿通路</strong>：1. 图G的哈密顿路径(Hamiltonian path)指的是遍历G中每一个点且只遍历一次的路径, 这样的轨迹称为哈密顿轨迹(Hamiltonian trail)；</p>
+<blockquote>
+<p>对于有向连通图，一个连通图是欧拉的当且仅当<span class="math inline">\(G\)</span>是连通的，且每个顶点的出度 =
+入度；<br>
+有向连通图<span class="math inline">\(G\)</span>含有欧拉通路，当且仅当<span class="math inline">\(G\)</span>是连通的，并且<span class="math inline">\(G\)</span>中除两个顶点(节点不相等)外，其余每个顶点的入度=出度，且此两点满足<span class="math inline">\(\left |deg^+{(u)} - deg^-{(v)}\right | =
+1\)</span></p>
 </blockquote>
-<h2 id="一些充分条件"><a href="#一些充分条件" class="headerlink" title="一些充分条件"></a>一些充分条件</h2><h3 id="Dirac’s-theorem狄拉克定理"><a href="#Dirac’s-theorem狄拉克定理" class="headerlink" title="Dirac’s theorem狄拉克定理"></a>Dirac’s theorem狄拉克定理</h3><blockquote>
-<p>对于简单连通图$G$，如果$G$的顶点数$n \ge 3$，且所有顶点的度都$\ge \frac{n}{2}$，那么$G$存在哈密尔顿回路；</p>
+<h1 id="哈密尔顿通路">哈密尔顿通路</h1>
+<h2 id="定义-1">定义</h2>
+<blockquote>
+<p><strong>哈密尔顿回路</strong>：图<span class="math inline">\(G\)</span>的哈密顿回路(Hamiltonian
+circuit)指的是遍历<span class="math inline">\(G\)</span>中每一个点且只遍历一次的回路,
+这样的轨迹称为哈密顿环游(Hamiltonian tour)；<br>
+<strong>哈密尔顿通路</strong>：1. 图G的哈密顿路径(Hamiltonian
+path)指的是遍历G中每一个点且只遍历一次的路径,
+这样的轨迹称为哈密顿轨迹(Hamiltonian trail)；</p>
 </blockquote>
-<h3 id="Ore’s-theorem欧尔定理"><a href="#Ore’s-theorem欧尔定理" class="headerlink" title="Ore’s theorem欧尔定理"></a>Ore’s theorem欧尔定理</h3><blockquote>
-<p>对于简单连通图$G$，如果$G$的顶点数$n \ge 3$，且对于每一对不相邻的顶点$u, v$，都有$deg(u) + deg(v) \ge n$，那么$G$存在哈密尔顿回路；</p>
+<h2 id="一些充分条件">一些充分条件</h2>
+<h3 id="diracs-theorem狄拉克定理">Dirac's theorem狄拉克定理</h3>
+<blockquote>
+<p>对于简单连通图<span class="math inline">\(G\)</span>，如果<span class="math inline">\(G\)</span>的顶点数<span class="math inline">\(n
+\ge 3\)</span>，且所有顶点的度都<span class="math inline">\(\ge
+\frac{n}{2}\)</span>，那么<span class="math inline">\(G\)</span>存在哈密尔顿回路；</p>
 </blockquote>
-<h2 id="必要条件-可以用来判断不是哈密尔顿通路"><a href="#必要条件-可以用来判断不是哈密尔顿通路" class="headerlink" title="必要条件(可以用来判断不是哈密尔顿通路)"></a>必要条件(可以用来判断不是哈密尔顿通路)</h2><blockquote>
-<p>设无向图$G = (V,E)$，非空子集$V_1 \subset V$，则$P(G - V_1)\le \left | V_1 \right |$，其中$p(G - V_1)$为图$G$删除$V_1$中的节点后的连通分支数；</p>
+<h3 id="ores-theorem欧尔定理">Ore's theorem欧尔定理</h3>
+<blockquote>
+<p>对于简单连通图<span class="math inline">\(G\)</span>，如果<span class="math inline">\(G\)</span>的顶点数<span class="math inline">\(n
+\ge 3\)</span>，且对于每一对不相邻的顶点<span class="math inline">\(u,
+v\)</span>，都有<span class="math inline">\(deg(u) + deg(v) \ge
+n\)</span>，那么<span class="math inline">\(G\)</span>存在哈密尔顿回路；</p>
+</blockquote>
+<h2 id="必要条件可以用来判断不是哈密尔顿通路">必要条件(可以用来判断不是哈密尔顿通路)</h2>
+<blockquote>
+<p>设无向图<span class="math inline">\(G = (V,E)\)</span>，非空子集<span class="math inline">\(V_1 \subset V\)</span>，则<span class="math inline">\(P(G - V_1)\le \left | V_1 \right
+|\)</span>，其中<span class="math inline">\(p(G - V_1)\)</span>为图<span class="math inline">\(G\)</span>删除<span class="math inline">\(V_1\)</span>中的节点后的连通分支数；</p>
 </blockquote>
 
     </div>

@@ -185,7 +185,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #03a9f4">
+                <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #00a596">
                     图论
                 </a>
             </span>
@@ -195,27 +195,41 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="相关定义概述"><a href="#相关定义概述" class="headerlink" title="相关定义概述"></a>相关定义概述</h1><ul>
-<li><strong>$\chi (G)$</strong>：图的着色数，the chromatic number of G；</li>
+        <h1 id="相关定义概述">相关定义概述</h1>
+<ul>
+<li><strong><span class="math inline">\(\chi
+(G)\)</span></strong>：图的着色数，the chromatic number of G；</li>
 <li>有点着色，边着色，面着色几种类型；</li>
-<li>$P_G(k)$：色多项式，表示图$G$用$k$种颜色染色的方法数；</li>
+<li><span class="math inline">\(P_G(k)\)</span>：色多项式，表示图<span class="math inline">\(G\)</span>用<span class="math inline">\(k\)</span>种颜色染色的方法数；</li>
 </ul>
-<h1 id="常见图的点着色数"><a href="#常见图的点着色数" class="headerlink" title="常见图的点着色数"></a>常见图的点着色数</h1><blockquote>
-<p>零图（无边只有顶点）：1；<br>完全图$K_n$：n；<br>非零二部图：2；</p>
+<h1 id="常见图的点着色数">常见图的点着色数</h1>
+<blockquote>
+<p>零图（无边只有顶点）：1；<br>
+完全图<span class="math inline">\(K_n\)</span>：n；<br>
+非零二部图：2；</p>
+</blockquote>
+<blockquote>
 <p>定理：简单图的点着色数小于等于最大度数 + 1；</p>
 </blockquote>
-<h1 id="非连通图的着色"><a href="#非连通图的着色" class="headerlink" title="非连通图的着色"></a>非连通图的着色</h1><blockquote>
-<p>如果$G$为非连通图，那么它的色多项式等于它的所有连通分量的乘积；</p>
+<h1 id="非连通图的着色">非连通图的着色</h1>
+<blockquote>
+<p>如果<span class="math inline">\(G\)</span>为非连通图，那么它的色多项式等于它的所有连通分量的乘积；</p>
 </blockquote>
-<h1 id="商图"><a href="#商图" class="headerlink" title="商图"></a>商图</h1><p>把图的顶点按照某种等价类规则划分，直观上就是把两个点捏在一起；<img src="商图.png" alt></p>
-<h1 id="构建色多项式"><a href="#构建色多项式" class="headerlink" title="构建色多项式"></a>构建色多项式</h1><h2 id="法一、尝试通过删边得到好求的色多项式"><a href="#法一、尝试通过删边得到好求的色多项式" class="headerlink" title="法一、尝试通过删边得到好求的色多项式"></a>法一、尝试通过删边得到好求的色多项式</h2><p><img src="色多项式构建定理.png" alt></p>
-<h2 id="法二、韦尔奇鲍威尔法"><a href="#法二、韦尔奇鲍威尔法" class="headerlink" title="法二、韦尔奇鲍威尔法"></a>法二、韦尔奇鲍威尔法</h2><ol>
+<h1 id="商图">商图</h1>
+<p>把图的顶点按照某种等价类规则划分，直观上就是把两个点捏在一起；<img src="商图.png"></p>
+<h1 id="构建色多项式">构建色多项式</h1>
+<h2 id="法一尝试通过删边得到好求的色多项式">法一、尝试通过删边得到好求的色多项式</h2>
+<p><img src="色多项式构建定理.png"></p>
+<h2 id="法二韦尔奇鲍威尔法">法二、韦尔奇鲍威尔法</h2>
+<ol type="1">
 <li>将顶点按照度数递减排序；</li>
 <li>用第一种颜色对度数最大的顶点以及和该点不相邻的所有顶点进行染色；</li>
 <li>对剩余顶点重复上述步骤；</li>
 </ol>
-<h2 id="法三、递推构建色多项式"><a href="#法三、递推构建色多项式" class="headerlink" title="法三、递推构建色多项式"></a>法三、递推构建色多项式</h2><p><img src="色多项式递推构建.png" alt></p>
-<h1 id="色多项式性质"><a href="#色多项式性质" class="headerlink" title="色多项式性质"></a>色多项式性质</h1><p><img src="色多项式性质.png" alt></p>
+<h2 id="法三递推构建色多项式">法三、递推构建色多项式</h2>
+<p><img src="色多项式递推构建.png"></p>
+<h1 id="色多项式性质">色多项式性质</h1>
+<p><img src="色多项式性质.png"></p>
 
     </div>
     
