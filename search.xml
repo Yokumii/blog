@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>计组学习笔记(4)：存储系统I</title>
+      <link href="/blog/2025/04/03/%E8%AE%A1%E7%BB%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(4)%EF%BC%9A%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9FI/"/>
+      <url>/blog/2025/04/03/%E8%AE%A1%E7%BB%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(4)%EF%BC%9A%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9FI/</url>
+      
+        <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉，您输入的密码错误，请检查后重新输入。" data-whm="抱歉, 当前文章不能被校验, 不过您还是可以看看解密后的内容。">  <script id="hbeData" type="hbeData" data-hmacdigest="9fc8729e139847760f7b8b25369aee23cce0bb6364b209a7011b5d72c5a9a9ab">6df07e4654b2f23296fe416e73f530c9407380ccadba7db1819cf6455b64fd34</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">当前文章暂不对外可见，请输入密码后查看！</span>      </label>    </div>  </div></div><script data-pjax src="/blog/lib/hbe.js"></script><link href="/blog/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机组成原理 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> private </tag>
+            
+            <tag> 计算机组成原理 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>阿里云ESC + V2RayA实现科学上网</title>
       <link href="/blog/2025/04/03/%E9%98%BF%E9%87%8C%E4%BA%91ESC%20+%20V2RayA%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
       <url>/blog/2025/04/03/%E9%98%BF%E9%87%8C%E4%BA%91ESC%20+%20V2RayA%E5%AE%9E%E7%8E%B0%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</url>

@@ -42,9 +42,7 @@
 
 
 
-
-
-
+<script src="/blog/js/lib/home.js"></script>
 
 <link rel="stylesheet" href="/blog/css/main.css" />
 
@@ -155,100 +153,120 @@
 </transition>
 
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div class="article">
-    <div>
-        <h1>平面图</h1>
+            <div id="home-head">
+    <div
+        id="home-background"
+        ref="homeBackground"
+        data-images="/blog/images/background.png"
+    ></div>
+    <div id="home-info" @click="homeClick">
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="info">
+            <div class="wrap">
+                <h1>YokumiのBlog</h1>
+                <h3>Here&#39;s an Yokumi...</h3>
+                <h5></h5>
+            </div>
+        </span>
     </div>
-    <div class="info">
+</div>
+<div
+    id="home-posts-wrap"
+    ref="homePostsWrap"
+    true
+>
+    <div id="home-posts">
+        
+
+<div class="post">
+    <a href="/blog/2024/10/26/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/">
+        <h2 class="post-title">卡尔曼滤波</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="category">
+            <a href="/blog/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                数据挖掘与分析
+            </a>
+        </span>
+        
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2024/12/10
+            2024/10/26
         </span>
         
-        <span class="category">
-            <a href="/blog/categories/%E5%9B%BE%E8%AE%BA/">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                图论
-            </a>
-        </span>
-        
-        
-        <span class="tags">
-            <span class="icon">
-                <i class="fa-solid fa-tags fa-fw"></i>
-            </span>
-            
-            
-            <span class="tag">
-                
-                <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #00bcd4">
-                    图论
-                </a>
-            </span>
-            
-        </span>
         
     </div>
-    
-    <div class="content" v-pre>
-        <h1 id="一定义">一、定义</h1>
-<ul>
-<li>如果一个图能画在平面上使得它的边仅在端点相交，则称这个图为可嵌人平面的，或称为<strong>平面图</strong>。平面图G的这样一种画法称为G的一个<strong>平面嵌人</strong>。<br>
-<img src="平面图定义.png" alt="平面图定义"></li>
-<li>一个平图<span class="math inline">\(G\)</span>把平面划分成若干个连通区域，这些区域的闭包称为<span class="math inline">\(G\)</span>的<strong>面</strong>。面边界回路的长度称为<strong>面的次数</strong>，记为<span class="math inline">\(Deg(f)\)</span>或<span class="math inline">\(d(f)\)</span>。</li>
-<li>每个平图恰有一个无界的面，称为<strong>外部面</strong>。</li>
-</ul>
-<h1 id="二相关性质和定理">二、相关性质和定理</h1>
-<h2 id="面的次数之和与边数关系">2.1 面的次数之和与边数关系</h2>
-<blockquote>
-<p><span class="math inline">\(\sum {d(f)} = 2\varepsilon\)</span></p>
-</blockquote>
-<h2 id="euler公式">2.2 Euler公式</h2>
-<blockquote>
-<p>若<span class="math inline">\(G\)</span>是连通平图，则有：<span class="math inline">\(\nu - \varepsilon + \phi = 2\)</span></p>
-</blockquote>
-<blockquote>
-<p><strong>简单平面图存在一个度数小于5的顶点</strong>；<br>
-# 三、判断方法<br>
-# 3.1 必要条件<br>
-1. 若<span class="math inline">\(G\)</span>是<span class="math inline">\(v \ge 3\)</span>的简单平面图，则<span class="math inline">\(\varepsilon \le 3\nu - 6\)</span>。</p>
-<ol start="2" type="1">
-<li>Euler公式</li>
-</ol>
-</blockquote>
-<h2 id="kuratowskis-theorem库拉托夫斯基定理">3.2 Kuratowski’s
-Theorem(库拉托夫斯基定理)</h2>
-<blockquote>
-<p>一个图是平面图当且仅当它不包含<span class="math inline">\(K_{3,3}\)</span>或<span class="math inline">\(K_5\)</span>的剖分图.</p>
-<blockquote>
-<p><strong>剖分图</strong>：把<span class="math inline">\(G\)</span>的边进行一系列剖分得到的图<br>
-<img src="K4剖分图.png" alt="K4剖分图"><br>
-剖分图也可以这么理解：即用Path代替Edge。<br>
-把边<span class="math inline">\((u, v)\)</span>删除，添加一个点<span class="math inline">\(w\)</span>，再添加两条边<span class="math inline">\((u,w)\)</span>和<span class="math inline">\((w,
-v)\)</span>，称之为<strong>初等细分</strong>；<br>
-得到的新图和原图称之为是<strong>同胚(Homeomorphic)的</strong>；</p>
-</blockquote>
-<blockquote>
-<p><strong>Platonic Solids(柏拉图体)</strong>:<img src="柏拉图体1.png" alt="柏拉图体1"><br>
-<strong>顶点数、边数(棱数)、面数的关系</strong>：<br>
-其中，<span class="math inline">\(v\)</span>表示顶点数，<span class="math inline">\(e\)</span>表示棱数，<span class="math inline">\(f\)</span>表示面数，<span class="math inline">\(k\)</span>为每个顶点的出发边的数目，<span class="math inline">\(l\)</span>为每个面上边的数目，<span class="math inline">\(\sum deg(v) = 2e = fl = kv\)</span>.<img src="柏拉图体2.png" alt="柏拉图体2"></p>
-</blockquote>
-</blockquote>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p>个人关于卡尔曼滤波算法的学习笔记</p>
 
+            
+        </div>
     </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        
+        <span class="tag">
+            
+            <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E4%B8%8E%E5%88%86%E6%9E%90/" style="color: #00bcd4">数据挖掘与分析</a>
+        </span>
+        
+    </div>
+    <a href="/blog/2024/10/26/%E5%8D%A1%E5%B0%94%E6%9B%BC%E6%BB%A4%E6%B3%A2/" class="go-post">阅读全文</a>
+</div>
+
+
+        <div class="page-current">
     
+    <a class="page-num" href="/blog/page/5/">
+        <i class="fa-solid fa-caret-left fa-fw"></i>
+    </a>
+    <a class="page-num" href="/blog/">1</a>
+    <span class="page-omit">...</span>
     
-    
+    <span class="current">6</span>
     
     
     
     
 </div>
 
+    </div>
+    
+    <div id="home-card">
+        <div id="card-style">
+    <div id="card-div">
+        <div class="avatar">
+            <img src="/blog/images/avatar.jpg" alt="avatar" />
+        </div>
+        <div class="name">Yokumi</div>
+        <div class="description">
+            <p>这里是Yokumi！</p>
+
+        </div>
+        
+        
+    </div>
+</div>
+
+    </div>
+    
+</div>
             <footer id="footer">
     <div id="footer-wrap">
         <div>
@@ -278,12 +296,6 @@ v)\)</span>，称之为<strong>初等细分</strong>；<br>
         
     </div>
     <script src="/blog/js/main.js"></script>
-    
-    
-
-
-
-
     
 </body>
 </html>
