@@ -157,22 +157,22 @@
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
             <div class="article">
     <div>
-        <h1>9.1 群论Intro</h1>
+        <h1>简述MCP(Model Context Protocols)</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2024/11/3
+            2025/4/4
         </span>
         
         <span class="category">
-            <a href="/blog/categories/%E7%BE%A4%E8%AE%BA/">
+            <a href="/blog/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                群论
+                人工智能
             </a>
         </span>
         
@@ -185,8 +185,15 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E7%BE%A4%E8%AE%BA/" style="color: #ffa2c4">
-                    群论
+                <a href="/blog/tags/LLM/" style="color: #00bcd4">
+                    LLM
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" style="color: #00a596">
+                    人工智能
                 </a>
             </span>
             
@@ -195,84 +202,104 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="binary-operation"><em>Binary operation</em></h1>
-<blockquote>
-<p><strong>Defination:</strong>
-对两个对象进行操作的运算称为二元运算。一般在《离散数学》这门课中只研究离散结构，e.g.
-集合。</p>
-</blockquote>
-<h1 id="some-properties-of-binary-operations"><em>Some Properties of
-Binary Operations</em></h1>
-<h2 id="closure"><em>Closure</em></h2>
-<blockquote>
-<p><strong>Defination:</strong> 设集合 S 有二元运算∗, 若对 S
-中的任意两个元素 <span class="math inline">\(a_1\)</span>、<span class="math inline">\(a_2\)</span>, 都有: <span class="math inline">\(a_1∗a_2∈S\)</span>, 则称运算∗对集合 S 封闭。</p>
-</blockquote>
-<h2 id="commutative"><em>Commutative</em></h2>
-<blockquote>
-<p><strong>Defination:</strong> 交换律也称为Abel 律，设有代数 <span class="math inline">\((S,∗)\)</span>，若对任意 <span class="math inline">\(a_1,a_2∈S\)</span>,都符合等式: <span class="math inline">\(a_1∗a_2=a_2∗a_1\)</span>,那么称代数 <span class="math inline">\((S,∗)\)</span> 运算符合交换律。<br>
-<strong>推广:</strong> 如果 <span class="math inline">\((S,∗)\)</span>
-运算符合交换律，那么对于运算序列 <span class="math inline">\(a_1∗a_2∗...∗a_n\)</span>，设 <span class="math inline">\(θ(12...n)\)</span> 为任意重排列，那么有: <span class="math inline">\(a_θ(1)∗a_θ(2)∗...∗a_θ(n)=a_1∗a_2∗...∗a_n\)</span>。</p>
-</blockquote>
-<h2 id="associative"><em>Associative</em></h2>
-<blockquote>
-<p><strong>Defination:</strong> if * is a binary operation, then * is
-associative or has the associative property:<span class="math inline">\((x * y) * z = x * (y *
-z)\)</span>，在运算过程中不需要再考虑括号了！</p>
-</blockquote>
-<h2 id="distributive"><em>Distributive</em></h2>
-<blockquote>
-<p>略。</p>
-</blockquote>
-<h2 id="de-morgans-laws"><em>De Morgan‘s laws</em></h2>
-<blockquote>
-<p>扔个PPT在这。<img src="imgs/Wondershare%20PDFelement%202024-11-03%2017.07.25.png"></p>
-</blockquote>
-<h2 id="idempotent"><em>Idempotent</em></h2>
-<blockquote>
-<p><strong>Defination:</strong> <span class="math inline">\(a * a =
-a\)</span></p>
-</blockquote>
-<h2 id="note"><em>Note！</em></h2>
-<blockquote>
-<p>An operation has a property means the statement of the property is
-true when the operation is used with any objects in the structure.</p>
-</blockquote>
-<h1 id="a-binary-operation-on-a-set"><em>A binary operation on a
-set</em></h1>
-<blockquote>
-<p><strong>Defination:</strong> Everywhere defined <span class="math inline">\(f:A×A\rightarrow
-A\)</span>，同时需要满足封闭性和运算结果唯一，即双射性质。</p>
-</blockquote>
-<h1 id="tables运算表"><em>Tables(运算表)</em></h1>
-<blockquote>
-<p><strong>Defination:</strong> If A is a finite set, we can define a
-binary operation on A by means of a table.<img src="img/Wondershare%20PDFelement%202024-11-03%2017.15.57.png"></p>
-</blockquote>
-<h1 id="some-special-elements"><em>Some Special Elements</em></h1>
-<h2 id="identity中性元"><em>Identity(中性元)</em></h2>
-<blockquote>
-<p><strong>Defination:</strong> <span class="math inline">\(e∗x=x∗e=x\)</span></p>
-</blockquote>
-<h2 id="zero零元"><em>Zero(零元)</em></h2>
-<blockquote>
-<p><strong>Defination:</strong> <span class="math inline">\(\theta ∗ x=x
-∗ \theta= \theta\)</span></p>
-</blockquote>
-<h2 id="inverse逆元"><em>Inverse(逆元)</em></h2>
-<blockquote>
-<p><strong>Defination:</strong> <span class="math inline">\(x * y = y *
-x = e\)</span>，两者互为逆元</p>
-</blockquote>
-<h2 id="note-1"><em>Note!</em></h2>
-<blockquote>
+        <h1 id="whats-mcp">What's MCP</h1>
+<p>MCP，模型上下文协议，是一种开源标准。如果希望让我们的AI
+Agent能自动使用工具，能与各种数据源建立连接，自动地访问和利用外部信息，那么MCP就是这一过程的中间件。由LLM来决定需要调用哪些工具，但是由于LLM供应商以及各种工具标准并不统一，就MCP标准化指令的执行。即，MCP提供了一种将代理连接到工具的标准化方法。</p>
+<p>MCP作为一种“中间协议层”，可以通过下图来更好地理解，具体架构将在后文阐述；<br>
+<img src="1.png"></p>
+<h1 id="why-s-mcp">Why’ s MCP</h1>
+<p>上面也提到了，LLM供应商以及各种工具标准并不统一，并且函数调用本身就具有局限性，再进一步讲述之前，我们先明确函数调用的概念。</p>
+<p>函数调用（function
+calling）负责将自然语言提示转换为结构化函数调用指令，以便面向工具的系统（如
+MCP 服务器）能够理解并执行作。此阶段的重点是为工具或 API
+生成精确的指令。这就是LLM与具体系统集成的第一阶段；第二阶段才是MCP提供标准化工具执行指令。</p>
+<p>LLM供应商大都提供了函数调用的功能，这里以Deepseek为例，简述函数调用的过程和使用方法（不考虑MCP的使用），具体内容可以进一步参考<a target="_blank" rel="noopener" href="https://api-docs.deepseek.com/zh-cn/guides/function_calling">Deepseek
+API文档</a>；</p>
 <ol type="1">
-<li>单位元以及零元的唯一性</li>
-<li>如果<span class="math inline">\(\left| A \right| &gt; 1, \theta \neq
-e\)</span></li>
-<li>可结合的运算逆元唯一性</li>
+<li>用户提问：北京今天的天气如何？</li>
+<li>LLM理解用户提问，返回 function <code>get_weather(&#123;location: 'Beijing'&#125;)</code>；</li>
+<li>（用户）手动调用 function <code>get_weather(&#123;location: 'Beijing'&#125;)</code>，将返回结果传递给LLM；</li>
+<li>LLM理解结果，并将答案以自然语言形式输出；</li>
 </ol>
+<p>示例代码如下：</p>
+<pre class="python"><code>from openai import OpenAI
+
+def send_messages(messages):
+    response = client.chat.completions.create(
+        model=&quot;deepseek-chat&quot;,
+        messages=messages,
+        tools=tools
+    )
+    return response.choices[0].message
+
+client = OpenAI(
+    api_key=&quot;&lt;your api key&gt;&quot;,
+    base_url=&quot;https://api.deepseek.com&quot;,
+)
+
+tools = [
+    &#123;
+        &quot;type&quot;: &quot;function&quot;,
+        &quot;function&quot;: &#123;
+            &quot;name&quot;: &quot;get_weather&quot;,
+            &quot;description&quot;: &quot;Get weather of an location, the user shoud supply a location first&quot;,
+            &quot;parameters&quot;: &#123;
+                &quot;type&quot;: &quot;object&quot;,
+                &quot;properties&quot;: &#123;
+                    &quot;location&quot;: &#123;
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;description&quot;: &quot;The city and state, e.g. San Francisco, CA&quot;,
+                    &#125;
+                &#125;,
+                &quot;required&quot;: [&quot;location&quot;]
+            &#125;,
+        &#125;
+    &#125;,
+]
+
+messages = [&#123;&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;How&#39;s the weather in Beijing?&quot;&#125;]
+message = send_messages(messages)
+print(f&quot;User&gt;\t &#123;messages[0][&#39;content&#39;]&#125;&quot;)
+
+tool = message.tool_calls[0]
+messages.append(message)
+
+messages.append(&#123;&quot;role&quot;: &quot;tool&quot;, &quot;tool_call_id&quot;: tool.id, &quot;content&quot;: &quot;24℃&quot;&#125;)
+message = send_messages(messages)
+print(f&quot;Model&gt;\t &#123;message.content&#125;&quot;)</code></pre>
+<p>注意上述代码中，我们手动定义了工具的内容，其格式由LLM供应商决定，并且供应商之间标准并不统一。而且，函数调用功能是通过用户手动执行并将结果添加到prompt中实现的。</p>
+<h2 id="mcps-role-in-execution">MCP’s Role in Execution</h2>
+<p>LLM生成函数调用指令后，必须执行这些指令才能提供结果。这就是 MCP
+的用武之地。MCP
+提供了一个标准化的框架来管理执行过程，包括工具发现、调用和响应处理；关于其具体的执行过程，我们先介绍它的架构；</p>
+<h1 id="mcp-architecture">MCP Architecture</h1>
+<p><img src="2.png"></p>
+<p>上图直观展示了MCP的架构，它主要围绕三个组件构成：MCP Server、MCP
+Host、MCP Client；</p>
+<ul>
+<li>MCP
+Server：顾名思义，是MCP的服务端，即集成的工具、函数、结构和数据连接所在的位置，同时负责执行代理给出的指令；</li>
+<li>MCP Host：主机，比如聊天应用程序，用户使用包含代理的应用程序；</li>
+<li>MCP
+Client：MCP的客户端，是主机与服务器之间的接口，负责数据交换；</li>
+</ul>
+<p>当引入MCP后，我们通过Agent代理查询天气的过程变成：</p>
+<ol type="1">
+<li>用户提问：北京今天的天气如何？</li>
+<li>主机连接到LLM，根据问题和服务器提供的工具列表，确定使用哪些MCP
+Server；</li>
+<li>客户端调用所需的MCP Server，执行所选的工具；</li>
+<li>服务器将结果回送给LLM，后者生成最终答案并输出给用户；</li>
+</ol>
+<h1 id="mcp开发">MCP开发</h1>
+<blockquote>
+<p><strong><em>持续更新中</em></strong>；</p>
 </blockquote>
+<p>官方开发文档可参考：<br>
+<a target="_blank" rel="noopener" href="https://modelcontextprotocol.io/introduction">官方开发文档</a></p>
+<h1 id="reference">Reference</h1>
+<p>[1]. <a target="_blank" rel="noopener" href="https://medium.com/@tahirbalarabe2/what-is-model-context-protocol-mcp-architecture-overview-c75f20ba4498">What
+is Model Context Protocol? (MCP) Architecture Overview</a></p>
 
     </div>
     
