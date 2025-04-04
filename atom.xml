@@ -6,7 +6,7 @@
   <link href="https://yokumii.github.io/blog/atom.xml" rel="self"/>
   
   <link href="https://yokumii.github.io/blog/"/>
-  <updated>2025-04-04T05:26:33.544Z</updated>
+  <updated>2025-04-04T07:29:59.502Z</updated>
   <id>https://yokumii.github.io/blog/</id>
   
   <author>
@@ -17,23 +17,25 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
-    <link href="https://yokumii.github.io/blog/2025/04/04/%E8%AE%A1%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(4)%EF%BC%9A%E4%BB%8B%E8%B4%A8%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6/"/>
-    <id>https://yokumii.github.io/blog/2025/04/04/%E8%AE%A1%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(4)%EF%BC%9A%E4%BB%8B%E8%B4%A8%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6/</id>
-    <published>2025-04-04T05:26:33.544Z</published>
-    <updated>2025-04-04T05:26:33.544Z</updated>
+    <title>计网学习笔记(4)：介质访问控制子层</title>
+    <link href="https://yokumii.github.io/blog/2025/04/04/%E8%AE%A1%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(4)%EF%BC%9A%E4%BB%8B%E8%B4%A8%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%AD%90%E5%B1%82/"/>
+    <id>https://yokumii.github.io/blog/2025/04/04/%E8%AE%A1%E7%BD%91%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(4)%EF%BC%9A%E4%BB%8B%E8%B4%A8%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%E5%AD%90%E5%B1%82/</id>
+    <published>2025-04-04T06:00:00.000Z</published>
+    <updated>2025-04-04T07:29:59.502Z</updated>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉，您输入的密码错误，请检查后重新输入。" data-whm="抱歉, 当前文章不能被校验, 不过您还是可以看看解密后的内容。">  <script id="hbeData" type="hbeData" data-hmacdigest="1baa6573176851eab120c2fbc055b1ee0406d9b1f8ff018c5ed4d1733fbabb71">6df07e4654b2f23296fe416e73f530c9e852234f2812f7fd21a6cf5cb8443fa638a587239cb72cb924af811e49b49ca3c2e78ca659b7aeab41ddbe6ca5835b6e9ff067b7e83d6d09706445217bac646a3abd9eca36f926358882a40996c1cff693c97f5fcd473629ecd710af11dc41d70ff6bb694374c75d077d86ce997d9c0a103cd7174f23a148c75ab4a71201827d0de759d654ba444c8dd04073e64c1b1707e47a76c2ba55f21d9e20ff33050b33e23f31fe4113a30603ef29d7914a6a73ed3a2dd0cee9daa1398c444ee45edc276527f2fba3bf98118bb7fb4226443408c3b38445c499c6e65efc31326734ad716663fd67a9aa22dceebc877a17b701bc085dcb54796516411acc6e37846e1e1d75d73ce2b9c48506cb531b2b3e2c04e8636fb7f017b9ad95d4a583db982837e6b0d59dbcd0ea433e21a56b9732e630e099e76aba1d147e7eb24ae0ca765f4e5e7e623f4718d1e7ea2c9228aa99a8aa53fa933b0fef77090883898dc72a8bd96625c06663a704a64ac49bffff2bfa51b0abb3f0d6beee481ed143a78ac3293b75174bbc5011b1b700a974fc2c2f5c592a44eee3fdf3d415d64a5751ae75b2da74c972c562b8d8a453441e1b634a316f2a46387a1218a2b6f455a07c29000b45b575fcf6598d0d4e364202b17e8d37fd40210594282fba8d14b27995e43757da86bc3ec7518ecaba74dfe73239627e8952a8bc20b0045770f6c1312e9aad82584a80fce16750c3787e85f6f2cffd3f4215d69e0015ef41dcccdffab2f8c09f7f5251e0c311f1ca7c6f27b2be5ddc527e75c53ee4d3989600dc4e84e2e51a1117933f060a2d025b3a70c3829e14e30dd1686680cc15333e3bb8cf0f8f4af9e0da7a384ad4697bf7a214a1d65fb688d23e5c74cdf0d1cca493b3e159922eb64b0a5893bec405dfaa5f9228a6d13ad88d97c17d3896173c7e5d2d61672761c36c97d82c851c0685a2d2e7fce21c1325318938ad019ec5cbf02e59d125daf3fe02e737f7954b62798a9b4107180e89b3f697bc734dea1ee824b18cbe5067b9a9e3ce50b295fe211e1522ad09ad01373ad20b1b3ca82d35c5d6f199a6e5b43ed986ff5b88284f29ddd92fa8ad2fe3e6e90a788e4ad3f846fd511f1bacce65adcf31dba8357794fb82550129e73f272eb405d51677e81c5d222c2799a6057d34c757769dac4426019a9a6815dfa1e436bf6fa33c4972341d3b63b0983278a71562156b5a8f16711151ba382a9888febf9c58f8281348bf0b8677d24e83b756b82ba404d86c2a1897593ccbd4beaed691239facbff892ca2d0bbf528ecfed2282e45afbce66f63f5fc00002fb13ef717a26ed7373864c5be725a55ed40f8765c5101672fddf7ef2361638b8924d8cc7c5d509540784a0166e030fe4d1c31c9e2695b0078d9c1d2fc43cb5d5d74370c5a8fbff6743d746ee46fe29c93b4b3e62cd5c2e196a4abcbe9dc3c05f50cd610ef225fb53cee94e81555cde7bd65e281d3a5ba0367bd499914ded6e38b66e3a19f2bf15b49995b6147b086bd6cdc339da66076bc863579a2921e1a1b8b0d00822a4cc5f4aba2b872aaedf95e945ac11a84bcee2481194c5863125fdf5aeef7dfb0dea1b35aac54214d05fb9a6942e0121092e6a1fa68dc1311f9e04820bb56c1f9978a24f6b29c040ef771db908b5739a727e5461f1b940ca9515ed01283c259b9ac5623e70a5cad82774cac8b05844bbfcc7ea1a6398d3ffcf24c07d7b97cf77b7d7e13bcab76eef0067227345b8f5a933283cd14fa0618f9b1fabcecdb657a199b860a83528f41e496a3339a920f363819f9b0af87798145bcbaa9f9eaf1ebb8355e7c40639e70a179cb7b84371d7f8f252625070228493cdee431dbc3b1e951e9f4d0af1e136832900ac3b7da006337f1385bfc0cd31cf453ecd92ce3e9a19f3235ec013ba4956250562af3b89ede217bfd1e0dd0cd94c4848cc0ec6ffe0051ccee2205c5933210d94993db2c8cb801f3414800c1b1988908b099c8a037c7b008c1f178021cea78c8684a1feffcecd3db8c9531c36b142ce0fb06a8b784babc3196181b260b2dd79473354de85c2945e758714075a59b57def8af86cc101bc6cf198df6bba2541ec7e7214a055f86900a7eb50b73f1ed9d4c47748bfe8e26611309e04b02fe6c47231f653a7e9130de0319a472411b689524749013cf78189c42a4b940b45e358eaac339416241808d68c7d9936cafa97b29e7923dc456d8b52a1a311661d018af01ffd185fe96abb787f5e6b99c02e71586e3e51c065276828f86b61ea93c68202ae597ff777e565fe6a99dd85b35e1b997f6e017f798a8a73c4696128e4099ce8b86eb6b939764a85e09cc07ff8bbad202c22f604a535e002fa130ce2abde1a5f60f3b64668eeb965f384584969c1b2718b46827964316848fcc3713570682c43b245449ee528ab9a2948d2520dc9a54b00391779ab6d7affe0e4006ec4b6ab8f2dff48e0e6cdadc6e925bb2a4d72b0064b19de975608d24a29222effd4420115d52e4374fc75ba88262b41f0c753c585dd943cff199ede8b8321cbea2d6a1e2c6ae4c592049d4296473064a32e3ce56363e9e08d696371f0d188ce14f4bb5973de1041f02eb909bcc03006060d76cf247a587a37b345f9c0a492671fae319ac83e229e6c6007c2bb867e8cd2669e8f228f8402096b141cc910df09658044f8586cdb5eb24b795b45d059a20263a8fcb1aed9da1ebf414c68309adc024658fb984d4da8222a4423b30ae6e5a4442991cabfcdf8e31acc3db79d387705937a7a593cf34ad8502d9691d99d9716189fa46390afe65762779eaa6850ac7037aa772ac1ac41ea8e52c8be86a05be5783d96b8b11578ef2d29077d241447172fd8b48077dcc041de93fc8d0a3d2ad5fa5c2d17ec65085d212835597c95333d6de98fd64478491bec47e972266b071b3f3d1c492288e42bc5cf213c8cb45f010330f6d3f9b8664606bff398c730bf5f11e5021dd90a649ab6fca301bd1da35779f3041c87abb8a288551e27bd421494c2b01087a94d0d440cf341514d297bf8593fea1b740ab91efeac523e4b124315d9adf50c8b08c3322c4533f7d43542a61284b84fad4743622710e08ab36300156eedf1d5b16af16aa1a9f9e437380c1b288fdcdf2cb6a3ed08196bd51749929526e95baee36af63fdcbb8de66e7746dd3081226be0c99b4ee05fa99e9ebf33a1f9470d6777a717f7df99ef0d1ac1c1efe22066607ba6074659154a1ca62748ccc7edadc13ceca94edf221e62f8fbd65d82fba08994899c6d42034610a0eaef55a0ea15fe61b795127398a81914a0990b44592cdd15133a40e701d001dde101b1c71e2a8d52203140cfd92422083702f17c87aba2025e295eafb7234a086b1e8ba20c36418ac5aa69a4adf50fe031d7240cb6dd2dc7417035ba11ee7726364b2a9b70da289aaf20a9e89bf6612c5573cbc6ac2d55e87ec002036c87e8e9e6d942ee98891c89083329d90f18e27e64875423ba1b40c1b9322dc34e6f79b6969cb555dd598f81d8d3bbc1db5fa25c521d43893aef934d25380a9f56a75a669e781aa398bc0594d349bc3e2cbcfba13c90cc</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">当前文章暂不对外可见，请输入密码后查看！</span>      </label>    </div>  </div></div><script data-pjax src="/blog/lib/hbe.js"></script><link href="/blog/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
     
     
-      
-      
-    <summary type="html">
-</summary>
-      
+    <summary type="html">计网学习笔记(4)：介质访问控制子层</summary>
     
     
     
+    <category term="计算机网络" scheme="https://yokumii.github.io/blog/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+    <category term="private" scheme="https://yokumii.github.io/blog/tags/private/"/>
+    
+    <category term="计算机网络" scheme="https://yokumii.github.io/blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
     
   </entry>
   
@@ -563,9 +565,9 @@
     <category term="计算机基础" scheme="https://yokumii.github.io/blog/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
     
     
-    <category term="硬件" scheme="https://yokumii.github.io/blog/tags/%E7%A1%AC%E4%BB%B6/"/>
-    
     <category term="计算机基础" scheme="https://yokumii.github.io/blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
+    
+    <category term="硬件" scheme="https://yokumii.github.io/blog/tags/%E7%A1%AC%E4%BB%B6/"/>
     
   </entry>
   
