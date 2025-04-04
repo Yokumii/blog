@@ -185,14 +185,14 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="color: #00a596">
+                <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="color: #ffa2c4">
                     数据结构
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E7%AE%97%E6%B3%95/" style="color: #00bcd4">
+                <a href="/blog/tags/%E7%AE%97%E6%B3%95/" style="color: #ff7d73">
                     算法
                 </a>
             </span>
@@ -202,23 +202,30 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="next数组"><a href="#next数组" class="headerlink" title="next数组"></a>next数组</h1><blockquote>
-<p><code>next[j]=k</code>：k是当模式串中第j个字符与主串中相应字符 “失配”时，在模式串中需重新和主串中该字符进行比较的字符的位置。</p>
+        <h1 id="next数组">next数组</h1>
+<blockquote>
+<p><code>next[j]=k</code>：k是当模式串中第j个字符与主串中相应字符
+“失配”时，在模式串中需重新和主串中该字符进行比较的字符的位置。</p>
 </blockquote>
-<script type="math/tex; mode=display">
+<p><span class="math display">\[
 \left.{next[j]=}\left\{\begin{array}{ll}
-\mathbf{0} & \text{当 j=1 时(代表下一趟比较}\mathrm{i=i+1,j=1})\\\\
-\mathbf{max\{k\mid1<k<j}\text{且前k - 1个元素和后k-1个元素一致}\}&\text{此集合不为空时,下一趟比较i = i ,j = k}\\\\
-\mathbf{1}&\text{其它情況(即$j \ne 1且上述集合为空$)}\end{array}\right.\right.</script><blockquote>
+\mathbf{0} &amp; \text{当 j=1 时(代表下一趟比较}\mathrm{i=i+1,j=1})\\\\
+\mathbf{max\{k\mid1&lt;k&lt;j}\text{且前k -
+1个元素和后k-1个元素一致}\}&amp;\text{此集合不为空时,下一趟比较i = i ,j
+= k}\\\\
+\mathbf{1}&amp;\text{其它情況(即$j \ne
+1且上述集合为空$)}\end{array}\right.\right.
+\]</span></p>
+<blockquote>
 <p><strong>快速填写记法：</strong></p>
 <p>（1）字符串从1开始标号；</p>
 <p>（2）next[1]默认为0；</p>
 <p>（3）next[i] = 前 i -1 位字符串公共前后缀的长度 + 1；</p>
 <p><strong>Notice：</strong></p>
 <p>前缀：除最后一个字符外，一个字符串的全部头部组合；</p>
-<p>后缀：除第一个字符外，一个字符串全部的尾部组合；所以，<code>&quot;aaa&quot;</code>的公共前缀和长度为2。</p>
+<p>后缀：除第一个字符外，一个字符串全部的尾部组合；所以，<code>"aaa"</code>的公共前缀和长度为2。</p>
 </blockquote>
-<pre><code class="lang-c">void GetNext(const char *T, int *next) &#123;
+<pre class="c"><code>void GetNext(const char *T, int *next) &#123;
     int j = 1, k = 0; // j 表示模式串位置, k 是前缀长度
     next[1] = 0;      // 初始化 next 数组
     while (j &lt; strlen(T)) &#123;
@@ -230,25 +237,30 @@
             k = next[k]; // 回退
         &#125;
     &#125;
-&#125;
-</code></pre>
-<h1 id="nextval数组"><a href="#nextval数组" class="headerlink" title="nextval数组"></a>nextval数组</h1><blockquote>
+&#125;</code></pre>
+<h1 id="nextval数组">nextval数组</h1>
+<blockquote>
 <p><strong>引入原因</strong>：next数组中，前后两个相邻的字母如果相同，在匹配过程中遇到需要回退的情况，可以跳过回退到该字母。</p>
 </blockquote>
-<script type="math/tex; mode=display">
+<p><span class="math display">\[
 \begin{array}{l}
-nextval[i] & = 1\\
-nextval[i] & = \left\{\begin{array}{ll}
-nextval[i] = nextval[next[i]] & \text{当$Pattern_i = Pattern_{next[i]}$时}\\\\
-nextval[i] = next[i] & \text{当$Pattern_i \ne Pattern_{next[i]}$时}\end{array}\right.
-\end{array}</script><p><img src="KMP.png" alt></p>
-<h1 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h1><pre><code class="lang-c">#include &lt;stdio.h&gt;
+nextval[i] &amp; = 1\\
+nextval[i] &amp; = \left\{\begin{array}{ll}
+nextval[i] = nextval[next[i]] &amp; \text{当$Pattern_i =
+Pattern_{next[i]}$时}\\\\
+nextval[i] = next[i] &amp; \text{当$Pattern_i \ne
+Pattern_{next[i]}$时}\end{array}\right.
+\end{array}
+\]</span></p>
+<p><img src="KMP.png"></p>
+<h1 id="完整代码">完整代码</h1>
+<pre class="c"><code>#include &lt;stdio.h&gt;
 #include &lt;string.h&gt;
 
 void GetNextVal(const char *T, int *nextval) &#123;
     int j = 1, k = 0; // j 表示模式串位置, k 是前缀长度
     nextval[1] = 0;   // 初始化 nextval 数组
-
+    
     while (j &lt; strlen(T)) &#123;
         if (k == 0 || T[j] == T[k]) &#123;
             j++;
@@ -267,14 +279,14 @@ void GetNextVal(const char *T, int *nextval) &#123;
 int Index_KMP(const char *S, const char *T, int pos) &#123;
     int nextval[100]; // 假设模式串长度不超过 100
     GetNextVal(T, nextval); // 生成 nextval 数组
-
+    
     int i = pos; // 主串的当前指针
     int j = 1;   // 模式串的当前指针
-
+    
     printf(&quot;i\tj\n&quot;);
     while (i &lt;= strlen(S) &amp;&amp; j &lt;= strlen(T)) &#123;
         printf(&quot;%d\t%d\n&quot;, i, j); // 输出当前的 i 和 j 值
-
+        
         if (j == 0 || S[i - 1] == T[j - 1]) &#123;
             i++;
             j++;
@@ -282,7 +294,7 @@ int Index_KMP(const char *S, const char *T, int pos) &#123;
             j = nextval[j]; // 模式串向右移动
         &#125;
     &#125;
-
+    
     if (j &gt; strlen(T)) &#123;
         return i - strlen(T); // 匹配成功，返回匹配位置
     &#125; else &#123;
@@ -293,21 +305,20 @@ int Index_KMP(const char *S, const char *T, int pos) &#123;
 int main() &#123;
     const char S[] = &quot;abcaacabcab&quot;; // 主串
     const char T[] = &quot;abcab&quot;;       // 模式串
-
+    
     printf(&quot;主串: %s\n&quot;, S);
     printf(&quot;模式串: %s\n&quot;, T);
     printf(&quot;匹配过程:\n&quot;);
-
+    
     int pos = Index_KMP(S, T, 1); // 从第一个字符开始匹配
-
+    
     if (pos &gt; 0) &#123;
         printf(&quot;匹配成功，位置: %d\n&quot;, pos);
     &#125; else &#123;
         printf(&quot;匹配失败\n&quot;);
     &#125;
     return 0;
-&#125;
-</code></pre>
+&#125;</code></pre>
 
     </div>
     
