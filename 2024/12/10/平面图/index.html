@@ -195,47 +195,29 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="一定义">一、定义</h1>
-<ul>
-<li>如果一个图能画在平面上使得它的边仅在端点相交，则称这个图为可嵌人平面的，或称为<strong>平面图</strong>。平面图G的这样一种画法称为G的一个<strong>平面嵌人</strong>。<br>
-<img src="平面图定义.png" alt="平面图定义"></li>
-<li>一个平图<span class="math inline">\(G\)</span>把平面划分成若干个连通区域，这些区域的闭包称为<span class="math inline">\(G\)</span>的<strong>面</strong>。面边界回路的长度称为<strong>面的次数</strong>，记为<span class="math inline">\(Deg(f)\)</span>或<span class="math inline">\(d(f)\)</span>。</li>
+        <h1 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h1><ul>
+<li>如果一个图能画在平面上使得它的边仅在端点相交，则称这个图为可嵌人平面的，或称为<strong>平面图</strong>。平面图G的这样一种画法称为G的一个<strong>平面嵌人</strong>。<br><img src="平面图定义.png" alt="平面图定义"></li>
+<li>一个平图$G$把平面划分成若干个连通区域，这些区域的闭包称为$G$的<strong>面</strong>。面边界回路的长度称为<strong>面的次数</strong>，记为$Deg(f)$或$d(f)$。</li>
 <li>每个平图恰有一个无界的面，称为<strong>外部面</strong>。</li>
 </ul>
-<h1 id="二相关性质和定理">二、相关性质和定理</h1>
-<h2 id="面的次数之和与边数关系">2.1 面的次数之和与边数关系</h2>
-<blockquote>
-<p><span class="math inline">\(\sum {d(f)} = 2\varepsilon\)</span></p>
+<h1 id="二、相关性质和定理"><a href="#二、相关性质和定理" class="headerlink" title="二、相关性质和定理"></a>二、相关性质和定理</h1><h2 id="2-1-面的次数之和与边数关系"><a href="#2-1-面的次数之和与边数关系" class="headerlink" title="2.1 面的次数之和与边数关系"></a>2.1 面的次数之和与边数关系</h2><blockquote>
+<p>$\sum {d(f)} = 2\varepsilon$</p>
 </blockquote>
-<h2 id="euler公式">2.2 Euler公式</h2>
-<blockquote>
-<p>若<span class="math inline">\(G\)</span>是连通平图，则有：<span class="math inline">\(\nu - \varepsilon + \phi = 2\)</span></p>
-</blockquote>
-<blockquote>
-<p><strong>简单平面图存在一个度数小于5的顶点</strong>；<br>
-# 三、判断方法<br>
-# 3.1 必要条件<br>
-1. 若<span class="math inline">\(G\)</span>是<span class="math inline">\(v \ge 3\)</span>的简单平面图，则<span class="math inline">\(\varepsilon \le 3\nu - 6\)</span>。</p>
-<ol start="2" type="1">
-<li>Euler公式</li>
+<h2 id="2-2-Euler公式"><a href="#2-2-Euler公式" class="headerlink" title="2.2 Euler公式"></a>2.2 Euler公式</h2><blockquote>
+<p>若$G$是连通平图，则有：$\nu - \varepsilon + \phi = 2$</p>
+<p><strong>简单平面图存在一个度数小于5的顶点</strong>；</p>
+<h1 id="三、判断方法"><a href="#三、判断方法" class="headerlink" title="三、判断方法"></a>三、判断方法</h1><h1 id="3-1-必要条件"><a href="#3-1-必要条件" class="headerlink" title="3.1 必要条件"></a>3.1 必要条件</h1><ol>
+<li><p>若$G$是$v \ge 3$的简单平面图，则$\varepsilon \le 3\nu - 6$。</p>
+</li>
+<li><p>Euler公式</p>
+</li>
 </ol>
 </blockquote>
-<h2 id="kuratowskis-theorem库拉托夫斯基定理">3.2 Kuratowski’s
-Theorem(库拉托夫斯基定理)</h2>
+<h2 id="3-2-Kuratowski’s-Theorem-库拉托夫斯基定理"><a href="#3-2-Kuratowski’s-Theorem-库拉托夫斯基定理" class="headerlink" title="3.2 Kuratowski’s Theorem(库拉托夫斯基定理)"></a>3.2 Kuratowski’s Theorem(库拉托夫斯基定理)</h2><blockquote>
+<p>一个图是平面图当且仅当它不包含$K_{3,3}$或$K_5$的剖分图.</p>
 <blockquote>
-<p>一个图是平面图当且仅当它不包含<span class="math inline">\(K_{3,3}\)</span>或<span class="math inline">\(K_5\)</span>的剖分图.</p>
-<blockquote>
-<p><strong>剖分图</strong>：把<span class="math inline">\(G\)</span>的边进行一系列剖分得到的图<br>
-<img src="K4剖分图.png" alt="K4剖分图"><br>
-剖分图也可以这么理解：即用Path代替Edge。<br>
-把边<span class="math inline">\((u, v)\)</span>删除，添加一个点<span class="math inline">\(w\)</span>，再添加两条边<span class="math inline">\((u,w)\)</span>和<span class="math inline">\((w,
-v)\)</span>，称之为<strong>初等细分</strong>；<br>
-得到的新图和原图称之为是<strong>同胚(Homeomorphic)的</strong>；</p>
-</blockquote>
-<blockquote>
-<p><strong>Platonic Solids(柏拉图体)</strong>:<img src="柏拉图体1.png" alt="柏拉图体1"><br>
-<strong>顶点数、边数(棱数)、面数的关系</strong>：<br>
-其中，<span class="math inline">\(v\)</span>表示顶点数，<span class="math inline">\(e\)</span>表示棱数，<span class="math inline">\(f\)</span>表示面数，<span class="math inline">\(k\)</span>为每个顶点的出发边的数目，<span class="math inline">\(l\)</span>为每个面上边的数目，<span class="math inline">\(\sum deg(v) = 2e = fl = kv\)</span>.<img src="柏拉图体2.png" alt="柏拉图体2"></p>
+<p><strong>剖分图</strong>：把$G$的边进行一系列剖分得到的图<br><img src="K4剖分图.png" alt="K4剖分图"><br>剖分图也可以这么理解：即用Path代替Edge。<br>把边$(u, v)$删除，添加一个点$w$，再添加两条边$(u,w)$和$(w, v)$，称之为<strong>初等细分</strong>；<br>得到的新图和原图称之为是<strong>同胚(Homeomorphic)的</strong>；</p>
+<p><strong>Platonic Solids(柏拉图体)</strong>:<img src="柏拉图体1.png" alt="柏拉图体1"><br><strong>顶点数、边数(棱数)、面数的关系</strong>：<br>其中，$v$表示顶点数，$e$表示棱数，$f$表示面数，$k$为每个顶点的出发边的数目，$l$为每个面上边的数目，$\sum deg(v) = 2e = fl = kv$.<img src="柏拉图体2.png" alt="柏拉图体2"></p>
 </blockquote>
 </blockquote>
 

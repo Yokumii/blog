@@ -185,7 +185,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E7%BE%A4%E8%AE%BA/" style="color: #ff7d73">
+                <a href="/blog/tags/%E7%BE%A4%E8%AE%BA/" style="color: #00bcd4">
                     群论
                 </a>
             </span>
@@ -195,59 +195,38 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="products-semigroups-积半群半群的笛卡尔积"><em>Products
-Semigroups 积半群（半群的笛卡尔积）</em></h1>
-<blockquote>
-<p><strong><em>定理1:</em></strong> 两个半群的笛卡尔积也是半群。<img src="img/Wondershare%20PDFelement%202024-11-04%2018.29.31.png"><br>
-<strong><em>定理2:</em></strong>
-类似，两个幺半群的笛卡尔积也是幺半群且其幺元为<span class="math inline">\((e_S,e_T)\)</span>。<img src="img/Wondershare%20PDFelement%202024-11-04%2018.31.58.png"></p>
+        <h1 id="Products-Semigroups-积半群（半群的笛卡尔积）"><a href="#Products-Semigroups-积半群（半群的笛卡尔积）" class="headerlink" title="Products Semigroups 积半群（半群的笛卡尔积）"></a><em>Products Semigroups 积半群（半群的笛卡尔积）</em></h1><blockquote>
+<p><strong><em>定理1:</em></strong> 两个半群的笛卡尔积也是半群。<img src="img/Wondershare%20PDFelement%202024-11-04%2018.29.31.png" alt><br><strong><em>定理2:</em></strong> 类似，两个幺半群的笛卡尔积也是幺半群且其幺元为$(e_S,e_T)$。<img src="img/Wondershare%20PDFelement%202024-11-04%2018.31.58.png" alt></p>
 </blockquote>
-<h1 id="congruence-relation-同余关系"><em>Congruence relation
-同余关系</em></h1>
+<h1 id="Congruence-relation-同余关系"><a href="#Congruence-relation-同余关系" class="headerlink" title="Congruence relation 同余关系"></a><em>Congruence relation 同余关系</em></h1><blockquote>
+<p><strong><em>Defination:</em></strong> 在半群$(S,∗)$上的等价关系R，如果满足：任意$a R a’$并且$b R b’$ $\Rightarrow$ $(a∗b) R (a’∗ b’)$，则称$R$为半群上的同余关系。<br><strong><em>回忆:</em></strong> 等价关系满足自反性、对称性、传递性。<br><strong><em>解题法:</em></strong></p>
 <blockquote>
-<p><strong><em>Defination:</em></strong> 在半群<span class="math inline">\((S,∗)\)</span>上的等价关系R，如果满足：任意<span class="math inline">\(a R a&#39;\)</span>并且<span class="math inline">\(b R b&#39;\)</span> <span class="math inline">\(\Rightarrow\)</span> <span class="math inline">\((a∗b) R (a&#39;∗ b&#39;)\)</span>，则称<span class="math inline">\(R\)</span>为半群上的同余关系。<br>
-<strong><em>回忆:</em></strong>
-等价关系满足自反性、对称性、传递性。<br>
-<strong><em>解题法:</em></strong><br>
-&gt; <strong><em>Prove Step:</em></strong> R是半群上的同余关系？<br>
-&gt; 1. 等价关系显然（已知给出）。<br>
-&gt; 2. 根据<span class="math inline">\(a R a&#39;\)</span>和<span class="math inline">\(b R b&#39;\)</span>可以推出 <span class="math inline">\((a∗b) R (a&#39;∗ b&#39;)\)</span>。<br>
-<strong><em>Note!</em></strong> 等价关系不一定是同余关系。反例：<img src="img/Wondershare%20PDFelement%202024-11-04%2018.53.08.png"></p>
+<p><strong><em>Prove Step:</em></strong> R是半群上的同余关系？</p>
+<ol>
+<li>等价关系显然（已知给出）。</li>
+<li>根据$a R a’$和$b R b’$可以推出 $(a∗b) R (a’∗ b’)$。<br><strong><em>Note!</em></strong> 等价关系不一定是同余关系。反例：<img src="img/Wondershare%20PDFelement%202024-11-04%2018.53.08.png" alt></li>
+</ol>
 </blockquote>
-<h1 id="quotients-semigroups-商半群">Quotients Semigroups 商半群</h1>
-<blockquote>
-<p><strong><em>Defination:</em></strong> <img src="img/Wondershare%20PDFelement%202024-11-04%2019.01.38.png"><br>
-其实就是按照以下步骤定义了一种二元运算：<br>
-&gt; 1. <span class="math inline">\(S =
-\{a,b,c,……,a&#39;,b&#39;,c&#39;,……\}\)</span><br>
-&gt; 2. 设定价类<span class="math inline">\([a] = \{a, a&#39;,……\},[b] =
-\{b, b&#39;,……\},[c] = \{c, c&#39;,……\},……\)</span><br>
-&gt; 3. <span class="math inline">\(S/R =
-\{[a],[b],[c],……\}\)</span><br>
-&gt; 4. <span class="math inline">\(S/R \times S/R =
-\{([a],[a]),([a],[b]),([a],[c]),……\}\)</span><br>
-&gt; 5. <span class="math inline">\(f:S/R \times S/R \rightarrow
-S/R\)</span><br>
-&gt; 6. <span class="math inline">\(f([a],[b]) = [c] \leftrightarrow [a]
-\otimes [b] = [c]\)</span><br>
-<strong><em>Note!</em></strong> 注意<span class="math inline">\(\otimes\)</span>是等价类之间的运算，可以用代入等价类中的元素进行计算，即<span class="math inline">\([a] \otimes [b] = [a * b]\)</span><br>
-<strong><em>幺半群导出的商半群也是幺半群</em></strong> <img src="img/Wondershare%20PDFelement%202024-11-04%2019.43.44.png"><br>
-<strong><em>Prove:</em></strong><br>
-<span class="math inline">\([a] \otimes [e] = [a * e] = [a]=[e * a] =
-[e] \otimes [a]\)</span></p>
 </blockquote>
-<h1 id="natural-homomorphism-自然同态"><em>Natural Homomorphism
-自然同态</em></h1>
+<h1 id="Quotients-Semigroups-商半群"><a href="#Quotients-Semigroups-商半群" class="headerlink" title="Quotients Semigroups 商半群"></a>Quotients Semigroups 商半群</h1><blockquote>
+<p><strong><em>Defination:</em></strong> <img src="img/Wondershare%20PDFelement%202024-11-04%2019.01.38.png" alt><br>其实就是按照以下步骤定义了一种二元运算：</p>
 <blockquote>
-<p><strong><em>Defination:</em></strong> <span class="math inline">\(f_R:S \rightarrow S/R\space defined\space by\space
-f_R(a) = [a]\)</span>，显然满射(onto)。<img src="img/Wondershare%20PDFelement%202024-11-04%2019.51.57.png"></p>
+<ol>
+<li>$S = \{a,b,c,……,a’,b’,c’,……\}$</li>
+<li>设定价类$[a] = \{a, a’,……\},[b] = \{b, b’,……\},[c] = \{c, c’,……\},……$</li>
+<li>$S/R = \{[a],[b],[c],……\}$</li>
+<li>$S/R \times S/R = \{([a],[a]),([a],[b]),([a],[c]),……\}$</li>
+<li>$f:S/R \times S/R \rightarrow S/R$</li>
+<li>$f([a],[b]) = [c] \leftrightarrow [a] \otimes [b] = [c]$<br><strong><em>Note!</em></strong> 注意$\otimes$是等价类之间的运算，可以用代入等价类中的元素进行计算，即$[a] \otimes [b] = [a <em> b]$<br>**</em>幺半群导出的商半群也是幺半群<strong><em> <img src="img/Wondershare%20PDFelement%202024-11-04%2019.43.44.png" alt>
+</em></strong>Prove:<em>**<br>$[a] \otimes [e] = [a </em> e] = [a]=[e * a] = [e] \otimes [a]$</li>
+</ol>
 </blockquote>
-<h1 id="fundamental-homomorphism-同态基本定理">*Fundamental Homomorphism
-同态基本定理</h1>
-<blockquote>
-<p><strong><em>Defination:</em></strong> 设<span class="math inline">\(f:S \rightarrow T\)</span>是同态，<span class="math inline">\(R\)</span>是<span class="math inline">\(S\)</span>上的关系且被定义为<span class="math inline">\(aRb \iff f(a) = f(b)\)</span>，那么有：<br>
-1）<span class="math inline">\(R\)</span>是同余关系；<br>
-2）<span class="math inline">\(T\)</span>和<span class="math inline">\(S/R\)</span>同构；<img src="img/Wondershare%20PDFelement%202024-11-04%2020.17.07.png"></p>
+</blockquote>
+<h1 id="Natural-Homomorphism-自然同态"><a href="#Natural-Homomorphism-自然同态" class="headerlink" title="Natural Homomorphism 自然同态"></a><em>Natural Homomorphism 自然同态</em></h1><blockquote>
+<p><strong><em>Defination:</em></strong> $f_R:S \rightarrow S/R\space defined\space by\space f_R(a) = [a]$，显然满射(onto)。<img src="img/Wondershare%20PDFelement%202024-11-04%2019.51.57.png" alt></p>
+</blockquote>
+<h1 id="Fundamental-Homomorphism-同态基本定理"><a href="#Fundamental-Homomorphism-同态基本定理" class="headerlink" title="*Fundamental Homomorphism 同态基本定理"></a>*Fundamental Homomorphism 同态基本定理</h1><blockquote>
+<p><strong><em>Defination:</em></strong> 设$f:S \rightarrow T$是同态，$R$是$S$上的关系且被定义为$aRb \iff f(a) = f(b)$，那么有：<br>1）$R$是同余关系；<br>2）$T$和$S/R$同构；<img src="img/Wondershare%20PDFelement%202024-11-04%2020.17.07.png" alt></p>
 </blockquote>
 
     </div>

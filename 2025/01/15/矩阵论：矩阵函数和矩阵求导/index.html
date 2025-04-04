@@ -185,7 +185,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E7%9F%A9%E9%98%B5%E8%AE%BA/" style="color: #00a596">
+                <a href="/blog/tags/%E7%9F%A9%E9%98%B5%E8%AE%BA/" style="color: #ff7d73">
                     矩阵论
                 </a>
             </span>
@@ -195,162 +195,105 @@
     </div>
     
     <div class="content" v-pre>
-        <h2 id="矩阵函数介绍">矩阵函数介绍</h2>
-<p>矩阵函数与通常的函数类似，但是因变量和自变量都为 <span class="math inline">\(n\)</span> 阶矩阵。定义如下：</p>
-<h3 id="定义">定义</h3>
-<p>设一元函数 <span class="math inline">\(f(z)\)</span> 能展开为 <span class="math inline">\(z\)</span> 的幂级数：<br>
-<span class="math display">\[
-f(z) = \sum_{k = 0}^{\infty} c_k z^k, \quad (|z| &lt; r)
-\]</span><br>
-其中 <span class="math inline">\(r &gt; 0\)</span>
-表示该幂级数的收敛半径。当 <span class="math inline">\(n\)</span> 阶矩阵
-<span class="math inline">\(A\)</span> 的谱半径 <span class="math inline">\(\rho (A) &lt; r\)</span> 时，把收敛矩阵幂级数
-<span class="math inline">\(\sum_{k = 0}^{\infty} c_k A^k\)</span>
-的和称为 <strong>矩阵函数</strong>，记为 <span class="math inline">\(f(A)\)</span>，即：<br>
-<span class="math display">\[
-f(A) = \sum_{k = 0}^{\infty} c_k A^k
-\]</span></p>
-<p>通过以上定义和一些基本函数，可以导出 <strong>矩阵指数函数</strong> 和
-<strong>矩阵三角函数</strong>，并推得一系列等式。</p>
+        <h2 id="矩阵函数介绍"><a href="#矩阵函数介绍" class="headerlink" title="矩阵函数介绍"></a>矩阵函数介绍</h2><p>矩阵函数与通常的函数类似，但是因变量和自变量都为 $n$ 阶矩阵。定义如下：</p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>设一元函数 $f(z)$ 能展开为 $z$ 的幂级数：</p>
+<script type="math/tex; mode=display">
+f(z) = \sum_{k = 0}^{\infty} c_k z^k, \quad (|z| < r)</script><p>其中 $r &gt; 0$ 表示该幂级数的收敛半径。当 $n$ 阶矩阵 $A$ 的谱半径 $\rho (A) &lt; r$ 时，把收敛矩阵幂级数 $\sum_{k = 0}^{\infty} c_k A^k$ 的和称为 <strong>矩阵函数</strong>，记为 $f(A)$，即：</p>
+<script type="math/tex; mode=display">
+f(A) = \sum_{k = 0}^{\infty} c_k A^k</script><p>通过以上定义和一些基本函数，可以导出 <strong>矩阵指数函数</strong> 和 <strong>矩阵三角函数</strong>，并推得一系列等式。</p>
 <hr>
-<h2 id="函数矩阵对矩阵的导数">函数矩阵对矩阵的导数</h2>
-<p>我们已经在上一节中引入了矩阵函数的概念，类似地，也有微分和导数的定义。相较于标量导数，对矩阵函数的求导和微分较为复杂。在具体应用中，如梯度下降等算法，这部分内容具有重要意义，因此需要深入理解。</p>
-<p>首先，我们将标量求导拓展到向量，对于 <span class="math inline">\(\frac{\partial y}{\partial
-x}\)</span>，存在以下几种情况：</p>
-<ol type="1">
-<li><span class="math inline">\(y\)</span> 是标量：
-<ul>
-<li><span class="math inline">\(x\)</span> 是标量</li>
-<li><span class="math inline">\(\boldsymbol{x}\)</span>
-是向量（默认为列向量，即 <span class="math inline">\(\boldsymbol{x} =
-(x_1, x_2, x_3)^\top\)</span>）</li>
-<li><span class="math inline">\(\boldsymbol{X}\)</span> 是矩阵</li>
-</ul></li>
-<li><span class="math inline">\(\boldsymbol{y}\)</span> 是向量，例如
-<span class="math inline">\(f_{3\times 1}(x) = (f_1, f_2,
-f_3)^\top\)</span>：
-<ul>
+<h2 id="函数矩阵对矩阵的导数"><a href="#函数矩阵对矩阵的导数" class="headerlink" title="函数矩阵对矩阵的导数"></a>函数矩阵对矩阵的导数</h2><p>我们已经在上一节中引入了矩阵函数的概念，类似地，也有微分和导数的定义。相较于标量导数，对矩阵函数的求导和微分较为复杂。在具体应用中，如梯度下降等算法，这部分内容具有重要意义，因此需要深入理解。</p>
+<p>首先，我们将标量求导拓展到向量，对于 $\frac{\partial y}{\partial x}$，存在以下几种情况：</p>
+<ol>
+<li>$y$ 是标量：<ul>
+<li>$x$ 是标量</li>
+<li>$\boldsymbol{x}$ 是向量（默认为列向量，即 $\boldsymbol{x} = (x_1, x_2, x_3)^\top$）</li>
+<li>$\boldsymbol{X}$ 是矩阵</li>
+</ul>
+</li>
+<li>$\boldsymbol{y}$ 是向量，例如 $f_{3\times 1}(x) = (f_1, f_2, f_3)^\top$：<ul>
 <li>标量变元</li>
 <li>向量变元</li>
 <li>矩阵变元</li>
-</ul></li>
-<li><span class="math inline">\(\boldsymbol{Y}\)</span>
-是矩阵，同样有三种变元。</li>
+</ul>
+</li>
+<li>$\boldsymbol{Y}$ 是矩阵，同样有三种变元。</li>
 </ol>
-<p>简单理解：<br>
-- <strong>分子布局</strong>：分子是列向量形式，分母是行向量形式<br>
-- <strong>分母布局</strong>：分子是行向量形式，分母是列向量形式</p>
-<h3 id="向量化操作">向量化操作</h3>
-<p>在具体分析之前，先介绍矩阵的
-<strong>向量化操作</strong>。例如，对矩阵 <span class="math inline">\(\boldsymbol{X} \in \mathbb{R}^{m \times
-n}\)</span> 进行列优先展开：<br>
-<span class="math display">\[
+<p>简单理解：</p>
+<ul>
+<li><strong>分子布局</strong>：分子是列向量形式，分母是行向量形式</li>
+<li><strong>分母布局</strong>：分子是行向量形式，分母是列向量形式</li>
+</ul>
+<h3 id="向量化操作"><a href="#向量化操作" class="headerlink" title="向量化操作"></a>向量化操作</h3><p>在具体分析之前，先介绍矩阵的 <strong>向量化操作</strong>。例如，对矩阵 $\boldsymbol{X} \in \mathbb{R}^{m \times n}$ 进行列优先展开：</p>
+<script type="math/tex; mode=display">
 \text{vec}(\boldsymbol{X}) =
 \begin{bmatrix}
-x_{11} &amp; x_{21} &amp; \dots &amp; x_{m1} &amp; \dots &amp; x_{1n}
-&amp; x_{2n} &amp; \dots &amp; x_{mn}
-\end{bmatrix}^\top
-\]</span></p>
-<h3 id="向量变元的实值标量函数">向量变元的实值标量函数</h3>
-<ol type="1">
-<li><strong>行向量偏导（分子布局）</strong><br>
-<span class="math display">\[
-\boldsymbol{D}_{\boldsymbol{x}} f = \frac{\partial f}{\partial
-\boldsymbol{x}^\top} =
+x_{11} & x_{21} & \dots & x_{m1} & \dots & x_{1n} & x_{2n} & \dots & x_{mn}
+\end{bmatrix}^\top</script><h3 id="向量变元的实值标量函数"><a href="#向量变元的实值标量函数" class="headerlink" title="向量变元的实值标量函数"></a>向量变元的实值标量函数</h3><ol>
+<li><strong>行向量偏导（分子布局）</strong><script type="math/tex; mode=display">
+\boldsymbol{D}_{\boldsymbol{x}} f = \frac{\partial f}{\partial \boldsymbol{x}^\top} =
 \begin{bmatrix}
-\frac{\partial f}{\partial x_1} &amp; \frac{\partial f}{\partial x_2}
-&amp; \dots &amp; \frac{\partial f}{\partial x_n}
-\end{bmatrix}
-\]</span></li>
-<li><strong>梯度向量偏导（分母布局）</strong><br>
-<span class="math display">\[
+\frac{\partial f}{\partial x_1} & \frac{\partial f}{\partial x_2} & \dots & \frac{\partial f}{\partial x_n}
+\end{bmatrix}</script></li>
+<li><strong>梯度向量偏导（分母布局）</strong><script type="math/tex; mode=display">
 \nabla_{\boldsymbol{x}} f = \frac{\partial f}{\partial \boldsymbol{x}} =
 \begin{bmatrix}
 \frac{\partial f}{\partial x_1} \\
 \frac{\partial f}{\partial x_2} \\
 \vdots \\
 \frac{\partial f}{\partial x_n}
-\end{bmatrix}
-\]</span></li>
+\end{bmatrix}</script></li>
 </ol>
-<h3 id="矩阵变元的实值标量函数">矩阵变元的实值标量函数</h3>
-<p>从标量求导到矩阵求导，就是分子的 <strong>转置、向量化</strong>
-和分母的 <strong>转置、向量化</strong> 的各种组合。</p>
-<p>对于 <strong>分子布局</strong>：<br>
-- 分子：标量、列向量、矩阵向量化后的列向量<br>
--
-分母：标量、列向量转置后的行向量、矩阵的转置矩阵、矩阵向量化后的列向量转置后的行向量</p>
-<p>对于 <strong>分母布局</strong>：<br>
--
-分子：标量、列向量转置后的行向量、矩阵向量化后的列向量转置后的行向量<br>
-- 分母：标量、列向量、矩阵自身、矩阵向量化后的列向量</p>
+<h3 id="矩阵变元的实值标量函数"><a href="#矩阵变元的实值标量函数" class="headerlink" title="矩阵变元的实值标量函数"></a>矩阵变元的实值标量函数</h3><p>从标量求导到矩阵求导，就是分子的 <strong>转置、向量化</strong> 和分母的 <strong>转置、向量化</strong> 的各种组合。</p>
+<p>对于 <strong>分子布局</strong>：</p>
+<ul>
+<li>分子：标量、列向量、矩阵向量化后的列向量</li>
+<li>分母：标量、列向量转置后的行向量、矩阵的转置矩阵、矩阵向量化后的列向量转置后的行向量</li>
+</ul>
+<p>对于 <strong>分母布局</strong>：</p>
+<ul>
+<li>分子：标量、列向量转置后的行向量、矩阵向量化后的列向量转置后的行向量</li>
+<li>分母：标量、列向量、矩阵自身、矩阵向量化后的列向量</li>
+</ul>
 <p>在机器学习领域，常见的主要有以下三种形式：</p>
-<ol type="1">
-<li><strong>梯度</strong>：<br>
-<span class="math display">\[
-\nabla_{\boldsymbol{x}} \overset{\mathrm{def}}{=}
-\left[\frac{\partial}{\partial x_{1}},\frac{\partial}{\partial
-x_{2}},\cdots,\frac{\partial}{\partial
-x_{n}}\right]^{T}=\frac{\partial}{\partial\boldsymbol{x}}
-\]</span></li>
-<li><strong>Hesse矩阵</strong>：<br>
-<span class="math display">\[
+<ol>
+<li><strong>梯度</strong>：<script type="math/tex; mode=display">
+\nabla_{\boldsymbol{x}} \overset{\mathrm{def}}{=} \left[\frac{\partial}{\partial x_{1}},\frac{\partial}{\partial x_{2}},\cdots,\frac{\partial}{\partial x_{n}}\right]^{T}=\frac{\partial}{\partial\boldsymbol{x}}</script></li>
+<li><strong>Hesse矩阵</strong>：<script type="math/tex; mode=display">
 H(f) =
 \begin{bmatrix}
-\frac{\partial^2f}{\partial x_1^2} &amp; \frac{\partial^2f}{\partial
-x_1\partial x_2} &amp; \cdots &amp; \frac{\partial^2f}{\partial
-x_1\partial x_n} \\
-\frac{\partial^2f}{\partial x_2\partial x_1} &amp;
-\frac{\partial^2f}{\partial x_2^2} &amp; \cdots &amp;
-\frac{\partial^2f}{\partial x_2\partial x_n} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-\frac{\partial^2f}{\partial x_n\partial x_1} &amp;
-\frac{\partial^2f}{\partial x_n\partial x_2} &amp; \cdots &amp;
-\frac{\partial^2f}{\partial x_n^2}
-\end{bmatrix}
-\]</span></li>
-<li><strong>Jacobi矩阵</strong>：<br>
-<span class="math display">\[
+\frac{\partial^2f}{\partial x_1^2} & \frac{\partial^2f}{\partial x_1\partial x_2} & \cdots & \frac{\partial^2f}{\partial x_1\partial x_n} \\
+\frac{\partial^2f}{\partial x_2\partial x_1} & \frac{\partial^2f}{\partial x_2^2} & \cdots & \frac{\partial^2f}{\partial x_2\partial x_n} \\
+\vdots & \vdots & \ddots & \vdots \\
+\frac{\partial^2f}{\partial x_n\partial x_1} & \frac{\partial^2f}{\partial x_n\partial x_2} & \cdots & \frac{\partial^2f}{\partial x_n^2}
+\end{bmatrix}</script></li>
+<li><strong>Jacobi矩阵</strong>：<script type="math/tex; mode=display">
 \begin{bmatrix}
-\frac{\partial y_1}{\partial x_1} &amp; \cdots &amp; \frac{\partial
-y_1}{\partial x_n} \\
-\vdots &amp; \ddots &amp; \vdots \\
-\frac{\partial y_m}{\partial x_1} &amp; \cdots &amp; \frac{\partial
-y_m}{\partial x_n}
-\end{bmatrix}
-\]</span></li>
+\frac{\partial y_1}{\partial x_1} & \cdots & \frac{\partial y_1}{\partial x_n} \\
+\vdots & \ddots & \vdots \\
+\frac{\partial y_m}{\partial x_1} & \cdots & \frac{\partial y_m}{\partial x_n}
+\end{bmatrix}</script></li>
 </ol>
-<p>不难发现：<br>
-- 若 <span class="math inline">\(f(x)\)</span> 是一个标量函数，则
-<strong>Jacobi矩阵是一个向量</strong>，等于 <span class="math inline">\(f(x)\)</span>
-的梯度，Hesse矩阵是一个二维矩阵<br>
-- 若 <span class="math inline">\(f(x)\)</span> 是一个向量值函数，则
-<strong>Jacobi矩阵是一个二维矩阵</strong>，Hesse矩阵是一个三维矩阵<br>
-- <strong>梯度是 Jacobi 矩阵的特例</strong>，梯度的 Jacobi 矩阵就是
-Hesse 矩阵，这其实就是 <strong>一阶偏导与二阶偏导的关系</strong></p>
+<p>不难发现：</p>
+<ul>
+<li>若 $f(x)$ 是一个标量函数，则 <strong>Jacobi矩阵是一个向量</strong>，等于 $f(x)$ 的梯度，Hesse矩阵是一个二维矩阵</li>
+<li>若 $f(x)$ 是一个向量值函数，则 <strong>Jacobi矩阵是一个二维矩阵</strong>，Hesse矩阵是一个三维矩阵</li>
+<li><strong>梯度是 Jacobi 矩阵的特例</strong>，梯度的 Jacobi 矩阵就是 Hesse 矩阵，这其实就是 <strong>一阶偏导与二阶偏导的关系</strong></li>
+</ul>
 <hr>
-<h2 id="自动求导与链式法则">自动求导与链式法则</h2>
-<p>在实际应用问题中，标量求导中的 <strong>链式法则</strong>
-也可以拓展到向量乃至矩阵。在使用程序计算时，库函数一般采用
-<strong>自动求导</strong>
-方式，而不是一般的符号求导或数值求导。自动求导应用了链式法则，并将整个计算过程表示成一个
-<strong>无环图</strong>，其中包括两种模式：</p>
-<ol type="1">
-<li><strong>正向积累</strong>：<br>
-<span class="math display">\[
+<h2 id="自动求导与链式法则"><a href="#自动求导与链式法则" class="headerlink" title="自动求导与链式法则"></a>自动求导与链式法则</h2><p>在实际应用问题中，标量求导中的 <strong>链式法则</strong> 也可以拓展到向量乃至矩阵。在使用程序计算时，库函数一般采用 <strong>自动求导</strong> 方式，而不是一般的符号求导或数值求导。自动求导应用了链式法则，并将整个计算过程表示成一个 <strong>无环图</strong>，其中包括两种模式：</p>
+<ol>
+<li><strong>正向积累</strong>：<script type="math/tex; mode=display">
 \frac{\partial \boldsymbol{z}^{(i)}}{\partial \boldsymbol{x}} =
 \frac{\partial \boldsymbol{z}^{(i-1)}}{\partial \boldsymbol{x}} \cdot
-\frac{\partial \boldsymbol{z}^{(i)}}{\partial \boldsymbol{z}^{(i-1)}}
-\]</span></li>
-<li><strong>反向传递</strong>：<br>
-<span class="math display">\[
+\frac{\partial \boldsymbol{z}^{(i)}}{\partial \boldsymbol{z}^{(i-1)}}</script></li>
+<li><strong>反向传递</strong>：<script type="math/tex; mode=display">
 \frac{\partial f}{\partial \boldsymbol{z}^{(i-1)}} =
 \frac{\partial f}{\partial \boldsymbol{z}^{(i)}} \cdot
-\frac{\partial \boldsymbol{z}^{(i)}}{\partial \boldsymbol{z}^{(i-1)}}
-\]</span></li>
+\frac{\partial \boldsymbol{z}^{(i)}}{\partial \boldsymbol{z}^{(i-1)}}</script></li>
 </ol>
 <p>反向传递过程需要存储中间变量，导致内存复杂度比正向积累高。</p>
-<p>其在实际场景中的主要应用就是神经网络，在神经网络的正向传播中，我们将输入数据通过网络层逐层传递，计算出最终的输出值。我们的目标是计算神经网络的输出<span class="math inline">\(\hat{y}\)</span>和损失函数<span class="math inline">\(\mathcal{L}\)</span>的值。而反向传播用于计算损失函数对所有网络参数的梯度。</p>
+<p>其在实际场景中的主要应用就是神经网络，在神经网络的正向传播中，我们将输入数据通过网络层逐层传递，计算出最终的输出值。我们的目标是计算神经网络的输出$\hat{y}$和损失函数$\mathcal{L}$的值。而反向传播用于计算损失函数对所有网络参数的梯度。</p>
 <p>在实际应用问题中，由于反向传播的链路过长，涉及到多次激活函数关于净输入的偏导数矩阵、当前层输入关于净输入的偏导数矩阵的连乘，如果这个矩阵的谱半径小于一，那么随着反向传播的进行，回传的梯度信号衰减地越厉害，这使得越是网络浅层的参数地梯度越微弱，那么其越难得到很好地更新。这就是<strong>梯度消失</strong>问题。</p>
 
     </div>
