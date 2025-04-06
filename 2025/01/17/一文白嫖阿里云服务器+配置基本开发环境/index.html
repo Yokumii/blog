@@ -1,0 +1,469 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>YokumiのBlog</title>
+        <link rel="icon" href="/blog/images/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="/blog/images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://s4.zstatic.net" />
+<script src="https://s4.zstatic.net/ajax/libs/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.cn" />
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+<link
+    rel="stylesheet"
+    href="https://fonts.googleapis.cn/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap"
+/>
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://s4.zstatic.net/ajax/libs/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="/blog/js/lib/highlight.js"></script>
+
+
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/KaTeX/0.16.9/katex.min.css" />
+<script src="/blog/js/lib/math.js"></script>
+
+
+<script src="/blog/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/blog/css/main.css" />
+
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/blog/atom.xml" title="YokumiのBlog" type="application/atom+xml">
+</head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存 浏览器默认开启</p>
+                    <img src="/blog/images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/blog/">
+            <span>YOKUMIのBLOG</span>
+        </a>
+        
+        <a href="/blog/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/blog/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/blog/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/blog/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/blog/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;YOKUMIのBLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/blog/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/blog/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>一文白嫖阿里云服务器+配置基本开发环境</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2025/1/17
+        </span>
+        
+        <span class="category">
+            <a href="/blog/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                云服务器
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="color: #00bcd4">
+                    云服务器
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="零白嫖步骤">零、<del>（白嫖）</del>步骤</h1>
+<p>阿里云的学生优惠会送一张无门槛300元代金券（传送门： <a target="_blank" rel="noopener" href="https://university.aliyun.com/">阿里云高校计划_云工开物_助力高校科研与教育加速-阿里云</a>
+），刚好够白嫖用券专区中的小服务器一整年（还多出15块可以买个20g的流量包）；个人配置如下：</p>
+<ul>
+<li><strong>实例规格</strong>：<a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/25378.html?spm=5176.ecscore_server.0.0.38314df5CTmW3g#e">ecs.e-c1m1.large</a>；</li>
+<li><strong>CPU&amp;内存</strong>：2核2G；</li>
+<li><strong>操作系统</strong>：Ubuntu 22.04 LTS 64位；</li>
+<li><strong>带宽计费方式</strong>：按使用流量；</li>
+<li><strong>公网带宽</strong>：5 Mbps；</li>
+</ul>
+<blockquote>
+<p><del><strong>注</strong>：别选固定带宽，这是另外的价钱；</del></p>
+</blockquote>
+<p>白嫖完后，进入配置；</p>
+<h1 id="一本地远程连接">一、本地远程连接</h1>
+<h2 id="密钥对认证">1.1 密钥对认证</h2>
+<p>由于本人采用密钥对进行认证，在创建并绑定密钥对后会自动下载一个
+<code>.pem</code> 的文件到本地，ssh连接需要采用以下方式：</p>
+<ol type="1">
+<li>直接连接：</li>
+</ol>
+<pre class="bash"><code>ssh -i ~/.ssh/你的私钥文件 用户名@服务器IP</code></pre>
+<ol start="2" type="1">
+<li>简化连接方式</li>
+</ol>
+<p>每次手动输入私钥文件显然过于不便了，我们可以将私钥文件添加到SSH配置文件中；</p>
+<pre class="bash"><code>nano ~/.ssh/config</code></pre>
+<p>增加配置如下：</p>
+<pre><code>Host 服务器别名(随便取)
+  HostName 服务器IP 
+  User 用户名 
+  IdentityFile ~/.ssh/你的私钥文件 
+  Port 22</code></pre>
+<p>按下 <code>^x</code> 和 <code>y</code>
+保存后，可以直接采用服务器别名连接：</p>
+<pre class="bash"><code>ssh 服务器别名</code></pre>
+<h2 id="常见问题">1.2 常见问题</h2>
+<ol type="1">
+<li>连接时报错：</li>
+</ol>
+<pre><code>Warning: Permanently added &#39;你的服务器IP&#39; (ED25519) to the list of known hosts. @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ @ WARNING: UNPROTECTED PRIVATE KEY FILE! @ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Permissions 0644 for &#39;你的私钥文件地址&#39; are too open. It is required that your private key files are NOT accessible by others. This private key will be ignored. Load key &quot;你的私钥文件地址&quot;: bad permissions 用户名@服务器IP: Permission denied (publickey).</code></pre>
+<p>这是因为SSH出于安全考虑，要求私钥文件的权限必须足够严格，不允许其他用户访问。你需要修改私钥文件的权限，确保只有你自己可以读取和写入：</p>
+<pre class="bash"><code>chmod 600 ~/.ssh/你的私钥文件</code></pre>
+<h1 id="二基本环境配置">二、基本环境配置</h1>
+<h2 id="基本工具安装">2.1 基本工具安装</h2>
+<ol type="1">
+<li>系统更新</li>
+</ol>
+<pre class="bash"><code>sudo apt update
+sudo apt upgrade -y</code></pre>
+<ol start="2" type="1">
+<li>基本工具安装（有些已经自带）</li>
+</ol>
+<pre class="bash"><code>sudo apt install -y build-essential curl wget git vim htop net-tools</code></pre>
+<ol start="3" type="1">
+<li>防火墙配置</li>
+</ol>
+<pre class="bash"><code>sudo apt install -y ufw
+sudo ufw allow ssh
+sudo ufw allow http
+sudo ufw allow https
+sudo ufw enable</code></pre>
+<h2 id="安装docker">2.2 安装Docker</h2>
+<p>以下步骤也可以直接参考 <a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/ubuntu/">Docker
+官方文档</a>；</p>
+<pre class="bash"><code># 安装所需依赖
+sudo apt install -y apt-transport-https ca-certificates gnupg lsb-release
+
+# 添加 Docker 的官方 GPG 密钥（通过阿里云镜像）
+sudo mkdir -p /etc/apt/keyrings &amp;&amp; \
+curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg &amp;&amp; \
+echo &quot;deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable&quot; | sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null &amp;&amp; \
+sudo apt-get update
+
+# 安装最新的 Docker
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</code></pre>
+<h3 id="常见问题-1">常见问题</h3>
+<p>由于运营商网络等不稳定因素可能导致镜像加速器无法成功拉取到指定版本的容器镜像，阿里云提供了免费的镜像加速器，配置步骤如下：</p>
+<ol type="1">
+<li>登录<a target="_blank" rel="noopener" href="https://cr.console.aliyun.com/?spm=a2c4g.11186623.0.0.27881d82EVUzaG">容器镜像服务控制台</a>。</li>
+<li>在左侧导航栏选择<strong>镜像工具</strong> &gt; <strong>镜像加速器</strong></li>
+<li>在<strong>镜像加速器</strong>页面获取<strong>加速器地址</strong>。</li>
+</ol>
+<p>接下来，在云服务器上更新 Docker 配置：</p>
+<pre class="bash"><code>sudo mkdir -p /etc/docker 
+sudo tee /etc/docker/daemon.json &lt;&lt;-&#39;EOF&#39; 
+&#123; 
+    &quot;registry-mirrors&quot;: [&quot;你的镜像加速器地址&quot;] 
+&#125; 
+EOF
+sudo systemctl daemon-reload 
+sudo systemctl restart docker</code></pre>
+<p>最后，验证是否可以成功拉取 Docker Hub镜像：</p>
+<pre><code>sudo docker run hello-world</code></pre>
+<p>如果看到以下输出，说明成功拉取！</p>
+<pre><code>Hello from Docker!
+This message shows that your installation appears to be working correctly.</code></pre>
+<h2 id="配置-git">2.3 配置 git</h2>
+<ol type="1">
+<li>这里采用使用 SSH 密钥认证，首先在云服务器上生成 SSH 密钥对；</li>
+</ol>
+<pre class="bash"><code>ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</code></pre>
+<p>可以直接一路回车到底，默认情况下，密钥会保存到
+<code>~/.ssh/id_rsa</code>；</p>
+<ol start="2" type="1">
+<li>将公钥添加到 GitHub 账户</li>
+</ol>
+<pre class="bash"><code># 查看公钥内容
+cat ~/.ssh/id_rsa.pub</code></pre>
+<p>复制后，登录到 <strong>GitHub</strong>，进入
+<strong>Settings</strong> -&gt; <strong>SSH and GPG keys</strong>，点击
+<strong>New SSH key</strong>，将公钥复制到 GitHub 的文本框中并保存；</p>
+<ol start="3" type="1">
+<li>验证连接</li>
+</ol>
+<pre class="bash"><code># 测试连接
+ssh -T git@github.com</code></pre>
+<p>如果配置成功，会观察到输出如下信息：</p>
+<pre><code>Hi username! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</code></pre>
+<h2 id="安装-anaconda">2.4 安装 Anaconda</h2>
+<ol type="1">
+<li>下载 Anaconda 的安装包</li>
+</ol>
+<p>你可以在 <a target="_blank" rel="noopener" href="https://repo.anaconda.com/archive/">官网</a>
+自行查找需要的版本，替换以下链接即可：</p>
+<pre class="bash"><code>wget https://repo.anaconda.com/archive/Anaconda3-2024.10-1-Linux-x86_64.sh</code></pre>
+<ol start="2" type="1">
+<li>安装anaconda</li>
+</ol>
+<pre class="bash"><code># 授予可执行权限
+chmod +x Anaconda3-2024.10-1-Linux-x86_64.sh
+
+# 执行
+./Anaconda3-2024.10-1-Linux-x86_64.sh</code></pre>
+<p>然后疯狂回车（中间需要输入一次yes）即可；</p>
+<ol start="3" type="1">
+<li>验证安装</li>
+</ol>
+<p>打开新的终端，输入：</p>
+<pre class="bash"><code>conda --version</code></pre>
+<p>如果输出正确的 conda 版本，则说明安装成功并且正确配置环境变量；</p>
+<pre><code>conda 24.9.2</code></pre>
+<h2 id="安装-mysql">2.5 安装 MySQL</h2>
+<ol type="1">
+<li>安装 MySQL APT 存储库</li>
+</ol>
+<pre class="bash"><code>sudo wget https://dev.mysql.com/get/mysql-apt-config_0.8.33-1_all.deb</code></pre>
+<ol start="2" type="1">
+<li>安装 MySQL 服务器</li>
+</ol>
+<pre class="bash"><code>#安装 MySQL 服务器
+sudo apt install -y mysql-server
+#启动 MySQL 服务
+sudo systemctl start mysql
+#检查启动状态
+sudo systemctl status mysql
+#在系统启动时自动启动。
+sudo systemctl enable mysql</code></pre>
+<ol start="3" type="1">
+<li>安装安全向导（可选）</li>
+</ol>
+<pre class="bash"><code>sudo mysql_secure_installation</code></pre>
+<p>它会让你自信选择安全策略，包括如下内容：</p>
+<ul>
+<li>Would you like to setup VALIDATE PASSWORD component?
+<ul>
+<li>是否需要启用 <code>VALIDATE PASSWORD</code> 组件？</li>
+</ul></li>
+<li>There are three levels of password validation policy:
+<ul>
+<li>LOW Length &gt;= 8</li>
+<li>MEDIUM Length &gt;= 8, numeric, mixed case, and special
+characters</li>
+<li>STRONG Length &gt;= 8, numeric, mixed case, special characters and
+dictionary file</li>
+<li>这里选择输入 2
+，表示设置密码策略要求密码至少包含一个大写字母、一个小写字母、一个数字和一个特殊字符，并且密码总长度至少为8个字符；</li>
+</ul></li>
+<li>Remove anonymous users?
+<ul>
+<li>是否移除匿名用户？</li>
+<li>这里输入 y ，表示移除；</li>
+</ul></li>
+<li>Disallow root login remotely?
+<ul>
+<li>禁止MySQL的 <code>root</code> 用户从远程登录；</li>
+<li>这里选择 y；</li>
+</ul></li>
+<li>Remove test database and access to it?
+<ul>
+<li>是否需要移除MySQL自带的 <code>test</code> 数据库？</li>
+<li>无所谓，删了吧；</li>
+</ul></li>
+<li>Reload privilege tables now?
+<ul>
+<li>输入 y ，重新加载权限表，使得更改生效；</li>
+</ul></li>
+</ul>
+<ol start="4" type="1">
+<li>配置安全组规则</li>
+</ol>
+<p>配置安全组时，MySQL
+默认使用3306端口。确保实例安全组的入站规则开放3306端口。如果选择了不同的端口，请根据实际情况调整安全组设置。具体步骤请参考<a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/ecs/user-guide/add-a-security-group-rule#concept-sm5-2wz-xdb">添加安全组规则</a>。</p>
+<ol start="5" type="1">
+<li>添加用于远程访问的用户</li>
+</ol>
+<p>将以下输入的 <code>&lt;username&gt;</code> 和
+<code>&lt;password&gt;</code> 部分自行修改；</p>
+<pre class="bash"><code>sudo mysql -uroot -p \
+-e &quot;CREATE USER &#39;&lt;username&gt;&#39;@&#39;%&#39; IDENTIFIED BY &#39;&lt;password&gt;&#39;;&quot; \
+-e &quot;GRANT ALL PRIVILEGES ON *.* TO &#39;&lt;username&gt;&#39;@&#39;%&#39; WITH GRANT OPTION;&quot; \
+-e &quot;FLUSH PRIVILEGES;&quot;</code></pre>
+<p>执行后需要输入 root 账户的密码；</p>
+<ol start="6" type="1">
+<li>登录 mysql 账户验证</li>
+</ol>
+<pre class="bash"><code>sudo mysql -u &lt;username&gt; -p</code></pre>
+<p>输入密码后，进入 mysql 环境，成功！</p>
+<p>输入以下内容可以退出 mysql 环境：</p>
+<pre class="mysql"><code>exit;</code></pre>
+<blockquote>
+<p><strong>注</strong>：不定期随缘更新中...</p>
+</blockquote>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+            <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2025 YokumiのBlog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Yokumi
+        </div>
+        
+    </div>
+</footer>
+
+<script>
+  var event = new Event('hexo-blog-decrypt');
+  window.dispatchEvent(event);
+</script>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="/blog/js/main.js"></script>
+    
+    
+
+
+
+
+    
+</body>
+</html>
