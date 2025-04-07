@@ -418,6 +418,40 @@ dictionary file</li>
 <blockquote>
 <p><strong>注</strong>：不定期随缘更新中...</p>
 </blockquote>
+<h2 id="配置-node.js-开发环境">2.6 配置 Node.js 开发环境</h2>
+<ol type="1">
+<li>下载 NVM 源码</li>
+</ol>
+<pre class="bash"><code>git clone https://gitee.com/mirrors/nvm.git ~/.nvm &amp;&amp; cd ~/.nvm &amp;&amp; git checkout `git describe --abbrev=0 --tags`</code></pre>
+<ol start="2" type="1">
+<li>配置环境变量</li>
+</ol>
+<pre class="bash"><code>sudo sh -c &#39;echo &quot;. ~/.nvm/nvm.sh&quot; &gt;&gt; /etc/profile&#39;
+source /etc/profile</code></pre>
+<ol start="3" type="1">
+<li>设置镜像源</li>
+</ol>
+<pre class="bash"><code>export NVM_NODEJS_ORG_MIRROR=https://npmmirror.com/mirrors/node</code></pre>
+<ol start="4" type="1">
+<li>自行下载所需版本，例如：</li>
+</ol>
+<pre class="bash"><code>nvm install v23.3.0</code></pre>
+<p>若观察到以下输出，说明安装成功：</p>
+<pre><code>Computing checksum with sha256sum
+Checksums matched!
+Now using node v23.3.0 (npm v10.9.0)
+Creating default alias: default -&gt; v23.3.0</code></pre>
+<h2 id="配置-java-环境">2.7 配置 Java 环境</h2>
+<ol type="1">
+<li>安装所需版本的JDK（以Java 1.8 为例）：</li>
+</ol>
+<pre class="bash"><code>sudo apt-get install -y openjdk-8-jdk</code></pre>
+<p>如果需要下载其他版本，可以运行以下命令查看：</p>
+<pre class="bash"><code>sudo apt search openjdk</code></pre>
+<ol start="2" type="1">
+<li>验证安装</li>
+</ol>
+<pre class="bash"><code>java -version</code></pre>
 
     </div>
     
