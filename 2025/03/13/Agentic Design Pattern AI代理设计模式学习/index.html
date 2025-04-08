@@ -157,22 +157,22 @@
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
             <div class="article">
     <div>
-        <h1>图论题型</h1>
+        <h1>Agentic Design Pattern AI代理设计模式学习</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2024/12/17
+            2025/3/13
         </span>
         
         <span class="category">
-            <a href="/blog/categories/%E5%9B%BE%E8%AE%BA/">
+            <a href="/blog/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                图论
+                人工智能
             </a>
         </span>
         
@@ -185,8 +185,8 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #ff7d73">
-                    图论
+                <a href="/blog/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" style="color: #00bcd4">
+                    人工智能
                 </a>
             </span>
             
@@ -195,119 +195,72 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="度序列可简单图化">10.1.1 度序列可简单图化</h1>
+        <h1 id="零概述-overview">零、概述 Overview</h1>
+<p>我们要让 LLM
+一次性根据我们的提示生成一个应用的所有前端代码或一整篇论文，LLM
+一次性输出最终
+Token，不修改，显然是较为困难并且效果不佳的。但是，如果使用代理设计流（Agent
+Workflow），让 LLM
+按照编排的工作流，多次提示，每个步骤都有优化任务，不断迭代改进输出，类似人拆解复杂任务、收集信息、改进迭代并最终达到满意结果的过程。</p>
+<p>以编写文档为例，工作流大致涉及以下步骤：</p>
+<ol type="1">
+<li>撰写文档大纲；</li>
+<li>查询本地知识库或网络收集资料；</li>
+<li>撰写初稿；</li>
+<li>检查初稿并修正不合理之处；</li>
+<li>如此迭代到文档符合要求；</li>
+</ol>
+<p>代理设计模式主要包括：</p>
+<ol type="1">
+<li><strong>Reflection Pattern</strong>：反思模式，LLM
+可以通过反思自己的行为成为更有效的代理；</li>
+<li><strong>Tool Use Pattern</strong>：工具使用模式；</li>
+<li><strong>Planning Pattern</strong>：规划模式；</li>
+<li><strong>Multi-Agent Pattern</strong>：多代理模式；</li>
+</ol>
+<h1 id="壹reflection-pattern">壹、Reflection Pattern</h1>
+<p>反思模式类似于我们直接与大模型对话，通过不断提示大模型达到我们想要的输出。代理设计模式中，需要将提供反馈的步骤自动化。</p>
+<p>比如可以设计 Prompt 如下：</p>
+<pre><code>现有以下任务X：略；以下是用于任务X的代码：略；请你仔细检查代码的正确性、风格和效率，并就如何改进它给出建设性的批评和建议；</code></pre>
+<p>然后，将之前生成的代码和检查后的反馈一起作为 Context 输入给 LLM，让
+LLM 根据反馈建议修改代码；</p>
+<p>一个简单的示意图如下：<img src="https://raw.githubusercontent.com/Yokumii/MyPicBucket/img/img/202504081117237.png"></p>
+<p>当然，实际应用中会涉及多次迭代，以获得更高的精度；</p>
+<h2 id="应用self-rag">应用：SELF-RAG</h2>
+<p>SELF-RAG
+在检索以及生成的过程中引入了自我反思机制，下图直观呈现了它和传统 RAG
+的区别：<img src="https://raw.githubusercontent.com/Yokumii/MyPicBucket/img/img/202504081124295.png"></p>
+<h1 id="贰tool-use-pattern">贰、Tool Use Pattern</h1>
+<p>代理通过调用 API 来获取预训练模型权重中缺少的额外信息，比如调用 Web
+搜索、访问本地知识库、执行代码等等；</p>
+<h1 id="叁planning-pattern">叁、Planning Pattern</h1>
+<p>前面已经提到，复杂的问题往往需要拆解为多个步骤。我们可以事先就搭建好代理工作流，但是在代理规划模式下，Agent
+能动态决定需要采取的步骤。</p>
+<p>关于任务的分解，主要有以下几种方式：</p>
+<h2 id="chain-of-thought思维链cot">Chain of Thought(思维链CoT)</h2>
+<p>通过“逐步思考”实现复杂推理，</p>
 <blockquote>
-<p><strong>可简单图化的充要条件</strong>：<img src="Havel定理.png"></p>
-<p><strong>例题</strong>：<img src="可简单图化例题.png"></p>
+<p>可参考内容</p>
+</blockquote>
+<p>[1] <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2201.11903?utm_campaign=The%20Batch&amp;utm_source=hs_email&amp;utm_medium=email&amp;_hsenc=p2ANqtz-8Kh954rkXmE4vgpKvro3Klpjhn7IuT-Y_eXIYtgVIq9PTzwa5zFWX7FZZqv1tuDEEsTDuY">Chain-of-Thought
+Prompting Elicits Reasoning in Large Language Models</a>, Wei et al.
+(2022)；</p>
+<h2 id="tree-of-thought">Tree of Thought</h2>
+<p>在前者的基础上进行了扩展，对于每个步骤生成了多个思考，建立树状结构，然后执行
+BFS 或 DFS，通过分类器或多数投票进行评估；</p>
+<h1 id="肆multi-agent-collaboration">肆、Multi-Agent Collaboration</h1>
+<p>Multi-Agent
+Collaboration，即多代理协作，顾名思义，对于一个复杂的任务，拆分成不同的任务，并交给不同代理去做。虽然现在
+LLM
+的上下文限制不断提升，但对于一个复杂的任务，比如开发一个较为复杂的软件系统，单个
+LLM
+并不一定能达到较好的效果。而如果像游戏公司一样，将不同部分交给专业的人去做，比如策划、客户端开发、服务端开发、TA、QA、美术等等，让不同的
+Agent 完成不同的子任务，可能能达到更好的效果。</p>
 <blockquote>
-<p><strong>解法</strong>：每次度序列按非递增顺序排列，删除度最大的节点，更新其他节点的度，重新排列，继续重复上述过程。有2种不合理的情况：<br>
-（1）某次对剩下序列排序后，最大的度数（设为d1）超过了剩下的顶点数；<br>
-（2）对最大度数后面的d1个数各减1后，出现了负数。</p>
+<p>可参考内容</p>
 </blockquote>
-<p><strong>应用</strong>：<strong>Frogs' Neighborhood</strong></p>
-<blockquote>
-<p><strong>Description</strong></p>
-<blockquote>
-<p>未名湖附近共<span class="math inline">\(N\)</span>个大小湖泊<span class="math inline">\(L_1, L_2,
-\cdots, L_n\)</span>(其中包括未名湖)，每个湖泊<span class="math inline">\(L_i\)</span>里住着一只青蛙<span class="math inline">\(F_i(1 \le i \le N)\)</span>。如果湖泊<span class="math inline">\(L_i\)</span>和<span class="math inline">\(L_j\)</span>之间有水路相连，则青蛙<span class="math inline">\(F_i\)</span>和<span class="math inline">\(F_j\)</span>互称为邻居。现在已知每只青蛙的邻居数目<span class="math inline">\(x_1, x_2,
-\cdots, x_n\)</span>，请你给出每两个湖泊之间的相连关系。</p>
-</blockquote>
-<p><strong>Input</strong></p>
-<blockquote>
-<p>第一行是测试数据的组数<span class="math inline">\(T(0 \le T \le
-20)\)</span>。每组数据包括两行，第一行是整数<span class="math inline">\(N(2 &lt; N &lt; 10)\)</span>，第二行是<span class="math inline">\(N\)</span>个整数，<span class="math inline">\(x_1, x_2,\cdots, x_n(0
-\le x_i \le N)\)</span>。</p>
-</blockquote>
-<p><strong>Output</strong></p>
-<blockquote>
-<p>对输入的每组测试数据，如果不存在可能的相连关系，输出"NO"。否则输出"YES"，并用<span class="math inline">\(N\times
-N\)</span>的矩阵表示湖泊间的相邻关系，即如果湖泊<span class="math inline">\(i\)</span>与湖泊<span class="math inline">\(j\)</span>之间有水路相连，则第<span class="math inline">\(i\)</span>行的第<span class="math inline">\(j\)</span>个数字为<span class="math inline">\(1\)</span>，否则为<span class="math inline">\(0\)</span>。每两个数字之间输出一个空格。如果存在多种可能，只需给出一种符合条件的情形。相邻两组测试数据之间输出一个空行。</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<p><strong>Source</strong></p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="http://poj.org/searchproblem?field=source&amp;key=POJ+Monthly--2004.05.15+Alcyone%40pku">POJ
-Monthly--2004.05.15 Alcyone@pku</a></p>
-</blockquote>
-<p><strong>参考代码</strong></p>
-</blockquote>
-</blockquote>
-<pre class="cpp"><code>#include &lt;cstdio&gt;
-#include &lt;cstring&gt;
-#include &lt;iostream&gt;
-#include &lt;algorithm&gt;
-using namespace std;
-
-struct node &#123;
-    int degree, id; // 顶点的度数和标号
-&#125; v[20];
-
-int map[20][20];
-
-bool cmp(node a, node b) &#123;
-    return a.degree &gt; b.degree; // 按度数降序排序
-&#125;
-
-int main() &#123;
-    int t, n, flag;
-    scanf(&quot;%d&quot;, &amp;t);  // 输入测试数据组数
-    while (t--) &#123;
-        scanf(&quot;%d&quot;, &amp;n);  // 输入当前测试的顶点数量
-        for (int i = 0; i &lt; n; i++) &#123;
-            scanf(&quot;%d&quot;, &amp;v[i].degree);  // 输入每个顶点的度数
-            v[i].id = i;  // 记录顶点编号
-        &#125;
-
-        memset(map, 0, sizeof(map));  // 初始化邻接矩阵
-        flag = 1;
-
-        // 贪心算法：依次处理每个顶点，尝试连接符合要求的邻接顶点
-        for (int k = 0; k &lt; n; k++) &#123;
-            sort(v + k, v + n, cmp);  // 对剩余的顶点按度数排序
-            int i = v[k].id;  // 当前要连的顶点编号
-            int d1 = v[k].degree;  // 当前节点的度数
-
-            if (d1 &gt; n - k - 1) &#123;  // 如果当前节点的度数大于剩余顶点数，无法构图
-                flag = 0;
-                break;
-            &#125;
-
-            // 从当前顶点开始，逐步连接其邻居，并减少相应邻居的度数
-            for (int r = 1; r &lt;= d1 &amp;&amp; flag; r++) &#123;
-                int j = v[k + r].id;  // 当前要连接的顶点编号
-                if (v[k + r].degree &lt;= 0) &#123;  // 如果有度数为负的节点，说明构图失败
-                    flag = 0;
-                    break;
-                &#125;
-                v[k + r].degree--;  // 减少邻居的度数
-                map[i][j] = map[j][i] = 1;  // 在邻接矩阵中标记连接
-            &#125;
-        &#125;
-
-        if (flag) &#123;
-            printf(&quot;YES\n&quot;);
-            // 输出邻接矩阵
-            for (int i = 0; i &lt; n; i++) &#123;
-                for (int j = 0; j &lt; n; j++) &#123;
-                    if (j) printf(&quot; &quot;);
-                    printf(&quot;%d&quot;, map[i][j]);
-                &#125;
-                printf(&quot;\n&quot;);
-            &#125;
-        &#125; else &#123;
-            printf(&quot;NO\n&quot;);
-        &#125;
-
-        if (t) printf(&quot;\n&quot;);  // 如果不是最后一组数据，输出空行
-    &#125;
-    return 0;
-&#125;</code></pre>
-<h1 id="计算两点之间长度为k的通路数counting-paths-by-adjacency-matrices">10.1.2
-计算两点之间长度为k的通路数Counting Paths by Adjacency Matrices</h1>
-<p><img src="计算两点间通路数.png"><br>
-类似求传递闭包。<img src="计算两点间通路数2.png"></p>
-<h1 id="section">10.1.3</h1>
+<p>[1] <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2307.07924?utm_campaign=The%20Batch&amp;utm_source=hs_email&amp;utm_medium=email&amp;_hsenc=p2ANqtz-8TZzur2df1qdnGx09b-Fg94DTsc3-xXao4StKvKNU2HR51el3n8yOm0CPSw6GiAoLQNKua">Communicative
+Agents for Software Development</a>, Qian et al. (2023)；</p>
 
     </div>
     
