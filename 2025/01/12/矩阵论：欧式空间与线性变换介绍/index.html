@@ -195,336 +195,168 @@
     </div>
     
     <div class="content" v-pre>
-        <h2 id="欧式空间与线性变换介绍">欧式空间与线性变换介绍</h2>
-<p>欧式（Euclid）空间作为一种特殊的线性空间，我们先引入线性空间的概念。</p>
-<h3 id="定义-1-线性空间">定义 1: 线性空间</h3>
-<p>设 <span class="math inline">\(V\)</span> 是一个非空集合，它的元素用
-<span class="math inline">\(x, y, z\)</span> 等表示，称为向量；<span class="math inline">\(K\)</span> 是一个数域，它的元素用 <span class="math inline">\(k, l, m\)</span> 表示，如果 <span class="math inline">\(V\)</span> 满足以下条件：</p>
-<ol type="1">
-<li>在 <span class="math inline">\(V\)</span> 中定义一个加法运算，即当
-<span class="math inline">\(x,y\in V\)</span> 时，有唯一的和 <span class="math inline">\(x + y\in V\)</span>，且满足以下性质：
+        <h2 id="欧式空间与线性变换介绍"><a href="#欧式空间与线性变换介绍" class="headerlink" title="欧式空间与线性变换介绍"></a>欧式空间与线性变换介绍</h2><p>欧式（Euclid）空间作为一种特殊的线性空间，我们先引入线性空间的概念。</p>
+<h3 id="定义-1-线性空间"><a href="#定义-1-线性空间" class="headerlink" title="定义 1: 线性空间"></a>定义 1: 线性空间</h3><p>设 $V$ 是一个非空集合，它的元素用 $x, y, z$ 等表示，称为向量；$K$ 是一个数域，它的元素用 $k, l, m$ 表示，如果 $V$ 满足以下条件：</p>
+<ol>
+<li><p>在 $V$ 中定义一个加法运算，即当 $x,y\in V$ 时，有唯一的和 $x + y\in V$，且满足以下性质：</p>
 <ul>
-<li><strong>结合律</strong>: <span class="math inline">\(x + (y + z) =
-(x + y) + z\)</span>;</li>
-<li><strong>交换律</strong>: <span class="math inline">\(x + y = y +
-x\)</span>;</li>
-<li><strong>零元素存在性</strong>: <span class="math inline">\(\exists
-0, s.t. x + 0 = x\)</span>;</li>
-<li><strong>负元素存在性</strong>: <span class="math inline">\(\forall
-x\in V,\exists y\in V, s.t.x + y = 0\)</span>，记 <span class="math inline">\(y = -x\)</span>;</li>
-</ul></li>
-<li>在 <span class="math inline">\(V\)</span> 中定义数乘运算，即当 <span class="math inline">\(x\in V,k \in K\)</span> 时，有唯一的乘积 <span class="math inline">\(kx\in V\)</span>，且满足以下性质：
-<ul>
-<li><strong>因子分配律</strong>: <span class="math inline">\(k(x+y) = kx
-+ ky\)</span>;</li>
-<li><strong>分配律</strong>: <span class="math inline">\((k+l)x = kx +
-lx\)</span>;</li>
-<li><strong>结合律</strong>: <span class="math inline">\(k(lx) =
-(kl)x\)</span>;</li>
-<li><strong>中性元</strong>: <span class="math inline">\(1 x =
-x\)</span>;</li>
-</ul></li>
-</ol>
-<p>则称 <span class="math inline">\(V\)</span> 是数域 <span class="math inline">\(K\)</span> 上的线性空间。</p>
-<p>定义中的 8 条性质非常重要。如果对于数域 <span class="math inline">\(K\)</span>，向量空间 <span class="math inline">\(V\)</span>，设加群 <span class="math inline">\((V,
-+)\)</span>（<span class="math inline">\(+\)</span> 为 <span class="math inline">\(V\)</span>
-上满足交换律的运算），不难验证其满足群的定义。定义 <span class="math inline">\(K \times V \rightarrow V: (k, \alpha) \rightarrow
-k\alpha\)</span>（即 <span class="math inline">\(V\)</span>
-上的数乘运算），可以验证 <span class="math inline">\(V\)</span> 是一个
-<span class="math inline">\(K\)</span>-模。即，线性空间是一类特殊的模。</p>
-<p>为借助数量运算以实现向量的运算，还要引入向量的坐标。</p>
-<h3 id="定义-2-线性空间的基">定义 2: 线性空间的基</h3>
-<p>设 <span class="math inline">\(V\)</span> 是数域 <span class="math inline">\(K\)</span> 上的线性空间，<span class="math inline">\(x_1,x_2,\cdots,x_r\in V\)</span>，如果它满足：</p>
-<ol type="1">
-<li><span class="math inline">\(x_1,x_2,\cdots,x_r\)</span>
-线性无关;</li>
-<li><span class="math inline">\(\forall x \in V\)</span> 都是 <span class="math inline">\(x_1,x_2,\cdots,x_r\)</span> 的线性组合;</li>
-</ol>
-<p>则称 <span class="math inline">\(x_1,x_2,\cdots,x_r\)</span> 是 <span class="math inline">\(V\)</span> 的一个 <strong>基</strong>，称 <span class="math inline">\(x_i(i=1,2,\cdots,r)\)</span> 为
-<strong>基向量</strong>。</p>
-<h3 id="定义-3-坐标系">定义 3: 坐标系</h3>
-<p>称线性空间 <span class="math inline">\(V^n\)</span> 上的一个基 <span class="math inline">\(x_1, x_2, \cdots, x_n\)</span> 为 <span class="math inline">\(V^n\)</span> 的一个
-<strong>坐标系</strong>。设向量 <span class="math inline">\(x \in
-V^n\)</span>，它在该基下的线性表示式为</p>
-<p><span class="math display">\[
-x = \xi_1x_1 + \xi_2x_2 + \cdots + \xi_nx_n
-\]</span></p>
-<p>则称 <span class="math inline">\(\xi_1,\xi_2,\cdots,\xi_n\)</span> 为
-<span class="math inline">\(x\)</span> 在该基下的 <strong>坐标</strong>
-或 <strong>分量</strong>，记为</p>
-<p><span class="math display">\[
-(\xi_1,\xi_2,\cdots,\xi_n)^\top
-\]</span></p>
-<p>显然，线性空间 <span class="math inline">\(V^n\)</span>
-存在多个不同的基，对应多个不同的坐标系，我们希望研究当基改变时，向量的坐标如何改变。</p>
-<h3 id="基变换">基变换</h3>
-<p>首先介绍 <strong>基变换</strong>，即 <span class="math inline">\(V^n\)</span> 的一个基 <span class="math inline">\(\boldsymbol{X} = (
-\boldsymbol{x}_1,  \boldsymbol{x}_2, \cdots,  \boldsymbol{x}_n)\)</span>
-变为另一个基 <span class="math inline">\(\boldsymbol{Y} = (
-\boldsymbol{y}_1,  \boldsymbol{y}_2,
-\cdots,  \boldsymbol{y}_n)\)</span>。</p>
-<p>由基的定义可知：</p>
-<p><span class="math display">\[
-\boldsymbol{y}_i = c_{1i} \boldsymbol{x}_1 + c_{2i}  \boldsymbol{x}_2 +
-\cdots + c_{1n}  \boldsymbol{x}_n(i = 1,2,\cdots,n)
-\]</span></p>
-<p>上式可以写成矩阵乘法形式：</p>
-<p><span class="math display">\[
-( \boldsymbol{y}_1,  \boldsymbol{y}_2, \cdots,  \boldsymbol{y}_n) =
-( \boldsymbol{x}_1,  \boldsymbol{x}_2, \cdots,  \boldsymbol{x}_n)
-\boldsymbol{C}
-\tag{2.5.1}
-\]</span></p>
-<p>其中矩阵</p>
-<p><span class="math display">\[
-\boldsymbol{C} = \begin{bmatrix}
-c_{11} &amp; c_{12} &amp; \cdots &amp; c_{1n}\\
-c_{21} &amp; c_{22} &amp; \cdots &amp; c_{2n}\\
-\vdots &amp; \vdots &amp; &amp; \vdots\\
-c_{n1} &amp; c_{n2} &amp; \cdots &amp; c_{nn}
-\end{bmatrix}
-\]</span></p>
-<p>称为基变换的 <strong>过渡矩阵</strong>，式 (2.5.1) 称为
-<strong>基变换公式</strong>。</p>
-<p>显然，过渡矩阵是可逆矩阵，因为新基能变换为旧基。</p>
-<h2 id="内积与欧式空间">内积与欧式空间</h2>
-<p>在线性空间中，向量的基本运算仅为线性运算。例如，在熟悉的二维或三维向量空间中，我们发现向量的模长、向量间的夹角等度量概念未能被线性空间直接表达。因此，我们引入<strong>内积</strong>与<strong>内积空间</strong>的概念。</p>
-<h3 id="内积的定义">内积的定义</h3>
-<p><strong>定义</strong><br>
-设 <span class="math inline">\(V\)</span> 是实数域 <span class="math inline">\(\mathbb{R}\)</span> 上的线性空间，若对 <span class="math inline">\(\forall x,y \in
-V\)</span>，按照某种规则定义一个实数 <span class="math inline">\((x,y)\)</span>，满足以下条件：</p>
-<ol type="1">
-<li><strong>交换律</strong>：<span class="math inline">\((x,y) =
-(y,x)\)</span>；</li>
-<li><strong>分配律</strong>：<span class="math inline">\((x,y+z) = (x,y)
-+ (x,z)\)</span>；</li>
-<li><strong>齐次性</strong>：<span class="math inline">\((kx,y) = k(x,y)
-= (x,ky), \forall k\in \mathbb{R}\)</span>；</li>
-<li><strong>非负性</strong>：<span class="math inline">\((x,x) \geq
-0\)</span>，且 <span class="math inline">\((x,x) = 0 \iff x =
-0\)</span>。</li>
-</ol>
-<p>则称 <span class="math inline">\((x,y)\)</span> 为向量 <span class="math inline">\(x,y\)</span> 的<strong>内积</strong>，称 <span class="math inline">\(V\)</span> 为<strong>欧式空间</strong>（Euclidean
-Space）。</p>
-<h3 id="内积的性质">内积的性质</h3>
-<p>内积具有以下基本性质：</p>
-<ul>
-<li><span class="math inline">\(( \boldsymbol{x}, k \boldsymbol{y}) = k(
-\boldsymbol{x}, \boldsymbol{y})\)</span>；</li>
-<li><span class="math inline">\(( \boldsymbol{x}, \boldsymbol{0}) =
-0\)</span>。</li>
+<li><strong>结合律</strong>: $x + (y + z) = (x + y) + z$;</li>
+<li><strong>交换律</strong>: $x + y = y + x$;</li>
+<li><strong>零元素存在性</strong>: $\exists 0, s.t. x + 0 = x$;</li>
+<li><strong>负元素存在性</strong>: $\forall x\in V,\exists y\in V, s.t.x + y = 0$，记 $y = -x$; </li>
 </ul>
-<h3 id="向量的模长">向量的模长</h3>
-<p>在欧式空间中，我们可以定义向量的<strong>长度</strong>（模、范数）如下：</p>
-<p><strong>定义</strong><br>
-在欧式空间 <span class="math inline">\(V\)</span> 中，非负实数<br>
-<span class="math display">\[
-\left|  \boldsymbol{x} \right| = \sqrt{( \boldsymbol{x},
-\boldsymbol{x})}
-\]</span><br>
-称为向量 <span class="math inline">\(\boldsymbol{x}\)</span>
-的<strong>长度</strong>（或
-<strong>2-范数</strong>，下一节将介绍）。</p>
-<p><strong>单位向量与单位化</strong><br>
-在二维或三维向量空间中，通常选取 <span class="math inline">\((1,0,0)\)</span> 等为坐标轴，这些长度为 <span class="math inline">\(1\)</span>
-的向量称为<strong>单位向量</strong>。如果 <span class="math inline">\(\boldsymbol{x} \neq
-0\)</span>，可以通过<strong>单位化（规范化）</strong>
-得到单位向量：<br>
-<span class="math display">\[
-\boldsymbol{x}_0 = \frac{\boldsymbol{x}}{\left|  \boldsymbol{x} \right|}
-\]</span></p>
-<h3 id="向量夹角">向量夹角</h3>
-<p>在低维空间中，向量的夹角概念较直观。为了在欧式空间中定义向量夹角，我们利用
-<strong>Cauchy–Schwarz 不等式</strong>：<br>
-<span class="math display">\[
-\left| \frac{( \boldsymbol{x},
-\boldsymbol{y})}{\left|  \boldsymbol{x}\right|\left|  \boldsymbol{y}\right|}
-\right| \leq 1
-\]</span><br>
-进而定义两个非零向量 <span class="math inline">\(\boldsymbol{x}\)</span>
-和 <span class="math inline">\(\boldsymbol{y}\)</span> 的夹角 <span class="math inline">\(\left\langle  \boldsymbol{x},  \boldsymbol{y}
-\right\rangle\)</span> 的<strong>余弦值</strong>：<br>
-<span class="math display">\[
-\cos \left\langle  \boldsymbol{x},  \boldsymbol{y} \right\rangle =
-\frac{( \boldsymbol{x}, \boldsymbol{y})}{\left|  \boldsymbol{x} \right|
-\left|  \boldsymbol{y} \right|}
-\]</span></p>
-<h3 id="向量正交">向量正交</h3>
-<p><strong>定义</strong><br>
-若欧式空间中的两个向量 <span class="math inline">\(\boldsymbol{x}\)</span> 和 <span class="math inline">\(\boldsymbol{y}\)</span> 满足：<br>
-<span class="math display">\[
-(x,y) = 0
-\]</span><br>
-则称它们<strong>正交（垂直）</strong>。</p>
-<p><strong>定理</strong><br>
-在欧式空间中，若向量组 <span class="math inline">\(\{x_1, x_2, \dots,
-x_n\}\)</span> 互相正交，则它们必然线性无关。</p>
-<h3 id="正交基与标准正交基">正交基与标准正交基</h3>
-<p><strong>定义</strong><br>
-在欧式空间 <span class="math inline">\(V^n\)</span> 中，由 <span class="math inline">\(n\)</span>
-个非零向量组成的<strong>正交向量组</strong>称为 <span class="math inline">\(V^n\)</span>
-的<strong>正交基</strong>。若正交基中的向量均为单位向量，则称为<strong>标准正交基</strong>。</p>
-<h3 id="schmidt-正交化">Schmidt 正交化</h3>
-<p>如何从一组普通的基构造标准正交基？一种方法是<strong>Schmidt
-正交化法（Gram-Schmidt 过程）</strong>。</p>
-<h4 id="施密特正交化步骤">施密特正交化步骤</h4>
-<p>给定线性无关的向量组 <span class="math inline">\(\{
-\boldsymbol{v}_1,  \boldsymbol{v}_2,
-\dots,  \boldsymbol{v}_n\}\)</span>，施密特正交化的目标是构造正交向量组
-<span class="math inline">\(\{ \boldsymbol{u}_1,  \boldsymbol{u}_2,
-\dots,  \boldsymbol{u}_n\}\)</span>：</p>
-<ol type="1">
-<li><p><strong>初始向量处理</strong>：<br>
-令第一个正交向量：<br>
-<span class="math display">\[
-\boldsymbol{u}_1 = \boldsymbol{v}_1
-\]</span><br>
-由于 <span class="math inline">\(\boldsymbol{v}_1 \neq 0\)</span>，则
-<span class="math inline">\(\boldsymbol{u}_1 \neq 0\)</span>。</p></li>
-<li><p><strong>构造第 <span class="math inline">\(i\)</span>
-个向量的正交化</strong>：<br>
-从第二个向量开始，为了从 <span class="math inline">\(\boldsymbol{v}_i\)</span> 中去掉前面向量 <span class="math inline">\(\boldsymbol{u}_1, \dots,
-\boldsymbol{u}_{i-1}\)</span> 的分量，定义投影：<br>
-<span class="math display">\[
-\frac{( \boldsymbol{v}_i,  \boldsymbol{u}_k)}{(
-\boldsymbol{u}_k,  \boldsymbol{u}_k)}  \boldsymbol{u}_k
-\]</span><br>
-表示 <span class="math inline">\(\boldsymbol{v}_i\)</span> 在 <span class="math inline">\(\boldsymbol{u}_k\)</span> 上的投影。</p>
-<p>去掉与 <span class="math inline">\(\boldsymbol{u}_1, \dots,
-\boldsymbol{u}_{i-1}\)</span> 重叠的部分，得到：<br>
-<span class="math display">\[
-\boldsymbol{u}_i = \boldsymbol{v}_i - \sum_{k=1}^{i-1} \frac{(
-\boldsymbol{v}_i,  \boldsymbol{u}_k)}{(
-\boldsymbol{u}_k,  \boldsymbol{u}_k)}  \boldsymbol{u}_k
-\]</span></p></li>
-<li><p><strong>归一化</strong>：<br>
-将每个 <span class="math inline">\(\boldsymbol{u}_i\)</span>
-归一化为单位向量：<br>
-<span class="math display">\[
-\boldsymbol{e}_i = \frac{ \boldsymbol{u}_i}{\left|
-\boldsymbol{u}_i\right|}
-\]</span></p></li>
-</ol>
-<p>最终得到一组<strong>正交归一向量</strong>：<br>
-<span class="math display">\[
-\{ \boldsymbol{e}_1,  \boldsymbol{e}_2, \dots,  \boldsymbol{e}_n\}
-\]</span></p>
-<p>有了以上的铺垫，接下来我们正式引入线性变换的概念。线性变换提供了一种在线性空间之间进行映射的框架，其本质在于保持向量空间中的线性结构。通过线性变换，我们可以将一个线性空间的元素映射到另一个线性空间中，并保持加法和标量乘法的运算法则。</p>
-<h3 id="线性变换">线性变换</h3>
-<p>首先，我们引入 <strong>变换</strong> 的概念如下：</p>
-<p><strong>定义 4:</strong> 设 <span class="math inline">\(V\)</span>
-是属于 <span class="math inline">\(K\)</span> 上的线性空间，<span class="math inline">\(T\)</span> 是 <span class="math inline">\(V\)</span> 到自身的一个映射，使对任意向量 <span class="math inline">\(x\in V\)</span>，<span class="math inline">\(V\)</span> 中都有唯一向量 <span class="math inline">\(y\)</span> 与之对应，则称 <span class="math inline">\(T\)</span> 是 <span class="math inline">\(V\)</span> 的一个 <strong>变换</strong> 或
-<strong>算子</strong>，记为 <span class="math inline">\(Tx =
-y\)</span>，称 <span class="math inline">\(y\)</span> 为 <span class="math inline">\(x\)</span> 在 <span class="math inline">\(T\)</span> 下的象，<span class="math inline">\(x\)</span> 是 <span class="math inline">\(y\)</span> 的原象。</p>
-<p><strong>定义 5:</strong> 如果数域 <span class="math inline">\(K\)</span> 上的线性空间 <span class="math inline">\(V\)</span> 的一个变换 <span class="math inline">\(T\)</span> 具有以下性质：</p>
-<p><span class="math display">\[
-T(kx + ly) = k(Tx) + l(Ty)
-\]</span></p>
-<p>其中，<span class="math inline">\(x,y \in V,k,l\in K\)</span>，则称
-<span class="math inline">\(T\)</span> 为 <span class="math inline">\(V\)</span> 的一个 <strong>线性变换</strong> 或
-<strong>线性算子</strong>。</p>
-<h4 id="线性变换的性质">线性变换的性质</h4>
-<p>不难验证，线性变换有如下性质，且线性空间 <span class="math inline">\(V\)</span>
-上所有的线性变换的集合，在所论的线性运算下，构成一个新的线性空间，记为
-<span class="math inline">\(\text{Hom}(V, V)\)</span>，称为线性空间
-<span class="math inline">\(V\)</span> 的 <strong>同态</strong>。</p>
-<ol type="1">
-<li><strong>线性变换的加法</strong>：<span class="math inline">\((T_1+
-T_2)x = T_1x+T_2x, \forall x\in V\)</span>，和仍为线性变换。
+</li>
+<li><p>在 $V$ 中定义数乘运算，即当 $x\in V,k \in K$ 时，有唯一的乘积 $kx\in V$，且满足以下性质：</p>
 <ul>
-<li><span class="math inline">\(T_1 + T_2 = T_2 + T_1\)</span>;</li>
-<li><span class="math inline">\((T_1 + T_2) + T_3 = T_1 + (T_2 +
-T_3)\)</span>;</li>
-<li><span class="math inline">\(T + T_0 = T\)</span>;</li>
-<li><span class="math inline">\(T + (-T) = T_0\)</span>;</li>
-<li>线性变换 <span class="math inline">\(T\)</span> 的
-<strong>负变换</strong> <span class="math inline">\(-T\)</span> 定义为：
-<span class="math display">\[
-(-T)x = -(Tx), \forall x\in V
-\]</span></li>
-</ul></li>
-<li><strong>线性变换的数乘</strong>：<span class="math inline">\((kT)x =
-k(Tx), \forall x\in V\)</span>，线性变换的数乘仍是线性变换。
-<ul>
-<li><span class="math inline">\(k(T_1 + T_2) = kT_1 +
-kT_2\)</span>;</li>
-<li><span class="math inline">\((k+l)T = kT + lT\)</span>;</li>
-<li><span class="math inline">\((kl)T = k(lT)\)</span>;</li>
-<li><span class="math inline">\(1 T = T\)</span>;</li>
-</ul></li>
+<li><strong>因子分配律</strong>: $k(x+y) = kx + ky$;</li>
+<li><strong>分配律</strong>: $(k+l)x = kx + lx$;</li>
+<li><strong>结合律</strong>: $k(lx) = (kl)x$;</li>
+<li><strong>中性元</strong>: $1 x = x$;</li>
+</ul>
+</li>
 </ol>
-<h4 id="线性变换的矩阵表示">线性变换的矩阵表示</h4>
-<p>诸如二维平面上的旋转、微分和积分等都是线性变换。考虑到有限维线性空间的向量可以用坐标表示出来，进一步考虑则可以通过坐标把线性变换用矩阵表示出来，从而可以把抽象的变换转化成具体的矩阵来处理。故引入线性变换的
-<strong>矩阵表示</strong>。</p>
-<p>设 <span class="math inline">\(T\)</span> 是线性空间 <span class="math inline">\(V^n\)</span> 的线性变换，<span class="math inline">\(x \in V^n\)</span>，且 <span class="math inline">\(x_1, x_2, \dots, x_n\)</span> 是 <span class="math inline">\(V^n\)</span> 的一个基，则有：<br>
-<span class="math display">\[
-x = a_1x_1 + a_2x_2 + \dots + a_nx_n
-\]</span><br>
-<span class="math display">\[
-Tx = a_1(Tx_1) + a_2(Tx_2) + \dots + a_n(Tx_n)
-\]</span></p>
-<p>这表明，<span class="math inline">\(V^n\)</span> 的任一向量 <span class="math inline">\(x\)</span> 的像可以由基像组 <span class="math inline">\(Tx_1,Tx_2,\dots,Tx_n\)</span>
-唯一确定，因为基像组仍 <span class="math inline">\(\in
-V^n\)</span>，所以有：<br>
-<span class="math display">\[
+<p>则称 $V$ 是数域 $K$ 上的线性空间。</p>
+<p>定义中的 8 条性质非常重要。如果对于数域 $K$，向量空间 $V$，设加群 $(V, +)$（$+$ 为 $V$ 上满足交换律的运算），不难验证其满足群的定义。定义 $K \times V \rightarrow V: (k, \alpha) \rightarrow k\alpha$（即 $V$ 上的数乘运算），可以验证 $V$ 是一个 $K$-模。即，线性空间是一类特殊的模。</p>
+<p>为借助数量运算以实现向量的运算，还要引入向量的坐标。</p>
+<h3 id="定义-2-线性空间的基"><a href="#定义-2-线性空间的基" class="headerlink" title="定义 2: 线性空间的基"></a>定义 2: 线性空间的基</h3><p>设 $V$ 是数域 $K$ 上的线性空间，$x_1,x_2,\cdots,x_r\in V$，如果它满足：</p>
+<ol>
+<li>$x_1,x_2,\cdots,x_r$ 线性无关;</li>
+<li>$\forall x \in V$ 都是 $x_1,x_2,\cdots,x_r$ 的线性组合;</li>
+</ol>
+<p>则称 $x_1,x_2,\cdots,x_r$ 是 $V$ 的一个 <strong>基</strong>，称 $x_i(i=1,2,\cdots,r)$ 为 <strong>基向量</strong>。</p>
+<h3 id="定义-3-坐标系"><a href="#定义-3-坐标系" class="headerlink" title="定义 3: 坐标系"></a>定义 3: 坐标系</h3><p>称线性空间 $V^n$ 上的一个基 $x_1, x_2, \cdots, x_n$ 为 $V^n$ 的一个 <strong>坐标系</strong>。设向量 $x \in V^n$，它在该基下的线性表示式为</p>
+<script type="math/tex; mode=display">
+x = \xi_1x_1 + \xi_2x_2 + \cdots + \xi_nx_n</script><p>则称 $\xi_1,\xi_2,\cdots,\xi_n$ 为 $x$ 在该基下的 <strong>坐标</strong> 或 <strong>分量</strong>，记为</p>
+<script type="math/tex; mode=display">
+(\xi_1,\xi_2,\cdots,\xi_n)^\top</script><p>显然，线性空间 $V^n$ 存在多个不同的基，对应多个不同的坐标系，我们希望研究当基改变时，向量的坐标如何改变。</p>
+<h3 id="基变换"><a href="#基变换" class="headerlink" title="基变换"></a>基变换</h3><p>首先介绍 <strong>基变换</strong>，即 $V^n$ 的一个基 $\boldsymbol{X} = ( \boldsymbol{x}_1,  \boldsymbol{x}_2, \cdots,  \boldsymbol{x}_n)$ 变为另一个基 $\boldsymbol{Y} = ( \boldsymbol{y}_1,  \boldsymbol{y}_2, \cdots,  \boldsymbol{y}_n)$。</p>
+<p>由基的定义可知：</p>
+<script type="math/tex; mode=display">
+ \boldsymbol{y}_i = c_{1i} \boldsymbol{x}_1 + c_{2i}  \boldsymbol{x}_2 + \cdots + c_{1n}  \boldsymbol{x}_n(i = 1,2,\cdots,n)</script><p>上式可以写成矩阵乘法形式：</p>
+<script type="math/tex; mode=display">
+( \boldsymbol{y}_1,  \boldsymbol{y}_2, \cdots,  \boldsymbol{y}_n) = 
+( \boldsymbol{x}_1,  \boldsymbol{x}_2, \cdots,  \boldsymbol{x}_n) \boldsymbol{C}
+\tag{2.5.1}</script><p>其中矩阵</p>
+<script type="math/tex; mode=display">
+ \boldsymbol{C} = \begin{bmatrix}
+ c_{11} & c_{12} & \cdots & c_{1n}\\
+ c_{21} & c_{22} & \cdots & c_{2n}\\
+ \vdots & \vdots & & \vdots\\
+ c_{n1} & c_{n2} & \cdots & c_{nn}
+\end{bmatrix}</script><p>称为基变换的 <strong>过渡矩阵</strong>，式 (2.5.1) 称为 <strong>基变换公式</strong>。</p>
+<p>显然，过渡矩阵是可逆矩阵，因为新基能变换为旧基。</p>
+<h2 id="内积与欧式空间"><a href="#内积与欧式空间" class="headerlink" title="内积与欧式空间"></a>内积与欧式空间</h2><p>在线性空间中，向量的基本运算仅为线性运算。例如，在熟悉的二维或三维向量空间中，我们发现向量的模长、向量间的夹角等度量概念未能被线性空间直接表达。因此，我们引入<strong>内积</strong>与<strong>内积空间</strong>的概念。</p>
+<h3 id="内积的定义"><a href="#内积的定义" class="headerlink" title="内积的定义"></a>内积的定义</h3><p><strong>定义</strong><br>设 $V$ 是实数域 $\mathbb{R}$ 上的线性空间，若对 $\forall x,y \in V$，按照某种规则定义一个实数 $(x,y)$，满足以下条件：</p>
+<ol>
+<li><strong>交换律</strong>：$(x,y) = (y,x)$；</li>
+<li><strong>分配律</strong>：$(x,y+z) = (x,y) + (x,z)$；</li>
+<li><strong>齐次性</strong>：$(kx,y) = k(x,y) = (x,ky), \forall k\in \mathbb{R}$；</li>
+<li><strong>非负性</strong>：$(x,x) \geq 0$，且 $(x,x) = 0 \iff x = 0$。</li>
+</ol>
+<p>则称 $(x,y)$ 为向量 $x,y$ 的<strong>内积</strong>，称 $V$ 为<strong>欧式空间</strong>（Euclidean Space）。</p>
+<h3 id="内积的性质"><a href="#内积的性质" class="headerlink" title="内积的性质"></a>内积的性质</h3><p>内积具有以下基本性质：</p>
+<ul>
+<li>$( \boldsymbol{x}, k \boldsymbol{y}) = k( \boldsymbol{x}, \boldsymbol{y})$；</li>
+<li>$( \boldsymbol{x}, \boldsymbol{0}) = 0$。</li>
+</ul>
+<h3 id="向量的模长"><a href="#向量的模长" class="headerlink" title="向量的模长"></a>向量的模长</h3><p>在欧式空间中，我们可以定义向量的<strong>长度</strong>（模、范数）如下：</p>
+<p><strong>定义</strong><br>在欧式空间 $V$ 中，非负实数  </p>
+<script type="math/tex; mode=display">
+\left|  \boldsymbol{x} \right| = \sqrt{( \boldsymbol{x}, \boldsymbol{x})}</script><p>称为向量 $\boldsymbol{x}$ 的<strong>长度</strong>（或 <strong>2-范数</strong>，下一节将介绍）。</p>
+<p><strong>单位向量与单位化</strong><br>在二维或三维向量空间中，通常选取 $(1,0,0)$ 等为坐标轴，这些长度为 $1$ 的向量称为<strong>单位向量</strong>。如果 $\boldsymbol{x} \neq 0$，可以通过<strong>单位化（规范化）</strong> 得到单位向量：</p>
+<script type="math/tex; mode=display">
+ \boldsymbol{x}_0 = \frac{\boldsymbol{x}}{\left|  \boldsymbol{x} \right|}</script><h3 id="向量夹角"><a href="#向量夹角" class="headerlink" title="向量夹角"></a>向量夹角</h3><p>在低维空间中，向量的夹角概念较直观。为了在欧式空间中定义向量夹角，我们利用 <strong>Cauchy–Schwarz 不等式</strong>：</p>
+<script type="math/tex; mode=display">
+\left| \frac{( \boldsymbol{x}, \boldsymbol{y})}{\left|  \boldsymbol{x}\right|\left|  \boldsymbol{y}\right|} \right| \leq 1</script><p>进而定义两个非零向量 $\boldsymbol{x}$ 和 $\boldsymbol{y}$ 的夹角 $\left\langle  \boldsymbol{x},  \boldsymbol{y} \right\rangle$ 的<strong>余弦值</strong>：</p>
+<script type="math/tex; mode=display">
+\cos \left\langle  \boldsymbol{x},  \boldsymbol{y} \right\rangle = \frac{( \boldsymbol{x}, \boldsymbol{y})}{\left|  \boldsymbol{x} \right| \left|  \boldsymbol{y} \right|}</script><h3 id="向量正交"><a href="#向量正交" class="headerlink" title="向量正交"></a>向量正交</h3><p><strong>定义</strong><br>若欧式空间中的两个向量 $\boldsymbol{x}$ 和 $\boldsymbol{y}$ 满足：</p>
+<script type="math/tex; mode=display">
+(x,y) = 0</script><p>则称它们<strong>正交（垂直）</strong>。</p>
+<p><strong>定理</strong><br>在欧式空间中，若向量组 $\{x_1, x_2, \dots, x_n\}$ 互相正交，则它们必然线性无关。</p>
+<h3 id="正交基与标准正交基"><a href="#正交基与标准正交基" class="headerlink" title="正交基与标准正交基"></a>正交基与标准正交基</h3><p><strong>定义</strong><br>在欧式空间 $V^n$ 中，由 $n$ 个非零向量组成的<strong>正交向量组</strong>称为 $V^n$ 的<strong>正交基</strong>。若正交基中的向量均为单位向量，则称为<strong>标准正交基</strong>。</p>
+<h3 id="Schmidt-正交化"><a href="#Schmidt-正交化" class="headerlink" title="Schmidt 正交化"></a>Schmidt 正交化</h3><p>如何从一组普通的基构造标准正交基？一种方法是<strong>Schmidt 正交化法（Gram-Schmidt 过程）</strong>。</p>
+<h4 id="施密特正交化步骤"><a href="#施密特正交化步骤" class="headerlink" title="施密特正交化步骤"></a>施密特正交化步骤</h4><p>给定线性无关的向量组 $\{ \boldsymbol{v}_1,  \boldsymbol{v}_2, \dots,  \boldsymbol{v}_n\}$，施密特正交化的目标是构造正交向量组 $\{ \boldsymbol{u}_1,  \boldsymbol{u}_2, \dots,  \boldsymbol{u}_n\}$：</p>
+<ol>
+<li><p><strong>初始向量处理</strong>：<br>令第一个正交向量：</p>
+<script type="math/tex; mode=display">
+\boldsymbol{u}_1 = \boldsymbol{v}_1</script><p>由于 $\boldsymbol{v}_1 \neq 0$，则 $\boldsymbol{u}_1 \neq 0$。</p>
+</li>
+<li><p><strong>构造第 $i$ 个向量的正交化</strong>：<br>从第二个向量开始，为了从 $\boldsymbol{v}_i$ 中去掉前面向量 $\boldsymbol{u}_1, \dots, \boldsymbol{u}_{i-1}$ 的分量，定义投影：</p>
+<script type="math/tex; mode=display">
+\frac{( \boldsymbol{v}_i,  \boldsymbol{u}_k)}{( \boldsymbol{u}_k,  \boldsymbol{u}_k)}  \boldsymbol{u}_k</script><p>表示 $\boldsymbol{v}_i$ 在 $\boldsymbol{u}_k$ 上的投影。</p>
+<p>去掉与 $\boldsymbol{u}_1, \dots, \boldsymbol{u}_{i-1}$ 重叠的部分，得到：</p>
+<script type="math/tex; mode=display">
+\boldsymbol{u}_i = \boldsymbol{v}_i - \sum_{k=1}^{i-1} \frac{( \boldsymbol{v}_i,  \boldsymbol{u}_k)}{( \boldsymbol{u}_k,  \boldsymbol{u}_k)}  \boldsymbol{u}_k</script></li>
+<li><p><strong>归一化</strong>：<br>将每个 $\boldsymbol{u}_i$ 归一化为单位向量：</p>
+<script type="math/tex; mode=display">
+\boldsymbol{e}_i = \frac{ \boldsymbol{u}_i}{\left| \boldsymbol{u}_i\right|}</script></li>
+</ol>
+<p>最终得到一组<strong>正交归一向量</strong>：</p>
+<script type="math/tex; mode=display">
+\{ \boldsymbol{e}_1,  \boldsymbol{e}_2, \dots,  \boldsymbol{e}_n\}</script><p>有了以上的铺垫，接下来我们正式引入线性变换的概念。线性变换提供了一种在线性空间之间进行映射的框架，其本质在于保持向量空间中的线性结构。通过线性变换，我们可以将一个线性空间的元素映射到另一个线性空间中，并保持加法和标量乘法的运算法则。</p>
+<h3 id="线性变换"><a href="#线性变换" class="headerlink" title="线性变换"></a>线性变换</h3><p>首先，我们引入 <strong>变换</strong> 的概念如下：</p>
+<p><strong>定义 4:</strong> 设 $V$ 是属于 $K$ 上的线性空间，$T$ 是 $V$ 到自身的一个映射，使对任意向量 $x\in V$，$V$ 中都有唯一向量 $y$ 与之对应，则称 $T$ 是 $V$ 的一个 <strong>变换</strong> 或 <strong>算子</strong>，记为 $Tx = y$，称 $y$ 为 $x$ 在 $T$ 下的象，$x$ 是 $y$ 的原象。</p>
+<p><strong>定义 5:</strong> 如果数域 $K$ 上的线性空间 $V$ 的一个变换 $T$ 具有以下性质：</p>
+<script type="math/tex; mode=display">
+T(kx + ly) = k(Tx) + l(Ty)</script><p>其中，$x,y \in V,k,l\in K$，则称 $T$ 为 $V$ 的一个 <strong>线性变换</strong> 或 <strong>线性算子</strong>。</p>
+<h4 id="线性变换的性质"><a href="#线性变换的性质" class="headerlink" title="线性变换的性质"></a>线性变换的性质</h4><p>不难验证，线性变换有如下性质，且线性空间 $V$ 上所有的线性变换的集合，在所论的线性运算下，构成一个新的线性空间，记为 $\text{Hom}(V, V)$，称为线性空间 $V$ 的 <strong>同态</strong>。</p>
+<ol>
+<li><strong>线性变换的加法</strong>：$(T_1+ T_2)x = T_1x+T_2x, \forall x\in V$，和仍为线性变换。<ul>
+<li>$T_1 + T_2 = T_2 + T_1$;</li>
+<li>$(T_1 + T_2) + T_3 = T_1 + (T_2 + T_3)$;</li>
+<li>$T + T_0 = T$;</li>
+<li>$T + (-T) = T_0$;</li>
+<li>线性变换 $T$ 的 <strong>负变换</strong> $-T$ 定义为： <script type="math/tex">(-T)x = -(Tx), \forall x\in V</script></li>
+</ul>
+</li>
+<li><strong>线性变换的数乘</strong>：$(kT)x = k(Tx), \forall x\in V$，线性变换的数乘仍是线性变换。<ul>
+<li>$k(T_1 + T_2) = kT_1 + kT_2$;</li>
+<li>$(k+l)T = kT + lT$;</li>
+<li>$(kl)T = k(lT)$;</li>
+<li>$1 T = T$;</li>
+</ul>
+</li>
+</ol>
+<h4 id="线性变换的矩阵表示"><a href="#线性变换的矩阵表示" class="headerlink" title="线性变换的矩阵表示"></a>线性变换的矩阵表示</h4><p>诸如二维平面上的旋转、微分和积分等都是线性变换。考虑到有限维线性空间的向量可以用坐标表示出来，进一步考虑则可以通过坐标把线性变换用矩阵表示出来，从而可以把抽象的变换转化成具体的矩阵来处理。故引入线性变换的 <strong>矩阵表示</strong>。</p>
+<p>设 $T$ 是线性空间 $V^n$ 的线性变换，$x \in V^n$，且 $x_1, x_2, \dots, x_n$ 是 $V^n$ 的一个基，则有：</p>
+<script type="math/tex; mode=display">
+x = a_1x_1 + a_2x_2 + \dots + a_nx_n</script><script type="math/tex; mode=display">
+Tx = a_1(Tx_1) + a_2(Tx_2) + \dots + a_n(Tx_n)</script><p>这表明，$V^n$ 的任一向量 $x$ 的像可以由基像组 $Tx_1,Tx_2,\dots,Tx_n$ 唯一确定，因为基像组仍 $\in V^n$，所以有：</p>
+<script type="math/tex; mode=display">
 \left.
-\begin{matrix}
+\begin{matrix} 
 Tx_1 = a_{11}x_1 + a_{21}x_2 + \dots + a_{n1}x_n\\
 Tx_2 = a_{12}x_1 + a_{22}x_2 + \dots + a_{n2}x_n\\
 \cdots \\
 Tx_n = a_{1n}x_1 + a_{2n}x_2 + \dots + a_{nn}x_n\\
 \end{matrix}
 \right\}
-\tag{2.6.1}
-\]</span><br>
-即：<br>
-<span class="math display">\[
-Tx_i = \sum_{j=1}^{n} a_{ji}x_j, \quad i = 1,2,\dots,n
-\]</span><br>
-用矩阵乘法表示式 (2.6.1) 为：<br>
-<span class="math display">\[
-T(x_1,x_2,\dots,x_n) = (Tx_1,Tx_2,\dots,Tx_n) = (x_1,x_2,\dots,x_n)
-\boldsymbol{A}
-\tag{2.6.2}
-\]</span><br>
-其中：<br>
-<span class="math display">\[
+\tag{2.6.1}</script><p>即：</p>
+<script type="math/tex; mode=display">
+Tx_i = \sum_{j=1}^{n} a_{ji}x_j, \quad i = 1,2,\dots,n</script><p>用矩阵乘法表示式 (2.6.1) 为：</p>
+<script type="math/tex; mode=display">
+T(x_1,x_2,\dots,x_n) = (Tx_1,Tx_2,\dots,Tx_n) = (x_1,x_2,\dots,x_n) \boldsymbol{A}
+\tag{2.6.2}</script><p>其中：</p>
+<script type="math/tex; mode=display">
 \boldsymbol{A} = \begin{bmatrix}
-a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n}\\
-a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n}\\
-\cdots &amp; \cdots &amp; &amp; \cdots\\
-a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn}\\
-\end{bmatrix}
-\]</span><br>
-即矩阵 <span class="math inline">\(\boldsymbol{A}\)</span> 的第 <span class="math inline">\(i\)</span> 列为 <span class="math inline">\(Tx_i\)</span> 的坐标。</p>
-<p><strong>定义 3</strong> 式 (2.6.2) 中的矩阵 <span class="math inline">\(\boldsymbol{A}\)</span> 称为 <span class="math inline">\(T\)</span> 在 <span class="math inline">\(V^n\)</span> 的基 <span class="math inline">\(x_1,
-x_2, \dots, x_n\)</span> 下的矩阵，称 <span class="math inline">\(\boldsymbol{A}\)</span> 为线性变换 <span class="math inline">\(T\)</span> 的矩阵表示。</p>
-<h4 id="特殊的线性变换">特殊的线性变换</h4>
-<ol type="1">
-<li><strong>零变换</strong>：<span class="math inline">\(T_0(x) =
-\boldsymbol{0}, \forall x\in V\)</span></li>
-<li><strong>恒等变换</strong>：<span class="math inline">\(T_1(x) = x,
-\forall x\in V\)</span></li>
+a_{11} & a_{12} & \cdots & a_{1n}\\
+a_{21} & a_{22} & \cdots & a_{2n}\\
+\cdots & \cdots & & \cdots\\
+a_{n1} & a_{n2} & \cdots & a_{nn}\\
+\end{bmatrix}</script><p>即矩阵 $\boldsymbol{A}$ 的第 $i$ 列为 $Tx_i$ 的坐标。</p>
+<p><strong>定义 3</strong> 式 (2.6.2) 中的矩阵 $\boldsymbol{A}$ 称为 $T$ 在 $V^n$ 的基 $x_1, x_2, \dots, x_n$ 下的矩阵，称 $\boldsymbol{A}$ 为线性变换 $T$ 的矩阵表示。</p>
+<h4 id="特殊的线性变换"><a href="#特殊的线性变换" class="headerlink" title="特殊的线性变换"></a>特殊的线性变换</h4><ol>
+<li><strong>零变换</strong>：$T_0(x) = \boldsymbol{0}, \forall x\in V$</li>
+<li><strong>恒等变换</strong>：$T_1(x) = x, \forall x\in V$</li>
 </ol>
-<h3 id="正交变换">正交变换</h3>
-<p><strong>定义 4</strong> 设 <span class="math inline">\(V\)</span>
-为欧式空间，<span class="math inline">\(T\)</span> 是 <span class="math inline">\(V\)</span> 上的一个线性变换，如果 <span class="math inline">\(T\)</span> 保持 <span class="math inline">\(V\)</span> 中任意向量 <span class="math inline">\(\boldsymbol{x}\)</span> 的长度不变，则有：<br>
-<span class="math display">\[
-(T \boldsymbol{x},T \boldsymbol{x}) = ( \boldsymbol{x}, \boldsymbol{x})
-\]</span><br>
-那么称 <span class="math inline">\(T\)</span> 是 <span class="math inline">\(V\)</span> 的一个 <strong>正交变换</strong>。</p>
-<p><strong>定理 1</strong> 欧式空间上的线性变换是正交变换 <span class="math inline">\(\Leftrightarrow\)</span>
-它对于标准正交基的矩阵是正交矩阵。</p>
-<h3 id="对称变换">对称变换</h3>
-<p><strong>定义 5</strong> 设 <span class="math inline">\(V\)</span>
-为欧式空间，<span class="math inline">\(T\)</span> 是 <span class="math inline">\(V\)</span> 上的一个线性变换，且对 <span class="math inline">\(V\)</span> 中任意两个向量 <span class="math inline">\(\boldsymbol{x},
-\boldsymbol{y}\)</span>，都有：<br>
-<span class="math display">\[
-(T \boldsymbol{x}, \boldsymbol{y}) = ( \boldsymbol{x},T \boldsymbol{y})
-\]</span><br>
-那么称 <span class="math inline">\(T\)</span> 是 <span class="math inline">\(V\)</span> 的一个 <strong>对称变换</strong>。</p>
-<p><strong>定理 2</strong> 欧式空间上的线性变换是对称变换 <span class="math inline">\(\Leftrightarrow\)</span>
-它对于标准正交基的矩阵是实对称矩阵。</p>
+<h3 id="正交变换"><a href="#正交变换" class="headerlink" title="正交变换"></a>正交变换</h3><p><strong>定义 4</strong> 设 $V$ 为欧式空间，$T$ 是 $V$ 上的一个线性变换，如果 $T$ 保持 $V$ 中任意向量 $\boldsymbol{x}$ 的长度不变，则有：</p>
+<script type="math/tex; mode=display">
+(T \boldsymbol{x},T \boldsymbol{x}) = ( \boldsymbol{x}, \boldsymbol{x})</script><p>那么称 $T$ 是 $V$ 的一个 <strong>正交变换</strong>。</p>
+<p><strong>定理 1</strong> 欧式空间上的线性变换是正交变换 $\Leftrightarrow$ 它对于标准正交基的矩阵是正交矩阵。</p>
+<h3 id="对称变换"><a href="#对称变换" class="headerlink" title="对称变换"></a>对称变换</h3><p><strong>定义 5</strong> 设 $V$ 为欧式空间，$T$ 是 $V$ 上的一个线性变换，且对 $V$ 中任意两个向量 $\boldsymbol{x}, \boldsymbol{y}$，都有：</p>
+<script type="math/tex; mode=display">
+(T \boldsymbol{x}, \boldsymbol{y}) = ( \boldsymbol{x},T \boldsymbol{y})</script><p>那么称 $T$ 是 $V$ 的一个 <strong>对称变换</strong>。</p>
+<p><strong>定理 2</strong> 欧式空间上的线性变换是对称变换 $\Leftrightarrow$ 它对于标准正交基的矩阵是实对称矩阵。</p>
 <p>对于线性变换的进一步求解，将在下一节中叙述。</p>
 
     </div>

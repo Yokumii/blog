@@ -185,21 +185,21 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" style="color: #ffa2c4">
+                <a href="/blog/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" style="color: #00a596">
                     人工智能
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/RAG/" style="color: #ff7d73">
+                <a href="/blog/tags/RAG/" style="color: #ffa2c4">
                     RAG
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/LLM/" style="color: #ffa2c4">
+                <a href="/blog/tags/LLM/" style="color: #03a9f4">
                     LLM
                 </a>
             </span>
@@ -209,22 +209,16 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="为什么需要rag">为什么需要RAG？</h1>
-<p>传统的LLM模型主要存在以下2个问题：幻觉以及外部知识/最新知识的缺失，RAG可以通过结合基于检索和生成模型的优势来提供更准确和上下文相关的响应，可以添加自己的预料构建知识库。</p>
-<h1 id="rag-vs.-fine-tuning-a-llm-model">RAG vs. fine-tuning a LLM
-model</h1>
-<p>下图源自<a target="_blank" rel="noopener" href="https://github.com/Tongji-KGLLM/RAG-Survey/">RAG-Survey</a><br>
-<img src="RAG_FT_Table.jpg"><br>
-结合个人理解：<br>
-1.
-RAG更适合知识库需要动态更新的情景，这部分数据不作为用于LLM的训练数据，而是通过LLM的能力进行检索。<br>
-2. RAG由于采用检索的形式，数据来源是可知的，而LLM是黑箱。<br>
-3. RAG 可以对生成过程提供更多控制。</p>
-<h1 id="query-classification-查询分类">Query Classification
-查询分类</h1>
-<p>并非所有查询都需要用到检索增强，需要将查询分类为需要使用RAG和直接用LLM生成两类。</p>
+        <h1 id="为什么需要RAG？"><a href="#为什么需要RAG？" class="headerlink" title="为什么需要RAG？"></a>为什么需要RAG？</h1><p>传统的LLM模型主要存在以下2个问题：幻觉以及外部知识/最新知识的缺失，RAG可以通过结合基于检索和生成模型的优势来提供更准确和上下文相关的响应，可以添加自己的预料构建知识库。</p>
+<h1 id="RAG-vs-fine-tuning-a-LLM-model"><a href="#RAG-vs-fine-tuning-a-LLM-model" class="headerlink" title="RAG vs. fine-tuning a LLM model"></a>RAG vs. fine-tuning a LLM model</h1><p>下图源自<a target="_blank" rel="noopener" href="https://github.com/Tongji-KGLLM/RAG-Survey/">RAG-Survey</a><br><img src="RAG_FT_Table.jpg" alt><br>结合个人理解：</p>
+<ol>
+<li>RAG更适合知识库需要动态更新的情景，这部分数据不作为用于LLM的训练数据，而是通过LLM的能力进行检索。</li>
+<li>RAG由于采用检索的形式，数据来源是可知的，而LLM是黑箱。</li>
+<li>RAG 可以对生成过程提供更多控制。</li>
+</ol>
+<h1 id="Query-Classification-查询分类"><a href="#Query-Classification-查询分类" class="headerlink" title="Query Classification 查询分类"></a>Query Classification 查询分类</h1><p>并非所有查询都需要用到检索增强，需要将查询分类为需要使用RAG和直接用LLM生成两类。</p>
 <blockquote>
-<p>持续更新中...</p>
+<p>持续更新中…</p>
 </blockquote>
 
     </div>

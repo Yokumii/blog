@@ -185,14 +185,14 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CSAPP/" style="color: #ff7d73">
+                <a href="/blog/tags/CSAPP/" style="color: #00a596">
                     CSAPP
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81/" style="color: #00bcd4">
+                <a href="/blog/tags/%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81/" style="color: #ff7d73">
                     汇编代码
                 </a>
             </span>
@@ -202,40 +202,38 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="进程机制">进程机制</h1>
-<ol type="1">
+        <h1 id="进程机制"><a href="#进程机制" class="headerlink" title="进程机制"></a>进程机制</h1><ol>
 <li>Passing control传递控制，记录函数返回地址，跳转到函数开始地址；</li>
 <li>Passing data传递参数；</li>
 <li>Memory management内存管理；</li>
 </ol>
-<h1 id="运行时的栈和栈帧">运行时的栈和栈帧</h1>
-<ul>
+<h1 id="运行时的栈和栈帧"><a href="#运行时的栈和栈帧" class="headerlink" title="运行时的栈和栈帧"></a>运行时的栈和栈帧</h1><ul>
 <li>习惯性将栈顶画在底部，从下到上地址增大，栈向低地址生长，即向下生长；</li>
 <li><code>pushq Src</code>，会使得<code>%rsp</code>减小；<code>popq Dest</code>，会使得<code>%rsp</code>增加；</li>
 <li>不会改变具体栈上的内容，只会改变指针的位置；</li>
-<li><code>callq label</code>：
-<ul>
+<li><code>callq label</code>：<ul>
 <li>push return address to stack；</li>
 <li>jump to label；</li>
 <li>即将栈向下生长一格，将函数返回地址放入，<code>%rsp</code>存的是指向该返回地址的指针；然后<code>%rip</code>变为函数的开始地址；</li>
-</ul></li>
-<li><code>ret</code>：
-<ul>
+</ul>
+</li>
+<li><code>ret</code>：<ul>
 <li>pop address from stack；</li>
 <li>jump to address(即将PC<code>%rip</code>设置为该地址)；</li>
 <li>此时过程内的一切东西都会被释放（除了动态申请的内存）；</li>
-</ul></li>
-<li>label是不占位置的；<br>
-<img src="1.png"><br>
-<img src="2.png"></li>
-<li><strong>Stack
-Frames栈帧</strong>：即过程活动记录，每次调用函数分配的一段独立的栈帧，<code>ret</code>时释放栈帧；</li>
+</ul>
+</li>
+<li>label是不占位置的；<br><img src="1.png" alt><br><img src="2.png" alt></li>
+<li><strong>Stack Frames栈帧</strong>：即过程活动记录，每次调用函数分配的一段独立的栈帧，<code>ret</code>时释放栈帧；</li>
 <li>一个常见的调用过程的栈内容如下：（向下生长，往下为低地址）</li>
 </ul>
+<div class="table-container">
 <table>
-<colgroup>
-<col style="width: 100%">
-</colgroup>
+<thead>
+<tr>
+<th></th>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td></td>
@@ -244,86 +242,78 @@ Frames栈帧</strong>：即过程活动记录，每次调用函数分配的一�
 <td>Arg n</td>
 </tr>
 <tr>
-<td><span class="math inline">\(\cdots\)</span></td>
+<td>$\cdots$</td>
 </tr>
 <tr>
 <td>Arg 7</td>
 </tr>
 <tr>
-<td>Return Addr(Caller's %rip)以上部分均为Caller的栈帧</td>
+<td>Return Addr(Caller’s %rip)以上部分均为Caller的栈帧</td>
 </tr>
 <tr>
-<td>optional Callee's %rbp</td>
+<td>optional Callee’s %rbp</td>
 </tr>
 <tr>
 <td>Saved Registers + Local Varibles</td>
 </tr>
 <tr>
-<td>Arg
-Build(optional)，如果该函数内部还要调用其他函数，需要传递的参数在这里进行准备；以上部分为Callee的栈帧</td>
+<td>Arg Build(optional)，如果该函数内部还要调用其他函数，需要传递的参数在这里进行准备；以上部分为Callee的栈帧</td>
 </tr>
 </tbody>
 </table>
-<h1 id="数据传送与局部存储">数据传送与局部存储</h1>
-<ul>
+</div>
+<h1 id="数据传送与局部存储"><a href="#数据传送与局部存储" class="headerlink" title="数据传送与局部存储"></a>数据传送与局部存储</h1><ul>
 <li>以下讨论均为整形，浮点数有另一套东西；</li>
-<li>当传递参数超过6个时，x86-64要求<strong>超过寄存器限制的参数按照从右到左的顺序压入栈（后面的参数先进入栈）</strong>：<img src="3.png"></li>
-<li>由于寄存器在所有进程之间进行共享，所以规定Callee被调用者不会覆盖Caller调用者会使用到的寄存器的值：
-<ul>
-<li>Caller
-Saved调用者保存：<strong>调用者（Caller）负责保存</strong>在函数调用前需要保留的寄存器值，如果调用者需要在函数调用后继续使用某些寄存器中的值，那么它必须在调用函数之前将这些值保存到栈中或其他地方，并在函数返回后再恢复；
-<ul>
+<li>当传递参数超过6个时，x86-64要求<strong>超过寄存器限制的参数按照从右到左的顺序压入栈（后面的参数先进入栈）</strong>：<img src="3.png" alt></li>
+<li>由于寄存器在所有进程之间进行共享，所以规定Callee被调用者不会覆盖Caller调用者会使用到的寄存器的值：<ul>
+<li>Caller Saved调用者保存：<strong>调用者（Caller）负责保存</strong>在函数调用前需要保留的寄存器值，如果调用者需要在函数调用后继续使用某些寄存器中的值，那么它必须在调用函数之前将这些值保存到栈中或其他地方，并在函数返回后再恢复；<ul>
 <li>通过上述操作，Callee可以在调用过程中使用和改变这些寄存器的值；</li>
 <li>典型的有：<code>%r10，%r11，%rax，%rdi，%rsi，%rdx，%rcx，%r8，%r9</code>，即参数基本器和返回寄存器，调用者需要对自己负责，调用子函数时肯定需要确保这些值不能被被调用者改变；</li>
-</ul></li>
-<li>Callee
-Saved被调用者保存：<strong>被调用者（Callee）负责保存</strong>在函数调用中需要保护的寄存器值，通常通过压栈来进行（就是上面画的Callee的栈帧中Saved
-Registers的部分）；
-<ul>
-<li>典型的有：<code>%rbx，%rbp，%r12，%r13，%r14，%r15</code>，<strong>比较特殊的是<code>%rsp</code>，因为调用子函数时，栈指针会往下移至子函数栈帧的栈顶，当子函数结束时，显然需要子函数来恢复栈顶指针指向调用者栈帧的栈顶</strong>；</li>
-</ul></li>
-</ul></li>
-<li>一个Callee Saved的例子<img src="5.png">
-<ul>
-<li>首先，<code>%rdi</code>作用Caller
-Saved，需要由该函数保存，由于<code>%rbx</code>为Callee
-Saved，即被调用者保存，其值在该函数运行过程中不会发生改变，所以将<code>%rdi</code>保存在<code>%rbx</code>中，通过寄存器实现了保存；</li>
-<li>上述操作导致了一个问题，<code>%rbx</code>作为Callee
-Saved，而该函数作为其上一层（主函数）的被调用者，该函数作为被调用者需要保存<code>%rbx</code>，所以，该函数一开头将<code>%rbx</code>压入栈，再最后又弹回给<code>%rbx</code>，通过在栈上存储，实现了保存；</li>
-</ul></li>
-<li>再看一个递归的例子<img src="6.png">
-<ul>
-<li>在该函数中递归调用时，作为主调函数，需要保存<code>%rdi</code>，与上面的例子类似保存在<code>%rbx</code>中；</li>
-<li>由于<code>%rbx</code>是Callee
-Saved，pcouter_r作为主函数和上一层pcounter_r的被调用者，所以也需要保存<code>%rbx</code>；</li>
-</ul></li>
 </ul>
-<h1 id="一个函数调用的例子">一个函数调用的例子</h1>
-<p><img src="4.png"><br>
-1.
-栈操作不是运用传统的push和pop操作，直接移动指针，两者含义是否相同？<br>
-* <strong>功能上相同</strong>：两种方式都用于管理栈上的数据；<br>
-*
-<strong>实现上不同</strong>：直接调整<code>%rsp</code>更高效，尤其在需要分配大块连续内存时；而
-<code>push/pop</code>更适合操作单个寄存器或简单的栈保存和恢复；<br>
-2. 为何多申请了一个8字节空间？<br>
-* System V ABI
-规范了函数调用时的堆栈布局，以确保各函数之间的参数传递和返回地址的存储符合标准。<strong>堆栈以
-16
-字节对齐的方式操作</strong>，从而在调用指令（如<code>CALL</code>和<code>RET</code>）时避免对齐问题；<br>
-3. 何时申请栈中局部空间，何时不需要申请？<br>
-1. <strong>需要申请局部空间的情况：</strong><br>
-1.
-<strong>局部变量无法存放在寄存器中</strong>：如果局部变量的数量超过了可用的寄存器，或者局部变量较大（如数组、结构体），必须在栈中分配空间。<br>
-2. <strong>指针操作需要实际内存地址</strong>：如代码中的 &amp;v1
-需要将变量地址传递给函数，此时必须为变量分配实际的内存空间。<br>
-3.
-<strong>函数递归或多层嵌套调用</strong>：每次调用会分配独立的栈帧用于保存局部变量和状态。<br>
-2. <strong>不需要申请局部空间的情况：</strong><br>
-1.
-<strong>变量可以完全存储在寄存器中</strong>：编译器优化时，会尽可能将局部变量映射到寄存器中，避免占用栈空间。<br>
-2.
-<strong>无需持久化变量状态</strong>：如果局部变量只在寄存器中临时使用且不需要在函数调用间共享，则不需要分配栈空间。</p>
+</li>
+<li>Callee Saved被调用者保存：<strong>被调用者（Callee）负责保存</strong>在函数调用中需要保护的寄存器值，通常通过压栈来进行（就是上面画的Callee的栈帧中Saved Registers的部分）；<ul>
+<li>典型的有：<code>%rbx，%rbp，%r12，%r13，%r14，%r15</code>，<strong>比较特殊的是<code>%rsp</code>，因为调用子函数时，栈指针会往下移至子函数栈帧的栈顶，当子函数结束时，显然需要子函数来恢复栈顶指针指向调用者栈帧的栈顶</strong>；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>一个Callee Saved的例子<img src="5.png" alt><ul>
+<li>首先，<code>%rdi</code>作用Caller Saved，需要由该函数保存，由于<code>%rbx</code>为Callee Saved，即被调用者保存，其值在该函数运行过程中不会发生改变，所以将<code>%rdi</code>保存在<code>%rbx</code>中，通过寄存器实现了保存；</li>
+<li>上述操作导致了一个问题，<code>%rbx</code>作为Callee Saved，而该函数作为其上一层（主函数）的被调用者，该函数作为被调用者需要保存<code>%rbx</code>，所以，该函数一开头将<code>%rbx</code>压入栈，再最后又弹回给<code>%rbx</code>，通过在栈上存储，实现了保存；</li>
+</ul>
+</li>
+<li>再看一个递归的例子<img src="6.png" alt><ul>
+<li>在该函数中递归调用时，作为主调函数，需要保存<code>%rdi</code>，与上面的例子类似保存在<code>%rbx</code>中；</li>
+<li>由于<code>%rbx</code>是Callee Saved，pcouter_r作为主函数和上一层pcounter_r的被调用者，所以也需要保存<code>%rbx</code>；</li>
+</ul>
+</li>
+</ul>
+<h1 id="一个函数调用的例子"><a href="#一个函数调用的例子" class="headerlink" title="一个函数调用的例子"></a>一个函数调用的例子</h1><p><img src="4.png" alt></p>
+<ol>
+<li>栈操作不是运用传统的push和pop操作，直接移动指针，两者含义是否相同？<ul>
+<li><strong>功能上相同</strong>：两种方式都用于管理栈上的数据；</li>
+<li><strong>实现上不同</strong>：直接调整<code>%rsp</code>更高效，尤其在需要分配大块连续内存时；而 <code>push/pop</code>更适合操作单个寄存器或简单的栈保存和恢复；</li>
+</ul>
+</li>
+<li>为何多申请了一个8字节空间？<ul>
+<li>System V ABI 规范了函数调用时的堆栈布局，以确保各函数之间的参数传递和返回地址的存储符合标准。<strong>堆栈以 16 字节对齐的方式操作</strong>，从而在调用指令（如<code>CALL</code>和<code>RET</code>）时避免对齐问题；</li>
+</ul>
+</li>
+<li>何时申请栈中局部空间，何时不需要申请？<ol>
+<li><strong>需要申请局部空间的情况：</strong><ol>
+<li><strong>局部变量无法存放在寄存器中</strong>：如果局部变量的数量超过了可用的寄存器，或者局部变量较大（如数组、结构体），必须在栈中分配空间。</li>
+<li><strong>指针操作需要实际内存地址</strong>：如代码中的 &amp;v1 需要将变量地址传递给函数，此时必须为变量分配实际的内存空间。</li>
+<li><strong>函数递归或多层嵌套调用</strong>：每次调用会分配独立的栈帧用于保存局部变量和状态。</li>
+</ol>
+</li>
+<li><strong>不需要申请局部空间的情况：</strong><ol>
+<li><strong>变量可以完全存储在寄存器中</strong>：编译器优化时，会尽可能将局部变量映射到寄存器中，避免占用栈空间。</li>
+<li><strong>无需持久化变量状态</strong>：如果局部变量只在寄存器中临时使用且不需要在函数调用间共享，则不需要分配栈空间。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
 
     </div>
     
