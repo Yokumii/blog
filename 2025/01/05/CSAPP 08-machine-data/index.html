@@ -185,14 +185,14 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CSAPP/" style="color: #03a9f4">
+                <a href="/blog/tags/CSAPP/" style="color: #ffa2c4">
                     CSAPP
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81/" style="color: #ffa2c4">
+                <a href="/blog/tags/%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81/" style="color: #ff7d73">
                     汇编代码
                 </a>
             </span>
@@ -202,22 +202,30 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="Array数组"><a href="#Array数组" class="headerlink" title="Array数组"></a>Array数组</h1><ul>
-<li><code>Type A[L]</code>会在内存中分配连续的$L * sizeof(Type)$个字节；</li>
-<li>其中单独的<code>A</code>表示数组指针；$A + i$事实上是$A + i <em> sizeof(Type)$的地址；<img src="1.png" alt><br>```c<br>int get_digit(int </em>a, int x) {<br>  return a[x];<br>}</li>
+        <h1 id="array数组">Array数组</h1>
+<ul>
+<li><code>Type A[L]</code>会在内存中分配连续的<span class="math inline">\(L * sizeof(Type)\)</span>个字节；</li>
+<li>其中单独的<code>A</code>表示数组指针；<span class="math inline">\(A
++ i\)</span>事实上是<span class="math inline">\(A + i *
+sizeof(Type)\)</span>的地址；<img src="1.png"></li>
 </ul>
-<p>// 翻译成汇编代码<br>// %rdi = a, %rsi = x;<br>movl (%rdi, %rsi, 4), %eax; // a + 4 * x;<br>```</p>
+<pre class="c"><code>int get_digit(int *a, int x) &#123;
+    return a[x];
+&#125;
+
+// 翻译成汇编代码
+// %rdi = a, %rsi = x;
+movl (%rdi, %rsi, 4), %eax; // a + 4 * x;</code></pre>
 <ul>
 <li>数组可以视为首项的指针，对于两者混用的情况，做出以下区分：</li>
 </ul>
-<div class="table-container">
 <table>
 <thead>
 <tr>
 <th>Decl</th>
-<th style="text-align:left"></th>
-<th style="text-align:left">A1, A2</th>
-<th style="text-align:left"></th>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">A1, A2</th>
+<th style="text-align: left;"></th>
 <th></th>
 <th>*A1, *A2</th>
 <th></th>
@@ -226,39 +234,49 @@
 <tbody>
 <tr>
 <td></td>
-<td style="text-align:left">Cmp</td>
-<td style="text-align:left">Bad</td>
-<td style="text-align:left">Size</td>
+<td style="text-align: left;">Cmp</td>
+<td style="text-align: left;">Bad</td>
+<td style="text-align: left;">Size</td>
 <td>Comp</td>
 <td>Bad</td>
 <td>Size</td>
 </tr>
 <tr>
 <td>int A1[3]</td>
-<td style="text-align:left">Y</td>
-<td style="text-align:left">N</td>
-<td style="text-align:left">12</td>
+<td style="text-align: left;">Y</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: left;">12</td>
 <td>Y</td>
 <td>N</td>
 <td>4</td>
 </tr>
 <tr>
 <td>int *A2</td>
-<td style="text-align:left">Y</td>
-<td style="text-align:left">N</td>
-<td style="text-align:left">8</td>
+<td style="text-align: left;">Y</td>
+<td style="text-align: left;">N</td>
+<td style="text-align: left;">8</td>
 <td>Y</td>
 <td>Y</td>
 <td>4</td>
 </tr>
 </tbody>
 </table>
-</div>
 <ul>
-<li>其中<code>int *A2</code>声明了一个指向整形的指针，但它指向的地址显然没有被指定，即指向一个未被分配的内存空间，是一个坏指针；<img src="2.png" alt></li>
+<li>其中<code>int *A2</code>声明了一个指向整形的指针，但它指向的地址显然没有被指定，即指向一个未被分配的内存空间，是一个坏指针；<img src="2.png"></li>
 </ul>
-<div class="table-container">
 <table>
+<colgroup>
+<col style="width: 27%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 8%">
+<col style="width: 6%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 6%">
+<col style="width: 12%">
+<col style="width: 8%">
+</colgroup>
 <thead>
 <tr>
 <th>Decl</th>
@@ -336,80 +354,94 @@
 </tr>
 </tbody>
 </table>
-</div>
 <ul>
 <li>其中<code>int *A2[3]</code>相当于<code>int (*A4[3])</code>，其中，<code>()</code>的优先级最高，<code>[]</code>次之，然后是<code>*</code>；</li>
 <li><code>int *A2[3]</code>表示包含3个整形指针的数组；方括号<code>[]</code>的优先级高于<code>*</code>，所以<code>A2[3]</code>表示A2是一个数组；<code>int *</code>表示数组的每个元素是一个指向int类型的指针。</li>
-<li><code>int (*A3)[3]</code>表示指向一个包含3个整形的数组的指针；<code>()</code>的优先级高于<code>[]</code>，所以 <code>(\*A3)</code>表示<code>A3</code>是一个指针。<img src="3.png" alt></li>
-<li>二维数组按行优先存储；<img src="4.png" alt></li>
+<li><code>int (*A3)[3]</code>表示指向一个包含3个整形的数组的指针；<code>()</code>的优先级高于<code>[]</code>，所以
+<code>(\*A3)</code>表示<code>A3</code>是一个指针。<img src="3.png"></li>
+<li>二维数组按行优先存储；<img src="4.png"></li>
 <li>要访问<code>A[i][j]</code>，取<code>A + (i * C + j) * 4</code>即可；</li>
 </ul>
-<h1 id="Structure自定义结构体"><a href="#Structure自定义结构体" class="headerlink" title="Structure自定义结构体"></a>Structure自定义结构体</h1><ul>
-<li>结构体也是一段连续的内存区域；<img src="5.png" alt></li>
-<li>结构体的某个类型对象的<strong>地址必须是k = 2, 4, 8的倍数（对齐）</strong>；原因是：<ul>
-<li><strong>内存访问的单位是块</strong>：<ul>
-<li>在现代计算机中，内存通常是以<strong>固定大小的块</strong>（如 4 字节或 8 字节，依赖于系统架构）进行访问的。</li>
-<li>这种对齐方式是硬件设计的结果，因为大多数处理器一次性加载的数据是 4 字节（32 位）或 8 字节（64 位），以提高性能。</li>
-</ul>
-</li>
-<li><strong>缓存行（Cache Line）的作用</strong>：<ul>
-<li>缓存行是 CPU 缓存与内存之间传输数据的最小单位，典型大小为 <strong>64 字节</strong>。</li>
-<li>当 CPU 访问内存时，会将整块缓存行加载到缓存中，以减少后续访问的延迟。</li>
-</ul>
-</li>
-<li><strong>跨缓存行访问的影响</strong>：如果一个数据（如一个结构体或数组元素）跨越了两个缓存行：<ol>
+<h1 id="structure自定义结构体">Structure自定义结构体</h1>
+<ul>
+<li>结构体也是一段连续的内存区域；<img src="5.png"></li>
+<li>结构体的某个类型对象的<strong>地址必须是k = 2, 4,
+8的倍数（对齐）</strong>；原因是：
+<ul>
+<li><strong>内存访问的单位是块</strong>：
+<ul>
+<li>在现代计算机中，内存通常是以<strong>固定大小的块</strong>（如 4
+字节或 8 字节，依赖于系统架构）进行访问的。</li>
+<li>这种对齐方式是硬件设计的结果，因为大多数处理器一次性加载的数据是 4
+字节（32 位）或 8 字节（64 位），以提高性能。</li>
+</ul></li>
+<li><strong>缓存行（Cache Line）的作用</strong>：
+<ul>
+<li>缓存行是 CPU 缓存与内存之间传输数据的最小单位，典型大小为 <strong>64
+字节</strong>。</li>
+<li>当 CPU
+访问内存时，会将整块缓存行加载到缓存中，以减少后续访问的延迟。</li>
+</ul></li>
+<li><strong>跨缓存行访问的影响</strong>：如果一个数据（如一个结构体或数组元素）跨越了两个缓存行：
+<ol type="1">
 <li>CPU 需要加载两个缓存行（额外的内存访问）。</li>
 <li>性能下降，因为需要两次读取操作。</li>
-</ol>
-</li>
-<li><strong>对齐的意义</strong>：<ul>
+</ol></li>
+<li><strong>对齐的意义</strong>：
+<ul>
 <li>数据对齐可以避免跨缓存行的情况，确保数据操作只涉及单个缓存行，从而提高访问效率。</li>
-</ul>
-</li>
-<li><strong>虚拟内存的分页（Page）机制</strong>：现代操作系统的虚拟内存将内存划分为 <strong>页（Page）</strong>，每页通常是 4 KB。<ul>
+</ul></li>
+<li><strong>虚拟内存的分页（Page）机制</strong>：现代操作系统的虚拟内存将内存划分为
+<strong>页（Page）</strong>，每页通常是 4 KB。
+<ul>
 <li>页是内存管理的最小单位，每一页可能映射到不同的物理内存区域，或者部分未分配。</li>
-<li><strong>跨页访问的复杂性</strong>：如果一个数据块（如数组或结构体）跨越了两个页：<ol>
+<li><strong>跨页访问的复杂性</strong>：如果一个数据块（如数组或结构体）跨越了两个页：
+<ol type="1">
 <li>操作系统需要处理两次页表查找，性能下降。</li>
 <li>如果某一页未映射（如缺页错误），会导致额外的开销。</li>
 <li>在某些极端情况下（如页权限不同），可能会引发访问冲突或安全问题。</li>
-</ol>
-</li>
+</ol></li>
 <li><strong>对齐的重要性</strong>：</li>
 <li>避免数据跨页存储可以减少页表查找和缺页错误，简化虚拟内存管理，提高内存操作效率。</li>
-</ul>
-</li>
-</ul>
-</li>
+</ul></li>
+</ul></li>
 <li>所以，倾向于将占字节数大的对象放在前面减小空间浪费；</li>
 </ul>
-<h1 id="浮点代码"><a href="#浮点代码" class="headerlink" title="浮点代码"></a>浮点代码</h1><ul>
+<h1 id="浮点代码">浮点代码</h1>
+<ul>
 <li>不在教学和考试范围内；</li>
 </ul>
-<h1 id="Union共用体"><a href="#Union共用体" class="headerlink" title="Union共用体"></a>Union共用体</h1><ul>
+<h1 id="union共用体">Union共用体</h1>
+<ul>
 <li>根据最大的类型对象所占字节数分配内存；</li>
-<li>一次只能使用一个对象；<br><img src="6.png" alt></li>
+<li>一次只能使用一个对象；<br>
+<img src="6.png"></li>
 </ul>
-<ol>
-<li>Same as (float) u?<ul>
-<li>不相同：<ul>
-<li><code>(float) u</code>的含义：<ul>
-<li>这是一个类型转换，表示将 unsigned 类型的整数 u 转换为 float 类型。</li>
-<li>转换时，u 的数值会从整数解释为浮点数，改变其表示方式。例如，u = 42 会被转换为浮点数 42.0。</li>
-</ul>
-</li>
-<li><code>bit2float</code>的含义：<ul>
-<li>bit2float 并不改变位模式，而是通过 union 将 unsigned 类型的位模式解释为 float 类型。</li>
-<li>如果传入的 u 并不是有效的浮点数位模式，结果可能是未定义的浮点数。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Same as (unsigned) f？<ul>
+<ol type="1">
+<li>Same as (float) u?
+<ul>
+<li>不相同：
+<ul>
+<li><code>(float) u</code>的含义：
+<ul>
+<li>这是一个类型转换，表示将 unsigned 类型的整数 u 转换为 float
+类型。</li>
+<li>转换时，u 的数值会从整数解释为浮点数，改变其表示方式。例如，u = 42
+会被转换为浮点数 42.0。</li>
+</ul></li>
+<li><code>bit2float</code>的含义：
+<ul>
+<li>bit2float 并不改变位模式，而是通过 union 将 unsigned
+类型的位模式解释为 float 类型。</li>
+<li>如果传入的 u
+并不是有效的浮点数位模式，结果可能是未定义的浮点数。</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Same as (unsigned) f？
+<ul>
 <li>同理，不相同；</li>
-</ul>
-</li>
+</ul></li>
 </ol>
 
     </div>
