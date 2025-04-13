@@ -185,7 +185,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="color: #ffa2c4">
+                <a href="/blog/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="color: #00bcd4">
                     云服务器
                 </a>
             </span>
@@ -449,6 +449,33 @@ Creating default alias: default -&gt; v23.3.0</code></pre>
 <li>验证安装</li>
 </ol>
 <pre class="bash"><code>java -version</code></pre>
+<h2 id="screen-工具">2.8 Screen 工具</h2>
+<p>在通过 Scp 等远程传输文件时，特别是大文件时，往往因为 SSH
+连接不稳定而导致中断。而 Screen 工具提供了从单个 SSH 会话中使用多个
+shell 窗口的能力。当会话被分离或网络中断时 Screen
+会话中启动的进程仍将运行，我们可以随时重新连接到 Screen 会话。</p>
+<ol type="1">
+<li>安装 Screen</li>
+</ol>
+<pre class="bash"><code>sudo apt install screen</code></pre>
+<ol start="2" type="1">
+<li>创建一个会话</li>
+</ol>
+<pre class="bash"><code>screen -S test</code></pre>
+<ol start="3" type="1">
+<li>挂起一个会话</li>
+</ol>
+<p>按下 <code>Ctrl</code> + <code>a</code> + <code>d</code> 即可保持这个
+Screen 到后台并回到我们 SSH 的主终端；</p>
+<ol start="4" type="1">
+<li>恢复一个会话</li>
+</ol>
+<pre class="bash"><code>screen -r -d test</code></pre>
+<p>即可重新进入该 Screen；</p>
+<ol start="5" type="1">
+<li>查看已经存在的 Screen 终端</li>
+</ol>
+<pre class="bash"><code>screen -ls</code></pre>
 <h1 id="三搭建-cloudreve-云盘">三、搭建 Cloudreve 云盘</h1>
 <h2 id="快速部署">3.1 快速部署</h2>
 <p>下载 Cloudreve 发布版本，你可以自行从 <a target="_blank" rel="noopener" href="https://github.com/cloudreve/Cloudreve/releases">Release</a>
