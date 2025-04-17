@@ -157,22 +157,22 @@
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
             <div class="article">
     <div>
-        <h1>矩阵论：矩阵可逆性条件、条件数和谱半径介绍</h1>
+        <h1>一些有关Large Language Model(LLM)的学习记录</h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <i class="fa-solid fa-calendar fa-fw"></i>
             </span>
-            2025/1/13
+            2025/2/27
         </span>
         
         <span class="category">
-            <a href="/blog/categories/%E7%9F%A9%E9%98%B5%E8%AE%BA/">
+            <a href="/blog/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                矩阵论
+                人工智能
             </a>
         </span>
         
@@ -185,8 +185,22 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E7%9F%A9%E9%98%B5%E8%AE%BA/" style="color: #ff7d73">
-                    矩阵论
+                <a href="/blog/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" style="color: #00a596">
+                    人工智能
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/Python/" style="color: #00bcd4">
+                    Python
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/LLM/" style="color: #03a9f4">
+                    LLM
                 </a>
             </span>
             
@@ -195,105 +209,81 @@
     </div>
     
     <div class="content" v-pre>
-        <h2 id="矩阵可逆性条件条件数和谱半径介绍">矩阵可逆性条件、条件数和谱半径介绍</h2>
-<p>在明确了范数的定义后，我们对它的几点应用进行列举。</p>
-<h3 id="定理-2.6">定理 2.6</h3>
-<p>设 <span class="math inline">\(A\in \mathbb{C}^{n \times
-n}\)</span>，且对 <span class="math inline">\(\mathbb{C}^{n\times
-n}\)</span> 上的某种矩阵范数 $$，若 <span class="math inline">\(\Vert  A
-\Vert  &lt; 1\)</span>，则矩阵 <span class="math inline">\(I-A\)</span>
-可逆（非奇异），且有：</p>
-<p><span class="math display">\[
-\Vert (I - A)^{-1} \Vert  \leq \frac{\Vert  I \Vert }{1 - \Vert  A \Vert
-}
-\]</span></p>
-<h3 id="定理-2.7">定理 2.7</h3>
-<p>设 <span class="math inline">\(A\in \mathbb{C}^{n \times
-n}\)</span>，且对 <span class="math inline">\(\mathbb{C}^{n\times
-n}\)</span> 上的某种矩阵范数 $$，若 <span class="math inline">\(\Vert  A
-\Vert  &lt; 1\)</span>，则有：</p>
-<p><span class="math display">\[
-\Vert I - (I - A)^{-1} \Vert  \leq \frac{\Vert  A \Vert }{1 - \Vert  A
-\Vert }
-\]</span></p>
-<h3 id="逆矩阵的摄动">逆矩阵的摄动</h3>
-<p>在实际应用问题中，矩阵参数往往为非准确值，即带有误差 <span class="math inline">\(\delta\)</span>，我们希望其构成的近似矩阵 <span class="math inline">\(A\)</span> 的逆矩阵 <span class="math inline">\(A^{-1}\)</span> 与准确矩阵 <span class="math inline">\(A + \delta a_{ij}(i,j = 1,2,\dots,n)\)</span>
-的逆矩阵 <span class="math inline">\((A + \delta a_{ij})^{-1}\)</span>
-尽量接近。</p>
-<p>一般称 <span class="math inline">\(\delta a_{ij}\)</span> 为
-<strong>扰动</strong>，<span class="math inline">\(\delta A\)</span> 为
-<span class="math inline">\(A\)</span> 的
-<strong>摄动矩阵</strong>。</p>
-<h3 id="摄动定理">摄动定理</h3>
-<p><strong>定理 2.8</strong></p>
-<p>设 <span class="math inline">\(A\in \mathbb{C}^{n \times n}\)</span>
-且 <span class="math inline">\(A\)</span> 可逆，<span class="math inline">\(B\in \mathbb{C}^{n\times n}\)</span>，且对 <span class="math inline">\(\mathbb{C}^{n\times n}\)</span> 上的某种矩阵范数
-$$，若 <span class="math inline">\(\Vert  A^{-1}B \Vert  &lt;
-1\)</span>，则有：</p>
+        <p><strong>前言</strong>：</p>
+<blockquote>
+<p>由于本人之前对于大模型的学习学的急功近利，偏向于应用（<del>乱用bushi</del>），回头看来对LLM本身过于肤浅，所以浅开一个坑，用于补齐原理性的知识；</p>
+<p><del>BUPT课设太TM多了</del>。不定期随便填坑。</p>
+</blockquote>
+<p><strong>参考资料</strong>：</p>
+<blockquote>
+<p>【1】［美] 塞巴斯蒂安·拉施卡 著，叶文滔 译. 大模型技术30讲[M].
+北京：人民邮电出版社，2024.<br>
+【2】Raschka S. <em>Build a Large Language Model (From Scratch)</em>[M].
+Shelter Island, NY: Manning, 2024.</p>
+</blockquote>
+<h1 id="一understanding-llm">一、Understanding LLM</h1>
+<h2 id="what-is-llm">1.1 What is LLM?</h2>
+<p><strong>定义 1.1</strong>：<strong>Large Language Model</strong></p>
+<blockquote>
+<p>An LLM is a neural network designed to understand, generate, and
+respond to human-like text;</p>
+</blockquote>
 <ul>
-<li><span class="math inline">\(A + B\)</span> 可逆；</li>
-<li>记 <span class="math inline">\(F = I - (I +
-A^{-1}B)^{-1}\)</span>，则 <span class="math inline">\(\Vert F \Vert
-\leq \frac{\Vert A^{-1}B \Vert }{1 - \Vert A^{-1}B \Vert
-}\)</span>；</li>
-<li><span class="math inline">\(\frac{\Vert A^{-1} - (A + B)^{-1} \Vert
-}{A^{-1}} \leq \frac{\Vert  A^{-1}B \Vert }{1 - \Vert  A^{-1}B \Vert
-}\)</span>。</li>
+<li>"Large" means, datasets on which it's trained and parameters(the
+model's size);
+<ul>
+<li><strong>parameters</strong> are the adjustable weights in the
+network that are optimized during training to predict the next word in a
+sequence;</li>
+</ul></li>
+<li>LLM‘s architecture -- <strong>Transformer</strong>, which enables
+them to pay selective attention to different parts of the input when
+making predictions;</li>
+<li>LLM is also called <strong>Generative AI</strong>(生成式AI);</li>
 </ul>
-<p>若令 <span class="math inline">\(\delta\)</span> 是个小量，并且令</p>
-<p><span class="math display">\[
-cond(A) = \Vert A \Vert \Vert A^{-1}\Vert
-\]</span></p>
-<p>则当 <span class="math inline">\(\Vert A^{-1}\Vert \Vert \delta A
-\Vert &lt; 1\)</span> 时，</p>
-<p><span class="math display">\[
-\frac{\Vert A^{-1} - (A + \delta A)^{-1}\Vert}{\Vert A^{-1}\Vert}\leq
-\frac{cond(A)\frac{\Vert \delta A\Vert}{\Vert A\Vert}}{1 -
-cond(A)\frac{\Vert\delta A\Vert}{\Vert A\Vert}}
-\]</span></p>
-<p>称 <span class="math inline">\(cond(A)\)</span> 为矩阵 <span class="math inline">\(A\)</span> 的
-<strong>条件数</strong>，一般情况下，条件数越大，<span class="math inline">\((A + \delta A)^{-1}\)</span> 和 <span class="math inline">\(A^{-1}\)</span>
-的相对误差就越大。往往在用算法进行矩阵求逆时，先计算条件数，判断矩阵的逆是否“好求”。</p>
-<h3 id="矩阵谱半径">矩阵谱半径</h3>
-<p><strong>定义</strong></p>
-<p>设 <span class="math inline">\(A\in \mathbb{C}^{n \times n}\)</span>
-的 <span class="math inline">\(n\)</span> 个特征值为 <span class="math inline">\(\lambda_1,\lambda_2,\dots,\lambda_n\)</span>，称</p>
-<p><span class="math display">\[
-\rho (A) = \max\limits_{i}\left|\lambda_i\right|
-\]</span></p>
-<p>为 <span class="math inline">\(A\)</span> 的
-<strong>谱半径</strong>。</p>
-<p><strong>定理 2.9</strong></p>
-<p>设 <span class="math inline">\(A\in \mathbb{C}^{n \times
-n}\)</span>，则对 <span class="math inline">\(\mathbb{C}^{n\times
-n}\)</span> 上任何一种矩阵范数 $$，都有</p>
-<p><span class="math display">\[
-\rho (A) \leq \Vert  A \Vert
-\]</span></p>
-<p><strong>定理 2.10</strong></p>
-<p>设 <span class="math inline">\(A\in \mathbb{C}^{n \times
-n}\)</span>，对 <span class="math inline">\(\forall \epsilon &gt;
-0,\exists \Vert  \cdot  \Vert ,s.t.\)</span></p>
-<p><span class="math display">\[
-\Vert  A  \Vert _M \leq \rho (A) + \epsilon
-\]</span></p>
-<p>由上述定理可见，谱半径小于等于任意矩阵范数，同时也必存在一个算子范数，小于等于谱半径加上一个很小的正数。</p>
-<h3 id="谱半径在迭代法中的应用">谱半径在迭代法中的应用</h3>
-<p>谱半径在数值分析和迭代法中起到了关键作用，尤其是在矩阵幂法、迭代求解线性方程组的收敛性分析等领域。例如，当利用迭代法解线性方程组时，谱半径决定了迭代矩阵是否收敛。</p>
-<p><strong>定理 2.11</strong></p>
-<p>在数值线性代数中，迭代法通常用于求解线性方程组 <span class="math inline">\(Ax = b\)</span>。设迭代法的一般形式为：</p>
-<p><span class="math display">\[
-x^{(k+1)} = B x^{(k)} + c,
-\]</span></p>
-<p>其中，<span class="math inline">\(B\)</span> 为迭代矩阵，<span class="math inline">\(c\)</span> 为常向量，<span class="math inline">\(k\)</span> 为迭代次数。</p>
-<p>迭代法的收敛性由迭代矩阵 <span class="math inline">\(B\)</span>
-的谱半径决定：</p>
-<ol type="1">
-<li><strong>必要条件</strong>：如果迭代法收敛，即 <span class="math inline">\(x^{(k)} \to x^*\)</span> (<span class="math inline">\(x^*\)</span> 为精确解)，则迭代矩阵 <span class="math inline">\(B\)</span> 的谱半径必须满足：<span class="math inline">\(\rho(B) &lt; 1\)</span>；</li>
-<li><strong>充分条件</strong>：如果 <span class="math inline">\(\rho(B)
-&lt; 1\)</span>，则对于任意初始值 <span class="math inline">\(x^{(0)}\)</span>，迭代法都会收敛到线性方程组的唯一解
-<span class="math inline">\(x^*\)</span>。</li>
-</ol>
+<p>至于其中使用到的两种手段 —— machine learning and deep
+learning，将在之后具体阐释。（后者是前者的一个子集，主要区别是是否需要手动提取特征。然而机器学习的经典算法已经快被淘汰了，令人感慨）；</p>
+<h2 id="application-of-llm">1.2 Application of LLM</h2>
+<p>无需多言，用过都说好；</p>
+<h2 id="stages-of-building-and-using-llms">1.3 Stages of building and
+using LLMs</h2>
+<ul>
+<li><strong>Pretraining
+预训练</strong>：在多领域的庞大数据集下训练；</li>
+<li><strong>Finetuning
+微调</strong>：针对特定任务通过特定领域的标注数据集在Pretrained
+LLM的基础上进行训练；
+<ul>
+<li><strong>Instruction Finetuning
+指令微调</strong>：简单来说，就是<strong><em>标注数据 = 指令 +
+正确答案</em></strong>；</li>
+<li><strong>Classification Finetuning
+分类微调</strong>：<strong><em>标注数据 = 文本 +
+分类标签</em></strong>；</li>
+</ul></li>
+</ul>
+<p>两者的具体区别如下图所示：<img src="https://raw.githubusercontent.com/Yokumii/MyPicBucket/img/img/202504171352752.png"></p>
+<h2 id="introducing-the-transformer-architecture">1.4 Introducing the
+transformer architecture</h2>
+<p>Transformer 的两个重要组件是 <strong>Encoder 编码器</strong> 和
+<strong>Decoder
+解码器</strong>，编码器将输入文本编码为向量，而解码器解码向量并生成相应文本。区别于传统的全连接型或卷积型，编码器和解码器之间采用
+<strong>Self-attention mechanism 自注意力机制</strong> 连接；</p>
+<p>在
+Transformer模型的基础上，又衍生出了两种不同架构：<strong>Bert(Bidirectional
+encoder representations from transformers)</strong> 和
+<strong>GPT(Generative pretrained transformers)</strong>；</p>
+<p>从全拼也可以看出，这两种模型分别用于不同的任务，Bert模型主要用于
+predict masked or hidden words
+预测掩码值，适用于文本分类任务，以下是它和 GPT-Model 区别的图示：<img src="https://raw.githubusercontent.com/Yokumii/MyPicBucket/img/img/202504171450135.png"></p>
+<p>GPT-Model 又分为：<br>
+* <strong>Zero-shot
+零样本学习</strong>：能够处理从未在训练数据中见过的任务或类别，即模型在面对新任务时不需要额外的训练和微调也能做出合理的决策；<br>
+* <strong>Few-shot
+少样本学习</strong>：模型在提供极少量样本或示例时，就能够理解并执行特定任务的能力；泛化能力强；</p>
+<p>下图具体说明了两者的区别：<br>
+<img src="https://raw.githubusercontent.com/Yokumii/MyPicBucket/img/img/202504171510313.png"></p>
+<p>GPT-Model采用自监督的方式进行学习。</p>
 
     </div>
     
