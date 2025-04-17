@@ -185,7 +185,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="color: #ffa2c4">
+                <a href="/blog/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="color: #00a596">
                     云服务器
                 </a>
             </span>
@@ -195,9 +195,7 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="零白嫖步骤">零、<del>（白嫖）</del>步骤</h1>
-<p>阿里云的学生优惠会送一张无门槛300元代金券（传送门： <a target="_blank" rel="noopener" href="https://university.aliyun.com/">阿里云高校计划_云工开物_助力高校科研与教育加速-阿里云</a>
-），刚好够白嫖用券专区中的小服务器一整年（还多出15块可以买个20g的流量包）；个人配置如下：</p>
+        <h1 id="零、（白嫖）步骤"><a href="#零、（白嫖）步骤" class="headerlink" title="零、（白嫖）步骤"></a>零、<del>（白嫖）</del>步骤</h1><p>阿里云的学生优惠会送一张无门槛300元代金券（传送门： <a target="_blank" rel="noopener" href="https://university.aliyun.com/">阿里云高校计划_云工开物_助力高校科研与教育加速-阿里云</a> ），刚好够白嫖用券专区中的小服务器一整年（还多出15块可以买个20g的流量包）；个人配置如下：</p>
 <ul>
 <li><strong>实例规格</strong>：<a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/25378.html?spm=5176.ecscore_server.0.0.38314df5CTmW3g#e">ecs.e-c1m1.large</a>；</li>
 <li><strong>CPU&amp;内存</strong>：2核2G；</li>
@@ -209,58 +207,56 @@
 <p><del><strong>注</strong>：别选固定带宽，这是另外的价钱；</del></p>
 </blockquote>
 <p>白嫖完后，进入配置；</p>
-<h1 id="一本地远程连接">一、本地远程连接</h1>
-<h2 id="密钥对认证">1.1 密钥对认证</h2>
-<p>由于本人采用密钥对进行认证，在创建并绑定密钥对后会自动下载一个
-<code>.pem</code> 的文件到本地，ssh连接需要采用以下方式：</p>
-<ol type="1">
+<h1 id="一、本地远程连接"><a href="#一、本地远程连接" class="headerlink" title="一、本地远程连接"></a>一、本地远程连接</h1><h2 id="1-1-密钥对认证"><a href="#1-1-密钥对认证" class="headerlink" title="1.1 密钥对认证"></a>1.1 密钥对认证</h2><p>由于本人采用密钥对进行认证，在创建并绑定密钥对后会自动下载一个 <code>.pem</code> 的文件到本地，ssh连接需要采用以下方式：</p>
+<ol>
 <li>直接连接：</li>
 </ol>
-<pre class="bash"><code>ssh -i ~/.ssh/你的私钥文件 用户名@服务器IP</code></pre>
-<ol start="2" type="1">
+<pre><code class="lang-bash">ssh -i ~/.ssh/你的私钥文件 用户名@服务器IP
+</code></pre>
+<ol>
 <li>简化连接方式</li>
 </ol>
 <p>每次手动输入私钥文件显然过于不便了，我们可以将私钥文件添加到SSH配置文件中；</p>
-<pre class="bash"><code>nano ~/.ssh/config</code></pre>
+<pre><code class="lang-bash">nano ~/.ssh/config
+</code></pre>
 <p>增加配置如下：</p>
 <pre><code>Host 服务器别名(随便取)
   HostName 服务器IP 
   User 用户名 
   IdentityFile ~/.ssh/你的私钥文件 
-  Port 22</code></pre>
-<p>按下 <code>^x</code> 和 <code>y</code>
-保存后，可以直接采用服务器别名连接：</p>
-<pre class="bash"><code>ssh 服务器别名</code></pre>
-<h2 id="常见问题">1.2 常见问题</h2>
-<ol type="1">
+  Port 22
+</code></pre><p>按下 <code>^x</code> 和 <code>y</code> 保存后，可以直接采用服务器别名连接：</p>
+<pre><code class="lang-bash">ssh 服务器别名
+</code></pre>
+<h2 id="1-2-常见问题"><a href="#1-2-常见问题" class="headerlink" title="1.2 常见问题"></a>1.2 常见问题</h2><ol>
 <li>连接时报错：</li>
 </ol>
-<pre><code>Warning: Permanently added &#39;你的服务器IP&#39; (ED25519) to the list of known hosts. @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ @ WARNING: UNPROTECTED PRIVATE KEY FILE! @ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Permissions 0644 for &#39;你的私钥文件地址&#39; are too open. It is required that your private key files are NOT accessible by others. This private key will be ignored. Load key &quot;你的私钥文件地址&quot;: bad permissions 用户名@服务器IP: Permission denied (publickey).</code></pre>
-<p>这是因为SSH出于安全考虑，要求私钥文件的权限必须足够严格，不允许其他用户访问。你需要修改私钥文件的权限，确保只有你自己可以读取和写入：</p>
-<pre class="bash"><code>chmod 600 ~/.ssh/你的私钥文件</code></pre>
-<h1 id="二基本环境配置">二、基本环境配置</h1>
-<h2 id="基本工具安装">2.1 基本工具安装</h2>
-<ol type="1">
+<pre><code>Warning: Permanently added &#39;你的服务器IP&#39; (ED25519) to the list of known hosts. @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ @ WARNING: UNPROTECTED PRIVATE KEY FILE! @ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Permissions 0644 for &#39;你的私钥文件地址&#39; are too open. It is required that your private key files are NOT accessible by others. This private key will be ignored. Load key &quot;你的私钥文件地址&quot;: bad permissions 用户名@服务器IP: Permission denied (publickey).
+</code></pre><p>这是因为SSH出于安全考虑，要求私钥文件的权限必须足够严格，不允许其他用户访问。你需要修改私钥文件的权限，确保只有你自己可以读取和写入：</p>
+<pre><code class="lang-bash">chmod 600 ~/.ssh/你的私钥文件
+</code></pre>
+<h1 id="二、基本环境配置"><a href="#二、基本环境配置" class="headerlink" title="二、基本环境配置"></a>二、基本环境配置</h1><h2 id="2-1-基本工具安装"><a href="#2-1-基本工具安装" class="headerlink" title="2.1 基本工具安装"></a>2.1 基本工具安装</h2><ol>
 <li>系统更新</li>
 </ol>
-<pre class="bash"><code>sudo apt update
-sudo apt upgrade -y</code></pre>
-<ol start="2" type="1">
+<pre><code class="lang-bash">sudo apt update
+sudo apt upgrade -y
+</code></pre>
+<ol>
 <li>基本工具安装（有些已经自带）</li>
 </ol>
-<pre class="bash"><code>sudo apt install -y build-essential curl wget git vim htop net-tools</code></pre>
-<ol start="3" type="1">
+<pre><code class="lang-bash">sudo apt install -y build-essential curl wget git vim htop net-tools
+</code></pre>
+<ol>
 <li>防火墙配置</li>
 </ol>
-<pre class="bash"><code>sudo apt install -y ufw
+<pre><code class="lang-bash">sudo apt install -y ufw
 sudo ufw allow ssh
 sudo ufw allow http
 sudo ufw allow https
-sudo ufw enable</code></pre>
-<h2 id="安装docker">2.2 安装Docker</h2>
-<p>以下步骤也可以直接参考 <a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/ubuntu/">Docker
-官方文档</a>；</p>
-<pre class="bash"><code># 安装所需依赖
+sudo ufw enable
+</code></pre>
+<h2 id="2-2-安装Docker"><a href="#2-2-安装Docker" class="headerlink" title="2.2 安装Docker"></a>2.2 安装Docker</h2><p>以下步骤也可以直接参考 <a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/ubuntu/">Docker 官方文档</a>；</p>
+<pre><code class="lang-bash"># 安装所需依赖
 sudo apt install -y apt-transport-https ca-certificates gnupg lsb-release
 
 # 添加 Docker 的官方 GPG 密钥（通过阿里云镜像）
@@ -270,217 +266,219 @@ echo &quot;deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/do
 sudo apt-get update
 
 # 安装最新的 Docker
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</code></pre>
-<h3 id="常见问题-1">常见问题</h3>
-<p>由于运营商网络等不稳定因素可能导致镜像加速器无法成功拉取到指定版本的容器镜像，阿里云提供了免费的镜像加速器，配置步骤如下：</p>
-<ol type="1">
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+</code></pre>
+<h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><p>由于运营商网络等不稳定因素可能导致镜像加速器无法成功拉取到指定版本的容器镜像，阿里云提供了免费的镜像加速器，配置步骤如下：</p>
+<ol>
 <li>登录<a target="_blank" rel="noopener" href="https://cr.console.aliyun.com/?spm=a2c4g.11186623.0.0.27881d82EVUzaG">容器镜像服务控制台</a>。</li>
-<li>在左侧导航栏选择<strong>镜像工具</strong> &gt; <strong>镜像加速器</strong></li>
+<li>在左侧导航栏选择<strong>镜像工具</strong> &gt; <strong>镜像加速器</strong></li>
 <li>在<strong>镜像加速器</strong>页面获取<strong>加速器地址</strong>。</li>
 </ol>
 <p>接下来，在云服务器上更新 Docker 配置：</p>
-<pre class="bash"><code>sudo mkdir -p /etc/docker 
+<pre><code class="lang-bash">sudo mkdir -p /etc/docker 
 sudo tee /etc/docker/daemon.json &lt;&lt;-&#39;EOF&#39; 
 &#123; 
     &quot;registry-mirrors&quot;: [&quot;你的镜像加速器地址&quot;] 
 &#125; 
 EOF
 sudo systemctl daemon-reload 
-sudo systemctl restart docker</code></pre>
+sudo systemctl restart docker
+</code></pre>
 <p>最后，验证是否可以成功拉取 Docker Hub镜像：</p>
-<pre><code>sudo docker run hello-world</code></pre>
-<p>如果看到以下输出，说明成功拉取！</p>
+<pre><code>sudo docker run hello-world
+</code></pre><p>如果看到以下输出，说明成功拉取！</p>
 <pre><code>Hello from Docker!
-This message shows that your installation appears to be working correctly.</code></pre>
-<h2 id="配置-git">2.3 配置 git</h2>
-<ol type="1">
+This message shows that your installation appears to be working correctly.
+</code></pre><h2 id="2-3-配置-git"><a href="#2-3-配置-git" class="headerlink" title="2.3 配置 git"></a>2.3 配置 git</h2><ol>
 <li>这里采用使用 SSH 密钥认证，首先在云服务器上生成 SSH 密钥对；</li>
 </ol>
-<pre class="bash"><code>ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</code></pre>
-<p>可以直接一路回车到底，默认情况下，密钥会保存到
-<code>~/.ssh/id_rsa</code>；</p>
-<ol start="2" type="1">
+<pre><code class="lang-bash">ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;
+</code></pre>
+<p>可以直接一路回车到底，默认情况下，密钥会保存到 <code>~/.ssh/id_rsa</code>；</p>
+<ol>
 <li>将公钥添加到 GitHub 账户</li>
 </ol>
-<pre class="bash"><code># 查看公钥内容
-cat ~/.ssh/id_rsa.pub</code></pre>
-<p>复制后，登录到 <strong>GitHub</strong>，进入
-<strong>Settings</strong> -&gt; <strong>SSH and GPG keys</strong>，点击
-<strong>New SSH key</strong>，将公钥复制到 GitHub 的文本框中并保存；</p>
-<ol start="3" type="1">
+<pre><code class="lang-bash"># 查看公钥内容
+cat ~/.ssh/id_rsa.pub
+</code></pre>
+<p>复制后，登录到 <strong>GitHub</strong>，进入 <strong>Settings</strong> -&gt; <strong>SSH and GPG keys</strong>，点击 <strong>New SSH key</strong>，将公钥复制到 GitHub 的文本框中并保存；</p>
+<ol>
 <li>验证连接</li>
 </ol>
-<pre class="bash"><code># 测试连接
-ssh -T git@github.com</code></pre>
+<pre><code class="lang-bash"># 测试连接
+ssh -T git@github.com
+</code></pre>
 <p>如果配置成功，会观察到输出如下信息：</p>
-<pre><code>Hi username! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</code></pre>
-<h2 id="安装-anaconda">2.4 安装 Anaconda</h2>
-<ol type="1">
+<pre><code>Hi username! You&#39;ve successfully authenticated, but GitHub does not provide shell access.
+</code></pre><h2 id="2-4-安装-Anaconda"><a href="#2-4-安装-Anaconda" class="headerlink" title="2.4 安装 Anaconda"></a>2.4 安装 Anaconda</h2><ol>
 <li>下载 Anaconda 的安装包</li>
 </ol>
-<p>你可以在 <a target="_blank" rel="noopener" href="https://repo.anaconda.com/archive/">官网</a>
-自行查找需要的版本，替换以下链接即可：</p>
-<pre class="bash"><code>wget https://repo.anaconda.com/archive/Anaconda3-2024.10-1-Linux-x86_64.sh</code></pre>
-<ol start="2" type="1">
+<p>你可以在 <a target="_blank" rel="noopener" href="https://repo.anaconda.com/archive/">官网</a> 自行查找需要的版本，替换以下链接即可：</p>
+<pre><code class="lang-bash">wget https://repo.anaconda.com/archive/Anaconda3-2024.10-1-Linux-x86_64.sh
+</code></pre>
+<ol>
 <li>安装anaconda</li>
 </ol>
-<pre class="bash"><code># 授予可执行权限
+<pre><code class="lang-bash"># 授予可执行权限
 chmod +x Anaconda3-2024.10-1-Linux-x86_64.sh
 
 # 执行
-./Anaconda3-2024.10-1-Linux-x86_64.sh</code></pre>
+./Anaconda3-2024.10-1-Linux-x86_64.sh
+</code></pre>
 <p>然后疯狂回车（中间需要输入一次yes）即可；</p>
-<ol start="3" type="1">
+<ol>
 <li>验证安装</li>
 </ol>
 <p>打开新的终端，输入：</p>
-<pre class="bash"><code>conda --version</code></pre>
+<pre><code class="lang-bash">conda --version
+</code></pre>
 <p>如果输出正确的 conda 版本，则说明安装成功并且正确配置环境变量；</p>
-<pre><code>conda 24.9.2</code></pre>
-<h2 id="安装-mysql">2.5 安装 MySQL</h2>
-<ol type="1">
+<pre><code>conda 24.9.2
+</code></pre><h2 id="2-5-安装-MySQL"><a href="#2-5-安装-MySQL" class="headerlink" title="2.5 安装 MySQL"></a>2.5 安装 MySQL</h2><ol>
 <li>安装 MySQL APT 存储库</li>
 </ol>
-<pre class="bash"><code>sudo wget https://dev.mysql.com/get/mysql-apt-config_0.8.33-1_all.deb</code></pre>
-<ol start="2" type="1">
+<pre><code class="lang-bash">sudo wget https://dev.mysql.com/get/mysql-apt-config_0.8.33-1_all.deb
+</code></pre>
+<ol>
 <li>安装 MySQL 服务器</li>
 </ol>
-<pre class="bash"><code>#安装 MySQL 服务器
+<pre><code class="lang-bash">#安装 MySQL 服务器
 sudo apt install -y mysql-server
 #启动 MySQL 服务
 sudo systemctl start mysql
 #检查启动状态
 sudo systemctl status mysql
 #在系统启动时自动启动。
-sudo systemctl enable mysql</code></pre>
-<ol start="3" type="1">
+sudo systemctl enable mysql
+</code></pre>
+<ol>
 <li>安装安全向导（可选）</li>
 </ol>
-<pre class="bash"><code>sudo mysql_secure_installation</code></pre>
+<pre><code class="lang-bash">sudo mysql_secure_installation
+</code></pre>
 <p>它会让你自信选择安全策略，包括如下内容：</p>
 <ul>
-<li>Would you like to setup VALIDATE PASSWORD component?
-<ul>
+<li>Would you like to setup VALIDATE PASSWORD component?<ul>
 <li>是否需要启用 <code>VALIDATE PASSWORD</code> 组件？</li>
-</ul></li>
-<li>There are three levels of password validation policy:
-<ul>
-<li>LOW Length &gt;= 8</li>
-<li>MEDIUM Length &gt;= 8, numeric, mixed case, and special
-characters</li>
-<li>STRONG Length &gt;= 8, numeric, mixed case, special characters and
-dictionary file</li>
-<li>这里选择输入 2
-，表示设置密码策略要求密码至少包含一个大写字母、一个小写字母、一个数字和一个特殊字符，并且密码总长度至少为8个字符；</li>
-</ul></li>
-<li>Remove anonymous users?
-<ul>
+</ul>
+</li>
+<li>There are three levels of password validation policy:<ul>
+<li>LOW    Length &gt;= 8</li>
+<li>MEDIUM Length &gt;= 8, numeric, mixed case, and special characters</li>
+<li>STRONG Length &gt;= 8, numeric, mixed case, special characters and dictionary file</li>
+<li>这里选择输入 2 ，表示设置密码策略要求密码至少包含一个大写字母、一个小写字母、一个数字和一个特殊字符，并且密码总长度至少为8个字符；</li>
+</ul>
+</li>
+<li>Remove anonymous users?<ul>
 <li>是否移除匿名用户？</li>
 <li>这里输入 y ，表示移除；</li>
-</ul></li>
-<li>Disallow root login remotely?
-<ul>
+</ul>
+</li>
+<li>Disallow root login remotely?<ul>
 <li>禁止MySQL的 <code>root</code> 用户从远程登录；</li>
 <li>这里选择 y；</li>
-</ul></li>
-<li>Remove test database and access to it?
-<ul>
+</ul>
+</li>
+<li>Remove test database and access to it?<ul>
 <li>是否需要移除MySQL自带的 <code>test</code> 数据库？</li>
 <li>无所谓，删了吧；</li>
-</ul></li>
-<li>Reload privilege tables now?
-<ul>
-<li>输入 y ，重新加载权限表，使得更改生效；</li>
-</ul></li>
 </ul>
-<ol start="4" type="1">
+</li>
+<li>Reload privilege tables now?<ul>
+<li>输入 y ，重新加载权限表，使得更改生效；</li>
+</ul>
+</li>
+</ul>
+<ol>
 <li>配置安全组规则</li>
 </ol>
-<p>配置安全组时，MySQL
-默认使用3306端口。确保实例安全组的入站规则开放3306端口。如果选择了不同的端口，请根据实际情况调整安全组设置。具体步骤请参考<a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/ecs/user-guide/add-a-security-group-rule#concept-sm5-2wz-xdb">添加安全组规则</a>。</p>
-<ol start="5" type="1">
+<p>配置安全组时，MySQL 默认使用3306端口。确保实例安全组的入站规则开放3306端口。如果选择了不同的端口，请根据实际情况调整安全组设置。具体步骤请参考<a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/ecs/user-guide/add-a-security-group-rule#concept-sm5-2wz-xdb">添加安全组规则</a>。</p>
+<ol>
 <li>添加用于远程访问的用户</li>
 </ol>
-<p>将以下输入的 <code>&lt;username&gt;</code> 和
-<code>&lt;password&gt;</code> 部分自行修改；</p>
-<pre class="bash"><code>sudo mysql -uroot -p \
+<p>将以下输入的 <code>&lt;username&gt;</code> 和 <code>&lt;password&gt;</code> 部分自行修改；</p>
+<pre><code class="lang-bash">sudo mysql -uroot -p \
 -e &quot;CREATE USER &#39;&lt;username&gt;&#39;@&#39;%&#39; IDENTIFIED BY &#39;&lt;password&gt;&#39;;&quot; \
 -e &quot;GRANT ALL PRIVILEGES ON *.* TO &#39;&lt;username&gt;&#39;@&#39;%&#39; WITH GRANT OPTION;&quot; \
--e &quot;FLUSH PRIVILEGES;&quot;</code></pre>
+-e &quot;FLUSH PRIVILEGES;&quot;
+</code></pre>
 <p>执行后需要输入 root 账户的密码；</p>
-<ol start="6" type="1">
+<ol>
 <li>登录 mysql 账户验证</li>
 </ol>
-<pre class="bash"><code>sudo mysql -u &lt;username&gt; -p</code></pre>
+<pre><code class="lang-bash">sudo mysql -u &lt;username&gt; -p
+</code></pre>
 <p>输入密码后，进入 mysql 环境，成功！</p>
 <p>输入以下内容可以退出 mysql 环境：</p>
-<pre class="mysql"><code>exit;</code></pre>
-<h2 id="配置-node.js-开发环境">2.6 配置 Node.js 开发环境</h2>
-<ol type="1">
+<pre><code class="lang-mysql">exit;
+</code></pre>
+<h2 id="2-6-配置-Node-js-开发环境"><a href="#2-6-配置-Node-js-开发环境" class="headerlink" title="2.6 配置 Node.js 开发环境"></a>2.6 配置 Node.js 开发环境</h2><ol>
 <li>下载 NVM 源码</li>
 </ol>
-<pre class="bash"><code>git clone https://gitee.com/mirrors/nvm.git ~/.nvm &amp;&amp; cd ~/.nvm &amp;&amp; git checkout `git describe --abbrev=0 --tags`</code></pre>
-<ol start="2" type="1">
+<pre><code class="lang-bash">git clone https://gitee.com/mirrors/nvm.git ~/.nvm &amp;&amp; cd ~/.nvm &amp;&amp; git checkout `git describe --abbrev=0 --tags`
+</code></pre>
+<ol>
 <li>配置环境变量</li>
 </ol>
-<pre class="bash"><code>sudo sh -c &#39;echo &quot;. ~/.nvm/nvm.sh&quot; &gt;&gt; /etc/profile&#39;
-source /etc/profile</code></pre>
-<ol start="3" type="1">
+<pre><code class="lang-bash">sudo sh -c &#39;echo &quot;. ~/.nvm/nvm.sh&quot; &gt;&gt; /etc/profile&#39;
+source /etc/profile
+</code></pre>
+<ol>
 <li>设置镜像源</li>
 </ol>
-<pre class="bash"><code>export NVM_NODEJS_ORG_MIRROR=https://npmmirror.com/mirrors/node</code></pre>
-<ol start="4" type="1">
+<pre><code class="lang-bash">export NVM_NODEJS_ORG_MIRROR=https://npmmirror.com/mirrors/node
+</code></pre>
+<ol>
 <li>自行下载所需版本，例如：</li>
 </ol>
-<pre class="bash"><code>nvm install v23.3.0</code></pre>
+<pre><code class="lang-bash">nvm install v23.3.0
+</code></pre>
 <p>若观察到以下输出，说明安装成功：</p>
 <pre><code>Computing checksum with sha256sum
 Checksums matched!
 Now using node v23.3.0 (npm v10.9.0)
-Creating default alias: default -&gt; v23.3.0</code></pre>
-<h2 id="配置-java-环境">2.7 配置 Java 环境</h2>
-<ol type="1">
+Creating default alias: default -&gt; v23.3.0
+</code></pre><h2 id="2-7-配置-Java-环境"><a href="#2-7-配置-Java-环境" class="headerlink" title="2.7 配置 Java 环境"></a>2.7 配置 Java 环境</h2><ol>
 <li>安装所需版本的JDK（以Java 1.8 为例）：</li>
 </ol>
-<pre class="bash"><code>sudo apt-get install -y openjdk-8-jdk</code></pre>
+<pre><code class="lang-bash">sudo apt-get install -y openjdk-8-jdk
+</code></pre>
 <p>如果需要下载其他版本，可以运行以下命令查看：</p>
-<pre class="bash"><code>sudo apt search openjdk</code></pre>
-<ol start="2" type="1">
+<pre><code class="lang-bash">sudo apt search openjdk
+</code></pre>
+<ol>
 <li>验证安装</li>
 </ol>
-<pre class="bash"><code>java -version</code></pre>
-<h2 id="screen-工具">2.8 Screen 工具</h2>
-<p>在通过 Scp 等远程传输文件时，特别是大文件时，往往因为 SSH
-连接不稳定而导致中断。而 Screen 工具提供了从单个 SSH 会话中使用多个
-shell 窗口的能力。当会话被分离或网络中断时 Screen
-会话中启动的进程仍将运行，我们可以随时重新连接到 Screen 会话。</p>
-<ol type="1">
+<pre><code class="lang-bash">java -version
+</code></pre>
+<h2 id="2-8-Screen-工具"><a href="#2-8-Screen-工具" class="headerlink" title="2.8 Screen 工具"></a>2.8 Screen 工具</h2><p>在通过 Scp 等远程传输文件时，特别是大文件时，往往因为 SSH 连接不稳定而导致中断。而 Screen 工具提供了从单个 SSH 会话中使用多个 shell 窗口的能力。当会话被分离或网络中断时 Screen 会话中启动的进程仍将运行，我们可以随时重新连接到 Screen 会话。</p>
+<ol>
 <li>安装 Screen</li>
 </ol>
-<pre class="bash"><code>sudo apt install screen</code></pre>
-<ol start="2" type="1">
+<pre><code class="lang-bash">sudo apt install screen
+</code></pre>
+<ol>
 <li>创建一个会话</li>
 </ol>
-<pre class="bash"><code>screen -S test</code></pre>
-<ol start="3" type="1">
+<pre><code class="lang-bash">screen -S test
+</code></pre>
+<ol>
 <li>挂起一个会话</li>
 </ol>
-<p>按下 <code>Ctrl</code> + <code>a</code> + <code>d</code> 即可保持这个
-Screen 到后台并回到我们 SSH 的主终端；</p>
-<ol start="4" type="1">
+<p>按下 <code>Ctrl</code> + <code>a</code> + <code>d</code> 即可保持这个 Screen 到后台并回到我们 SSH 的主终端；</p>
+<ol>
 <li>恢复一个会话</li>
 </ol>
-<pre class="bash"><code>screen -r -d test</code></pre>
+<pre><code class="lang-bash">screen -r -d test
+</code></pre>
 <p>即可重新进入该 Screen；</p>
-<ol start="5" type="1">
+<ol>
 <li>查看已经存在的 Screen 终端</li>
 </ol>
-<pre class="bash"><code>screen -ls</code></pre>
-<h1 id="三搭建-cloudreve-云盘">三、搭建 Cloudreve 云盘</h1>
-<h2 id="快速部署">3.1 快速部署</h2>
-<p>下载 Cloudreve 发布版本，你可以自行从 <a target="_blank" rel="noopener" href="https://github.com/cloudreve/Cloudreve/releases">Release</a>
-选择适合你的操作系统的；</p>
-<pre class="bash"><code>wget https://github.com/cloudreve/Cloudreve/releases/download/3.8.3/cloudreve_3.8.3_linux_amd64.tar.gz
+<pre><code class="lang-bash">screen -ls
+</code></pre>
+<h1 id="三、搭建-Cloudreve-云盘"><a href="#三、搭建-Cloudreve-云盘" class="headerlink" title="三、搭建 Cloudreve 云盘"></a>三、搭建 Cloudreve 云盘</h1><h2 id="3-1-快速部署"><a href="#3-1-快速部署" class="headerlink" title="3.1 快速部署"></a>3.1 快速部署</h2><p>下载 Cloudreve 发布版本，你可以自行从 <a target="_blank" rel="noopener" href="https://github.com/cloudreve/Cloudreve/releases">Release</a> 选择适合你的操作系统的；</p>
+<pre><code class="lang-bash">wget https://github.com/cloudreve/Cloudreve/releases/download/3.8.3/cloudreve_3.8.3_linux_amd64.tar.gz
 
 # 创建程序目录
 mkdir -p /usr/local/cloudreve
@@ -493,17 +491,15 @@ cd /usr/local/cloudreve
 chmod +x ./cloudreve
 
 # 启动 Cloudreve
-./cloudreve</code></pre>
-<p>观察到以下输出，说明启动成功：<img src="https://raw.githubusercontent.com/Yokumii/MyPicBucket/img/img/202504072229775.png"></p>
+./cloudreve
+</code></pre>
+<p>观察到以下输出，说明启动成功：<img src="https://raw.githubusercontent.com/Yokumii/MyPicBucket/img/img/202504072229775.png" alt></p>
 <p>在首次启动时，会创建初始管理员账号，请注意保管下方的管理员密码，<strong><em>此密码只会在首次启动时出现</em></strong>；</p>
-<p>Cloudreve 默认会监听<code>5212</code>端口，你可以在浏览器中访问
-<code>http://服务器IP:5212</code> 进入
-Cloudreve。注意需要增加阿里云服务器的安全组规则。</p>
-<h2 id="启动进程守护">3.2 启动进程守护</h2>
-<ol type="1">
+<p>Cloudreve 默认会监听<code>5212</code>端口，你可以在浏览器中访问 <code>http://服务器IP:5212</code> 进入 Cloudreve。注意需要增加阿里云服务器的安全组规则。</p>
+<h2 id="3-2-启动进程守护"><a href="#3-2-启动进程守护" class="headerlink" title="3.2 启动进程守护"></a>3.2 启动进程守护</h2><ol>
 <li>编辑配置文件</li>
 </ol>
-<pre class="bash"><code>vim /usr/lib/systemd/system/cloudreve.service
+<pre><code class="lang-bash">vim /usr/lib/systemd/system/cloudreve.service
 
 [Unit]
 Description=Cloudreve
@@ -523,22 +519,24 @@ StandardOutput=null
 StandardError=syslog
 
 [Install]
-WantedBy=multi-user.target</code></pre>
-<ol start="2" type="1">
+WantedBy=multi-user.target
+</code></pre>
+<ol>
 <li>更新配置并启动</li>
 </ol>
-<pre class="bash"><code># 更新配置
+<pre><code class="lang-bash"># 更新配置
 systemctl daemon-reload
 
 # 启动服务
 systemctl start cloudreve
 
 # 设置开机启动
-systemctl enable cloudreve</code></pre>
-<ol start="3" type="1">
+systemctl enable cloudreve
+</code></pre>
+<ol>
 <li>管理命令</li>
 </ol>
-<pre class="bash"><code># 启动服务
+<pre><code class="lang-bash"># 启动服务
 systemctl start cloudreve
 
 # 停止服务
@@ -548,13 +546,14 @@ systemctl stop cloudreve
 systemctl restart cloudreve
 
 # 查看状态
-systemctl status cloudreve</code></pre>
-<ol start="4" type="1">
+systemctl status cloudreve
+</code></pre>
+<ol>
 <li>访问前端服务</li>
 </ol>
-<p>通过 <code>https://你的服务器IP:5212</code> 即可访问；</p>
+<p>通过  <code>https://你的服务器IP:5212</code> 即可访问；</p>
 <blockquote>
-<p><strong>注</strong>：不定期随缘更新中...</p>
+<p><strong>注</strong>：不定期随缘更新中…</p>
 </blockquote>
 
     </div>

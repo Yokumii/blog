@@ -185,7 +185,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CSAPP/" style="color: #ff7d73">
+                <a href="/blog/tags/CSAPP/" style="color: #00bcd4">
                     CSAPP
                 </a>
             </span>
@@ -195,56 +195,38 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="程序的执行过程">程序的执行过程</h1>
-<p><img src="1.png"></p>
+        <h1 id="程序的执行过程"><a href="#程序的执行过程" class="headerlink" title="程序的执行过程"></a>程序的执行过程</h1><p><img src="1.png" alt></p>
 <ul>
 <li>编辑代码：高级程序语言阶段</li>
 <li>Compiler编译器：汇编代码（指令操作用助记符表示）</li>
 <li>Assembler汇编器：将汇编代码转为机器指令（01字符串）</li>
 <li>执行机器代码，调度硬件，运行程序；</li>
 </ul>
-<h1 id="cpu">8086CPU</h1>
-<p><img src="2.png"></p>
+<h1 id="8086CPU"><a href="#8086CPU" class="headerlink" title="8086CPU"></a>8086CPU</h1><p><img src="2.png" alt></p>
 <blockquote>
-<p>通用寄存器组GPRS<br>
-&gt;数据寄存器：<br>
-&gt;&gt;AX：累加器；<br>
-&gt;&gt;BX：基地址(Base)；<br>
-&gt;&gt; CX：计数寄存器(Counter)；<br>
-&gt;&gt; DX：数据寄存器；<br>
-&gt;地址寄存器：<br>
-&gt;&gt;SP：堆栈指针Stack Pointer；<br>
-&gt;&gt;BP：基址指针Base Pointer；<br>
-&gt;&gt;DI：目标地址Dest；<br>
-&gt;&gt;SI：源地址Source；</p>
+<p>通用寄存器组GPRS</p>
+<blockquote>
+<p>数据寄存器：</p>
+<blockquote>
+<p>AX：累加器；<br>BX：基地址(Base)；<br>CX：计数寄存器(Counter)；<br>DX：数据寄存器；<br>地址寄存器：<br>SP：堆栈指针Stack Pointer；<br>BP：基址指针Base Pointer；<br>DI：目标地址Dest；<br>SI：源地址Source；</p>
 </blockquote>
-<blockquote>
-<p>内部寄存器<br>
-&gt;CS：代码段code；和IP一起得到下一条指令的地址；<br>
-&gt;DS：数据段data；<br>
-&gt;SS：堆栈段；函数调用时的返回地址、局部变量和参数等；<br>
-&gt;ES：附加段：<br>
-&gt;IP：指令指针；总是指向<strong>当前正在执行的指令的下一条指令的偏移地址</strong>；</p>
 </blockquote>
+<p>内部寄存器</p>
 <blockquote>
-<p>标志寄存器：<br>
-&gt;OF：溢出标志Overflow；<br>
-&gt;DF：方向Direction；<br>
-&gt;IF：中断允许；<br>
-&gt;SF：符号（ = 运算结果的最高位）；<br>
-&gt;ZF：零标志（运算结果 = 0时，ZF = 1）；<br>
-&gt;AF：辅助进位；<br>
-&gt;PF：奇偶（低8位满足偶校验，PF = 1）；<br>
-&gt;CF：进位/借位；</p>
+<p>CS：代码段code；和IP一起得到下一条指令的地址；<br>DS：数据段data；<br>SS：堆栈段；函数调用时的返回地址、局部变量和参数等；<br>ES：附加段：<br>IP：指令指针；总是指向<strong>当前正在执行的指令的下一条指令的偏移地址</strong>；</p>
+</blockquote>
+<p>标志寄存器：</p>
+<blockquote>
+<p>OF：溢出标志Overflow；<br>DF：方向Direction；<br>IF：中断允许；<br>SF：符号（ = 运算结果的最高位）；<br>ZF：零标志（运算结果 = 0时，ZF = 1）；<br>AF：辅助进位；<br>PF：奇偶（低8位满足偶校验，PF = 1）；<br>CF：进位/借位；</p>
+</blockquote>
 </blockquote>
 <ul>
-<li>8086的地址总线为20，总共可寻址空间为<span class="math inline">\(2^{20} = 2MB\)</span>；</li>
+<li>8086的地址总线为20，总共可寻址空间为$2^{20} = 2MB$；</li>
 </ul>
-<h1 id="一个完整程序的执行过程">一个完整程序的执行过程</h1>
-<ol type="1">
-<li>从键盘上读取hello命令，即从键盘到I/O中继器再到CPU；<img src="3.png"></li>
-<li>从磁盘(外存)加载可执行文件到主存(内存)，在这之前CPU先向主存发送读取的指令；<img src="4.png"></li>
-<li>执行程序，将输出字符串从存储器写到显示器，即CPU先从内存上获取字符串的地址存入寄存器，再控制I/O设备输出到图形化窗口；<img src="5.png"></li>
+<h1 id="一个完整程序的执行过程"><a href="#一个完整程序的执行过程" class="headerlink" title="一个完整程序的执行过程"></a>一个完整程序的执行过程</h1><ol>
+<li>从键盘上读取hello命令，即从键盘到I/O中继器再到CPU；<img src="3.png" alt></li>
+<li>从磁盘(外存)加载可执行文件到主存(内存)，在这之前CPU先向主存发送读取的指令；<img src="4.png" alt></li>
+<li>执行程序，将输出字符串从存储器写到显示器，即CPU先从内存上获取字符串的地址存入寄存器，再控制I/O设备输出到图形化窗口；<img src="5.png" alt></li>
 </ol>
 
     </div>
