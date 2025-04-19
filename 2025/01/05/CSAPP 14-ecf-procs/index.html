@@ -168,11 +168,11 @@
         </span>
         
         <span class="category">
-            <a href="/blog/categories/CSAPP/">
+            <a href="/blog/categories/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                CSAPP
+                课程学习
             </a>
         </span>
         
@@ -185,7 +185,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CSAPP/" style="color: #00a596">
+                <a href="/blog/tags/CSAPP/" style="color: #ffa2c4">
                     CSAPP
                 </a>
             </span>
@@ -197,26 +197,40 @@
     <div class="content" v-pre>
         <p>正常来讲，程序计数器PC会在处理器运行时不断地读取指令序列的地址，两个指令间的过渡被称为<strong>控制转移</strong>，该指令序列被称为<strong>控制流</strong>，其中包含一些平滑的突变（即两条指令之间不相邻，如函数调用）；</p>
 <p>异常是指指令地址在控制流中发生突变所做出的反应；系统通过对突变做出反应，将这种突变称为<strong>异常控制流ECF</strong>；</p>
-<h1 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h1><h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h2><p>当有事件发生时，会通过一个跳转表（被称为异常表，每个异常编号对应一个索引存储的条目的地址），进行一个间接过程的调用（异常），转移控制给异常处理程序，当异常处理程序处理完成后，根据异常的类型，有以下三种结果：</p>
-<ul>
-<li>返回控制给$I_{cur}$；</li>
-<li>返回控制给$I_{next}$；</li>
-<li>终止被中断的程序；<br><img src="1.png" alt><br>异常控制使得控制从用户态转移到内核态，被压入内核栈中；</li>
-</ul>
-<h2 id="2-异常类型"><a href="#2-异常类型" class="headerlink" title="2. 异常类型"></a>2. 异常类型</h2><p>异常包含以下几种类型：</p>
-<ul>
-<li>Interrupts中断（Asynchronous异步的，其余都是Synchronous同步的）；</li>
-<li>Traps陷阱；</li>
-<li>Faults故障；</li>
-<li>Aborts终止；</li>
-</ul>
-<h3 id="中断"><a href="#中断" class="headerlink" title="中断"></a>中断</h3><p>由外部事件引起，并非专门的指令造成的，比如Timer interrupt（看门狗中断）、I/O interrupt；</p>
-<h3 id="陷阱"><a href="#陷阱" class="headerlink" title="陷阱"></a>陷阱</h3><p>故意执行的异常，<strong>在用户程序和内核之间提供一个接口，称为系统调用System Calls</strong>；执行完后返回$I_{next}$继续执行；</p>
-<h3 id="故障"><a href="#故障" class="headerlink" title="故障"></a>故障</h3><p>由错误情况引起，将控制转移给故障处理程序，比如<strong>缺页异常（可修复的）</strong>；执行完后返回$I_{cur}$继续执行或者终止；<br><img src="2.png" alt><br>以上例子中，当执行到该指令时，a[500]存放在磁盘中，需要从磁盘加载到内存中，此时触发故障，故障处理程序缺失的地址送到内存后，返回$I_{cur}$重新执行，此时能正确加载数据；<br><img src="3.png" alt><br>以上例子中，故障处理程序发现该地址是虚拟空间的无效地址，因此报段错误；</p>
-<h3 id="终止"><a href="#终止" class="headerlink" title="终止"></a>终止</h3><h3 id="Linux提供的系统调用"><a href="#Linux提供的系统调用" class="headerlink" title="Linux提供的系统调用"></a>Linux提供的系统调用</h3><p>和异常表不是一个东西！！！<img src="4.png" alt><br>一个打开文件的例子，注意 <strong><code>%rax</code>存放syscall number</strong>，同时存放返回值，如果返回值小于0说明发生错误；<img src="5.png" alt><br>注意系统调用和函数调用的区别：</p>
-<ul>
-<li>系统调用是在内核态中执行的；</li>
-</ul>
+<h1 id="异常处理">异常处理</h1>
+<h2 id="概述">1. 概述</h2>
+<p>当有事件发生时，会通过一个跳转表（被称为异常表，每个异常编号对应一个索引存储的条目的地址），进行一个间接过程的调用（异常），转移控制给异常处理程序，当异常处理程序处理完成后，根据异常的类型，有以下三种结果：<br>
+* 返回控制给<span class="math inline">\(I_{cur}\)</span>；<br>
+* 返回控制给<span class="math inline">\(I_{next}\)</span>；<br>
+* 终止被中断的程序；<br>
+<img src="1.png"><br>
+异常控制使得控制从用户态转移到内核态，被压入内核栈中；</p>
+<h2 id="异常类型">2. 异常类型</h2>
+<p>异常包含以下几种类型：<br>
+*
+Interrupts中断（Asynchronous异步的，其余都是Synchronous同步的）；<br>
+* Traps陷阱；<br>
+* Faults故障；<br>
+* Aborts终止；</p>
+<h3 id="中断">中断</h3>
+<p>由外部事件引起，并非专门的指令造成的，比如Timer
+interrupt（看门狗中断）、I/O interrupt；</p>
+<h3 id="陷阱">陷阱</h3>
+<p>故意执行的异常，<strong>在用户程序和内核之间提供一个接口，称为系统调用System
+Calls</strong>；执行完后返回<span class="math inline">\(I_{next}\)</span>继续执行；</p>
+<h3 id="故障">故障</h3>
+<p>由错误情况引起，将控制转移给故障处理程序，比如<strong>缺页异常（可修复的）</strong>；执行完后返回<span class="math inline">\(I_{cur}\)</span>继续执行或者终止；<br>
+<img src="2.png"><br>
+以上例子中，当执行到该指令时，a[500]存放在磁盘中，需要从磁盘加载到内存中，此时触发故障，故障处理程序缺失的地址送到内存后，返回<span class="math inline">\(I_{cur}\)</span>重新执行，此时能正确加载数据；<br>
+<img src="3.png"><br>
+以上例子中，故障处理程序发现该地址是虚拟空间的无效地址，因此报段错误；</p>
+<h3 id="终止">终止</h3>
+<h3 id="linux提供的系统调用">Linux提供的系统调用</h3>
+<p>和异常表不是一个东西！！！<img src="4.png"><br>
+一个打开文件的例子，注意 <strong><code>%rax</code>存放syscall
+number</strong>，同时存放返回值，如果返回值小于0说明发生错误；<img src="5.png"><br>
+注意系统调用和函数调用的区别：<br>
+* 系统调用是在内核态中执行的；</p>
 
     </div>
     

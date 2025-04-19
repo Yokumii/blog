@@ -168,11 +168,11 @@
         </span>
         
         <span class="category">
-            <a href="/blog/categories/%E5%8D%9A%E5%BC%88%E8%AE%BA/">
+            <a href="/blog/categories/%E7%A7%91%E7%A0%94%E5%AD%A6%E4%B9%A0/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                博弈论
+                科研学习
             </a>
         </span>
         
@@ -185,7 +185,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/" style="color: #ffa2c4">
+                <a href="/blog/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/" style="color: #00bcd4">
                     博弈论
                 </a>
             </span>
@@ -197,17 +197,23 @@
     <div class="content" v-pre>
         <p><strong>前言</strong>：</p>
 <blockquote>
-<p>以下是笔者学习<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1xY411Y7Wj/">【耶鲁大学】博弈论</a> 课程中整理的内容，因为笔者实在是懒的自己找书啃。有些内容可能结合自己的研究方向（Multiple-Agent-System）简单拓展；至于数模感觉能用到的几率比较小。</p>
+<p>以下是笔者学习<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1xY411Y7Wj/">【耶鲁大学】博弈论</a>
+课程中整理的内容，因为笔者实在是懒的自己找书啃。有些内容可能结合自己的研究方向（Multiple-Agent-System）简单拓展；至于数模感觉能用到的几率比较小。</p>
 </blockquote>
-<h1 id="一、Prisoner’s-Dilemma-囚徒困境"><a href="#一、Prisoner’s-Dilemma-囚徒困境" class="headerlink" title="一、Prisoner’s Dilemma 囚徒困境"></a>一、Prisoner’s Dilemma 囚徒困境</h1><h2 id="1-1-四个重要结论"><a href="#1-1-四个重要结论" class="headerlink" title="1.1 四个重要结论"></a>1.1 四个重要结论</h2><p><strong>定义 1.1</strong>：<strong>Strictly Dominant Strategy 严格优势策略</strong></p>
+<h1 id="一prisoners-dilemma-囚徒困境">一、Prisoner's Dilemma
+囚徒困境</h1>
+<h2 id="四个重要结论">1.1 四个重要结论</h2>
+<p><strong>定义 1.1</strong>：<strong>Strictly Dominant Strategy
+严格优势策略</strong></p>
 <blockquote>
-<p>假如策略$\alpha$在无论对手选择何种应对的情况下的收益都高于策略$\beta$，则称策略$\alpha$为相对$\beta$的严格优势策略；</p>
+<p>假如策略<span class="math inline">\(\alpha\)</span>在无论对手选择何种应对的情况下的收益都高于策略<span class="math inline">\(\beta\)</span>，则称策略<span class="math inline">\(\alpha\)</span>为相对<span class="math inline">\(\beta\)</span>的严格优势策略；</p>
 </blockquote>
 <p><strong>结论 1.1</strong>：<strong>不要使用严格劣势策略</strong></p>
 <blockquote>
 <p>我们假设参与博弈的行为人都是理性的（和经济学中定义的理想经济人类似），都希望追求更高的收益（当前，每个人衡量收益大小的标准有不同，对收益的看法显然也会影响决策）；</p>
 </blockquote>
-<p><strong>结论 1.2</strong>：<strong>理性的选择可能导致更糟的结果</strong></p>
+<p><strong>结论
+1.2</strong>：<strong>理性的选择可能导致更糟的结果</strong></p>
 <blockquote>
 <p>显然，如果双方均追求对于个人收益的最大化，可能导致双输；</p>
 </blockquote>
@@ -215,47 +221,70 @@
 <blockquote>
 <p>沟通并不能解决这个困境，在缺乏强制力介入的情况下，沟通缺乏意义，可能有效的方式是有强制力的合同（比如书面合同）、重复博弈、教育。</p>
 </blockquote>
-<p><strong>结论 1.3</strong>：<strong>如欲得之，必先知之 If you want to get it, you must know it first</strong></p>
+<p><strong>结论 1.3</strong>：<strong>如欲得之，必先知之 If you want to
+get it, you must know it first</strong></p>
 <blockquote>
 <p>如果我们不知道一个人或一场博弈中的收益情况，那么我们就不可能获得收益；</p>
 </blockquote>
-<p><strong>结论 1.4</strong>：<strong>换位思考 Put yourself  in others’ shoes and try to figure out what they’ll do</strong></p>
+<p><strong>结论 1.4</strong>：<strong>换位思考 Put yourself in others'
+shoes and try to figure out what they'll do</strong></p>
 <blockquote>
-<p>假如我们知道另一方的收益情况，那么如果我们确认对方会根据 <strong>结论 1.1</strong> 选择某种策略，那么我们可以根据对方的选择选择对于自己收益更高的那种，即使站在自己的角度，并没有严格优势策略；</p>
+<p>假如我们知道另一方的收益情况，那么如果我们确认对方会根据 <strong>结论
+1.1</strong>
+选择某种策略，那么我们可以根据对方的选择选择对于自己收益更高的那种，即使站在自己的角度，并没有严格优势策略；</p>
 </blockquote>
-<h2 id="1-2-Grade-Game-积分游戏"><a href="#1-2-Grade-Game-积分游戏" class="headerlink" title="1.2 Grade Game 积分游戏"></a>1.2 Grade Game 积分游戏</h2><p>关于耶鲁大学《博弈论》课程上的积分游戏的具体推导见下，懒地打了。。。<br><img src="https://raw.githubusercontent.com/Yokumii/MyPicBucket/img/img/Page1.png" alt><br><img src="https://raw.githubusercontent.com/Yokumii/MyPicBucket/img/img/Page2.png" alt></p>
-<h2 id="1-3-Ingredients-of-a-game-博弈的要素"><a href="#1-3-Ingredients-of-a-game-博弈的要素" class="headerlink" title="1.3 Ingredients of a game 博弈的要素"></a>1.3 Ingredients of a game 博弈的要素</h2><ul>
+<h2 id="grade-game-积分游戏">1.2 Grade Game 积分游戏</h2>
+<p>关于耶鲁大学《博弈论》课程上的积分游戏的具体推导见下，懒地打了。。。<br>
+<img src="https://raw.githubusercontent.com/Yokumii/MyPicBucket/img/img/Page1.png"><br>
+<img src="https://raw.githubusercontent.com/Yokumii/MyPicBucket/img/img/Page2.png"></p>
+<h2 id="ingredients-of-a-game-博弈的要素">1.3 Ingredients of a game
+博弈的要素</h2>
+<ul>
 <li><strong>Players 参与者</strong>；</li>
-<li><strong>Strategies 策略</strong>；<ul>
-<li>$s_i$:  $Player_i$的某个特定策略；</li>
-<li>$S_i$: $Player_i$的策略集合；</li>
-<li>$S$: 一次博弈，即所有参与者的策略组合；</li>
-</ul>
-</li>
+<li><strong>Strategies 策略</strong>；
+<ul>
+<li><span class="math inline">\(s_i\)</span>: <span class="math inline">\(Player_i\)</span>的某个特定策略；</li>
+<li><span class="math inline">\(S_i\)</span>: <span class="math inline">\(Player_i\)</span>的策略集合；</li>
+<li><span class="math inline">\(S\)</span>:
+一次博弈，即所有参与者的策略组合；</li>
+</ul></li>
 <li><strong>Payoff 收益</strong>；</li>
-<li><strong>Assumption 假设</strong>：每个参与者都知道其他人的可能策略和收益，即博弈者之间信息透明；</li>
-<li>$S_{-i}$: 一次博弈中除了$Player_i$之外的其他所有参与者的策略； </li>
+<li><strong>Assumption
+假设</strong>：每个参与者都知道其他人的可能策略和收益，即博弈者之间信息透明；</li>
+<li><span class="math inline">\(S_{-i}\)</span>: 一次博弈中除了<span class="math inline">\(Player_i\)</span>之外的其他所有参与者的策略；</li>
 </ul>
 <p>定义符号后，我们给出更严格的严格优势策略的定义：</p>
-<p><strong>定义 1.1 Plus</strong>：<strong>Strictly Dominant Strategy 严格优势策略</strong></p>
+<p><strong>定义 1.1 Plus</strong>：<strong>Strictly Dominant Strategy
+严格优势策略</strong></p>
 <blockquote>
-<p>$Player_i$’s strategy $S’_i$ is strictly dominated by $Player_i$’s strategy $S_i$ if $U_i(S_i, S_{-i}) &gt; U_i(S’_i, S_{-i})$ for all $S_{-i}$；</p>
+<p><span class="math inline">\(Player_i\)</span>'s strategy <span class="math inline">\(S&#39;_i\)</span> is strictly dominated by <span class="math inline">\(Player_i\)</span>'s strategy <span class="math inline">\(S_i\)</span> if <span class="math inline">\(U_i(S_i, S_{-i}) &gt; U_i(S&#39;_i,
+S_{-i})\)</span> for all <span class="math inline">\(S_{-i}\)</span>；</p>
 </blockquote>
-<h2 id="1-4-Hannibal-汉尼拔"><a href="#1-4-Hannibal-汉尼拔" class="headerlink" title="1.4 Hannibal 汉尼拔"></a>1.4 Hannibal 汉尼拔</h2><p>Ben教授通过汉尼拔进军罗马的例子，引入了弱优势策略，弱优势策略允许了一部分策略组下收益相等而不是严格大于；</p>
-<p><strong>定义 1.1 Extension</strong>：<strong>Weakly Dominant Strategy 弱优势策略</strong></p>
+<h2 id="hannibal-汉尼拔">1.4 Hannibal 汉尼拔</h2>
+<p>Ben教授通过汉尼拔进军罗马的例子，引入了弱优势策略，弱优势策略允许了一部分策略组下收益相等而不是严格大于；</p>
+<p><strong>定义 1.1 Extension</strong>：<strong>Weakly Dominant Strategy
+弱优势策略</strong></p>
 <blockquote>
-<p>$Player_i$’s strategy $S’_i$ is weakly dominated by $Player_i$’s strategy $S_i$ if $U_i(S_i, S_{-i}) \ge U_i(S’_i, S_{-i})$ for all $S_{-i}$, and $U_i(S_i, S_{-i}) &gt; U_i(S’_i, S_{-i})$ for some $S_{-i}$;</p>
+<p><span class="math inline">\(Player_i\)</span>'s strategy <span class="math inline">\(S&#39;_i\)</span> is weakly dominated by <span class="math inline">\(Player_i\)</span>'s strategy <span class="math inline">\(S_i\)</span> if <span class="math inline">\(U_i(S_i, S_{-i}) \ge U_i(S&#39;_i,
+S_{-i})\)</span> for all <span class="math inline">\(S_{-i}\)</span>,
+and <span class="math inline">\(U_i(S_i, S_{-i}) &gt; U_i(S&#39;_i,
+S_{-i})\)</span> for some <span class="math inline">\(S_{-i}\)</span>;</p>
 </blockquote>
-<p>关于汉尼拔的具体推导见下：<br><img src="https://raw.githubusercontent.com/Yokumii/MyPicBucket/img/img/%E7%AC%94%E8%AE%B0%202025%E5%B9%B44%E6%9C%8815%E6%97%A5%20(2" alt>.png)</p>
-<h2 id="1-5-Iterative-Deletion-迭代剔除劣势策略"><a href="#1-5-Iterative-Deletion-迭代剔除劣势策略" class="headerlink" title="1.5 Iterative Deletion 迭代剔除劣势策略"></a>1.5 Iterative Deletion 迭代剔除劣势策略</h2><p>该策略要求参与者首先找到所有劣势策略，剔除它们，然后再重新审视整个博弈，如此往复。一个具体的例子如下：</p>
+<p>关于汉尼拔的具体推导见下：<br>
+<img src="https://raw.githubusercontent.com/Yokumii/MyPicBucket/img/img/%E7%AC%94%E8%AE%B0%202025%E5%B9%B44%E6%9C%8815%E6%97%A5%20(2).png"></p>
+<h2 id="iterative-deletion-迭代剔除劣势策略">1.5 Iterative Deletion
+迭代剔除劣势策略</h2>
+<p>该策略要求参与者首先找到所有劣势策略，剔除它们，然后再重新审视整个博弈，如此往复。一个具体的例子如下：</p>
 <p>每人选择一个1到100之间的数字，谁选的数字最接近平均数的三分之二，则获得胜利。</p>
 <p><strong>第一层</strong>：</p>
 <blockquote>
-<p>假设大家选取的数字是在 0 ～ 100 间随机分布的，那么 average 约等于50，50的2/3应该是33左右；但是问题也很明显，大家不会都进行随机选择；</p>
+<p>假设大家选取的数字是在 0 ～ 100 间随机分布的，那么 average
+约等于50，50的2/3应该是33左右；但是问题也很明显，大家不会都进行随机选择；</p>
 </blockquote>
 <p><strong>第二层</strong>：</p>
 <blockquote>
-<p>我认为别人都按照第一层的思路进行思考，即大部分人都会选择33，那么我应该选择 33 * 2/3 = 22；</p>
+<p>我认为别人都按照第一层的思路进行思考，即大部分人都会选择33，那么我应该选择
+33 * 2/3 = 22；</p>
 </blockquote>
 <p><strong>第三层</strong>：</p>
 <blockquote>
@@ -265,40 +294,52 @@
 <blockquote>
 <p>如果大家都考虑到了上面一层，那么基于第三层，现在选择大于45的也变成了弱劣势策略；按照这个思路，我应该选择30；</p>
 </blockquote>
-<p>按照这个逻辑一直持续下去，30 ～ 20、20 ～ 13，不断持续剔除下去，那么最终所有人都会选择1；</p>
+<p>按照这个逻辑一直持续下去，30 ～ 20、20 ～
+13，不断持续剔除下去，那么最终所有人都会选择1；</p>
 <p>但1就是正确答案吗？</p>
-<p>得到1需要反复迭代、剔除，即需要我不断知道别人都想到了上一层，即我知道你知道我知道你知道（无限套娃）我是理性的，即 <strong>Common Knowledge 共同知识</strong> 。</p>
+<p>得到1需要反复迭代、剔除，即需要我不断知道别人都想到了上一层，即我知道你知道我知道你知道（无限套娃）我是理性的，即
+<strong>Common Knowledge 共同知识</strong> 。</p>
 <p><strong>定义 1.5</strong>：<strong>共同知识</strong></p>
 <blockquote>
-<p>共同知识是指某个信息或事件不仅被所有参与者知晓，而且所有参与者都知道其他参与者也知道该信息，并且知道其他参与者也知道其他人知道该信息，如此无限递归。<br>即：所有人都是理性的；所有人都知道所有人是理性的；所有人都知道所有人都知道所有人是理性的……</p>
+<p>共同知识是指某个信息或事件不仅被所有参与者知晓，而且所有参与者都知道其他参与者也知道该信息，并且知道其他参与者也知道其他人知道该信息，如此无限递归。<br>
+即：所有人都是理性的；所有人都知道所有人是理性的；所有人都知道所有人都知道所有人是理性的……</p>
 </blockquote>
-<h2 id="1-6-The-Median-Voter-Theorem-中位选民定理"><a href="#1-6-The-Median-Voter-Theorem-中位选民定理" class="headerlink" title="1.6 The Median-Voter Theorem 中位选民定理"></a>1.6 The Median-Voter Theorem 中位选民定理</h2><p>该定理事实上只是迭代剔除劣势策略在政治学上的一个应用。并且该模型还是简化了现实问题，存在不少问题；</p>
-<p>首先，对于2个候选人A和B，他们的立场用 1 ～ 10 数字表示，假定每个数字对应10%的选民，选民仅按立场的接近程度进行投票；如果立场的接近程度相同，则一半一半；候选人的目标就是最大化选票，即收益；</p>
+<h2 id="the-median-voter-theorem-中位选民定理">1.6 The Median-Voter
+Theorem 中位选民定理</h2>
+<p>该定理事实上只是迭代剔除劣势策略在政治学上的一个应用。并且该模型还是简化了现实问题，存在不少问题；</p>
+<p>首先，对于2个候选人A和B，他们的立场用 1 ～ 10
+数字表示，假定每个数字对应10%的选民，选民仅按立场的接近程度进行投票；如果立场的接近程度相同，则一半一半；候选人的目标就是最大化选票，即收益；</p>
 <p>容易发现，1和10为劣势策略，具体推导如下：如果A选择2，那么</p>
-<ol>
-<li>当B选1时，$U_A(2,1) = 90\% &gt; U_A(1,1) = 50\%$；</li>
-<li>当B选2时，$U_A(2,2) = 50\% &gt; U_A(1,2) = 10\%$；</li>
-<li>当B选3时，$U_A(2,3) = 20\% &gt; U_A(1,3) = 15\%$；</li>
-<li>当B选4时，$U_A(2,4) = 25\% &gt; U_A(1,4) = 20\%$；</li>
+<ol type="1">
+<li>当B选1时，<span class="math inline">\(U_A(2,1) = 90\% &gt; U_A(1,1)
+= 50\%\)</span>；</li>
+<li>当B选2时，<span class="math inline">\(U_A(2,2) = 50\% &gt; U_A(1,2)
+= 10\%\)</span>；</li>
+<li>当B选3时，<span class="math inline">\(U_A(2,3) = 20\% &gt; U_A(1,3)
+= 15\%\)</span>；</li>
+<li>当B选4时，<span class="math inline">\(U_A(2,4) = 25\% &gt; U_A(1,4)
+= 20\%\)</span>；</li>
 </ol>
-<p>以此类推，后面都是2优于1并且均相差$5\%$；</p>
+<p>以此类推，后面都是2优于1并且均相差<span class="math inline">\(5\%\)</span>；</p>
 <p>选2严格优于选1，根据对称性，选9也严格优于选10。</p>
 <p>越接近中间就优于两侧吗？并不，可以算一个例子：如果A选择3，那么</p>
-<p>当B选择1时，$U_A(3,1) = 85\% &lt; U_A(2, 1) = 90\%$，即A选3并不严格优于选2；</p>
+<p>当B选择1时，<span class="math inline">\(U_A(3,1) = 85\% &lt; U_A(2,
+1) = 90\%\)</span>，即A选3并不严格优于选2；</p>
 <p>但是如果按照迭代剔除的思想，剔除劣势策略1和10之后，那么接下来策略2和9就变成了劣势策略，以此类推，最优的策略是选5和选6；这就是中位选民定理；</p>
 <p>这个模型存在以下问题：</p>
-<ol>
+<ol type="1">
 <li>选民并非平均分布；</li>
 <li>选民并非完全根据立场来投票，即考量因素往往是多维度的；</li>
 <li>选民往往会根据候选人过去的行为判断立场而并非按候选人所声称的；</li>
 <li>选民存在弃票；</li>
 <li>候选人往往大于2个；</li>
 <li>大选之前还有初选；</li>
-<li>…</li>
+<li>...</li>
 </ol>
-<h2 id="1-7-Best-Response-最优对策"><a href="#1-7-Best-Response-最优对策" class="headerlink" title="1.7 Best Response 最优对策"></a>1.7 Best Response 最优对策</h2><p>如果站在双方的角度，都不存在严格最优对策，那么站在我的角度，假设另一方采取某策略的概率是$p$，据此计算我选择每个策略的期望收益；</p>
+<h2 id="best-response-最优对策">1.7 Best Response 最优对策</h2>
+<p>如果站在双方的角度，都不存在严格最优对策，那么站在我的角度，假设另一方采取某策略的概率是<span class="math inline">\(p\)</span>，据此计算我选择每个策略的期望收益；</p>
 <blockquote>
-<p><strong><em>持续更新中…</em></strong></p>
+<p><strong><em>持续更新中...</em></strong></p>
 </blockquote>
 
     </div>

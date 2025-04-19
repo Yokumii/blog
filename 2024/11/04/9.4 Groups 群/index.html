@@ -168,11 +168,11 @@
         </span>
         
         <span class="category">
-            <a href="/blog/categories/%E7%BE%A4%E8%AE%BA/">
+            <a href="/blog/categories/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                群论
+                课程学习
             </a>
         </span>
         
@@ -185,8 +185,15 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E7%BE%A4%E8%AE%BA/" style="color: #ffa2c4">
+                <a href="/blog/tags/%E7%BE%A4%E8%AE%BA/" style="color: #00bcd4">
                     群论
+                </a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/blog/tags/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/" style="color: #03a9f4">
+                    离散数学
                 </a>
             </span>
             
@@ -195,94 +202,168 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="Inverse"><a href="#Inverse" class="headerlink" title="Inverse"></a><em>Inverse</em></h1><blockquote>
-<p><strong><em>Defination:</em></strong> 令$(S, <em>)$是一个幺半群，$x \in S$。当$\exists y \in S, x </em> y = y <em> x = e$，则称$y$为$x$的逆元，记为$x^{-1}$。<br>单位元一定是可逆的。<br>逆元是唯一的。<br>**</em>Prove:<em>** 设$(S, </em>)$是一个幺半群，$x \in S$可逆，若$\exists y_1,y_2$为$x$的逆元，<br>有$y_1 = y_1 <em> e = y_1 </em> (x <em> y_2) = (y_1 </em> x) <em> (y_2) = e </em> y_2 = y_2$</p>
-</blockquote>
-<h1 id="Group-群"><a href="#Group-群" class="headerlink" title="Group 群"></a><em>Group 群</em></h1><blockquote>
-<p><strong><em>Defination1:</em></strong> 由上面引出，若$(S, <em>)$是一个幺半群，如果每一个元素均可逆，则$(S, </em>)$构成一个群。<br><strong><em>Defination2:</em></strong> 拓展半群的定义：</p>
+        <h1 id="inverse"><em>Inverse</em></h1>
 <blockquote>
-<ol>
-<li><strong><em>Closure</em></strong> 运算封闭性；</li>
-<li><strong><em>Associativity</em></strong> 结合律</li>
-<li><strong><em>Identity</em></strong> 存在单位元</li>
-<li><strong><em>Inverse</em></strong> 每个元素都有逆元<br><strong><em>引理:</em></strong> $(S, <em>)$是幺半群，令$G$是其所有可逆元素构成的子集，则$(G, </em>)$是群。<br><strong><em>Properties:</em></strong> </li>
-<li>$(a^{-1})^{-1} = a$</li>
-<li>$(ab)^{-1} = b^{-1}a^{-1}$</li>
-<li>$ab = ac \rightarrow b = c$（左消去律）</li>
-<li>$ba = ca \rightarrow b = c$（右消去律）<br>事实上，群的定义可以减弱为$\textbf{ea = a}$<br><strong><em>Prove:</em></strong> $ae = aa^{-1}(a^{-1})^{-1} = e(a^{-1})^{-1} = ea$</li>
-</ol>
+<p><strong><em>Defination:</em></strong> 令<span class="math inline">\((S, *)\)</span>是一个幺半群，<span class="math inline">\(x \in S\)</span>。当<span class="math inline">\(\exists y \in S, x * y = y * x =
+e\)</span>，则称<span class="math inline">\(y\)</span>为<span class="math inline">\(x\)</span>的逆元，记为<span class="math inline">\(x^{-1}\)</span>。<br>
+单位元一定是可逆的。<br>
+逆元是唯一的。<br>
+<strong><em>Prove:</em></strong> 设<span class="math inline">\((S,
+*)\)</span>是一个幺半群，<span class="math inline">\(x \in
+S\)</span>可逆，若<span class="math inline">\(\exists
+y_1,y_2\)</span>为<span class="math inline">\(x\)</span>的逆元，<br>
+有<span class="math inline">\(y_1 = y_1 * e = y_1 * (x * y_2) = (y_1 *
+x) * (y_2) = e * y_2 = y_2\)</span></p>
 </blockquote>
-</blockquote>
-<h1 id="几类特殊的群"><a href="#几类特殊的群" class="headerlink" title="几类特殊的群"></a><em>几类特殊的群</em></h1><h2 id="Abelian-Group-阿贝尔群-交换群"><a href="#Abelian-Group-阿贝尔群-交换群" class="headerlink" title="Abelian Group 阿贝尔群/交换群"></a><em>Abelian Group 阿贝尔群/交换群</em></h2><blockquote>
-<p><strong><em>Defination:</em></strong> $(G, <em>),\forall x,y \in G, x </em> y = y * x$。</p>
-</blockquote>
-<h2 id="平凡群"><a href="#平凡群" class="headerlink" title="平凡群"></a><em>平凡群</em></h2><blockquote>
-<p><strong><em>Defination:</em></strong> $(\{e\}, *)$</p>
-</blockquote>
-<h2 id="General-Linear-Group-n阶一般线性群"><a href="#General-Linear-Group-n阶一般线性群" class="headerlink" title="General Linear Group n阶一般线性群"></a><em>General Linear Group n阶一般线性群</em></h2><blockquote>
-<p><strong><em>Defination:</em></strong> $n * n$阶可逆实矩阵构成的乘法群，$GL_n(R) = \{A \in M_n(R):det(A)\neq0\}$</p>
-</blockquote>
-<h1 id="Subgroup-子群"><a href="#Subgroup-子群" class="headerlink" title="Subgroup 子群"></a><em>Subgroup 子群</em></h1><blockquote>
-<p><strong><em>Defination:</em></strong> $H$是$G$的子群，记作$H &lt; G，满足：</p>
+<h1 id="group-群"><em>Group 群</em></h1>
 <blockquote>
-<ol>
-<li>$e \in H$</li>
-<li>封闭性</li>
-<li>都有逆元<br>还可以压缩为：</li>
-<li>非空$H \subset G$</li>
-<li>$\forall x,y \in H,ab^{-1} \in H$<br>上述也可以作为<strong><em>判定方法</em></strong>。</li>
-</ol>
+<p><strong><em>Defination1:</em></strong> 由上面引出，若<span class="math inline">\((S,
+*)\)</span>是一个幺半群，如果每一个元素均可逆，则<span class="math inline">\((S, *)\)</span>构成一个群。<br>
+<strong><em>Defination2:</em></strong> 拓展半群的定义：<br>
+&gt;1. <strong><em>Closure</em></strong> 运算封闭性；<br>
+&gt;2. <strong><em>Associativity</em></strong> 结合律<br>
+&gt;3. <strong><em>Identity</em></strong> 存在单位元<br>
+&gt;4. <strong><em>Inverse</em></strong> 每个元素都有逆元<br>
+<strong><em>引理:</em></strong> <span class="math inline">\((S,
+*)\)</span>是幺半群，令<span class="math inline">\(G\)</span>是其所有可逆元素构成的子集，则<span class="math inline">\((G, *)\)</span>是群。<br>
+<strong><em>Properties:</em></strong><br>
+&gt; 1. <span class="math inline">\((a^{-1})^{-1} = a\)</span><br>
+&gt; 2. <span class="math inline">\((ab)^{-1} =
+b^{-1}a^{-1}\)</span><br>
+&gt; 3. <span class="math inline">\(ab = ac \rightarrow b =
+c\)</span>（左消去律）<br>
+&gt; 4. <span class="math inline">\(ba = ca \rightarrow b =
+c\)</span>（右消去律）<br>
+事实上，群的定义可以减弱为<span class="math inline">\(\textbf{ea =
+a}\)</span><br>
+<strong><em>Prove:</em></strong> <span class="math inline">\(ae =
+aa^{-1}(a^{-1})^{-1} = e(a^{-1})^{-1} = ea\)</span></p>
 </blockquote>
-</blockquote>
-<h1 id="Homomorphism-群同态"><a href="#Homomorphism-群同态" class="headerlink" title="Homomorphism 群同态"></a><em>Homomorphism 群同态</em></h1><blockquote>
-<p><strong><em>Defination:</em></strong> $(G, <em>),(G’,</em>‘)$ 是两个群，$f:G \rightarrow G’$是一个群同态，那么有</p>
+<h1 id="几类特殊的群"><em>几类特殊的群</em></h1>
+<h2 id="abelian-group-阿贝尔群交换群"><em>Abelian Group
+阿贝尔群/交换群</em></h2>
 <blockquote>
-<ol>
-<li>$f(e) = e’$；</li>
-<li>$f(a^{-1})=(f(a))^{-1}$；</li>
-<li>$H$是$G$的一个子群，那么$f(H) = \{f(h)|h \in H\}$也是$G’$的一个子群；<br><strong><em>命题:</em></strong> $det:GL_n(R)\rightarrow (R, <em>)$是一个乘法群同态，即行列式是一般线性群到实数乘群的一个群同态。<br>对$SL_n(R)=\{A \in GL_n(R):det(A) = 1\}$，显然1是$(R, </em>)$的单位元，那么，<br>$SL_n(R) = det^{-1}(1)=det^{-1}(\{1\})$，翻译成人话，特殊线性群是那些映射到单位元元素的矩阵的集合，即它是实数乘群中单位元的一个原象，也是下面提到的<strong><em>正规子群</em></strong>。<br><strong><em>满同态，单同态</em></strong><br><strong><em>Note!</em></strong> 单同态当且仅当$Ker(f) = \{e\}$，要证明群同态是单射，只需证$Ker(f) = \{e\}$。</li>
-</ol>
+<p><strong><em>Defination:</em></strong> <span class="math inline">\((G,
+*),\forall x,y \in G, x * y = y * x\)</span>。</p>
 </blockquote>
-</blockquote>
-<h2 id="Kernal-Image-核-像"><a href="#Kernal-Image-核-像" class="headerlink" title="Kernal, Image 核/像"></a>Kernal, Image 核/像</h2><blockquote>
-<p><strong><em>Defination:</em></strong> $f:G \rightarrow G’$是一个群同态，$Ker(f) = \{a\in G|f(a)=e’\},Im(f)=f(G)=\{y\in G:\exists x\in G,y = f(x)\}$</p>
-</blockquote>
-<h2 id="同态基本定理"><a href="#同态基本定理" class="headerlink" title="同态基本定理"></a>同态基本定理</h2><p><strong><em>Defination:</em></strong> 设$f:G \rightarrow G’$是同态，$R$是$G$上的关系且被定义为$aRb \iff f(a) = f(b)$，那么有：</p>
+<h2 id="平凡群"><em>平凡群</em></h2>
 <blockquote>
-<p>1）$R$是同余关系；<br>2）$G’$和$G/R$同构；<img src="img/Wondershare%20PDFelement%202024-11-05%2012.08.43.png" alt></p>
+<p><strong><em>Defination:</em></strong> <span class="math inline">\((\{e\}, *)\)</span></p>
 </blockquote>
-<h1 id="Isomorphism-同构"><a href="#Isomorphism-同构" class="headerlink" title="Isomorphism 同构"></a><em>Isomorphism 同构</em></h1><blockquote>
+<h2 id="general-linear-group-n阶一般线性群"><em>General Linear Group
+n阶一般线性群</em></h2>
+<blockquote>
+<p><strong><em>Defination:</em></strong> <span class="math inline">\(n *
+n\)</span>阶可逆实矩阵构成的乘法群，<span class="math inline">\(GL_n(R)
+= \{A \in M_n(R):det(A)\neq0\}\)</span></p>
+</blockquote>
+<h1 id="subgroup-子群"><em>Subgroup 子群</em></h1>
+<blockquote>
+<p><strong><em>Defination:</em></strong> <span class="math inline">\(H\)</span>是<span class="math inline">\(G\)</span>的子群，记作$H &lt; G，满足：<br>
+&gt;1. <span class="math inline">\(e \in H\)</span><br>
+&gt;2. 封闭性<br>
+&gt;3. 都有逆元<br>
+&gt;还可以压缩为：<br>
+&gt;1. 非空<span class="math inline">\(H \subset G\)</span><br>
+&gt;2. <span class="math inline">\(\forall x,y \in H,ab^{-1} \in
+H\)</span><br>
+上述也可以作为<strong><em>判定方法</em></strong>。</p>
+</blockquote>
+<h1 id="homomorphism-群同态"><em>Homomorphism 群同态</em></h1>
+<blockquote>
+<p><strong><em>Defination:</em></strong> <span class="math inline">\((G,
+*),(G&#39;,*&#39;)\)</span> 是两个群，<span class="math inline">\(f:G
+\rightarrow G&#39;\)</span>是一个群同态，那么有<br>
+&gt; 1. <span class="math inline">\(f(e) = e&#39;\)</span>；<br>
+&gt; 2. <span class="math inline">\(f(a^{-1})=(f(a))^{-1}\)</span>；<br>
+&gt; 3. <span class="math inline">\(H\)</span>是<span class="math inline">\(G\)</span>的一个子群，那么<span class="math inline">\(f(H) = \{f(h)|h \in H\}\)</span>也是<span class="math inline">\(G&#39;\)</span>的一个子群；<br>
+<strong><em>命题:</em></strong> <span class="math inline">\(det:GL_n(R)\rightarrow (R,
+*)\)</span>是一个乘法群同态，即行列式是一般线性群到实数乘群的一个群同态。<br>
+对<span class="math inline">\(SL_n(R)=\{A \in GL_n(R):det(A) =
+1\}\)</span>，显然1是<span class="math inline">\((R,
+*)\)</span>的单位元，那么，<br>
+<span class="math inline">\(SL_n(R) =
+det^{-1}(1)=det^{-1}(\{1\})\)</span>，翻译成人话，特殊线性群是那些映射到单位元元素的矩阵的集合，即它是实数乘群中单位元的一个原象，也是下面提到的<strong><em>正规子群</em></strong>。<br>
+<strong><em>满同态，单同态</em></strong><br>
+<strong><em>Note!</em></strong> 单同态当且仅当<span class="math inline">\(Ker(f) =
+\{e\}\)</span>，要证明群同态是单射，只需证<span class="math inline">\(Ker(f) = \{e\}\)</span>。</p>
+</blockquote>
+<h2 id="kernal-image-核像">Kernal, Image 核/像</h2>
+<blockquote>
+<p><strong><em>Defination:</em></strong> <span class="math inline">\(f:G
+\rightarrow G&#39;\)</span>是一个群同态，<span class="math inline">\(Ker(f) = \{a\in G|f(a)=e&#39;\},Im(f)=f(G)=\{y\in
+G:\exists x\in G,y = f(x)\}\)</span></p>
+</blockquote>
+<h2 id="同态基本定理">同态基本定理</h2>
+<p><strong><em>Defination:</em></strong> 设<span class="math inline">\(f:G \rightarrow G&#39;\)</span>是同态，<span class="math inline">\(R\)</span>是<span class="math inline">\(G\)</span>上的关系且被定义为<span class="math inline">\(aRb \iff f(a) = f(b)\)</span>，那么有：<br>
+&gt; 1）<span class="math inline">\(R\)</span>是同余关系；<br>
+&gt; 2）<span class="math inline">\(G&#39;\)</span>和<span class="math inline">\(G/R\)</span>同构；<img src="img/Wondershare%20PDFelement%202024-11-05%2012.08.43.png"></p>
+<h1 id="isomorphism-同构"><em>Isomorphism 同构</em></h1>
+<blockquote>
 <p><strong><em>Defination:</em></strong> 双射的同态。</p>
 </blockquote>
-<h1 id="Direct-Product-群的直积"><a href="#Direct-Product-群的直积" class="headerlink" title="Direct Product 群的直积"></a><em>Direct Product 群的直积</em></h1><blockquote>
-<p><strong><em>Defination:</em></strong> $(x, y)*(x’,y’)=(x \circ_1 x’, y \circ_2 y’)$</p>
-</blockquote>
-<h1 id="Finate-Group-有限群"><a href="#Finate-Group-有限群" class="headerlink" title="Finate Group 有限群"></a><em>Finate Group 有限群</em></h1><blockquote>
-<p><strong><em>Defination:</em></strong> $G\space is\space Finate\space Group \iff G$是一个有限集合<br><strong><em>The Order of Group 群的阶</em></strong></p>
+<h1 id="direct-product-群的直积"><em>Direct Product 群的直积</em></h1>
 <blockquote>
-<p><strong><em>Defination:</em></strong> 若$x \in G$，如果$\exists 最小正整数n \in N,s.t.x^n=e$，则$|G|=n$，若不存在，则$|G|=\infty$<br><strong><em>命题1:</em></strong> 有限群的每一个元素经过有限次自乘都可以得到单位元。 </p>
+<p><strong><em>Defination:</em></strong> <span class="math inline">\((x,
+y)*(x&#39;,y&#39;)=(x \circ_1 x&#39;, y \circ_2 y&#39;)\)</span></p>
 </blockquote>
-</blockquote>
-<h1 id="Cyclic-Group-循环群"><a href="#Cyclic-Group-循环群" class="headerlink" title="Cyclic Group 循环群"></a><em>Cyclic Group 循环群</em></h1><blockquote>
-<p><strong><em>命题1:</em></strong> 令$G=<x>$是有限循环群，假设$|x| = n$，则$G = \{e,x^2,……,x^n\}$，其中元素是两两不同的，则称有限群$G$的阶为$n$。<br>可以用<strong><em>Cayley图</em></strong>进行可视化表示：<img src="img/Google%20Chrome%202024-11-05%2008.56.29.png" alt><strong><em>命题2:</em></strong> 任意n阶循环群互相同构，无限循环群也是互相同构的。<br><strong><em>命题3:</em></strong> 任意循环群都是交换群。<br><strong><em>命题4:</em></strong> 令$G = <x>$为无限循环群，G只有两个生成元分别为$x,x^{-1}$。<br><strong><em>几类特殊的循环群:</em></strong> </x></x></p>
+<h1 id="finate-group-有限群"><em>Finate Group 有限群</em></h1>
 <blockquote>
-<p>$(Z, +) = <1>,1$或$-1$是它的生成元，无限循环群；<br><strong><em>Lagrange定理:</em></strong> 若$H$是$G$的子群，则$|H|\space |\space |G|$。</1></p>
+<p><strong><em>Defination:</em></strong> <span class="math inline">\(G\space is\space Finate\space Group \iff
+G\)</span>是一个有限集合<br>
+<strong><em>The Order of Group 群的阶</em></strong><br>
+&gt; <strong><em>Defination:</em></strong> 若<span class="math inline">\(x \in G\)</span>，如果<span class="math inline">\(\exists 最小正整数n \in
+N,s.t.x^n=e\)</span>，则<span class="math inline">\(|G|=n\)</span>，若不存在，则<span class="math inline">\(|G|=\infty\)</span><br>
+<strong><em>命题1:</em></strong>
+有限群的每一个元素经过有限次自乘都可以得到单位元。</p>
 </blockquote>
-</blockquote>
-<h1 id="Coset-陪集"><a href="#Coset-陪集" class="headerlink" title="Coset 陪集"></a>Coset 陪集</h1><blockquote>
-<p><strong><em>左陪集</em></strong></p>
+<h1 id="cyclic-group-循环群"><em>Cyclic Group 循环群</em></h1>
 <blockquote>
-<p><strong><em>Defination:</em></strong> $H$是$G$的一个子群，$aH = \{ah|h \in H\},a \in G$，陪集一般不是子群。<br>定义$f:H \rightarrow aH,f(x)=ax$，显然是双射，则$|H|=|aH|$。<br><strong><em>命题1:</em></strong> 两个左陪集要么相等要么无交，所有陪集构成群的一个分拆。<br>可以定义为商集$G/H$<br><strong><em>右陪集</em></strong><br>如何赋予商集一个群的结构？</p>
+<p><strong><em>命题1:</em></strong> 令<span class="math inline">\(G=&lt;x&gt;\)</span>是有限循环群，假设<span class="math inline">\(|x| = n\)</span>，则<span class="math inline">\(G
+= \{e,x^2,……,x^n\}\)</span>，其中元素是两两不同的，则称有限群<span class="math inline">\(G\)</span>的阶为<span class="math inline">\(n\)</span>。<br>
+可以用<strong><em>Cayley图</em></strong>进行可视化表示：<img src="img/Google%20Chrome%202024-11-05%2008.56.29.png"><strong><em>命题2:</em></strong>
+任意n阶循环群互相同构，无限循环群也是互相同构的。<br>
+<strong><em>命题3:</em></strong> 任意循环群都是交换群。<br>
+<strong><em>命题4:</em></strong> 令<span class="math inline">\(G =
+&lt;x&gt;\)</span>为无限循环群，G只有两个生成元分别为<span class="math inline">\(x,x^{-1}\)</span>。<br>
+<strong><em>几类特殊的循环群:</em></strong><br>
+&gt; <span class="math inline">\((Z, +) = &lt;1&gt;,1\)</span>或<span class="math inline">\(-1\)</span>是它的生成元，无限循环群；<br>
+<strong><em>Lagrange定理:</em></strong> 若<span class="math inline">\(H\)</span>是<span class="math inline">\(G\)</span>的子群，则<span class="math inline">\(|H|\space |\space |G|\)</span>。</p>
 </blockquote>
-</blockquote>
-<h1 id="Normal-Group-正规子群"><a href="#Normal-Group-正规子群" class="headerlink" title="Normal Group 正规子群"></a><em>Normal Group 正规子群</em></h1><blockquote>
-<p><strong><em>Defination:</em></strong> $N&lt;G,\forall a \in G,aN = Na$，记作$H \lhd G$，此时$(G/N,\circ)$称为商群。其单位元为$eN = N$，逆元为$a^{-1}N$<br><strong><em>商群:</em></strong> 可以通过正规子群来生成商集，并定义二元运算为$(aN) \times (bN)=[a]\circ [b] = [a <em> b] = abN$<br>同时有函数定义为$f_R:G \rightarrow G/R, f_R(a) = aN$,则$f_R$是由$G \rightarrow G/R$的同态，一般记为$G/N$。<br>**</em>定理:<em>*</em> 设$G$的正规子群$N$，设定义在$G$上的关系$R: aRb \iff ab^{-1} \in N$，那么有：</p>
+<h1 id="coset-陪集">Coset 陪集</h1>
 <blockquote>
-<ol>
-<li>$R$是$G$上的同余关系；</li>
-<li>$N = [e]$；<br><strong><em>Prove:</em></strong> $证明自反性: aa^{-1}=e \in N \Rightarrow aRa$<br>$证明对称性, if\space aRb, then\space ab^{-1}\in N,由于其存在逆元，则(ab^{-1})^{-1}=ba^{-1}\Rightarrow bRa$<br>$证明传递性,if\space aRb,bRc,then\space ab^{-1},bc^{-1}\in N,由封闭性,ab^{-1}bc^{-1} = ac^{-1}\in N\Rightarrow aRc$<br>$证明同余关系,$</li>
-</ol>
+<p><strong><em>左陪集</em></strong><br>
+&gt; <strong><em>Defination:</em></strong> <span class="math inline">\(H\)</span>是<span class="math inline">\(G\)</span>的一个子群，<span class="math inline">\(aH = \{ah|h \in H\},a \in
+G\)</span>，陪集一般不是子群。<br>
+&gt; 定义<span class="math inline">\(f:H \rightarrow
+aH,f(x)=ax\)</span>，显然是双射，则<span class="math inline">\(|H|=|aH|\)</span>。<br>
+&gt; <strong><em>命题1:</em></strong>
+两个左陪集要么相等要么无交，所有陪集构成群的一个分拆。<br>
+&gt; 可以定义为商集<span class="math inline">\(G/H\)</span><br>
+<strong><em>右陪集</em></strong><br>
+如何赋予商集一个群的结构？</p>
 </blockquote>
+<h1 id="normal-group-正规子群"><em>Normal Group 正规子群</em></h1>
+<blockquote>
+<p><strong><em>Defination:</em></strong> <span class="math inline">\(N&lt;G,\forall a \in G,aN = Na\)</span>，记作<span class="math inline">\(H \lhd G\)</span>，此时<span class="math inline">\((G/N,\circ)\)</span>称为商群。其单位元为<span class="math inline">\(eN = N\)</span>，逆元为<span class="math inline">\(a^{-1}N\)</span><br>
+<strong><em>商群:</em></strong>
+可以通过正规子群来生成商集，并定义二元运算为<span class="math inline">\((aN) \times (bN)=[a]\circ [b] = [a * b] =
+abN\)</span><br>
+同时有函数定义为<span class="math inline">\(f_R:G \rightarrow G/R,
+f_R(a) = aN\)</span>,则<span class="math inline">\(f_R\)</span>是由<span class="math inline">\(G \rightarrow G/R\)</span>的同态，一般记为<span class="math inline">\(G/N\)</span>。<br>
+<strong><em>定理:</em></strong> 设<span class="math inline">\(G\)</span>的正规子群<span class="math inline">\(N\)</span>，设定义在<span class="math inline">\(G\)</span>上的关系<span class="math inline">\(R:
+aRb \iff ab^{-1} \in N\)</span>，那么有：<br>
+&gt; 1. <span class="math inline">\(R\)</span>是<span class="math inline">\(G\)</span>上的同余关系；<br>
+&gt; 2. <span class="math inline">\(N = [e]\)</span>；<br>
+<strong><em>Prove:</em></strong> <span class="math inline">\(证明自反性:
+aa^{-1}=e \in N \Rightarrow aRa\)</span><br>
+<span class="math inline">\(证明对称性, if\space aRb, then\space
+ab^{-1}\in N,由于其存在逆元，则(ab^{-1})^{-1}=ba^{-1}\Rightarrow
+bRa\)</span><br>
+<span class="math inline">\(证明传递性,if\space aRb,bRc,then\space
+ab^{-1},bc^{-1}\in N,由封闭性,ab^{-1}bc^{-1} = ac^{-1}\in N\Rightarrow
+aRc\)</span><br>
+<span class="math inline">\(证明同余关系,\)</span></p>
 </blockquote>
 
     </div>

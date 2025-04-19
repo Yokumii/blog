@@ -168,11 +168,11 @@
         </span>
         
         <span class="category">
-            <a href="/blog/categories/CSAPP/">
+            <a href="/blog/categories/%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                CSAPP
+                课程学习
             </a>
         </span>
         
@@ -185,7 +185,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CSAPP/" style="color: #00bcd4">
+                <a href="/blog/tags/CSAPP/" style="color: #ff7d73">
                     CSAPP
                 </a>
             </span>
@@ -195,46 +195,75 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="Addition加法"><a href="#Addition加法" class="headerlink" title="Addition加法"></a>Addition加法</h1><ol>
-<li>无符号数加法：$s = UAdd_w(u,v) = (u +v)\% 2^w$；结果寄存器会截断溢出的1位；<ol>
+        <h1 id="addition加法">Addition加法</h1>
+<ol type="1">
+<li>无符号数加法：<span class="math inline">\(s = UAdd_w(u,v) = (u +v)\%
+2^w\)</span>；结果寄存器会截断溢出的1位；
+<ol type="1">
 <li>溢出时，结果一定小于任何一个加数；</li>
-</ol>
-</li>
-<li>有符号数加法：$s = (int)((unsigned)u + (unsigned)v)$；<ol>
-<li>正溢出：$x + y \ge 2^{w-1}$，截断后结果为$x + y - 2^w$；</li>
-<li>负溢出：$x + y &lt; 2^{w-1}$，截断后结果为$x + y + 2^w$；</li>
+</ol></li>
+<li>有符号数加法：<span class="math inline">\(s = (int)((unsigned)u +
+(unsigned)v)\)</span>；
+<ol type="1">
+<li>正溢出：<span class="math inline">\(x + y \ge
+2^{w-1}\)</span>，截断后结果为<span class="math inline">\(x + y -
+2^w\)</span>；</li>
+<li>负溢出：<span class="math inline">\(x + y &lt;
+2^{w-1}\)</span>，截断后结果为<span class="math inline">\(x + y +
+2^w\)</span>；</li>
 <li>正 + 负：不可能溢出；</li>
+</ol></li>
+<li>用加法实现减法：<span class="math inline">\((A - B)_{\text{补}} =
+(A)_\text{补} + (-B)_\text{补}\)</span>
+<ol type="1">
+<li>如何求<span class="math inline">\((-B)_\text{补}\)</span><br>
+<span class="math inline">\((B)_\text{补} + (-B)_\text{补} = 11\cdots
+1\)</span><br>
+<span class="math inline">\(\sim(B)_\text{补} + (B)_\text{补} + 1 =
+11\cdots 1 + 1 = 0\)</span><br>
+<span class="math inline">\((-B)_\text{补} = \sim (B)_\text{补} +
+1\)</span></li>
+</ol></li>
+<li>加法逆元：
+<ol type="1">
+<li>无符号数：<span class="math inline">\(-x = 2^w - x(x \ne
+0)\)</span>，0的逆元是0；</li>
+<li>有符号数：<span class="math inline">\(x + (-x) =
+0\)</span>，注意特例<span class="math inline">\(T_{min},10\cdots 0 +
+10\cdots 0 = 0\)</span>，即<span class="math inline">\(-T_{min} =
+T_{min}\)</span>；</li>
+</ol></li>
 </ol>
-</li>
-<li>用加法实现减法：$(A - B)_{\text{补}} = (A)_\text{补} + (-B)_\text{补}$<ol>
-<li>如何求$(-B)_\text{补}$<pre><code> $(B)_\text&#123;补&#125; + (-B)_\text&#123;补&#125; = 11\cdots 1$
- $\sim(B)_\text&#123;补&#125; + (B)_\text&#123;补&#125; + 1 = 11\cdots 1 + 1 = 0$
- $(-B)_\text&#123;补&#125; = \sim (B)_\text&#123;补&#125; + 1$
-</code></pre></li>
-</ol>
-</li>
-<li>加法逆元：<ol>
-<li>无符号数：$-x = 2^w - x(x \ne 0)$，0的逆元是0；</li>
-<li>有符号数：$x + (-x) = 0$，注意特例$T_{min},10\cdots 0 + 10\cdots 0 = 0$，即$-T_{min} = T_{min}$；</li>
-</ol>
-</li>
-</ol>
-<h1 id="Adder加法器"><a href="#Adder加法器" class="headerlink" title="Adder加法器"></a>Adder加法器</h1><p><img src="1.png" alt></p>
-<ul>
-<li>当做减法(Sub = 1)或产生进位(Co = 1)时，CF = 1，表示发生借位或进位；</li>
-<li>SF = 运算结果的符号位；</li>
-<li>ZF = 1 if Sum = 0；</li>
-<li>OF = 1 if 两个加数同号但与Sum异号(即上述发生溢出的情形)；<br><img src="2.png" alt><br>以上题为例：<br>```c<br>unsigned int x = 1000 0110;<br>unsigned int y = 1111 0110; // -y_补 = 00001010</li>
-</ul>
-<p>int m = x = 1000 0110 = -122;<br>int n = y = 1111 0110 = -10;</p>
-<h1 id="CF-1-减法有借位-，OF-0-并没有溢出），SF-1；"><a href="#CF-1-减法有借位-，OF-0-并没有溢出），SF-1；" class="headerlink" title="CF = 1(减法有借位)，OF = 0(并没有溢出），SF = 1；"></a>CF = 1(减法有借位)，OF = 0(并没有溢出），SF = 1；</h1><p>unsigned int z1 = x - y = 1000 0110 + 00001010 = 10010000 = 144;<br>int k1 = m - n = 10010000 = -112 = -112 - (-10);</p>
-<h1 id="CF-1-有进位-，OF-1-发生溢出-，SF-0；"><a href="#CF-1-有进位-，OF-1-发生溢出-，SF-0；" class="headerlink" title="CF = 1(有进位)，OF = 1(发生溢出)，SF = 0；"></a>CF = 1(有进位)，OF = 1(发生溢出)，SF = 0；</h1><p>unsigned int z2 = x + y = 1000 0110 + 11110110 = 01111100 = 124 = (134 + 246) % 256;<br>int k2 = m + n = 01111100 = 124 = -122 - 10 + 256;<br>```</p>
-<h1 id="Multiplication"><a href="#Multiplication" class="headerlink" title="Multiplication"></a>Multiplication</h1><ol>
+<h1 id="adder加法器">Adder加法器</h1>
+<p><img src="1.png"><br>
+* 当做减法(Sub = 1)或产生进位(Co = 1)时，CF =
+1，表示发生借位或进位；<br>
+* SF = 运算结果的符号位；<br>
+* ZF = 1 if Sum = 0；<br>
+* OF = 1 if 两个加数同号但与Sum异号(即上述发生溢出的情形)；<br>
+<img src="2.png"><br>
+以上题为例：</p>
+<pre class="c"><code>unsigned int x = 1000 0110;
+unsigned int y = 1111 0110; // -y_补 = 00001010
+
+int m = x = 1000 0110 = -122;
+int n = y = 1111 0110 = -10;
+
+# CF = 1(减法有借位)，OF = 0(并没有溢出），SF = 1；
+unsigned int z1 = x - y = 1000 0110 + 00001010 = 10010000 = 144;
+int k1 = m - n = 10010000 = -112 = -112 - (-10);
+
+# CF = 1(有进位)，OF = 1(发生溢出)，SF = 0；
+unsigned int z2 = x + y = 1000 0110 + 11110110 = 01111100 = 124 = (134 + 246) % 256;
+int k2 = m + n = 01111100 = 124 = -122 - 10 + 256;</code></pre>
+<h1 id="multiplication">Multiplication</h1>
+<ol type="1">
 <li>无符号数乘法：和加法类似进行截断；</li>
 <li>补码乘法：先按无符号数进行乘法运算截断，然后将结果转化为有符号数；</li>
-<li>变量与常数之间的乘运算（左移）：<img src="3.png" alt></li>
-<li>变量与常数之间的除运算（算术右移）：<img src="4.png" alt></li>
-<li>如果负数要向0取整，记得加偏移量；即：$x = (x + 1&lt;<k-1)>&gt;k$；</k-1)></li>
+<li>变量与常数之间的乘运算（左移）：<img src="3.png"></li>
+<li>变量与常数之间的除运算（算术右移）：<img src="4.png"></li>
+<li>如果负数要向0取整，记得加偏移量；即：<span class="math inline">\(x =
+(x + 1&lt;&lt;k-1)&gt;&gt;k\)</span>；</li>
 </ol>
 
     </div>
