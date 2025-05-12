@@ -185,7 +185,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="color: #00bcd4">
+                <a href="/blog/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="color: #00a596">
                     云服务器
                 </a>
             </span>
@@ -198,53 +198,47 @@
         <blockquote>
 <p>因为个人的阿里云国内服务器偶遇运营商垃圾跨境节点导致连接github及其不稳定，所以有了这篇帖子；</p>
 </blockquote>
-<h1 id="环境">环境</h1>
-<blockquote>
-<p>操作系统：Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-202-generic
-x86_64)<br>
-云服务器：阿里云ESC<br>
-代理客户端：V2RayA，优点是适用于无图形化的操作系统；</p>
+<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><blockquote>
+<p>操作系统：Ubuntu 20.04.6 LTS (GNU/Linux 5.4.0-202-generic x86_64)<br>云服务器：阿里云ESC<br>代理客户端：V2RayA，优点是适用于无图形化的操作系统；</p>
 </blockquote>
-<h1 id="v2raya-简介">V2RayA 简介</h1>
-<blockquote>
-<p>一个易用而强大的，跨平台的 V2Ray 客户端<br>
-使用 Golang 和 Vue.js
-编写，运行时没有任何外部依赖库，可跨平台运行，借助任意一款浏览器均可操作；<br>
-对于无图形界面的操作系统，打开它提供的 Web UI
-就能完成配置工作，对于远程服务器及其友好；</p>
+<h1 id="V2RayA-简介"><a href="#V2RayA-简介" class="headerlink" title="V2RayA 简介"></a>V2RayA 简介</h1><blockquote>
+<p>一个易用而强大的，跨平台的 V2Ray 客户端<br>使用 Golang 和 Vue.js 编写，运行时没有任何外部依赖库，可跨平台运行，借助任意一款浏览器均可操作；<br>对于无图形界面的操作系统，打开它提供的 Web UI 就能完成配置工作，对于远程服务器及其友好；</p>
 </blockquote>
-<h1 id="v2raya-安装">V2RayA 安装</h1>
-<p>演示通过软件源安装，其他安装方法和操作系统请参考：<a target="_blank" rel="noopener" href="https://v2raya.org/docs/prologue/installation">请选择你的英雄</a></p>
+<h1 id="V2RayA-安装"><a href="#V2RayA-安装" class="headerlink" title="V2RayA 安装"></a>V2RayA 安装</h1><p>演示通过软件源安装，其他安装方法和操作系统请参考：<a target="_blank" rel="noopener" href="https://v2raya.org/docs/prologue/installation">请选择你的英雄</a></p>
 <blockquote>
 <p><strong>添加公钥</strong></p>
 </blockquote>
-<pre class="bash"><code>wget -qO - https://apt.v2raya.org/key/public-key.asc | sudo tee /etc/apt/keyrings/v2raya.asc</code></pre>
+<pre><code class="lang-bash">wget -qO - https://apt.v2raya.org/key/public-key.asc | sudo tee /etc/apt/keyrings/v2raya.asc
+</code></pre>
 <blockquote>
 <p><strong>添加 V2RayA 软件源</strong></p>
 </blockquote>
-<pre class="bash"><code>echo &quot;deb [signed-by=/etc/apt/keyrings/v2raya.asc] https://apt.v2raya.org/ v2raya main&quot; | sudo tee /etc/apt/sources.list.d/v2raya.list
-sudo apt update</code></pre>
+<pre><code class="lang-bash">echo &quot;deb [signed-by=/etc/apt/keyrings/v2raya.asc] https://apt.v2raya.org/ v2raya main&quot; | sudo tee /etc/apt/sources.list.d/v2raya.list
+sudo apt update
+</code></pre>
 <blockquote>
 <p><strong>安装 V2RayA</strong></p>
 </blockquote>
-<pre class="bash"><code>sudo apt install v2raya v2ray</code></pre>
-<p>出现以下信息，说明安装成功：<img src="1.png"></p>
-<h1 id="启动-v2raya">启动 V2RayA</h1>
-<blockquote>
+<pre><code class="lang-bash">sudo apt install v2raya v2ray
+</code></pre>
+<p>出现以下信息，说明安装成功：<img src="1.png" alt></p>
+<h1 id="启动-V2RayA"><a href="#启动-V2RayA" class="headerlink" title="启动 V2RayA"></a>启动 V2RayA</h1><blockquote>
 <p><strong>启动 V2RayA</strong></p>
 </blockquote>
-<pre class="bash"><code>sudo systemctl start v2raya.service</code></pre>
+<pre><code class="lang-bash">sudo systemctl start v2raya.service
+</code></pre>
 <blockquote>
 <p><strong>设置 V2RayA 为开机自启动</strong></p>
 </blockquote>
-<pre class="bash"><code>sudo systemctl enable v2raya.service</code></pre>
+<pre><code class="lang-bash">sudo systemctl enable v2raya.service
+</code></pre>
 <blockquote>
 <p><strong>检查V2RayA 启动状态</strong></p>
 </blockquote>
-<pre class="bash"><code>sudo systemctl status v2raya.service</code></pre>
-<p>如果看到类似以下信息，说明启动成功：<img src="2.png"></p>
-<h1 id="v2raya-配置">V2RayA 配置</h1>
-
+<pre><code class="lang-bash">sudo systemctl status v2raya.service
+</code></pre>
+<p>如果看到类似以下信息，说明启动成功：<img src="2.png" alt></p>
+<h1 id="V2RayA-配置"><a href="#V2RayA-配置" class="headerlink" title="V2RayA 配置"></a>V2RayA 配置</h1>
     </div>
     
     
