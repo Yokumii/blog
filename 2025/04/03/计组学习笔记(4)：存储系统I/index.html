@@ -185,14 +185,14 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/private/" style="color: #00a596">
+                <a href="/blog/tags/private/" style="color: #ff7d73">
                     private
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="color: #ffa2c4">
+                <a href="/blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="color: #00a596">
                     计算机组成原理
                 </a>
             </span>
@@ -202,133 +202,109 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="存储器的分类">存储器的分类</h1>
-<ul>
-<li>按照介质分类：
-<ul>
+        <h1 id="存储器的分类"><a href="#存储器的分类" class="headerlink" title="存储器的分类"></a>存储器的分类</h1><ul>
+<li>按照介质分类：<ul>
 <li>半导体存储器、磁介质存储器、光存储器；</li>
-</ul></li>
-<li>按照存储器与CPU的耦合程度：
-<ul>
+</ul>
+</li>
+<li>按照存储器与CPU的耦合程度：<ul>
 <li>内存（主存 + cache）、外存；</li>
-</ul></li>
-<li>按照存储器的读写功能：
-<ul>
+</ul>
+</li>
+<li>按照存储器的读写功能：<ul>
 <li>读写存储器RWM；</li>
 <li>只读存储器ROW；</li>
-</ul></li>
-<li>按照掉电后存储的信息是否保持：
-<ul>
+</ul>
+</li>
+<li>按照掉电后存储的信息是否保持：<ul>
 <li>易失性；</li>
 <li>非易失性；</li>
-</ul></li>
-<li>按照数据存取的随机性：
-<ul>
+</ul>
+</li>
+<li>按照数据存取的随机性：<ul>
 <li>随机存取RAM：指随机给定一个地址就可以拿到数据并与前一个访问的地址无关；</li>
 <li>顺序存取SAM：比如磁带；</li>
 <li>直接存取DAM：确定区域后顺序存取；</li>
-</ul></li>
-<li>按照半导体存储器的信息存储方法：
-<ul>
+</ul>
+</li>
+<li>按照半导体存储器的信息存储方法：<ul>
 <li>静态Static；</li>
 <li>动态Dynamic；</li>
-</ul></li>
-<li>习惯分类：
-<ul>
+</ul>
+</li>
+<li>习惯分类：<ul>
 <li>RAM vs. ROM；</li>
 <li>SRAM vs. DRAM(内存条) vs. 闪存；</li>
-<li>MASK ROM(掩膜) vs. PROM(可编程)；
-<ul>
-<li>EPROM(可擦除PROM)
-<ul>
+<li>MASK ROM(掩膜) vs. PROM(可编程)；<ul>
+<li>EPROM(可擦除PROM)<ul>
 <li>紫外线擦除；</li>
 <li>电擦除；</li>
-</ul></li>
-</ul></li>
-</ul></li>
 </ul>
-<h1 id="存储器目标">存储器目标</h1>
-<ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="存储器目标"><a href="#存储器目标" class="headerlink" title="存储器目标"></a>存储器目标</h1><ul>
 <li>大容量；</li>
 <li>高速度；</li>
 <li>低价格；</li>
 </ul>
-<h2 id="层次结构存储器系统">层次结构存储器系统</h2>
-<p><img src="1.png"></p>
-<h2 id="并行技术">并行技术</h2>
-<ul>
+<h2 id="层次结构存储器系统"><a href="#层次结构存储器系统" class="headerlink" title="层次结构存储器系统"></a>层次结构存储器系统</h2><p><img src="计组学习笔记(4" alt>：存储系统I/1.png)</p>
+<h2 id="并行技术"><a href="#并行技术" class="headerlink" title="并行技术"></a>并行技术</h2><ul>
 <li>单体多字：一个读写体，每次存取多个字；</li>
 <li>多体单字：多个读写体，交叉编址，向多个地址读取内容；</li>
 </ul>
-<h2 id="存储容量">存储容量</h2>
-<p>存储容量 = 存储字数（存储单元数） <span class="math inline">\(\times\)</span> 存储字长（每单元的比特数）</p>
-<h2 id="存取速度">存取速度</h2>
-<ul>
-<li>访问时间/存取时间<span class="math inline">\(T_A\)</span>：从启动一次存储器操作到该操作完成所经历的时间，即从存储器接收到读/写命令到信息被读出或写入完成所需的时间；</li>
-<li>存取周期<span class="math inline">\(T_m\)</span>：存储器在连续读写过程中，完成一次完整的读/写操作所需的全部时间，即CPU连续两次独立访问存储器的最小时间间隔；</li>
+<h2 id="存储容量"><a href="#存储容量" class="headerlink" title="存储容量"></a>存储容量</h2><p>存储容量 = 存储字数（存储单元数） $\times$ 存储字长（每单元的比特数）</p>
+<h2 id="存取速度"><a href="#存取速度" class="headerlink" title="存取速度"></a>存取速度</h2><ul>
+<li>访问时间/存取时间$T_A$：从启动一次存储器操作到该操作完成所经历的时间，即从存储器接收到读/写命令到信息被读出或写入完成所需的时间；</li>
+<li>存取周期$T_m$：存储器在连续读写过程中，完成一次完整的读/写操作所需的全部时间，即CPU连续两次独立访问存储器的最小时间间隔；</li>
 <li>存储器带宽：单位时间内能传输的信息量；</li>
 </ul>
 <blockquote>
-<p><strong>注</strong>：存取周期<span class="math inline">\(T_m\)</span>一般大于存取时间<span class="math inline">\(T_A\)</span>，因为存储器完成读/写操作后一般需要一段恢复内部状态的复原时间，即<span class="math inline">\(存取周期 = 存取时间 + 恢复时间\)</span>；</p>
+<p><strong>注</strong>：存取周期$T_m$一般大于存取时间$T_A$，因为存储器完成读/写操作后一般需要一段恢复内部状态的复原时间，即$存取周期 = 存取时间 + 恢复时间$；</p>
 </blockquote>
-<h1 id="sram">SRAM</h1>
-<h2 id="基本结构">基本结构</h2>
-<p><img src="2.png"><br>
-<img src="3.png"></p>
-<h2 id="基本时序">基本时序</h2>
-<h3 id="读周期">读周期</h3>
-<p><img src="4.png"></p>
-<h2 id="写周期">写周期</h2>
-<p><img src="5.png"></p>
-<h1 id="只读存储器">只读存储器</h1>
-<h2 id="特点">特点</h2>
-<ul>
+<h1 id="SRAM"><a href="#SRAM" class="headerlink" title="SRAM"></a>SRAM</h1><h2 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h2><p><img src="计组学习笔记(4" alt>：存储系统I/2.png)<br><img src="计组学习笔记(4" alt>：存储系统I/3.png)</p>
+<h2 id="基本时序"><a href="#基本时序" class="headerlink" title="基本时序"></a>基本时序</h2><h3 id="读周期"><a href="#读周期" class="headerlink" title="读周期"></a>读周期</h3><p><img src="计组学习笔记(4" alt>：存储系统I/4.png)</p>
+<h2 id="写周期"><a href="#写周期" class="headerlink" title="写周期"></a>写周期</h2><p><img src="计组学习笔记(4" alt>：存储系统I/5.png)</p>
+<h1 id="只读存储器"><a href="#只读存储器" class="headerlink" title="只读存储器"></a>只读存储器</h1><h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
 <li>只能读出，不能写入；</li>
 <li>不易失；</li>
 <li>只读存储器写入数据的过程称为对其<strong>编程</strong>；</li>
 </ul>
-<h2 id="分类">分类</h2>
-<ul>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ul>
 <li>掩模式只读存储器：不能进行重写；</li>
-<li>一次可编程只读存储器PROM：
-<ul>
-<li>双极型PROM：
-<ul>
+<li>一次可编程只读存储器PROM：<ul>
+<li>双极型PROM：<ul>
 <li>熔丝烧断型；</li>
 <li>PN结击穿型；</li>
-</ul></li>
-</ul></li>
-<li>多次可编程只读存储器；
-<ul>
+</ul>
+</li>
+</ul>
+</li>
+<li>多次可编程只读存储器；<ul>
 <li>光擦除EPROM：利用<strong>雪崩注入</strong>，擦除是对<strong>所有</strong>存储单元进行，不能实现选择性擦除；</li>
-<li>电擦除EEPROM/E<span class="math inline">\(^2\)</span>PROM；</li>
+<li>电擦除EEPROM/E$^2$PROM；</li>
 <li>电改写EAROM；</li>
-</ul></li>
-<li>闪存Flash Memory；
-<ul>
-<li>NAND闪存：只允许顺序<strong>按页(Page)存取</strong>数据；<img src="6.png"></li>
+</ul>
+</li>
+<li>闪存Flash Memory；<ul>
+<li>NAND闪存：只允许顺序<strong>按页(Page)存取</strong>数据；<img src="计组学习笔记(4" alt>：存储系统I/6.png)</li>
 <li>NOR闪存：具有完整地址/数据结构，能快速随机地读取任一单元；</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <blockquote>
-<p><strong>NAND vs. NOR</strong><br>
-<img src="7.png"></p>
-</blockquote>
-<blockquote>
+<p><strong>NAND vs. NOR</strong><br><img src="计组学习笔记(4" alt>：存储系统I/7.png)</p>
 <p><strong>注</strong>：任何计算机必须有ROM，即必须要有经过编程的ROM（称为<strong>Bios</strong>，它保存着计算机最重要的基本输入输出的程序、开机后自检程序和系统自启动程序），用于计算机程序的初始装入，如果都是RAM，那么计算机初始状态下根本不存在程序和数据；</p>
 </blockquote>
-<h1 id="并行存储器">并行存储器</h1>
-<h2 id="双端口存储器dpram">双端口存储器DPRAM</h2>
-<h3 id="基本结构-1">基本结构</h3>
-<p><img src="8.png"></p>
-<h3 id="实例idt7133">实例：IDT7133</h3>
-<p><img src="9.png"></p>
+<h1 id="并行存储器"><a href="#并行存储器" class="headerlink" title="并行存储器"></a>并行存储器</h1><h2 id="双端口存储器DPRAM"><a href="#双端口存储器DPRAM" class="headerlink" title="双端口存储器DPRAM"></a>双端口存储器DPRAM</h2><h3 id="基本结构-1"><a href="#基本结构-1" class="headerlink" title="基本结构"></a>基本结构</h3><p><img src="计组学习笔记(4" alt>：存储系统I/8.png)</p>
+<h3 id="实例：IDT7133"><a href="#实例：IDT7133" class="headerlink" title="实例：IDT7133"></a>实例：IDT7133</h3><p><img src="计组学习笔记(4" alt>：存储系统I/9.png)</p>
 <blockquote>
-<p><strong>注</strong>：其中Busy
-Flag用于控制能否访问，防止左右端口同时访问同一个地址造成冲突；Busy =
-0表示不能访问；仲裁方式如下：</p>
+<p><strong>注</strong>：其中Busy Flag用于控制能否访问，防止左右端口同时访问同一个地址造成冲突；Busy = 0表示不能访问；仲裁方式如下：</p>
 </blockquote>
-<p><img src="10.png"></p>
+<p><img src="计组学习笔记(4" alt>：存储系统I/10.png)</p>
 
     </div>
     

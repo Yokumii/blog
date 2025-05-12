@@ -185,14 +185,14 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" style="color: #ff7d73">
+                <a href="/blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" style="color: #00bcd4">
                     计算机基础
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/private/" style="color: #00a596">
+                <a href="/blog/tags/private/" style="color: #03a9f4">
                     private
                 </a>
             </span>
@@ -202,75 +202,51 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="正则集和正则式">正则集和正则式</h1>
-<ul>
+        <h1 id="正则集和正则式"><a href="#正则集和正则式" class="headerlink" title="正则集和正则式"></a>正则集和正则式</h1><ul>
 <li>正则集：字母表上一些特殊形式的字符串的集合，是正则式说表示的集合；</li>
 <li>正则式：用类似代数表达式的方式表示正则语言；</li>
-<li>运算：（按照运算优先级从高到低排序）
-<ul>
-<li><span class="math inline">\(*\)</span>(closure)闭包；</li>
-<li><span class="math inline">\(\cdot\)</span>
-(concatenation)连接；</li>
-<li><span class="math inline">\(+\)</span> (union)联合</li>
-</ul></li>
+<li>运算：（按照运算优先级从高到低排序）<ul>
+<li>$*$(closure)闭包；</li>
+<li>$\cdot$ (concatenation)连接；</li>
+<li>$+$ (union)联合</li>
 </ul>
-<p>注：<br>
-* 正则式相等等价于正则集相等；<br>
-* 一个正则式对应一个正则集，但一个正则集可能有多个正确的正则式；</p>
-<h1 id="右线性文法与正则式">右线性文法与正则式</h1>
-<p>右限性文法又称正则文法。右线性文法和正则式都可以用代表正则语言；</p>
-<h2 id="从右线性文法导出正则式">从右线性文法导出正则式</h2>
-<p>设<span class="math inline">\(x \rightarrow \alpha x +
-\beta(\Leftrightarrow x \rightarrow \alpha x 和x\rightarrow
-\beta)\)</span>，其中<span class="math inline">\(\alpha \in T^*,\beta
-\in (N + T)^*,x\in N\)</span>，则：<span class="math inline">\(x\)</span>的解为<span class="math inline">\(x =
-\alpha^*\beta\)</span>；</p>
-<h1 id="正则集与右线性文法">正则集与右线性文法</h1>
+</li>
+</ul>
+<p>注：</p>
 <ul>
+<li>正则式相等等价于正则集相等；</li>
+<li>一个正则式对应一个正则集，但一个正则集可能有多个正确的正则式；</li>
+</ul>
+<h1 id="右线性文法与正则式"><a href="#右线性文法与正则式" class="headerlink" title="右线性文法与正则式"></a>右线性文法与正则式</h1><p>右限性文法又称正则文法。右线性文法和正则式都可以用代表正则语言；</p>
+<h2 id="从右线性文法导出正则式"><a href="#从右线性文法导出正则式" class="headerlink" title="从右线性文法导出正则式"></a>从右线性文法导出正则式</h2><p>设$x \rightarrow \alpha x + \beta(\Leftrightarrow x \rightarrow \alpha x 和x\rightarrow \beta)$，其中$\alpha \in T^<em>,\beta \in (N + T)^</em>,x\in N$，则：$x$的解为$x = \alpha^*\beta$；</p>
+<h1 id="正则集与右线性文法"><a href="#正则集与右线性文法" class="headerlink" title="正则集与右线性文法"></a>正则集与右线性文法</h1><ul>
 <li>正则集是由右线性文法产生的语言；</li>
 <li>右线性文法产生的语言都是正则集；</li>
 <li>一个语言是正则集，当且仅当该语言问右线性语言；</li>
 </ul>
-<h1 id="正则式与有限自动机">正则式与有限自动机</h1>
-<h2 id="从dfa构造等价的正则表达式">从DFA构造等价的正则表达式</h2>
-<h3 id="状态消去法">状态消去法</h3>
-<p><img src="1.png"></p>
-<p>具体步骤：<br>
-<img src="2.png"></p>
-<h2 id="从正则式构造等价的epsilon-nfa">从正则式构造等价的<span class="math inline">\(\epsilon\)</span>-NFA</h2>
-<h3 id="归纳构造法">归纳构造法</h3>
-<p><img src="3.png"><br>
-<img src="4.png"><br>
-<img src="5.png"></p>
-<h1 id="右线性语言与有限自动机">右线性语言与有限自动机</h1>
-<p><strong>定理</strong>：由任意右线性文法定义G定义的语言必然能被一个NFAM所接受，即<span class="math inline">\(L(G) = L(M)\)</span>；</p>
-<h2 id="构造与右线性文法等价的nfa">构造与右线性文法等价的NFA</h2>
-<p><img src="6.png"></p>
-<p><strong>省流</strong>：<br>
-1. 新增一个状态作为终止状态；<br>
-2. 对仍在扩展非终结符的生成式，则转移到对应状态；<br>
-3. 对到达终结符的生成式，则转移到新增的结束状态；<br>
-4. 结束状态不存在转移；</p>
-<h2 id="构造能接受nfam定义的语言的有限性文法">构造能接受NFAM定义的语言的有限性文法</h2>
-<p><img src="7.png"></p>
-<h1 id="dfa的极小化">DFA的极小化</h1>
-<p>填表法；</p>
-<h1 id="pumping定理">Pumping定理</h1>
-<p>判定正则语言的必要条件；<br>
-<strong>定理</strong>：设<span class="math inline">\(L\)</span>是正则集，存在常数<span class="math inline">\(n\)</span>，对字符串<span class="math inline">\(\omega \in L\)</span>且<span class="math inline">\(\left | \omega \right | &gt; n\)</span>，则<span class="math inline">\(\omega\)</span>可以写成<span class="math inline">\(\omega_1\omega_o\omega_2\)</span>，其中<span class="math inline">\(\left | \omega_1 \omega_0\right | \le
-n\)</span>，<span class="math inline">\(\left | \omega_0\right | &gt;
-0\)</span>，对所有的<span class="math inline">\(i \ge
-0\)</span>，有<span class="math inline">\(\omega_1\omega_0^i\omega_2 \in
-L\)</span>；</p>
+<h1 id="正则式与有限自动机"><a href="#正则式与有限自动机" class="headerlink" title="正则式与有限自动机"></a>正则式与有限自动机</h1><h2 id="从DFA构造等价的正则表达式"><a href="#从DFA构造等价的正则表达式" class="headerlink" title="从DFA构造等价的正则表达式"></a>从DFA构造等价的正则表达式</h2><h3 id="状态消去法"><a href="#状态消去法" class="headerlink" title="状态消去法"></a>状态消去法</h3><p><img src="形式语言与自动机学习笔记(2" alt>/1.png)</p>
+<p>具体步骤：<br><img src="形式语言与自动机学习笔记(2" alt>/2.png)</p>
+<h2 id="从正则式构造等价的-epsilon-NFA"><a href="#从正则式构造等价的-epsilon-NFA" class="headerlink" title="从正则式构造等价的$\epsilon$-NFA"></a>从正则式构造等价的$\epsilon$-NFA</h2><h3 id="归纳构造法"><a href="#归纳构造法" class="headerlink" title="归纳构造法"></a>归纳构造法</h3><p><img src="形式语言与自动机学习笔记(2" alt>/3.png)<br><img src="形式语言与自动机学习笔记(2" alt>/4.png)<br><img src="形式语言与自动机学习笔记(2" alt>/5.png)</p>
+<h1 id="右线性语言与有限自动机"><a href="#右线性语言与有限自动机" class="headerlink" title="右线性语言与有限自动机"></a>右线性语言与有限自动机</h1><p><strong>定理</strong>：由任意右线性文法定义G定义的语言必然能被一个NFAM所接受，即$L(G) = L(M)$；</p>
+<h2 id="构造与右线性文法等价的NFA"><a href="#构造与右线性文法等价的NFA" class="headerlink" title="构造与右线性文法等价的NFA"></a>构造与右线性文法等价的NFA</h2><p><img src="形式语言与自动机学习笔记(2" alt>/6.png)</p>
+<p><strong>省流</strong>：</p>
+<ol>
+<li>新增一个状态作为终止状态；</li>
+<li>对仍在扩展非终结符的生成式，则转移到对应状态；</li>
+<li>对到达终结符的生成式，则转移到新增的结束状态；</li>
+<li>结束状态不存在转移；</li>
+</ol>
+<h2 id="构造能接受NFAM定义的语言的有限性文法"><a href="#构造能接受NFAM定义的语言的有限性文法" class="headerlink" title="构造能接受NFAM定义的语言的有限性文法"></a>构造能接受NFAM定义的语言的有限性文法</h2><p><img src="形式语言与自动机学习笔记(2" alt>/7.png)</p>
+<h1 id="DFA的极小化"><a href="#DFA的极小化" class="headerlink" title="DFA的极小化"></a>DFA的极小化</h1><p>填表法；</p>
+<h1 id="Pumping定理"><a href="#Pumping定理" class="headerlink" title="Pumping定理"></a>Pumping定理</h1><p>判定正则语言的必要条件；<br><strong>定理</strong>：设$L$是正则集，存在常数$n$，对字符串$\omega \in L$且$\left | \omega \right | &gt; n$，则$\omega$可以写成$\omega_1\omega_o\omega_2$，其中$\left | \omega_1 \omega_0\right | \le n$，$\left | \omega_0\right | &gt; 0$，对所有的$i \ge 0$，有$\omega_1\omega_0^i\omega_2 \in L$；</p>
 <p>显然，该定理可以用来证明某个语言不是正则语言；</p>
-<p><strong>证明步骤</strong>：<br>
-1. 对于足够大的n；<br>
-2. 找到一个满足以下条件的串<span class="math inline">\(\omega \in
-L\)</span>（串长至少为n）；<br>
-3. 任选满足<span class="math inline">\(\omega =
-\omega_1\omega_o\omega_2\)</span>，其中<span class="math inline">\(\left
-| \omega_1 \omega_0\right | \le n\)</span>，<span class="math inline">\(\left | \omega_0\right | &gt; 0\)</span>；<br>
-4. 找到一个<span class="math inline">\(i\)</span>，使得<span class="math inline">\(\omega_1\omega_0^i\omega_2 \notin L\)</span>；</p>
+<p><strong>证明步骤</strong>：</p>
+<ol>
+<li>对于足够大的n；</li>
+<li>找到一个满足以下条件的串$\omega \in L$（串长至少为n）；</li>
+<li>任选满足$\omega = \omega_1\omega_o\omega_2$，其中$\left | \omega_1 \omega_0\right | \le n$，$\left | \omega_0\right | &gt; 0$；</li>
+<li>找到一个$i$，使得$\omega_1\omega_0^i\omega_2 \notin L$；</li>
+</ol>
 
     </div>
     

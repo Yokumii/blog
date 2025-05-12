@@ -192,7 +192,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="color: #ff7d73">
+                <a href="/blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="color: #ffa2c4">
                     计算机网络
                 </a>
             </span>
@@ -202,101 +202,72 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="基本概念">基本概念</h1>
-<ul>
-<li><strong>Bandwidth信道带宽</strong>：<span class="math inline">\(f_{max} - f_{min}\)</span>，单位Hz；
-<ul>
+        <h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><ul>
+<li><strong>Bandwidth信道带宽</strong>：$f_{max} - f_{min}$，单位Hz；<ul>
 <li>Analog Bandwidth，模拟信号用Hz表示；</li>
 <li>Digital Bandwidth，数字信号用bps（bit per second）表示；</li>
-<li>Low-pass channel，低通信道，<span class="math inline">\(f_{min} =
-0\)</span>；</li>
-<li>Band-pass channel，带通信道，<span class="math inline">\(f_{min}
-&gt; 0\)</span>；</li>
-</ul></li>
+<li>Low-pass channel，低通信道，$f_{min} = 0$；</li>
+<li>Band-pass channel，带通信道，$f_{min} &gt; 0$；</li>
+</ul>
+</li>
 <li><strong>Bit Rate(bps)</strong>：比特率；</li>
-<li><strong>Baud
-Rate(Baud)</strong>：波特率，每秒钟表示bit所需的信号单元的数量；
-<ul>
+<li><strong>Baud Rate(Baud)</strong>：波特率，每秒钟表示bit所需的信号单元的数量；<ul>
 <li>T：一个信号单元的时间；</li>
-<li>Baud Rate = <span class="math inline">\(\frac {1}{T}\)</span>；</li>
-<li><strong><em>Bit Rate = Baud Rate <span class="math inline">\(\times\)</span> 一个信号单元携带的bit数 = Baud
-Rate <span class="math inline">\(\times\)</span> <span class="math inline">\(log_2 {有效状态数}\)</span>；</em></strong></li>
-</ul></li>
+<li>Baud Rate = $\frac {1}{T}$；</li>
+<li><strong><em>Bit Rate = Baud Rate $\times$ 一个信号单元携带的bit数 = Baud Rate $\times$ $log_2 {有效状态数}$；</em></strong></li>
+</ul>
+</li>
 <li><strong>信道容量</strong>：信道的最大数据率；</li>
 <li><strong>吞吐量</strong>：单位时间内网络可以传送的数据位数，单位bps；</li>
 <li><strong>负载Load</strong>：单位时间内注入网络的数据位数，单位bps；</li>
 <li><strong>误码率</strong>；</li>
-<li><strong>Delay时延</strong>：第一位开始发送与最后一位数据被接受的时间差；
-<ul>
-<li><strong>发送时延Transmission
-Delay</strong>：发送一个数据块需要的时间；
-<ul>
-<li>Transmission Delay = <span class="math inline">\(\frac {Message
-Length(bits)}{Bandwidth(bps)}\)</span>；</li>
-</ul></li>
-<li><strong>传播时延Propagation Delay</strong>：信号通过传输介质的时间；
-<ul>
-<li>Propagation Delay = <span class="math inline">\(\frac {length of
-physical link}{propagation speed in medium}\)</span>；</li>
-</ul></li>
+<li><strong>Delay时延</strong>：第一位开始发送与最后一位数据被接受的时间差；<ul>
+<li><strong>发送时延Transmission Delay</strong>：发送一个数据块需要的时间；<ul>
+<li>Transmission Delay = $\frac {Message Length(bits)}{Bandwidth(bps)}$；</li>
+</ul>
+</li>
+<li><strong>传播时延Propagation Delay</strong>：信号通过传输介质的时间；<ul>
+<li>Propagation Delay = $\frac {length of physical link}{propagation speed in medium}$；</li>
+</ul>
+</li>
 <li>节点处理时延；</li>
 <li>排队时延；</li>
-</ul></li>
-<li><strong>带宽时延积bandwidth-delay
-product</strong>：表示充满整个链路的bit数（有点像体积），表示信道的缓存能力；
-<ul>
-<li>Bandwidth-Delay Product = propagation delay <span class="math inline">\(\times\)</span> bandwidth；</li>
-</ul></li>
 </ul>
-<h1 id="信道">信道</h1>
-<h2 id="noiseless-channel-无噪信道">Noiseless Channel 无噪信道</h2>
-<p>理想信道的比特率通过Nyquist Bit
-Rate（奈奎斯特公式，1924）给出：<br>
-<span class="math display">\[
-C(Capacity) = Bit Rate = 2 \times bandwidth\times
-log_2{信道级数(即有效状态数)}
-\]</span><br>
-注意上述公式给出的是理想情况下最大可能的传输速率；<br>
-## Noisy Channel 有噪信道<br>
-有噪信道的传输速率通过Shannon Capacity（香农公式，1948）给出：<br>
-<span class="math display">\[
-Capacity = bandwidth\times log_2{1 + \frac{signal\_power}{noise\_power}}
-\]</span><br>
-其中，<strong>信噪比(SNR，Signal-to-Noise Ratio)</strong>
-又可以取对数用db(decibels)来表示：<br>
-<span class="math display">\[
-S/N_{db} = 10log_{10}{(S/N)}
-\]</span></p>
-<h1 id="传输介质transmission-media">传输介质Transmission Media</h1>
-<h2 id="传输介质的分类">传输介质的分类</h2>
-<ul>
+</li>
+<li><strong>带宽时延积bandwidth-delay product</strong>：表示充满整个链路的bit数（有点像体积），表示信道的缓存能力；<ul>
+<li>Bandwidth-Delay Product = propagation delay $\times$ bandwidth；</li>
+</ul>
+</li>
+</ul>
+<h1 id="信道"><a href="#信道" class="headerlink" title="信道"></a>信道</h1><h2 id="Noiseless-Channel-无噪信道"><a href="#Noiseless-Channel-无噪信道" class="headerlink" title="Noiseless Channel 无噪信道"></a>Noiseless Channel 无噪信道</h2><p>理想信道的比特率通过Nyquist Bit Rate（奈奎斯特公式，1924）给出：</p>
+<script type="math/tex; mode=display">
+C(Capacity) = Bit Rate = 2 \times bandwidth\times log_2{信道级数(即有效状态数)}</script><p>注意上述公式给出的是理想情况下最大可能的传输速率；</p>
+<h2 id="Noisy-Channel-有噪信道"><a href="#Noisy-Channel-有噪信道" class="headerlink" title="Noisy Channel 有噪信道"></a>Noisy Channel 有噪信道</h2><p>有噪信道的传输速率通过Shannon Capacity（香农公式，1948）给出：</p>
+<script type="math/tex; mode=display">
+Capacity = bandwidth\times log_2{1 + \frac{signal\_power}{noise\_power}}</script><p>其中，<strong>信噪比(SNR，Signal-to-Noise Ratio)</strong> 又可以取对数用db(decibels)来表示：</p>
+<script type="math/tex; mode=display">
+S/N_{db} = 10log_{10}{(S/N)}</script><h1 id="传输介质Transmission-Media"><a href="#传输介质Transmission-Media" class="headerlink" title="传输介质Transmission Media"></a>传输介质Transmission Media</h1><h2 id="传输介质的分类"><a href="#传输介质的分类" class="headerlink" title="传输介质的分类"></a>传输介质的分类</h2><ul>
 <li>磁介质Magnetic Media</li>
-<li>导向型（有线）
-<ul>
+<li>导向型（有线）<ul>
 <li><strong><em>Twisted Pair双绞线</em></strong></li>
 <li><strong><em>Coaxial Cable 同轴电缆</em></strong></li>
 <li><strong><em>Fiber Optics光纤</em></strong></li>
 <li>Power Lines电力线</li>
-</ul></li>
-<li>非导向型（无线）
-<ul>
+</ul>
+</li>
+<li>非导向型（无线）<ul>
 <li><strong><em>Radio无线电</em></strong></li>
-<li><strong><em>Microwave地面微波</em></strong> and
-<strong><em>Satellite卫星通信</em></strong></li>
-</ul></li>
+<li><strong><em>Microwave地面微波</em></strong> and <strong><em>Satellite卫星通信</em></strong></li>
 </ul>
-<h2 id="频率范围electromagnetic-spectrum">频率范围Electromagnetic
-Spectrum</h2>
-<ul>
-<li>Twisted Pair双绞线：<span class="math inline">\(0\)</span> ~ <span class="math inline">\(10^8\)</span>Hz；</li>
-<li>Coaxial Cable同轴电缆：<span class="math inline">\(10^3\)</span> ~
-<span class="math inline">\(10^9\)</span>Hz；</li>
-<li>Fiber Optics光纤：<span class="math inline">\(10^{14}\)</span> ~
-<span class="math inline">\(10^{15}\)</span>Hz；（基本属于可见光的范围）</li>
-<li>Radio无线电波：<span class="math inline">\(10^4\)</span> ~ <span class="math inline">\(10^9\)</span>；</li>
+</li>
 </ul>
-<h2 id="传输介质的特性">传输介质的特性</h2>
-<ul>
+<h2 id="频率范围Electromagnetic-Spectrum"><a href="#频率范围Electromagnetic-Spectrum" class="headerlink" title="频率范围Electromagnetic Spectrum"></a>频率范围Electromagnetic Spectrum</h2><ul>
+<li>Twisted Pair双绞线：$0$ ~ $10^8$Hz；</li>
+<li>Coaxial Cable同轴电缆：$10^3$ ~ $10^9$Hz；</li>
+<li>Fiber Optics光纤：$10^{14}$ ~ $10^{15}$Hz；（基本属于可见光的范围）</li>
+<li>Radio无线电波：$10^4$ ~ $10^9$；</li>
+</ul>
+<h2 id="传输介质的特性"><a href="#传输介质的特性" class="headerlink" title="传输介质的特性"></a>传输介质的特性</h2><ul>
 <li><strong><em>带宽</em></strong></li>
 <li><strong><em>传播时延</em></strong></li>
 <li><strong><em>最大传输距离</em></strong>（不加放大器等的情况下）</li>
@@ -304,82 +275,69 @@ Spectrum</h2>
 <li><strong><em>安全性</em></strong></li>
 <li>安装与维护难易程度、成本</li>
 </ul>
-<h2 id="有线传输介质">有线传输介质</h2>
-<h3 id="twisted-pair双绞线">Twisted Pair双绞线</h3>
-<ul>
+<h2 id="有线传输介质"><a href="#有线传输介质" class="headerlink" title="有线传输介质"></a>有线传输介质</h2><h3 id="Twisted-Pair双绞线"><a href="#Twisted-Pair双绞线" class="headerlink" title="Twisted Pair双绞线"></a>Twisted Pair双绞线</h3><ul>
 <li>两根通电铜导线拧合在一起；（使两根通电导线产生的磁场相互抵消）</li>
 <li>既能传模拟信号（电话线），又能传数字信号（以太网）；</li>
 <li>拧得越紧，辐射强度越小，抗干扰能力越强；</li>
-<li>UTP(Unshielded TP) and STP(Shielded
-TP)；（有屏蔽的双绞线多了一个Metal
-Shield，能减少向外辐射，减少衰减，增强抗干扰能力）</li>
+<li>UTP(Unshielded TP) and STP(Shielded TP)；（有屏蔽的双绞线多了一个Metal Shield，能减少向外辐射，减少衰减，增强抗干扰能力）</li>
 <li>Catogory（越大带宽也高）；</li>
 </ul>
-<h3 id="coaxial-cable同轴电缆">Coaxial Cable同轴电缆</h3>
-<ul>
+<h3 id="Coaxial-Cable同轴电缆"><a href="#Coaxial-Cable同轴电缆" class="headerlink" title="Coaxial Cable同轴电缆"></a>Coaxial Cable同轴电缆</h3><ul>
 <li>better shielding and greater bandwidth；（带宽大于双绞线）</li>
-<li>粗缆和细缆
-<ul>
+<li>粗缆和细缆<ul>
 <li>50-ohm cable：基带同轴（电话交换机，早期用在以太网上）；</li>
 <li>70-ohm cable：宽带同轴（适合传输模拟信号，比如电视网）；</li>
-</ul></li>
+</ul>
+</li>
 <li>抗干扰能力也比较强；</li>
 </ul>
-<h3 id="fiber-optic光纤">Fiber Optic光纤</h3>
-<ul>
+<h3 id="Fiber-Optic光纤"><a href="#Fiber-Optic光纤" class="headerlink" title="Fiber Optic光纤"></a>Fiber Optic光纤</h3><ul>
 <li>利用了光的全反射；</li>
 <li>一般是好几根固定在一起作为一根；</li>
-<li>我们称一种入射角度为一个模：
-<ul>
+<li>我们称一种入射角度为一个模：<ul>
 <li><strong><em>Multimode多模光纤</em></strong>：有多种入射角；</li>
 <li><strong><em>Single-mode单模光纤</em></strong>：只有一种入射角；（光线相互之间干扰很小，<strong><em>带宽更宽</em></strong>）</li>
-</ul></li>
+</ul>
+</li>
 <li>光纤的工作窗口：对应波长/频率的光波适合在这个光纤内传输，损失最小；</li>
-<li>光纤环网：<img src="1.png">
-<ul>
+<li>光纤环网：<img src="计网学习笔记(2" alt>：物理层/1.png)<ul>
 <li>Opitcal Receiver用于将光信号转化为电信号（光敏电阻）；</li>
-<li>Signal
-Regenerator用于对电信号进行放大和整形，此时可以选择发送到计算机或者继续传输；</li>
+<li>Signal Regenerator用于对电信号进行放大和整形，此时可以选择发送到计算机或者继续传输；</li>
 <li>Optical Transmitter用于将电信号重新转化为光信号（发光二极管）；</li>
-</ul></li>
-<li>优点：
-<ul>
+</ul>
+</li>
+<li>优点：<ul>
 <li>带宽大；</li>
 <li>抗干扰能力好，安全；</li>
 <li>轻便（相较于铜导线）；</li>
-</ul></li>
 </ul>
-<h2 id="无线传输介质">无线传输介质</h2>
-<p>总体来说（相较于有线传输）：<br>
-* 误码率更高；<br>
-* 传播时延更高；<br>
-* 传输损耗更大；<br>
-* 安全性也更弱；<br>
-* 抗干扰能力更差；<br>
-* 带宽不可再生，可用的是有限的；<br>
-* 同一个空间内，同一频率会相互干扰；</p>
-<h3 id="radio无线电波">Radio无线电波</h3>
-<h4 id="传播方式">传播方式</h4>
-<p><img src="2.png"></p>
+</li>
+</ul>
+<h2 id="无线传输介质"><a href="#无线传输介质" class="headerlink" title="无线传输介质"></a>无线传输介质</h2><p>总体来说（相较于有线传输）：</p>
+<ul>
+<li>误码率更高；</li>
+<li>传播时延更高；</li>
+<li>传输损耗更大；</li>
+<li>安全性也更弱；</li>
+<li>抗干扰能力更差；</li>
+<li>带宽不可再生，可用的是有限的；</li>
+<li>同一个空间内，同一频率会相互干扰；</li>
+</ul>
+<h3 id="Radio无线电波"><a href="#Radio无线电波" class="headerlink" title="Radio无线电波"></a>Radio无线电波</h3><h4 id="传播方式"><a href="#传播方式" class="headerlink" title="传播方式"></a>传播方式</h4><p><img src="计网学习笔记(2" alt>：物理层/2.png)</p>
 <ul>
 <li>较低的频段，波长较大，可以沿地球表面传播；</li>
 <li>高频，波长较小，沿直线传播，在中继站之间传播；</li>
 <li>超高频以上，需要用在视距范围内的中继站传播；</li>
 </ul>
-<h3 id="microwave微波">Microwave微波</h3>
-<p>直线传输，适合长距离通信，当需要地面中继站（<strong><em>典型设备：中继器Repeater，进行再生信号，即信号的整形和放大</em></strong>）才能进行远距离；</p>
-<h3 id="红外线和可见光通信">红外线和可见光通信</h3>
-<p>略</p>
-<h2 id="卫星通信">卫星通信</h2>
-<p>通信卫星相当于微波通信中中继站Repeater的作用，只不过在大气层以外。</p>
-<h3 id="典型设备transponder转发器">典型设备：Transponder转发器</h3>
-<ul>
+<h3 id="Microwave微波"><a href="#Microwave微波" class="headerlink" title="Microwave微波"></a>Microwave微波</h3><p>直线传输，适合长距离通信，当需要地面中继站（<strong><em>典型设备：中继器Repeater，进行再生信号，即信号的整形和放大</em></strong>）才能进行远距离；</p>
+<h3 id="红外线和可见光通信"><a href="#红外线和可见光通信" class="headerlink" title="红外线和可见光通信"></a>红外线和可见光通信</h3><p>略</p>
+<h2 id="卫星通信"><a href="#卫星通信" class="headerlink" title="卫星通信"></a>卫星通信</h2><p>通信卫星相当于微波通信中中继站Repeater的作用，只不过在大气层以外。</p>
+<h3 id="典型设备：Transponder转发器"><a href="#典型设备：Transponder转发器" class="headerlink" title="典型设备：Transponder转发器"></a>典型设备：Transponder转发器</h3><ul>
 <li>监听由地面天线发出的上行电波；</li>
 <li>将收到的电波进行Amplify(放大)；</li>
 <li>将电波以<strong><em>另一种频率</em></strong>的下行电波<strong><em>广播</em></strong>发送给范围内的地面天线；</li>
 </ul>
-<h3 id="通信卫星的分类">通信卫星的分类</h3>
-<p><img src="3.png"></p>
+<h3 id="通信卫星的分类"><a href="#通信卫星的分类" class="headerlink" title="通信卫星的分类"></a>通信卫星的分类</h3><p><img src="计网学习笔记(2" alt>：物理层/3.png)</p>
 <ul>
 <li>GEO：地球同步轨道；</li>
 <li>MEO：中地轨道；</li>
@@ -388,186 +346,137 @@ Regenerator用于对电信号进行放大和整形，此时可以选择发送到
 <blockquote>
 <p>轨道高度越高，需要覆盖全球的卫星数量越小，但时延越高；</p>
 </blockquote>
-<h3 id="卫星通信的特点">卫星通信的特点</h3>
-<ul>
+<h3 id="卫星通信的特点"><a href="#卫星通信的特点" class="headerlink" title="卫星通信的特点"></a>卫星通信的特点</h3><ul>
 <li>Long propagation delay，时延长；</li>
 <li>broadcast media，先天的广播介质；</li>
 <li>传输成本和传输距离无关；</li>
 <li>不受地面环境影响；</li>
 </ul>
-<h1 id="数字通信系统">数字通信系统</h1>
-<p><img src="4.png"></p>
-<h2 id="典型设备">典型设备</h2>
-<ul>
-<li>Modem调制/解调器：将信号调整为适合信道传输的频率范围（baseband
-signal基带信号 <span class="math inline">\(\rightarrow\)</span> passband
-signal带通信号）；
-<ul>
-<li>基带信号：<span class="math inline">\(0\)</span> ~ <span class="math inline">\(f_{max}\)</span> Hz；</li>
-<li>带通信号：<span class="math inline">\(f_{1}\)</span> ~ <span class="math inline">\(f_{2}\)</span> Hz，<span class="math inline">\(f_1
-&gt; 0\)</span>；</li>
-</ul></li>
+<h1 id="数字通信系统"><a href="#数字通信系统" class="headerlink" title="数字通信系统"></a>数字通信系统</h1><p><img src="计网学习笔记(2" alt>：物理层/4.png)</p>
+<h2 id="典型设备"><a href="#典型设备" class="headerlink" title="典型设备"></a>典型设备</h2><ul>
+<li>Modem调制/解调器：将信号调整为适合信道传输的频率范围（baseband signal基带信号 $\rightarrow$ passband signal带通信号）；<ul>
+<li>基带信号：$0$ ~ $f_{max}$ Hz；</li>
+<li>带通信号：$f_{1}$ ~ $f_{2}$ Hz，$f_1 &gt; 0$；</li>
+</ul>
+</li>
 <li>CodeC编解码器；</li>
 <li>Multiplxer多路复用器：将多路信号复用在一条传输介质上，提高信道利用率；</li>
 <li>信道编码器：将01信号转化为抗干扰能力更强的方波；</li>
 </ul>
-<h2 id="line-code线路编码">Line Code线路编码</h2>
-<p><img src="5.png"></p>
+<h2 id="Line-Code线路编码"><a href="#Line-Code线路编码" class="headerlink" title="Line Code线路编码"></a>Line Code线路编码</h2><p><img src="计网学习笔记(2" alt>：物理层/5.png)</p>
 <ul>
 <li>NRZ不归零编码：抗干扰能力不强；</li>
-<li>Manchester编码：用“low to high”表示0，“high to
-low”表示1；指定电平的变化必须发生在时钟周期的中间；这样同时传输来信号和时钟，有着<strong><em>自同步</em></strong>功能；</li>
+<li>Manchester编码：用“low to high”表示0，“high to low”表示1；指定电平的变化必须发生在时钟周期的中间；这样同时传输来信号和时钟，有着<strong><em>自同步</em></strong>功能；</li>
 <li>AMI编码：1用“+1”“-1”间隔表示；</li>
 </ul>
-<h3 id="评价指标">评价指标</h3>
-<ul>
-<li>Clock Recovery时钟恢复：能在信号流中提取时钟频率；<img src="6.png"></li>
-<li>Balanced
-Signals平衡信号：消除直流分量；Manchester编码和AMI编码都可以；</li>
+<h3 id="评价指标"><a href="#评价指标" class="headerlink" title="评价指标"></a>评价指标</h3><ul>
+<li>Clock Recovery时钟恢复：能在信号流中提取时钟频率；<img src="计网学习笔记(2" alt>：物理层/6.png)</li>
+<li>Balanced Signals平衡信号：消除直流分量；Manchester编码和AMI编码都可以；</li>
 <li>Bandwidth Efficiency信道效率：Manchester编码只有50%；</li>
 </ul>
-<h2 id="调制技术modulation">调制技术Modulation</h2>
-<p><img src="7.png"></p>
-<p>从上到下依次是：<br>
-* 原始二进制信号；<br>
-* 2ASK：振幅调制（幅移键控）；<br>
-* 2FSK：频率调制；<br>
-* 2PSK：相位调制；</p>
-<h3 id="多级调制技术">多级调制技术</h3>
-<p>同时利用不同的振幅以及相位来表示传输的比特位，从而提高每个信号单元携带的比特数量；<br>
-* QPSK：正交相移键控；<br>
-* QASK：正交幅度调制；<br>
-<img src="8.png"></p>
-<p>其中：<br>
-* 振幅：点与原点的距离；<br>
-* 相位：点与原点的连线和x轴的夹角；</p>
-<h2 id="模拟信号数字化pcm">模拟信号数字化PCM</h2>
-<p><strong><em>PCM：Pluse Coding
-Modulation（脉冲编码调制）；</em></strong><br>
-分为以下三个阶段：<br>
-* Sampling采样：根据Nyquist
-Theory，<strong><em>数字信号的采样率应至少是信号最高频率的2倍</em></strong>。<br>
-* Quantizing量化；<br>
-* Encoding编码；<br>
-典型设备：CodeC编码解码器；</p>
-<h2 id="复用multiplexing">复用Multiplexing</h2>
+<h2 id="调制技术Modulation"><a href="#调制技术Modulation" class="headerlink" title="调制技术Modulation"></a>调制技术Modulation</h2><p><img src="计网学习笔记(2" alt>：物理层/7.png)</p>
+<p>从上到下依次是：</p>
 <ul>
+<li>原始二进制信号；</li>
+<li>2ASK：振幅调制（幅移键控）；</li>
+<li>2FSK：频率调制；</li>
+<li>2PSK：相位调制；</li>
+</ul>
+<h3 id="多级调制技术"><a href="#多级调制技术" class="headerlink" title="多级调制技术"></a>多级调制技术</h3><p>同时利用不同的振幅以及相位来表示传输的比特位，从而提高每个信号单元携带的比特数量；</p>
+<ul>
+<li>QPSK：正交相移键控；</li>
+<li>QASK：正交幅度调制；<br><img src="计网学习笔记(2" alt>：物理层/8.png)</li>
+</ul>
+<p>其中：</p>
+<ul>
+<li>振幅：点与原点的距离；</li>
+<li>相位：点与原点的连线和x轴的夹角；</li>
+</ul>
+<h2 id="模拟信号数字化PCM"><a href="#模拟信号数字化PCM" class="headerlink" title="模拟信号数字化PCM"></a>模拟信号数字化PCM</h2><p><strong><em>PCM：Pluse Coding Modulation（脉冲编码调制）；</em></strong><br>分为以下三个阶段：</p>
+<ul>
+<li>Sampling采样：根据Nyquist Theory，<strong><em>数字信号的采样率应至少是信号最高频率的2倍</em></strong>。</li>
+<li>Quantizing量化；</li>
+<li>Encoding编码；<br>典型设备：CodeC编码解码器；</li>
+</ul>
+<h2 id="复用Multiplexing"><a href="#复用Multiplexing" class="headerlink" title="复用Multiplexing"></a>复用Multiplexing</h2><ul>
 <li>TDM时分复用；</li>
 <li>FDM频分复用；</li>
 <li>WDM波分复用；</li>
 <li>CDM码分复用；</li>
 </ul>
-<h3 id="关键设备multiplexer">关键设备Multiplexer</h3>
-<p>例如，<strong><em>Digital Subscriber Line Access
-Multiplex(DSLAM，数字用户线接入复用器)</em></strong>；</p>
-<h3 id="frequency-division-multiplexing-频分复用">Frequency Division
-Multiplexing 频分复用</h3>
-<p>将多路信号通过傅立叶变换分成频率范围各不相同的信号合成一路进行传输，再通过带通滤波器实现分离；<br>
-注意信号之间一般存在<strong><em>保护频带</em></strong>；</p>
-<h3 id="time-division-multiplexing-时分复用">Time Division Multiplexing
-时分复用</h3>
-<p>将每路信号在时间上分为多个<strong><em>timeslot(时隙)</em></strong>，信号被分到不同时间片进行发送<br>
-#### Synchronous TDM同步时分复用<br>
-每一个<strong><em>发送帧Frame</em></strong>都为每路信号保留发送空间，缺点是对于数字信号的传播，一般不连续，易造成资源浪费；在电话网络中应用较广；</p>
-<h4 id="statistical-tdm统计异步时分复用">Statistical
-TDM统计/异步时分复用</h4>
-<p>只发送需要发送的数据，在需要时分复用时才进行复用，但需要加上地址头Address作为用户标识；</p>
-<p><img src="13.png"></p>
+<h3 id="关键设备Multiplexer"><a href="#关键设备Multiplexer" class="headerlink" title="关键设备Multiplexer"></a>关键设备Multiplexer</h3><p>例如，<strong><em>Digital Subscriber Line Access Multiplex(DSLAM，数字用户线接入复用器)</em></strong>；</p>
+<h3 id="Frequency-Division-Multiplexing-频分复用"><a href="#Frequency-Division-Multiplexing-频分复用" class="headerlink" title="Frequency Division Multiplexing 频分复用"></a>Frequency Division Multiplexing 频分复用</h3><p>将多路信号通过傅立叶变换分成频率范围各不相同的信号合成一路进行传输，再通过带通滤波器实现分离；<br>注意信号之间一般存在<strong><em>保护频带</em></strong>；</p>
+<h3 id="Time-Division-Multiplexing-时分复用"><a href="#Time-Division-Multiplexing-时分复用" class="headerlink" title="Time Division Multiplexing 时分复用"></a>Time Division Multiplexing 时分复用</h3><p>将每路信号在时间上分为多个<strong><em>timeslot(时隙)</em></strong>，信号被分到不同时间片进行发送</p>
+<h4 id="Synchronous-TDM同步时分复用"><a href="#Synchronous-TDM同步时分复用" class="headerlink" title="Synchronous TDM同步时分复用"></a>Synchronous TDM同步时分复用</h4><p>每一个<strong><em>发送帧Frame</em></strong>都为每路信号保留发送空间，缺点是对于数字信号的传播，一般不连续，易造成资源浪费；在电话网络中应用较广；</p>
+<h4 id="Statistical-TDM统计-异步时分复用"><a href="#Statistical-TDM统计-异步时分复用" class="headerlink" title="Statistical TDM统计/异步时分复用"></a>Statistical TDM统计/异步时分复用</h4><p>只发送需要发送的数据，在需要时分复用时才进行复用，但需要加上地址头Address作为用户标识；</p>
+<p><img src="计网学习笔记(2" alt>：物理层/13.png)</p>
 <ul>
 <li>其中，T1为24路，E1位30/32路(其中2路为控制信号)；</li>
 </ul>
-<h3 id="code-division-multiplexing码分复用">Code Division
-Multiplexing码分复用</h3>
-<p>不同用户可以在任意时间使用整个信号发送信息，不同用户发送的信息通过编码理论进行区分；<br>
-比如，在班级里，同学间分为不同小组进行讨论，但不同组用不同语言交流，并且同时大声说话，我需要接受某信息就需要知道该信息的组所用的语言，屏蔽其他组。但如果组越多，噪声越大，就越不容易接受。</p>
-<h3 id="wavelength-division-multiplexing波分复用">Wavelength Division
-Multiplexing波分复用</h3>
-<p>波长和频率成反比，所以波分复用和频分复用类似，一般用在<strong><em>Fiber
-Optic光纤通信</em></strong>中。<br>
-<img src="14.png"></p>
+<h3 id="Code-Division-Multiplexing码分复用"><a href="#Code-Division-Multiplexing码分复用" class="headerlink" title="Code Division Multiplexing码分复用"></a>Code Division Multiplexing码分复用</h3><p>不同用户可以在任意时间使用整个信号发送信息，不同用户发送的信息通过编码理论进行区分；<br>比如，在班级里，同学间分为不同小组进行讨论，但不同组用不同语言交流，并且同时大声说话，我需要接受某信息就需要知道该信息的组所用的语言，屏蔽其他组。但如果组越多，噪声越大，就越不容易接受。</p>
+<h3 id="Wavelength-Division-Multiplexing波分复用"><a href="#Wavelength-Division-Multiplexing波分复用" class="headerlink" title="Wavelength Division Multiplexing波分复用"></a>Wavelength Division Multiplexing波分复用</h3><p>波长和频率成反比，所以波分复用和频分复用类似，一般用在<strong><em>Fiber Optic光纤通信</em></strong>中。<br><img src="计网学习笔记(2" alt>：物理层/14.png)</p>
 <blockquote>
-<p>Line Code：线路编码，用于基带传输Baseband Transmission；<br>
-Modulation：调制，用于带通传输；</p>
+<p>Line Code：线路编码，用于基带传输Baseband Transmission；<br>Modulation：调制，用于带通传输；</p>
 </blockquote>
-<h2 id="example-电话网">Example: 电话网</h2>
-<p><img src="9.png"></p>
-<ol type="1">
-<li>首先，语音信号通过<strong><em>Local
-Loop(本地环路)</em></strong>，到达<strong><em>CodeC(编解码器)</em></strong>，将模拟信号转化为数字信号；</li>
-<li>语音信号的带宽一般是<span class="math inline">\(4\)</span>kHz左右，根据Nyquist
-Theorm，复原该语音信号需要每秒<span class="math inline">\(8\)</span>k的采样率，即每<span class="math inline">\(125\)</span>usec采样一次，而<span class="math inline">\(1 sample =
-8bits\)</span>(非线性编码)，所以比特率为<span class="math inline">\(8k
-\times 8bits = 64kbps\)</span>；</li>
+<h2 id="Example-电话网"><a href="#Example-电话网" class="headerlink" title="Example: 电话网"></a>Example: 电话网</h2><p><img src="计网学习笔记(2" alt>：物理层/9.png)</p>
+<ol>
+<li>首先，语音信号通过<strong><em>Local Loop(本地环路)</em></strong>，到达<strong><em>CodeC(编解码器)</em></strong>，将模拟信号转化为数字信号；</li>
+<li>语音信号的带宽一般是$4$kHz左右，根据Nyquist Theorm，复原该语音信号需要每秒$8$k的采样率，即每$125$usec采样一次，而$1 sample = 8bits$(非线性编码)，所以比特率为$8k \times 8bits = 64kbps$；</li>
 <li>CodeC将数字信号通过<strong><em>Trunk(中继线)</em></strong>，继续发往路由器/交换机，其中用到了时分复用；</li>
 </ol>
-<p><img src="10.png"></p>
-<ol type="1">
+<p><img src="计网学习笔记(2" alt>：物理层/10.png)</p>
+<ol>
 <li>电脑通过电话线接入网络，由于电脑发送的是01比特串，所以先通过<strong><em>Modem(调制解调器，使用QAM，正交幅度调制)</em></strong>，将数字信号转化为模拟信号；</li>
 <li>之后的步骤类似电话网络；</li>
 </ol>
-<p><img src="11.png"><br>
-其中，<span class="math inline">\(-1\)</span>bit是因为1位用于检错；</p>
-<h3 id="dsl-digital-subscriber-lines数字用户线">DSL: Digital Subscriber
-Lines数字用户线</h3>
-<ul>
+<p><img src="计网学习笔记(2" alt>：物理层/11.png)<br>其中，$-1$bit是因为1位用于检错；</p>
+<h3 id="DSL-Digital-Subscriber-Lines数字用户线"><a href="#DSL-Digital-Subscriber-Lines数字用户线" class="headerlink" title="DSL: Digital Subscriber Lines数字用户线"></a>DSL: Digital Subscriber Lines数字用户线</h3><ul>
 <li>DSL在短距离内可以提供较大的带宽；</li>
 <li>随着距离增加，带宽急剧下降；</li>
 </ul>
-<h4 id="adsl-asymmetric-dsl非对称数字用户线">ADSL: Asymmetric
-DSL非对称数字用户线</h4>
-<p>该服务将本地贿赂上的<span class="math inline">\(1.1\)</span>MHz频谱分为<span class="math inline">\(256\)</span>条独立的信道，每条信道的带宽约为<span class="math inline">\(4.3\)</span>KHz：<br>
-* Channel 0用于<strong><em>电话服务(POTS，Plain Old Telephone
-Service)</em></strong>；<br>
-* Channel 1～4用于保护隔离；<br>
-*
-剩下的250条信道被分为上行流Upstream和下行流Downstream，其中有2条用于控制，即实际用于传输用户数据的是248条；</p>
-<h4 id="技术dmtdiscrete-multitone-modulation离散多音调制">技术：DMT(Discrete
-Multitone Modulation，离散多音调制)</h4>
-<p><img src="12.png"></p>
-<h3 id="switching-交换">Switching 交换</h3>
-<h4 id="circuit-switching电路交换">Circuit Switching电路交换</h4>
+<h4 id="ADSL-Asymmetric-DSL非对称数字用户线"><a href="#ADSL-Asymmetric-DSL非对称数字用户线" class="headerlink" title="ADSL: Asymmetric DSL非对称数字用户线"></a>ADSL: Asymmetric DSL非对称数字用户线</h4><p>该服务将本地贿赂上的$1.1$MHz频谱分为$256$条独立的信道，每条信道的带宽约为$4.3$KHz：</p>
 <ul>
-<li>面向连接：
-<ul>
+<li>Channel 0用于<strong><em>电话服务(POTS，Plain Old Telephone Service)</em></strong>；</li>
+<li>Channel 1～4用于保护隔离；</li>
+<li>剩下的250条信道被分为上行流Upstream和下行流Downstream，其中有2条用于控制，即实际用于传输用户数据的是248条；</li>
+</ul>
+<h4 id="技术：DMT-Discrete-Multitone-Modulation，离散多音调制"><a href="#技术：DMT-Discrete-Multitone-Modulation，离散多音调制" class="headerlink" title="技术：DMT(Discrete Multitone Modulation，离散多音调制)"></a>技术：DMT(Discrete Multitone Modulation，离散多音调制)</h4><p><img src="计网学习笔记(2" alt>：物理层/12.png)</p>
+<h3 id="Switching-交换"><a href="#Switching-交换" class="headerlink" title="Switching 交换"></a>Switching 交换</h3><h4 id="Circuit-Switching电路交换"><a href="#Circuit-Switching电路交换" class="headerlink" title="Circuit Switching电路交换"></a>Circuit Switching电路交换</h4><ul>
+<li>面向连接：<ul>
 <li>circuit establishment</li>
 <li>data transfer</li>
-<li>circuit</li>
-</ul></li>
+<li>circuit </li>
+</ul>
+</li>
 <li>需要提前分配路径和资源；</li>
-<li>优点：
-<ul>
+<li>优点：<ul>
 <li>Small Delay；</li>
 <li>Good Quality；</li>
 <li>容易控制；</li>
-</ul></li>
-<li>缺点：
-<ul>
+</ul>
+</li>
+<li>缺点：<ul>
 <li>在建立连接的过程中需要花费较长时间；</li>
 <li>带宽固定；</li>
 <li>如果双方不发送数据，会造成信道浪费；</li>
-</ul></li>
+</ul>
+</li>
 <li>例子：电话网</li>
 </ul>
-<h4 id="message-switching报文交换">Message Switching报文交换</h4>
-<ul>
-<li>在每个节点，收到的整个消息都被存储到节点内再进行转发；（Store-and-Forward）<img src="15.png"></li>
+<h4 id="Message-Switching报文交换"><a href="#Message-Switching报文交换" class="headerlink" title="Message Switching报文交换"></a>Message Switching报文交换</h4><ul>
+<li>在每个节点，收到的整个消息都被存储到节点内再进行转发；（Store-and-Forward）<img src="计网学习笔记(2" alt>：物理层/15.png)</li>
 <li>缺点：需要开较大的缓存空间，不适合较大的消息；</li>
 <li>例子：邮局；</li>
 </ul>
-<h4 id="packet-switching分组交换">Packet Switching分组交换</h4>
-<ul>
+<h4 id="Packet-Switching分组交换"><a href="#Packet-Switching分组交换" class="headerlink" title="Packet Switching分组交换"></a>Packet Switching分组交换</h4><ul>
 <li>数据在发送前被分为不同的<strong><em>组Packet</em></strong>，再进行传输，每个包独立进行<strong><em>路由选择（显然，每个包都需要携带相应的路由信息）</em></strong>，每个包到达节点后进行<strong><em>存储-转发</em></strong>，过程中资源是<strong><em>动态分配</em></strong>的；</li>
-<li>与电路交换的对比：<img src="16.png"></li>
+<li>与电路交换的对比：<img src="计网学习笔记(2" alt>：物理层/16.png)</li>
 </ul>
-<h1 id="物理层协议">物理层协议</h1>
-<ul>
-<li>Mechanical
-Features机械特性：接口形状和尺寸、引线数目和排列、固定和锁定装置等；</li>
+<h1 id="物理层协议"><a href="#物理层协议" class="headerlink" title="物理层协议"></a>物理层协议</h1><ul>
+<li>Mechanical Features机械特性：接口形状和尺寸、引线数目和排列、固定和锁定装置等；</li>
 <li>Electrical Features电气特性：电缆线上的电压范围；</li>
-<li>Functional
-Features功能特性：某条线上出现的某一电平的电压保持何种意义；</li>
-<li>Procedure
-Features过程特性：对于不同功能的各种可能事件的出现顺序；</li>
+<li>Functional Features功能特性：某条线上出现的某一电平的电压保持何种意义；</li>
+<li>Procedure Features过程特性：对于不同功能的各种可能事件的出现顺序；</li>
 </ul>
 <script>
 
@@ -580,7 +489,6 @@ console.log('文章已成功解密！');
 });
 
 </script>
-
     </div>
     
     

@@ -185,14 +185,14 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/private/" style="color: #00bcd4">
+                <a href="/blog/tags/private/" style="color: #ff7d73">
                     private
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="color: #00a596">
+                <a href="/blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="color: #ffa2c4">
                     计算机网络
                 </a>
             </span>
@@ -202,474 +202,368 @@
     </div>
     
     <div class="content" v-pre>
-        <p>介质访问控制（Media Access Control,
-Mac）需要完成的任务是，为使用传输介质的每一个节点隔离来自同一信道上其他节点所传送的信号，协调活动节点的传输。</p>
-<h1 id="dynamic-channel-allocation">Dynamic Channel Allocation</h1>
-<h2 id="assumptions">Assumptions</h2>
-<ol type="1">
+        <p>介质访问控制（Media Access Control, Mac）需要完成的任务是，为使用传输介质的每一个节点隔离来自同一信道上其他节点所传送的信号，协调活动节点的传输。</p>
+<h1 id="Dynamic-Channel-Allocation"><a href="#Dynamic-Channel-Allocation" class="headerlink" title="Dynamic Channel Allocation"></a>Dynamic Channel Allocation</h1><h2 id="Assumptions"><a href="#Assumptions" class="headerlink" title="Assumptions"></a>Assumptions</h2><ol>
 <li>节点之间是独立的；</li>
 <li>只有一条信道；</li>
 <li>冲突可被观测到；</li>
 <li>Continuous time / Slotted time</li>
-<li>Carrier sense / No carrier
-sense：载波监听，即发送之前能否知道信道空闲；</li>
+<li>Carrier sense / No carrier sense：载波监听，即发送之前能否知道信道空闲；</li>
 </ol>
-<h2 id="random-multiple-access-随机介质访问控制">Random multiple access
-随机介质访问控制</h2>
-<h3 id="aloha">ALOHA</h3>
-<h4 id="pure-aloha">Pure ALOHA</h4>
-<ul>
+<h2 id="Random-multiple-access-随机介质访问控制"><a href="#Random-multiple-access-随机介质访问控制" class="headerlink" title="Random multiple access 随机介质访问控制"></a>Random multiple access 随机介质访问控制</h2><h3 id="ALOHA"><a href="#ALOHA" class="headerlink" title="ALOHA"></a>ALOHA</h3><h4 id="Pure-ALOHA"><a href="#Pure-ALOHA" class="headerlink" title="Pure ALOHA"></a>Pure ALOHA</h4><ul>
 <li>任何时刻如果有数据需要发送都能发送；</li>
 <li>如果没有收到ACK，则重传；</li>
 </ul>
-<p><img src="1.png"></p>
+<p><img src="计网学习笔记(4" alt>：介质访问控制子层/1.png)</p>
 <blockquote>
-<p><strong>注</strong>：<strong>Vulnerable Period 脆弱期</strong>：<span class="math inline">\(2t_{trans}\)</span>；</p>
+<p><strong>注</strong>：<strong>Vulnerable Period 脆弱期</strong>：$2t_{trans}$；</p>
 </blockquote>
-<h5 id="流程">流程</h5>
-<p><img src="2.png"></p>
+<h5 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h5><p><img src="计网学习笔记(4" alt>：介质访问控制子层/2.png)</p>
 <blockquote>
 <p><strong>注</strong>：如果没有收到正确的ACK，则随机等待一定时间后再重传；</p>
 </blockquote>
-<h4 id="slotted-aloha-时隙分槽">Slotted ALOHA 时隙/分槽</h4>
-<ul>
+<h4 id="Slotted-ALOHA-时隙-分槽"><a href="#Slotted-ALOHA-时隙-分槽" class="headerlink" title="Slotted ALOHA 时隙/分槽"></a>Slotted ALOHA 时隙/分槽</h4><ul>
 <li>只能在每个时隙的开始时刻发送数据</li>
 <li>需要统一的时钟管理</li>
 </ul>
-<p><img src="3.png"></p>
+<p><img src="计网学习笔记(4" alt>：介质访问控制子层/3.png)</p>
 <blockquote>
-<p><strong>注</strong>：<strong>Vulnerable Period 脆弱期</strong>：<span class="math inline">\(t_{trans}\)</span>；</p>
+<p><strong>注</strong>：<strong>Vulnerable Period 脆弱期</strong>：$t_{trans}$；</p>
 </blockquote>
-<h3 id="carrier-sense-multiple-access-protocolscsma-载波监听多路访问控制">Carrier
-Sense Multiple Access Protocols(CSMA, 载波监听多路访问控制)</h3>
-<ul>
-<li><strong>发前先听</strong>：
-<ul>
-<li>If Channel is idle，即监听到信道上没信号，则以一定的概率 <span class="math inline">\(p\)</span>
-发送；（减小有两个节点同时监听到信道上没信号并发送数据导致冲突的可能性）</li>
+<h3 id="Carrier-Sense-Multiple-Access-Protocols-CSMA-载波监听多路访问控制"><a href="#Carrier-Sense-Multiple-Access-Protocols-CSMA-载波监听多路访问控制" class="headerlink" title="Carrier Sense Multiple Access Protocols(CSMA, 载波监听多路访问控制)"></a>Carrier Sense Multiple Access Protocols(CSMA, 载波监听多路访问控制)</h3><ul>
+<li><strong>发前先听</strong>：<ul>
+<li>If Channel is idle，即监听到信道上没信号，则以一定的概率 $p$ 发送；（减小有两个节点同时监听到信道上没信号并发送数据导致冲突的可能性）</li>
 <li>If Channel is busy，节点等待直至监听到信道上没信号；</li>
 <li>如果有两个节点同时发送，则冲突；</li>
 <li>如果超过一定时间没有收到ACK，则重传；</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <blockquote>
-<p><strong>注</strong>：<strong>Vulnerable Period 脆弱期</strong>：<span class="math inline">\(t_{prop}\)</span>；</p>
+<p><strong>注</strong>：<strong>Vulnerable Period 脆弱期</strong>：$t_{prop}$；</p>
 </blockquote>
-<h4 id="nonpersistant-vs.-persistant-csma">Nonpersistant vs. Persistant
-CSMA</h4>
-<ul>
-<li>Nonpersistant CSMA
-如果监听到信道正忙，那它会等待一个随机时间后在进行监听；
-<ul>
+<h4 id="Nonpersistant-vs-Persistant-CSMA"><a href="#Nonpersistant-vs-Persistant-CSMA" class="headerlink" title="Nonpersistant vs. Persistant CSMA"></a>Nonpersistant vs. Persistant CSMA</h4><ul>
+<li>Nonpersistant CSMA 如果监听到信道正忙，那它会等待一个随机时间后在进行监听；<ul>
 <li>高负载时，有较高的吞吐量；</li>
-</ul></li>
-<li>Persistant CSMA
-如果监听到信道正忙，会持续监听到信道上没有信号，然后以一定的概率 <span class="math inline">\(p\)</span> 发送；
-<ul>
-<li>1 - Persistant CSMA：<span class="math inline">\(p =
-1\)</span>，即监听到信道上没有信号就发送；
-<ul>
+</ul>
+</li>
+<li>Persistant CSMA 如果监听到信道正忙，会持续监听到信道上没有信号，然后以一定的概率 $p$ 发送；<ul>
+<li>1 - Persistant CSMA：$p = 1$，即监听到信道上没有信号就发送；<ul>
 <li>低负载时，能有较低的时延和较高的吞吐量；</li>
 <li>高负载时，吞吐量较低；</li>
-</ul></li>
-<li>p - Persistant CSMA：以一定的概率 <span class="math inline">\(p\)</span> 发送；</li>
-</ul></li>
+</ul>
+</li>
+<li>p - Persistant CSMA：以一定的概率 $p$ 发送；</li>
+</ul>
+</li>
 </ul>
 <blockquote>
-<p><strong>注</strong>：<span class="math inline">\(p\)</span>
-越小，则在负载高的情况下，随机化（信号的离散程度）越好，冲突的可能性越小；</p>
+<p><strong>注</strong>：$p$ 越小，则在负载高的情况下，随机化（信号的离散程度）越好，冲突的可能性越小；</p>
 </blockquote>
-<h3 id="比较和总结">比较和总结</h3>
-<p><img src="https://raw.githubusercontent.com/Yokumii/MyPicBucket/img/img/202504102203589.png"></p>
+<h3 id="比较和总结"><a href="#比较和总结" class="headerlink" title="比较和总结"></a>比较和总结</h3><p><img src="https://raw.githubusercontent.com/Yokumii/MyPicBucket/img/img/202504102203589.png" alt></p>
 <blockquote>
-<p><strong>注</strong>：评价MAC协议的指标：<br>
-1. 低负载时的时延；<br>
-2. 高负载时的吞吐量（或信道利用率）；<br>
-低负载时，适合使用竞争方法；</p>
+<p><strong>注</strong>：评价MAC协议的指标：</p>
+<ol>
+<li>低负载时的时延；</li>
+<li>高负载时的吞吐量（或信道利用率）；<br>低负载时，适合使用竞争方法；</li>
+</ol>
 </blockquote>
-<p>上述三个协议都有一个共同的问题：只有当 Timer
-超时，发送方才知道数据发送过程中可能出现了冲突，<strong><em>没有检测冲突的能力！</em></strong></p>
-<h3 id="csmacd-with-collision-detection-带冲突检测的载波监听多点介接入技术">CSMA/CD
-(with Collision Detection, 带冲突检测的载波监听多点介接入技术)</h3>
-<p>基本思想：<br>
-1. 载波监听；<br>
-2. <strong>发送方</strong>检测冲突；<br>
-3. 冲突检测：当发送方检测到冲突时，停止传输，并发送一个 <strong>Jam
-Signal(强化信号)</strong>；<br>
-4. <strong>backoff 退避</strong>：当发送方接收到 <strong>Jam
-强化信号</strong>后，等待一个随机时间在恢复发送；（目的是避免两个发送方同时检测到冲突并进行退避后，监听到信道空闲又发送导致再一次冲突）</p>
-<p>特点：<br>
-1. 信道是 <strong>Half-duplex
-半双工</strong>，即同一时刻一个节点只能作为发送方或接收方，不能既发又收；<br>
-2. 节省了时间和带宽；<br>
-3. 是 <strong>Ethernet 以太网</strong>的基础；<br>
-4. 属于 Unacknowledged connectionless service 无确认无连接的服务；</p>
+<p>上述三个协议都有一个共同的问题：只有当 Timer 超时，发送方才知道数据发送过程中可能出现了冲突，<strong><em>没有检测冲突的能力！</em></strong></p>
+<h3 id="CSMA-CD-with-Collision-Detection-带冲突检测的载波监听多点介接入技术"><a href="#CSMA-CD-with-Collision-Detection-带冲突检测的载波监听多点介接入技术" class="headerlink" title="CSMA/CD (with Collision Detection, 带冲突检测的载波监听多点介接入技术)"></a>CSMA/CD (with Collision Detection, 带冲突检测的载波监听多点介接入技术)</h3><p>基本思想：</p>
+<ol>
+<li>载波监听；</li>
+<li><strong>发送方</strong>检测冲突；</li>
+<li>冲突检测：当发送方检测到冲突时，停止传输，并发送一个 <strong>Jam Signal(强化信号)</strong>；</li>
+<li><strong>backoff 退避</strong>：当发送方接收到 <strong>Jam 强化信号</strong>后，等待一个随机时间在恢复发送；（目的是避免两个发送方同时检测到冲突并进行退避后，监听到信道空闲又发送导致再一次冲突）</li>
+</ol>
+<p>特点：</p>
+<ol>
+<li>信道是 <strong>Half-duplex 半双工</strong>，即同一时刻一个节点只能作为发送方或接收方，不能既发又收；</li>
+<li>节省了时间和带宽；</li>
+<li>是 <strong>Ethernet 以太网</strong>的基础；</li>
+<li>属于 Unacknowledged connectionless service 无确认无连接的服务；</li>
+</ol>
 <blockquote>
-<p><strong>Q</strong>：如何检测冲突？<br>
-<strong>A</strong>：通过一条收线，同时从总线上接受信号，与发送的信号进行比较；由于需要较强的信号强度以及较为合适的调制技术，<strong>不适用于无线通信</strong>；</p>
-<p><strong>Q</strong>：Vulnerable Time 脆弱期 = <span class="math inline">\(2t_{prop}\)</span>；</p>
-<p><strong>Q</strong>：等待重传的时间是多长？<br>
-<strong>A</strong>：采用指数退避Binary Exponential Backoff
-Algorithm；</p>
+<p><strong>Q</strong>：如何检测冲突？<br><strong>A</strong>：通过一条收线，同时从总线上接受信号，与发送的信号进行比较；由于需要较强的信号强度以及较为合适的调制技术，<strong>不适用于无线通信</strong>；</p>
+<p><strong>Q</strong>：Vulnerable Time 脆弱期 = $2t_{prop}$；</p>
+<p><strong>Q</strong>：等待重传的时间是多长？<br><strong>A</strong>：采用指数退避Binary Exponential Backoff Algorithm；</p>
 </blockquote>
-<h5 id="指数退避">指数退避</h5>
-<p><img src="4.png"></p>
+<h5 id="指数退避"><a href="#指数退避" class="headerlink" title="指数退避"></a>指数退避</h5><p><img src="计网学习笔记(4" alt>：介质访问控制子层/4.png)</p>
 <ul>
 <li>最多尝试16次；</li>
 <li>指数最多为10；</li>
 <li>基础的退避时间 = 51.2usec；</li>
 </ul>
-<h4 id="wireless-lan-protocols">Wireless LAN Protocols</h4>
-<p>无线信道无法进行冲突检测（信号强度太小，不满足要求）；CSMA/CD不适用；</p>
-<h5 id="隐藏终端-hidden-terminal">隐藏终端 Hidden Terminal</h5>
-<p><img src="5.png"></p>
+<h4 id="Wireless-LAN-Protocols"><a href="#Wireless-LAN-Protocols" class="headerlink" title="Wireless LAN Protocols"></a>Wireless LAN Protocols</h4><p>无线信道无法进行冲突检测（信号强度太小，不满足要求）；CSMA/CD不适用；</p>
+<h5 id="隐藏终端-Hidden-Terminal"><a href="#隐藏终端-Hidden-Terminal" class="headerlink" title="隐藏终端 Hidden Terminal"></a>隐藏终端 Hidden Terminal</h5><p><img src="计网学习笔记(4" alt>：介质访问控制子层/5.png)</p>
 <p>如上图，假如A、C都需要向B发送数据，但是A不在C的范围内，即C监听不到A，所以C会同时向B发送数据，导致接收方B冲突；</p>
-<h5 id="exposed-terminal-暴露终端">Exposed Terminal 暴露终端</h5>
-<p><img src="6.png"></p>
+<h5 id="Exposed-Terminal-暴露终端"><a href="#Exposed-Terminal-暴露终端" class="headerlink" title="Exposed Terminal 暴露终端"></a>Exposed Terminal 暴露终端</h5><p><img src="计网学习笔记(4" alt>：介质访问控制子层/6.png)</p>
 <p>B向A发送数据，但C在B的范围内，C监听到B，错误地认为此时不能向D发送数据；</p>
-<h5 id="macamultiple-access-collision-avoidance-冲突避免多路访问">MACA(Multiple
-Access Collision Avoidance, 冲突避免多路访问)</h5>
-<p>MACA的实现步骤如下：<br>
-1. 发送方A发送一个 <strong>RTS(Request to Send, 请求发送)</strong>
-帧给接收方B；<br>
-* RTS长度为30Bytes，包括数据包的长度信息；<br>
-2. 接收方B收到 RTS 后，回复一个 <strong>CTS(Clear to Send,
-允许发送)</strong> 帧给发送方A；<br>
-3. 当发送方A收到 CTS 后，开始发送数据；<br>
-4. 接收方B收到数据后，回复ACK；</p>
+<h5 id="MACA-Multiple-Access-Collision-Avoidance-冲突避免多路访问"><a href="#MACA-Multiple-Access-Collision-Avoidance-冲突避免多路访问" class="headerlink" title="MACA(Multiple Access Collision Avoidance, 冲突避免多路访问)"></a>MACA(Multiple Access Collision Avoidance, 冲突避免多路访问)</h5><p>MACA的实现步骤如下：</p>
+<ol>
+<li>发送方A发送一个 <strong>RTS(Request to Send, 请求发送)</strong> 帧给接收方B；<ul>
+<li>RTS长度为30Bytes，包括数据包的长度信息；</li>
+</ul>
+</li>
+<li>接收方B收到 RTS 后，回复一个 <strong>CTS(Clear to Send, 允许发送)</strong> 帧给发送方A；</li>
+<li>当发送方A收到 CTS 后，开始发送数据；</li>
+<li>接收方B收到数据后，回复ACK；</li>
+</ol>
 <ul>
 <li>RTS和CTS用于<strong>预约信道</strong>，它们<strong><em>均包含待发送数据的长度</em></strong>，这能用于冲突检测，比如：</li>
 </ul>
-<p><img src="7.png"></p>
+<p><img src="计网学习笔记(4" alt>：介质访问控制子层/7.png)</p>
 <ul>
-<li>对于上图，A需要向B发送数据；
-<ul>
+<li>对于上图，A需要向B发送数据；<ul>
 <li>其中C和E是暴露终端，D是隐藏终端；</li>
 <li>A向B发送RTS，C和E都会收到；</li>
 <li>B向A发送CTS，D和E都会收到；</li>
 <li>C只收到了RTS，保持沉默；</li>
 <li>D只收到了CTS，也保持沉默；</li>
 <li>E既收到了RTS，又收到了CTS，但是收到RTS后，它认为下一个收到的数据长度应该是RTS中数据的长度，与CTS不符合，故也保持沉默；</li>
-</ul></li>
 </ul>
-<p>如果两个站点A、B同时需要向站点E发送数据：<br>
-1. A、B同时发送RTS；<br>
-2. 接收方收到RTS后，只会回复先到达的RTS对应的CTS；<br>
-3.
-假如A站点成功收到CTS，B站点在一定时间范围内没有收到，那么B采用<strong>指数退避</strong>方式，等待一段时间后再进行尝试；</p>
-<h2 id="controlled-multiple-access-控制介质访问控制">Controlled multiple
-access 控制介质访问控制</h2>
-<ul>
-<li>Centralized control：<strong>Polling
-轮询</strong>，主站依次向从站发出请求；</li>
-<li>Decentralized control：<strong>Token Passing
-令牌</strong>，节点共同维护一个令牌；</li>
+</li>
 </ul>
-<h1 id="lan-reference-model-ieee-802">LAN Reference Model: IEEE 802</h1>
-<p><img src="8.png"></p>
+<p>如果两个站点A、B同时需要向站点E发送数据：</p>
+<ol>
+<li>A、B同时发送RTS；</li>
+<li>接收方收到RTS后，只会回复先到达的RTS对应的CTS；</li>
+<li>假如A站点成功收到CTS，B站点在一定时间范围内没有收到，那么B采用<strong>指数退避</strong>方式，等待一段时间后再进行尝试；</li>
+</ol>
+<h2 id="Controlled-multiple-access-控制介质访问控制"><a href="#Controlled-multiple-access-控制介质访问控制" class="headerlink" title="Controlled multiple access 控制介质访问控制"></a>Controlled multiple access 控制介质访问控制</h2><ul>
+<li>Centralized control：<strong>Polling 轮询</strong>，主站依次向从站发出请求；</li>
+<li>Decentralized control：<strong>Token Passing 令牌</strong>，节点共同维护一个令牌；</li>
+</ul>
+<h1 id="LAN-Reference-Model-IEEE-802"><a href="#LAN-Reference-Model-IEEE-802" class="headerlink" title="LAN Reference Model: IEEE 802"></a>LAN Reference Model: IEEE 802</h1><p><img src="计网学习笔记(4" alt>：介质访问控制子层/8.png)</p>
 <ul>
-<li>只包括物理层和数据链路层，同时将数据链路层 Data Link 进一步划分为
-<strong>Logical Link Control(LCC, 逻辑链路控制)</strong> 和
-<strong>Medium Access Control(MAC, 介质访问控制)</strong> ；</li>
-<li><strong>LCC 逻辑链路控制子层</strong>：
-<ul>
+<li>只包括物理层和数据链路层，同时将数据链路层 Data Link 进一步划分为 <strong>Logical Link Control(LCC, 逻辑链路控制)</strong> 和 <strong>Medium Access Control(MAC, 介质访问控制)</strong> ；</li>
+<li><strong>LCC 逻辑链路控制子层</strong>：<ul>
 <li>向网络层提供统一的接口；</li>
 <li>流量控制；</li>
 <li>差错控制；</li>
 <li>Inter-connecting LANs with bridge 网桥；</li>
-</ul></li>
-<li><strong>MAC 介质访问控制子层</strong>：
-<ul>
+</ul>
+</li>
+<li><strong>MAC 介质访问控制子层</strong>：<ul>
 <li>Framing 成帧；</li>
 <li>差错检测；</li>
 <li>Physical Address: e.g. MAC address；</li>
 <li>多路访问控制；</li>
 <li>LAN switching；</li>
-</ul></li>
+</ul>
+</li>
 <li>不同的LAN，MAC子层不同，LCC子层相同；</li>
 </ul>
-<p><img src="9.png"></p>
-<h1 id="ethernet-以太网">Ethernet 以太网</h1>
-<h2 id="classic-ethernet-physical-layer">Classic Ethernet: Physical
-Layer</h2>
-<h3 id="physical-topology-物理拓扑结构">Physical Topology
-物理拓扑结构</h3>
-<ul>
+<p><img src="计网学习笔记(4" alt>：介质访问控制子层/9.png)</p>
+<h1 id="Ethernet-以太网"><a href="#Ethernet-以太网" class="headerlink" title="Ethernet 以太网"></a>Ethernet 以太网</h1><h2 id="Classic-Ethernet-Physical-Layer"><a href="#Classic-Ethernet-Physical-Layer" class="headerlink" title="Classic Ethernet: Physical Layer"></a>Classic Ethernet: Physical Layer</h2><h3 id="Physical-Topology-物理拓扑结构"><a href="#Physical-Topology-物理拓扑结构" class="headerlink" title="Physical Topology 物理拓扑结构"></a>Physical Topology 物理拓扑结构</h3><ul>
 <li>Bus 总线型；</li>
-<li>Star 星型：通过 <strong>Hub 集线器</strong>
-实现交换；<strong><em>物理上星型，逻辑上总线型</em></strong>；</li>
+<li>Star 星型：通过 <strong>Hub 集线器</strong> 实现交换；<strong><em>物理上星型，逻辑上总线型</em></strong>；</li>
 </ul>
-<h3 id="network-interface-cardnic-网卡">Network Interface Card（NIC,
-网卡）</h3>
-<p><img src="10.png"></p>
-<h3 id="hub-集线器">Hub 集线器</h3>
-<p><code>100 Base -T X</code> ：</p>
+<h3 id="Network-Interface-Card（NIC-网卡）"><a href="#Network-Interface-Card（NIC-网卡）" class="headerlink" title="Network Interface Card（NIC, 网卡）"></a>Network Interface Card（NIC, 网卡）</h3><p><img src="计网学习笔记(4" alt>：介质访问控制子层/10.png)</p>
+<h3 id="Hub-集线器"><a href="#Hub-集线器" class="headerlink" title="Hub 集线器"></a>Hub 集线器</h3><p><code>100 Base -T X</code> ：</p>
 <ul>
 <li>100：传输速度，单位Mbps；</li>
 <li>Base：调制技术，即基带传输，不需要进行调制；</li>
 <li>T：传输媒介，T代表双绞线 Twisted Pair，F代表光纤 Fiber Optics；</li>
 <li>X：编码方式，一般采用Manchester编码；</li>
 </ul>
-<p>常见的技术如下：<br>
-<img src="11.png"></p>
+<p>常见的技术如下：<br><img src="计网学习笔记(4" alt>：介质访问控制子层/11.png)</p>
 <ul>
 <li>距离长用粗缆；</li>
 </ul>
-<h3 id="repeater">Repeater</h3>
-<ul>
+<h3 id="Repeater"><a href="#Repeater" class="headerlink" title="Repeater"></a>Repeater</h3><ul>
 <li>属于<strong>物理层</strong>的设备；</li>
 <li>Half Duplex 半双工；</li>
 <li>将两个总线型的以太网连接；</li>
 </ul>
-<h2 id="classic-ethernet-mac-sublayer-protocol">Classic Ethernet: MAC
-Sublayer Protocol</h2>
-<blockquote>
-<p><strong>帧间隙 Inter Frame
-Gap</strong>：IFP，9.6us(对于10Mbps的以太网)；用于节点转换发送模式/接收模式；</p>
+<h2 id="Classic-Ethernet-MAC-Sublayer-Protocol"><a href="#Classic-Ethernet-MAC-Sublayer-Protocol" class="headerlink" title="Classic Ethernet: MAC Sublayer Protocol"></a>Classic Ethernet: MAC Sublayer Protocol</h2><blockquote>
+<p><strong>帧间隙 Inter Frame Gap</strong>：IFP，9.6us(对于10Mbps的以太网)；用于节点转换发送模式/接收模式；</p>
 </blockquote>
 <ul>
 <li>广播式信道；</li>
 <li>以太网采用 <strong>1 - persistant CSMA/CD</strong>；</li>
 </ul>
-<h3 id="frame-type">Frame Type</h3>
-<p><img src="12.png"></p>
+<h3 id="Frame-Type"><a href="#Frame-Type" class="headerlink" title="Frame Type"></a>Frame Type</h3><p><img src="计网学习笔记(4" alt>：介质访问控制子层/12.png)</p>
 <ul>
 <li>Data字段最多1500Bytes，最少46Bytes；不满足则用Pad字段填充；</li>
-<li>MAC地址字段：
-<ul>
+<li>MAC地址字段：<ul>
 <li>6Bytes；</li>
 <li>用 <code>FF:FF:FF:FF:FF:FF</code> 地址表示广播；</li>
-</ul></li>
-<li>Frame Length
-<ul>
-<li>最多1518Bytes，其中1500Bytes为数据长度，18Bytes为控制地址长度；</li>
-<li>最短64Bytes，其中46Bytes为数据长度；
-<ul>
-<li>原因是以太网使用了CSMA/CD技术，需要有足够的时间检测冲突，否则会造成数据已经发送完成才检测到冲突；</li>
-<li><span class="math inline">\(\frac{M_{min}}{B} = 2\tau =
-51.2us\)</span></li>
-</ul></li>
-</ul></li>
 </ul>
-<h2 id="switched-ethernet">Switched Ethernet</h2>
-<h3 id="hub-vs.-switch">Hub vs. Switch</h3>
-<p><img src="13.png"></p>
+</li>
+<li>Frame Length<ul>
+<li>最多1518Bytes，其中1500Bytes为数据长度，18Bytes为控制地址长度；</li>
+<li>最短64Bytes，其中46Bytes为数据长度；<ul>
+<li>原因是以太网使用了CSMA/CD技术，需要有足够的时间检测冲突，否则会造成数据已经发送完成才检测到冲突；</li>
+<li>$\frac{M_{min}}{B} = 2\tau = 51.2us$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Switched-Ethernet"><a href="#Switched-Ethernet" class="headerlink" title="Switched Ethernet"></a>Switched Ethernet</h2><h3 id="Hub-vs-Switch"><a href="#Hub-vs-Switch" class="headerlink" title="Hub vs. Switch"></a>Hub vs. Switch</h3><p><img src="计网学习笔记(4" alt>：介质访问控制子层/13.png)</p>
 <ul>
 <li>Hub：一个节点来的信号会向别的所有节点转发；所有节点都在冲突域内，需要CSMA/CD；</li>
 <li>Switch：不需要；</li>
 </ul>
-<h3 id="switch-ways">Switch Ways</h3>
-<ul>
-<li>Cut-Through 直通
-<ul>
+<h3 id="Switch-Ways"><a href="#Switch-Ways" class="headerlink" title="Switch Ways"></a>Switch Ways</h3><ul>
+<li>Cut-Through 直通<ul>
 <li>边收边转发；</li>
 <li>无法检查数据帧是否错误；</li>
 <li>输入/输出需要相同速率；</li>
-</ul></li>
-<li>Store-Forward 存储转发
-<ul>
+</ul>
+</li>
+<li>Store-Forward 存储转发<ul>
 <li>缓存整个数据帧后，检查没有碰撞/CRC错误帧后，再根据目的MAC地址进行转发；</li>
 <li>支持差错检测；</li>
 <li>支持不同输入/输出端口间的交换；</li>
-</ul></li>
 </ul>
-<h2 id="fast-ethernet">Fast Ethernet</h2>
-<p>从这里开始，主要介绍不同速率的以太网；经典以太网的速率是10Mbps，即10兆以太网；而快速以太网的速率为100Mbps，即百兆以太网，它的设计原则如下：</p>
+</li>
+</ul>
+<h2 id="Fast-Ethernet"><a href="#Fast-Ethernet" class="headerlink" title="Fast Ethernet"></a>Fast Ethernet</h2><p>从这里开始，主要介绍不同速率的以太网；经典以太网的速率是10Mbps，即10兆以太网；而快速以太网的速率为100Mbps，即百兆以太网，它的设计原则如下：</p>
 <ul>
 <li>向后兼容，即保持帧格式、接口等不变；</li>
 <li>减少 bit time；</li>
 <li>减少 Max Length of Cable，这个没办法，必要的牺牲；</li>
 <li>Hub或者Switch两种方式都有；</li>
 </ul>
-<h3 id="cabling">Cabling</h3>
-<p><img src="14.png"></p>
+<h3 id="Cabling"><a href="#Cabling" class="headerlink" title="Cabling"></a>Cabling</h3><p><img src="计网学习笔记(4" alt>：介质访问控制子层/14.png)</p>
 <ul>
 <li>不再使用同轴电缆；</li>
-<li>100Base-T4
-<ul>
+<li>100Base-T4<ul>
 <li>信号频率为25MHz；</li>
 <li>4 Twisted Pair（3UTP）</li>
 <li>不使用Manchester编码，使用三元信号；6B/8T；</li>
-</ul></li>
-<li>100Base-TX
-<ul>
+</ul>
+</li>
+<li>100Base-TX<ul>
 <li>信号频率为125MHz；</li>
 <li>2 Twisted Pair（5UTP）；</li>
 <li>编码4B/5B（125MHz * 4/5 = 100Mbps）；</li>
-</ul></li>
-<li>100Base-FX
-<ul>
+</ul>
+</li>
+<li>100Base-FX<ul>
 <li>使用光纤；</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <blockquote>
-<p><strong>注</strong>：如果用到 Full-Duplex
-全双工，即收发是两条线（区分于 Half-Duplex
-半双工，收发一条线），不会产生冲突，所以不需要CSMA/CD；</p>
+<p><strong>注</strong>：如果用到 Full-Duplex 全双工，即收发是两条线（区分于 Half-Duplex 半双工，收发一条线），不会产生冲突，所以不需要CSMA/CD；</p>
 </blockquote>
-<h3 id="autonegotiation-自动协商机制">Autonegotiation 自动协商机制</h3>
-<p>两个不同的以太网之间自动选择相同的参数（即 Speed 和 Duplex
-Mode）进行配置；</p>
-<h2 id="gigabit-ethernet">Gigabit Ethernet</h2>
-<p>Gbit以太网，速度又快了10倍；设计原则如下：</p>
+<h3 id="Autonegotiation-自动协商机制"><a href="#Autonegotiation-自动协商机制" class="headerlink" title="Autonegotiation 自动协商机制"></a>Autonegotiation 自动协商机制</h3><p>两个不同的以太网之间自动选择相同的参数（即 Speed 和 Duplex Mode）进行配置；</p>
+<h2 id="Gigabit-Ethernet"><a href="#Gigabit-Ethernet" class="headerlink" title="Gigabit Ethernet"></a>Gigabit Ethernet</h2><p>Gbit以太网，速度又快了10倍；设计原则如下：</p>
 <ul>
 <li>无ACK，发了就完了，不需要应答；</li>
 <li>48-bit的地址格式不变；</li>
 <li>帧格式不变（但进行了拓展，不然最大电缆长度太短了）；</li>
-<li>同样分为 Switch(Full-Duplex，最大电缆长度取决于信号衰减程度)和
-Hub(Half-Duplex，存在冲突)；</li>
+<li>同样分为 Switch(Full-Duplex，最大电缆长度取决于信号衰减程度)和 Hub(Half-Duplex，存在冲突)；</li>
 </ul>
-<h3 id="cabling-1">Cabling</h3>
-<p><img src="15.png"></p>
-<h3 id="carrier-extension-载波扩展">Carrier Extension 载波扩展</h3>
-<p>我们知道，由于CSMA/CD技术需要满足：</p>
-<p><span class="math display">\[
-\frac{M_{min}}{B} = 2\tau = 51.2us
-\]</span></p>
-<p>如果不进行扩展，最大电缆长度仅为约25m；所以需要进行扩展（填充无用的比特），将数据长度扩展为<strong>512Bytes</strong>；当然，也可以通过
-<strong>Frame Bursting 帧突发</strong>，具体在下一节介绍；</p>
-<p><img src="16.png"></p>
-<h3 id="frame-bursting-帧突发">Frame Bursting 帧突发</h3>
-<p>上述扩展方法，对信道效率存在严重的浪费。如果对于有大量需要连续发送的帧的情况，帧的发送往往用队列存储，发送方可以将需要连续发送的帧拼成一个帧进行发送。</p>
-<p><img src="17.png"></p>
+<h3 id="Cabling-1"><a href="#Cabling-1" class="headerlink" title="Cabling"></a>Cabling</h3><p><img src="计网学习笔记(4" alt>：介质访问控制子层/15.png)</p>
+<h3 id="Carrier-Extension-载波扩展"><a href="#Carrier-Extension-载波扩展" class="headerlink" title="Carrier Extension 载波扩展"></a>Carrier Extension 载波扩展</h3><p>我们知道，由于CSMA/CD技术需要满足：</p>
+<script type="math/tex; mode=display">
+\frac{M_{min}}{B} = 2\tau = 51.2us</script><p>如果不进行扩展，最大电缆长度仅为约25m；所以需要进行扩展（填充无用的比特），将数据长度扩展为<strong>512Bytes</strong>；当然，也可以通过 <strong>Frame Bursting 帧突发</strong>，具体在下一节介绍；</p>
+<p><img src="计网学习笔记(4" alt>：介质访问控制子层/16.png)</p>
+<h3 id="Frame-Bursting-帧突发"><a href="#Frame-Bursting-帧突发" class="headerlink" title="Frame Bursting 帧突发"></a>Frame Bursting 帧突发</h3><p>上述扩展方法，对信道效率存在严重的浪费。如果对于有大量需要连续发送的帧的情况，帧的发送往往用队列存储，发送方可以将需要连续发送的帧拼成一个帧进行发送。</p>
+<p><img src="计网学习笔记(4" alt>：介质访问控制子层/17.png)</p>
 <ul>
 <li>第一个帧采用载波扩展；</li>
 <li>剩余的帧直接连续发送，注意帧之间有帧间隙；</li>
 </ul>
-<h3 id="flow-control">Flow Control</h3>
-<p>Gigabit
-Ethernet确实能显著提升传输速度，但是也存在问题，由于发送速度很快，但是接收方突然因为别的任务CPU过忙了1ms，就会导致1953个帧堆积；并且由于它是无连接的，不需要ACK，所以极易造成缓存溢出；</p>
-<p>一种方法是，设计一个特殊的控制帧 <strong>Pause
-Frame</strong>(0x8808)，如果接收方缓存不足，它会发送该帧给发送方，阻止另一方继续发送数据；</p>
-<h2 id="g-ethernet">10G Ethernet</h2>
-<ul>
+<h3 id="Flow-Control"><a href="#Flow-Control" class="headerlink" title="Flow Control"></a>Flow Control</h3><p>Gigabit Ethernet确实能显著提升传输速度，但是也存在问题，由于发送速度很快，但是接收方突然因为别的任务CPU过忙了1ms，就会导致1953个帧堆积；并且由于它是无连接的，不需要ACK，所以极易造成缓存溢出；</p>
+<p>一种方法是，设计一个特殊的控制帧 <strong>Pause Frame</strong>(0x8808)，如果接收方缓存不足，它会发送该帧给发送方，阻止另一方继续发送数据；</p>
+<h2 id="10G-Ethernet"><a href="#10G-Ethernet" class="headerlink" title="10G Ethernet"></a>10G Ethernet</h2><ul>
 <li>一般用于 <strong>Local Backbone 本地骨干网</strong>；</li>
 <li>只支持 Full-Duplex 全双工；</li>
 <li>支持 Autonegotiation 自动协商；</li>
 </ul>
-<h3 id="cabling-2">Cabling</h3>
-<p><img src="18.png"></p>
-<h2 id="summary">Summary</h2>
-<ul>
+<h3 id="Cabling-2"><a href="#Cabling-2" class="headerlink" title="Cabling"></a>Cabling</h3><p><img src="计网学习笔记(4" alt>：介质访问控制子层/18.png)</p>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><ul>
 <li>1 - persistent CSMA/CD(如果使用Switch则不需要冲突检测)；</li>
 <li>MAC address = 48bits；</li>
-<li>Frame Size = 64Bytes ～ 1518Bytes；
-<ul>
+<li>Frame Size = 64Bytes ～ 1518Bytes；<ul>
 <li>Data Size = 46Bytes ～ 1500Bytes；</li>
-</ul></li>
+</ul>
+</li>
 <li>Hub and Switch；</li>
 <li>经典以太网、高速以太网；</li>
 <li>Topology 拓扑结构：总线型(只有经典以太网使用)、星型；</li>
 <li>物理层编码：<strong>Manchester编码(经典以太网使用，百兆以太网之后就不再使用)</strong>、8B/6T、4B/5B；</li>
 </ul>
-<p><img src="19.png"></p>
-<h1 id="wireless-lans-无线网络">Wireless LANS 无线网络</h1>
-<h3 id="lan-architecture">802.11 LAN architecture</h3>
-<p><img src="20.png"></p>
+<p><img src="计网学习笔记(4" alt>：介质访问控制子层/19.png)</p>
+<h1 id="Wireless-LANS-无线网络"><a href="#Wireless-LANS-无线网络" class="headerlink" title="Wireless LANS 无线网络"></a>Wireless LANS 无线网络</h1><h3 id="802-11-LAN-architecture"><a href="#802-11-LAN-architecture" class="headerlink" title="802.11 LAN architecture"></a>802.11 LAN architecture</h3><p><img src="计网学习笔记(4" alt>：介质访问控制子层/20.png)</p>
 <ul>
-<li>AP: Access Point；
-<ul>
+<li>AP: Access Point；<ul>
 <li>AP与外部设备(路由器/交换机)之间采用有线连接；</li>
-</ul></li>
-<li>BSS: Basic Service Set；
-<ul>
+</ul>
+</li>
+<li>BSS: Basic Service Set；<ul>
 <li>内部设备之间采用无线通信；</li>
 <li>通过AP接入外部网络；</li>
-</ul></li>
 </ul>
-<h3 id="mac-sublayer">Mac Sublayer</h3>
-<p>在无线通信中，无法通过 Collision Detection
-检测冲突（之前讲过，信号太弱以及调制技术限制）；在802.11无线局域网标准中，MAC子层提供了两种信道接入模式：</p>
+</li>
+</ul>
+<h3 id="Mac-Sublayer"><a href="#Mac-Sublayer" class="headerlink" title="Mac Sublayer"></a>Mac Sublayer</h3><p>在无线通信中，无法通过 Collision Detection 检测冲突（之前讲过，信号太弱以及调制技术限制）；在802.11无线局域网标准中，MAC子层提供了两种信道接入模式：</p>
 <ul>
-<li><strong>Point coordination function(PCF, 点协调功能,
-集中式)</strong>
-<ul>
+<li><strong>Point coordination function(PCF, 点协调功能, 集中式)</strong><ul>
 <li>由 <strong>Base Station 基站(即 AP)</strong> 作为点协调控制者；</li>
-<li>通过 <strong>Polling
-轮询</strong>，为各个站点分配信道访问权，即AP按照预设的顺序依次询问每个站点是否需要发送数据；</li>
-<li>基站广播一个 <strong>beacon frame
-信标帧</strong>（包括系统参数，是够允许发言等信息）；</li>
-</ul></li>
-<li><strong>Distributed coordination function(DCF, 分布协调功能,
-分布式)</strong>
-<ul>
-<li>没有中央控制者；</li>
-<li>通过 <strong>CSMA/CA(CSMA with Collision Avoidance)</strong>
-技术避免冲突；</li>
-</ul></li>
+<li>通过 <strong>Polling 轮询</strong>，为各个站点分配信道访问权，即AP按照预设的顺序依次询问每个站点是否需要发送数据；</li>
+<li>基站广播一个 <strong>beacon frame 信标帧</strong>（包括系统参数，是够允许发言等信息）；</li>
 </ul>
-<p><img src="21.png"></p>
-<h4 id="csmaca">CSMA/CA</h4>
-<p>for 802.11 Sender, if it needs to send a frame:<br>
-1. 通过载波监听等待直到信道空闲，并在等待 <strong>DIFS</strong>
-的时间（即在 DIFS 时间内信道空闲，才认为信道空闲，能发送数据）；<br>
-2. 随机退避（0 ～ 15
-个时间槽），如果信道上有数据发送则停止计时器；知道计时器为0时发送帧；<br>
-3. 如果没有收到ACK，那么采用指数退避，加倍退避时间；</p>
-<p>for 802.11 Receiver:<br>
-1. 如果正确接收到帧，则等待 <strong>SIFS</strong> 的时间后回复ACK；</p>
+</li>
+<li><strong>Distributed coordination function(DCF, 分布协调功能, 分布式)</strong><ul>
+<li>没有中央控制者；</li>
+<li>通过 <strong>CSMA/CA(CSMA with Collision Avoidance)</strong> 技术避免冲突；</li>
+</ul>
+</li>
+</ul>
+<p><img src="计网学习笔记(4" alt>：介质访问控制子层/21.png)</p>
+<h4 id="CSMA-CA"><a href="#CSMA-CA" class="headerlink" title="CSMA/CA"></a>CSMA/CA</h4><p> for 802.11 Sender, if it needs to send a frame:</p>
+<ol>
+<li>通过载波监听等待直到信道空闲，并在等待 <strong>DIFS</strong> 的时间（即在 DIFS 时间内信道空闲，才认为信道空闲，能发送数据）；</li>
+<li>随机退避（0 ～ 15 个时间槽），如果信道上有数据发送则停止计时器；知道计时器为0时发送帧；</li>
+<li>如果没有收到ACK，那么采用指数退避，加倍退避时间；</li>
+</ol>
+<p>for 802.11 Receiver:</p>
+<ol>
+<li>如果正确接收到帧，则等待 <strong>SIFS</strong> 的时间后回复ACK；</li>
+</ol>
 <blockquote>
-<p><strong>注</strong>：<span class="math inline">\(t_{SIFS} &lt;
-t_{DIFS}\)</span>，这能保证 <strong><em>ACK
-的优先级更高</em></strong>；<br>
-事实上，通过为不同类型的帧设置不同长度的 <strong>IFS
-帧间隔</strong>，来实现<strong>优先级</strong>服务；</p>
+<p><strong>注</strong>：$t_{SIFS} &lt; t_{DIFS}$，这能保证 <strong><em>ACK 的优先级更高</em></strong>；<br>事实上，通过为不同类型的帧设置不同长度的 <strong>IFS 帧间隔</strong>，来实现<strong>优先级</strong>服务；</p>
 </blockquote>
 <p>CSMA/CA 有以下两种监听模式：</p>
 <ul>
 <li>Physical Sense：物理意义上的监听信道；</li>
-<li>Virtual Sense：虚拟监听；
-<ul>
-<li>每个站点都记录一个 NAV(Network Allocation Vector,
-网络分配向量)；</li>
+<li>Virtual Sense：虚拟监听；<ul>
+<li>每个站点都记录一个 NAV(Network Allocation Vector, 网络分配向量)；</li>
 <li>每个帧都携带一个 NAV；</li>
-<li>NAV 表示这个数据帧将预计占用信道多长时间，通过 NAV
-来确定退避时间，减少冲突；</li>
-</ul></li>
+<li>NAV 表示这个数据帧将预计占用信道多长时间，通过 NAV 来确定退避时间，减少冲突；</li>
 </ul>
-<p><img src="22.png"></p>
-<h4 id="fragment-burst-段突发">Fragment Burst 段突发</h4>
-<p>如果信道的误码率较高，那么 ACK
-和重传的作用较小；而短帧出错概率小，所以采用 <strong>Fragment burst
-段突发</strong> 的方式，将较长的帧分为小的
-Fragment进行发送，来提高可靠性；<br>
-<img src="23.png"></p>
-<h4 id="saving-power-省电模式">Saving Power 省电模式</h4>
-<p><img src="24.png"></p>
-<h4 id="txoptransmission-opportunities">TXOP(Transmission
-Opportunities)</h4>
-<p>如果两个站点产生竞争，原始的 CSMA/CA
-采用频繁竞争，即每次发送都进行竞争，谁竞争成功了谁发，但这样会导致速率异常，假设站点的带宽分别为
-<span class="math inline">\(c_1,c_2\)</span>，则平均数据率为：</p>
-<p><span class="math display">\[
-\frac{1}{c_{ave}} = \frac{1}{c_1} + \frac{1}{c_2} \Rightarrow c_{ave} =
-\frac{1}{\frac{1}{c_1} + \frac{1}{c_2}}
-\]</span></p>
-<p>即平均数据率小于任何一个站点，造成速率异常。而 TXOP
-给予两个站点相同的发送机会，即竞争一次，获得一段传输时间，即</p>
-<p><span class="math display">\[
-c = c_i / n
-\]</span><br>
-比如对于 6Mbps 和 54Mbps 的两个站点，采用TXOP后，按照 3Mbps 和 27Mbps
-发送帧；</p>
-<h4 id="frame">Frame</h4>
-<ul>
+</li>
+</ul>
+<p><img src="计网学习笔记(4" alt>：介质访问控制子层/22.png)</p>
+<h4 id="Fragment-Burst-段突发"><a href="#Fragment-Burst-段突发" class="headerlink" title="Fragment Burst 段突发"></a>Fragment Burst 段突发</h4><p>如果信道的误码率较高，那么 ACK 和重传的作用较小；而短帧出错概率小，所以采用 <strong>Fragment burst 段突发</strong> 的方式，将较长的帧分为小的 Fragment进行发送，来提高可靠性；<br><img src="计网学习笔记(4" alt>：介质访问控制子层/23.png)</p>
+<h4 id="Saving-Power-省电模式"><a href="#Saving-Power-省电模式" class="headerlink" title="Saving Power 省电模式"></a>Saving Power 省电模式</h4><p><img src="计网学习笔记(4" alt>：介质访问控制子层/24.png)</p>
+<h4 id="TXOP-Transmission-Opportunities"><a href="#TXOP-Transmission-Opportunities" class="headerlink" title="TXOP(Transmission Opportunities)"></a>TXOP(Transmission Opportunities)</h4><p>如果两个站点产生竞争，原始的 CSMA/CA 采用频繁竞争，即每次发送都进行竞争，谁竞争成功了谁发，但这样会导致速率异常，假设站点的带宽分别为 $c_1,c_2$，则平均数据率为：</p>
+<script type="math/tex; mode=display">
+\frac{1}{c_{ave}} = \frac{1}{c_1} + \frac{1}{c_2} \Rightarrow c_{ave} = \frac{1}{\frac{1}{c_1} + \frac{1}{c_2}}</script><p>即平均数据率小于任何一个站点，造成速率异常。而 TXOP 给予两个站点相同的发送机会，即竞争一次，获得一段传输时间，即</p>
+<script type="math/tex; mode=display">
+c = c_i / n</script><p>比如对于 6Mbps 和 54Mbps 的两个站点，采用TXOP后，按照 3Mbps 和 27Mbps 发送帧；</p>
+<h4 id="Frame"><a href="#Frame" class="headerlink" title="Frame"></a>Frame</h4><ul>
 <li>Data Frame</li>
-<li>Control Frame
-<ul>
+<li>Control Frame<ul>
 <li>RTS</li>
 <li>CTS</li>
 <li>ACK</li>
-</ul></li>
-<li>Management Frame
-<ul>
+</ul>
+</li>
+<li>Management Frame<ul>
 <li>Authentication and De-authentication</li>
 <li>Association</li>
 <li>Beacon and Probe Frame</li>
-</ul></li>
 </ul>
-<h5 id="data-frame">Data Frame</h5>
-
+</li>
+</ul>
+<h5 id="Data-Frame"><a href="#Data-Frame" class="headerlink" title="Data Frame"></a>Data Frame</h5>
     </div>
     
     
