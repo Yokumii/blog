@@ -192,14 +192,14 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/Python/" style="color: #ffa2c4">
+                <a href="/blog/tags/Python/" style="color: #03a9f4">
                     Python
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/LLM/" style="color: #00bcd4">
+                <a href="/blog/tags/LLM/" style="color: #ff7d73">
                     LLM
                 </a>
             </span>
@@ -216,46 +216,85 @@
 </blockquote>
 <p><strong>参考资料</strong>：</p>
 <blockquote>
-<p>【1】［美] 塞巴斯蒂安·拉施卡 著，叶文滔 译. 大模型技术30讲[M]. 北京：人民邮电出版社，2024.<br>【2】Raschka S. _Build a Large Language Model (From Scratch)_[M]. Shelter Island, NY: Manning, 2024.</p>
+<p>【1】［美] 塞巴斯蒂安·拉施卡 著，叶文滔 译. 大模型技术30讲[M].
+北京：人民邮电出版社，2024.<br>
+【2】Raschka S. <em>Build a Large Language Model (From Scratch)</em>[M].
+Shelter Island, NY: Manning, 2024.</p>
 </blockquote>
-<h1 id="一、Understanding-LLM"><a href="#一、Understanding-LLM" class="headerlink" title="一、Understanding LLM"></a>一、Understanding LLM</h1><h2 id="1-1-What-is-LLM"><a href="#1-1-What-is-LLM" class="headerlink" title="1.1 What is LLM?"></a>1.1 What is LLM?</h2><p><strong>定义 1.1</strong>：<strong>Large Language Model</strong></p>
+<h1 id="一understanding-llm">一、Understanding LLM</h1>
+<h2 id="what-is-llm">1.1 What is LLM?</h2>
+<p><strong>定义 1.1</strong>：<strong>Large Language Model</strong></p>
 <blockquote>
-<p>An LLM is a neural network designed to understand, generate, and respond to human-like text;</p>
+<p>An LLM is a neural network designed to understand, generate, and
+respond to human-like text;</p>
 </blockquote>
 <ul>
-<li>“Large” means, datasets on which it’s trained and parameters(the model’s size);<ul>
-<li><strong>parameters</strong> are the adjustable weights in the network that are optimized during training to predict the next word in a sequence;</li>
-</ul>
-</li>
-<li>LLM‘s architecture — <strong>Transformer</strong>, which enables them to pay selective attention to different parts of the input when making predictions;</li>
+<li>"Large" means, datasets on which it's trained and parameters(the
+model's size);
+<ul>
+<li><strong>parameters</strong> are the adjustable weights in the
+network that are optimized during training to predict the next word in a
+sequence;</li>
+</ul></li>
+<li>LLM‘s architecture -- <strong>Transformer</strong>, which enables
+them to pay selective attention to different parts of the input when
+making predictions;</li>
 <li>LLM is also called <strong>Generative AI</strong>(生成式AI);</li>
 </ul>
-<p>至于其中使用到的两种手段 —— machine learning and deep learning，将在之后具体阐释。（后者是前者的一个子集，主要区别是是否需要手动提取特征。然而机器学习的经典算法已经快被淘汰了，令人感慨）；</p>
-<h2 id="1-2-Application-of-LLM"><a href="#1-2-Application-of-LLM" class="headerlink" title="1.2 Application of LLM"></a>1.2 Application of LLM</h2><p>无需多言，用过都说好；</p>
-<h2 id="1-3-Stages-of-building-and-using-LLMs"><a href="#1-3-Stages-of-building-and-using-LLMs" class="headerlink" title="1.3 Stages of building and using LLMs"></a>1.3 Stages of building and using LLMs</h2><ul>
-<li><strong>Pretraining 预训练</strong>：在多领域的庞大数据集下训练；</li>
-<li><strong>Finetuning 微调</strong>：针对特定任务通过特定领域的标注数据集在Pretrained LLM的基础上进行训练；<ul>
-<li><strong>Instruction Finetuning 指令微调</strong>：简单来说，就是<strong><em>标注数据 = 指令 + 正确答案</em></strong>；</li>
-<li><strong>Classification Finetuning 分类微调</strong>：<strong><em>标注数据 = 文本 + 分类标签</em></strong>；</li>
-</ul>
-</li>
-</ul>
-<p>两者的具体区别如下图所示：<img src="https://raw.githubusercontent.com/Yokumii/MyPicBucket/img/img/202504171352752.png" alt></p>
-<h2 id="1-4-Introducing-the-transformer-architecture"><a href="#1-4-Introducing-the-transformer-architecture" class="headerlink" title="1.4 Introducing the transformer architecture"></a>1.4 Introducing the transformer architecture</h2><p>Transformer 的两个重要组件是 <strong>Encoder 编码器</strong> 和 <strong>Decoder 解码器</strong>，编码器将输入文本编码为向量，而解码器解码向量并生成相应文本。区别于传统的全连接型或卷积型，编码器和解码器之间采用 <strong>Self-attention mechanism 自注意力机制</strong> 连接；</p>
-<p>在 Transformer模型的基础上，又衍生出了两种不同架构：<strong>Bert(Bidirectional encoder representations from transformers)</strong> 和 <strong>GPT(Generative pretrained transformers)</strong>；</p>
-<p>从全拼也可以看出，这两种模型分别用于不同的任务，Bert模型主要用于 predict masked or hidden words 预测掩码值，适用于文本分类任务，以下是它和 GPT-Model 区别的图示：<img src="https://raw.githubusercontent.com/Yokumii/MyPicBucket/img/img/202504171450135.png" alt></p>
-<p>GPT-Model 又分为：</p>
+<p>至于其中使用到的两种手段 —— machine learning and deep
+learning，将在之后具体阐释。（后者是前者的一个子集，主要区别是是否需要手动提取特征。然而机器学习的经典算法已经快被淘汰了，令人感慨）；</p>
+<h2 id="application-of-llm">1.2 Application of LLM</h2>
+<p>无需多言，用过都说好；</p>
+<h2 id="stages-of-building-and-using-llms">1.3 Stages of building and
+using LLMs</h2>
 <ul>
-<li><strong>Zero-shot 零样本学习</strong>：能够处理从未在训练数据中见过的任务或类别，即模型在面对新任务时不需要额外的训练和微调也能做出合理的决策；</li>
-<li><strong>Few-shot 少样本学习</strong>：模型在提供极少量样本或示例时，就能够理解并执行特定任务的能力；泛化能力强；</li>
+<li><strong>Pretraining
+预训练</strong>：在多领域的庞大数据集下训练；</li>
+<li><strong>Finetuning
+微调</strong>：针对特定任务通过特定领域的标注数据集在Pretrained
+LLM的基础上进行训练；
+<ul>
+<li><strong>Instruction Finetuning
+指令微调</strong>：简单来说，就是<strong><em>标注数据 = 指令 +
+正确答案</em></strong>；</li>
+<li><strong>Classification Finetuning
+分类微调</strong>：<strong><em>标注数据 = 文本 +
+分类标签</em></strong>；</li>
+</ul></li>
 </ul>
-<p>下图具体说明了两者的区别：<br><img src="https://raw.githubusercontent.com/Yokumii/MyPicBucket/img/img/202504171510313.png" alt></p>
-<p>GPT-Model采用 <strong>自监督(Self-supervised learning)</strong> 的方式进行学习，即自标注形式(Self-labeling)。我们可以将句子或者文档中的下一个单词作为模型应该预测的标签进行训练。</p>
+<p>两者的具体区别如下图所示：<img src="https://raw.githubusercontent.com/Yokumii/MyPicBucket/img/img/202504171352752.png"></p>
+<h2 id="introducing-the-transformer-architecture">1.4 Introducing the
+transformer architecture</h2>
+<p>Transformer 的两个重要组件是 <strong>Encoder 编码器</strong> 和
+<strong>Decoder
+解码器</strong>，编码器将输入文本编码为向量，而解码器解码向量并生成相应文本。区别于传统的全连接型或卷积型，编码器和解码器之间采用
+<strong>Self-attention mechanism 自注意力机制</strong> 连接；</p>
+<p>在
+Transformer模型的基础上，又衍生出了两种不同架构：<strong>Bert(Bidirectional
+encoder representations from transformers)</strong> 和
+<strong>GPT(Generative pretrained transformers)</strong>；</p>
+<p>从全拼也可以看出，这两种模型分别用于不同的任务，Bert模型主要用于
+predict masked or hidden words
+预测掩码值，适用于文本分类任务，以下是它和 GPT-Model 区别的图示：<img src="https://raw.githubusercontent.com/Yokumii/MyPicBucket/img/img/202504171450135.png"></p>
+<p>GPT-Model 又分为：<br>
+* <strong>Zero-shot
+零样本学习</strong>：能够处理从未在训练数据中见过的任务或类别，即模型在面对新任务时不需要额外的训练和微调也能做出合理的决策；<br>
+* <strong>Few-shot
+少样本学习</strong>：模型在提供极少量样本或示例时，就能够理解并执行特定任务的能力；泛化能力强；</p>
+<p>下图具体说明了两者的区别：<br>
+<img src="https://raw.githubusercontent.com/Yokumii/MyPicBucket/img/img/202504171510313.png"></p>
+<p>GPT-Model采用 <strong>自监督(Self-supervised learning)</strong>
+的方式进行学习，即自标注形式(Self-labeling)。我们可以将句子或者文档中的下一个单词作为模型应该预测的标签进行训练。</p>
 <blockquote>
-<p><strong>注</strong>：模型能够执行未明确训练的任务的能力称为 <strong>Emergent Ability 涌现</strong>，模型并未针对专门任务进行训练，但是在大量数据集的训练下突然表现出未预料到的新行为或新能力。增加参数量往往会促进涌现行为的出现。</p>
+<p><strong>注</strong>：模型能够执行未明确训练的任务的能力称为
+<strong>Emergent Ability
+涌现</strong>，模型并未针对专门任务进行训练，但是在大量数据集的训练下突然表现出未预料到的新行为或新能力。增加参数量往往会促进涌现行为的出现。</p>
 </blockquote>
-<h2 id="1-5-Building-a-large-language-model"><a href="#1-5-Building-a-large-language-model" class="headerlink" title="1.5 Building a large language model"></a>1.5 Building a large language model</h2><p><img src="https://raw.githubusercontent.com/Yokumii/MyPicBucket/img/img/202504172235133.png" alt></p>
-<h1 id="零、"><a href="#零、" class="headerlink" title="零、"></a>零、</h1>
+<h2 id="building-a-large-language-model">1.5 Building a large language
+model</h2>
+<p><img src="https://raw.githubusercontent.com/Yokumii/MyPicBucket/img/img/202504172235133.png"></p>
+<h1 id="零">零、</h1>
+
     </div>
     
     

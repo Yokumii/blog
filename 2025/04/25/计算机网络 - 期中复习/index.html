@@ -206,246 +206,335 @@
 <blockquote>
 <p>以下是笔者为应付期中考试的一些复习和总结，由于复习地比较仓促，可能存在错误和遗漏，仅供后来者参考！主要是参考往年题按照题型进行了总结。刷题部分是手写，不传在这里了，晚点可能补充链接；简答题部分由于往年题参考答案不全，本人参考了PPT进行总结，可能存在错误；</p>
 </blockquote>
-<h1 id="题型"><a href="#题型" class="headerlink" title="题型"></a>题型</h1><h2 id="一、计算题"><a href="#一、计算题" class="headerlink" title="一、计算题"></a>一、计算题</h2><h3 id="1-1-CRC检错码计算"><a href="#1-1-CRC检错码计算" class="headerlink" title="1.1 CRC检错码计算"></a>1.1 CRC检错码计算</h3><ul>
-<li>看给出的多项式$G(x)$的最高位$r$，则在数据位后添加$r$个$0$后再进行除法；</li>
+<h1 id="题型">题型</h1>
+<h2 id="一计算题">一、计算题</h2>
+<h3 id="crc检错码计算">1.1 CRC检错码计算</h3>
+<ul>
+<li>看给出的多项式<span class="math inline">\(G(x)\)</span>的最高位<span class="math inline">\(r\)</span>，则在数据位后添加<span class="math inline">\(r\)</span>个<span class="math inline">\(0\)</span>后再进行除法；</li>
 <li>这里的除法不同于常规的多项式除法，是<strong><em>模2除法，即按位异或</em></strong>；</li>
-<li>往往和HDLC协议结合出题，只需注意：<ul>
+<li>往往和HDLC协议结合出题，只需注意：
+<ul>
 <li>HDLC协议采用比特填充；</li>
-<li>HDLC等协议差错校验和成帧的顺序是：<ul>
-<li>发送方处理步骤：<ul>
+<li>HDLC等协议差错校验和成帧的顺序是：
+<ul>
+<li>发送方处理步骤：
+<ul>
 <li>计算并添加校验码 -&gt; 0比特填充 -&gt; 添加收尾标记01111110</li>
+</ul></li>
+<li>接受方处理步骤：
+<ul>
+<li>收到物理层的01比特串 -&gt; 首先根据首尾标记位提出帧 -&gt;
+删除发送方添加的零比特，就是进行比特删除 -&gt; 最后，进行差错校验</li>
+</ul></li>
+</ul></li>
+</ul></li>
 </ul>
-</li>
-<li>接受方处理步骤：<ul>
-<li>收到物理层的01比特串 -&gt; 首先根据首尾标记位提出帧 -&gt; 删除发送方添加的零比特，就是进行比特删除 -&gt; 最后，进行差错校验</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="1-2-帧填充与识别"><a href="#1-2-帧填充与识别" class="headerlink" title="1.2 帧填充与识别"></a>1.2 帧填充与识别</h3><ul>
+<h3 id="帧填充与识别">1.2 帧填充与识别</h3>
+<ul>
 <li>熟悉比特填充、字符填充两种方式即可，会填充和识别；</li>
 <li>HDLC使用比特填充法；</li>
 <li>PPP使用字符填充法；</li>
 </ul>
-<h3 id="1-3-汉明编码"><a href="#1-3-汉明编码" class="headerlink" title="1.3 汉明编码"></a>1.3 汉明编码</h3><ul>
+<h3 id="汉明编码">1.3 汉明编码</h3>
+<ul>
 <li>在2的幂次位插入校验码；</li>
 </ul>
-<h3 id="1-4-最大传输速率问题"><a href="#1-4-最大传输速率问题" class="headerlink" title="1.4 最大传输速率问题"></a>1.4 最大传输速率问题</h3><ul>
+<h3 id="最大传输速率问题">1.4 最大传输速率问题</h3>
+<ul>
 <li>熟悉三个公式：比特率和波特率的换算、Nyquist定理和香农定理。</li>
 <li>注意后两者计算的是理论上限；</li>
 </ul>
-<h3 id="1-5-分组交换和电路交换延时计算"><a href="#1-5-分组交换和电路交换延时计算" class="headerlink" title="1.5 分组交换和电路交换延时计算"></a>1.5 分组交换和电路交换延时计算</h3><ul>
-<li>电路交换<ul>
-<li>步骤如下：<ul>
+<h3 id="分组交换和电路交换延时计算">1.5 分组交换和电路交换延时计算</h3>
+<ul>
+<li>电路交换
+<ul>
+<li>步骤如下：
+<ul>
 <li>建立连接 -&gt; 传输数据 -&gt; 连接中止，释放资源；</li>
-</ul>
-</li>
-<li>时延的计算公式如下：<ul>
-<li>$T_{circuit} = T_{establish} + T_{trans} + h_{hop} * T_{prop} + T_{release}$</li>
-</ul>
-</li>
-<li>优点：<ul>
+</ul></li>
+<li>时延的计算公式如下：
+<ul>
+<li><span class="math inline">\(T_{circuit} = T_{establish} + T_{trans}
++ h_{hop} * T_{prop} + T_{release}\)</span></li>
+</ul></li>
+<li>优点：
+<ul>
 <li>稳定，时延低（Small Delay, Good Quality）；</li>
 <li>交换过程中控制方式简单；</li>
-</ul>
-</li>
-<li>缺点：<ul>
+</ul></li>
+<li>缺点：
+<ul>
 <li>连接建立的时间较长；</li>
 <li>带宽固定，不适用于多样的传输服务；</li>
 <li>当两端都没有数据要发送时，造成信道资源浪费；</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>分组交换<ul>
-<li>步骤如下：<ul>
+</ul></li>
+</ul></li>
+<li>分组交换
+<ul>
+<li>步骤如下：
+<ul>
 <li>将较大的数据包分为多个 Packet 进行传输；</li>
 <li>每个 Packet 都有独立的路由（即可能需要携带额外的控制信息）；</li>
-<li>每个 Packet 经过一跳到达中继节点时，都需要进行存储 - 转发 Store-and-Forward；</li>
-</ul>
-</li>
-<li>忽略排队和处理时延，时延的计算公式如下：<ul>
-<li>Let size of date = $M$，size of each packet = $P$，the date rate of the channel = $B$；</li>
-<li>So num of packets $n = \left \lceil \frac{M}{P} \right \rceil$，each packet’s transmission delay $T_{trans} = \frac{P}{B}$，each hop’s propagation delay $T_{prop} = \frac{s}{v_{prop}}$；</li>
-<li>$T_{packet} = (n - 1) <em> t_{trans} + h </em> (T_{prop} + T_{trans})$；</li>
-</ul>
-</li>
-<li>优点：<ul>
+<li>每个 Packet 经过一跳到达中继节点时，都需要进行存储 - 转发
+Store-and-Forward；</li>
+</ul></li>
+<li>忽略排队和处理时延，时延的计算公式如下：
+<ul>
+<li>Let size of date = <span class="math inline">\(M\)</span>，size of
+each packet = <span class="math inline">\(P\)</span>，the date rate of
+the channel = <span class="math inline">\(B\)</span>；</li>
+<li>So num of packets <span class="math inline">\(n = \left \lceil
+\frac{M}{P} \right \rceil\)</span>，each packet's transmission delay
+<span class="math inline">\(T_{trans} = \frac{P}{B}\)</span>，each hop's
+propagation delay <span class="math inline">\(T_{prop} =
+\frac{s}{v_{prop}}\)</span>；</li>
+<li><span class="math inline">\(T_{packet} = (n - 1) * t_{trans} + h *
+(T_{prop} + T_{trans})\)</span>；</li>
+</ul></li>
+<li>优点：
+<ul>
 <li>信道效率提高；</li>
 <li>速率适配；</li>
-<li>Packet 可以在节点较忙时先被缓存再发送（排队制，不过可能造成传送速率减慢，但可以引入优先级机制）；</li>
-</ul>
-</li>
-<li>缺点：<ul>
+<li>Packet
+可以在节点较忙时先被缓存再发送（排队制，不过可能造成传送速率减慢，但可以引入优先级机制）；</li>
+</ul></li>
+<li>缺点：
+<ul>
 <li>网络更加复杂；</li>
 <li>传播过程中的时延更长；</li>
 <li>没有 QoS，即服务质量保证；</li>
+</ul></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="1-6-最小帧长度的计算"><a href="#1-6-最小帧长度的计算" class="headerlink" title="1.6 最小帧长度的计算"></a>1.6 最小帧长度的计算</h3><ul>
-<li>以太网或其他使用CSMA/CD技术的LAN，都需要满足条件：$\frac{M_{min}}{B} = 2\tau$；确保有足够的时间检测冲突；</li>
-<li>对于10M以太网，$2\tau = 51.2us$；据此得到最小帧长度为64Bytes；</li>
-<li>事实上，对于10兆以太网，数据帧长度范围为46Bytes ～ 1500Bytes，加上18位控制字符，最终帧长度范围为64Bytes ～ 1518Bytes；</li>
+<h3 id="最小帧长度的计算">1.6 最小帧长度的计算</h3>
+<ul>
+<li>以太网或其他使用CSMA/CD技术的LAN，都需要满足条件：<span class="math inline">\(\frac{M_{min}}{B} =
+2\tau\)</span>；确保有足够的时间检测冲突；</li>
+<li>对于10M以太网，<span class="math inline">\(2\tau =
+51.2us\)</span>；据此得到最小帧长度为64Bytes；</li>
+<li>事实上，对于10兆以太网，数据帧长度范围为46Bytes ～
+1500Bytes，加上18位控制字符，最终帧长度范围为64Bytes ～ 1518Bytes；</li>
 <li>帧的地址字段长度为6Bytes；</li>
 </ul>
-<h2 id="二、简答题"><a href="#二、简答题" class="headerlink" title="二、简答题"></a>二、简答题</h2><h3 id="2-1-物理层相关"><a href="#2-1-物理层相关" class="headerlink" title="2.1 物理层相关"></a>2.1 物理层相关</h3><ol>
-<li>（2012/2014/2015年期中）请写出采用调制解调器 MODEM 拨号上网时，什么因素限制了调制解调器的带宽？为什么拨号上网的上行和下载速度不相同？</li>
+<h2 id="二简答题">二、简答题</h2>
+<h3 id="物理层相关">2.1 物理层相关</h3>
+<ol type="1">
+<li>（2012/2014/2015年期中）请写出采用调制解调器 MODEM
+拨号上网时，什么因素限制了调制解调器的带宽？为什么拨号上网的上行和下载速度不相同？</li>
 </ol>
 <blockquote>
 <p>上行受到模拟信号转数字信号的信噪比影响，根据香农公式，最大数据率受到限制，而下行并不会受到限制，</p>
 </blockquote>
-<ol>
+<ol start="2" type="1">
 <li>（2019年期中）两台计算机使用调制解调器利用电话线进行通信，不适合成帧的方法有哪些？说明原因。</li>
 </ol>
 <blockquote>
 <p>调制解调器接受和传送数据的单位是字节而不是位/比特，所以不适合用比特填充法成帧；</p>
 </blockquote>
-<ol>
-<li>（2015年期中）为什么普通电话线无法传送计算机网络数据，而采用 ADSL 电话线就可以传送？</li>
+<ol start="3" type="1">
+<li>（2015年期中）为什么普通电话线无法传送计算机网络数据，而采用 ADSL
+电话线就可以传送？</li>
 </ol>
 <blockquote>
 <p>ADSL 使用的电缆扩展了普通电话线的带宽到3400Hz以上。</p>
 </blockquote>
-<ol>
+<ol start="4" type="1">
 <li>（2020年期中）ADSL用户线的传输介质？复用技术？ADSL用户到端局的数据链路层采用的协议？其向上层提供的服务？成帧技术？</li>
 </ol>
 <blockquote>
-<p><strong>传输介质</strong>：普通电话线，即3类双绞线 Twisted Pair UTP3，但相较于普通电话线扩展了带宽到3400Hz以上。普通电话线有滤波器，它没有。</p>
+<p><strong>传输介质</strong>：普通电话线，即3类双绞线 Twisted Pair
+UTP3，但相较于普通电话线扩展了带宽到3400Hz以上。普通电话线有滤波器，它没有。</p>
 <p><strong>复用技术</strong>：模拟信号，采用频分复用 FDM；</p>
 <p><strong>用户到端局的数据链路层采用的协议</strong>：端到端，采用PPP协议，以字符为单位；</p>
 <p><strong>其向上层提供的服务</strong>：非对称数据传输，下行速率远高于上行速率，适用于家庭用户“多下载少上传”的需求；为网络层的多种不同的协议提供支持、提供身份认证、协商IP等（即PPP协议的服务）。</p>
 <p><strong>成帧技术</strong>：字符填充法；</p>
 </blockquote>
-<ol>
+<ol start="5" type="1">
 <li>（2012年期中）传输介质速率比较。</li>
 </ol>
 <blockquote>
 <p>传输速率/带宽：双绞线 &lt; 细缆 &lt; 粗缆 &lt; 光纤；</p>
 </blockquote>
-<h3 id="2-2-滑动窗口协议部分"><a href="#2-2-滑动窗口协议部分" class="headerlink" title="2.2 滑动窗口协议部分"></a>2.2 滑动窗口协议部分</h3><ol>
-<li>（2013年期中）在滑动窗⼝协议中，采⽤重发计时器和ACK计时器各有什么作⽤？这两者在数值上有什么关系？ (6分）</li>
+<h3 id="滑动窗口协议部分">2.2 滑动窗口协议部分</h3>
+<ol type="1">
+<li>（2013年期中）在滑动窗⼝协议中，采⽤重发计时器和ACK计时器各有什么作⽤？这两者在数值上有什么关系？
+(6分）</li>
 </ol>
 <blockquote>
-<p><strong>重发计时器 Frame_Timer</strong>，在发送方发送一个帧时启动，如果在规定时间内未收到该帧对应的ACK，则进行超时重传，每一个帧对应一个计时器；用于确保数据最终被可靠地传送到接收方；</p>
-<p><strong>ACK计时器 ACK_Timer</strong>，一般只在选择重传协议中使用。它的工作机制如下，在接收方从接收窗口下沿依次提交收到的帧并向前滑动时，会启动 ACK_Timer；在 ACK_Timer的规定时间内，如果有接收方有数据要发送，则停止 ACK_Timer，采用 Piggybacking 将 ACK 和数据一起发送给发送方；如果 ACK_Timer 超时，则单独发送 ACK 给 发送方，同时停止计时器。ACK_Timer 通过延时确认，提高了网络效率，减少了单独的 ACK 报文数量。由于采用累积 ACK 的方式，所以接收方只需要一个 ACK_Timer。</p>
-<p>在时间关系上，书上给出了以下关系：$2t_{prop} + ack_timer &lt; frame_timer$，不等式左边表示从发送方发送数据帧到接收方发送 ACK 并返回 ACK 所需的最大时间，不等式右边表示发送方的重传计时器的超时时间，即等待 ACK 的最大时间。小于关系避免了发送方在 ACK 尚未到达前误判数据帧丢失并进行不必要的重传。</p>
+<p><strong>重发计时器
+Frame_Timer</strong>，在发送方发送一个帧时启动，如果在规定时间内未收到该帧对应的ACK，则进行超时重传，每一个帧对应一个计时器；用于确保数据最终被可靠地传送到接收方；</p>
+<p><strong>ACK计时器
+ACK_Timer</strong>，一般只在选择重传协议中使用。它的工作机制如下，在接收方从接收窗口下沿依次提交收到的帧并向前滑动时，会启动
+ACK_Timer；在 ACK_Timer的规定时间内，如果有接收方有数据要发送，则停止
+ACK_Timer，采用 Piggybacking 将 ACK 和数据一起发送给发送方；如果
+ACK_Timer 超时，则单独发送 ACK 给 发送方，同时停止计时器。ACK_Timer
+通过延时确认，提高了网络效率，减少了单独的 ACK 报文数量。由于采用累积
+ACK 的方式，所以接收方只需要一个 ACK_Timer。</p>
+<p>在时间关系上，书上给出了以下关系：<span class="math inline">\(2t_{prop} + ack\_timer &lt;
+frame\_timer\)</span>，不等式左边表示从发送方发送数据帧到接收方发送 ACK
+并返回 ACK
+所需的最大时间，不等式右边表示发送方的重传计时器的超时时间，即等待 ACK
+的最大时间。小于关系避免了发送方在 ACK
+尚未到达前误判数据帧丢失并进行不必要的重传。</p>
 </blockquote>
-<h3 id="2-3-共享信道协议"><a href="#2-3-共享信道协议" class="headerlink" title="2.3 共享信道协议"></a>2.3 共享信道协议</h3><ol>
+<h3 id="共享信道协议">2.3 共享信道协议</h3>
+<ol type="1">
 <li>（2018年期中）共享信道协议中，评价一个协议优劣的两个主要指标是什么？</li>
 </ol>
 <blockquote>
 <p>低负载情况下的时延和高负载下的吞吐量（或信道利用率）；</p>
-<p>低负载下适合用竞争的方法（即 1-persistent CSMA）；而 p 越小，负载高时，发送帧的随机化越好，冲突越小，吞吐量越高；</p>
+<p>低负载下适合用竞争的方法（即 1-persistent CSMA）；而 p
+越小，负载高时，发送帧的随机化越好，冲突越小，吞吐量越高；</p>
 </blockquote>
-<ol>
+<ol start="2" type="1">
 <li>（2020年期中）简述什么是隐蔽站问题？802.11(CSMA/CA)如何解决？</li>
 </ol>
 <blockquote>
-<p>隐蔽站问题，即假如A需要向B发送数据，但此时站点C位于A的监听范围之外，但出于B的范围内，C同时也要向B发送数据。由于A无法监听到C，仍会发送数据造成冲突；<br>CSMA/CA技术</p>
+<p>隐蔽站问题，即假如A需要向B发送数据，但此时站点C位于A的监听范围之外，但出于B的范围内，C同时也要向B发送数据。由于A无法监听到C，仍会发送数据造成冲突；<br>
+CSMA/CA技术</p>
 </blockquote>
-<ol>
+<ol start="3" type="1">
 <li>（2015年期中）提高信道利用率的措施？</li>
 </ol>
 <blockquote>
 <p>增加发送字节的长度、采用滑动窗口技术等；</p>
 </blockquote>
-<h3 id="2-4-参考模型"><a href="#2-4-参考模型" class="headerlink" title="2.4 参考模型"></a>2.4 参考模型</h3><ol>
+<h3 id="参考模型">2.4 参考模型</h3>
+<ol type="1">
 <li>OSI参考模型</li>
 </ol>
 <blockquote>
-<p>应用层：提供应用相关的服务；<br>表示层：信息的表示、加密、压缩等；<br>会话层：进程会话控制、令牌管理、同步；<br>（以上三层的数据单元为 <strong>Message 消息</strong>）；<br>传输层：实现可靠的端到端的传输，数据单元为 <strong>Segment 段</strong>；<br>网络层：进行路由转发，实现拥塞控制、服务质量管理和网络互联，数据单元为 <strong>Packet 分组</strong>；<br>数据链路层：数据单元是 <strong>Frame 帧</strong>；<br>物理层：数据单元是 <strong>Bit 比特</strong>；</p>
+<p>应用层：提供应用相关的服务；<br>
+表示层：信息的表示、加密、压缩等；<br>
+会话层：进程会话控制、令牌管理、同步；<br>
+（以上三层的数据单元为 <strong>Message 消息</strong>）；<br>
+传输层：实现可靠的端到端的传输，数据单元为 <strong>Segment
+段</strong>；<br>
+网络层：进行路由转发，实现拥塞控制、服务质量管理和网络互联，数据单元为
+<strong>Packet 分组</strong>；<br>
+数据链路层：数据单元是 <strong>Frame 帧</strong>；<br>
+物理层：数据单元是 <strong>Bit 比特</strong>；</p>
 </blockquote>
-<ol>
+<ol start="2" type="1">
 <li>TCP/IP参考模型</li>
 </ol>
 <blockquote>
-<p>网际层：分组交换、路由，采用IP协议；<br>传输层：分为TCP(可靠的面向连接的服务)和UDP(不可靠的无连接的服务)</p>
+<p>网际层：分组交换、路由，采用IP协议；<br>
+传输层：分为TCP(可靠的面向连接的服务)和UDP(不可靠的无连接的服务)</p>
 </blockquote>
-<ol>
+<ol start="3" type="1">
 <li>IEEE 802 参考模型</li>
 </ol>
 <blockquote>
 <p>将数据链路层又划分为以下两个子层：</p>
-<p>逻辑链路控制子层（LLC）：为网络层提供统一的接口；流量控制；差错控制；网桥；<br>介质访问控制子层（MAC）：成帧；差错检查；MAC地址；介质访问多路控制；局域网交换，VLAN；</p>
+<p>逻辑链路控制子层（LLC）：为网络层提供统一的接口；流量控制；差错控制；网桥；<br>
+介质访问控制子层（MAC）：成帧；差错检查；MAC地址；介质访问多路控制；局域网交换，VLAN；</p>
 </blockquote>
-<ol>
+<ol start="4" type="1">
 <li>（2013年期中）针对OSI参考模型和TCP/IP参考模型，各写出两点不足；</li>
 </ol>
 <blockquote>
-<p>OSI模型的缺点：<br>（1）实现复杂度高：七层划分过于细致，导致协议实现成本高，尤其在会话层和表示层功能重复（如加密、压缩等），实际应用中常被合并；<br>（2）缺乏灵活性：属于理论标准，未充分考虑实际网络需求（如互联网的IP协议）；</p>
-<p>TCP/IP模型的缺点：<br>（1）层次划分粗糙：可能导致协议功能边界模糊；<br>（2）无明确服务/接口定义：OSI模型严格区分服务、接口和协议，而TCP/IP模型仅关注协议实现，缺乏标准化接口描述，不利于系统集成；</p>
+<p>OSI模型的缺点：<br>
+（1）实现复杂度高：七层划分过于细致，导致协议实现成本高，尤其在会话层和表示层功能重复（如加密、压缩等），实际应用中常被合并；<br>
+（2）缺乏灵活性：属于理论标准，未充分考虑实际网络需求（如互联网的IP协议）；</p>
+<p>TCP/IP模型的缺点：<br>
+（1）层次划分粗糙：可能导致协议功能边界模糊；<br>
+（2）无明确服务/接口定义：OSI模型严格区分服务、接口和协议，而TCP/IP模型仅关注协议实现，缺乏标准化接口描述，不利于系统集成；</p>
 </blockquote>
-<ol>
+<ol start="4" type="1">
 <li>（2013年期中）解释协议和服务概念，并说明⼆者之间的关系。协议数据单元（PDU）和服务原语有什么区别和联系？</li>
 </ol>
 <blockquote>
-<p><strong>协议</strong>：两个系统同一层的对等实体之间进行通信需要共同遵守的规则；<br><strong>服务</strong>：某层实体对于上一层实体的支持，即对上一层提供的功能集合；<br><strong>协议与服务的关系</strong>：一层协议的实现需要下层的服务，本层服务的实现需要协议的支持，协议是水平的，服务是垂直的。但注意，本层协议改变不一定会导致本层服务改变，本层服务不变、协议改变不会影响上一层服务，但是本层服务改变会影响相邻上一层的服务；<br><strong>接口</strong>：定义某层实体对于上一层提供的服务原语操作；</p>
-<p><strong>服务原语</strong>：用户与层间服务交互的命令，用于请求或响应服务；<br><strong>协议数据单元PDU</strong>：是同层对等实体之间交换的数据单元，包含<strong>协议头</strong>（即对上层数据进行封装的操作）和<strong>上层数据</strong>；<br><strong>PDU和服务原语的区别和联系</strong>：区别上，PDU为同层之间的水平通信，服务原语为层间的垂直通信，属于用户与服务的交互命令；PDU是实现协议的载体，而服务原语触发协议动作，用户通过服务原语间接使用协议功能；</p>
+<p><strong>协议</strong>：两个系统同一层的对等实体之间进行通信需要共同遵守的规则；<br>
+<strong>服务</strong>：某层实体对于上一层实体的支持，即对上一层提供的功能集合；<br>
+<strong>协议与服务的关系</strong>：一层协议的实现需要下层的服务，本层服务的实现需要协议的支持，协议是水平的，服务是垂直的。但注意，本层协议改变不一定会导致本层服务改变，本层服务不变、协议改变不会影响上一层服务，但是本层服务改变会影响相邻上一层的服务；<br>
+<strong>接口</strong>：定义某层实体对于上一层提供的服务原语操作；</p>
+<p><strong>服务原语</strong>：用户与层间服务交互的命令，用于请求或响应服务；<br>
+<strong>协议数据单元PDU</strong>：是同层对等实体之间交换的数据单元，包含<strong>协议头</strong>（即对上层数据进行封装的操作）和<strong>上层数据</strong>；<br>
+<strong>PDU和服务原语的区别和联系</strong>：区别上，PDU为同层之间的水平通信，服务原语为层间的垂直通信，属于用户与服务的交互命令；PDU是实现协议的载体，而服务原语触发协议动作，用户通过服务原语间接使用协议功能；</p>
 </blockquote>
-<ol>
+<ol start="5" type="1">
 <li>（2015年期中）请写出计算机网络层次化设计方法的设计原则。</li>
 </ol>
 <blockquote>
-<p>（1）<strong>各层应执行定义明确的函数 (Each layer should perform a well-defined function)</strong> </p>
+<p>（1）<strong>各层应执行定义明确的函数 (Each layer should perform a
+well-defined function)</strong></p>
 <blockquote>
 <p>这意味着每一层需要专注于解决特定类型的问题或提供特定的服务。功能的划分应该清晰，避免不同层次的任务相互混淆。这有助于简化设计和实现，并使各层能够独立开发和维护。</p>
 </blockquote>
-<p>（2）<strong>层间边界的选择应使接口处的信息流最小化 (The layer boundaries should be chosen to minimize the information flow across the interfaces)</strong></p>
+<p>（2）<strong>层间边界的选择应使接口处的信息流最小化 (The layer
+boundaries should be chosen to minimize the information flow across the
+interfaces)</strong></p>
 <blockquote>
-<p>相邻层之间的交互（通过服务访问点 SAP）应该尽可能简单。理想情况下，一层应该只向其上一层提供必要的、最小化的服务，减少不必要的依赖和信息传递。这有助于降低协议开销，并提高系统的效率和模块化程度。</p>
+<p>相邻层之间的交互（通过服务访问点
+SAP）应该尽可能简单。理想情况下，一层应该只向其上一层提供必要的、最小化的服务，减少不必要的依赖和信息传递。这有助于降低协议开销，并提高系统的效率和模块化程度。</p>
 </blockquote>
-<p>（3）<strong>层次的数量应适中 (The number of layers should be…)</strong>  </p>
+<p>（3）<strong>层次的数量应适中 (The number of layers should
+be...)</strong></p>
 <blockquote>
-<p>层次的数量既不能太多，也不能太少。应该足够多，以确保不同的功能不会被不恰当地合并到同一层中，保持每层的职责单一和清晰。 应该足够少，以避免架构过于庞大和复杂，减少不必要的开销（如每层添加头部信息）。 需要在功能清晰度和整体复杂性之间找到平衡。</p>
+<p>层次的数量既不能太多，也不能太少。应该足够多，以确保不同的功能不会被不恰当地合并到同一层中，保持每层的职责单一和清晰。
+应该足够少，以避免架构过于庞大和复杂，减少不必要的开销（如每层添加头部信息）。
+需要在功能清晰度和整体复杂性之间找到平衡。</p>
 </blockquote>
 </blockquote>
-<h3 id="2-5-无线通信"><a href="#2-5-无线通信" class="headerlink" title="2.5 无线通信"></a>2.5 无线通信</h3><ol>
+<h3 id="无线通信">2.5 无线通信</h3>
+<ol type="1">
 <li>（2019年期中）简要解释WLAN中的TXOP机制。</li>
 </ol>
 <blockquote>
-<p>TXOP，即Transmission Opportunity，传统的信道分配方式是站点每次发送一帧，即“你发一帧我发一帧”这种形式，但这对于数据率大的站点并不公平，并且低速站点会拉低吞吐量。使用TXOP机制时，每个站点获得相等的发送时间，比如假如有$n$个站点，每个站点的速率为$c_i$，那实际传输过程中，每个站点的速率为$\frac{c_i}{n}$，保证了每个站点都获得相等的发送时间；</p>
+<p>TXOP，即Transmission
+Opportunity，传统的信道分配方式是站点每次发送一帧，即“你发一帧我发一帧”这种形式，但这对于数据率大的站点并不公平，并且低速站点会拉低吞吐量。使用TXOP机制时，每个站点获得相等的发送时间，比如假如有<span class="math inline">\(n\)</span>个站点，每个站点的速率为<span class="math inline">\(c_i\)</span>，那实际传输过程中，每个站点的速率为<span class="math inline">\(\frac{c_i}{n}\)</span>，保证了每个站点都获得相等的发送时间；</p>
 </blockquote>
-<ol>
+<ol start="2" type="1">
 <li>（2019年期中）无线局域网的协议标准是什么？什么是虚拟载波监听技术？</li>
 </ol>
 <blockquote>
 <p><strong>协议标准</strong>：IEEE 802.11；</p>
-<p><strong>虚拟载波监听技术</strong>：<br>（1）每个站点都维持一个 NAV（Network Allocation Vector，网络分配向量）；<br>（2）发送方在发送帧时，携带一个 NAV，表示信道将被占用的时长；<br>（3）接收方在接收到帧后，更新本地的 NAV，根据 NAV 确定需要的退避时间，以避免冲突。</p>
+<p><strong>虚拟载波监听技术</strong>：<br>
+（1）每个站点都维持一个 NAV（Network Allocation
+Vector，网络分配向量）；<br>
+（2）发送方在发送帧时，携带一个 NAV，表示信道将被占用的时长；<br>
+（3）接收方在接收到帧后，更新本地的 NAV，根据 NAV
+确定需要的退避时间，以避免冲突。</p>
 </blockquote>
-<h3 id="2-6-一些设备"><a href="#2-6-一些设备" class="headerlink" title="2.6 一些设备"></a>2.6 一些设备</h3><ul>
+<h3 id="一些设备">2.6 一些设备</h3>
+<ul>
 <li>Repeater：互联设备，属于物理层；用于将两个总线型的以太网进行连接；</li>
 <li>Bridge：网桥，属于数据链路层；用于将两个局域网进行互联；</li>
 </ul>
-<ol>
+<ol type="1">
 <li>网桥和交换机的共同点和区别：</li>
 </ol>
 <blockquote>
-<p>共同点：都是数据链路层设备；<br>不同点：<br>（1）网桥主要用软件处理；而交换机的处理是硬件层面的；<br>（2）网桥同时只能分析和处理一帧，而交换机一次性可以处理大量帧；<br>（3）网桥采用存储转发方式，而交换机还可以通过直通 Cut-Through 等方式加快传输速率；</p>
+<p>共同点：都是数据链路层设备；<br>
+不同点：<br>
+（1）网桥主要用软件处理；而交换机的处理是硬件层面的；<br>
+（2）网桥同时只能分析和处理一帧，而交换机一次性可以处理大量帧；<br>
+（3）网桥采用存储转发方式，而交换机还可以通过直通 Cut-Through
+等方式加快传输速率；</p>
 </blockquote>
-<ol>
+<ol start="2" type="1">
 <li>（2018年期中）能隔离广播风暴的设备有？</li>
 </ol>
 <blockquote>
 <p>路由器 and VLAN交换机，两者分别工作在不同的层；</p>
 </blockquote>
-<h3 id="2-7-虚拟局域网VLAN"><a href="#2-7-虚拟局域网VLAN" class="headerlink" title="2.7 虚拟局域网VLAN"></a>2.7 虚拟局域网VLAN</h3><ul>
+<h3 id="虚拟局域网vlan">2.7 虚拟局域网VLAN</h3>
+<ul>
 <li>将局域网在逻辑上划分为多个广播域；</li>
 <li>每个 VLAN 都有一个唯一的标识符 VLAN ID；通过这个实现区分；</li>
 <li>不支持 VLAN 的交换机无法识别帧中的 VLAN ID；</li>
 </ul>
-<ol>
-<li>（2019年期中）使用 VLAN 交换机可构建逻辑上相互隔离的多个网络，广播和组播报文也会被隔离吗？ 说明原因？</li>
+<ol type="1">
+<li>（2019年期中）使用 VLAN
+交换机可构建逻辑上相互隔离的多个网络，广播和组播报文也会被隔离吗？
+说明原因？</li>
 </ol>
 <blockquote>
 <p>可以隔离。VLAN通过在数据链路层进行逻辑隔离，默认情况下会<strong>隔离广播和未知组播</strong>报文，将其限制在各自的VLAN内部，从而提高网络性能和安全性。</p>
 </blockquote>
-<h1 id="考后回忆和复盘"><a href="#考后回忆和复盘" class="headerlink" title="考后回忆和复盘"></a>考后回忆和复盘</h1><blockquote>
+<h1 id="考后回忆和复盘">考后回忆和复盘</h1>
+<blockquote>
 <p>题量比较大，一共9道大题，考试时间是85分钟，还是有一些往年题的，你邮经典藏往年题然后吃老本。懒得回忆具体数据了，和上面整理的内容重合度还蛮高的。好好看PPT和作业题即可。当然，如果我的整理对你有帮助，那么就更好了。</p>
 </blockquote>
 

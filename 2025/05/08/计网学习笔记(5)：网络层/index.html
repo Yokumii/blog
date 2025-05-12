@@ -185,14 +185,14 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/private/" style="color: #03a9f4">
+                <a href="/blog/tags/private/" style="color: #00a596">
                     private
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="color: #00a596">
+                <a href="/blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="color: #00bcd4">
                     计算机网络
                 </a>
             </span>
@@ -202,7 +202,8 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="网络层的位置和功能"><a href="#网络层的位置和功能" class="headerlink" title="网络层的位置和功能"></a>网络层的位置和功能</h1><p><img src="计网学习笔记(5" alt>：网络层/1.png)</p>
+        <h1 id="网络层的位置和功能">网络层的位置和功能</h1>
+<p><img src="1.png"></p>
 <blockquote>
 <p>网络层是处理<strong>端到端(end-to-end)传输</strong>的最底层！</p>
 </blockquote>
@@ -211,14 +212,20 @@
 <p>主机之间通信，经过一个路由器就是一跳。</p>
 </blockquote>
 <p><strong>网络层的主要功能</strong>：</p>
-<ol>
-<li><strong>Internetworking 网络互联</strong>：将异构的网络实现互联，向上(传输层)提供统一的接口；</li>
-<li><strong>Addressing 编址</strong>：保证设备之间接口地址（IP Address）唯一且格式统一；</li>
-<li><strong>Packeting 组包</strong>：将上层需要传输的数据封装为包(Packet)；</li>
-<li><strong>Routing 路由</strong>：选路，决定数据包的下一条，通过路由器(Router)实现；</li>
-<li><strong>Fragmenting 分段/分片</strong>：由于不同数据链路层支持的最大数据长度不同，需要适应不同的数据链路层，对数据包进行分段；</li>
+<ol type="1">
+<li><strong>Internetworking
+网络互联</strong>：将异构的网络实现互联，向上(传输层)提供统一的接口；</li>
+<li><strong>Addressing 编址</strong>：保证设备之间接口地址（IP
+Address）唯一且格式统一；</li>
+<li><strong>Packeting
+组包</strong>：将上层需要传输的数据封装为包(Packet)；</li>
+<li><strong>Routing
+路由</strong>：选路，决定数据包的下一条，通过路由器(Router)实现；</li>
+<li><strong>Fragmenting
+分段/分片</strong>：由于不同数据链路层支持的最大数据长度不同，需要适应不同的数据链路层，对数据包进行分段；</li>
 </ol>
-<h1 id="网络层提供的服务"><a href="#网络层提供的服务" class="headerlink" title="网络层提供的服务"></a>网络层提供的服务</h1><p>网络层需要向上(传输层)提供服务，要求：</p>
+<h1 id="网络层提供的服务">网络层提供的服务</h1>
+<p>网络层需要向上(传输层)提供服务，要求：</p>
 <ul>
 <li>路由技术独立：即传输层不需要知道路由器的技术，网络层提供的接口是透明且统一的；</li>
 <li>传输层对路由完全透明：不需要看到路由技术和数据包是如何路由的；</li>
@@ -226,26 +233,33 @@
 </ul>
 <p>又分为：</p>
 <ul>
-<li><strong>Virtual Circuit 虚电路</strong>：Connection-Oriented，面向连接的；</li>
+<li><strong>Virtual Circuit
+虚电路</strong>：Connection-Oriented，面向连接的；</li>
 <li><strong>Datagram 数据报</strong>：Connectionless，无连接的；</li>
 </ul>
 <p>两者都属于分组交换 <strong>Packet Switching</strong>，区别是：</p>
 <ul>
-<li><strong>Datagram 数据报</strong>：<ul>
+<li><strong>Datagram 数据报</strong>：
+<ul>
 <li>每一个包需要携带目的地的完整地址；</li>
 <li>路由器通过路由表转发包，路由表是动态更新的；</li>
 <li>包到达目的地可能是乱序的，即每个包选择的路径可能不相同；</li>
-</ul>
-</li>
-<li><strong>Virtual Circuit 虚电路</strong>：<ul>
+</ul></li>
+<li><strong>Virtual Circuit 虚电路</strong>：
+<ul>
 <li>在数据包进行传输之前，网络先建立了一条端到端的虚拟电路；</li>
-<li>传输过程中，数据包携带<strong>虚拟电路地址 VCI(Virtual Circuit Identifier)</strong>，作为地址标识，这比标准的地址短的多；</li>
+<li>传输过程中，数据包携带<strong>虚拟电路地址 VCI(Virtual Circuit
+Identifier)</strong>，作为地址标识，这比标准的地址短的多；</li>
 <li>VC建立后，所有包需要遵循VC的路径进行路由，所以包到达目的地是一定是按序的；</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h1 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h1><p>路由表 = 路由算法 + 路由协议；根据路由算法和路由协议产生和更新路由表(Routing Tables)，根据路由表进行选路，转发数据包</p>
-<h2 id="1-路由算法"><a href="#1-路由算法" class="headerlink" title="1. 路由算法"></a>1. 路由算法</h2><h3 id="1-1-设计路由算法的原则"><a href="#1-1-设计路由算法的原则" class="headerlink" title="1.1 设计路由算法的原则"></a>1.1 设计路由算法的原则</h3><ul>
+<h1 id="路由">路由</h1>
+<p>路由表 = 路由算法 +
+路由协议；根据路由算法和路由协议产生和更新路由表(Routing
+Tables)，根据路由表进行选路，转发数据包</p>
+<h2 id="路由算法">1. 路由算法</h2>
+<h3 id="设计路由算法的原则">1.1 设计路由算法的原则</h3>
+<ul>
 <li>正确性；</li>
 <li>简单性；</li>
 <li>健壮性；</li>
@@ -253,156 +267,199 @@
 <li>公平性；</li>
 <li>最优策略：最小化转发延时、最大化网络吞吐量；</li>
 </ul>
-<h3 id="1-2-路由算法的分类"><a href="#1-2-路由算法的分类" class="headerlink" title="1.2 路由算法的分类"></a>1.2 路由算法的分类</h3><ul>
-<li><strong>静态路由 Nonadaptive/Static Routing</strong>：<ul>
+<h3 id="路由算法的分类">1.2 路由算法的分类</h3>
+<ul>
+<li><strong>静态路由 Nonadaptive/Static Routing</strong>：
+<ul>
 <li>提前计算出路由表；</li>
 <li>往往不会改变，需要手动维护；</li>
 <li>不能根据网络实时流量和拓扑结构的变化动态调整；</li>
+</ul></li>
+<li><strong>动态/自适应路由 Adaptive Routing</strong>：
+<ul>
+<li>能适应<strong>网络拓扑 Topology</strong> 和<strong>业务量
+Traffic</strong> 的变化；</li>
+</ul></li>
 </ul>
-</li>
-<li><strong>动态/自适应路由 Adaptive Routing</strong>：<ul>
-<li>能适应<strong>网络拓扑 Topology</strong> 和<strong>业务量 Traffic</strong> 的变化；</li>
-</ul>
-</li>
-</ul>
-<h3 id="1-3-一些概念"><a href="#1-3-一些概念" class="headerlink" title="1.3 一些概念"></a>1.3 一些概念</h3><ul>
+<h3 id="一些概念">1.3 一些概念</h3>
+<ul>
 <li><strong>最优化原则</strong>：最优路径上的任意两点间的路径也是最优的；</li>
-<li><strong>宿树/汇集树 Sink Tree</strong>：以目的地节点为根，由所有源节点到目的节点的最优路径路由构成；<ul>
+<li><strong>宿树/汇集树 Sink
+Tree</strong>：以目的地节点为根，由所有源节点到目的节点的最优路径路由构成；
+<ul>
 <li>由于是树，显然是无环的，不存在无限的跳数；</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h3 id="1-4-路由思想和策略"><a href="#1-4-路由思想和策略" class="headerlink" title="1.4 路由思想和策略"></a>1.4 路由思想和策略</h3><blockquote>
+<h3 id="路由思想和策略">1.4 路由思想和策略</h3>
+<blockquote>
 <p>以下阐述的只是一些路由思想，或者说寻找最优路径的思想，但在实际环境中并不能有效工作；</p>
 </blockquote>
 <ul>
-<li>最短路算法：Dijkstra 算法<ol>
-<li>建立有向加权图；<ul>
+<li>最短路算法：Dijkstra 算法
+<ol type="1">
+<li>建立有向加权图；
+<ul>
 <li>节点为路由器，注意没有主机；</li>
 <li>边为通信线路；</li>
 <li>边权可以为跳数、传输时延、物理距离等等；</li>
-</ul>
-</li>
+</ul></li>
 <li>通过 Dijkstra 算法寻找最短路；</li>
-</ol>
-</li>
-<li>一些选路策略：<ul>
+</ol></li>
+<li>一些选路策略：
+<ul>
 <li>固定查表选路 Fixed Routing；</li>
-<li><strong>泛洪 Flooding</strong>：<ul>
-<li>其基本过程如下：<ul>
+<li><strong>泛洪 Flooding</strong>：
+<ul>
+<li>其基本过程如下：
+<ul>
 <li>将数据包转发给每个邻居；</li>
 <li>邻居再将收到的数据包转发给除了来路之外的所有链路(防止数据包原路返回)；</li>
-</ul>
-</li>
-<li>优点：<ul>
+</ul></li>
+<li>优点：
+<ul>
 <li>泛洪显然不需要路由表，简单粗暴；</li>
 <li>不需要网络信息；</li>
 <li>具有鲁棒性，所有路径都会被尝试，所有节点都会被到达，所以至少有一个数据包会按照最短的路由达到目的地；</li>
 <li>在建立路由表时可能较为有用；</li>
-</ul>
-</li>
-<li>缺点：<ul>
+</ul></li>
+<li>缺点：
+<ul>
 <li>产生大量重复的数据包；</li>
 <li>最终可能有一个或多个重复的数据包到达目的节点；</li>
-</ul>
-</li>
-<li>限制泛滥手段：<ul>
-<li>跳计数器 Hop Counter：<ul>
-<li>每个数据包携带一个 Hop Counter，一般由发送方初始化为源地址到目的地址的距离或子网的网络半径；</li>
+</ul></li>
+<li>限制泛滥手段：
+<ul>
+<li>跳计数器 Hop Counter：
+<ul>
+<li>每个数据包携带一个 Hop
+Counter，一般由发送方初始化为源地址到目的地址的距离或子网的网络半径；</li>
 <li>每经过一跳，Hop Counter 减 1；</li>
 <li>当 Hop Counter 为 0 时，丢弃该包；</li>
-</ul>
-</li>
-<li>序列号 Sequence Number：<ul>
+</ul></li>
+<li>序列号 Sequence Number：
+<ul>
 <li>发送方在每个包前添加序列号；</li>
 <li>每个路由器会记录每个发送方目前的最大序列表，表示该序列号已经通过该路由，从而避免重复转发；</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
+</ul></li>
+</ul></li>
+</ul></li>
 <li>随机选路；</li>
 <li>自适应选路；</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h3 id="1-5-DVR-距离矢量选路-Distance-Vector-Routing"><a href="#1-5-DVR-距离矢量选路-Distance-Vector-Routing" class="headerlink" title="1.5 DVR(距离矢量选路 Distance Vector Routing)"></a>1.5 DVR(距离矢量选路 Distance Vector Routing)</h3><h4 id="1-5-1-执行步骤"><a href="#1-5-1-执行步骤" class="headerlink" title="1.5.1 执行步骤"></a>1.5.1 执行步骤</h4><ul>
-<li>每个路由维持一个路由表，包括：<ul>
+<h3 id="dvr距离矢量选路-distance-vector-routing">1.5 DVR(距离矢量选路
+Distance Vector Routing)</h3>
+<h4 id="执行步骤">1.5.1 执行步骤</h4>
+<ul>
+<li>每个路由维持一个路由表，包括：
+<ul>
 <li>到其他路由的最短距离；</li>
 <li>到该路由使用的下一条的接口；</li>
-</ul>
-</li>
+</ul></li>
 <li>每个路由会<strong>周期性</strong>（RIP：30s）地播报自己的路由表；</li>
 <li>路由器会根据收到的邻居的路由表更新自己的路由表；</li>
-<li>如果在一段时间内（RIP：180s）都没有收到某个路由器的路由表，则将该路由器从自己的路由表中删除（将距离设置为 $\infty$ ）；</li>
+<li>如果在一段时间内（RIP：180s）都没有收到某个路由器的路由表，则将该路由器从自己的路由表中删除（将距离设置为
+<span class="math inline">\(\infty\)</span> ）；</li>
 <li>当迭代至各个路由器的路由表均不发生变化后，则认为构建路由表结束；</li>
 </ul>
-<h4 id="1-5-2-特点"><a href="#1-5-2-特点" class="headerlink" title="1.5.2 特点"></a>1.5.2 特点</h4><ol>
+<h4 id="特点">1.5.2 特点</h4>
+<ol type="1">
 <li>邻接节点之间共享网络信息（路由表）；</li>
 <li>只和初始邻接节点共享信息；</li>
 <li>对所有接口广播信息；</li>
 <li>周期性地广播；</li>
 </ol>
 <blockquote>
-<p>用一句话概括，就是路由器<strong>周期性</strong>地向<strong>所有邻居</strong> <strong>广播</strong>整个<strong>路由表</strong>；</p>
+<p>用一句话概括，就是路由器<strong>周期性</strong>地向<strong>所有邻居</strong>
+<strong>广播</strong>整个<strong>路由表</strong>；</p>
 </blockquote>
-<h4 id="1-5-3-问题"><a href="#1-5-3-问题" class="headerlink" title="1.5.3 问题"></a>1.5.3 问题</h4><ul>
+<h4 id="问题">1.5.3 问题</h4>
+<ul>
 <li>收敛速度较慢；</li>
-<li>“好消息”迅速传遍整个网络，但对“坏消息”反应慢；（React rapidly to good news but leisurely to bad news）；即<strong>无穷计数 Count-to-Infinity</strong> 问题；</li>
+<li>“好消息”迅速传遍整个网络，但对“坏消息”反应慢；（React rapidly to
+good news but leisurely to bad news）；即<strong>无穷计数
+Count-to-Infinity</strong> 问题；</li>
 <li>按传闻进行路由；（Rumor based routing）</li>
 </ul>
-<p><strong>无穷计数问题</strong>：<br><img src="计网学习笔记(5" alt>：网络层/2.png)</p>
-<p>大致的情况就是，节点A下线后，其余节点之间由于<strong>只知道距离，不知道路径</strong>，相互传递距离，反复更新距离（比如上图B没收到A但收到C的路由表，认为可以通过C到达A，于是更是路由表中到达A 的距离为 1 + 2 = 3，然后C又认为可以通过B到达A，如此循环更新，直到 $\infty$ ）；</p>
+<p><strong>无穷计数问题</strong>：<br>
+<img src="2.png"></p>
+<p>大致的情况就是，节点A下线后，其余节点之间由于<strong>只知道距离，不知道路径</strong>，相互传递距离，反复更新距离（比如上图B没收到A但收到C的路由表，认为可以通过C到达A，于是更是路由表中到达A
+的距离为 1 + 2 = 3，然后C又认为可以通过B到达A，如此循环更新，直到 <span class="math inline">\(\infty\)</span> ）；</p>
 <blockquote>
-<p>RIP协议中规定：权重(按跳数 Hop 计) &gt; 16，则认为是 $\infty$，即认为节点已经断开；</p>
-<p><strong>注</strong>：上面提到的<strong>RIP</strong>，<del>并非R.I.P(Rest in Peace)</del>，全称是 Routing Information Protocol，属于一种路由协议，该协议使用 <strong>DVR</strong> 路由算法；</p>
+<p>RIP协议中规定：权重(按跳数 Hop 计) &gt; 16，则认为是 <span class="math inline">\(\infty\)</span>，即认为节点已经断开；</p>
 </blockquote>
-<h3 id="1-6-LSR-链路状态选路-Link-State-Routing"><a href="#1-6-LSR-链路状态选路-Link-State-Routing" class="headerlink" title="1.6 LSR(链路状态选路 Link State Routing)"></a>1.6 LSR(链路状态选路 Link State Routing)</h3><p>与DVR不同，DVR只会向领接路由器发送路由表，而 LSR 中，每个路由器向网络中的所有路由器共享信息；当路由器在本地构建已知的最优网络拓扑图后，发送一个<strong>链路状态包 Link-State Packet</strong> 给所有路由器（Flooding）；主要特点如下：</p>
-<ol>
+<blockquote>
+<p><strong>注</strong>：上面提到的<strong>RIP</strong>，<del>并非R.I.P(Rest
+in Peace)</del>，全称是 Routing Information
+Protocol，属于一种路由协议，该协议使用 <strong>DVR</strong>
+路由算法；</p>
+</blockquote>
+<h3 id="lsr链路状态选路-link-state-routing">1.6 LSR(链路状态选路 Link
+State Routing)</h3>
+<p>与DVR不同，DVR只会向领接路由器发送路由表，而 LSR
+中，每个路由器向网络中的所有路由器共享信息；当路由器在本地构建已知的最优网络拓扑图后，发送一个<strong>链路状态包
+Link-State Packet</strong> 给所有路由器（Flooding）；主要特点如下：</p>
+<ol type="1">
 <li>共享整个网络的拓扑结构信息；</li>
 <li>向网络中的所有路由器共享；</li>
 <li>当网络拓扑结构改变时进行共享；</li>
 </ol>
-<h4 id="1-6-1-执行步骤"><a href="#1-6-1-执行步骤" class="headerlink" title="1.6.1 执行步骤"></a>1.6.1 执行步骤</h4><p>对于每个路由器：</p>
-<ol>
-<li>从相邻的节点学习：<ol>
-<li>本路由器广播(用于广播网络)/多播(用于点对点链路)一个 <strong>HELLO Packet</strong> 给邻接节点；</li>
-<li>邻接节点收到 Hello 包后，回复一个包含自己名字(Route IDs，全网唯一)的包；</li>
-</ol>
-</li>
-<li>测量通信线路开销：<ol>
-<li>通过 <strong>Echo Packet</strong> 测量<strong>往返延时RTT</strong>；</li>
+<h4 id="执行步骤-1">1.6.1 执行步骤</h4>
+<p>对于每个路由器：</p>
+<ol type="1">
+<li>从相邻的节点学习：
+<ol type="1">
+<li>本路由器广播(用于广播网络)/多播(用于点对点链路)一个 <strong>HELLO
+Packet</strong> 给邻接节点；</li>
+<li>邻接节点收到 Hello 包后，回复一个包含自己名字(Route
+IDs，全网唯一)的包；</li>
+</ol></li>
+<li>测量通信线路开销：
+<ol type="1">
+<li>通过 <strong>Echo Packet</strong>
+测量<strong>往返延时RTT</strong>；</li>
 <li>或测量信道带宽等参数；</li>
-</ol>
-</li>
-<li>构建 <strong>Link-State Packet</strong>：<ol>
-<li><img src="计网学习笔记(5" alt>：网络层/3.png)</li>
-<li>Seq 字段表示序列编号，用于检查路由器收到的 LSP 是否是新的：<ol>
+</ol></li>
+<li>构建 <strong>Link-State Packet</strong>：
+<ol type="1">
+<li><img src="3.png"></li>
+<li>Seq 字段表示序列编号，用于检查路由器收到的 LSP 是否是新的：
+<ol type="1">
 <li>如果是新序列编号的 LSP，则继续 Flooding；</li>
-<li>如果是重复编号的或序列编号比已经收到的最大编号小的 LSP，则丢弃；</li>
-</ol>
-</li>
-<li>Age 字段表示寿命，目的是为了避免 LSP 包无限泛滥，用于删除循环的路由；</li>
-<li>当周期性地或监听到某些时间（比如某节点下线）等事件后构建 LSP 包；</li>
-</ol>
-</li>
-<li>发送 <strong>Link-State Packet</strong>：<ol>
+<li>如果是重复编号的或序列编号比已经收到的最大编号小的
+LSP，则丢弃；</li>
+</ol></li>
+<li>Age 字段表示寿命，目的是为了避免 LSP
+包无限泛滥，用于删除循环的路由；</li>
+<li>当周期性地或监听到某些时间（比如某节点下线）等事件后构建 LSP
+包；</li>
+</ol></li>
+<li>发送 <strong>Link-State Packet</strong>：
+<ol type="1">
 <li>由于需要实现可靠发送，所以采用前面提到的泛洪策略；</li>
 <li>每个节点都有错误侦测机制，收到正确的数据包后会回复确认包；</li>
+</ol></li>
+<li>计算新的路由：
+<ol type="1">
+<li>本路由器收到所有的 LSP 包后，在本地运行 Dijkstra
+算法，计算出通往每个目的节点的最短路径，并保存到路由表中；</li>
+</ol></li>
 </ol>
-</li>
-<li>计算新的路由：<ol>
-<li>本路由器收到所有的 LSP 包后，在本地运行 Dijkstra 算法，计算出通往每个目的节点的最短路径，并保存到路由表中；</li>
-</ol>
-</li>
-</ol>
-<h4 id="1-6-2-采用-LSR-的协议"><a href="#1-6-2-采用-LSR-的协议" class="headerlink" title="1.6.2 采用 LSR 的协议"></a>1.6.2 采用 LSR 的协议</h4><ul>
+<h4 id="采用-lsr-的协议">1.6.2 采用 LSR 的协议</h4>
+<ul>
 <li>IS-IS 协议；</li>
 <li>OSPF 协议；</li>
 </ul>
-<h3 id="1-7-层次-分级选路-Hierachical-Routing"><a href="#1-7-层次-分级选路-Hierachical-Routing" class="headerlink" title="1.7 层次/分级选路 Hierachical Routing"></a>1.7 层次/分级选路 Hierachical Routing</h3><p>将距离较近的比如同一单位内的路由划分为同一个<strong>域 Region</strong>，在整个网络内先按照域进行路由，进入域后，才选路至路由器；</p>
-<h1 id="拥塞控制-Congestion-Control"><a href="#拥塞控制-Congestion-Control" class="headerlink" title="拥塞控制 Congestion Control"></a>拥塞控制 Congestion Control</h1><h2 id="1-拥塞"><a href="#1-拥塞" class="headerlink" title="1. 拥塞"></a>1. 拥塞</h2><p>简单来说，拥塞 Congestion 就是网络的负载（同一时间发送到网络的数据包）超过了网络的可用资源（ CPU 处理速度，Buffer 缓冲队列长度，Bandwidth 链路带宽）；拥塞的症状（判断网络拥塞的指标）主要有：</p>
+<h3 id="层次分级选路-hierachical-routing">1.7 层次/分级选路 Hierachical
+Routing</h3>
+<p>将距离较近的比如同一单位内的路由划分为同一个<strong>域
+Region</strong>，在整个网络内先按照域进行路由，进入域后，才选路至路由器；</p>
+<h1 id="拥塞控制-congestion-control">拥塞控制 Congestion Control</h1>
+<h2 id="拥塞">1. 拥塞</h2>
+<p>简单来说，拥塞 Congestion
+就是网络的负载（同一时间发送到网络的数据包）超过了网络的可用资源（ CPU
+处理速度，Buffer 缓冲队列长度，Bandwidth
+链路带宽）；拥塞的症状（判断网络拥塞的指标）主要有：</p>
 <ul>
 <li>Long Delay；</li>
 <li>Lost Packet 较高的丢包率；</li>
@@ -411,70 +468,90 @@
 <p>上述症状并不能用来判断所有网络是否出现拥塞；无线网络产生丢包还要考虑误码等情况；</p>
 </blockquote>
 <p>注意与流量控制进行区分，流量控制只是两个站点（发送方和接收方）之间进行本地的协调；但是拥塞控制的范围是整个网络，是一个全局的问题；</p>
-<h2 id="2-解决方式"><a href="#2-解决方式" class="headerlink" title="2. 解决方式"></a>2. 解决方式</h2><p>解决方式主要分为以下5种：</p>
-<ol>
+<h2 id="解决方式">2. 解决方式</h2>
+<p>解决方式主要分为以下5种：</p>
+<ol type="1">
 <li><strong>网络供给 Networking Provision</strong>；</li>
 <li><strong>业务感知路由 Traffic aware-routing</strong>；</li>
 <li><strong>准入控制 Admission control</strong>；</li>
 <li><strong>流量限制 Traffic throttling</strong>；</li>
 <li><strong>负载掉落 Load shedding</strong>；</li>
 </ol>
-<p>从产生拥塞的问题来看，前两种属于增加资源，后三种属于减少负债；<br>从作用的时间节点来看，前三种属于预防性控制，后两种属于反应性(Reactive)措施；</p>
-<h4 id="2-1-流量调节-业务量减速-Traffic-throttling"><a href="#2-1-流量调节-业务量减速-Traffic-throttling" class="headerlink" title="2.1 流量调节/业务量减速 Traffic throttling"></a>2.1 流量调节/业务量减速 Traffic throttling</h4><p>这是基于反馈的解决方案，需要路由器能够感知拥塞；其基本步骤如下：</p>
-<ol>
-<li>拥塞检测：<ol>
+<p>从产生拥塞的问题来看，前两种属于增加资源，后三种属于减少负债；<br>
+从作用的时间节点来看，前三种属于预防性控制，后两种属于反应性(Reactive)措施；</p>
+<h4 id="流量调节业务量减速-traffic-throttling">2.1 流量调节/业务量减速
+Traffic throttling</h4>
+<p>这是基于反馈的解决方案，需要路由器能够感知拥塞；其基本步骤如下：</p>
+<ol type="1">
+<li>拥塞检测：
+<ol type="1">
 <li>检测输出链路利用率：不够精确；</li>
 <li>排队分组，即计算路由器中缓存的数据包数量；</li>
 <li>计算分组丢包数量：但是太迟；</li>
-<li>估计<strong>队列延时 queuing delay</strong>：通过EWMA(Exponentially Weighted Moving Average 指数加权移动平均)计算，即$d_{new} = \alpha d_{old} + (1-\alpha)s$，其中 $\alpha$ 是平滑因子（越大越平滑），$s$ 是最近采样的队列长度；</li>
-</ol>
-</li>
-<li>拥塞通知：路由器需要通知数据包的发送方产生拥塞，让发送方降低业务量，主要有以下几种方式：<ol>
-<li><strong>抑制分组 Choke Packet</strong>：路由器会发送一个 Choke Packet 给源节点（发送方），包含产生拥塞的目的节点信息；<ul>
+<li>估计<strong>队列延时 queuing delay</strong>：通过EWMA(Exponentially
+Weighted Moving Average 指数加权移动平均)计算，即<span class="math inline">\(d_{new} = \alpha d_{old} +
+(1-\alpha)s\)</span>，其中 <span class="math inline">\(\alpha\)</span>
+是平滑因子（越大越平滑），<span class="math inline">\(s\)</span>
+是最近采样的队列长度；</li>
+</ol></li>
+<li>拥塞通知：路由器需要通知数据包的发送方产生拥塞，让发送方降低业务量，主要有以下几种方式：
+<ol type="1">
+<li><strong>抑制分组 Choke Packet</strong>：路由器会发送一个 Choke
+Packet 给源节点（发送方），包含产生拥塞的目的节点信息；
+<ul>
 <li>发送方发出的原始数据包会被标记，避免产生更多的 Choke Packet；</li>
-<li>实际应用中效果并不好，因为网络已经拥塞了还需要产生 Choke Packet 并在路由间传输；</li>
-</ul>
-</li>
-<li><strong>ECN(Explicit Congestion Notification 显式拥塞通知)</strong>：<ul>
+<li>实际应用中效果并不好，因为网络已经拥塞了还需要产生 Choke Packet
+并在路由间传输；</li>
+</ul></li>
+<li><strong>ECN(Explicit Congestion Notification
+显式拥塞通知)</strong>：
+<ul>
 <li>在 IP 和 TCP 协议中被使用；</li>
-<li>在 IP Packet Header 中专门设置了 2bits 作为拥塞控制比特位；<ul>
+<li>在 IP Packet Header 中专门设置了 2bits 作为拥塞控制比特位；
+<ul>
 <li>默认设置为 00；</li>
 <li>在传输过程中，如果路由器检测到拥塞，将其设置为 11；</li>
-<li>当该数据包发送到目的端节点后，目的端节点通过传输层（端到端通信）发送 Congestion Signal 给源端节点；</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-<li>业务量限制/调节：收到 Choke Packet 后，源节点会减少发送到某个目的地节点的业务量；<ul>
+<li>当该数据包发送到目的端节点后，目的端节点通过传输层（端到端通信）发送
+Congestion Signal 给源端节点；</li>
+</ul></li>
+</ul></li>
+</ol></li>
+<li>业务量限制/调节：收到 Choke Packet
+后，源节点会减少发送到某个目的地节点的业务量；
+<ul>
 <li>减少业务量的方式包括但不限于减小发送窗口；</li>
-</ul>
-</li>
+</ul></li>
 </ol>
 <p>问题：当拥塞恢复时，路由器不会通知端节点恢复业务量？</p>
 <blockquote>
-<p>需要发送方自身进行推测和试探；比如 TCP 的 AIMD 机制（慢启动 + 加性增大），当拥塞时，TCP 会将发送窗口大小减半，然后逐步增加发送窗口大小，如果没有再次丢包，则继续慢慢加大发送窗口，如果丢包则再次降速。</p>
+<p>需要发送方自身进行推测和试探；比如 TCP 的 AIMD 机制（慢启动 +
+加性增大），当拥塞时，TCP
+会将发送窗口大小减半，然后逐步增加发送窗口大小，如果没有再次丢包，则继续慢慢加大发送窗口，如果丢包则再次降速。</p>
 </blockquote>
-<h4 id="2-2-Loading-Shedding-负载掉落"><a href="#2-2-Loading-Shedding-负载掉落" class="headerlink" title="2.2 Loading Shedding 负载掉落"></a>2.2 Loading Shedding 负载掉落</h4><p>关键问题是选择丢弃哪些数据，需要根据不同的应用场景进行选择。</p>
+<h4 id="loading-shedding-负载掉落">2.2 Loading Shedding 负载掉落</h4>
+<p>关键问题是选择丢弃哪些数据，需要根据不同的应用场景进行选择。</p>
 <p><strong>RED(Random Early Detection 随机早期检测)</strong>：</p>
 <ul>
 <li>路由器在路由完全失效前，就随机丢弃一部分包；</li>
-<li>路由器并不会（显式）通知源节点，而是直接丢弃选中的包，但是源节点因为没有收到 ACK，检测到丢包后，会感知到拥塞的信息，并降低发送速度。</li>
+<li>路由器并不会（显式）通知源节点，而是直接丢弃选中的包，但是源节点因为没有收到
+ACK，检测到丢包后，会感知到拥塞的信息，并降低发送速度。</li>
 <li>上述方法即属于<strong>隐式通知</strong>；</li>
 </ul>
-<p>举个例子：</p>
-<ol>
-<li>发送方此时发送了窗口内的 4、5、6 三个序号的数据帧；</li>
-<li>路由器收到序号为 4 的数据帧时，接收并回复 ACK 4；</li>
-<li>路由器收到序号为 5 的数据帧时，因为 RED 机制选中而被丢弃；</li>
-<li>路由器收到序号为 6 的数据帧时，它选择缓存该帧，但由于它期望收到序号为 5 的帧，所以它会回复 ACK 4；</li>
-<li>发送方收到了两个重复的 ACK 4，那么它会知道，后面发送的数据可能丢包了。</li>
-</ol>
+<p>举个例子：<br>
+1. 发送方此时发送了窗口内的 4、5、6 三个序号的数据帧；<br>
+2. 路由器收到序号为 4 的数据帧时，接收并回复 ACK 4；<br>
+3. 路由器收到序号为 5 的数据帧时，因为 RED 机制选中而被丢弃；<br>
+4. 路由器收到序号为 6 的数据帧时，它选择缓存该帧，但由于它期望收到序号为
+5 的帧，所以它会回复 ACK 4；<br>
+5. 发送方收到了两个重复的 ACK
+4，那么它会知道，后面发送的数据可能丢包了。</p>
 <blockquote>
-<p><strong>注</strong>：TCP协议中，规定源节点如果收到 3 个及以上相同的 ACK，则认为发生拥塞；</p>
+<p><strong>注</strong>：TCP协议中，规定源节点如果收到 3 个及以上相同的
+ACK，则认为发生拥塞；</p>
 </blockquote>
-<h1 id="服务质量-Quality-of-Service"><a href="#服务质量-Quality-of-Service" class="headerlink" title="服务质量 Quality of Service"></a>服务质量 Quality of Service</h1><h2 id="1-QoS-参数"><a href="#1-QoS-参数" class="headerlink" title="1. QoS 参数"></a>1. QoS 参数</h2><p>第一章 计算机网络概述中已经讲过，QoS主要包括以下4个参数：</p>
+<h1 id="服务质量-quality-of-service">服务质量 Quality of Service</h1>
+<h2 id="qos-参数">1. QoS 参数</h2>
+<p>第一章 计算机网络概述中已经讲过，QoS主要包括以下4个参数：</p>
 <ul>
 <li>Reliability：可靠性，包括错误率和丢包率；</li>
 <li>Delay；</li>
@@ -482,69 +559,108 @@
 <li>Bandwidth；</li>
 </ul>
 <p>针对不同的应用场景，对参数的要求各不相同，需要提供个性化的服务。</p>
-<h2 id="2-提升服务质量的技术"><a href="#2-提升服务质量的技术" class="headerlink" title="2. 提升服务质量的技术"></a>2. 提升服务质量的技术</h2><h3 id="2-1-流量整形-Traffic-shaping"><a href="#2-1-流量整形-Traffic-shaping" class="headerlink" title="2.1 流量整形 Traffic shaping"></a>2.1 流量整形 Traffic shaping</h3><p>实际网络中，往往会出现<strong>突发流量 Traffic Burst</strong>。平均流量基本固定，但是短时间内的瞬时流量可能非常大。而流量整形的作用就是去除或减少突发流量，使得实时传输速率接近平均速率，其主要涉及以下2个算法。</p>
-<h4 id="漏桶-Leaky-Bucket"><a href="#漏桶-Leaky-Bucket" class="headerlink" title="漏桶 Leaky Bucket"></a>漏桶 Leaky Bucket</h4><p>事实上，桶就是一个 Buffer 队列，通过匀速从队列中拿出数据分组，实现匀速传输。如果桶满，则丢弃新来的数据或等待队列空。</p>
-<h4 id="令牌桶-Token-Bucket"><a href="#令牌桶-Token-Bucket" class="headerlink" title="令牌桶 Token Bucket"></a>令牌桶 Token Bucket</h4><ul>
+<h2 id="提升服务质量的技术">2. 提升服务质量的技术</h2>
+<h3 id="流量整形-traffic-shaping">2.1 流量整形 Traffic shaping</h3>
+<p>实际网络中，往往会出现<strong>突发流量 Traffic
+Burst</strong>。平均流量基本固定，但是短时间内的瞬时流量可能非常大。而流量整形的作用就是去除或减少突发流量，使得实时传输速率接近平均速率，其主要涉及以下2个算法。</p>
+<h4 id="漏桶-leaky-bucket">漏桶 Leaky Bucket</h4>
+<p>事实上，桶就是一个 Buffer
+队列，通过匀速从队列中拿出数据分组，实现匀速传输。如果桶满，则丢弃新来的数据或等待队列空。</p>
+<h4 id="令牌桶-token-bucket">令牌桶 Token Bucket</h4>
+<ul>
 <li>路由器匀速产生令牌，如果令牌桶满则丢弃多余的令牌；</li>
-<li>数据包到达路由器的队列后，需要消耗令牌进行发送，一个 Token 对应 一个 Packet；</li>
+<li>数据包到达路由器的队列后，需要消耗令牌进行发送，一个 Token 对应 一个
+Packet；</li>
 <li>令牌桶并没有数据队列的缓存限制，不会丢弃数据帧；</li>
 <li>令牌桶能接受一定的突发流量，比如突发流量到达，可以一次性消耗所有令牌（跟令牌桶的大小有关）；</li>
 </ul>
 <p>如何计算经过令牌桶后的突发数据的持续时间？</p>
 <p>令：</p>
 <ul>
-<li>突发数据的持续时间为 $S$ sec；</li>
-<li>令牌桶的容量为 $B$ Bytes；</li>
-<li>令牌的产生速率为 $R$ Bytes/s；</li>
-<li>最大的输出速率为 $M$ Bytes/s；</li>
+<li>突发数据的持续时间为 <span class="math inline">\(S\)</span>
+sec；</li>
+<li>令牌桶的容量为 <span class="math inline">\(B\)</span> Bytes；</li>
+<li>令牌的产生速率为 <span class="math inline">\(R\)</span>
+Bytes/s；</li>
+<li>最大的输出速率为 <span class="math inline">\(M\)</span>
+Bytes/s；</li>
 </ul>
 <p>则有以下关系：</p>
-<script type="math/tex; mode=display">
-B + R \times S = M \times S</script><p>即：</p>
-<script type="math/tex; mode=display">
-S = \frac{B}{M - R}</script><h3 id="2-2-分组调度-Packet-Scheduling"><a href="#2-2-分组调度-Packet-Scheduling" class="headerlink" title="2.2 分组调度 Packet Scheduling"></a>2.2 分组调度 Packet Scheduling</h3><h4 id="先进先出队列-FIFO-Queuing"><a href="#先进先出队列-FIFO-Queuing" class="headerlink" title="先进先出队列 FIFO Queuing"></a>先进先出队列 FIFO Queuing</h4><ul>
+<p><span class="math display">\[
+B + R \times S = M \times S
+\]</span></p>
+<p>即：</p>
+<p><span class="math display">\[
+S = \frac{B}{M - R}
+\]</span></p>
+<h3 id="分组调度-packet-scheduling">2.2 分组调度 Packet Scheduling</h3>
+<h4 id="先进先出队列-fifo-queuing">先进先出队列 FIFO Queuing</h4>
+<ul>
 <li>先到达的包先发出；</li>
 <li>后到达的包可能会因为队列空间不够而被丢弃；</li>
 </ul>
-<h4 id="优先级队列-Priority-Queuing"><a href="#优先级队列-Priority-Queuing" class="headerlink" title="优先级队列 Priority Queuing"></a>优先级队列 Priority Queuing</h4><ul>
-<li>到达的数据包先经过一个<strong>分类器 Classifier</strong>，按照优先级不同存入不同的队列；</li>
+<h4 id="优先级队列-priority-queuing">优先级队列 Priority Queuing</h4>
+<ul>
+<li>到达的数据包先经过一个<strong>分类器
+Classifier</strong>，按照优先级不同存入不同的队列；</li>
 <li>同样，后到达的包如果对应的优先级队列已满，同样丢弃；</li>
 <li>如果空闲，那么高优先级队列中的数据包先被处理和发送；</li>
 <li>对低优先级的数据不公平，如果高优先级队列一直有数据需要发送，那么低优先级的数据无法发出；</li>
 </ul>
-<h4 id="公平队列-Fair-Queuing"><a href="#公平队列-Fair-Queuing" class="headerlink" title="公平队列 Fair Queuing"></a>公平队列 Fair Queuing</h4><ul>
-<li>对于每一个流（如果一系列包经过相同的路由，那么称其为<strong>流 Flow</strong>）都有一个队列，循环处理和发送每个队列中的数据包；</li>
+<h4 id="公平队列-fair-queuing">公平队列 Fair Queuing</h4>
+<ul>
+<li>对于每一个流（如果一系列包经过相同的路由，那么称其为<strong>流
+Flow</strong>）都有一个队列，循环处理和发送每个队列中的数据包；</li>
 </ul>
-<h4 id="公平加权队列-Weighted-Fair-Queuing"><a href="#公平加权队列-Weighted-Fair-Queuing" class="headerlink" title="公平加权队列 Weighted Fair Queuing"></a>公平加权队列 Weighted Fair Queuing</h4><ul>
+<h4 id="公平加权队列-weighted-fair-queuing">公平加权队列 Weighted Fair
+Queuing</h4>
+<ul>
 <li>根据优先级对数据进行加权，一般高优先级对应较大的权重；</li>
 <li>循环按照权值处理每个优先队列，比如权值为3的则一次发送3个包，权值为2的一次发送2个包；</li>
 </ul>
 <p>以下是教材的一个实现示例，实际上这种思想的实现方式并不唯一。</p>
-<p><img src="计网学习笔记(5" alt>：网络层/4.png)</p>
+<p><img src="4.png"></p>
 <p>每个包的到达时间和长度是路由器已知的，发送完成的时间根据以下公式给出：</p>
-<script type="math/tex; mode=display">
-Finsh\_time_i = max(Arrival\_time_i, Finish\_time_{i-1}) + \frac{Lengh_i}{Weight_i}</script><h3 id="2-3-Admission-Control"><a href="#2-3-Admission-Control" class="headerlink" title="2.3 Admission Control"></a>2.3 Admission Control</h3><p>暂略；</p>
-<h3 id="2-4-Integrated-Services"><a href="#2-4-Integrated-Services" class="headerlink" title="2.4 Integrated Services"></a>2.4 Integrated Services</h3><p>暂略；</p>
-<h3 id="2-5-Differentiated-Services"><a href="#2-5-Differentiated-Services" class="headerlink" title="2.5 Differentiated Services"></a>2.5 Differentiated Services</h3><p>暂略；</p>
-<h2 id="3-QoS的一个例子——保证转发-Assured-Forwarding"><a href="#3-QoS的一个例子——保证转发-Assured-Forwarding" class="headerlink" title="3. QoS的一个例子——保证转发 Assured Forwarding"></a>3. QoS的一个例子——保证转发 Assured Forwarding</h2><p><img src="计网学习笔记(5" alt>：网络层/5.png)</p>
-<ol>
+<p><span class="math display">\[
+Finsh\_time_i = max(Arrival\_time_i, Finish\_time_{i-1}) +
+\frac{Lengh_i}{Weight_i}
+\]</span></p>
+<h3 id="admission-control">2.3 Admission Control</h3>
+<p>暂略；</p>
+<h3 id="integrated-services">2.4 Integrated Services</h3>
+<p>暂略；</p>
+<h3 id="differentiated-services">2.5 Differentiated Services</h3>
+<p>暂略；</p>
+<h2 id="qos的一个例子保证转发-assured-forwarding">3.
+QoS的一个例子——保证转发 Assured Forwarding</h2>
+<p><img src="5.png"></p>
+<ol type="1">
 <li>所有的业务被划分为4个优先级；</li>
 <li>通过 Traffic Policer 的令牌桶机制进行流量整形；</li>
-<li>在经过 Traffic Policer 时，每个优先级下又被分类为3种优先级，或者说丢弃优先级，即丢包的可能性大小；</li>
+<li>在经过 Traffic Policer
+时，每个优先级下又被分类为3种优先级，或者说丢弃优先级，即丢包的可能性大小；</li>
 <li>所以最终实际上有12种服务等级；</li>
-<li>在每个 Packet 的 IP Header 的 <strong>ToS 字段(Type of Service 服务类型)</strong> 会携带 DSCP(6bits) + ECN(2bits)，其中：<ul>
-<li><strong>DSCP(Differentiated Services Code Point 服务等级)</strong>；</li>
-<li><strong>ECN(Explicit Congestion Notification 拥塞控制)</strong>；</li>
-</ul>
-</li>
-<li>路由器接收到被划分后的包，根据以下2种机制进行分组调度：<ul>
-<li><strong>WFQ(Weighted Fair Queuing 加权公平队列)</strong>：按照优先级进行公平调度；</li>
-<li><strong>RED(Random Early Detection 随机早期检测)</strong>：采用主动丢弃机制，这里被丢弃的概率就是前面划分的丢弃优先级；</li>
-</ul>
-</li>
+<li>在每个 Packet 的 IP Header 的 <strong>ToS 字段(Type of Service
+服务类型)</strong> 会携带 DSCP(6bits) + ECN(2bits)，其中：
+<ul>
+<li><strong>DSCP(Differentiated Services Code Point
+服务等级)</strong>；</li>
+<li><strong>ECN(Explicit Congestion Notification
+拥塞控制)</strong>；</li>
+</ul></li>
+<li>路由器接收到被划分后的包，根据以下2种机制进行分组调度：
+<ul>
+<li><strong>WFQ(Weighted Fair Queuing
+加权公平队列)</strong>：按照优先级进行公平调度；</li>
+<li><strong>RED(Random Early Detection
+随机早期检测)</strong>：采用主动丢弃机制，这里被丢弃的概率就是前面划分的丢弃优先级；</li>
+</ul></li>
 </ol>
-<h1 id="互联-Internetworking"><a href="#互联-Internetworking" class="headerlink" title="互联 Internetworking"></a>互联 Internetworking</h1><p>不同网络的协议不同，在不同网络间传输信息，需要实现网络互联。</p>
-<h3 id="1-分段-分片-Fragmentation"><a href="#1-分段-分片-Fragmentation" class="headerlink" title="1. 分段/分片 Fragmentation"></a>1. 分段/分片 Fragmentation</h3><p>不同的网络的 <strong>MTU(Maximun Transmission Unit 最大传输单元)</strong> 不同，在网络层传输数据时，需要进行分片处理。</p>
+<h1 id="互联-internetworking">互联 Internetworking</h1>
+<p>不同网络的协议不同，在不同网络间传输信息，需要实现网络互联。</p>
+<h3 id="分段分片-fragmentation">1. 分段/分片 Fragmentation</h3>
+<p>不同的网络的 <strong>MTU(Maximun Transmission Unit
+最大传输单元)</strong> 不同，在网络层传输数据时，需要进行分片处理。</p>
 
     </div>
     
