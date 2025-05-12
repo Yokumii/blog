@@ -185,14 +185,14 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/" style="color: #00bcd4">
+                <a href="/blog/tags/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/" style="color: #00a596">
                     离散数学
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #ff7d73">
+                <a href="/blog/tags/%E5%9B%BE%E8%AE%BA/" style="color: #03a9f4">
                     图论
                 </a>
             </span>
@@ -202,34 +202,45 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="10-1-1-度序列可简单图化"><a href="#10-1-1-度序列可简单图化" class="headerlink" title="10.1.1 度序列可简单图化"></a>10.1.1 度序列可简单图化</h1><blockquote>
-<p><strong>可简单图化的充要条件</strong>：<img src="Havel定理.png" alt></p>
-<p><strong>例题</strong>：<img src="可简单图化例题.png" alt></p>
+        <h1 id="度序列可简单图化">10.1.1 度序列可简单图化</h1>
 <blockquote>
-<p><strong>解法</strong>：每次度序列按非递增顺序排列，删除度最大的节点，更新其他节点的度，重新排列，继续重复上述过程。有2种不合理的情况：<br>（1）某次对剩下序列排序后，最大的度数（设为d1）超过了剩下的顶点数；<br>（2）对最大度数后面的d1个数各减1后，出现了负数。</p>
+<p><strong>可简单图化的充要条件</strong>：<img src="Havel定理.png"></p>
+<p><strong>例题</strong>：<img src="可简单图化例题.png"></p>
+<blockquote>
+<p><strong>解法</strong>：每次度序列按非递增顺序排列，删除度最大的节点，更新其他节点的度，重新排列，继续重复上述过程。有2种不合理的情况：<br>
+（1）某次对剩下序列排序后，最大的度数（设为d1）超过了剩下的顶点数；<br>
+（2）对最大度数后面的d1个数各减1后，出现了负数。</p>
 </blockquote>
-<p><strong>应用</strong>：<strong>Frogs’ Neighborhood</strong></p>
+<p><strong>应用</strong>：<strong>Frogs' Neighborhood</strong></p>
 <blockquote>
 <p><strong>Description</strong></p>
 <blockquote>
-<p>未名湖附近共$N$个大小湖泊$L_1, L_2, \cdots, L_n$(其中包括未名湖)，每个湖泊$L_i$里住着一只青蛙$F_i(1 \le i \le N)$。如果湖泊$L_i$和$L_j$之间有水路相连，则青蛙$F_i$和$F_j$互称为邻居。现在已知每只青蛙的邻居数目$x_1, x_2, \cdots, x_n$，请你给出每两个湖泊之间的相连关系。</p>
+<p>未名湖附近共<span class="math inline">\(N\)</span>个大小湖泊<span class="math inline">\(L_1, L_2,
+\cdots, L_n\)</span>(其中包括未名湖)，每个湖泊<span class="math inline">\(L_i\)</span>里住着一只青蛙<span class="math inline">\(F_i(1 \le i \le N)\)</span>。如果湖泊<span class="math inline">\(L_i\)</span>和<span class="math inline">\(L_j\)</span>之间有水路相连，则青蛙<span class="math inline">\(F_i\)</span>和<span class="math inline">\(F_j\)</span>互称为邻居。现在已知每只青蛙的邻居数目<span class="math inline">\(x_1, x_2,
+\cdots, x_n\)</span>，请你给出每两个湖泊之间的相连关系。</p>
 </blockquote>
 <p><strong>Input</strong></p>
 <blockquote>
-<p>第一行是测试数据的组数$T(0 \le T \le 20)$。每组数据包括两行，第一行是整数$N(2 &lt; N &lt; 10)$，第二行是$N$个整数，$x_1, x_2,\cdots, x_n(0 \le x_i \le N)$。</p>
+<p>第一行是测试数据的组数<span class="math inline">\(T(0 \le T \le
+20)\)</span>。每组数据包括两行，第一行是整数<span class="math inline">\(N(2 &lt; N &lt; 10)\)</span>，第二行是<span class="math inline">\(N\)</span>个整数，<span class="math inline">\(x_1, x_2,\cdots, x_n(0
+\le x_i \le N)\)</span>。</p>
 </blockquote>
 <p><strong>Output</strong></p>
 <blockquote>
-<p>对输入的每组测试数据，如果不存在可能的相连关系，输出”NO”。否则输出”YES”，并用$N\times N$的矩阵表示湖泊间的相邻关系，即如果湖泊$i$与湖泊$j$之间有水路相连，则第$i$行的第$j$个数字为$1$，否则为$0$。每两个数字之间输出一个空格。如果存在多种可能，只需给出一种符合条件的情形。相邻两组测试数据之间输出一个空行。</p>
+<p>对输入的每组测试数据，如果不存在可能的相连关系，输出"NO"。否则输出"YES"，并用<span class="math inline">\(N\times
+N\)</span>的矩阵表示湖泊间的相邻关系，即如果湖泊<span class="math inline">\(i\)</span>与湖泊<span class="math inline">\(j\)</span>之间有水路相连，则第<span class="math inline">\(i\)</span>行的第<span class="math inline">\(j\)</span>个数字为<span class="math inline">\(1\)</span>，否则为<span class="math inline">\(0\)</span>。每两个数字之间输出一个空格。如果存在多种可能，只需给出一种符合条件的情形。相邻两组测试数据之间输出一个空行。</p>
 </blockquote>
+</blockquote>
+<blockquote>
 <p><strong>Source</strong></p>
 <blockquote>
-<p><a target="_blank" rel="noopener" href="http://poj.org/searchproblem?field=source&amp;key=POJ+Monthly--2004.05.15+Alcyone%40pku">POJ Monthly—2004.05.15 Alcyone@pku</a></p>
+<p><a target="_blank" rel="noopener" href="http://poj.org/searchproblem?field=source&amp;key=POJ+Monthly--2004.05.15+Alcyone%40pku">POJ
+Monthly--2004.05.15 Alcyone@pku</a></p>
 </blockquote>
 <p><strong>参考代码</strong></p>
 </blockquote>
 </blockquote>
-<pre><code class="lang-c++">#include &lt;cstdio&gt;
+<pre class="cpp"><code>#include &lt;cstdio&gt;
 #include &lt;cstring&gt;
 #include &lt;iostream&gt;
 #include &lt;algorithm&gt;
@@ -298,10 +309,13 @@ int main() &#123;
         if (t) printf(&quot;\n&quot;);  // 如果不是最后一组数据，输出空行
     &#125;
     return 0;
-&#125;
-</code></pre>
-<h1 id="10-1-2-计算两点之间长度为k的通路数Counting-Paths-by-Adjacency-Matrices"><a href="#10-1-2-计算两点之间长度为k的通路数Counting-Paths-by-Adjacency-Matrices" class="headerlink" title="10.1.2 计算两点之间长度为k的通路数Counting Paths by Adjacency Matrices"></a>10.1.2 计算两点之间长度为k的通路数Counting Paths by Adjacency Matrices</h1><p><img src="计算两点间通路数.png" alt><br>类似求传递闭包。<img src="计算两点间通路数2.png" alt></p>
-<h1 id="10-1-3"><a href="#10-1-3" class="headerlink" title="10.1.3"></a>10.1.3</h1>
+&#125;</code></pre>
+<h1 id="计算两点之间长度为k的通路数counting-paths-by-adjacency-matrices">10.1.2
+计算两点之间长度为k的通路数Counting Paths by Adjacency Matrices</h1>
+<p><img src="计算两点间通路数.png"><br>
+类似求传递闭包。<img src="计算两点间通路数2.png"></p>
+<h1 id="section">10.1.3</h1>
+
     </div>
     
     

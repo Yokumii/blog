@@ -185,7 +185,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" style="color: #00a596">
+                <a href="/blog/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" style="color: #00bcd4">
                     人工智能
                 </a>
             </span>
@@ -195,9 +195,15 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="零、概述-Overview"><a href="#零、概述-Overview" class="headerlink" title="零、概述 Overview"></a>零、概述 Overview</h1><p>我们要让 LLM 一次性根据我们的提示生成一个应用的所有前端代码或一整篇论文，LLM 一次性输出最终 Token，不修改，显然是较为困难并且效果不佳的。但是，如果使用代理设计流（Agent Workflow），让 LLM 按照编排的工作流，多次提示，每个步骤都有优化任务，不断迭代改进输出，类似人拆解复杂任务、收集信息、改进迭代并最终达到满意结果的过程。</p>
+        <h1 id="零概述-overview">零、概述 Overview</h1>
+<p>我们要让 LLM
+一次性根据我们的提示生成一个应用的所有前端代码或一整篇论文，LLM
+一次性输出最终
+Token，不修改，显然是较为困难并且效果不佳的。但是，如果使用代理设计流（Agent
+Workflow），让 LLM
+按照编排的工作流，多次提示，每个步骤都有优化任务，不断迭代改进输出，类似人拆解复杂任务、收集信息、改进迭代并最终达到满意结果的过程。</p>
 <p>以编写文档为例，工作流大致涉及以下步骤：</p>
-<ol>
+<ol type="1">
 <li>撰写文档大纲；</li>
 <li>查询本地知识库或网络收集资料；</li>
 <li>撰写初稿；</li>
@@ -205,33 +211,56 @@
 <li>如此迭代到文档符合要求；</li>
 </ol>
 <p>代理设计模式主要包括：</p>
-<ol>
-<li><strong>Reflection Pattern</strong>：反思模式，LLM 可以通过反思自己的行为成为更有效的代理；</li>
+<ol type="1">
+<li><strong>Reflection Pattern</strong>：反思模式，LLM
+可以通过反思自己的行为成为更有效的代理；</li>
 <li><strong>Tool Use Pattern</strong>：工具使用模式；</li>
 <li><strong>Planning Pattern</strong>：规划模式；</li>
 <li><strong>Multi-Agent Pattern</strong>：多代理模式；</li>
 </ol>
-<h1 id="壹、Reflection-Pattern"><a href="#壹、Reflection-Pattern" class="headerlink" title="壹、Reflection Pattern"></a>壹、Reflection Pattern</h1><p>反思模式类似于我们直接与大模型对话，通过不断提示大模型达到我们想要的输出。代理设计模式中，需要将提供反馈的步骤自动化。</p>
+<h1 id="壹reflection-pattern">壹、Reflection Pattern</h1>
+<p>反思模式类似于我们直接与大模型对话，通过不断提示大模型达到我们想要的输出。代理设计模式中，需要将提供反馈的步骤自动化。</p>
 <p>比如可以设计 Prompt 如下：</p>
-<pre><code>现有以下任务X：略；以下是用于任务X的代码：略；请你仔细检查代码的正确性、风格和效率，并就如何改进它给出建设性的批评和建议；
-</code></pre><p>然后，将之前生成的代码和检查后的反馈一起作为 Context 输入给 LLM，让 LLM 根据反馈建议修改代码；</p>
-<p>一个简单的示意图如下：<img src="https://raw.githubusercontent.com/Yokumii/MyPicBucket/img/img/202504081117237.png" alt></p>
+<pre><code>现有以下任务X：略；以下是用于任务X的代码：略；请你仔细检查代码的正确性、风格和效率，并就如何改进它给出建设性的批评和建议；</code></pre>
+<p>然后，将之前生成的代码和检查后的反馈一起作为 Context 输入给 LLM，让
+LLM 根据反馈建议修改代码；</p>
+<p>一个简单的示意图如下：<img src="https://raw.githubusercontent.com/Yokumii/MyPicBucket/img/img/202504081117237.png"></p>
 <p>当然，实际应用中会涉及多次迭代，以获得更高的精度；</p>
-<h2 id="应用：SELF-RAG"><a href="#应用：SELF-RAG" class="headerlink" title="应用：SELF-RAG"></a>应用：SELF-RAG</h2><p>SELF-RAG 在检索以及生成的过程中引入了自我反思机制，下图直观呈现了它和传统 RAG 的区别：<img src="https://raw.githubusercontent.com/Yokumii/MyPicBucket/img/img/202504081124295.png" alt></p>
-<h1 id="贰、Tool-Use-Pattern"><a href="#贰、Tool-Use-Pattern" class="headerlink" title="贰、Tool Use Pattern"></a>贰、Tool Use Pattern</h1><p>代理通过调用 API 来获取预训练模型权重中缺少的额外信息，比如调用 Web 搜索、访问本地知识库、执行代码等等；</p>
-<h1 id="叁、Planning-Pattern"><a href="#叁、Planning-Pattern" class="headerlink" title="叁、Planning Pattern"></a>叁、Planning Pattern</h1><p>前面已经提到，复杂的问题往往需要拆解为多个步骤。我们可以事先就搭建好代理工作流，但是在代理规划模式下，Agent 能动态决定需要采取的步骤。</p>
+<h2 id="应用self-rag">应用：SELF-RAG</h2>
+<p>SELF-RAG
+在检索以及生成的过程中引入了自我反思机制，下图直观呈现了它和传统 RAG
+的区别：<img src="https://raw.githubusercontent.com/Yokumii/MyPicBucket/img/img/202504081124295.png"></p>
+<h1 id="贰tool-use-pattern">贰、Tool Use Pattern</h1>
+<p>代理通过调用 API 来获取预训练模型权重中缺少的额外信息，比如调用 Web
+搜索、访问本地知识库、执行代码等等；</p>
+<h1 id="叁planning-pattern">叁、Planning Pattern</h1>
+<p>前面已经提到，复杂的问题往往需要拆解为多个步骤。我们可以事先就搭建好代理工作流，但是在代理规划模式下，Agent
+能动态决定需要采取的步骤。</p>
 <p>关于任务的分解，主要有以下几种方式：</p>
-<h2 id="Chain-of-Thought-思维链CoT"><a href="#Chain-of-Thought-思维链CoT" class="headerlink" title="Chain of Thought(思维链CoT)"></a>Chain of Thought(思维链CoT)</h2><p>通过“逐步思考”实现复杂推理，</p>
+<h2 id="chain-of-thought思维链cot">Chain of Thought(思维链CoT)</h2>
+<p>通过“逐步思考”实现复杂推理，</p>
 <blockquote>
 <p>可参考内容</p>
 </blockquote>
-<p>[1]  <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2201.11903?utm_campaign=The%20Batch&amp;utm_source=hs_email&amp;utm_medium=email&amp;_hsenc=p2ANqtz-8Kh954rkXmE4vgpKvro3Klpjhn7IuT-Y_eXIYtgVIq9PTzwa5zFWX7FZZqv1tuDEEsTDuY">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a>, Wei et al. (2022)；</p>
-<h2 id="Tree-of-Thought"><a href="#Tree-of-Thought" class="headerlink" title="Tree of Thought"></a>Tree of Thought</h2><p>在前者的基础上进行了扩展，对于每个步骤生成了多个思考，建立树状结构，然后执行 BFS 或 DFS，通过分类器或多数投票进行评估；</p>
-<h1 id="肆、Multi-Agent-Collaboration"><a href="#肆、Multi-Agent-Collaboration" class="headerlink" title="肆、Multi-Agent Collaboration"></a>肆、Multi-Agent Collaboration</h1><p>Multi-Agent Collaboration，即多代理协作，顾名思义，对于一个复杂的任务，拆分成不同的任务，并交给不同代理去做。虽然现在 LLM 的上下文限制不断提升，但对于一个复杂的任务，比如开发一个较为复杂的软件系统，单个 LLM 并不一定能达到较好的效果。而如果像游戏公司一样，将不同部分交给专业的人去做，比如策划、客户端开发、服务端开发、TA、QA、美术等等，让不同的 Agent 完成不同的子任务，可能能达到更好的效果。</p>
+<p>[1] <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2201.11903?utm_campaign=The%20Batch&amp;utm_source=hs_email&amp;utm_medium=email&amp;_hsenc=p2ANqtz-8Kh954rkXmE4vgpKvro3Klpjhn7IuT-Y_eXIYtgVIq9PTzwa5zFWX7FZZqv1tuDEEsTDuY">Chain-of-Thought
+Prompting Elicits Reasoning in Large Language Models</a>, Wei et al.
+(2022)；</p>
+<h2 id="tree-of-thought">Tree of Thought</h2>
+<p>在前者的基础上进行了扩展，对于每个步骤生成了多个思考，建立树状结构，然后执行
+BFS 或 DFS，通过分类器或多数投票进行评估；</p>
+<h1 id="肆multi-agent-collaboration">肆、Multi-Agent Collaboration</h1>
+<p>Multi-Agent
+Collaboration，即多代理协作，顾名思义，对于一个复杂的任务，拆分成不同的任务，并交给不同代理去做。虽然现在
+LLM
+的上下文限制不断提升，但对于一个复杂的任务，比如开发一个较为复杂的软件系统，单个
+LLM
+并不一定能达到较好的效果。而如果像游戏公司一样，将不同部分交给专业的人去做，比如策划、客户端开发、服务端开发、TA、QA、美术等等，让不同的
+Agent 完成不同的子任务，可能能达到更好的效果。</p>
 <blockquote>
 <p>可参考内容</p>
 </blockquote>
-<p>[1]  <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2307.07924?utm_campaign=The%20Batch&amp;utm_source=hs_email&amp;utm_medium=email&amp;_hsenc=p2ANqtz-8TZzur2df1qdnGx09b-Fg94DTsc3-xXao4StKvKNU2HR51el3n8yOm0CPSw6GiAoLQNKua">Communicative Agents for Software Development</a>, Qian et al. (2023)；</p>
+<p>[1] <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2307.07924?utm_campaign=The%20Batch&amp;utm_source=hs_email&amp;utm_medium=email&amp;_hsenc=p2ANqtz-8TZzur2df1qdnGx09b-Fg94DTsc3-xXao4StKvKNU2HR51el3n8yOm0CPSw6GiAoLQNKua">Communicative
+Agents for Software Development</a>, Qian et al. (2023)；</p>
 
     </div>
     

@@ -185,7 +185,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/CSAPP/" style="color: #00bcd4">
+                <a href="/blog/tags/CSAPP/" style="color: #03a9f4">
                     CSAPP
                 </a>
             </span>
@@ -202,29 +202,36 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="指令的概念"><a href="#指令的概念" class="headerlink" title="指令的概念"></a>指令的概念</h1><ul>
+        <h1 id="指令的概念">指令的概念</h1>
+<ul>
 <li>微指令是微程序级命令，属于硬件范畴</li>
 <li>伪指令是由若干机器指令组成的指令序列，属于软件范畴</li>
-<li>机器指令介于二者之间，处于硬件和软件的交界面，本章中提及的指令都指机器指令；<ul>
+<li>机器指令介于二者之间，处于硬件和软件的交界面，本章中提及的指令都指机器指令；
+<ul>
 <li>汇编指令是机器指令的汇编表示形式，即符号表示</li>
 <li>机器指令（二进制串）和汇编指令一一对应，它们都与具体机器结构有关，都属于机器级指令；</li>
 <li>编译Compiling：<code>gcc -Og -S test.c</code>，<code>-Og</code>为优化选项，得到汇编代码<code>test.s</code>；</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h1 id="机器代码的组成"><a href="#机器代码的组成" class="headerlink" title="机器代码的组成"></a>机器代码的组成</h1><ul>
-<li>操作性质（操作码）、源操作数、目的操作数地址（立即数，寄存器编号，存储地址）；<br><img src="1.png" alt></li>
-<li>通常由以下三部分组成：<ul>
-<li>程序计数器PC(Program Counter)：即<code>%rip</code>(x86-64)，指向当前正在执行指令的下一条指令的地址；</li>
+<h1 id="机器代码的组成">机器代码的组成</h1>
+<ul>
+<li>操作性质（操作码）、源操作数、目的操作数地址（立即数，寄存器编号，存储地址）；<br>
+<img src="1.png"></li>
+<li>通常由以下三部分组成：
+<ul>
+<li>程序计数器PC(Program
+Counter)：即<code>%rip</code>(x86-64)，指向当前正在执行指令的下一条指令的地址；</li>
 <li>整数寄存器Register file：分别存储了64位的值（地址，整数数据）；</li>
 <li>状态寄存器Condition codes：最近执行的算术或逻辑指令的状态信息；</li>
-</ul>
-</li>
+</ul></li>
 <li>注意机器代码不区分无符号整数和有符号整数，不区分函数和指针；</li>
 </ul>
-<h1 id="ISA指令集体系结构"><a href="#ISA指令集体系结构" class="headerlink" title="ISA指令集体系结构"></a>ISA指令集体系结构</h1><p><img src="2.png" alt></p>
-<h1 id="信息访问（保护模式下）"><a href="#信息访问（保护模式下）" class="headerlink" title="信息访问（保护模式下）"></a>信息访问（保护模式下）</h1><ol>
-<li>整数寄存器：<img src="3.png" alt><ol>
+<h1 id="isa指令集体系结构">ISA指令集体系结构</h1>
+<p><img src="2.png"></p>
+<h1 id="信息访问保护模式下">信息访问（保护模式下）</h1>
+<ol type="1">
+<li>整数寄存器：<img src="3.png">
+<ol type="1">
 <li><code>%rax</code>，函数返回值；</li>
 <li><code>%rdi</code>，函数调用的第一个参数；</li>
 <li><code>%rsi</code>，函数调用的第二个参数；</li>
@@ -233,54 +240,60 @@
 <li><code>%r8</code>，函数调用的第五个参数；</li>
 <li><code>%r9</code>，函数调用的第六个参数（超过6个参数放在栈空间中）；</li>
 <li><code>%rsp</code>，栈顶指针；</li>
-</ol>
-</li>
-<li>操作数指示符号<ol>
+</ol></li>
+<li>操作数指示符号
+<ol type="1">
 <li>寄存器：直接调用即可；</li>
 <li>立即数：<code>$ + 整数</code>表示；</li>
 <li>内存引用：<code>(%rax)</code></li>
-<li>基址、比例变址、位移操作：<code>D(Rb, Ri, S)</code>，表示获取Rb + S * Ri + D地址上的数，Rb为段基址，Ri为有效地址(不能是%rsp)，S为比例因子(1、2、4、8)，D为偏移量；<img src="4.png" alt>即算的时候是直接拿寄存器做运算得到地址，但最终的结果应该是该地址上的数；</li>
-</ol>
-</li>
-<li>传送指令：<ol>
-<li>mov：<code>movq src, dest</code>；<ol>
-<li>立即数可以移动到寄存器或内存地址(寄存器的内容，即此时立即数存在内存中，寄存器存的是指向该内存的地址)；<ol>
-<li><code>movq $0x4, %rax</code> $\Leftrightarrow$ <code>temp = 0x4</code>；</li>
-<li><code>movq $-147, (%rax)</code>$\Leftrightarrow$ <code>*p = -147</code>；</li>
-</ol>
-</li>
+<li>基址、比例变址、位移操作：<code>D(Rb, Ri, S)</code>，表示获取Rb + S
+* Ri +
+D地址上的数，Rb为段基址，Ri为有效地址(不能是%rsp)，S为比例因子(1、2、4、8)，D为偏移量；<img src="4.png">即算的时候是直接拿寄存器做运算得到地址，但最终的结果应该是该地址上的数；</li>
+</ol></li>
+<li>传送指令：
+<ol type="1">
+<li>mov：<code>movq src, dest</code>；
+<ol type="1">
+<li>立即数可以移动到寄存器或内存地址(寄存器的内容，即此时立即数存在内存中，寄存器存的是指向该内存的地址)；
+<ol type="1">
+<li><code>movq $0x4, %rax</code> <span class="math inline">\(\Leftrightarrow\)</span>
+<code>temp = 0x4</code>；</li>
+<li><code>movq $-147, (%rax)</code><span class="math inline">\(\Leftrightarrow\)</span>
+<code>*p = -147</code>；</li>
+</ol></li>
 <li>寄存器可以移动到寄存器或内存地址；</li>
 <li>内存只能移动到寄存器，内存之间不能移动；</li>
 <li><code>movl</code>指令以寄存器为目的是，不但会更新低32位的值，还会将高位4字节都设置为0；</li>
 <li><code>movs</code>符号扩展；<code>movz</code>零扩展；</li>
-</ol>
-</li>
-<li>lea：加载有效地址，<code>leaq (%rdi, %rdi, 2), %rax</code>；<ol>
+</ol></li>
+<li>lea：加载有效地址，<code>leaq (%rdi, %rdi, 2), %rax</code>；
+<ol type="1">
 <li><strong>注意与<code>mov</code>区别，<code>lea</code>虽然加了括号，但实际上取的是内存的地址，且结果也是内存的地址，而非地址的指向</strong>，所以上面那句指令等价于<code>t = x + x * 2</code>；</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>二元运算指令：<img src="5.png" alt><ul>
+</ol></li>
+</ol></li>
+<li>二元运算指令：<img src="5.png">
+<ul>
 <li>注意<code>sarq</code>为算术右移，<code>shrq</code>为逻辑右移；</li>
 <li><strong>除了乘除，都不区分有符号和无符号</strong>；</li>
 <li><strong>加减影响所有标志</strong>；</li>
 <li><strong>递增递减影响除进位借位CF以外的标志</strong>；</li>
-<li><strong>取负NEG影响标志：对0取负得到0，CF = 0；其余情况CF = 1</strong>；</li>
+<li><strong>取负NEG影响标志：对0取负得到0，CF = 0；其余情况CF =
+1</strong>；</li>
 <li><strong>比较运算：做减法得到标志，不会改变寄存器的值</strong>；</li>
-</ul>
-</li>
-<li>一元运算指令：<img src="6.png" alt><ul>
-<li>逻辑运算中，<code>not</code>不会影响标志，其余OF = CF = 0，ZF和SF根据结果设置；</li>
+</ul></li>
+<li>一元运算指令：<img src="6.png">
+<ul>
+<li>逻辑运算中，<code>not</code>不会影响标志，其余OF = CF =
+0，ZF和SF根据结果设置；</li>
 <li><strong><code>test</code>做“与”操作，但不会改变寄存器的值，仅影响标志位</strong>；</li>
-</ul>
-</li>
+</ul></li>
 </ol>
-<h1 id="GCC的使用举例"><a href="#GCC的使用举例" class="headerlink" title="GCC的使用举例"></a>GCC的使用举例</h1><ol>
+<h1 id="gcc的使用举例">GCC的使用举例</h1>
+<ol type="1">
 <li><code>gcc -Og -S test.c</code>得到汇编代码<code>test.s</code>；</li>
 <li><code>gcc -O1 test.c -o test</code>得到可执行文件<code>test</code>；</li>
 <li><code>objdump -d test.o &gt; test.txt</code>得到反汇编代码；</li>
-<li>注意可重定位目标文件和可执行目标文件的差异，可重定位目标文件还没有经过链接器链接：<img src="7.png" alt></li>
+<li>注意可重定位目标文件和可执行目标文件的差异，可重定位目标文件还没有经过链接器链接：<img src="7.png"></li>
 </ol>
 
     </div>

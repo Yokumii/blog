@@ -185,14 +185,14 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/private/" style="color: #03a9f4">
+                <a href="/blog/tags/private/" style="color: #ffa2c4">
                     private
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="color: #00a596">
+                <a href="/blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="color: #03a9f4">
                     计算机组成原理
                 </a>
             </span>
@@ -202,73 +202,103 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="数据表示方法"><a href="#数据表示方法" class="headerlink" title="数据表示方法"></a>数据表示方法</h1><h2 id="定点数"><a href="#定点数" class="headerlink" title="定点数"></a>定点数</h2><p><img src="计组学习笔记(2" alt>：运算方法与运算器Ⅰ/1.png)</p>
-<h2 id="机器码"><a href="#机器码" class="headerlink" title="机器码"></a>机器码</h2><p>将有符号数中的符号位进行数字化编码得到机器码，原有符号数称为真值。</p>
-<h3 id="原码"><a href="#原码" class="headerlink" title="原码"></a>原码</h3><ul>
-<li>用第一位表示符号位，正0负1；</li>
-<li>真值转化为原码只需根据正负添加符号位；</li>
-<li>0有2种表示；</li>
-<li>运算不便；</li>
-</ul>
-<h3 id="补码"><a href="#补码" class="headerlink" title="补码"></a>补码</h3><ul>
+        <h1 id="数据表示方法">数据表示方法</h1>
+<h2 id="定点数">定点数</h2>
+<p><img src="1.png"></p>
+<h2 id="机器码">机器码</h2>
+<p>将有符号数中的符号位进行数字化编码得到机器码，原有符号数称为真值。<br>
+### 原码<br>
+* 用第一位表示符号位，正0负1；<br>
+* 真值转化为原码只需根据正负添加符号位；<br>
+* 0有2种表示；<br>
+* 运算不便；</p>
+<h3 id="补码">补码</h3>
+<ul>
 <li>正数补码和原码相同；</li>
-<li>负数的原码转补码相当于+$2^{n - 1}$；从二进制码来看就是除符号位之外的数值位取反再加1；</li>
+<li>负数的原码转补码相当于+<span class="math inline">\(2^{n -
+1}\)</span>；从二进制码来看就是除符号位之外的数值位取反再加1；</li>
 </ul>
-<h3 id="反码"><a href="#反码" class="headerlink" title="反码"></a>反码</h3><ul>
+<h3 id="反码">反码</h3>
+<ul>
 <li>正数的补码和反码相同；</li>
 <li>负数的反码转补码，除符号位之外的数值位取反；</li>
 </ul>
-<h3 id="移码"><a href="#移码" class="headerlink" title="移码"></a>移码</h3><script type="math/tex; mode=display">
-[x_{移}] = x + 2^{n-1}</script><ul>
-<li>移码可用来表示浮点数的指数；</li>
-<li>移码和补码尾数相同，符号位相反；</li>
-</ul>
-<h2 id="补码运算"><a href="#补码运算" class="headerlink" title="补码运算"></a>补码运算</h2><script type="math/tex; mode=display">
-[x + y]_{补} = [x]_{补} + [y]_补</script><script type="math/tex; mode=display">
-[x - y]_{补} = [x]_{补} - [y]_{补}</script><script type="math/tex; mode=display">
--[y]_{补} = [-y]_{补}</script><p>注：已知$y$的补码，求$-y$的补码，按位取反+1即可；</p>
-<h2 id="溢出检测方法"><a href="#溢出检测方法" class="headerlink" title="溢出检测方法"></a>溢出检测方法</h2><h3 id="双符号位法"><a href="#双符号位法" class="headerlink" title="双符号位法"></a>双符号位法</h3><h4 id="变形补码"><a href="#变形补码" class="headerlink" title="变形补码"></a>变形补码</h4><p>正数符号位用00表示，负数符号位用11表示；</p>
-<ul>
-<li>运算后符号位变01，表示发生正溢出；</li>
-<li>运算后符号位变10，表示发生负溢出；</li>
-<li>运算后符号位为00或11，未溢出；</li>
-<li>正确结果应该是最高符号位；</li>
-</ul>
-<p>通过以上结果可以发现，溢出的情况有以下两种：</p>
-<ul>
-<li>最高有效位发生进位，但第1符号位（即正常补码的符号位）未发生进位；</li>
-<li>第1符号位发生进位，但最高有效位未发生进位；</li>
-</ul>
+<h3 id="移码">移码</h3>
+<p><span class="math display">\[
+[x_{移}] = x + 2^{n-1}
+\]</span><br>
+* 移码可用来表示浮点数的指数；<br>
+* 移码和补码尾数相同，符号位相反；</p>
+<h2 id="补码运算">补码运算</h2>
+<p><span class="math display">\[
+[x + y]_{补} = [x]_{补} + [y]_补
+\]</span><br>
+<span class="math display">\[
+[x - y]_{补} = [x]_{补} - [y]_{补}
+\]</span><br>
+<span class="math display">\[
+-[y]_{补} = [-y]_{补}
+\]</span></p>
+<p>注：已知<span class="math inline">\(y\)</span>的补码，求<span class="math inline">\(-y\)</span>的补码，按位取反+1即可；</p>
+<h2 id="溢出检测方法">溢出检测方法</h2>
+<h3 id="双符号位法">双符号位法</h3>
+<h4 id="变形补码">变形补码</h4>
+<p>正数符号位用00表示，负数符号位用11表示；<br>
+* 运算后符号位变01，表示发生正溢出；<br>
+* 运算后符号位变10，表示发生负溢出；<br>
+* 运算后符号位为00或11，未溢出；<br>
+* 正确结果应该是最高符号位；</p>
+<p>通过以上结果可以发现，溢出的情况有以下两种：<br>
+*
+最高有效位发生进位，但第1符号位（即正常补码的符号位）未发生进位；<br>
+* 第1符号位发生进位，但最高有效位未发生进位；</p>
 <p>所以，现代计算机中直接采用单符号位法用于溢出检测。</p>
-<h3 id="单符号位法"><a href="#单符号位法" class="headerlink" title="单符号位法"></a>单符号位法</h3><script type="math/tex; mode=display">
-OF = C_f \oplus C_0</script><p>其中：</p>
-<ul>
-<li>$OF$，溢出标志；</li>
-<li>$C_f$，符号位的进位；</li>
-<li>$C_0$，最高有效位的进位；</li>
-</ul>
-<h1 id="加法器"><a href="#加法器" class="headerlink" title="加法器"></a>加法器</h1><h2 id="1位全加器"><a href="#1位全加器" class="headerlink" title="1位全加器"></a>1位全加器</h2><script type="math/tex; mode=display">
-S_i = A_i\oplus B_i \oplus C_i</script><script type="math/tex; mode=display">
-C_i = A_iB_i + (A_i\oplus B_i)C_i</script><p>电路图如下：<br><img src="计组学习笔记(2" alt>：运算方法与运算器Ⅰ/2.png)</p>
-<h2 id="n位行波进位的补码加法器"><a href="#n位行波进位的补码加法器" class="headerlink" title="n位行波进位的补码加法器"></a>n位行波进位的补码加法器</h2><p><img src="计组学习笔记(2" alt>：运算方法与运算器Ⅰ/3.png)</p>
-<p>观察上图，考虑$n = 2$的简单情况：</p>
-<ul>
-<li>高1位等待低1位产生进位的时间为$3T + 3T + T + T = 3T + 3T + 2T$；</li>
-<li>在得到低一位的进位后，产生该位进位需要$2T$；</li>
-<li>最后产生溢出标志和进位标志需要$3T$；</li>
-</ul>
-<p>所以对于$n$位行波进位加法器，时间延迟为$3T + 3T + (n - 1) * 2T + 2T + 3T = （2n + 9)T$；</p>
-<p>如果不考虑溢出检测，最后不需要通过$2T + 3T$，直接产生结果需要$3T$，时间延迟为$3T + 3T + 2(n - 1)T + 3T = 2(n - 1)T + 9T$；</p>
-<h2 id="先行进位加法器"><a href="#先行进位加法器" class="headerlink" title="先行进位加法器"></a>先行进位加法器</h2><p>加法器进位链的基本逻辑关系为：</p>
-<script type="math/tex; mode=display">
-C_{i + 1} = A_iB_i + (A_i+B_i)C_i</script><p>令：</p>
-<ul>
-<li>$G_i = A_iB_i$，本地进位；</li>
-<li>$P_i = A_i + B_i$，进位传递条件；</li>
-</ul>
-<p>于是：</p>
-<script type="math/tex; mode=display">
-C_{i+1} = G_i + P_iC_i</script><p>由此可以递推出如下关系：<br><img src="计组学习笔记(2" alt>：运算方法与运算器Ⅰ/4.png)</p>
+<h3 id="单符号位法">单符号位法</h3>
+<p><span class="math display">\[
+OF = C_f \oplus C_0
+\]</span></p>
+<p>其中：<br>
+* <span class="math inline">\(OF\)</span>，溢出标志；<br>
+* <span class="math inline">\(C_f\)</span>，符号位的进位；<br>
+* <span class="math inline">\(C_0\)</span>，最高有效位的进位；</p>
+<h1 id="加法器">加法器</h1>
+<h2 id="位全加器">1位全加器</h2>
+<p><span class="math display">\[
+S_i = A_i\oplus B_i \oplus C_i
+\]</span></p>
+<p><span class="math display">\[
+C_i = A_iB_i + (A_i\oplus B_i)C_i
+\]</span></p>
+<p>电路图如下：<br>
+<img src="2.png"></p>
+<h2 id="n位行波进位的补码加法器">n位行波进位的补码加法器</h2>
+<p><img src="3.png"></p>
+<p>观察上图，考虑<span class="math inline">\(n =
+2\)</span>的简单情况：<br>
+* 高1位等待低1位产生进位的时间为<span class="math inline">\(3T + 3T + T
++ T = 3T + 3T + 2T\)</span>；<br>
+* 在得到低一位的进位后，产生该位进位需要<span class="math inline">\(2T\)</span>；<br>
+* 最后产生溢出标志和进位标志需要<span class="math inline">\(3T\)</span>；</p>
+<p>所以对于<span class="math inline">\(n\)</span>位行波进位加法器，时间延迟为<span class="math inline">\(3T + 3T + (n - 1) * 2T + 2T + 3T = （2n +
+9)T\)</span>；</p>
+<p>如果不考虑溢出检测，最后不需要通过<span class="math inline">\(2T +
+3T\)</span>，直接产生结果需要<span class="math inline">\(3T\)</span>，时间延迟为<span class="math inline">\(3T + 3T + 2(n - 1)T + 3T = 2(n - 1)T +
+9T\)</span>；</p>
+<h2 id="先行进位加法器">先行进位加法器</h2>
+<p>加法器进位链的基本逻辑关系为：<br>
+<span class="math display">\[
+C_{i + 1} = A_iB_i + (A_i+B_i)C_i
+\]</span></p>
+<p>令：<br>
+* <span class="math inline">\(G_i = A_iB_i\)</span>，本地进位；<br>
+* <span class="math inline">\(P_i = A_i +
+B_i\)</span>，进位传递条件；</p>
+<p>于是：<br>
+<span class="math display">\[
+C_{i+1} = G_i + P_iC_i
+\]</span></p>
+<p>由此可以递推出如下关系：<br>
+<img src="4.png"></p>
 <script>
 
 window.addEventListener('hexo-blog-decrypt', function() {
@@ -279,6 +309,7 @@ console.log('文章已成功解密！');
 });
 
 </script>
+
     </div>
     
     

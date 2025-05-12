@@ -185,14 +185,14 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" style="color: #ffa2c4">
+                <a href="/blog/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" style="color: #00bcd4">
                     人工智能
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/blog/tags/LLM/" style="color: #00bcd4">
+                <a href="/blog/tags/LLM/" style="color: #ffa2c4">
                     LLM
                 </a>
             </span>
@@ -202,19 +202,27 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="What’s-MCP"><a href="#What’s-MCP" class="headerlink" title="What’s MCP"></a>What’s MCP</h1><p>MCP，模型上下文协议，是一种开源标准。如果希望让我们的AI Agent能自动使用工具，能与各种数据源建立连接，自动地访问和利用外部信息，那么MCP就是这一过程的中间件。由LLM来决定需要调用哪些工具，但是由于LLM供应商以及各种工具标准并不统一，就MCP标准化指令的执行。即，MCP提供了一种将代理连接到工具的标准化方法。</p>
-<p>MCP作为一种“中间协议层”，可以通过下图来更好地理解，具体架构将在后文阐述；<br><img src="简述MCP(Model%20Context%20Protocols" alt>/1.png)</p>
-<h1 id="Why’-s-MCP"><a href="#Why’-s-MCP" class="headerlink" title="Why’ s MCP"></a>Why’ s MCP</h1><p>上面也提到了，LLM供应商以及各种工具标准并不统一，并且函数调用本身就具有局限性，再进一步讲述之前，我们先明确函数调用的概念。</p>
-<p>函数调用（function calling）负责将自然语言提示转换为结构化函数调用指令，以便面向工具的系统（如 MCP 服务器）能够理解并执行作。此阶段的重点是为工具或 API 生成精确的指令。这就是LLM与具体系统集成的第一阶段；第二阶段才是MCP提供标准化工具执行指令。</p>
-<p>LLM供应商大都提供了函数调用的功能，这里以Deepseek为例，简述函数调用的过程和使用方法（不考虑MCP的使用），具体内容可以进一步参考<a target="_blank" rel="noopener" href="https://api-docs.deepseek.com/zh-cn/guides/function_calling">Deepseek API文档</a>；</p>
-<ol>
+        <h1 id="whats-mcp">What's MCP</h1>
+<p>MCP，模型上下文协议，是一种开源标准。如果希望让我们的AI
+Agent能自动使用工具，能与各种数据源建立连接，自动地访问和利用外部信息，那么MCP就是这一过程的中间件。由LLM来决定需要调用哪些工具，但是由于LLM供应商以及各种工具标准并不统一，就MCP标准化指令的执行。即，MCP提供了一种将代理连接到工具的标准化方法。</p>
+<p>MCP作为一种“中间协议层”，可以通过下图来更好地理解，具体架构将在后文阐述；<br>
+<img src="1.png"></p>
+<h1 id="why-s-mcp">Why’ s MCP</h1>
+<p>上面也提到了，LLM供应商以及各种工具标准并不统一，并且函数调用本身就具有局限性，再进一步讲述之前，我们先明确函数调用的概念。</p>
+<p>函数调用（function
+calling）负责将自然语言提示转换为结构化函数调用指令，以便面向工具的系统（如
+MCP 服务器）能够理解并执行作。此阶段的重点是为工具或 API
+生成精确的指令。这就是LLM与具体系统集成的第一阶段；第二阶段才是MCP提供标准化工具执行指令。</p>
+<p>LLM供应商大都提供了函数调用的功能，这里以Deepseek为例，简述函数调用的过程和使用方法（不考虑MCP的使用），具体内容可以进一步参考<a target="_blank" rel="noopener" href="https://api-docs.deepseek.com/zh-cn/guides/function_calling">Deepseek
+API文档</a>；</p>
+<ol type="1">
 <li>用户提问：北京今天的天气如何？</li>
-<li>LLM理解用户提问，返回 function <code>get_weather(&#123;location: &#39;Beijing&#39;&#125;)</code>；</li>
-<li>（用户）手动调用 function <code>get_weather(&#123;location: &#39;Beijing&#39;&#125;)</code>，将返回结果传递给LLM；</li>
+<li>LLM理解用户提问，返回 function <code>get_weather(&#123;location: 'Beijing'&#125;)</code>；</li>
+<li>（用户）手动调用 function <code>get_weather(&#123;location: 'Beijing'&#125;)</code>，将返回结果传递给LLM；</li>
 <li>LLM理解结果，并将答案以自然语言形式输出；</li>
 </ol>
 <p>示例代码如下：</p>
-<pre><code class="lang-python">from openai import OpenAI
+<pre class="python"><code>from openai import OpenAI
 
 def send_messages(messages):
     response = client.chat.completions.create(
@@ -258,29 +266,40 @@ messages.append(message)
 
 messages.append(&#123;&quot;role&quot;: &quot;tool&quot;, &quot;tool_call_id&quot;: tool.id, &quot;content&quot;: &quot;24℃&quot;&#125;)
 message = send_messages(messages)
-print(f&quot;Model&gt;\t &#123;message.content&#125;&quot;)
-</code></pre>
+print(f&quot;Model&gt;\t &#123;message.content&#125;&quot;)</code></pre>
 <p>注意上述代码中，我们手动定义了工具的内容，其格式由LLM供应商决定，并且供应商之间标准并不统一。而且，函数调用功能是通过用户手动执行并将结果添加到prompt中实现的。</p>
-<h2 id="MCP’s-Role-in-Execution"><a href="#MCP’s-Role-in-Execution" class="headerlink" title="MCP’s Role in Execution"></a>MCP’s Role in Execution</h2><p>LLM生成函数调用指令后，必须执行这些指令才能提供结果。这就是 MCP 的用武之地。MCP 提供了一个标准化的框架来管理执行过程，包括工具发现、调用和响应处理；关于其具体的执行过程，我们先介绍它的架构；</p>
-<h1 id="MCP-Architecture"><a href="#MCP-Architecture" class="headerlink" title="MCP Architecture"></a>MCP Architecture</h1><p><img src="简述MCP(Model%20Context%20Protocols" alt>/2.png)</p>
-<p>上图直观展示了MCP的架构，它主要围绕三个组件构成：MCP Server、MCP Host、MCP Client；</p>
+<h2 id="mcps-role-in-execution">MCP’s Role in Execution</h2>
+<p>LLM生成函数调用指令后，必须执行这些指令才能提供结果。这就是 MCP
+的用武之地。MCP
+提供了一个标准化的框架来管理执行过程，包括工具发现、调用和响应处理；关于其具体的执行过程，我们先介绍它的架构；</p>
+<h1 id="mcp-architecture">MCP Architecture</h1>
+<p><img src="2.png"></p>
+<p>上图直观展示了MCP的架构，它主要围绕三个组件构成：MCP Server、MCP
+Host、MCP Client；</p>
 <ul>
-<li>MCP Server：顾名思义，是MCP的服务端，即集成的工具、函数、结构和数据连接所在的位置，同时负责执行代理给出的指令；</li>
+<li>MCP
+Server：顾名思义，是MCP的服务端，即集成的工具、函数、结构和数据连接所在的位置，同时负责执行代理给出的指令；</li>
 <li>MCP Host：主机，比如聊天应用程序，用户使用包含代理的应用程序；</li>
-<li>MCP Client：MCP的客户端，是主机与服务器之间的接口，负责数据交换；</li>
+<li>MCP
+Client：MCP的客户端，是主机与服务器之间的接口，负责数据交换；</li>
 </ul>
 <p>当引入MCP后，我们通过Agent代理查询天气的过程变成：</p>
-<ol>
+<ol type="1">
 <li>用户提问：北京今天的天气如何？</li>
-<li>主机连接到LLM，根据问题和服务器提供的工具列表，确定使用哪些MCP Server；</li>
+<li>主机连接到LLM，根据问题和服务器提供的工具列表，确定使用哪些MCP
+Server；</li>
 <li>客户端调用所需的MCP Server，执行所选的工具；</li>
 <li>服务器将结果回送给LLM，后者生成最终答案并输出给用户；</li>
 </ol>
-<h1 id="MCP开发"><a href="#MCP开发" class="headerlink" title="MCP开发"></a>MCP开发</h1><blockquote>
+<h1 id="mcp开发">MCP开发</h1>
+<blockquote>
 <p><strong><em>持续更新中</em></strong>；</p>
 </blockquote>
-<p>官方开发文档可参考：<br><a target="_blank" rel="noopener" href="https://modelcontextprotocol.io/introduction">官方开发文档</a></p>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>[1]. <a target="_blank" rel="noopener" href="https://medium.com/@tahirbalarabe2/what-is-model-context-protocol-mcp-architecture-overview-c75f20ba4498">What is Model Context Protocol? (MCP) Architecture Overview</a></p>
+<p>官方开发文档可参考：<br>
+<a target="_blank" rel="noopener" href="https://modelcontextprotocol.io/introduction">官方开发文档</a></p>
+<h1 id="reference">Reference</h1>
+<p>[1]. <a target="_blank" rel="noopener" href="https://medium.com/@tahirbalarabe2/what-is-model-context-protocol-mcp-architecture-overview-c75f20ba4498">What
+is Model Context Protocol? (MCP) Architecture Overview</a></p>
 
     </div>
     

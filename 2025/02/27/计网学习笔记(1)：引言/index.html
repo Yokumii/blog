@@ -192,7 +192,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="color: #ff7d73">
+                <a href="/blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="color: #00bcd4">
                     计算机网络
                 </a>
             </span>
@@ -202,56 +202,75 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="什么是计算机网络"><a href="#什么是计算机网络" class="headerlink" title="什么是计算机网络"></a>什么是计算机网络</h1><p>a group of <strong>separate but interconnected(相连的)</strong> computers.</p>
+        <h1 id="什么是计算机网络">什么是计算机网络</h1>
+<p>a group of <strong>separate but interconnected(相连的)</strong>
+computers.</p>
 <blockquote>
-<p>可能混淆的概念：</p>
-<ol>
-<li><strong>Distributed Systems 分布式系统</strong>：A software system built on top of a network。一组独立的计算机组成，表现出来就是一台计算机，底层是透明的(不可见的)；</li>
-<li><strong>Computer networks</strong>：一组自主工作的计算机通过一种技术实现互连，所有计算机对用户都是可见的；</li>
-</ol>
+<p>可能混淆的概念：<br>
+1. <strong>Distributed Systems 分布式系统</strong>：A software system
+built on top of a
+network。一组独立的计算机组成，表现出来就是一台计算机，底层是透明的(不可见的)；<br>
+2. <strong>Computer
+networks</strong>：一组自主工作的计算机通过一种技术实现互连，所有计算机对用户都是可见的；</p>
 </blockquote>
 <p>计算机网络不是：</p>
 <blockquote>
-<ol>
-<li><strong>Internet 因特网</strong>：通常指全球范围的互联网，即由无数网络和设备组成的庞大系统；</li>
-<li><strong>WWW 万维网</strong>：A distributed system (or an application) running on top of Internet。一种基于计算机网络提供的应用/服务；</li>
+<ol type="1">
+<li><strong>Internet
+因特网</strong>：通常指全球范围的互联网，即由无数网络和设备组成的庞大系统；</li>
+<li><strong>WWW 万维网</strong>：A distributed system (or an
+application) running on top of
+Internet。一种基于计算机网络提供的应用/服务；</li>
 </ol>
 </blockquote>
-<p>注意区分<strong>Internet(因特网)</strong> 和 <strong>internet(互联网)</strong>；</p>
-<h1 id="QOS-Quality-of-Service-网络服务质量"><a href="#QOS-Quality-of-Service-网络服务质量" class="headerlink" title="QOS(Quality of Service)网络服务质量"></a>QOS(Quality of Service)网络服务质量</h1><ul>
+<p>注意区分<strong>Internet(因特网)</strong> 和
+<strong>internet(互联网)</strong>；</p>
+<h1 id="qosquality-of-service网络服务质量">QOS(Quality of
+Service)网络服务质量</h1>
+<ul>
 <li><strong>Latency/Delay 延迟</strong>：绝对时间差</li>
-<li><strong>Jitter 抖动</strong>：不同数据包到达的时间差（相对时间差）</li>
-<li><strong>Bandwidth 带宽</strong>：网络在单位时间内传输的数据量，通常以bps（比特每秒）为单位</li>
-<li><strong>Bit-Error-Rate(BER) 比特差错率</strong>：传输过程中出错的比特数与总比特数的比率</li>
+<li><strong>Jitter
+抖动</strong>：不同数据包到达的时间差（相对时间差）</li>
+<li><strong>Bandwidth
+带宽</strong>：网络在单位时间内传输的数据量，通常以bps（比特每秒）为单位</li>
+<li><strong>Bit-Error-Rate(BER)
+比特差错率</strong>：传输过程中出错的比特数与总比特数的比率</li>
 </ul>
 <blockquote>
-<p>实时视频会议中，比较重要的QOS指标？<br>Latency and Bandwidth；</p>
+<p>实时视频会议中，比较重要的QOS指标？<br>
+Latency and Bandwidth；</p>
 </blockquote>
-<h1 id="计算机网络的硬件组成"><a href="#计算机网络的硬件组成" class="headerlink" title="计算机网络的硬件组成"></a>计算机网络的硬件组成</h1><ul>
-<li><strong>Nodes</strong>：<ul>
+<h1 id="计算机网络的硬件组成">计算机网络的硬件组成</h1>
+<ul>
+<li><strong>Nodes</strong>：
+<ul>
 <li>Computers/Hosts(主机)/End Systems(终端)；</li>
 <li>Switch(交换机)/Routers(路由)；</li>
-</ul>
-</li>
+</ul></li>
 <li><strong>Communication Links 链路</strong>：有线 or 无线；</li>
 </ul>
 <blockquote>
-<p><strong>Infrastructure network vs. Ad hoc network(自组织网络)</strong>：</p>
-<ol>
-<li>Infrastructure network：基于固定基础设施（如路由器、交换机、接入点）构建的网络；</li>
-<li>Ad hoc network：去中心化的网络，设备直接相互通信，无需依赖固定基础设施；</li>
-</ol>
+<p><strong>Infrastructure network vs. Ad hoc
+network(自组织网络)</strong>：<br>
+1. Infrastructure
+network：基于固定基础设施（如路由器、交换机、接入点）构建的网络；<br>
+2. Ad hoc
+network：去中心化的网络，设备直接相互通信，无需依赖固定基础设施；</p>
 </blockquote>
-<h1 id="计算机网络的分类"><a href="#计算机网络的分类" class="headerlink" title="计算机网络的分类"></a>计算机网络的分类</h1><h2 id="By-Position："><a href="#By-Position：" class="headerlink" title="By Position："></a>By Position：</h2><ul>
+<h1 id="计算机网络的分类">计算机网络的分类</h1>
+<h2 id="by-position">By Position：</h2>
+<ul>
 <li>Access Network；</li>
 <li>Data Center Network；</li>
 <li>Transmission Network；</li>
 </ul>
-<h2 id="By-Transmission-Tech"><a href="#By-Transmission-Tech" class="headerlink" title="By Transmission Tech"></a>By Transmission Tech</h2><ul>
+<h2 id="by-transmission-tech">By Transmission Tech</h2>
+<ul>
 <li><strong>Unicasting(单播)</strong>：点对点链路，中间设备一般是Router；比如WANS，如果用广播，通信量太大；</li>
 <li>Broadcasting(广播)：Multicasting(多播)；</li>
 </ul>
-<h2 id="By-Scale"><a href="#By-Scale" class="headerlink" title="By Scale"></a>By Scale</h2><ul>
+<h2 id="by-scale">By Scale</h2>
+<ul>
 <li>PAN，个域网；蓝牙、RFID等短距射频通信；</li>
 <li>LAN，局域网；Ethernet、WiFi；</li>
 <li>MAN，城域网；cable TV广播电视；</li>
@@ -259,22 +278,28 @@
 <li>The Internet，因特网；特指诞生于美国的全球范围的网络</li>
 </ul>
 <blockquote>
-<p>注意与互联网internet区分，互联网的定义是网络的网络network of networks；</p>
+<p>注意与互联网internet区分，互联网的定义是网络的网络network of
+networks；</p>
 </blockquote>
-<h1 id="计算机网络体系结构"><a href="#计算机网络体系结构" class="headerlink" title="计算机网络体系结构"></a>计算机网络体系结构</h1><p><img src="计网学习笔记(1" alt>：引言/1.png)</p>
+<h1 id="计算机网络体系结构">计算机网络体系结构</h1>
+<p><img src="1.png"></p>
 <blockquote>
-<p><strong>Tips：一些关键概念</strong></p>
-<ol>
-<li><strong>Protocol协议</strong>：对等层之间约定；</li>
-<li><strong>Interface接口</strong>：相邻两层之间，<strong><em>下层为与其相邻的上一层</em></strong>提供服务/接口；</li>
-<li><strong>Peers对等实体</strong>；</li>
-<li><strong>Network Architecture网络体系结构</strong>：<strong><em>包括Layers和Protocals，不包括Interface，并且协议实现的细节也与体系结构无关；</em></strong></li>
-<li><strong>Protocal Stack协议栈</strong>；</li>
-<li><strong>PDU协议数据单元</strong>：即对等层之间进行虚拟通信的数据包，由协议决定；</li>
-<li><strong>Encapsulation封装</strong>：上一层在往下一层传输时前面或后面加上特定的<strong><em>控制消息头</em></strong>，构成本层的数据包(<strong><em>PDU协议数据单元</em></strong>)；</li>
-</ol>
+<p><strong>Tips：一些关键概念</strong><br>
+1. <strong>Protocol协议</strong>：对等层之间约定；<br>
+2.
+<strong>Interface接口</strong>：相邻两层之间，<strong><em>下层为与其相邻的上一层</em></strong>提供服务/接口；<br>
+3. <strong>Peers对等实体</strong>；<br>
+4. <strong>Network
+Architecture网络体系结构</strong>：<strong><em>包括Layers和Protocals，不包括Interface，并且协议实现的细节也与体系结构无关；</em></strong><br>
+5. <strong>Protocal Stack协议栈</strong>；<br>
+6.
+<strong>PDU协议数据单元</strong>：即对等层之间进行虚拟通信的数据包，由协议决定；<br>
+7.
+<strong>Encapsulation封装</strong>：上一层在往下一层传输时前面或后面加上特定的<strong><em>控制消息头</em></strong>，构成本层的数据包(<strong><em>PDU协议数据单元</em></strong>)；</p>
 </blockquote>
-<h1 id="服务分类"><a href="#服务分类" class="headerlink" title="服务分类"></a>服务分类</h1><h2 id="Connetcion-Oriented-面向连接"><a href="#Connetcion-Oriented-面向连接" class="headerlink" title="Connetcion-Oriented 面向连接"></a>Connetcion-Oriented 面向连接</h2><ol>
+<h1 id="服务分类">服务分类</h1>
+<h2 id="connetcion-oriented-面向连接">Connetcion-Oriented 面向连接</h2>
+<ol type="1">
 <li>先建立连接；</li>
 <li>再传送数据（Message报文 &amp;&amp; Packet）；</li>
 <li>最后释放资源；</li>
@@ -282,38 +307,53 @@
 <blockquote>
 <p>特点是传输的顺序是固定的，较为可靠；</p>
 </blockquote>
-<h2 id="Connectionless"><a href="#Connectionless" class="headerlink" title="Connectionless"></a>Connectionless</h2><blockquote>
+<h2 id="connectionless">Connectionless</h2>
+<blockquote>
 <p>特点是动态分配资源（数据传输到了再分配），每条消息和包都需要携带完整的目标地址，数据易丢失；</p>
 </blockquote>
-<h2 id="服务原语Service-Primitives"><a href="#服务原语Service-Primitives" class="headerlink" title="服务原语Service Primitives"></a>服务原语Service Primitives</h2><blockquote>
-<p>基本概念：</p>
-<ol>
-<li>Service Provider(Layer $n$)，Service User(Layer $n + 1$)；</li>
-<li>SAP：Service Access Point服务访问点，即接口Interface；</li>
-</ol>
+<h2 id="服务原语service-primitives">服务原语Service Primitives</h2>
+<blockquote>
+<p>基本概念：<br>
+1. Service Provider(Layer <span class="math inline">\(n\)</span>)，Service User(Layer <span class="math inline">\(n + 1\)</span>)；<br>
+2. SAP：Service Access Point服务访问点，即接口Interface；</p>
 </blockquote>
-<p>服务原语：<br><img src="计网学习笔记(1" alt>：引言/2.png)</p>
-<h3 id="DNS解析的例子"><a href="#DNS解析的例子" class="headerlink" title="DNS解析的例子"></a>DNS解析的例子</h3><p><img src="计网学习笔记(1" alt>：引言/3.png)</p>
-<h3 id="浏览网页的例子"><a href="#浏览网页的例子" class="headerlink" title="浏览网页的例子"></a>浏览网页的例子</h3><p><img src="计网学习笔记(1" alt>：引言/4.png)</p>
-<h2 id="服务和协议的关系"><a href="#服务和协议的关系" class="headerlink" title="服务和协议的关系"></a>服务和协议的关系</h2><ul>
+<p>服务原语：<br>
+<img src="2.png"></p>
+<h3 id="dns解析的例子">DNS解析的例子</h3>
+<p><img src="3.png"></p>
+<h3 id="浏览网页的例子">浏览网页的例子</h3>
+<p><img src="4.png"></p>
+<h2 id="服务和协议的关系">服务和协议的关系</h2>
+<ul>
 <li>该层协议的实现需要下层服务的服务，即下层服务的变化可能会影响上一层协议的实现；</li>
 <li>该层协议的实现需要本层服务的支持；</li>
 <li>该层服务不变时，本层协议实现变化不影响上层；</li>
 </ul>
-<h1 id="参考模型"><a href="#参考模型" class="headerlink" title="参考模型"></a>参考模型</h1><h2 id="OSI模型"><a href="#OSI模型" class="headerlink" title="OSI模型"></a>OSI模型</h2><p><img src="计网学习笔记(1" alt>：引言/5.png)</p>
+<h1 id="参考模型">参考模型</h1>
+<h2 id="osi模型">OSI模型</h2>
+<p><img src="5.png"></p>
 <ul>
 <li>通过中间的路由传输时实际只涉及物理层1、数据链路层2、网络层3；</li>
-<li>只有两端的节点涉及传输层4、会话层5、表示层6、应用层7；<br><img src="计网学习笔记(1" alt>：引言/6.png)</li>
+<li>只有两端的节点涉及传输层4、会话层5、表示层6、应用层7；<br>
+<img src="6.png"></li>
 </ul>
-<h2 id="TCP-IP模型"><a href="#TCP-IP模型" class="headerlink" title="TCP/IP模型"></a>TCP/IP模型</h2><p>标准定义是4层：Application、Transport、Internet网际层、Link；</p>
+<h2 id="tcpip模型">TCP/IP模型</h2>
+<p>标准定义是4层：Application、Transport、Internet网际层、Link；</p>
 <blockquote>
-<p><strong>Internet网际层</strong>：packet switching、connectionless；<strong><em>IP(Internet Protocol)</em></strong>；<br><strong>Transport</strong>：<strong><em>TCP(Transmission Control Protocol)</em></strong>、<strong><em>UDP(User Datagram Protocol)</em></strong>；</p>
-<blockquote>
-<p><strong>TCP</strong>：connection-oriented；<br><strong>UDP</strong>：connectionless；</p>
+<p><strong>Internet网际层</strong>：packet
+switching、connectionless；<strong><em>IP(Internet
+Protocol)</em></strong>；<br>
+<strong>Transport</strong>：<strong><em>TCP(Transmission Control
+Protocol)</em></strong>、<strong><em>UDP(User Datagram
+Protocol)</em></strong>；<br>
+&gt; <strong>TCP</strong>：connection-oriented；<br>
+&gt; <strong>UDP</strong>：connectionless；</p>
 </blockquote>
-</blockquote>
-<p><img src="计网学习笔记(1" alt>：引言/7.png)</p>
-<h2 id="Hybrid-Model混合模型"><a href="#Hybrid-Model混合模型" class="headerlink" title="Hybrid Model混合模型"></a>Hybrid Model混合模型</h2><p>5层，在TCP/IP的基础上将物理层划分了出来；<br>Application Layer；Transport Layer；Network Layer；Data Link Layer；Physical Layer；</p>
+<p><img src="7.png"></p>
+<h2 id="hybrid-model混合模型">Hybrid Model混合模型</h2>
+<p>5层，在TCP/IP的基础上将物理层划分了出来；<br>
+Application Layer；Transport Layer；Network Layer；Data Link
+Layer；Physical Layer；</p>
 <script>
 
 window.addEventListener('hexo-blog-decrypt', function() {
@@ -325,6 +365,7 @@ console.log('文章已成功解密！');
 });
 
 </script>
+
     </div>
     
     

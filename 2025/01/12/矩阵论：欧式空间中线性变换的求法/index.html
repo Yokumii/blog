@@ -185,7 +185,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E7%9F%A9%E9%98%B5%E8%AE%BA/" style="color: #00bcd4">
+                <a href="/blog/tags/%E7%9F%A9%E9%98%B5%E8%AE%BA/" style="color: #ff7d73">
                     矩阵论
                 </a>
             </span>
@@ -195,45 +195,111 @@
     </div>
     
     <div class="content" v-pre>
-        <h2 id="欧式空间中线性变换的求法"><a href="#欧式空间中线性变换的求法" class="headerlink" title="欧式空间中线性变换的求法"></a>欧式空间中线性变换的求法</h2><p>有了前两节的铺垫，下面，我们正式介绍欧式空间中线性变换的求法。</p>
+        <h2 id="欧式空间中线性变换的求法">欧式空间中线性变换的求法</h2>
+<p>有了前两节的铺垫，下面，我们正式介绍欧式空间中线性变换的求法。</p>
 <p>我们将问题描述如下：</p>
 <p><strong>问题描述：</strong></p>
 <ul>
-<li>在欧式空间中给定线性变换 $T: \mathbb{V}^n \to \mathbb{V}^n$，比如：$T( \boldsymbol{X}) =  \boldsymbol{X} \boldsymbol{B}(\forall  \boldsymbol{X} \in \mathbb{V})$，其中 $\boldsymbol{B}$ 给定。</li>
-<li><strong>目标：</strong> 寻找一组新基，使得 $T$ 在这组基下的矩阵表示为对角矩阵 $\boldsymbol{\Lambda}$ 或 Jordan 标准型 $\boldsymbol{J}$。</li>
+<li>在欧式空间中给定线性变换 <span class="math inline">\(T: \mathbb{V}^n
+\to \mathbb{V}^n\)</span>，比如：<span class="math inline">\(T(
+\boldsymbol{X}) =  \boldsymbol{X} \boldsymbol{B}(\forall  \boldsymbol{X}
+\in \mathbb{V})\)</span>，其中 <span class="math inline">\(\boldsymbol{B}\)</span> 给定。</li>
+<li><strong>目标：</strong> 寻找一组新基，使得 <span class="math inline">\(T\)</span> 在这组基下的矩阵表示为对角矩阵 <span class="math inline">\(\boldsymbol{\Lambda}\)</span> 或 Jordan 标准型
+<span class="math inline">\(\boldsymbol{J}\)</span>。</li>
 </ul>
-<p>首先，我们以课本 [矩阵论] 中的例题 1.36 为例，说明对称变换的求法：</p>
-<h3 id="例-1-36"><a href="#例-1-36" class="headerlink" title="例 1.36"></a>例 1.36</h3><p>在欧氏空间 $\mathbb{R}^{2 \times 2}$ 中，矩阵 $\boldsymbol{A}$ 与 $\boldsymbol{B}$ 的内积定义为 <script type="math/tex">( \boldsymbol{A},  \boldsymbol{B})=tr ( \boldsymbol{A}^\top  \boldsymbol{B})</script>，子空间</p>
-<script type="math/tex; mode=display">
-V=\left\{ \boldsymbol{X} =\begin{bmatrix} x_{1} & x_{2}\\ x_{3} & x_{4} \end{bmatrix} \mid x_{3}-x_{4}=0\right\}</script><p>$V$ 中的线性变换为</p>
-<script type="math/tex; mode=display">
-T( \boldsymbol{X})= \boldsymbol{X}  \boldsymbol{B}_{0}\quad (\forall  \boldsymbol{X} \in V), \boldsymbol{B}_{0}=\begin{bmatrix} 1 & 2 \\ 2 & 1 \end{bmatrix}</script><ol>
-<li>求 $V$ 的一个标准正交基；</li>
-<li>验证 $T$ 是 $V$ 中的对称变换；</li>
-<li>求 $V$ 的一个标准正交基，使 $T$ 在该基下的矩阵为对角矩阵。</li>
+<p>首先，我们以课本 [矩阵论] 中的例题 1.36
+为例，说明对称变换的求法：</p>
+<h3 id="例-1.36">例 1.36</h3>
+<p>在欧氏空间 <span class="math inline">\(\mathbb{R}^{2 \times
+2}\)</span> 中，矩阵 <span class="math inline">\(\boldsymbol{A}\)</span>
+与 <span class="math inline">\(\boldsymbol{B}\)</span> 的内积定义为
+<span class="math display">\[( \boldsymbol{A},  \boldsymbol{B})=tr (
+\boldsymbol{A}^\top  \boldsymbol{B})\]</span>，子空间</p>
+<p><span class="math display">\[
+V=\left\{ \boldsymbol{X} =\begin{bmatrix} x_{1} &amp; x_{2}\\ x_{3}
+&amp; x_{4} \end{bmatrix} \mid x_{3}-x_{4}=0\right\}
+\]</span></p>
+<p><span class="math inline">\(V\)</span> 中的线性变换为</p>
+<p><span class="math display">\[
+T( \boldsymbol{X})= \boldsymbol{X}  \boldsymbol{B}_{0}\quad
+(\forall  \boldsymbol{X} \in V), \boldsymbol{B}_{0}=\begin{bmatrix} 1
+&amp; 2 \\ 2 &amp; 1 \end{bmatrix}
+\]</span></p>
+<ol type="1">
+<li>求 <span class="math inline">\(V\)</span> 的一个标准正交基；</li>
+<li>验证 <span class="math inline">\(T\)</span> 是 <span class="math inline">\(V\)</span> 中的对称变换；</li>
+<li>求 <span class="math inline">\(V\)</span> 的一个标准正交基，使 <span class="math inline">\(T\)</span> 在该基下的矩阵为对角矩阵。</li>
 </ol>
-<h3 id="解："><a href="#解：" class="headerlink" title="解："></a>解：</h3><h4 id="1-先找到一组普通的基，再进行-Schmidt-正交化"><a href="#1-先找到一组普通的基，再进行-Schmidt-正交化" class="headerlink" title="(1) 先找到一组普通的基，再进行 Schmidt 正交化"></a>(1) 先找到一组普通的基，再进行 Schmidt 正交化</h4><script type="math/tex; mode=display">
-\boldsymbol{X}=\begin{bmatrix} x_{1} & x_{2} \\ x_{3} & x_{4} \end{bmatrix}=x_{1}\begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix}+x_{2}\begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix}+x_{3}\begin{bmatrix} 0 & 0 \\ 1 & 1 \end{bmatrix}</script><p>一组标准正交基为：</p>
-<script type="math/tex; mode=display">
-\boldsymbol{X}_1 = \begin{bmatrix} 1 & 0\\ 0 & 0 \end{bmatrix} \quad \boldsymbol{X}_2 = \begin{bmatrix} 0 & 1\\ 0 & 0 \end{bmatrix} \quad \boldsymbol{X}_3 = \frac{1}{\sqrt{2}}\begin{bmatrix} 0 & 0\\ 1 & 1 \end{bmatrix}</script><h4 id="2-计算-T-在这组基下的矩阵表示"><a href="#2-计算-T-在这组基下的矩阵表示" class="headerlink" title="(2) 计算 $T$ 在这组基下的矩阵表示"></a>(2) 计算 $T$ 在这组基下的矩阵表示</h4><script type="math/tex; mode=display">
-T(\boldsymbol{X}_1 , \boldsymbol{X}_2, \boldsymbol{X}_3) = (\boldsymbol{X}_1 , \boldsymbol{X}_2, \boldsymbol{X}_3)\boldsymbol{A} \Rightarrow \boldsymbol{A} = \begin{bmatrix} 1 & 2 & 0\\ 2 & 1 & 0\\ 0 & 0 & 3 \end{bmatrix}</script><h4 id="3-计算新的正交基，使-T-在该基下为对角矩阵"><a href="#3-计算新的正交基，使-T-在该基下为对角矩阵" class="headerlink" title="(3) 计算新的正交基，使 $T$ 在该基下为对角矩阵"></a>(3) 计算新的正交基，使 $T$ 在该基下为对角矩阵</h4><script type="math/tex; mode=display">
-\boldsymbol{A} =  \boldsymbol{Q}  \boldsymbol{\Lambda}  \boldsymbol{Q}^\top</script><p>其中：</p>
-<script type="math/tex; mode=display">
-\boldsymbol{\Lambda}= \begin{bmatrix} 3 & & \\ & 3 & \\ & & -1 \end{bmatrix} \quad \boldsymbol{Q}=\begin{bmatrix} 0 & \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \\ 0 & \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} \\ 1 & 0 & 0 \end{bmatrix}</script><p>计算得到的新基：</p>
-<script type="math/tex; mode=display">
-\boldsymbol{Y}_1 = \frac{1}{\sqrt{2}}\begin{bmatrix} 0 & 0\\ 1 & 1 \end{bmatrix} \quad \boldsymbol{Y}_2 = \frac{1}{\sqrt{2}}\begin{bmatrix} 1 & 1\\ 0 & 0 \end{bmatrix} \quad \boldsymbol{Y}_3 = \frac{1}{\sqrt{2}}\begin{bmatrix} -1 & 1\\ 0 & 0 \end{bmatrix}</script><h2 id="线性变换的一般求法"><a href="#线性变换的一般求法" class="headerlink" title="线性变换的一般求法"></a>线性变换的一般求法</h2><p>若 $V$ 是欧式空间，$T$ 是 $V$ 上的一个线性变换：</p>
-<ol>
-<li>任意找到 $V$ 的一个基，并通过 Schmidt 正交化法得到 $V$ 的一个标准正交基，记为 $e_1,e_2,\cdots,e_n$；</li>
-<li><p>求 $T$ 在该标准正交基下的矩阵表示 $\boldsymbol{A}_0$：</p>
-<script type="math/tex; mode=display">T(e_1,e_2,\cdots,e_n) = (e_1,e_2,\cdots,e_n)\boldsymbol{A}_0</script></li>
-<li><p>将 $\boldsymbol{A}_0$ 化为 Jordan 标准型 $\boldsymbol{J}$：</p>
-<script type="math/tex; mode=display">\boldsymbol{A}_0 = \boldsymbol{P}\boldsymbol{J} \boldsymbol{P}^{-1}</script></li>
-<li><p>右乘 $\boldsymbol{P}$：</p>
-<script type="math/tex; mode=display">T(e_1,e_2,\cdots,e_n)\boldsymbol{P} = (e_1,e_2,\cdots,e_n)\boldsymbol{P}\boldsymbol{J}</script></li>
-<li><p>取新基 $(\boldsymbol{E}_1, \boldsymbol{E}_2, \cdots, \boldsymbol{E}_n) = (\boldsymbol{e}_1 , \boldsymbol{e}_2, \cdots, \boldsymbol{e}_n)\boldsymbol{P}$，则线性变换在新基下的矩阵表示为 $\boldsymbol{J}$。</p>
-</li>
+<h3 id="解">解：</h3>
+<h4 id="先找到一组普通的基再进行-schmidt-正交化">(1)
+先找到一组普通的基，再进行 Schmidt 正交化</h4>
+<p><span class="math display">\[
+\boldsymbol{X}=\begin{bmatrix} x_{1} &amp; x_{2} \\ x_{3} &amp; x_{4}
+\end{bmatrix}=x_{1}\begin{bmatrix} 1 &amp; 0 \\ 0 &amp; 0
+\end{bmatrix}+x_{2}\begin{bmatrix} 0 &amp; 1 \\ 0 &amp; 0
+\end{bmatrix}+x_{3}\begin{bmatrix} 0 &amp; 0 \\ 1 &amp; 1 \end{bmatrix}
+\]</span></p>
+<p>一组标准正交基为：</p>
+<p><span class="math display">\[
+\boldsymbol{X}_1 = \begin{bmatrix} 1 &amp; 0\\ 0 &amp; 0 \end{bmatrix}
+\quad \boldsymbol{X}_2 = \begin{bmatrix} 0 &amp; 1\\ 0 &amp; 0
+\end{bmatrix} \quad \boldsymbol{X}_3 = \frac{1}{\sqrt{2}}\begin{bmatrix}
+0 &amp; 0\\ 1 &amp; 1 \end{bmatrix}
+\]</span></p>
+<h4 id="计算-t-在这组基下的矩阵表示">(2) 计算 <span class="math inline">\(T\)</span> 在这组基下的矩阵表示</h4>
+<p><span class="math display">\[
+T(\boldsymbol{X}_1 , \boldsymbol{X}_2, \boldsymbol{X}_3) =
+(\boldsymbol{X}_1 , \boldsymbol{X}_2, \boldsymbol{X}_3)\boldsymbol{A}
+\Rightarrow \boldsymbol{A} = \begin{bmatrix} 1 &amp; 2 &amp; 0\\ 2 &amp;
+1 &amp; 0\\ 0 &amp; 0 &amp; 3 \end{bmatrix}
+\]</span></p>
+<h4 id="计算新的正交基使-t-在该基下为对角矩阵">(3) 计算新的正交基，使
+<span class="math inline">\(T\)</span> 在该基下为对角矩阵</h4>
+<p><span class="math display">\[
+\boldsymbol{A}
+=  \boldsymbol{Q}  \boldsymbol{\Lambda}  \boldsymbol{Q}^\top
+\]</span></p>
+<p>其中：</p>
+<p><span class="math display">\[
+\boldsymbol{\Lambda}= \begin{bmatrix} 3 &amp; &amp; \\ &amp; 3 &amp; \\
+&amp; &amp; -1 \end{bmatrix} \quad \boldsymbol{Q}=\begin{bmatrix} 0
+&amp; \frac{1}{\sqrt{2}} &amp; -\frac{1}{\sqrt{2}} \\ 0 &amp;
+\frac{1}{\sqrt{2}} &amp; -\frac{1}{\sqrt{2}} \\ 1 &amp; 0 &amp; 0
+\end{bmatrix}
+\]</span></p>
+<p>计算得到的新基：</p>
+<p><span class="math display">\[
+\boldsymbol{Y}_1 = \frac{1}{\sqrt{2}}\begin{bmatrix} 0 &amp; 0\\ 1 &amp;
+1 \end{bmatrix} \quad \boldsymbol{Y}_2 =
+\frac{1}{\sqrt{2}}\begin{bmatrix} 1 &amp; 1\\ 0 &amp; 0 \end{bmatrix}
+\quad \boldsymbol{Y}_3 = \frac{1}{\sqrt{2}}\begin{bmatrix} -1 &amp; 1\\
+0 &amp; 0 \end{bmatrix}
+\]</span></p>
+<h2 id="线性变换的一般求法">线性变换的一般求法</h2>
+<p>若 <span class="math inline">\(V\)</span> 是欧式空间，<span class="math inline">\(T\)</span> 是 <span class="math inline">\(V\)</span> 上的一个线性变换：</p>
+<ol type="1">
+<li><p>任意找到 <span class="math inline">\(V\)</span> 的一个基，并通过
+Schmidt 正交化法得到 <span class="math inline">\(V\)</span>
+的一个标准正交基，记为 <span class="math inline">\(e_1,e_2,\cdots,e_n\)</span>；</p></li>
+<li><p>求 <span class="math inline">\(T\)</span>
+在该标准正交基下的矩阵表示 <span class="math inline">\(\boldsymbol{A}_0\)</span>：</p>
+<p><span class="math display">\[ T(e_1,e_2,\cdots,e_n) =
+(e_1,e_2,\cdots,e_n)\boldsymbol{A}_0 \]</span></p></li>
+<li><p>将 <span class="math inline">\(\boldsymbol{A}_0\)</span> 化为
+Jordan 标准型 <span class="math inline">\(\boldsymbol{J}\)</span>：</p>
+<p><span class="math display">\[ \boldsymbol{A}_0 =
+\boldsymbol{P}\boldsymbol{J} \boldsymbol{P}^{-1} \]</span></p></li>
+<li><p>右乘 <span class="math inline">\(\boldsymbol{P}\)</span>：</p>
+<p><span class="math display">\[ T(e_1,e_2,\cdots,e_n)\boldsymbol{P} =
+(e_1,e_2,\cdots,e_n)\boldsymbol{P}\boldsymbol{J} \]</span></p></li>
+<li><p>取新基 <span class="math inline">\((\boldsymbol{E}_1,
+\boldsymbol{E}_2, \cdots, \boldsymbol{E}_n) = (\boldsymbol{e}_1 ,
+\boldsymbol{e}_2, \cdots,
+\boldsymbol{e}_n)\boldsymbol{P}\)</span>，则线性变换在新基下的矩阵表示为
+<span class="math inline">\(\boldsymbol{J}\)</span>。</p></li>
 </ol>
-<p>以上方法可用于简化计算，使得多项式函数 $z = (T^k)(x),x\in V$ 的求解更加简便。</p>
+<p>以上方法可用于简化计算，使得多项式函数 <span class="math inline">\(z
+= (T^k)(x),x\in V\)</span> 的求解更加简便。</p>
 
     </div>
     

@@ -192,7 +192,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="color: #03a9f4">
+                <a href="/blog/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/" style="color: #00bcd4">
                     计算机组成原理
                 </a>
             </span>
@@ -202,42 +202,62 @@
     </div>
     
     <div class="content" v-pre>
-        <h1 id="原码乘法运算"><a href="#原码乘法运算" class="headerlink" title="原码乘法运算"></a>原码乘法运算</h1><p><img src="计组学习笔记(2" alt>：运算方法与运算器II/1.png)</p>
-<h2 id="部分积"><a href="#部分积" class="headerlink" title="部分积"></a>部分积</h2><p>每次提$2^{-1}$，即右移1位：<br><img src="计组学习笔记(2" alt>：运算方法与运算器II/2.png)</p>
-<h1 id="原码除法运算"><a href="#原码除法运算" class="headerlink" title="原码除法运算"></a>原码除法运算</h1><h2 id="加减交替法"><a href="#加减交替法" class="headerlink" title="加减交替法"></a>加减交替法</h2><p><img src="计组学习笔记(2" alt>：运算方法与运算器II/3.png)</p>
-<h1 id="浮点数的表示方法"><a href="#浮点数的表示方法" class="headerlink" title="浮点数的表示方法"></a>浮点数的表示方法</h1><p>一个任意进制数$N$可以表示为：</p>
-<script type="math/tex; mode=display">
-N = M \times R^E</script><p>其中：</p>
+        <h1 id="原码乘法运算">原码乘法运算</h1>
+<p><img src="1.png"></p>
+<h2 id="部分积">部分积</h2>
+<p>每次提<span class="math inline">\(2^{-1}\)</span>，即右移1位：<br>
+<img src="2.png"></p>
+<h1 id="原码除法运算">原码除法运算</h1>
+<h2 id="加减交替法">加减交替法</h2>
+<p><img src="3.png"></p>
+<h1 id="浮点数的表示方法">浮点数的表示方法</h1>
+<p>一个任意进制数<span class="math inline">\(N\)</span>可以表示为：<br>
+<span class="math display">\[
+N = M \times R^E
+\]</span></p>
+<p>其中：<br>
+* <span class="math inline">\(M\)</span>表示尾数，是一个小数；<br>
+* <span class="math inline">\(E\)</span>表示阶码/指数，是一个整数；<br>
+* <span class="math inline">\(R\)</span>表示基数，一般为2，8，16；</p>
+<p>尾数的有效数字位数决定了浮点数的表示精度；阶码的有效数字位数决定了浮点数的表示范围；<br>
+<img src="4.png"></p>
+<h2 id="浮点数的规格化表示">浮点数的规格化表示</h2>
+<p>对于基数为<span class="math inline">\(R\)</span>的规格化浮点数，要求其尾数的绝对值范围：<br>
+<span class="math display">\[
+\frac{1}{R} \le |M| &lt; 1
+\]</span></p>
+<p>对于原码表示的浮点数，即要求最高数值位为1；<br>
+<img src="5.png"></p>
+<h2 id="ieee-754浮点数标准">IEEE 754浮点数标准</h2>
+<p><img src="6.png"></p>
 <ul>
-<li>$M$表示尾数，是一个小数；</li>
-<li>$E$表示阶码/指数，是一个整数；</li>
-<li>$R$表示基数，一般为2，8，16；</li>
-</ul>
-<p>尾数的有效数字位数决定了浮点数的表示精度；阶码的有效数字位数决定了浮点数的表示范围；<br><img src="计组学习笔记(2" alt>：运算方法与运算器II/4.png)</p>
-<h2 id="浮点数的规格化表示"><a href="#浮点数的规格化表示" class="headerlink" title="浮点数的规格化表示"></a>浮点数的规格化表示</h2><p>对于基数为$R$的规格化浮点数，要求其尾数的绝对值范围：</p>
-<script type="math/tex; mode=display">
-\frac{1}{R} \le |M| < 1</script><p>对于原码表示的浮点数，即要求最高数值位为1；<br><img src="计组学习笔记(2" alt>：运算方法与运算器II/5.png)</p>
-<h2 id="IEEE-754浮点数标准"><a href="#IEEE-754浮点数标准" class="headerlink" title="IEEE 754浮点数标准"></a>IEEE 754浮点数标准</h2><p><img src="计组学习笔记(2" alt>：运算方法与运算器II/6.png)</p>
+<li>e，阶：用移码表示，即<span class="math inline">\(E = Exp - (2^{n -
+1} - 1)\)</span></li>
+<li>Frac，小数字段：
 <ul>
-<li>e，阶：用移码表示，即$E = Exp - (2^{n - 1} - 1)$</li>
-<li>Frac，小数字段：<ul>
-<li>规格化数表示：$M = 1 + Frac$；</li>
-<li>非规格化数表示：$M = Frac$；</li>
+<li>规格化数表示：<span class="math inline">\(M = 1 +
+Frac\)</span>；</li>
+<li>非规格化数表示：<span class="math inline">\(M = Frac\)</span>；</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h3 id="特殊的浮点数表示"><a href="#特殊的浮点数表示" class="headerlink" title="特殊的浮点数表示"></a>特殊的浮点数表示</h3><p><img src="计组学习笔记(2" alt>：运算方法与运算器II/7.png)</p>
-<h3 id="浮点数可表示的数值范围"><a href="#浮点数可表示的数值范围" class="headerlink" title="浮点数可表示的数值范围"></a>浮点数可表示的数值范围</h3><p><img src="计组学习笔记(2" alt>：运算方法与运算器II/8.png)</p>
-<h1 id="浮点数的加减法"><a href="#浮点数的加减法" class="headerlink" title="浮点数的加减法"></a>浮点数的加减法</h1><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><script type="math/tex; mode=display">
-x\pm y = (M_x 2^{E_x - E_y} \pm M_y)2^{E_y},E_x \le E_y</script><ol>
+<h3 id="特殊的浮点数表示">特殊的浮点数表示</h3>
+<p><img src="7.png"></p>
+<h3 id="浮点数可表示的数值范围">浮点数可表示的数值范围</h3>
+<p><img src="8.png"></p>
+<h1 id="浮点数的加减法">浮点数的加减法</h1>
+<h2 id="步骤">步骤</h2>
+<p><span class="math display">\[
+x\pm y = (M_x 2^{E_x - E_y} \pm M_y)2^{E_y},E_x \le E_y
+\]</span></p>
+<ol type="1">
 <li>检查操作数是否为0；</li>
 <li>对阶：小阶向大阶对齐；</li>
 <li>用双符号位的尾数进行加减运算；</li>
-<li>规格化：<ol>
+<li>规格化：
+<ol type="1">
 <li>如果双符号位出现01、10的非法值，则向右规格化直至合法；</li>
 <li>检查是否符合规格化小数的要求，向左规格化直至合法；</li>
-</ol>
-</li>
+</ol></li>
 <li>舍入（可能再次规格化）：向偶数舍入；</li>
 </ol>
 <script>
@@ -249,7 +269,6 @@ console.log('文章已成功解密！');
 });
 
 </script>
-
 
     </div>
     

@@ -185,7 +185,7 @@
             
             <span class="tag">
                 
-                <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="color: #00bcd4">
+                <a href="/blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="color: #ff7d73">
                     数据结构
                 </a>
             </span>
@@ -195,39 +195,58 @@
     </div>
     
     <div class="content" v-pre>
-        <h2 id="Chapter1-概论"><a href="#Chapter1-概论" class="headerlink" title="Chapter1 概论"></a>Chapter1 概论</h2><ul>
-<li>数据、数据元素、数据项、数据对象、数据结构等基本概念<img src="概论概念.png" alt><img src="概论概念2.png" alt><img src="概论概念3.png" alt></li>
-<li>逻辑结构，存储结构及数据运算的含义及其相互关系<img src="存储结构.png" alt><img src="相互关系.png" alt></li>
+        <h2 id="chapter1-概论">Chapter1 概论</h2>
+<ul>
+<li>数据、数据元素、数据项、数据对象、数据结构等基本概念<img src="概论概念.png"><img src="概论概念2.png"><img src="概论概念3.png"></li>
+<li>逻辑结构，存储结构及数据运算的含义及其相互关系<img src="存储结构.png"><img src="相互关系.png"></li>
 <li>算法评价标准：正确性、可读性、健壮性、效率与存储量需求、支持分布式和并行处理的算法在大数据场景下更有优势。</li>
 </ul>
-<h2 id="Chapter2-线性表"><a href="#Chapter2-线性表" class="headerlink" title="Chapter2 线性表"></a>Chapter2 线性表</h2><h3 id="2-2链表"><a href="#2-2链表" class="headerlink" title="2.2链表"></a>2.2链表</h3><ul>
-<li>头节点的使用：头节点的指针域指向第一个数据节点的地址<img src="头节点.png" alt></li>
+<h2 id="chapter2-线性表">Chapter2 线性表</h2>
+<h3 id="链表">2.2链表</h3>
+<ul>
+<li>头节点的使用：头节点的指针域指向第一个数据节点的地址<img src="头节点.png"></li>
 </ul>
-<h2 id="Chapter3-栈、队列"><a href="#Chapter3-栈、队列" class="headerlink" title="Chapter3 栈、队列"></a>Chapter3 栈、队列</h2><h3 id="3-1-栈"><a href="#3-1-栈" class="headerlink" title="3.1 栈"></a>3.1 栈</h3><h4 id="3-1-1-顺序栈"><a href="#3-1-1-顺序栈" class="headerlink" title="3.1.1 顺序栈"></a>3.1.1 顺序栈</h4><ul>
+<h2 id="chapter3-栈队列">Chapter3 栈、队列</h2>
+<h3 id="栈">3.1 栈</h3>
+<h4 id="顺序栈">3.1.1 顺序栈</h4>
+<ul>
 <li>非空栈中的栈顶指针<strong>top来指向栈顶元素的下一个位置</strong>；</li>
-<li>空栈时top = base，栈中元素的数量 = top - base；<h4 id="3-1-2-链栈"><a href="#3-1-2-链栈" class="headerlink" title="3.1.2 链栈"></a>3.1.2 链栈</h4></li>
+<li>空栈时top = base，栈中元素的数量 = top - base；<br>
+#### 3.1.2 链栈</li>
 <li>链表指针方向是从栈顶指向栈底；</li>
 </ul>
-<h4 id="3-1-3-应用"><a href="#3-1-3-应用" class="headerlink" title="3.1.3 应用"></a>3.1.3 应用</h4><ul>
+<h4 id="应用">3.1.3 应用</h4>
+<ul>
 <li>括弧匹配检验</li>
-<li>中缀表达式：左括号在栈外时优先级最高，在栈内时优先级很 低，仅高于栈外的右括号；</li>
-<li>后缀表达式；<img src="中缀后缀转换.png" alt></li>
+<li>中缀表达式：左括号在栈外时优先级最高，在栈内时优先级很
+低，仅高于栈外的右括号；</li>
+<li>后缀表达式；<img src="中缀后缀转换.png"></li>
 <li>尾递归：递归调用出现在函数中的最后一行，并且没有任何局部变量参与最后一行代码的计算。此时支持“尾递归优化”的编程语言就可以在执行尾递归代码时不进行入栈操作；</li>
 </ul>
-<h3 id="3-2-队列"><a href="#3-2-队列" class="headerlink" title="3.2 队列"></a>3.2 队列</h3><h4 id="3-2-1-顺序队列"><a href="#3-2-1-顺序队列" class="headerlink" title="3.2.1 顺序队列"></a>3.2.1 顺序队列</h4><ul>
-<li>队空是front  = rear = 0；非空队列头指针始终指向队列头元素，而尾指针始终指向<strong>队列尾元素的下一个位置</strong>。</li>
-<li>循环队列：解决“假溢出”；判空采用：front == rear；判满采用：少用一个元素空间，当队尾指针加1就会从后面赶上队头指针，这种情况下队满的条件是：(rear+1) % MAXSIZE  == front；<h4 id="3-2-2-链队"><a href="#3-2-2-链队" class="headerlink" title="3.2.2 链队"></a>3.2.2 链队</h4></li>
+<h3 id="队列">3.2 队列</h3>
+<h4 id="顺序队列">3.2.1 顺序队列</h4>
+<ul>
+<li>队空是front = rear =
+0；非空队列头指针始终指向队列头元素，而尾指针始终指向<strong>队列尾元素的下一个位置</strong>。</li>
+<li>循环队列：解决“假溢出”；判空采用：front ==
+rear；判满采用：少用一个元素空间，当队尾指针加1就会从后面赶上队头指针，这种情况下队满的条件是：(rear+1)
+% MAXSIZE == front；<br>
+#### 3.2.2 链队</li>
 </ul>
-<h2 id="Chapter4-串"><a href="#Chapter4-串" class="headerlink" title="Chapter4 串"></a>Chapter4 串</h2><h3 id="4-1-串的基本操作"><a href="#4-1-串的基本操作" class="headerlink" title="4.1 串的基本操作"></a>4.1 串的基本操作</h3><pre><code class="lang-c">Concat(&amp;T, S1, S2); // 用T返回由S1和S2连接而成的新串两串
+<h2 id="chapter4-串">Chapter4 串</h2>
+<h3 id="串的基本操作">4.1 串的基本操作</h3>
+<pre class="c"><code>Concat(&amp;T, S1, S2); // 用T返回由S1和S2连接而成的新串两串
 SubString(&amp;Sub, S, pos, len); // 用Sub返回S字符串第pos个位置开始的长度为len的子串
 StrCompare(S, T); // 两串比较S &gt; T，返回值 &gt; 0；S = T，返回值 = 0；S &lt; T，返回值 &lt; 0；
 Index(S, T, pos); // 在S中第pos个位置开始后的部分找到与T相同的子串，返回第一次出现的位置，未找到则返回 0
 Replace(&amp;S, T, V); // 用V替换S中与T相等的不重叠子串
 StrInsert(&amp;S, pos, T); // 在S的第pos个位置前插入T
-StrDelete(&amp;S, pos, len); // 在S中的第pos个位置开始删除长度为len的子串
-</code></pre>
-<h3 id="4-2-串的模式匹配算法"><a href="#4-2-串的模式匹配算法" class="headerlink" title="4.2 串的模式匹配算法"></a>4.2 串的模式匹配算法</h3><h4 id="4-2-1-简单模式匹配算法Brute-Force"><a href="#4-2-1-简单模式匹配算法Brute-Force" class="headerlink" title="4.2.1 简单模式匹配算法Brute Force"></a>4.2.1 简单模式匹配算法Brute Force</h4><p>逐个遍历字符串的每个字母，并逐个检查从它开始的长为len个的字符是否匹配；</p>
-<pre><code class="lang-c">int Index(SString S, SString T, int pos) &#123;
+StrDelete(&amp;S, pos, len); // 在S中的第pos个位置开始删除长度为len的子串</code></pre>
+<h3 id="串的模式匹配算法">4.2 串的模式匹配算法</h3>
+<h4 id="简单模式匹配算法brute-force">4.2.1 简单模式匹配算法Brute
+Force</h4>
+<p>逐个遍历字符串的每个字母，并逐个检查从它开始的长为len个的字符是否匹配；</p>
+<pre class="c"><code>int Index(SString S, SString T, int pos) &#123;
     i = pos;  j = 1;
     while (i &lt;= S[0] &amp;&amp; j &lt;= T[0]) &#123;
         if (S[i] == T[j]) &#123; 
@@ -244,116 +263,188 @@ StrDelete(&amp;S, pos, len); // 在S中的第pos个位置开始删除长度为le
     if (j &gt; T[0]) 
         return i-T[0];
     else return 0;
-&#125; // Index
-</code></pre>
-<p>最好情况下平均时间复杂度为$O(m + n)$，最坏情况下为$O(m * n)$。</p>
-<h4 id="4-2-2-KMP算法"><a href="#4-2-2-KMP算法" class="headerlink" title="4.2.2 KMP算法"></a>4.2.2 KMP算法</h4><p>见<a href="https://yokumii.github.io/blog/2024/12/26/KMP%E7%AE%97%E6%B3%95/">KMP算法</a>。</p>
-<h2 id="Chapter5-数组与广义表"><a href="#Chapter5-数组与广义表" class="headerlink" title="Chapter5 数组与广义表"></a>Chapter5 数组与广义表</h2><h3 id="5-1-数组"><a href="#5-1-数组" class="headerlink" title="5.1 数组"></a>5.1 数组</h3><ul>
+&#125; // Index</code></pre>
+<p>最好情况下平均时间复杂度为<span class="math inline">\(O(m +
+n)\)</span>，最坏情况下为<span class="math inline">\(O(m *
+n)\)</span>。<br>
+#### 4.2.2 KMP算法<br>
+见<a href="https://yokumii.github.io/blog/2024/12/26/KMP%E7%AE%97%E6%B3%95/">KMP算法</a>。</p>
+<h2 id="chapter5-数组与广义表">Chapter5 数组与广义表</h2>
+<h3 id="数组">5.1 数组</h3>
+<ul>
 <li>数组是线性表的扩展，其数据元素本身也是线性表；</li>
-<li>数组中各元素都具有统一的类型；<h3 id="5-2-矩阵的压缩存储"><a href="#5-2-矩阵的压缩存储" class="headerlink" title="5. 2 矩阵的压缩存储"></a>5. 2 矩阵的压缩存储</h3></li>
-<li>目的是为了节省空间；<h4 id="5-2-1-对称矩阵"><a href="#5-2-1-对称矩阵" class="headerlink" title="5.2.1 对称矩阵"></a>5.2.1 对称矩阵</h4><h4 id="5-2-2-带状矩阵"><a href="#5-2-2-带状矩阵" class="headerlink" title="5.2.2 带状矩阵"></a>5.2.2 带状矩阵</h4><h4 id="5-2-3-随机稀疏矩阵"><a href="#5-2-3-随机稀疏矩阵" class="headerlink" title="5.2.3 随机稀疏矩阵"></a>5.2.3 随机稀疏矩阵</h4>（1）顺序存储方法：三元表法<br>（2）链式存储方法：十字链表法<br>在行、列两个方向上，将非零元素链接在一起。克服三元组表在矩阵的非零元素位置或个数经常变动时的使用不便。<img src="十字链表法.png" alt><h3 id="5-3-广义表"><a href="#5-3-广义表" class="headerlink" title="5.3 广义表"></a>5.3 广义表</h3></li>
-<li>广义表是由零个或多个原子或者子表组成的有限序列；<ul>
+<li>数组中各元素都具有统一的类型；<br>
+### 5. 2 矩阵的压缩存储</li>
+<li>目的是为了节省空间；<br>
+#### 5.2.1 对称矩阵<br>
+#### 5.2.2 带状矩阵<br>
+#### 5.2.3 随机稀疏矩阵<br>
+（1）顺序存储方法：三元表法<br>
+（2）链式存储方法：十字链表法<br>
+在行、列两个方向上，将非零元素链接在一起。克服三元组表在矩阵的非零元素位置或个数经常变动时的使用不便。<img src="十字链表法.png"><br>
+### 5.3 广义表</li>
+<li>广义表是由零个或多个原子或者子表组成的有限序列；
+<ul>
 <li>原子：逻辑上不能再分解的元素；</li>
 <li>子表：作为广义表中元素的广义表；</li>
-</ul>
-</li>
+</ul></li>
 <li>广义表中的元素全部为原子时即为线性表，线性表是广义表的特例，广义表是线性表的推广；</li>
 <li>一般用大写字母表示广义表的名称，用小写字母表示原子；</li>
 <li>表的长度：表中的（第一层）元素个数；</li>
 <li>表的深度：表中元素的最深嵌套层数；</li>
 <li>表头：表中的第一个元素；</li>
-<li>表尾：除第一个元素外，剩余元素<strong>构成的广义表</strong>。 任何一个非空广义表的表尾必定仍为广义表；</li>
+<li>表尾：除第一个元素外，剩余元素<strong>构成的广义表</strong>。
+任何一个非空广义表的表尾必定仍为广义表；</li>
 </ul>
-<h2 id="Chapter-6-树和二叉树"><a href="#Chapter-6-树和二叉树" class="headerlink" title="Chapter 6 树和二叉树"></a>Chapter 6 树和二叉树</h2><h3 id="6-1-树"><a href="#6-1-树" class="headerlink" title="6.1 树"></a>6.1 树</h3><h3 id="6-2-二叉树"><a href="#6-2-二叉树" class="headerlink" title="6.2 二叉树"></a>6.2 二叉树</h3><h3 id="6-3-线索二叉树"><a href="#6-3-线索二叉树" class="headerlink" title="6.3 线索二叉树"></a>6.3 线索二叉树</h3><ul>
+<h2 id="chapter-6-树和二叉树">Chapter 6 树和二叉树</h2>
+<h3 id="树">6.1 树</h3>
+<h3 id="二叉树">6.2 二叉树</h3>
+<h3 id="线索二叉树">6.3 线索二叉树</h3>
+<ul>
 <li>如果无左孩子，那利用左孩子指针指向直接前驱节点；如果无右孩子，那利用右孩子指针指向直接后继节点；</li>
 </ul>
-<h3 id="6-4-树和森林"><a href="#6-4-树和森林" class="headerlink" title="6.4 树和森林"></a>6.4 树和森林</h3><ul>
-<li>孩子兄弟链表表示法：左孩子，右兄弟；<h4 id="6-4-1-树转化为二叉树"><a href="#6-4-1-树转化为二叉树" class="headerlink" title="6.4.1 树转化为二叉树"></a>6.4.1 树转化为二叉树</h4></li>
+<h3 id="树和森林">6.4 树和森林</h3>
+<ul>
+<li>孩子兄弟链表表示法：左孩子，右兄弟；<br>
+#### 6.4.1 树转化为二叉树</li>
 </ul>
-<ol>
+<ol type="1">
 <li>在所有兄弟结点之间加一条连线；</li>
 <li>对每个结点，除了保留与其长子的连线外，去掉该结点与其他孩子的连线；</li>
-<li>以根为轴心将整棵树顺时针转45度；<br>特点：无右子树、左支是孩子、右支是兄弟；<h4 id="6-4-2-森林转化为二叉树"><a href="#6-4-2-森林转化为二叉树" class="headerlink" title="6.4.2 森林转化为二叉树"></a>6.4.2 森林转化为二叉树</h4></li>
+<li>以根为轴心将整棵树顺时针转45度；<br>
+特点：无右子树、左支是孩子、右支是兄弟；<br>
+#### 6.4.2 森林转化为二叉树</li>
 <li>先将森林的每一个树转化为二叉树；</li>
-<li>从后一棵树开始，将后一棵树作为前一棵树的右子；<h4 id="6-4-3-二叉树转化为树-森林"><a href="#6-4-3-二叉树转化为树-森林" class="headerlink" title="6.4.3 二叉树转化为树/森林"></a>6.4.3 二叉树转化为树/森林</h4></li>
+<li>从后一棵树开始，将后一棵树作为前一棵树的右子；<br>
+#### 6.4.3 二叉树转化为树/森林</li>
 <li>把双亲节点的左孩子的右孩子、右孩子的右孩子、……和双亲节点连接起来；</li>
 <li>删除所有双亲节点与右孩子的连线；</li>
 </ol>
-<h4 id="6-4-4-树的遍历"><a href="#6-4-4-树的遍历" class="headerlink" title="6.4.4 树的遍历"></a>6.4.4 树的遍历</h4><p><img src="树的遍历.png" alt></p>
-<h4 id="6-4-5-森林的遍历"><a href="#6-4-5-森林的遍历" class="headerlink" title="6.4.5 森林的遍历"></a>6.4.5 森林的遍历</h4><ul>
+<h4 id="树的遍历">6.4.4 树的遍历</h4>
+<p><img src="树的遍历.png"></p>
+<h4 id="森林的遍历">6.4.5 森林的遍历</h4>
+<ul>
 <li>先序遍历：逐棵先序遍历每棵子树/对应二叉树的先序遍历；</li>
 <li>中序遍历：逐棵中序遍历每棵子树/对应二叉树的中序遍历；</li>
-<li><h2 id="Chapter7-图"><a href="#Chapter7-图" class="headerlink" title="Chapter7 图"></a>Chapter7 图</h2><h3 id="7-1-一些基本概念："><a href="#7-1-一些基本概念：" class="headerlink" title="7.1 一些基本概念："></a>7.1 一些基本概念：</h3><img src="路.png" alt><br><img src="连通.png" alt><br><img src="强连通.png" alt><br><img src="连通分量.png" alt><br><img src="子图.png" alt></li>
+<li><h2 id="chapter7-图">Chapter7 图</h2>
+<h3 id="一些基本概念">7.1 一些基本概念：</h3>
+<img src="路.png"><br>
+<img src="连通.png"><br>
+<img src="强连通.png"><br>
+<img src="连通分量.png"><br>
+<img src="子图.png"></li>
 </ul>
-<h3 id="7-2-图的基本存储结构"><a href="#7-2-图的基本存储结构" class="headerlink" title="7.2 图的基本存储结构"></a>7.2 图的基本存储结构</h3><p><img src="图的存储结构比较.png" alt><br><img src="十字表法.png" alt></p>
-<h3 id="7-3-最小生成树"><a href="#7-3-最小生成树" class="headerlink" title="7.3 最小生成树"></a>7.3 最小生成树</h3><p><img src="最小生成树.png" alt></p>
-<h3 id="7-4-拓扑排序"><a href="#7-4-拓扑排序" class="headerlink" title="7.4 拓扑排序"></a>7.4 拓扑排序</h3><h4 id="7-4-1-无前驱的顶点优先算法"><a href="#7-4-1-无前驱的顶点优先算法" class="headerlink" title="7.4.1 无前驱的顶点优先算法"></a>7.4.1 无前驱的顶点优先算法</h4><p><img src="无前驱的顶点优先算法.png" alt></p>
-<h4 id="7-4-2-无后继的顶点优先"><a href="#7-4-2-无后继的顶点优先" class="headerlink" title="7.4.2 无后继的顶点优先"></a>7.4.2 无后继的顶点优先</h4><p><img src="无后继的顶点优先.png" alt></p>
-<h3 id="7-5-关键路径"><a href="#7-5-关键路径" class="headerlink" title="7.5 关键路径"></a>7.5 关键路径</h3><h4 id="7-5-1-AOE网"><a href="#7-5-1-AOE网" class="headerlink" title="7.5.1 AOE网"></a>7.5.1 AOE网</h4><p><img src="AOE网.png" alt><br><img src="AOE网2.png" alt></p>
-<h4 id="7-5-2-关键术语"><a href="#7-5-2-关键术语" class="headerlink" title="7.5.2 关键术语"></a>7.5.2 关键术语</h4><p><img src="AOE网关键概念.png" alt></p>
-<h4 id="7-5-3-求解方法"><a href="#7-5-3-求解方法" class="headerlink" title="7.5.3 求解方法"></a>7.5.3 求解方法</h4><p>希望求解关键路径，即源点到汇点最长的路径；</p>
-<ol>
-<li>对于事件<ol>
+<h3 id="图的基本存储结构">7.2 图的基本存储结构</h3>
+<p><img src="图的存储结构比较.png"><br>
+<img src="十字表法.png"></p>
+<h3 id="最小生成树">7.3 最小生成树</h3>
+<p><img src="最小生成树.png"></p>
+<h3 id="拓扑排序">7.4 拓扑排序</h3>
+<h4 id="无前驱的顶点优先算法">7.4.1 无前驱的顶点优先算法</h4>
+<p><img src="无前驱的顶点优先算法.png"></p>
+<h4 id="无后继的顶点优先">7.4.2 无后继的顶点优先</h4>
+<p><img src="无后继的顶点优先.png"></p>
+<h3 id="关键路径">7.5 关键路径</h3>
+<h4 id="aoe网">7.5.1 AOE网</h4>
+<p><img src="AOE网.png"><br>
+<img src="AOE网2.png"></p>
+<h4 id="关键术语">7.5.2 关键术语</h4>
+<p><img src="AOE网关键概念.png"></p>
+<h4 id="求解方法">7.5.3 求解方法</h4>
+<p>希望求解关键路径，即源点到汇点最长的路径；</p>
+<ol type="1">
+<li>对于事件
+<ol type="1">
 <li>最早发生时间：源点为0，其他点 = Max(源点到该事件的路径长度)；</li>
-<li>最迟发生时间：（倒着算）汇点 = 最早发生时间，其他点 = Min(下一个点最早发生时间 - 边权)；（为了保证下一个事件能最早发生，所以取最小的那个时间）</li>
-</ol>
-</li>
-<li>对于活动<ol>
+<li>最迟发生时间：（倒着算）汇点 = 最早发生时间，其他点 =
+Min(下一个点最早发生时间 -
+边权)；（为了保证下一个事件能最早发生，所以取最小的那个时间）</li>
+</ol></li>
+<li>对于活动
+<ol type="1">
 <li>最早发生时间：等于起始点事件的最早发生时间；</li>
-<li>最迟发生时间：等于终点时间的最迟发生时间 - 边权；<br>关键路径为最迟发生时间 - 最早发生时间 = 0的边；</li>
+<li>最迟发生时间：等于终点时间的最迟发生时间 - 边权；<br>
+关键路径为最迟发生时间 - 最早发生时间 = 0的边；</li>
+</ol></li>
 </ol>
-</li>
-</ol>
-<h2 id="Chapter9-查找"><a href="#Chapter9-查找" class="headerlink" title="Chapter9 查找"></a>Chapter9 查找</h2><h3 id="9-1-顺序查找"><a href="#9-1-顺序查找" class="headerlink" title="9.1 顺序查找"></a>9.1 顺序查找</h3><pre><code class="lang-c">int Search_Seq(SSTable ST, KeyType key) &#123;
+<h2 id="chapter9-查找">Chapter9 查找</h2>
+<h3 id="顺序查找">9.1 顺序查找</h3>
+<pre class="c"><code>int Search_Seq(SSTable ST, KeyType key) &#123;
     ST.elem[0].key = key; // 用作哨兵；
     for (int i = ST.length; key != ST.elem[i].key; i--) &#123;
         return i; // 找到了就返回正确的位置，没找到返回0；
     &#125;
-&#125;
-</code></pre>
+&#125;</code></pre>
 <p>监视哨的好处：无需进行边界检测，提高效率；</p>
 <p>平均查找长度ASL：</p>
-<p>（1）成功ASL：$(1 + n)<em> n /2 </em> \frac{1}{n} = \frac{n+1}{2}$；</p>
-<p>（2）失败ASL：$1 + n$；</p>
-<h3 id="9-2-折半查找"><a href="#9-2-折半查找" class="headerlink" title="9.2 折半查找"></a>9.2 折半查找</h3><h4 id="9-2-1-构建步骤"><a href="#9-2-1-构建步骤" class="headerlink" title="9.2.1 构建步骤"></a>9.2.1 构建步骤</h4><p>（1）mid = (1 + n)/2 作为根节点，(1 + mid - 1)/2 作为它的左孩子，(mid + 1 + n)/2 作为右孩子；<br>（2）如此构建折半查找树；</p>
-<h4 id="9-2-2-平均查找长度ASL"><a href="#9-2-2-平均查找长度ASL" class="headerlink" title="9.2.2 平均查找长度ASL"></a>9.2.2 平均查找长度ASL</h4><ol>
-<li>成功ASL：待查找的节点在第$x$层，需要比较的次数就是$x$，加权求和即可；</li>
+<p>（1）成功ASL：<span class="math inline">\((1 + n)* n /2 * \frac{1}{n}
+= \frac{n+1}{2}\)</span>；</p>
+<p>（2）失败ASL：<span class="math inline">\(1 + n\)</span>；</p>
+<h3 id="折半查找">9.2 折半查找</h3>
+<h4 id="构建步骤">9.2.1 构建步骤</h4>
+<p>（1）mid = (1 + n)/2 作为根节点，(1 + mid - 1)/2 作为它的左孩子，(mid
++ 1 + n)/2 作为右孩子；<br>
+（2）如此构建折半查找树；</p>
+<h4 id="平均查找长度asl">9.2.2 平均查找长度ASL</h4>
+<ol type="1">
+<li>成功ASL：待查找的节点在第<span class="math inline">\(x\)</span>层，需要比较的次数就是<span class="math inline">\(x\)</span>，加权求和即可；</li>
 </ol>
-<h3 id="9-3-二叉排序树"><a href="#9-3-二叉排序树" class="headerlink" title="9.3 二叉排序树"></a>9.3 二叉排序树</h3><h4 id="9-3-1-构建步骤"><a href="#9-3-1-构建步骤" class="headerlink" title="9.3.1 构建步骤"></a>9.3.1 构建步骤</h4><p>（1）给定序列，第一个节点作为根节点；<br>（2）如果比上一个节点小，则放在它的左子树；比上一个节点大，则放在它的右子树；</p>
-<h4 id="9-3-2-调整（删除节点-p）"><a href="#9-3-2-调整（删除节点-p）" class="headerlink" title="9.3.2 调整（删除节点*p）"></a>9.3.2 调整（删除节点*p）</h4><p>（1）p是叶子结点：修改双亲指针即可；<br>（2）p只有左（右）孩子：用它左（右）孩子的指针代替它即可；<br>（3）p有两个孩子：用它的中序后继（或前驱）代替它；其实就是<strong>左子树中最右或者右子树中最左</strong>的节点代替它。</p>
-<h3 id="9-4-平衡二叉树"><a href="#9-4-平衡二叉树" class="headerlink" title="9.4 平衡二叉树"></a>9.4 平衡二叉树</h3><h4 id="9-4-1-维持平衡操作"><a href="#9-4-1-维持平衡操作" class="headerlink" title="9.4.1 维持平衡操作"></a>9.4.1 维持平衡操作</h4><blockquote>
-<p><strong>最小不平衡子树</strong>：最下往上，第一个出现左右子树深度之差 &gt; 1的节点。</p>
+<h3 id="二叉排序树">9.3 二叉排序树</h3>
+<h4 id="构建步骤-1">9.3.1 构建步骤</h4>
+<p>（1）给定序列，第一个节点作为根节点；<br>
+（2）如果比上一个节点小，则放在它的左子树；比上一个节点大，则放在它的右子树；</p>
+<h4 id="调整删除节点p">9.3.2 调整（删除节点*p）</h4>
+<p>（1）p是叶子结点：修改双亲指针即可；<br>
+（2）p只有左（右）孩子：用它左（右）孩子的指针代替它即可；<br>
+（3）p有两个孩子：用它的中序后继（或前驱）代替它；其实就是<strong>左子树中最右或者右子树中最左</strong>的节点代替它。</p>
+<h3 id="平衡二叉树">9.4 平衡二叉树</h3>
+<h4 id="维持平衡操作">9.4.1 维持平衡操作</h4>
+<blockquote>
+<p><strong>最小不平衡子树</strong>：最下往上，第一个出现左右子树深度之差
+&gt; 1的节点。</p>
 </blockquote>
-<h5 id="1-LL型"><a href="#1-LL型" class="headerlink" title="1. LL型"></a>1. LL型</h5><blockquote>
+<h5 id="ll型">1. LL型</h5>
+<blockquote>
 <p>新插入的节点在最小不平衡子树的左孩子的左子树；</p>
-<p>调整方法：左孩子向右上旋转；<img src="LL.png" alt></p>
+<p>调整方法：左孩子向右上旋转；<img src="LL.png"></p>
 </blockquote>
-<h5 id="2-RR型"><a href="#2-RR型" class="headerlink" title="2. RR型"></a>2. RR型</h5><blockquote>
+<h5 id="rr型">2. RR型</h5>
+<blockquote>
 <p>新插入的节点在最小不平衡子树的右孩子的右子树；</p>
-<p>调整方法：右孩子向左上旋转；（和LL型刚好相反）<img src="RR.png" alt></p>
+<p>调整方法：右孩子向左上旋转；（和LL型刚好相反）<img src="RR.png"></p>
 </blockquote>
-<h5 id="3-LR型"><a href="#3-LR型" class="headerlink" title="3.LR型"></a>3.LR型</h5><blockquote>
+<h5 id="lr型">3.LR型</h5>
+<blockquote>
 <p>新插入的节点在最小不平衡子树的左孩子的右子树；</p>
-<p>调整方法：左孩子的右子树先左上旋，再右上旋；<img src="LR.png" alt></p>
+<p>调整方法：左孩子的右子树先左上旋，再右上旋；<img src="LR.png"></p>
 </blockquote>
-<h5 id="4-RL型"><a href="#4-RL型" class="headerlink" title="4. RL型"></a>4. RL型</h5><blockquote>
+<h5 id="rl型">4. RL型</h5>
+<blockquote>
 <p>新插入的节点在最小不平衡子树的右孩子的左子树；</p>
-<p>调整方法：右孩子的左子树先右上旋，再左上旋；（和LR型刚好相反）<img src="RL.png" alt></p>
+<p>调整方法：右孩子的左子树先右上旋，再左上旋；（和LR型刚好相反）<img src="RL.png"></p>
 </blockquote>
-<h3 id="9-5-B-树"><a href="#9-5-B-树" class="headerlink" title="9.5 B-树"></a>9.5 B-树</h3><p>B-树是一种多叉平衡搜索树。</p>
-<p>对于$m$叉树，要求：</p>
-<ul>
-<li>每个节点最多有$m$个分支，$m-1$个元素；</li>
-<li>根节点最少有$2$个分支，$1$个元素；</li>
-<li>其他节点最少有$\left \lceil \frac{m}{2} \right \rceil$个分支，$\left \lceil \frac{m}{2} \right \rceil - 1$个节点；</li>
-</ul>
-<h4 id="9-5-1-B-树的构建和插入"><a href="#9-5-1-B-树的构建和插入" class="headerlink" title="9.5.1 B-树的构建和插入"></a>9.5.1 B-树的构建和插入</h4><ol>
+<h3 id="b-树">9.5 B-树</h3>
+<p>B-树是一种多叉平衡搜索树。</p>
+<p>对于<span class="math inline">\(m\)</span>叉树，要求：<br>
+* 每个节点最多有<span class="math inline">\(m\)</span>个分支，<span class="math inline">\(m-1\)</span>个元素；<br>
+* 根节点最少有<span class="math inline">\(2\)</span>个分支，<span class="math inline">\(1\)</span>个元素；<br>
+* 其他节点最少有<span class="math inline">\(\left \lceil \frac{m}{2}
+\right \rceil\)</span>个分支，<span class="math inline">\(\left \lceil
+\frac{m}{2} \right \rceil - 1\)</span>个节点；</p>
+<h4 id="b-树的构建和插入">9.5.1 B-树的构建和插入</h4>
+<ol type="1">
 <li>先查找到插入到位置进行插入；</li>
 <li>如果没有上溢出，无需调整；</li>
-<li>如果发生上溢出，将第$\left \lceil \frac{m}{2} \right \rceil$个元素（中间元素）向上移动，两边分裂（直至不发生上溢出）；</li>
+<li>如果发生上溢出，将第<span class="math inline">\(\left \lceil
+\frac{m}{2} \right
+\rceil\)</span>个元素（中间元素）向上移动，两边分裂（直至不发生上溢出）；</li>
 </ol>
-<h4 id="9-5-2-B-树的删除"><a href="#9-5-2-B-树的删除" class="headerlink" title="9.5.2 B-树的删除"></a>9.5.2 B-树的删除</h4><p>B-树的根结点可以始终置于内存中；其余非叶结点放置在外存上，每一结点可作为一个读取单位（页/块）；<br>选取较大的阶次m，降低树的高度，减少外存访问次数；</p>
-<h3 id="9-6-B-树"><a href="#9-6-B-树" class="headerlink" title="9.6 B+树"></a>9.6 B+树</h3><h2 id="Chapter-10-内部排序"><a href="#Chapter-10-内部排序" class="headerlink" title="Chapter 10 内部排序"></a>Chapter 10 内部排序</h2><pre><code class="lang-cpp">#include &lt;iostream&gt;
+<h4 id="b-树的删除">9.5.2 B-树的删除</h4>
+<p>B-树的根结点可以始终置于内存中；其余非叶结点放置在外存上，每一结点可作为一个读取单位（页/块）；<br>
+选取较大的阶次m，降低树的高度，减少外存访问次数；</p>
+<h3 id="b树">9.6 B+树</h3>
+<h2 id="chapter-10-内部排序">Chapter 10 内部排序</h2>
+<pre class="cpp"><code>#include &lt;iostream&gt;
 #include &lt;vector&gt;
 #include &lt;algorithm&gt; // 用于 sort 函数
 
@@ -409,7 +500,7 @@ void InsertSort(SqList &amp;L) &#123;
 // 希尔排序
 void ShellSort(SqList &amp;L) &#123;
     // 间隔步长d选点作为一组子表进行插排，不断缩小步长，代码略，不太可能考写代码；
-
+    
     // 不稳定排序；
     // 最好情况和最坏情况和直接插排一样；
     // 平均时间 O(n^1.3)；
@@ -467,7 +558,7 @@ void Qsort(SqList &amp;L,int low, int high) &#123;
 // 快速排序
 void QuickSort(SqList &amp;L) &#123;
     Qsort(L, 1, L.length);
-
+    
     // 不稳定排序
     // 划分时，比较次数 &lt;= n 次，时间复杂度为O(n)，移动次数为 4 次（支点移到辅助空间，大于支点的节点移动，小于节点的支点移动，支点移回去）；
     // 最好情况：划分时划分为左右两个等长子序列，需要排序的趟数 &lt;= log_2(n)，所以时间复杂度为 O(nlogn)；
@@ -493,7 +584,7 @@ void SelectSort(SqList &amp;L) &#123;
             // 交换元素，记为 3 次移动；
         &#125;
     &#125;
-
+    
     // 不稳定排序，找到最小的过程中，选择的是下标最大的最小值；
     // 排序过程中，前一部分数据逐渐有序，且放置在最终位置上；
     // 排序趟数为 n - 1 趟，第 i 趟的比较次数为，n - i，总比较次数为 (1 + n - 1)(n - 1)/2 = n(n - 1)/2；
@@ -509,7 +600,7 @@ void SelectSort(SqList &amp;L) &#123;
     // （2）将此时的堆顶元素与左右孩子中较大的元素交换，如此做，直到满足了堆的性质；
 // 堆的构建：给定某一序列后，从最后一个非叶子结点的子树开始从下往上调整；
     // 对于完全二叉树，最后一个非叶子结点序号为 n/2；
-
+    
 // 筛选
 void HeapAdjust(SqList &amp;L, int root, int end) &#123; // root 是待调整的子树根节点的序号，end 是待调整的子树的最后一个节点
     L.r[0] = L.r[root]; // 存储当前堆顶元素
@@ -532,7 +623,7 @@ void HeapSort(SqList &amp;L) &#123;
     for (int i = L.length / 2; i &gt; 0; i--) &#123; // 从最后一个非叶子结点开始，逐步从下往上调整；
         HeapAdjust(L, i, L.length);
     &#125;
-
+    
     // 每次取出最大的元素（堆顶），和堆底元素交换，重新调整堆；
     for (int i = L.length; i &gt; 1; i--) &#123;
         L.r[0] = L.r[1];
@@ -540,7 +631,7 @@ void HeapSort(SqList &amp;L) &#123;
         L.r[i] = L.r[0]; // 交换堆顶和堆底，记为 3 次移动；
         HeapAdjust(L, 1, i - 1); // 调整剩余部分 1 ～ i - 1；
     &#125;
-
+    
     // 不稳定排序
     // 对于二叉树，树高 k = 「log_2(n)」+ 1；
     // 每次筛选，从根到叶子结点，最多经过 2(k - 1) 次比较（左右孩子比较，较大者与父节点比较，共 2 次），最多经过 k 次交换，即 3 * k 次移动；
@@ -552,7 +643,7 @@ void HeapSort(SqList &amp;L) &#123;
 
 // 2-路归并排序基本思想：
     // 含有一个元素的子表总是有序的，所以对相邻的含有一个元素的子表进行合并，得到表长 = 2 的有序表；如此做直至生成表长 = n 的有序表；共需要 「log_2(n)」 趟；
-
+    
 // 合并两张子表(left表示第一张表的开头，mid表示第一张表的结尾，mid + 1表示第二张表的开头，right表示第二张表的结尾)
 void Merge(int Source[], int* Dest, int left, int mid, int right) &#123;
     int i = left, j = mid + 1, k = left;
@@ -567,7 +658,7 @@ void Merge(int Source[], int* Dest, int left, int mid, int right) &#123;
         &#125;
         k++;
     &#125;
-
+    
     // 此时一个数组已空，另一个数组非空，将剩余元素放入Dest；
     while (i &lt;= mid) &#123;
         Dest[k] = Source[i];
@@ -596,7 +687,7 @@ void MSort(int Source[], int* Dest, int start, int end) &#123;
 // 归并排序
 void MergeSort(SqList &amp;L) &#123;
     MSort(L.r, L.r, 1, L.length);
-
+    
     // 稳定排序
     // 空间复杂度为 O(n)；
     // 归并趟数 = 「log_2(n)」，每趟归并需要移动 n 次，时间复杂度为 O(nlogn)；
@@ -616,7 +707,7 @@ void MergeSort(SqList &amp;L) &#123;
         // 选择排序或冒泡排序：k 趟（数据比较次数约为 k * n 次）；
         // 快速排序：每次仅对第一个子序列划分，直至子序列长度小于等于k；长度不足k，则再对其后的子序列划分出补足的长度即可；
         // 堆排序：先建小根堆，k-1 次堆调整（数据比较次数约为 4n + (k-1)logn）；
-
+        
 // 基于分配的内部排序
 
 // 桶排序
@@ -627,11 +718,11 @@ void BucketSort(SqList &amp;L) &#123;
         if (L.r[i] &gt; maxVal) maxVal = L.r[i];
         if (L.r[i] &lt; minVal) minVal = L.r[i];
     &#125;
-
+    
     // 计算桶的数量和范围
     int bucketCount = L.length;
     vector&lt;vector&lt;KeyType&gt;&gt; buckets(bucketCount);
-
+    
     // 将元素分配到对应的桶中
     double range = (double)(maxVal - minVal + 1) / bucketCount; // 每个桶的范围
     for (int i = 1; i &lt;= L.length; i++) &#123;
@@ -639,12 +730,12 @@ void BucketSort(SqList &amp;L) &#123;
         if (index &gt;= bucketCount) index = bucketCount - 1;
         buckets[index].push_back(L.r[i]);
     &#125;
-
+    
     // 对每个桶内部进行排序
     for (int i = 0; i &lt; bucketCount; i++) &#123;
         sort(buckets[i].begin(), buckets[i].end()); // 使用 STL 的 sort 排序
     &#125;
-
+    
     // 将排序后的数据从桶中取出，放回原数组
     int idx = 1;
     for (int i = 0; i &lt; bucketCount; i++) &#123;
@@ -652,7 +743,7 @@ void BucketSort(SqList &amp;L) &#123;
             L.r[idx++] = val;
         &#125;
     &#125;
-
+    
     // 稳定排序；
     // 空间复杂度为 O(n + k)，其中 n 为元素数量，k 为桶的数量；
     // 平均时间复杂度为 O(n + klogk)，最坏情况时间复杂度为 O(n^2)（所有元素都落在同一个桶中）；
@@ -671,14 +762,14 @@ void CountSort(SqList &amp;L) &#123;
             minVal = L.r[i];
         &#125;
     &#125;
-
+    
     // 计数数组
     int* C = new int[maxVal - minVal + 1]();
     // 计数
     for (int i = 1; i &lt;= L.length; i++) &#123;
         C[L.r[i] - minVal]++;
     &#125;
-
+    
     int k = 1;
     for (int i = minVal; i &lt;= maxVal; i++) &#123;
         for (int j = 0; j &lt; C[i - minVal]; j++) &#123;
@@ -686,7 +777,7 @@ void CountSort(SqList &amp;L) &#123;
             k++;
         &#125;
     &#125;
-
+    
     // 稳定排序（上述实现过程简略，没有体现稳定排序）；
     // 当输入的元素是 n 个 0 到 k 之间的整数时，时间复杂度是 O(n+k)，空间复杂度也是 O(n+k)，其排序速度快于任何比较排序算法；
     // 当 k 不是很大并且序列比较集中时，计数排序是一个很有效的排序算法。当 k &gt; n 时，效率下降；
@@ -716,21 +807,37 @@ int main() &#123;
     CountSort(L);
     CoutList(L);
     return 0;
-&#125;
-</code></pre>
-<h2 id="Chapter-11-外部排序"><a href="#Chapter-11-外部排序" class="headerlink" title="Chapter 11 外部排序"></a>Chapter 11 外部排序</h2><h3 id="11-1-置换选择法"><a href="#11-1-置换选择法" class="headerlink" title="11.1 置换选择法"></a>11.1 置换选择法</h3><p>意义是<strong>在内存工作区容量的限制下，获得尽可能长的初始归并段</strong>。<br>假设内存中用到的优先队列WA规模为$5$，初始待排序文件FI：</p>
+&#125;</code></pre>
+<h2 id="chapter-11-外部排序">Chapter 11 外部排序</h2>
+<h3 id="置换选择法">11.1 置换选择法</h3>
+<p>意义是<strong>在内存工作区容量的限制下，获得尽可能长的初始归并段</strong>。<br>
+假设内存中用到的优先队列WA规模为<span class="math inline">\(5\)</span>，初始待排序文件FI：</p>
 <p><code>5, 20, 26, 46, 31, 25, 16, 51, 17, 28, 1</code></p>
-<p>文件放入内存工作区：<br>WA：<code>5,20,26,46,31</code>；</p>
-<p>第一趟：<br>WA：<code>25,20,26,46,31</code>，第一个归并段：<code>5</code>；</p>
-<p>第二趟：<br>WA：<code>25,16,26,46,31</code>，第一个归并段：<code>5,20</code>；</p>
-<p>第三趟：（不能出最小的16，要出一个比20大的）<br>WA：<code>51,16,26,46,31</code>，第一个归并段：<code>5,20,25</code>；</p>
-<p>第四趟：<br>WA：<code>51,16,17,46,31</code>，第一个归并段：<code>5,20,25,26</code>；</p>
-<p>第五趟：<br>WA：<code>51,16,17,46,28</code>，第一个归并段：<code>5,20,25,26,31</code>；</p>
-<p>第六趟：<br>WA：<code>51,16,17,1,28</code>，第一个归并段：<code>5,20,25,26,31,46</code>；</p>
-<p>第七趟：<br>WA：<code>16,17,1,28</code>，第一个归并段：<code>5,20,25,26,31,46,51</code>；</p>
-<p>第八趟～第十一趟：（此时剩余待排序文件无法放入第一个归并段，生成第二个归并段）<br>第二个归并段：<code>1,16,17,28</code>；</p>
-<h3 id="11-2-最佳归并树"><a href="#11-2-最佳归并树" class="headerlink" title="11.2 最佳归并树"></a>11.2 最佳归并树</h3><p>最佳归并树即$k$叉(阶)哈夫曼树。设初始归并段为$m$个，进行$k-$路归并。<br>需要补充$y$个虚段（用元素$0$表示）：$(k - 1) * x + k = m + y$。<br>注意虚段在画哈夫曼树之前先添加。 </p>
-<h3 id="11-3-败者树"><a href="#11-3-败者树" class="headerlink" title="11.3 败者树"></a>11.3 败者树</h3><p>对于初始为升序的归并段进行多路归并，败者树中记录的冠军节点保存的是<strong>最小关键字所在的归并段号</strong>，分支节点保存的是失败者所在的归并段号。</p>
+<p>文件放入内存工作区：<br>
+WA：<code>5,20,26,46,31</code>；</p>
+<p>第一趟：<br>
+WA：<code>25,20,26,46,31</code>，第一个归并段：<code>5</code>；</p>
+<p>第二趟：<br>
+WA：<code>25,16,26,46,31</code>，第一个归并段：<code>5,20</code>；</p>
+<p>第三趟：（不能出最小的16，要出一个比20大的）<br>
+WA：<code>51,16,26,46,31</code>，第一个归并段：<code>5,20,25</code>；</p>
+<p>第四趟：<br>
+WA：<code>51,16,17,46,31</code>，第一个归并段：<code>5,20,25,26</code>；</p>
+<p>第五趟：<br>
+WA：<code>51,16,17,46,28</code>，第一个归并段：<code>5,20,25,26,31</code>；</p>
+<p>第六趟：<br>
+WA：<code>51,16,17,1,28</code>，第一个归并段：<code>5,20,25,26,31,46</code>；</p>
+<p>第七趟：<br>
+WA：<code>16,17,1,28</code>，第一个归并段：<code>5,20,25,26,31,46,51</code>；</p>
+<p>第八趟～第十一趟：（此时剩余待排序文件无法放入第一个归并段，生成第二个归并段）<br>
+第二个归并段：<code>1,16,17,28</code>；</p>
+<h3 id="最佳归并树">11.2 最佳归并树</h3>
+<p>最佳归并树即<span class="math inline">\(k\)</span>叉(阶)哈夫曼树。设初始归并段为<span class="math inline">\(m\)</span>个，进行<span class="math inline">\(k-\)</span>路归并。<br>
+需要补充<span class="math inline">\(y\)</span>个虚段（用元素<span class="math inline">\(0\)</span>表示）：<span class="math inline">\((k -
+1) * x + k = m + y\)</span>。<br>
+注意虚段在画哈夫曼树之前先添加。</p>
+<h3 id="败者树">11.3 败者树</h3>
+<p>对于初始为升序的归并段进行多路归并，败者树中记录的冠军节点保存的是<strong>最小关键字所在的归并段号</strong>，分支节点保存的是失败者所在的归并段号。</p>
 
     </div>
     
